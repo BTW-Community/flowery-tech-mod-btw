@@ -1,32 +1,29 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "flower-tech-mod",
   "version": "${version}",
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "flowery tech mod",
+  "description": "Flower based tech mod!",
   "authors": [
-    "Me!"
+    "Vazkii (Original)",
+    "TheWinABagel (port)"
+  ],
+  "contributors": [
+    "Azanor, dylan4ever, Flaxbeard, Futureazoo, wiiv, Rorax, Lorc, Adubbz, WTFG33ks, Auric245524, MegaManki, Kain Vinosec, Kihira, mDiyo, Mikeemoo, ChickenBones, PowerCrystals, cpw"
   ],
   "contact": {
-    "homepage": "https://legacyfabric.net/",
-    "sources": "https://github.com/Legacy-Fabric/fabric-example-mod"
+    "sources": "https://github.com/BTW-Community/flowery-tech-mod-btw"
   },
-  "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "license": "Botania License",
+  "icon": "assets/botania/textures/logo.png",
   "environment": "*",
   "entrypoints": {
-    "main": [
-      "net.fabricmc.example.ExampleMod"
-    ],
     "btw:addon": [
-      "btw.community.example.ExampleAddon"
+      "vazkii.botania.common.Botania"
     ]
   },
-  "custom": {
-    "btw:addon_prefix": "EX"
-  },
   "mixins": [
-    "modid.mixins.json"
+    "botania.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.14.19",
