@@ -16,25 +16,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import emi.shims.java.net.minecraft.text.Text;
+import emi.shims.java.net.minecraft.util.Formatting;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.potion.Potion;
-import net.minecraft.src.ChatComponentText;
-import net.minecraft.src.ChatComponentTranslation;
-import net.minecraft.src.ChatStyle;
+import net.minecraft.src.Potion;
 import net.minecraft.src.EnumChatFormatting;
-import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.common.config.Property;
-import vazkii.botania.common.Botania;
 import vazkii.botania.common.lib.LibMisc;
 import vazkii.botania.common.lib.LibPotionNames;
-import cpw.mods.fml.client.event.ConfigChangedEvent;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-
+//todo update config
 public final class ConfigHandler {
 
-	public static Configuration config;
+//	public static Configuration config;
 	public static ConfigAdaptor adaptor;
 
 	private static final String CATEGORY_POTIONS = "potions";
@@ -112,12 +104,12 @@ public final class ConfigHandler {
 	public static int potionIDClear = 96;
 
 	public static void loadConfig(File configFile) {
-		config = new Configuration(configFile);
+/*		config = new Configuration(configFile);
 
 		config.load();
 		load();
 
-		FMLCommonHandler.instance().bus().register(new ChangeListener());
+		FMLCommonHandler.instance().bus().register(new ChangeListener());*/
 	}
 
 	public static void load() {
@@ -293,49 +285,52 @@ public final class ConfigHandler {
 		potionIDAllure = loadPropPotionId(LibPotionNames.ALLURE, potionIDAllure);
 		potionIDClear = loadPropPotionId(LibPotionNames.CLEAR, potionIDClear);
 
-		if(config.hasChanged())
-			config.save();
+/*		if(config.hasChanged())
+			config.save();*/
 	}
 
 	public static void loadPostInit() {
-		SheddingHandler.loadFromConfig(config);
+/*		SheddingHandler.loadFromConfig(config);
 
 		if(config.hasChanged())
-			config.save();
+			config.save();*/
 	}
 
 	public static int loadPropInt(String propName, String desc, int default_) {
-		Property prop = config.get(Configuration.CATEGORY_GENERAL, propName, default_);
+/*		Property prop = config.get(Configuration.CATEGORY_GENERAL, propName, default_);
 		prop.comment = desc;
 
 		if(adaptor != null)
 			adaptor.adaptPropertyInt(prop, prop.getInt(default_));
 
-		return prop.getInt(default_);
+		return prop.getInt(default_);*/
+		return default_;
 	}
 
 	public static double loadPropDouble(String propName, String desc, double default_) {
-		Property prop = config.get(Configuration.CATEGORY_GENERAL, propName, default_);
+/*		Property prop = config.get(Configuration.CATEGORY_GENERAL, propName, default_);
 		prop.comment = desc;
 
 		if(adaptor != null)
 			adaptor.adaptPropertyDouble(prop, prop.getDouble(default_));
 
-		return prop.getDouble(default_);
+		return prop.getDouble(default_);*/
+		return default_;
 	}
 
 	public static boolean loadPropBool(String propName, String desc, boolean default_) {
-		Property prop = config.get(Configuration.CATEGORY_GENERAL, propName, default_);
+/*		Property prop = config.get(Configuration.CATEGORY_GENERAL, propName, default_);
 		prop.comment = desc;
 
 		if(adaptor != null)
 			adaptor.adaptPropertyBool(prop, prop.getBoolean(default_));
 
-		return prop.getBoolean(default_);
+		return prop.getBoolean(default_);*/
+		return default_;
 	}
 
 	public static int loadPropPotionId(String propName, int default_) {
-		if(!verifiedPotionArray)
+/*		if(!verifiedPotionArray)
 			verifyPotionArray();
 
 		Property prop = config.get(CATEGORY_POTIONS, propName, default_);
@@ -345,16 +340,13 @@ public final class ConfigHandler {
 			prop.set(default_);
 		}
 
-		return val;
+		return val;*/
+		return default_;
 	}
 
 	private static void verifyPotionArray() {
-		if(Loader.isModLoaded("DragonAPI"))
-			potionArrayLimit = Potion.potionTypes.length;
-		else if(Loader.isModLoaded("hodgepodge"))
-			potionArrayLimit = 255;
-		else
-			potionArrayLimit = 127;
+		//todo check potion array limit
+		potionArrayLimit = 127;
 
 		verifiedPotionArray = true;
 	}
@@ -370,7 +362,7 @@ public final class ConfigHandler {
 			this.enabled = enabled;
 		}
 
-		public <T> void adaptProperty(Property prop, T val) {
+		/*public <T> void adaptProperty(Property prop, T val) {
 			if(!enabled)
 				return;
 
@@ -394,7 +386,7 @@ public final class ConfigHandler {
 					changes.add(" " + prop.getName() + ": " + val + " -> " + def);
 				}
 			}
-		}
+		}*/
 
 		public <T> void addMapping(int version, String key, T val) {
 			if(!enabled)
@@ -426,9 +418,9 @@ public final class ConfigHandler {
 			if(changes.size() == 0)
 				return;
 
-			player.addChatComponentMessage(new ChatComponentTranslation("botaniamisc.adaptativeConfigChanges").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.GOLD)));
+			player.addChatMessage(Text.translatable("botaniamisc.adaptativeConfigChanges").formatted(Formatting.GOLD).toString());
 			for(String change : changes)
-				player.addChatMessage(new ChatComponentText(change).setChatStyle(new ChatStyle().setColor(EnumChatFormatting.LIGHT_PURPLE)));
+				player.addChatMessage(Text.translatable(change).formatted(Formatting.LIGHT_PURPLE).toString());
 		}
 
 		public void addMappingInt(int version, String key, int val) {
@@ -443,7 +435,7 @@ public final class ConfigHandler {
 			this.<Boolean>addMapping(version, key, val);
 		}
 
-		public void adaptPropertyInt(Property prop, int val) {
+/*		public void adaptPropertyInt(Property prop, int val) {
 			this.<Integer>adaptProperty(prop, val);
 		}
 
@@ -453,7 +445,7 @@ public final class ConfigHandler {
 
 		public void adaptPropertyBool(Property prop, boolean val) {
 			this.<Boolean>adaptProperty(prop, val);
-		}
+		}*/
 
 		public static class AdaptableValue<T> {
 
@@ -473,11 +465,10 @@ public final class ConfigHandler {
 
 	public static class ChangeListener {
 
-		@SubscribeEvent
-		public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
+/*		public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
 			if(eventArgs.modID.equals(LibMisc.MOD_ID))
 				load();
-		}
+		}*/
 
 	}
 }

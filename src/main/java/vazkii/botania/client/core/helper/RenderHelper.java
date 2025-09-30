@@ -13,10 +13,10 @@ package vazkii.botania.client.core.helper;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.FontRenderer;
 import net.minecraft.src.Tessellator;
-import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.RenderItem;
 import net.minecraft.src.KeyBinding;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.ResourceLocation;
@@ -28,7 +28,7 @@ import vazkii.botania.client.core.handler.ClientTickHandler;
 import vazkii.botania.client.lib.LibResources;
 
 public final class RenderHelper {
-
+	private static RenderItem renderItemInstance = new RenderItem();
 	public static void renderTooltip(int x, int y, List<String> tooltipData) {
 		int color = 0x505000ff;
 		int color2 = 0xf0100010;
@@ -53,7 +53,7 @@ public final class RenderHelper {
 	public static void renderTooltip(int x, int y, List<String> tooltipData, int color, int color2) {
 		boolean lighting = GL11.glGetBoolean(GL11.GL_LIGHTING);
 		if(lighting)
-			net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
+			net.minecraft.src.RenderHelper.disableStandardItemLighting();
 
 		if (!tooltipData.isEmpty()) {
 			int var5 = 0;
@@ -93,7 +93,7 @@ public final class RenderHelper {
 			GL11.glEnable(GL11.GL_DEPTH_TEST);
 		}
 		if(!lighting)
-			net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
+			net.minecraft.src.RenderHelper.disableStandardItemLighting();
 		GL11.glColor4f(1F, 1F, 1F, 1F);
 	}
 
@@ -195,7 +195,7 @@ public final class RenderHelper {
 
 	public static void renderProgressPie(int x, int y, float progress, ItemStack stack) {
 		Minecraft mc = Minecraft.getMinecraft();
-		RenderItem.getInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, stack, x, y);
+		renderItemInstance.renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, stack, x, y);
 
 		GL11.glClear(GL11.GL_DEPTH_BUFFER_BIT);
 		GL11.glEnable(GL11.GL_STENCIL_TEST);
@@ -204,7 +204,7 @@ public final class RenderHelper {
 		GL11.glStencilFunc(GL11.GL_NEVER, 1, 0xFF);
 		GL11.glStencilOp(GL11.GL_REPLACE, GL11.GL_KEEP, GL11.GL_KEEP);
 		GL11.glStencilMask(0xFF);
-		RenderItem.getInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, stack, x, y);
+		renderItemInstance.renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, stack, x, y);
 
 		mc.renderEngine.bindTexture(new ResourceLocation(LibResources.GUI_MANA_HUD));
 		int r = 10;
@@ -242,8 +242,8 @@ public final class RenderHelper {
 		String key = null;
 		KeyBinding[] keys = Minecraft.getMinecraft().gameSettings.keyBindings;
 		for(KeyBinding otherKey : keys)
-			if(otherKey.getKeyDescription().equals(keyName)) {
-				key = Keyboard.getKeyName(otherKey.getKeyCode());
+			if(otherKey.keyDescription.equals(keyName)) {
+				key = Keyboard.getKeyName(otherKey.keyCode);
 				break;
 			}
 

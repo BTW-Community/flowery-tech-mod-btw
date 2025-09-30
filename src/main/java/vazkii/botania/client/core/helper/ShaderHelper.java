@@ -14,6 +14,7 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import cpw.mods.fml.common.FMLLog;
 import net.minecraft.src.OpenGlHelper;
 
 import org.apache.logging.log4j.Level;
@@ -26,7 +27,6 @@ import vazkii.botania.api.internal.ShaderCallback;
 import vazkii.botania.client.core.handler.ClientTickHandler;
 import vazkii.botania.client.lib.LibResources;
 import vazkii.botania.common.core.handler.ConfigHandler;
-import cpw.mods.fml.common.FMLLog;
 
 public final class ShaderHelper {
 
@@ -83,8 +83,9 @@ public final class ShaderHelper {
 		useShader(0);
 	}
 
+	//todo shaders supported...?
 	public static boolean useShaders() {
-		return ConfigHandler.useShaders && OpenGlHelper.shadersSupported;
+		return ConfigHandler.useShaders /*&& OpenGlHelper.shadersSupported*/;
 	}
 
 	// Most of the code taken from the LWJGL wiki

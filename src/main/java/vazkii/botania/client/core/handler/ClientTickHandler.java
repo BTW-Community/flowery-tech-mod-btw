@@ -20,13 +20,7 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
 import vazkii.botania.api.mana.IManaCollector;
 import vazkii.botania.api.mana.TileSignature;
-import vazkii.botania.client.core.handler.LightningHandler.LightningBolt;
-import vazkii.botania.client.gui.lexicon.GuiLexicon;
-import vazkii.botania.common.block.subtile.functional.SubTileVinculotus;
-import vazkii.botania.common.block.tile.corporea.TileCorporeaIndex;
-import vazkii.botania.common.core.handler.ManaNetworkHandler;
-import vazkii.botania.common.item.ItemTwigWand;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+
 import cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
 import cpw.mods.fml.common.gameevent.TickEvent.RenderTickEvent;
@@ -45,30 +39,30 @@ public class ClientTickHandler {
 		total = ticksInGame + partialTicks;
 		delta = total - oldTotal;
 	}
-
-	@SubscribeEvent
+	//todo implement tick handler
+	// *all comments are to do
 	public void renderTick(RenderTickEvent event) {
 		if(event.phase == Phase.START)
 			partialTicks = event.renderTickTime;
 		else {
-			TooltipAdditionDisplayHandler.render();
+			/*TooltipAdditionDisplayHandler.render();*/
 			calcDelta();
 		}
 	}
 
-	@SubscribeEvent
 	public void clientTickEnd(ClientTickEvent event) {
 		if(event.phase == Phase.END) {
-			LightningBolt.update();
+			/*LightningBolt.update();
 			RedStringRenderer.tick();
-			ItemsRemainingRenderHandler.tick();
+			ItemsRemainingRenderHandler.tick();*/
 
 			if(Minecraft.getMinecraft().theWorld == null) {
-				ManaNetworkHandler.instance.clear();
+/*				ManaNetworkHandler.instance.clear();
 				TileCorporeaIndex.indexes.clear();
-				SubTileVinculotus.existingFlowers.clear();
+				SubTileVinculotus.existingFlowers.clear();*/
 			}
 
+/*
 			GuiScreen gui = Minecraft.getMinecraft().currentScreen;
 			if(gui == null || !gui.doesGuiPauseGame()) {
 				ticksInGame++;
@@ -78,7 +72,7 @@ public class ClientTickHandler {
 				if(player != null) {
 					ItemStack stack = player.getCurrentEquippedItem();
 					if(stack != null && stack.getItem() instanceof ItemTwigWand) {
-						List<TileSignature> list = new ArrayList(ManaNetworkHandler.instance.getAllCollectorsInWorld(Minecraft.getMinecraft().theWorld));
+						List<TileSignature> list = new ArrayList<>(ManaNetworkHandler.instance.getAllCollectorsInWorld(Minecraft.getMinecraft().theWorld));
 						for(TileSignature sig : list) {
 							if(!sig.remoteWorld)
 								continue;
@@ -107,6 +101,7 @@ public class ClientTickHandler {
 					ticksWithLexicaOpen--;
 				}
 			}
+*/
 
 			calcDelta();
 		}
