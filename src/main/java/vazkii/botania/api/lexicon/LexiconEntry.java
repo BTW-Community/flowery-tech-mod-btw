@@ -14,11 +14,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.StatCollector;
 import vazkii.botania.api.BotaniaAPI;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class LexiconEntry implements Comparable<LexiconEntry> {
 
@@ -85,7 +85,7 @@ public class LexiconEntry implements Comparable<LexiconEntry> {
 		return null; // Override this if you want a tagline. You probably do
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public boolean isVisible() {
 		return true;
 	}

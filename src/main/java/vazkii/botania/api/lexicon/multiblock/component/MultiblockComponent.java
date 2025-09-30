@@ -10,13 +10,13 @@
  */
 package vazkii.botania.api.lexicon.multiblock.component;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ChunkCoordinates;
-import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.src.Block;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.TileEntity;
+import net.minecraft.src.ChunkCoordinates;
+import net.minecraft.src.World;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 /**
  * A component of a multiblock, the normal one
@@ -89,7 +89,7 @@ public class MultiblockComponent {
 		return tileEntity;
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public boolean shouldDoFancyRender() {
 		return doFancyRender;
 	}

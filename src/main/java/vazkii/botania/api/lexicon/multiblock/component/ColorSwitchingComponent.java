@@ -10,9 +10,9 @@
  */
 package vazkii.botania.api.lexicon.multiblock.component;
 
-import net.minecraft.block.Block;
-import net.minecraft.util.ChunkCoordinates;
-import net.minecraft.world.World;
+import net.minecraft.src.Block;
+import net.minecraft.src.ChunkCoordinates;
+import net.minecraft.src.World;
 import vazkii.botania.api.BotaniaAPI;
 
 /**

@@ -10,8 +10,8 @@
  */
 package vazkii.botania.api.mana;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.TileEntity;
 
 /**
  * An item that implements this can be counted as an item that can

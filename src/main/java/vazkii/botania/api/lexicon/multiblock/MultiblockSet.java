@@ -10,8 +10,8 @@
  */
 package vazkii.botania.api.lexicon.multiblock;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.util.MathHelper;
+import net.minecraft.src.Entity;
+import net.minecraft.src.MathHelper;
 
 /**
  * A set of Multiblock objects for various rotations.

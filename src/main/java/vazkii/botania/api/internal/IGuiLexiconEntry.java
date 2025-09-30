@@ -12,7 +12,7 @@ package vazkii.botania.api.internal;
 
 import java.util.List;
 
-import net.minecraft.client.gui.GuiButton;
+import net.minecraft.src.GuiButton;
 import vazkii.botania.api.lexicon.LexiconEntry;
 
 /**

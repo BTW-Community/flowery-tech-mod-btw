@@ -1,6 +1,6 @@
 package vazkii.botania.api.lexicon;
 
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 
 /**
  * Basic interface for the Lexica Botania.

@@ -10,7 +10,7 @@
  */
 package vazkii.botania.api.lexicon;
 
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 
 /**
  * Have an Item implement this so that the method used for mapping it into

@@ -13,7 +13,7 @@ package vazkii.botania.api.lexicon;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import vazkii.botania.api.mana.IManaItem;
 
 /**

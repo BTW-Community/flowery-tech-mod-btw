@@ -1,6 +1,6 @@
 package vazkii.botania.api.lexicon;
 
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.src.EnumChatFormatting;
 
 public class KnowledgeType {
 
