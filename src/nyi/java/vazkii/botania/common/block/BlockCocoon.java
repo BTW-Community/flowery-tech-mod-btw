@@ -13,13 +13,13 @@ package vazkii.botania.common.block;
 import java.util.ArrayList;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
+import net.minecraft.src.Block;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.World;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -42,12 +42,12 @@ public class BlockCocoon extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
+	public void registerBlockIcons(IconRegister par1IconRegister) {
 		// NO-OP
 	}
 
 	@Override
-	public IIcon getIcon(int p_149691_1_, int p_149691_2_) {
+	public Icon getIcon(int p_149691_1_, int p_149691_2_) {
 		return Blocks.web.getBlockTextureFromSide(0);
 	}
 

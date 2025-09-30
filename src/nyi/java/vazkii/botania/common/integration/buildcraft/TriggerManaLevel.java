@@ -1,6 +1,6 @@
 package vazkii.botania.common.integration.buildcraft;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.StatCollector;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -35,7 +35,7 @@ public class TriggerManaLevel extends StatementBase implements ITriggerExternal 
 	}
 
 	@Override
-	public void registerIcons(IIconRegister iconRegister) {
+	public void registerIcons(IconRegister iconRegister) {
 		icon = IconHelper.forName(iconRegister, "triggers/mana" + WordUtils.capitalizeFully(state.name()));
 	}
 

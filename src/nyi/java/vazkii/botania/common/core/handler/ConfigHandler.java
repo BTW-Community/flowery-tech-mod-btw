@@ -18,9 +18,9 @@ import java.util.Map;
 
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.potion.Potion;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.ChatComponentTranslation;
-import net.minecraft.util.ChatStyle;
+import net.minecraft.src.ChatComponentText;
+import net.minecraft.src.ChatComponentTranslation;
+import net.minecraft.src.ChatStyle;
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;

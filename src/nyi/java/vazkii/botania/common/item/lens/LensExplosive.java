@@ -14,7 +14,7 @@ package vazkii.botania.common.item.lens;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.ChunkCoordinates;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.src.MovingObjectPosition;
 import vazkii.botania.api.internal.IManaBurst;
 
 public class LensExplosive extends Lens {

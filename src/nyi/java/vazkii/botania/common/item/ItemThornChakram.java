@@ -11,14 +11,14 @@
 package vazkii.botania.common.item;
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.Item;
+import net.minecraft.src.IInventory;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.stats.Achievement;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Achievement;
+import net.minecraft.src.Icon;
 import net.minecraft.src.World;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.achievement.ICraftAchievement;
@@ -28,7 +28,7 @@ import vazkii.botania.common.lib.LibItemNames;
 
 public class ItemThornChakram extends ItemMod implements ICraftAchievement {
 
-	IIcon iconFire;
+	Icon iconFire;
 
 	public ItemThornChakram() {
 		setUnlocalizedName(LibItemNames.THORN_CHAKRAM);
@@ -43,13 +43,13 @@ public class ItemThornChakram extends ItemMod implements ICraftAchievement {
 	}
 
 	@Override
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		itemIcon = IconHelper.forItem(par1IconRegister, this, 0);
 		iconFire = IconHelper.forItem(par1IconRegister, this, 1);
 	}
 
 	@Override
-	public IIcon getIconFromDamage(int dmg) {
+	public Icon getIconFromDamage(int dmg) {
 		return dmg == 0 ? itemIcon : iconFire;
 	}
 

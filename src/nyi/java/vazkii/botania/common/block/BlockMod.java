@@ -12,7 +12,7 @@ package vazkii.botania.common.block;
 
 import net.minecraft.src.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import vazkii.botania.api.recipe.IElvenItem;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.core.BotaniaCreativeTab;
@@ -51,7 +51,7 @@ public class BlockMod extends Block {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
+	public void registerBlockIcons(IconRegister par1IconRegister) {
 		blockIcon = IconHelper.forBlock(par1IconRegister, this);
 	}
 

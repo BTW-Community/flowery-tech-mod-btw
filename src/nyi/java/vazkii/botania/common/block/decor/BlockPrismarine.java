@@ -14,14 +14,14 @@ import java.util.List;
 
 import net.minecraft.src.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.src.IconRegister;
+import net.minecraft.src.TextureAtlasSprite;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.IIcon;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.src.Icon;
+import net.minecraft.src.MovingObjectPosition;
 import net.minecraft.src.World;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -41,7 +41,7 @@ import net.fabricmc.api.EnvType;
 public class BlockPrismarine extends BlockMod implements ILexiconable {
 
 	private static final int TYPES = 3;
-	IIcon[] icons;
+	Icon[] icons;
 
 	public BlockPrismarine() {
 		super(Material.rock);
@@ -76,8 +76,8 @@ public class BlockPrismarine extends BlockMod implements ILexiconable {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
-		icons = new IIcon[TYPES];
+	public void registerBlockIcons(IconRegister par1IconRegister) {
+		icons = new Icon[TYPES];
 		for(int i = 1; i < TYPES; i++)
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
 	}
@@ -93,7 +93,7 @@ public class BlockPrismarine extends BlockMod implements ILexiconable {
 	}
 
 	@Override
-	public IIcon getIcon(int par1, int par2) {
+	public Icon getIcon(int par1, int par2) {
 		return icons[Math.min(TYPES - 1, par2)];
 	}
 

@@ -14,14 +14,14 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.src.Block;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.src.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.src.EntityLivingBase;
+import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import net.minecraft.item.ItemShears;
 import net.minecraft.src.ItemStack;
 import net.minecraft.stats.StatList;
@@ -65,7 +65,7 @@ public class ItemManasteelShears extends ItemShears implements IManaUsingItem {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		itemIcon = IconHelper.forItem(par1IconRegister, this);
 	}
 

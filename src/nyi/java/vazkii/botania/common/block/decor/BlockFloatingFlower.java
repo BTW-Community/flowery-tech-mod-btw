@@ -14,16 +14,16 @@ import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.src.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
+import net.minecraft.src.Block;
+import net.minecraft.src.Item;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
 import thaumcraft.api.crafting.IInfusionStabiliser;
@@ -94,7 +94,7 @@ public class BlockFloatingFlower extends BlockModContainer implements ILexiconab
 	}
 
 	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
+	public void registerBlockIcons(IconRegister par1IconRegister) {
 		// NO-OP
 	}
 
@@ -120,7 +120,7 @@ public class BlockFloatingFlower extends BlockModContainer implements ILexiconab
 	}
 
 	@Override
-	public IIcon getIcon(int par1, int par2) {
+	public Icon getIcon(int par1, int par2) {
 		return Blocks.dirt.getIcon(par1, par2);
 	}
 

@@ -11,9 +11,9 @@
 package vazkii.botania.client.gui.lexicon;
 
 import net.minecraft.src.GuiButton;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.src.RenderHelper;
+import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.src.StatCollector;
 

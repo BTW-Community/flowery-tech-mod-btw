@@ -15,7 +15,7 @@ import java.util.List;
 
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.src.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.src.IRecipe;
 import net.minecraft.src.World;
 import net.minecraftforge.oredict.OreDictionary;
 import vazkii.botania.api.mana.ILens;

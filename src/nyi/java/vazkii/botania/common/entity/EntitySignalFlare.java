@@ -12,7 +12,7 @@ package vazkii.botania.common.entity;
 
 import net.minecraft.src.Entity;
 import net.minecraft.entity.passive.EntitySheep;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.World;
 import vazkii.botania.common.Botania;
 

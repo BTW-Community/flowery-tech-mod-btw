@@ -12,16 +12,16 @@ package vazkii.botania.common.item.equipment.armor.manasteel;
 
 import java.util.List;
 
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.GuiScreen;
+import net.minecraft.src.ModelBiped;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.Entity;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.DamageSource;
+import net.minecraft.src.DamageSource;
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.src.StatCollector;
 import net.minecraft.src.World;
@@ -78,7 +78,7 @@ public class ItemManasteelArmor extends ItemArmor implements ISpecialArmor, IMan
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		itemIcon = IconHelper.forItem(par1IconRegister, this);
 	}
 

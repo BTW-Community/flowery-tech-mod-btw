@@ -13,11 +13,11 @@ package vazkii.botania.common.block.mana;
 import java.util.List;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
+import net.minecraft.src.Block;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
@@ -48,7 +48,7 @@ public class BlockSpawnerClaw extends BlockModContainer implements ILexiconable 
 	}
 
 	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
+	public void registerBlockIcons(IconRegister par1IconRegister) {
 		//NO-OP
 	}
 

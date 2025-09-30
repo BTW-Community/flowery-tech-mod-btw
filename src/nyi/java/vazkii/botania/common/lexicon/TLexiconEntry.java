@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.lexicon;
 
-import net.minecraft.init.Items;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.common.lexicon.page.PageTutorial;

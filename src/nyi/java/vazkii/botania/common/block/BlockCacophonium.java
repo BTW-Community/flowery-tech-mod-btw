@@ -14,12 +14,12 @@ import java.util.ArrayList;
 
 import net.minecraft.src.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.init.Blocks;
+import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.World;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.block.tile.TileCacophonium;
@@ -27,7 +27,7 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockCacophonium extends BlockModContainer {
 
-	IIcon top;
+	Icon top;
 
 	protected BlockCacophonium() {
 		super(Material.wood);
@@ -36,13 +36,13 @@ public class BlockCacophonium extends BlockModContainer {
 	}
 
 	@Override
-	public void registerBlockIcons(IIconRegister reg) {
+	public void registerBlockIcons(IconRegister reg) {
 		blockIcon = IconHelper.forBlock(reg, this, 0);
 		top = IconHelper.forBlock(reg, this, 1);
 	}
 
 	@Override
-	public IIcon getIcon(int side, int meta) {
+	public Icon getIcon(int side, int meta) {
 		return side == 1 ? blockIcon : top;
 	}
 

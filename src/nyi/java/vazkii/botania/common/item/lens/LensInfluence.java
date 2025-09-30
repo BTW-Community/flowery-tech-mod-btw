@@ -14,12 +14,12 @@ import java.util.List;
 
 import net.minecraft.src.Entity;
 import net.minecraft.entity.item.EntityFallingBlock;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.src.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.src.AxisAlignedBB;
 import vazkii.botania.api.internal.IManaBurst;
 import vazkii.botania.common.item.ModItems;
 

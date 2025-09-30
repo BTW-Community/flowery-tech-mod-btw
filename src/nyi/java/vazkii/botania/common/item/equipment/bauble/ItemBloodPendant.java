@@ -14,20 +14,20 @@ import java.awt.Color;
 import java.util.List;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ItemRenderer;
-import net.minecraft.client.renderer.OpenGlHelper;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.src.ItemRenderer;
+import net.minecraft.src.OpenGlHelper;
+import net.minecraft.src.Tessellator;
+import net.minecraft.src.IconRegister;
+import net.minecraft.src.TextureMap;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
+import net.minecraft.src.PotionEffect;
 import net.minecraft.src.EnumChatFormatting;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.StatCollector;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 
@@ -50,7 +50,7 @@ public class ItemBloodPendant extends ItemBauble implements IBrewContainer, IBre
 
 	private static final String TAG_BREW_KEY = "brewKey";
 
-	IIcon[] icons;
+	Icon[] icons;
 
 	public ItemBloodPendant() {
 		super(LibItemNames.BLOOD_PENDANT);
@@ -68,8 +68,8 @@ public class ItemBloodPendant extends ItemBauble implements IBrewContainer, IBre
 	}
 
 	@Override
-	public void registerIcons(IIconRegister par1IconRegister) {
-		icons = new IIcon[4];
+	public void registerIcons(IconRegister par1IconRegister) {
+		icons = new Icon[4];
 		for(int i = 0; i < 4; i++)
 			icons[i] = IconHelper.forItem(par1IconRegister, this, i);
 	}
@@ -80,7 +80,7 @@ public class ItemBloodPendant extends ItemBauble implements IBrewContainer, IBre
 	}
 
 	@Override
-	public IIcon getIcon(ItemStack stack, int pass) {
+	public Icon getIcon(ItemStack stack, int pass) {
 		return icons[pass];
 	}
 
@@ -193,7 +193,7 @@ public class ItemBloodPendant extends ItemBauble implements IBrewContainer, IBre
 			GL11.glScalef(0.5F, 0.5F, 0.5F);
 
 			for(int i = 2; i < 4; i++) {
-				IIcon icon = icons[i];
+				Icon icon = icons[i];
 				float f = icon.getMinU();
 				float f1 = icon.getMaxU();
 				float f2 = icon.getMinV();

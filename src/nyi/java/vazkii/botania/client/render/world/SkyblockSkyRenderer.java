@@ -13,14 +13,14 @@ package vazkii.botania.client.render.world;
 import java.util.Random;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.WorldClient;
-import net.minecraft.client.renderer.OpenGlHelper;
-import net.minecraft.client.renderer.RenderGlobal;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.src.WorldClient;
+import net.minecraft.src.OpenGlHelper;
+import net.minecraft.src.RenderGlobal;
+import net.minecraft.src.RenderHelper;
+import net.minecraft.src.Tessellator;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.ResourceLocation;
-import net.minecraft.util.Vec3;
+import net.minecraft.src.Vec3;
 import net.minecraftforge.client.IRenderHandler;
 
 import org.lwjgl.opengl.GL11;

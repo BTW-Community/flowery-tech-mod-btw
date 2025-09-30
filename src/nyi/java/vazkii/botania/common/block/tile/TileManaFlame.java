@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.block.tile;
 
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.src.NBTTagCompound;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.integration.coloredlights.ColoredLightHelper;
 

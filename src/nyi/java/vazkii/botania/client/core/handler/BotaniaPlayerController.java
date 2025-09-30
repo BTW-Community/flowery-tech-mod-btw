@@ -10,9 +10,9 @@
  */
 package vazkii.botania.client.core.handler;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.PlayerControllerMP;
-import net.minecraft.client.network.NetHandlerPlayClient;
+import net.minecraft.src.Minecraft;
+import net.minecraft.src.PlayerControllerMP;
+import net.minecraft.src.NetHandlerPlayClient;
 import vazkii.botania.api.item.IExtendedPlayerController;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;

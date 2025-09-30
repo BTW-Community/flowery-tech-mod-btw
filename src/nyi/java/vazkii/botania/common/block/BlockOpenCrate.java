@@ -16,18 +16,18 @@ import java.util.Random;
 import net.minecraft.src.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.Gui;
+import net.minecraft.src.ScaledResolution;
+import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
 
@@ -49,12 +49,12 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockOpenCrate extends BlockModContainer implements ILexiconable, IWandable, IWandHUD {
 
-	IIcon iconSide;
-	IIcon iconBottom;
-	IIcon iconSideCraft;
-	IIcon iconBottomCraft;
+	Icon iconSide;
+	Icon iconBottom;
+	Icon iconSideCraft;
+	Icon iconBottomCraft;
 
-	IIcon[] sidePatternIcons;
+	Icon[] sidePatternIcons;
 
 	Random random;
 
@@ -142,24 +142,24 @@ public class BlockOpenCrate extends BlockModContainer implements ILexiconable, I
 	}
 
 	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
+	public void registerBlockIcons(IconRegister par1IconRegister) {
 		iconSide = IconHelper.forBlock(par1IconRegister, this, 0);
 		iconBottom = IconHelper.forBlock(par1IconRegister, this, 1);
 		iconSideCraft = IconHelper.forBlock(par1IconRegister, this, 2);
 		iconBottomCraft = IconHelper.forBlock(par1IconRegister, this, 3);
 
-		sidePatternIcons = new IIcon[TileCraftCrate.PATTERNS.length];
+		sidePatternIcons = new Icon[TileCraftCrate.PATTERNS.length];
 		for(int i = 0; i < sidePatternIcons.length; i++)
 			sidePatternIcons[i] = IconHelper.forName(par1IconRegister, "ocPattern" + i);
 	}
 
 	@Override
-	public IIcon getIcon(int side, int meta) {
+	public Icon getIcon(int side, int meta) {
 		return meta == 0 ? side == 0 ? iconBottom : iconSide : side == 0 ? iconBottomCraft : iconSideCraft;
 	}
 
 	@Override
-	public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side) {
+	public Icon getIcon(IBlockAccess world, int x, int y, int z, int side) {
 		TileEntity tile = world.getTileEntity(x, y, z);
 		if(tile != null && tile instanceof TileCraftCrate && ((TileCraftCrate) tile).pattern != -1 && side != 0)
 			return sidePatternIcons[((TileCraftCrate) tile).pattern];

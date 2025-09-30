@@ -11,15 +11,15 @@
 package vazkii.botania.common.block.tile;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
+import net.minecraft.src.ScaledResolution;
+import net.minecraft.src.RenderHelper;
+import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.Block;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.StatCollector;
-import net.minecraft.util.StringUtils;
+import net.minecraft.src.StringUtils;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;

@@ -11,18 +11,18 @@
 package vazkii.botania.client.render.tile;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ItemRenderer;
-import net.minecraft.client.renderer.OpenGlHelper;
+import net.minecraft.src.ItemRenderer;
+import net.minecraft.src.OpenGlHelper;
 import net.minecraft.src.RenderBlocks;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
+import net.minecraft.src.Tessellator;
+import net.minecraft.src.entity.RenderManager;
+import net.minecraft.src.TextureMap;
+import net.minecraft.src.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.src.Block;
+import net.minecraft.src.Item;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.IIcon;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.src.Icon;
+import net.minecraft.src.MovingObjectPosition;
 import net.minecraft.src.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -312,7 +312,7 @@ public class RenderTileTinyPotato extends TileEntitySpecialRenderer {
 				mc.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 				renderIcon(Blocks.sapling.getIcon(0, 0));
 			}else if(ContributorFancinessHandler.flowerMap != null && ContributorFancinessHandler.flowerMap.containsKey(name)) {
-				IIcon icon = ContributorFancinessHandler.flowerMap.get(name);
+				Icon icon = ContributorFancinessHandler.flowerMap.get(name);
 				if(icon != null) {
 					mc.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 					GL11.glRotatef(180F, 1F, 0F, 0F);
@@ -390,7 +390,7 @@ public class RenderTileTinyPotato extends TileEntitySpecialRenderer {
 		GL11.glPopMatrix();
 	}
 
-	public void renderIcon(IIcon icon) {
+	public void renderIcon(Icon icon) {
 		float f = icon.getMinU();
 		float f1 = icon.getMaxU();
 		float f2 = icon.getMinV();

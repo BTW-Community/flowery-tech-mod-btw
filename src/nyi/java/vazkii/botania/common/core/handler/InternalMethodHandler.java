@@ -14,18 +14,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.src.Block;
-import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.ScaledResolution;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Blocks;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.Item;
+import net.minecraft.src.EntityPlayerMP;
+import net.minecraft.src.Block;
+import net.minecraft.src.IInventory;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.src.IRecipe;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.ResourceLocation;
 import net.minecraft.src.World;
 import vazkii.botania.api.boss.IBotaniaBoss;
@@ -102,15 +102,15 @@ public class InternalMethodHandler extends DummyMethodHandler {
 	}
 
 	@Override
-	public IIcon getSubTileIconForName(String name) {
-		IIcon icon = (ConfigHandler.altFlowerTextures ? BlockSpecialFlower.iconsAlt : BlockSpecialFlower.icons).get(name);
+	public Icon getSubTileIconForName(String name) {
+		Icon icon = (ConfigHandler.altFlowerTextures ? BlockSpecialFlower.iconsAlt : BlockSpecialFlower.icons).get(name);
 		return icon == null ? Blocks.red_flower.getIcon(0, 0) : icon;
 	}
 
 	@Override
-	public void registerBasicSignatureIcons(String name, IIconRegister register) {
-		IIcon normal = IconHelper.forName(register, name);
-		IIcon alt = IconHelper.forName(register, BlockModFlower.ALT_DIR + "/" + name);
+	public void registerBasicSignatureIcons(String name, IconRegister register) {
+		Icon normal = IconHelper.forName(register, name);
+		Icon alt = IconHelper.forName(register, BlockModFlower.ALT_DIR + "/" + name);
 		BlockSpecialFlower.icons.put(name, normal);
 		BlockSpecialFlower.iconsAlt.put(name, alt == null ? normal : alt);
 	}

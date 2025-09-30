@@ -12,7 +12,7 @@ package vazkii.botania.common.item;
 
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.src.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.src.World;
 import vazkii.botania.common.Botania;

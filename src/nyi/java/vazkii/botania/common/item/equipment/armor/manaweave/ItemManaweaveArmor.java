@@ -12,13 +12,13 @@ package vazkii.botania.common.item.equipment.armor.manaweave;
 
 import java.util.List;
 
-import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.ModelBiped;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
-import net.minecraft.stats.Achievement;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Achievement;
+import net.minecraft.src.Icon;
 import net.minecraft.src.StatCollector;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.client.core.helper.IconHelper;
@@ -35,7 +35,7 @@ import net.fabricmc.api.EnvType;
 
 public class ItemManaweaveArmor extends ItemManasteelArmor implements ICraftAchievement {
 
-	IIcon iconChristmas;
+	Icon iconChristmas;
 	
 	public ItemManaweaveArmor(int type, String name) {
 		super(type, name, BotaniaAPI.manaweaveArmorMaterial);
@@ -49,7 +49,7 @@ public class ItemManaweaveArmor extends ItemManasteelArmor implements ICraftAchi
 	}
 	
 	@Override
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		super.registerIcons(par1IconRegister);
 		iconChristmas = IconHelper.forItem(par1IconRegister, this, "Holiday");
 	}
@@ -60,7 +60,7 @@ public class ItemManaweaveArmor extends ItemManasteelArmor implements ICraftAchi
 	}
 
 	@Override
-	public IIcon getIconFromDamage(int dmg) {
+	public Icon getIconFromDamage(int dmg) {
 		return ClientProxy.jingleTheBells ? iconChristmas : super.getIconFromDamage(dmg);
 	}
 	

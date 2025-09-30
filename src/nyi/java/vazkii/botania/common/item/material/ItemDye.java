@@ -11,11 +11,11 @@
 package vazkii.botania.common.item.material;
 
 import net.minecraft.src.Block;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.src.EntityLivingBase;
+import net.minecraft.src.EntityItem;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.init.Blocks;
+import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;

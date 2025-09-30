@@ -6,7 +6,7 @@ import java.util.List;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.StatCollector;
 import net.minecraftforge.oredict.OreDictionary;
 import vazkii.botania.common.block.BlockFloatingSpecialFlower;

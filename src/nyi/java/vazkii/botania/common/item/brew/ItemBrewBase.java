@@ -13,18 +13,18 @@ package vazkii.botania.common.item.brew;
 import java.awt.Color;
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.stats.Achievement;
+import net.minecraft.src.PotionEffect;
+import net.minecraft.src.Achievement;
 import net.minecraft.src.EnumChatFormatting;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.StatCollector;
 import net.minecraft.src.World;
 import vazkii.botania.api.BotaniaAPI;
@@ -48,7 +48,7 @@ public abstract class ItemBrewBase extends ItemMod implements IBrewItem, IPickup
 	int drinkSpeed;
 	ItemStack baseItem;
 
-	IIcon[] icons;
+	Icon[] icons;
 
 	public ItemBrewBase(String name, String texName, int swigs, int drinkSpeed, ItemStack baseItem) {
 		this.name = name;
@@ -119,10 +119,10 @@ public abstract class ItemBrewBase extends ItemMod implements IBrewItem, IPickup
 	}
 
 	@Override
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		itemIcon = IconHelper.forName(par1IconRegister, texName + "0");
 
-		icons = new IIcon[swigs];
+		icons = new Icon[swigs];
 		for(int i = 0; i < swigs; i++)
 			icons[i] = IconHelper.forName(par1IconRegister, texName + "1_" + i);
 	}
@@ -133,7 +133,7 @@ public abstract class ItemBrewBase extends ItemMod implements IBrewItem, IPickup
 	}
 
 	@Override
-	public IIcon getIcon(ItemStack stack, int pass) {
+	public Icon getIcon(ItemStack stack, int pass) {
 		return pass == 0 ? itemIcon : icons[Math.max(0, Math.min(icons.length - 1, swigs - getSwigsLeft(stack)))];
 	}
 

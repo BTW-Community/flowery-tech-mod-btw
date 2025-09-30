@@ -11,8 +11,8 @@
 package vazkii.botania.client.render.item;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.model.ModelBook;
+import net.minecraft.src.FontRenderer;
+import net.minecraft.src.ModelBook;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.src.ResourceLocation;

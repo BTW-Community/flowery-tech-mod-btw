@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.item.interaction.thaumcraft;
 
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.ItemStack;
 import net.minecraftforge.oredict.RecipeSorter;
 import net.minecraftforge.oredict.RecipeSorter.Category;

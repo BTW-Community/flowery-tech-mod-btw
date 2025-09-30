@@ -15,15 +15,15 @@ import java.util.Random;
 import net.minecraft.src.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.src.ScaledResolution;
+import net.minecraft.src.IconRegister;
+import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.ChatComponentTranslation;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.ChatComponentTranslation;
+import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
 import vazkii.botania.api.internal.IManaBurst;
@@ -148,12 +148,12 @@ public class BlockHourglass extends BlockModContainer implements IManaTrigger, I
 	}
 
 	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
+	public void registerBlockIcons(IconRegister par1IconRegister) {
 		// NO-OP
 	}
 
 	@Override
-	public IIcon getIcon(int p_149691_1_, int p_149691_2_) {
+	public Icon getIcon(int p_149691_1_, int p_149691_2_) {
 		return ModBlocks.manaGlass.getIcon(0, 0);
 	}
 

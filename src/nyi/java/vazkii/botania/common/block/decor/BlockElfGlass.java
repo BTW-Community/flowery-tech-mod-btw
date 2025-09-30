@@ -12,10 +12,10 @@ package vazkii.botania.common.block.decor;
 
 import java.util.Random;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
 import vazkii.botania.api.lexicon.ILexiconable;
@@ -28,22 +28,22 @@ import vazkii.botania.common.lib.LibBlockNames;
 public class BlockElfGlass extends BlockManaGlass implements IElvenItem, ILexiconable {
 
 	private static final int ICON_COUNT = 4;
-	IIcon[] icons;
+	Icon[] icons;
 
 	public BlockElfGlass() {
 		super(LibBlockNames.ELF_GLASS);
 	}
 
 	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
-		icons = new IIcon[ICON_COUNT];
+	public void registerBlockIcons(IconRegister par1IconRegister) {
+		icons = new Icon[ICON_COUNT];
 		for(int i = 0; i < ICON_COUNT; i++)
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
 		blockIcon = IconHelper.forBlock(par1IconRegister, this);
 	}
 
 	@Override
-	public IIcon getIcon(IBlockAccess world, int x, int y, int z, int s) {
+	public Icon getIcon(IBlockAccess world, int x, int y, int z, int s) {
 		int v = (int) Math.floor(new Random(x * 10 ^ y * 20 ^ z * 30).nextInt(ICON_COUNT * 100) / 100.0);
 		return icons[v];
 	}

@@ -15,18 +15,18 @@ import java.util.List;
 
 import net.minecraft.src.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
+import net.minecraft.src.ScaledResolution;
+import net.minecraft.src.RenderHelper;
+import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.EntityItem;
+import net.minecraft.src.Block;
+import net.minecraft.src.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemRedstone;
 import net.minecraft.item.ItemReed;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.ChunkCoordinates;
 import net.minecraft.src.World;
 

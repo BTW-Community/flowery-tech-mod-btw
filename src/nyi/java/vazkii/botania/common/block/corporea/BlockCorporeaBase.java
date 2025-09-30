@@ -14,12 +14,12 @@ import java.util.Random;
 
 import net.minecraft.src.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.stats.Achievement;
+import net.minecraft.src.NBTTagCompound;
+import net.minecraft.src.Achievement;
 import net.minecraft.src.World;
 import vazkii.botania.common.achievement.ICraftAchievement;
 import vazkii.botania.common.achievement.ModAchievements;

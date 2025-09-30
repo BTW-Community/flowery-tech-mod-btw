@@ -10,10 +10,10 @@
  */
 package vazkii.botania.common.item;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.Entity;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.World;
 import vazkii.botania.client.core.helper.IconHelper;
@@ -22,7 +22,7 @@ import vazkii.botania.common.lib.LibItemNames;
 
 public class ItemSlimeBottle extends ItemMod {
 
-	IIcon activeIcon;
+	Icon activeIcon;
 
 	public ItemSlimeBottle() {
 		setUnlocalizedName(LibItemNames.SLIME_BOTTLE);
@@ -31,13 +31,13 @@ public class ItemSlimeBottle extends ItemMod {
 	}
 
 	@Override
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		itemIcon = IconHelper.forItem(par1IconRegister, this, 0);
 		activeIcon = IconHelper.forItem(par1IconRegister, this, 1);
 	}
 
 	@Override
-	public IIcon getIconFromDamage(int dmg) {
+	public Icon getIconFromDamage(int dmg) {
 		return dmg == 0 ? itemIcon : activeIcon;
 	}
 

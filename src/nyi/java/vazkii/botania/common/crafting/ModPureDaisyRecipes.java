@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.crafting;
 
-import net.minecraft.init.Blocks;
+import net.minecraft.src.Block;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.core.handler.ConfigHandler;

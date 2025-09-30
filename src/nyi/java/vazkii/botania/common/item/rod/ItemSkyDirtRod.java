@@ -10,11 +10,11 @@
  */
 package vazkii.botania.common.item.rod;
 
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.init.Blocks;
+import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.World;
 import vazkii.botania.api.mana.ManaItemHandler;

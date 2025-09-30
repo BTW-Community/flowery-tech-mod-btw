@@ -14,16 +14,16 @@ import java.awt.Color;
 import java.util.List;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.GuiScreen;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.src.NBTTagCompound;
 import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
+import net.minecraft.src.PotionEffect;
 import net.minecraft.src.EnumChatFormatting;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.StatCollector;
 import net.minecraft.src.World;
 import net.minecraftforge.oredict.RecipeSorter;
@@ -55,7 +55,7 @@ public class ItemManaGun extends ItemMod implements IManaUsingItem {
 	private static final int CLIP_SLOTS = 6;
 	private static final int COOLDOWN = 30;
 
-	IIcon[] icons;
+	Icon[] icons;
 
 	public ItemManaGun() {
 		super();
@@ -111,9 +111,9 @@ public class ItemManaGun extends ItemMod implements IManaUsingItem {
 	}
 
 	@Override
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		int states = 3;
-		icons = new IIcon[states * 2];
+		icons = new Icon[states * 2];
 
 		for(int i = 0; i < states; i++) {
 			icons[i] = IconHelper.forItem(par1IconRegister, this, i);
@@ -127,7 +127,7 @@ public class ItemManaGun extends ItemMod implements IManaUsingItem {
 	}
 
 	@Override
-	public IIcon getIcon(ItemStack stack, int pass) {
+	public Icon getIcon(ItemStack stack, int pass) {
 		boolean desu = isSugoiKawaiiDesuNe(stack);
 		int index = pass;
 		if(index == 0 && hasClip(stack))

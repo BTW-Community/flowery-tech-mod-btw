@@ -20,14 +20,14 @@ import java.util.Random;
 import java.util.Set;
 
 import net.minecraft.src.Block;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
+import net.minecraft.src.Block;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.ChunkCoordinates;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.World;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.Botania;
@@ -56,7 +56,7 @@ public class ItemGrassSeeds extends ItemMod implements IFloatingFlowerVariant {
 	};
 
 	private static final int SUBTYPES = 9;
-	IIcon[] icons;
+	Icon[] icons;
 
 	public ItemGrassSeeds() {
 		super();
@@ -73,15 +73,15 @@ public class ItemGrassSeeds extends ItemMod implements IFloatingFlowerVariant {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerIcons(IIconRegister par1IconRegister) {
-		icons = new IIcon[SUBTYPES];
+	public void registerIcons(IconRegister par1IconRegister) {
+		icons = new Icon[SUBTYPES];
 		for(int i = 0; i < SUBTYPES; i++)
 			icons[i] = IconHelper.forItem(par1IconRegister, this, i);
 	}
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public IIcon getIconFromDamage(int par1) {
+	public Icon getIconFromDamage(int par1) {
 		return icons[Math.min(icons.length - 1, par1)];
 	}
 

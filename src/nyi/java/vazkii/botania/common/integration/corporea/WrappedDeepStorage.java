@@ -15,7 +15,7 @@ import java.util.List;
 import org.apache.logging.log4j.Level;
 
 import cpw.mods.fml.common.FMLLog;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
 import powercrystals.minefactoryreloaded.api.IDeepStorageUnit;
 import vazkii.botania.api.corporea.CorporeaRequest;

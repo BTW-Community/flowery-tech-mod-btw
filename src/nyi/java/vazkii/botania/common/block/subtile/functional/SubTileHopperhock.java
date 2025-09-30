@@ -18,16 +18,16 @@ import java.util.WeakHashMap;
 
 import net.minecraft.src.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.src.ScaledResolution;
+import net.minecraft.src.EntityItem;
 import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
-import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.StatCollector;
 import net.minecraftforge.common.util.ForgeDirection;
 

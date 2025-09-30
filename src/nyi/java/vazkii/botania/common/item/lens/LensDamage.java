@@ -12,12 +12,12 @@ package vazkii.botania.common.item.lens;
 
 import java.util.List;
 
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.DamageSource;
+import net.minecraft.src.AxisAlignedBB;
+import net.minecraft.src.DamageSource;
 import vazkii.botania.api.internal.IManaBurst;
 
 public class LensDamage extends Lens {

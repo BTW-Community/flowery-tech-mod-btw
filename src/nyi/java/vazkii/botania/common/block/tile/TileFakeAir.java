@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.block.tile;
 
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.TileEntity;
 import vazkii.botania.common.block.subtile.functional.SubTileBubbell;
 

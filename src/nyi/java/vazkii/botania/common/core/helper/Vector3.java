@@ -16,8 +16,8 @@ import java.math.RoundingMode;
 
 import net.minecraft.src.Entity;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.Vec3;
+import net.minecraft.src.AxisAlignedBB;
+import net.minecraft.src.Vec3;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Vector3f;

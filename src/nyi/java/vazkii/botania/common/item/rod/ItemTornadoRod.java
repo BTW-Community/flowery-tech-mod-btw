@@ -12,15 +12,15 @@ package vazkii.botania.common.item.rod;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.src.ItemStack;
-import net.minecraft.potion.PotionEffect;
+import net.minecraft.src.PotionEffect;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.AxisAlignedBB;
+import net.minecraft.src.Icon;
 import net.minecraft.src.ResourceLocation;
 import net.minecraft.src.World;
 import vazkii.botania.api.item.IAvatarTile;
@@ -47,7 +47,7 @@ public class ItemTornadoRod extends ItemMod implements IManaUsingItem, IAvatarWi
 
 	private static final String TAG_FLYING = "flying";
 
-	IIcon iconIdle, iconFlying;
+	Icon iconIdle, iconFlying;
 
 	public ItemTornadoRod() {
 		setMaxDamage(MAX_DAMAGE);
@@ -109,12 +109,12 @@ public class ItemTornadoRod extends ItemMod implements IManaUsingItem, IAvatarWi
 	}
 
 	@Override
-	public IIcon getIconIndex(ItemStack par1ItemStack) {
+	public Icon getIconIndex(ItemStack par1ItemStack) {
 		return isFlying(par1ItemStack) ? iconFlying : iconIdle;
 	}
 
 	@Override
-	public IIcon getIcon(ItemStack stack, int pass) {
+	public Icon getIcon(ItemStack stack, int pass) {
 		return getIconIndex(stack);
 	}
 
@@ -129,7 +129,7 @@ public class ItemTornadoRod extends ItemMod implements IManaUsingItem, IAvatarWi
 	}
 
 	@Override
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		iconIdle = IconHelper.forItem(par1IconRegister, this, 0);
 		iconFlying = IconHelper.forItem(par1IconRegister, this, 1);
 	}

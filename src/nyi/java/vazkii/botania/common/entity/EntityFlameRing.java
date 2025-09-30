@@ -14,10 +14,10 @@ package vazkii.botania.common.entity;
 import java.util.List;
 
 import net.minecraft.src.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.DamageSource;
+import net.minecraft.src.EntityLivingBase;
+import net.minecraft.src.NBTTagCompound;
+import net.minecraft.src.AxisAlignedBB;
+import net.minecraft.src.DamageSource;
 import net.minecraft.src.World;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.core.helper.MathHelper;

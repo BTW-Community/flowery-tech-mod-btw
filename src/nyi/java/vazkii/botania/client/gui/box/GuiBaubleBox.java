@@ -10,8 +10,8 @@
  */
 package vazkii.botania.client.gui.box;
 
-import net.minecraft.client.gui.inventory.GuiInventory;
-import net.minecraft.client.renderer.InventoryEffectRenderer;
+import net.minecraft.src.inventory.GuiInventory;
+import net.minecraft.src.InventoryEffectRenderer;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.src.ResourceLocation;

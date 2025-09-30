@@ -13,16 +13,16 @@ package vazkii.botania.common.item.equipment.armor.terrasteel;
 import java.util.List;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ItemRenderer;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.src.ItemRenderer;
+import net.minecraft.src.Tessellator;
+import net.minecraft.src.IconRegister;
+import net.minecraft.src.TextureMap;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.PotionEffect;
+import net.minecraft.src.Icon;
 import net.minecraft.src.StatCollector;
 import net.minecraft.src.World;
 import net.minecraftforge.client.event.RenderPlayerEvent;
@@ -46,7 +46,7 @@ import net.fabricmc.api.EnvType;
 public class ItemTerrasteelHelm extends ItemTerrasteelArmor implements IManaDiscountArmor, IAncientWillContainer, IManaGivingItem {
 
 	private static final String TAG_ANCIENT_WILL = "AncientWill";
-	static IIcon willIcon;
+	static Icon willIcon;
 
 	public ItemTerrasteelHelm() {
 		this(LibItemNames.TERRASTEEL_HELM);
@@ -59,7 +59,7 @@ public class ItemTerrasteelHelm extends ItemTerrasteelArmor implements IManaDisc
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		super.registerIcons(par1IconRegister);
 		willIcon = IconHelper.forName(par1IconRegister, "willFlame");
 	}

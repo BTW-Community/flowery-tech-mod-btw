@@ -1,7 +1,7 @@
 package vazkii.botania.common.integration.buildcraft;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.src.IconRegister;
+import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.StatCollector;
 import net.minecraft.src.World;
 import vazkii.botania.api.internal.IManaBurst;
@@ -20,7 +20,7 @@ public class TriggerManaDetector extends StatementBase implements ITriggerIntern
 	}
 
 	@Override
-	public void registerIcons(IIconRegister iconRegister) {
+	public void registerIcons(IconRegister iconRegister) {
 		icon = IconHelper.forName(iconRegister, "triggers/manaDetector");
 	}
 

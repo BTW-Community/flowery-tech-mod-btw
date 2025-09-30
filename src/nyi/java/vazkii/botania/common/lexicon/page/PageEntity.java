@@ -13,9 +13,9 @@ package vazkii.botania.common.lexicon.page;
 import java.lang.reflect.Constructor;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.OpenGlHelper;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.src.OpenGlHelper;
+import net.minecraft.src.RenderHelper;
+import net.minecraft.src.entity.RenderManager;
 import net.minecraft.src.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.src.MathHelper;

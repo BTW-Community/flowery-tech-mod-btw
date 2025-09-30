@@ -20,18 +20,18 @@ import net.minecraft.src.Block;
 import net.minecraft.block.BlockFlower;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.ScaledResolution;
+import net.minecraft.src.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
+import net.minecraft.src.Block;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.IIcon;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.src.Icon;
+import net.minecraft.src.MovingObjectPosition;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
 import vazkii.botania.api.BotaniaAPI;
@@ -51,8 +51,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockSpecialFlower extends BlockFlower implements ITileEntityProvider, ISpecialFlower, IWandable, ILexiconable, IWandHUD {
 
-	public static Map<String, IIcon> icons = new HashMap();
-	public static Map<String, IIcon> iconsAlt = new HashMap();
+	public static Map<String, Icon> icons = new HashMap();
+	public static Map<String, Icon> iconsAlt = new HashMap();
 
 	static {
 		BotaniaAPI.subtilesForCreativeMenu.addAll(Arrays.asList(new String[] {
@@ -169,19 +169,19 @@ public class BlockSpecialFlower extends BlockFlower implements ITileEntityProvid
 	}
 
 	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
+	public void registerBlockIcons(IconRegister par1IconRegister) {
 		for(String s : BotaniaAPI.getAllSubTiles())
 			if(!s.isEmpty())
 				BotaniaAPI.getSignatureForName(s).registerIcons(par1IconRegister);
 	}
 
 	@Override
-	public IIcon getIcon(IBlockAccess par1iBlockAccess, int par2, int par3, int par4, int par5) {
+	public Icon getIcon(IBlockAccess par1iBlockAccess, int par2, int par3, int par4, int par5) {
 		return ((TileSpecialFlower) par1iBlockAccess.getTileEntity(par2, par3, par4)).getIcon();
 	}
 
 	@Override
-	public IIcon getIcon(int par1, int par2) {
+	public Icon getIcon(int par1, int par2) {
 		return BlockModFlower.icons[16];
 	}
 

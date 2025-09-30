@@ -22,13 +22,13 @@ import java.util.List;
 import java.util.Queue;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.audio.PositionedSoundRecord;
-import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.src.PositionedSoundRecord;
+import net.minecraft.src.FontRenderer;
 import net.minecraft.src.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.src.GuiScreen;
 import net.minecraft.src.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ChatAllowedCharacters;
+import net.minecraft.src.NBTTagCompound;
+import net.minecraft.src.ChatAllowedCharacters;
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.src.ResourceLocation;
 import net.minecraft.src.StatCollector;

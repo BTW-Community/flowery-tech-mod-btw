@@ -12,8 +12,8 @@ package vazkii.botania.client.model;
 
 import java.util.ArrayList;
 
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.src.ModelBase;
+import net.minecraft.src.ModelRenderer;
 
 public class ModelPump extends ModelBase{
 

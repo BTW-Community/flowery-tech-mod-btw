@@ -12,14 +12,14 @@ package vazkii.botania.common.item;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.Item;
+import net.minecraft.src.IInventory;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.World;
 import vazkii.botania.api.corporea.CorporeaHelper;
 import vazkii.botania.client.core.helper.IconHelper;
@@ -28,7 +28,7 @@ import vazkii.botania.common.lib.LibItemNames;
 
 public class ItemCorporeaSpark extends ItemMod {
 
-	public static IIcon invIcon, worldIcon, invIconMaster, worldIconMaster, iconColorStar;
+	public static Icon invIcon, worldIcon, invIconMaster, worldIconMaster, iconColorStar;
 
 	public ItemCorporeaSpark() {
 		setUnlocalizedName(LibItemNames.CORPOREA_SPARK);
@@ -60,7 +60,7 @@ public class ItemCorporeaSpark extends ItemMod {
 	}
 
 	@Override
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		invIcon = IconHelper.forItem(par1IconRegister, this, 0);
 		worldIcon = IconHelper.forItem(par1IconRegister, this, 1);
 		invIconMaster = IconHelper.forItem(par1IconRegister, this, 2);
@@ -74,7 +74,7 @@ public class ItemCorporeaSpark extends ItemMod {
 	}
 
 	@Override
-	public IIcon getIconFromDamage(int meta) {
+	public Icon getIconFromDamage(int meta) {
 		return meta == 0 ? invIcon : invIconMaster;
 	}
 

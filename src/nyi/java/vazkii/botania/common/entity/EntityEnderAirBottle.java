@@ -14,11 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.src.Block;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
-import net.minecraft.init.Blocks;
+import net.minecraft.src.Block;
 import net.minecraft.src.ChunkCoordinates;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.src.MovingObjectPosition;
 import net.minecraft.src.World;
 
 public class EntityEnderAirBottle extends EntityThrowable {

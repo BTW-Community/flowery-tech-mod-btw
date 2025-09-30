@@ -12,7 +12,7 @@ package vazkii.botania.common.integration.corporea;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.inventory.IInventory;
+import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
 import vazkii.botania.api.corporea.CorporeaHelper;
 import vazkii.botania.api.corporea.CorporeaRequest;

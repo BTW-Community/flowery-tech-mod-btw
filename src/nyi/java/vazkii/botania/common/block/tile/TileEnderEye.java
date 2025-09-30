@@ -13,11 +13,11 @@ package vazkii.botania.common.block.tile;
 import java.util.List;
 
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
+import net.minecraft.src.Block;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.src.AxisAlignedBB;
+import net.minecraft.src.MovingObjectPosition;
 import vazkii.botania.common.item.equipment.tool.ToolCommons;
 
 public class TileEnderEye extends TileMod {

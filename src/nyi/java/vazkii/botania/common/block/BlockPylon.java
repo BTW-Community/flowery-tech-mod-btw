@@ -14,14 +14,14 @@ import java.util.List;
 
 import net.minecraft.src.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
+import net.minecraft.src.Block;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.World;
 import thaumcraft.api.crafting.IInfusionStabiliser;
 import vazkii.botania.api.lexicon.ILexiconable;
@@ -60,7 +60,7 @@ public class BlockPylon extends BlockModContainer implements ILexiconable, IInfu
 	}
 
 	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
+	public void registerBlockIcons(IconRegister par1IconRegister) {
 		// NO-OP
 	}
 
@@ -76,7 +76,7 @@ public class BlockPylon extends BlockModContainer implements ILexiconable, IInfu
 	}
 
 	@Override
-	public IIcon getIcon(int par1, int par2) {
+	public Icon getIcon(int par1, int par2) {
 		return par2 == 0 ? Blocks.diamond_block.getIcon(0, 0) : ModBlocks.storage.getIcon(0, par2);
 	}
 

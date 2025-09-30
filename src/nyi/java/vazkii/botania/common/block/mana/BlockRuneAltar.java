@@ -14,13 +14,13 @@ import java.util.Random;
 
 import net.minecraft.src.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.src.IconRegister;
+import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.World;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.lexicon.ILexiconable;
@@ -36,7 +36,7 @@ import vazkii.botania.common.lib.LibBlockNames;
 public class BlockRuneAltar extends BlockModContainer implements IWandable, ILexiconable {
 
 	Random random;
-	IIcon[] icons;
+	Icon[] icons;
 
 	public BlockRuneAltar() {
 		super(Material.rock);
@@ -62,8 +62,8 @@ public class BlockRuneAltar extends BlockModContainer implements IWandable, ILex
 	}
 
 	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
-		icons = new IIcon[3];
+	public void registerBlockIcons(IconRegister par1IconRegister) {
+		icons = new Icon[3];
 		for(int i = 0; i < icons.length; i++)
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
 	}
@@ -132,7 +132,7 @@ public class BlockRuneAltar extends BlockModContainer implements IWandable, ILex
 	}
 
 	@Override
-	public IIcon getIcon(int par1, int par2) {
+	public Icon getIcon(int par1, int par2) {
 		return icons[Math.min(2, par1)];
 	}
 

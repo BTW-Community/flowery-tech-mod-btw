@@ -14,15 +14,15 @@ import java.util.ArrayList;
 
 import net.minecraft.src.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.ScaledResolution;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.init.Blocks;
+import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.ChunkCoordinates;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.World;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -139,7 +139,7 @@ public class TileSpecialFlower extends TileMod implements IWandBindable, ISubTil
 			subTile.readFromPacketNBTInternal(subCmp);
 	}
 
-	public IIcon getIcon() {
+	public Icon getIcon() {
 		return subTile == null ? Blocks.red_flower.getIcon(0, 0) : subTile.getIcon();
 	}
 

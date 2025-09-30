@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.src.Block;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.block.ModFluffBlocks;

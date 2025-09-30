@@ -12,11 +12,11 @@ package vazkii.botania.common.item.brew;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import vazkii.botania.api.brew.Brew;
 import vazkii.botania.api.brew.IBrewContainer;
 import vazkii.botania.client.core.helper.IconHelper;
@@ -26,7 +26,7 @@ import vazkii.botania.common.lib.LibItemNames;
 
 public class ItemVial extends ItemMod implements IBrewContainer {
 
-	public static IIcon flaskIcon, vialIcon;
+	public static Icon flaskIcon, vialIcon;
 
 	public ItemVial() {
 		this(LibItemNames.VIAL);
@@ -38,13 +38,13 @@ public class ItemVial extends ItemMod implements IBrewContainer {
 	}
 
 	@Override
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		vialIcon = IconHelper.forName(par1IconRegister, LibItemNames.VIAL + "0");
 		flaskIcon = IconHelper.forName(par1IconRegister, LibItemNames.FLASK + "0");
 	}
 
 	@Override
-	public IIcon getIconFromDamage(int i) {
+	public Icon getIconFromDamage(int i) {
 		return i == 0 ? vialIcon : flaskIcon;
 	}
 

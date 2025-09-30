@@ -10,8 +10,8 @@
  */
 package vazkii.botania.common.item.record;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.item.Item;
+import net.minecraft.src.IconRegister;
+import net.minecraft.src.Item;
 import net.minecraft.item.ItemRecord;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.ResourceLocation;
@@ -46,7 +46,7 @@ public class ItemModRecord extends ItemRecord {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		itemIcon = IconHelper.forItem(par1IconRegister, this);
 	}
 

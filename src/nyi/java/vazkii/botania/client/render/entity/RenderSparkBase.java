@@ -12,11 +12,11 @@ package vazkii.botania.client.render.entity;
 
 import java.util.Random;
 
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.entity.RenderEntity;
-import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.src.Tessellator;
+import net.minecraft.src.entity.RenderEntity;
+import net.minecraft.src.TextureMap;
 import net.minecraft.src.Entity;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
@@ -31,7 +31,7 @@ public class RenderSparkBase<T extends Entity> extends RenderEntity {
 	@Override
 	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
 		T tEntity = (T) par1Entity;
-		IIcon iicon = getBaseIcon(tEntity);
+		Icon Icon = getBaseIcon(tEntity);
 
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)par2, (float)par4, (float)par6);
@@ -55,9 +55,9 @@ public class RenderSparkBase<T extends Entity> extends RenderEntity {
 		float r = 180.0F - renderManager.playerViewY;
 		GL11.glRotatef(r, 0.0F, 1.0F, 0.0F);
 		GL11.glRotatef(-renderManager.playerViewX, 1F, 0F, 0F);
-		func_77026_a(tessellator, iicon);
+		func_77026_a(tessellator, Icon);
 
-		IIcon spinningIcon = getSpinningIcon(tEntity);
+		Icon spinningIcon = getSpinningIcon(tEntity);
 		if(spinningIcon != null) {
 			GL11.glTranslatef(-0.02F + (float) Math.sin(time / 20) * 0.2F, 0.24F + (float) Math.cos(time / 20) * 0.2F, 0.005F);
 			GL11.glScalef(0.2F, 0.2F, 0.2F);
@@ -73,7 +73,7 @@ public class RenderSparkBase<T extends Entity> extends RenderEntity {
 		GL11.glPopMatrix();
 	}
 
-	public IIcon getBaseIcon(T entity) {
+	public Icon getBaseIcon(T entity) {
 		return ItemSpark.worldIcon;
 	}
 
@@ -81,7 +81,7 @@ public class RenderSparkBase<T extends Entity> extends RenderEntity {
 		// NO-OP
 	}
 
-	public IIcon getSpinningIcon(T entity) {
+	public Icon getSpinningIcon(T entity) {
 		return null;
 	}
 
@@ -94,7 +94,7 @@ public class RenderSparkBase<T extends Entity> extends RenderEntity {
 		return TextureMap.locationItemsTexture;
 	}
 
-	private void func_77026_a(Tessellator p_77026_1_, IIcon p_77026_2_) {
+	private void func_77026_a(Tessellator p_77026_1_, Icon p_77026_2_) {
 		float f = p_77026_2_.getMinU();
 		float f1 = p_77026_2_.getMaxU();
 		float f2 = p_77026_2_.getMinV();

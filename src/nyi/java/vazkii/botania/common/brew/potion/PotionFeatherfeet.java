@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.brew.potion;
 
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import vazkii.botania.common.core.handler.ConfigHandler;

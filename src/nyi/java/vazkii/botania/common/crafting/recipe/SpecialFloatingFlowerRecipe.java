@@ -11,9 +11,9 @@
 package vazkii.botania.common.crafting.recipe;
 
 import net.minecraft.inventory.InventoryCrafting;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.src.IRecipe;
 import net.minecraft.src.World;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.item.block.ItemBlockSpecialFlower;

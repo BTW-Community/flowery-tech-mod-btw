@@ -14,11 +14,11 @@ import java.util.List;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.Entity;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.init.Blocks;
+import net.minecraft.src.EntityItem;
+import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.src.NBTTagCompound;
+import net.minecraft.src.AxisAlignedBB;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
 import vazkii.botania.api.lexicon.multiblock.Multiblock;
 import vazkii.botania.api.lexicon.multiblock.MultiblockSet;

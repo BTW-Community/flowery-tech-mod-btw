@@ -11,12 +11,12 @@
 package vazkii.botania.common.item.equipment.tool.manasteel;
 
 import net.minecraft.src.Block;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.Entity;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
+import net.minecraft.src.Block;
+import net.minecraft.src.Item;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
@@ -64,7 +64,7 @@ public class ItemManasteelShovel extends ItemSpade implements IManaUsingItem, IS
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		itemIcon = IconHelper.forItem(par1IconRegister, this);
 	}
 

@@ -10,9 +10,9 @@
  */
 package vazkii.botania.common.achievement;
 
-import net.minecraft.init.Items;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.stats.Achievement;
+import net.minecraft.src.Achievement;
 import net.minecraftforge.common.AchievementPage;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.core.handler.ConfigHandler;

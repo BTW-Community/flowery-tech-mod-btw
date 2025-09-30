@@ -14,12 +14,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import net.minecraft.src.Block;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.src.IconRegister;
+import net.minecraft.src.EntityLivingBase;
+import net.minecraft.src.EntityItem;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.AxisAlignedBB;
+import net.minecraft.src.Icon;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
 import vazkii.botania.api.BotaniaAPI;
@@ -42,7 +42,7 @@ import net.fabricmc.api.EnvType;
 
 public class ItemMagnetRing extends ItemBauble {
 
-	IIcon iconOff;
+	Icon iconOff;
 
 	private static final String TAG_COOLDOWN = "cooldown";
 
@@ -64,14 +64,14 @@ public class ItemMagnetRing extends ItemBauble {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		itemIcon = IconHelper.forItem(par1IconRegister, this, 0);
 		iconOff = IconHelper.forItem(par1IconRegister, this, 1);
 	}
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public IIcon getIconIndex(ItemStack stack) {
+	public Icon getIconIndex(ItemStack stack) {
 		return getCooldown(stack) <= 0 ? itemIcon : iconOff;
 	}
 

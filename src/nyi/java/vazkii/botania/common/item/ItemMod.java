@@ -10,8 +10,8 @@
  */
 package vazkii.botania.common.item;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.item.Item;
+import net.minecraft.src.IconRegister;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.client.lib.LibResources;
@@ -40,7 +40,7 @@ public class ItemMod extends Item {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		itemIcon = IconHelper.forItem(par1IconRegister, this);
 	}
 }

@@ -11,14 +11,14 @@
 package vazkii.botania.common.item.equipment.bauble;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ItemRenderer;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.src.ItemRenderer;
+import net.minecraft.src.Tessellator;
+import net.minecraft.src.TextureMap;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.src.PotionEffect;
+import net.minecraft.src.ChatComponentTranslation;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;

@@ -21,12 +21,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.ChatComponentTranslation;
-import net.minecraft.util.ChatStyle;
+import net.minecraft.src.AxisAlignedBB;
+import net.minecraft.src.ChatComponentTranslation;
+import net.minecraft.src.ChatStyle;
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraftforge.event.ServerChatEvent;
 

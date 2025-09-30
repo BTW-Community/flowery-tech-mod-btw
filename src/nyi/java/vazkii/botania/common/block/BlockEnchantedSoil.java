@@ -13,13 +13,13 @@ package vazkii.botania.common.block;
 import java.util.Random;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.src.IconRegister;
+import net.minecraft.src.TextureAtlasSprite;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
+import net.minecraft.src.Block;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
 import net.minecraftforge.client.event.TextureStitchEvent;
@@ -38,7 +38,7 @@ import net.fabricmc.api.EnvType;
 
 public class BlockEnchantedSoil extends BlockMod implements ILexiconable {
 
-	IIcon iconSide;
+	Icon iconSide;
 
 	public BlockEnchantedSoil() {
 		super(Material.grass);
@@ -55,7 +55,7 @@ public class BlockEnchantedSoil extends BlockMod implements ILexiconable {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
+	public void registerBlockIcons(IconRegister par1IconRegister) {
 		// NO-OP
 	}
 
@@ -75,7 +75,7 @@ public class BlockEnchantedSoil extends BlockMod implements ILexiconable {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public IIcon getIcon(int side, int meta) {
+	public Icon getIcon(int side, int meta) {
 		return side == 0 ? Blocks.dirt.getIcon(0, 0) : side == 1 ? blockIcon : iconSide;
 	}
 

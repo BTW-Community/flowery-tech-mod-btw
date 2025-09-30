@@ -13,8 +13,8 @@ package vazkii.botania.common.block.decor.panes;
 import net.minecraft.src.Block;
 import net.minecraft.block.BlockPane;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.IconRegister;
+import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.client.core.helper.IconHelper;
@@ -28,7 +28,7 @@ import net.fabricmc.api.EnvType;
 public class BlockModPane extends BlockPane {
 
 	Block source;
-	public IIcon iconTop;
+	public Icon iconTop;
 
 	public BlockModPane(Block source) {
 		super("", "", Material.glass, false);
@@ -49,7 +49,7 @@ public class BlockModPane extends BlockPane {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerBlockIcons(IIconRegister reg) {
+	public void registerBlockIcons(IconRegister reg) {
 		iconTop = IconHelper.forBlock(reg, this);
 	}
 
@@ -70,13 +70,13 @@ public class BlockModPane extends BlockPane {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public IIcon func_150097_e() {
+	public Icon func_150097_e() {
 		return source.getIcon(0, 0);
 	}
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public IIcon getIcon(int side, int meta) {
+	public Icon getIcon(int side, int meta) {
 		return side >= 2 ? iconTop : source.getIcon(side, meta);
 	}
 

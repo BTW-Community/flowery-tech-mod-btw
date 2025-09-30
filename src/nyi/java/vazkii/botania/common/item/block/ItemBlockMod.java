@@ -11,12 +11,12 @@
 package vazkii.botania.common.item.block;
 
 import net.minecraft.src.Block;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.src.IInventory;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.src.ItemStack;
-import net.minecraft.stats.Achievement;
+import net.minecraft.src.Achievement;
 import vazkii.botania.client.lib.LibResources;
 import vazkii.botania.common.achievement.ICraftAchievement;
 import vazkii.botania.common.achievement.IPickupAchievement;

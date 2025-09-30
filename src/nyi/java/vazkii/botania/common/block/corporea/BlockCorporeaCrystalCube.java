@@ -11,10 +11,10 @@
 package vazkii.botania.common.block.corporea;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.World;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -71,12 +71,12 @@ public class BlockCorporeaCrystalCube extends BlockCorporeaBase implements ILexi
 	}
 
 	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
+	public void registerBlockIcons(IconRegister par1IconRegister) {
 		// NO-OP
 	}
 
 	@Override
-	public IIcon getIcon(int side, int meta) {
+	public Icon getIcon(int side, int meta) {
 		return ModBlocks.storage.getIcon(0, 2);
 	}
 

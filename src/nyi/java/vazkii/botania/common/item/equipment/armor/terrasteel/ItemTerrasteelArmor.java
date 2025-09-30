@@ -13,7 +13,7 @@ package vazkii.botania.common.item.equipment.armor.terrasteel;
 import java.util.List;
 import java.util.UUID;
 
-import net.minecraft.client.model.ModelBiped;
+import net.minecraft.src.ModelBiped;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.src.EntityPlayer;

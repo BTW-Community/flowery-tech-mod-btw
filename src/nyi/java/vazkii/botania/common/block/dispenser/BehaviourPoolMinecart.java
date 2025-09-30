@@ -18,7 +18,7 @@ import net.minecraft.dispenser.BehaviorDefaultDispenseItem;
 import net.minecraft.dispenser.IBlockSource;
 import net.minecraft.entity.item.EntityMinecart;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.src.EnumFacing;
 import net.minecraft.src.World;
 import vazkii.botania.common.entity.EntityPoolMinecart;
 

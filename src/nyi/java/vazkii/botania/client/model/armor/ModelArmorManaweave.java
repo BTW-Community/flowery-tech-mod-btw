@@ -10,10 +10,10 @@
  */
 package vazkii.botania.client.model.armor;
 
-import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.src.ModelBiped;
+import net.minecraft.src.ModelRenderer;
 import net.minecraft.src.Entity;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.src.ItemStack;

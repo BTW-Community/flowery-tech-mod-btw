@@ -13,10 +13,10 @@ package vazkii.botania.common.block.decor;
 import net.minecraft.src.Block;
 import net.minecraft.block.BlockRotatedPillar;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.World;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -31,7 +31,7 @@ import net.fabricmc.api.EnvType;
 
 public class BlockReeds extends BlockRotatedPillar implements ILexiconable {
 
-	IIcon topIcon;
+	Icon topIcon;
 
 	public BlockReeds() {
 		super(Material.wood);
@@ -50,7 +50,7 @@ public class BlockReeds extends BlockRotatedPillar implements ILexiconable {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
+	public void registerBlockIcons(IconRegister par1IconRegister) {
 		blockIcon = IconHelper.forBlock(par1IconRegister, this, 0);
 		topIcon = IconHelper.forBlock(par1IconRegister, this, 1);
 	}
@@ -61,12 +61,12 @@ public class BlockReeds extends BlockRotatedPillar implements ILexiconable {
 	}
 
 	@Override
-	protected IIcon getSideIcon(int p_150163_1_) {
+	protected Icon getSideIcon(int p_150163_1_) {
 		return blockIcon;
 	}
 
 	@Override
-	protected IIcon getTopIcon(int p_150161_1_) {
+	protected Icon getTopIcon(int p_150161_1_) {
 		return topIcon;
 	}
 

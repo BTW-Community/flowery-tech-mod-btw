@@ -11,8 +11,8 @@
 package vazkii.botania.client.render.tile;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.src.TextureMap;
+import net.minecraft.src.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
 

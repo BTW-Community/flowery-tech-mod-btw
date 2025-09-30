@@ -12,14 +12,14 @@ package vazkii.botania.common.item;
 
 import java.awt.Color;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.ChunkCoordinates;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.World;
 import vazkii.botania.api.mana.IManaItem;
 import vazkii.botania.api.mana.IManaPool;
@@ -32,7 +32,7 @@ import vazkii.botania.common.lib.LibItemNames;
 
 public class ItemManaMirror extends ItemMod implements IManaItem, ICoordBoundItem, IManaTooltipDisplay {
 
-	IIcon[] icons;
+	Icon[] icons;
 
 	private static final String TAG_MANA = "mana";
 	private static final String TAG_MANA_BACKLOG = "manaBacklog";
@@ -70,14 +70,14 @@ public class ItemManaMirror extends ItemMod implements IManaItem, ICoordBoundIte
 	}
 
 	@Override
-	public void registerIcons(IIconRegister par1IconRegister) {
-		icons = new IIcon[2];
+	public void registerIcons(IconRegister par1IconRegister) {
+		icons = new Icon[2];
 		for(int i = 0; i < icons.length; i++)
 			icons[i] = IconHelper.forItem(par1IconRegister, this, i);
 	}
 
 	@Override
-	public IIcon getIcon(ItemStack stack, int pass) {
+	public Icon getIcon(ItemStack stack, int pass) {
 		return icons[Math.min(1, pass)];
 	}
 

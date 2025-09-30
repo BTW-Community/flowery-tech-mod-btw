@@ -11,15 +11,15 @@
 package vazkii.botania.common.block;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.src.IconRegister;
+import net.minecraft.src.EntityLivingBase;
+import net.minecraft.src.EntityItem;
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
+import net.minecraft.src.Block;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -37,7 +37,7 @@ public class BlockFelPumpkin extends BlockMod implements ILexiconable {
 
 	private static final String TAG_FEL_SPAWNED = "Botania-FelSpawned";
 
-	IIcon top, face;
+	Icon top, face;
 
 	public BlockFelPumpkin() {
 		super(Material.gourd);
@@ -49,7 +49,7 @@ public class BlockFelPumpkin extends BlockMod implements ILexiconable {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public IIcon getIcon(int p_149691_1_, int p_149691_2_) {
+	public Icon getIcon(int p_149691_1_, int p_149691_2_) {
 		return p_149691_1_ == 1 ? top : p_149691_1_ == 0 ? top : p_149691_2_ == 2 && p_149691_1_ == 2 ? face : p_149691_2_ == 3 && p_149691_1_ == 5 ? face : p_149691_2_ == 0 && p_149691_1_ == 3 ? face : p_149691_2_ == 1 && p_149691_1_ == 4 ? face : blockIcon;
 	}
 
@@ -79,7 +79,7 @@ public class BlockFelPumpkin extends BlockMod implements ILexiconable {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerBlockIcons(IIconRegister p_149651_1_)  {
+	public void registerBlockIcons(IconRegister p_149651_1_)  {
 		face = IconHelper.forBlock(p_149651_1_, this);
 		top = Blocks.pumpkin.getIcon(0, 0);
 		blockIcon = Blocks.pumpkin.getIcon(2, 0);

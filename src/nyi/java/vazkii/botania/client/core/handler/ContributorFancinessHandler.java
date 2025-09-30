@@ -16,12 +16,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ItemRenderer;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.client.settings.GameSettings.Options;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Minecraft;
+import net.minecraft.src.ItemRenderer;
+import net.minecraft.src.Tessellator;
+import net.minecraft.src.TextureMap;
+import net.minecraft.src.GameSettings.Options;
+import net.minecraft.src.Icon;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 
 import org.lwjgl.opengl.GL11;
@@ -38,7 +38,7 @@ import cpw.mods.fml.common.FMLLog;
 
 public final class ContributorFancinessHandler {
 
-	public volatile static Map<String, IIcon> flowerMap = null;
+	public volatile static Map<String, Icon> flowerMap = null;
 	private volatile static boolean startedLoading = false;
 
 	private static boolean phi = true;
@@ -87,7 +87,7 @@ public final class ContributorFancinessHandler {
 
 	private static void renderTwintails(RenderPlayerEvent event) {
 		GL11.glPushMatrix();
-		IIcon icon = ((ItemManaResource) ModItems.manaResource).tailIcon;
+		Icon icon = ((ItemManaResource) ModItems.manaResource).tailIcon;
 		float f = icon.getMinU();
 		float f1 = icon.getMaxU();
 		float f2 = icon.getMinV();
@@ -117,7 +117,7 @@ public final class ContributorFancinessHandler {
 
 	private static void renderPhiFlower(RenderPlayerEvent event) {
 		GL11.glPushMatrix();
-		IIcon icon = ((ItemManaResource) ModItems.manaResource).phiFlowerIcon;
+		Icon icon = ((ItemManaResource) ModItems.manaResource).phiFlowerIcon;
 		float f = icon.getMinU();
 		float f1 = icon.getMaxU();
 		float f2 = icon.getMinV();
@@ -137,7 +137,7 @@ public final class ContributorFancinessHandler {
 
 	private static void renderGoldfish(RenderPlayerEvent event) {
 		GL11.glPushMatrix();
-		IIcon icon = ((ItemManaResource) ModItems.manaResource).goldfishIcon;
+		Icon icon = ((ItemManaResource) ModItems.manaResource).goldfishIcon;
 		float f = icon.getMinU();
 		float f1 = icon.getMaxU();
 		float f2 = icon.getMinV();
@@ -153,7 +153,7 @@ public final class ContributorFancinessHandler {
 		GL11.glPopMatrix();
 	}
 
-	private static void renderFlower(RenderPlayerEvent event, IIcon icon) {
+	private static void renderFlower(RenderPlayerEvent event, Icon icon) {
 		GL11.glPushMatrix();
 		Helper.translateToHeadLevel(event.entityPlayer);
 		Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.locationBlocksTexture);

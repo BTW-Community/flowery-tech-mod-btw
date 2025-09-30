@@ -11,9 +11,9 @@
 package vazkii.botania.common.block.tile;
 
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.src.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 
 public abstract class TileSimpleInventory extends TileMod implements IInventory {

@@ -13,8 +13,8 @@ package vazkii.botania.client.core.handler;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.src.Minecraft;
+import net.minecraft.src.GuiScreen;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;

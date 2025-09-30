@@ -1,6 +1,6 @@
 package vazkii.botania.common;
 
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import vazkii.botania.api.recipe.IFlowerComponent;
 
 import java.util.HashMap;

@@ -15,10 +15,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.client.renderer.texture.TextureManager;
+import net.minecraft.src.GuiScreen;
+import net.minecraft.src.RenderHelper;
+import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.TextureManager;
 import net.minecraft.entity.EntityList;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.EnumChatFormatting;

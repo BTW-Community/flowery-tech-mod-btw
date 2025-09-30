@@ -17,14 +17,14 @@ import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiChat;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.GuiTextField;
+import net.minecraft.src.Minecraft;
+import net.minecraft.src.GuiChat;
+import net.minecraft.src.GuiScreen;
+import net.minecraft.src.GuiTextField;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.ChatComponentText;
+import net.minecraft.src.ChatComponentText;
 
 import org.lwjgl.input.Keyboard;
 

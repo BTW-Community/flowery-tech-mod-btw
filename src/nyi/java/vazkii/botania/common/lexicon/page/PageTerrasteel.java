@@ -15,8 +15,8 @@ import java.util.List;
 
 import net.minecraft.src.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.init.Blocks;
+import net.minecraft.src.GuiScreen;
+import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.ResourceLocation;
 

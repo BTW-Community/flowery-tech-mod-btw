@@ -11,12 +11,12 @@
 package vazkii.botania.client.render.tile;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.OpenGlHelper;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.src.OpenGlHelper;
+import net.minecraft.src.Tessellator;
+import net.minecraft.src.TextureMap;
+import net.minecraft.src.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 
 import org.lwjgl.opengl.GL11;
 
@@ -66,7 +66,7 @@ public class RenderTileTerraPlate extends TileEntitySpecialRenderer {
 		GL11.glPopMatrix();
 	}
 
-	public void renderIcon(int par1, int par2, IIcon par3Icon, int par4, int par5, int brightness) {
+	public void renderIcon(int par1, int par2, Icon par3Icon, int par4, int par5, int brightness) {
 		Tessellator tessellator = Tessellator.instance;
 		tessellator.startDrawingQuads();
 		tessellator.setBrightness(brightness);

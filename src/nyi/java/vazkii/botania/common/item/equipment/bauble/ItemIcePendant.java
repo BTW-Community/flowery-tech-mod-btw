@@ -17,16 +17,16 @@ import java.util.Map;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ItemRenderer;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.ItemRenderer;
+import net.minecraft.src.Tessellator;
+import net.minecraft.src.IconRegister;
+import net.minecraft.src.TextureMap;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.init.Blocks;
+import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.ChunkCoordinates;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.World;
 import net.minecraftforge.client.event.RenderPlayerEvent;
@@ -40,7 +40,7 @@ import baubles.api.BaubleType;
 
 public class ItemIcePendant extends ItemBauble implements IBaubleRender {
 
-	IIcon gemIcon;
+	Icon gemIcon;
 	public static Map<String, List<IceRemover>> playerIceBlocks = new HashMap();
 
 	public ItemIcePendant() {
@@ -53,7 +53,7 @@ public class ItemIcePendant extends ItemBauble implements IBaubleRender {
 	}
 
 	@Override
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		super.registerIcons(par1IconRegister);
 		gemIcon = IconHelper.forItem(par1IconRegister, this, "Gem");
 	}

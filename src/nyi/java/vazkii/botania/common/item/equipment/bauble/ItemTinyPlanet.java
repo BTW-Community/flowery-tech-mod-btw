@@ -14,12 +14,12 @@ import java.util.List;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.RenderBlocks;
-import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.src.TextureMap;
 import net.minecraft.src.Entity;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.src.NBTTagCompound;
+import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.World;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 

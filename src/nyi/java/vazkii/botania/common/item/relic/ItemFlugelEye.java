@@ -12,7 +12,7 @@ package vazkii.botania.common.item.relic;
 
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.src.EntityPlayerMP;
 import net.minecraft.item.EnumAction;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.ChunkCoordinates;
@@ -143,7 +143,7 @@ public class ItemFlugelEye extends ItemRelic implements ICoordBoundItem, IManaUs
 	private static final String TAG_DIMENSION = "dim";
 	private static final String TAG_FIRST_TICK = "firstTick";
 
-	IIcon[] signs;
+	Icon[] signs;
 
 	public ItemFlugelEye() {
 		super(LibItemNames.FLUGEL_EYE);
@@ -152,9 +152,9 @@ public class ItemFlugelEye extends ItemRelic implements ICoordBoundItem, IManaUs
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		super.registerIcons(par1IconRegister);
-		signs = new IIcon[12];
+		signs = new Icon[12];
 		for(int i = 0; i < 12; i++)
 			signs[i] = IconHelper.forName(par1IconRegister, "sign" + i);
 	}
@@ -342,7 +342,7 @@ public class ItemFlugelEye extends ItemRelic implements ICoordBoundItem, IManaUs
 			mc.renderEngine.bindTexture(TextureMap.locationItemsTexture);
 			GL11.glScalef(0.75F, 0.75F, 0.75F);
 			GL11.glTranslatef(0F, 0F, 0.5F);
-			IIcon icon = signs[seg];
+			Icon icon = signs[seg];
 			GL11.glRotatef(90F, 0F, 1F, 0F);
 			GL11.glColor4f(1F, 1F, 1F, getWarpPoint(stack, seg).isValid() ? 1F : 0.2F);
 			float f = icon.getMinU();

@@ -11,11 +11,11 @@
 package vazkii.botania.common.block;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
 import vazkii.botania.api.lexicon.ILexiconable;
@@ -27,7 +27,7 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockEnderEye extends BlockModContainer implements ILexiconable {
 
-	IIcon iconOff, iconOn;
+	Icon iconOff, iconOn;
 
 	protected BlockEnderEye() {
 		super(Material.iron);
@@ -38,13 +38,13 @@ public class BlockEnderEye extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
+	public void registerBlockIcons(IconRegister par1IconRegister) {
 		iconOff = IconHelper.forBlock(par1IconRegister, this, 0);
 		iconOn = IconHelper.forBlock(par1IconRegister, this, 1);
 	}
 
 	@Override
-	public IIcon getIcon(int side, int meta) {
+	public Icon getIcon(int side, int meta) {
 		return meta == 0 ? iconOff : iconOn;
 	}
 

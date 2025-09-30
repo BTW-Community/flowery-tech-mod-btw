@@ -11,13 +11,13 @@
 package vazkii.botania.common.item.equipment.bauble;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ItemRenderer;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.ItemRenderer;
+import net.minecraft.src.Tessellator;
+import net.minecraft.src.IconRegister;
+import net.minecraft.src.TextureMap;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 
 import org.lwjgl.opengl.GL11;
@@ -29,7 +29,7 @@ import baubles.api.BaubleType;
 
 public class ItemLavaPendant extends ItemBauble implements IBaubleRender {
 
-	IIcon gemIcon;
+	Icon gemIcon;
 
 	public ItemLavaPendant() {
 		super(LibItemNames.LAVA_PENDANT);
@@ -47,7 +47,7 @@ public class ItemLavaPendant extends ItemBauble implements IBaubleRender {
 	}
 
 	@Override
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		super.registerIcons(par1IconRegister);
 		gemIcon = IconHelper.forItem(par1IconRegister, this, "Gem");
 	}

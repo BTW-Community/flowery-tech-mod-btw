@@ -14,13 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.src.Block;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.src.EntityItem;
 import net.minecraft.entity.projectile.EntityThrowable;
-import net.minecraft.init.Blocks;
+import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.ChunkCoordinates;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.src.MovingObjectPosition;
 import net.minecraft.src.World;
 import vazkii.botania.api.internal.IManaBurst;
 import vazkii.botania.api.mana.IManaBlock;

@@ -15,13 +15,13 @@ import java.util.Random;
 
 import net.minecraft.src.Block;
 import net.minecraft.block.BlockSkull;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
+import net.minecraft.src.IconRegister;
+import net.minecraft.src.Block;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
 import net.minecraft.tileentity.TileEntitySkull;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.World;
 import vazkii.botania.common.block.tile.TileGaiaHead;
 import vazkii.botania.common.item.ModItems;
@@ -51,7 +51,7 @@ public class BlockGaiaHead extends BlockSkull {
 	}
 
 	@Override
-	public void registerBlockIcons(IIconRegister p_149651_1_) {
+	public void registerBlockIcons(IconRegister p_149651_1_) {
 		// NO-OP
 	}
 
@@ -93,7 +93,7 @@ public class BlockGaiaHead extends BlockSkull {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public IIcon getIcon(int p_149691_1_, int p_149691_2_) {
+	public Icon getIcon(int p_149691_1_, int p_149691_2_) {
 		return Blocks.coal_block.getBlockTextureFromSide(p_149691_1_);
 	}
 

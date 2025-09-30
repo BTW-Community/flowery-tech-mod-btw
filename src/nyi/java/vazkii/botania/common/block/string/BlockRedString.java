@@ -12,12 +12,12 @@ package vazkii.botania.common.block.string;
 
 import net.minecraft.block.BlockPistonBase;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.IconRegister;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.init.Blocks;
+import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.common.util.RotationHelper;
@@ -32,8 +32,8 @@ import net.fabricmc.api.EnvType;
 
 public abstract class BlockRedString extends BlockModContainer<TileRedString> implements ILexiconable {
 
-	IIcon senderIcon;
-	IIcon sideIcon;
+	Icon senderIcon;
+	Icon sideIcon;
 
 	public BlockRedString(String name) {
 		super(Material.rock);
@@ -56,18 +56,18 @@ public abstract class BlockRedString extends BlockModContainer<TileRedString> im
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
+	public void registerBlockIcons(IconRegister par1IconRegister) {
 		senderIcon = IconHelper.forName(par1IconRegister, "redStringSender");
 		sideIcon = registerSideIcon(par1IconRegister);
 	}
 
 	@Environment(EnvType.CLIENT)
-	public IIcon registerSideIcon(IIconRegister register) {
+	public Icon registerSideIcon(IconRegister register) {
 		return IconHelper.forBlock(register, this);
 	}
 
 	@Override
-	public IIcon getIcon(int side, int meta) {
+	public Icon getIcon(int side, int meta) {
 		return side == meta ? senderIcon : sideIcon;
 	}
 

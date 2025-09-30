@@ -13,8 +13,8 @@ package vazkii.botania.client.render.block;
 import net.minecraft.src.Block;
 import net.minecraft.block.BlockDoublePlant;
 import net.minecraft.src.RenderBlocks;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Tessellator;
+import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;
 import vazkii.botania.client.lib.LibRenderIDs;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
@@ -51,7 +51,7 @@ public class RenderDoubleFlower implements ISimpleBlockRenderingHandler {
 		}
 
 		// Only change here, to use xyz rather than side/meta
-		IIcon icon = renderer.getBlockIcon(block, world, p_147774_2_, p_147774_3_, p_147774_4_, 0);
+		Icon icon = renderer.getBlockIcon(block, world, p_147774_2_, p_147774_3_, p_147774_4_, 0);
 		RenderSpecialFlower.drawCrossedSquares(world, block, icon, p_147774_2_, p_147774_3_, p_147774_4_, p_147774_2_, p_147774_3_, p_147774_4_, 1F, renderer);
 		return true;
 	}

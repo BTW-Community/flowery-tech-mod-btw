@@ -14,21 +14,21 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.src.Block;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.Entity;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
+import net.minecraft.src.EntityPlayerMP;
+import net.minecraft.src.Block;
+import net.minecraft.src.Item;
 import net.minecraft.item.EnumAction;
 import net.minecraft.src.ItemStack;
 import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
+import net.minecraft.src.PotionEffect;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.AxisAlignedBB;
+import net.minecraft.src.DamageSource;
+import net.minecraft.src.Icon;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.StatCollector;
 import net.minecraft.src.World;
@@ -40,7 +40,7 @@ import vazkii.botania.common.lib.LibItemNames;
 
 public class ItemBottledMana extends ItemMod {
 
-	IIcon[] icons;
+	Icon[] icons;
 	private static final String TAG_SEED = "randomSeed";
 
 	public ItemBottledMana() {
@@ -209,14 +209,14 @@ public class ItemBottledMana extends ItemMod {
 	}
 
 	@Override
-	public void registerIcons(IIconRegister par1IconRegister) {
-		icons = new IIcon[6];
+	public void registerIcons(IconRegister par1IconRegister) {
+		icons = new Icon[6];
 		for(int i = 0; i < icons.length; i++)
 			icons[i] = IconHelper.forItem(par1IconRegister, this, i);
 	}
 
 	@Override
-	public IIcon getIconFromDamage(int par1) {
+	public Icon getIconFromDamage(int par1) {
 		return icons[Math.min(icons.length - 1, par1)];
 	}
 

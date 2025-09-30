@@ -11,8 +11,8 @@
 package vazkii.botania.client.render.entity;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.renderer.entity.RenderBiped;
+import net.minecraft.src.ModelBiped;
+import net.minecraft.src.entity.RenderBiped;
 import net.minecraft.src.Entity;
 import net.minecraft.src.ResourceLocation;
 

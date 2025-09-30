@@ -16,17 +16,17 @@ import java.util.List;
 
 import net.minecraft.src.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.src.EntityItem;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.AxisAlignedBB;
+import net.minecraft.src.Icon;
 import net.minecraft.src.World;
 import net.minecraftforge.common.IShearable;
 import vazkii.botania.api.internal.IManaBurst;
@@ -43,9 +43,9 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockForestDrum extends BlockMod implements IManaTrigger, ILexiconable {
 
-	IIcon iconBases, iconFaces;
-	IIcon iconBasesA, iconFacesA;
-	IIcon iconBasesB, iconFacesB;
+	Icon iconBases, iconFaces;
+	Icon iconBasesA, iconFacesA;
+	Icon iconBasesB, iconFacesB;
 
 	public BlockForestDrum() {
 		super(Material.wood);
@@ -84,7 +84,7 @@ public class BlockForestDrum extends BlockMod implements IManaTrigger, ILexicona
 	}
 
 	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
+	public void registerBlockIcons(IconRegister par1IconRegister) {
 		iconBases = IconHelper.forBlock(par1IconRegister, this, 0);
 		iconFaces = IconHelper.forBlock(par1IconRegister, this, 1);
 		iconBasesA = IconHelper.forBlock(par1IconRegister, this, 2);
@@ -100,7 +100,7 @@ public class BlockForestDrum extends BlockMod implements IManaTrigger, ILexicona
 	}
 
 	@Override
-	public IIcon getIcon(int side, int meta) {
+	public Icon getIcon(int side, int meta) {
 		boolean animal = meta == 1;
 		boolean tree = meta == 2;
 		return side < 2 ? animal ? iconBasesA : tree ? iconBasesB : iconBases : animal ? iconFacesA : tree ? iconFacesB : iconFaces;

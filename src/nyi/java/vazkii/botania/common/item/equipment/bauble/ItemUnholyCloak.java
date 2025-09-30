@@ -12,12 +12,12 @@ package vazkii.botania.common.item.equipment.bauble;
 
 import java.util.List;
 
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.DamageSource;
+import net.minecraft.src.AxisAlignedBB;
+import net.minecraft.src.DamageSource;
 import net.minecraft.src.ResourceLocation;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import vazkii.botania.client.lib.LibResources;

@@ -11,14 +11,14 @@
 package vazkii.botania.common.item.equipment.tool.manasteel;
 
 import net.minecraft.src.Block;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.Entity;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.item.ItemSword;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.World;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.mana.IManaUsingItem;
@@ -37,7 +37,7 @@ public class ItemManasteelSword extends ItemSword implements IManaUsingItem {
 
 	public static final int MANA_PER_DAMAGE = 60;
 
-	public static IIcon elucidatorIcon;
+	public static Icon elucidatorIcon;
 
 	public ItemManasteelSword() {
 		this(BotaniaAPI.manasteelToolMaterial, LibItemNames.MANASTEEL_SWORD);
@@ -62,7 +62,7 @@ public class ItemManasteelSword extends ItemSword implements IManaUsingItem {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		itemIcon = IconHelper.forItem(par1IconRegister, this);
 		elucidatorIcon = IconHelper.forName(par1IconRegister, "elucidator");
 	}
@@ -75,13 +75,13 @@ public class ItemManasteelSword extends ItemSword implements IManaUsingItem {
 	}
 
 	@Override
-	public IIcon getIconIndex(ItemStack par1ItemStack) {
+	public Icon getIconIndex(ItemStack par1ItemStack) {
 		String name = par1ItemStack.getDisplayName().toLowerCase().trim();
 		return name.equals("the elucidator") ? elucidatorIcon : super.getIconIndex(par1ItemStack);
 	}
 
 	@Override
-	public IIcon getIcon(ItemStack stack, int pass) {
+	public Icon getIcon(ItemStack stack, int pass) {
 		return getIconIndex(stack);
 	}
 

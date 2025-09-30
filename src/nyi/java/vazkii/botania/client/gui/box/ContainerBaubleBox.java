@@ -12,7 +12,7 @@ package vazkii.botania.client.gui.box;
 
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.src.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.src.ItemStack;
 import vazkii.botania.api.mana.IManaItem;

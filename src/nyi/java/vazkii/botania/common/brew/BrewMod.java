@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.brew;
 
-import net.minecraft.potion.PotionEffect;
+import net.minecraft.src.PotionEffect;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.brew.Brew;
 

@@ -16,18 +16,18 @@ import java.util.Random;
 
 import net.minecraft.src.Block;
 import net.minecraft.block.BlockDoublePlant;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
+import net.minecraft.src.Block;
+import net.minecraft.src.Item;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.stats.StatList;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
 import net.minecraftforge.event.ForgeEventFactory;
@@ -49,8 +49,8 @@ public class BlockModDoubleFlower extends BlockDoublePlant implements ILexiconab
 
 	private static final int COUNT = 8;
 
-	IIcon[] doublePlantTopIcons, doublePlantBottomIcons;
-	IIcon[] doublePlantTopIconsAlt, doublePlantBottomIconsAlt;
+	Icon[] doublePlantTopIcons, doublePlantBottomIcons;
+	Icon[] doublePlantTopIconsAlt, doublePlantBottomIconsAlt;
 
 	final int offset;
 
@@ -82,7 +82,7 @@ public class BlockModDoubleFlower extends BlockDoublePlant implements ILexiconab
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public IIcon func_149888_a(boolean top, int index) {
+	public Icon func_149888_a(boolean top, int index) {
 		return (ConfigHandler.altFlowerTextures ? top ? doublePlantTopIconsAlt : doublePlantBottomIconsAlt : top ? doublePlantTopIcons : doublePlantBottomIcons)[index & 7];
 	}
 
@@ -175,13 +175,13 @@ public class BlockModDoubleFlower extends BlockDoublePlant implements ILexiconab
 	}
 
 	@Override
-	public IIcon getIcon(int p_149691_1_, int p_149691_2_) {
+	public Icon getIcon(int p_149691_1_, int p_149691_2_) {
 		boolean top = func_149887_c(p_149691_2_);
 		return (ConfigHandler.altFlowerTextures ? top ? doublePlantTopIconsAlt : doublePlantBottomIconsAlt : top ? doublePlantTopIcons : doublePlantBottomIcons)[p_149691_2_ & 7];
 	}
 
 	@Override
-	public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side) {
+	public Icon getIcon(IBlockAccess world, int x, int y, int z, int side) {
 		int meta = world.getBlockMetadata(x, y, z);
 		boolean top = func_149887_c(meta);
 		if(top)
@@ -191,11 +191,11 @@ public class BlockModDoubleFlower extends BlockDoublePlant implements ILexiconab
 	}
 
 	@Override
-	public void registerBlockIcons(IIconRegister register) {
-		doublePlantTopIcons = new IIcon[COUNT];
-		doublePlantBottomIcons = new IIcon[COUNT];
-		doublePlantTopIconsAlt = new IIcon[COUNT];
-		doublePlantBottomIconsAlt = new IIcon[COUNT];
+	public void registerBlockIcons(IconRegister register) {
+		doublePlantTopIcons = new Icon[COUNT];
+		doublePlantBottomIcons = new Icon[COUNT];
+		doublePlantTopIconsAlt = new Icon[COUNT];
+		doublePlantBottomIconsAlt = new Icon[COUNT];
 		for(int i = 0; i < COUNT; i++) {
 			int off = offset(i);
 			doublePlantTopIcons[i] = IconHelper.forName(register, "flower" + off + "Tall0");

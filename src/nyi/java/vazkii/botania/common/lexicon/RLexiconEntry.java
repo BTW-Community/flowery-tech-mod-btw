@@ -11,8 +11,8 @@
 package vazkii.botania.common.lexicon;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityClientPlayerMP;
-import net.minecraft.stats.Achievement;
+import net.minecraft.src.EntityClientPlayerMP;
+import net.minecraft.src.Achievement;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.lexicon.LexiconCategory;
 import net.fabricmc.api.Environment;

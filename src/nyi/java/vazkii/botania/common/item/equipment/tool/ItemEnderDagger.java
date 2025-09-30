@@ -12,15 +12,15 @@ package vazkii.botania.common.item.equipment.tool;
 
 import java.awt.Color;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.Entity;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.DamageSource;
+import net.minecraft.src.Icon;
 import net.minecraft.src.World;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.client.core.helper.IconHelper;
@@ -29,7 +29,7 @@ import vazkii.botania.common.lib.LibItemNames;
 
 public class ItemEnderDagger extends ItemManasteelSword {
 
-	IIcon iconFront, iconOverlay;
+	Icon iconFront, iconOverlay;
 
 	public ItemEnderDagger() {
 		super(BotaniaAPI.manasteelToolMaterial, LibItemNames.ENDER_DAGGER);
@@ -38,7 +38,7 @@ public class ItemEnderDagger extends ItemManasteelSword {
 	}
 
 	@Override
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		iconFront = IconHelper.forItem(par1IconRegister, this, 0);
 		iconOverlay = IconHelper.forItem(par1IconRegister, this, 1);
 	}
@@ -49,7 +49,7 @@ public class ItemEnderDagger extends ItemManasteelSword {
 	}
 
 	@Override
-	public IIcon getIcon(ItemStack stack, int pass) {
+	public Icon getIcon(ItemStack stack, int pass) {
 		return pass == 0 ? iconFront : iconOverlay;
 	}
 

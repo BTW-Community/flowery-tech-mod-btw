@@ -12,16 +12,16 @@ package vazkii.botania.client.core.handler;
 
 import java.awt.Color;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ItemRenderer;
-import net.minecraft.client.renderer.OpenGlHelper;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.src.Minecraft;
+import net.minecraft.src.ItemRenderer;
+import net.minecraft.src.OpenGlHelper;
+import net.minecraft.src.Tessellator;
+import net.minecraft.src.TextureMap;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.potion.Potion;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 
 import org.lwjgl.opengl.GL11;
@@ -126,7 +126,7 @@ public final class BaubleRenderHandler {
 				int lightmapY = light / 65536;
 				OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, lightmapX, lightmapY);
 				for(int j = 0; j < 2; j++) {
-					IIcon icon = item.getIcon(stack, j);
+					Icon icon = item.getIcon(stack, j);
 					float f = icon.getMinU();
 					float f1 = icon.getMaxU();
 					float f2 = icon.getMinV();

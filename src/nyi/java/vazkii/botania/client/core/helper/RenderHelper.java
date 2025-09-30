@@ -14,10 +14,10 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.src.FontRenderer;
+import net.minecraft.src.Tessellator;
+import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.KeyBinding;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.ResourceLocation;
 

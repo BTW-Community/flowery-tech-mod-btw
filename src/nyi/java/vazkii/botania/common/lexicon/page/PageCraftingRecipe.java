@@ -15,10 +15,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.renderer.texture.TextureManager;
+import net.minecraft.src.GuiScreen;
+import net.minecraft.src.TextureManager;
 import net.minecraft.src.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.src.IRecipe;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.src.ResourceLocation;

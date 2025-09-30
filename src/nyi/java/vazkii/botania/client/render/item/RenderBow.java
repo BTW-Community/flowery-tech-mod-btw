@@ -10,11 +10,11 @@
  */
 package vazkii.botania.client.render.item;
 
-import net.minecraft.client.renderer.ItemRenderer;
-import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.src.ItemRenderer;
+import net.minecraft.src.Tessellator;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraftforge.client.IItemRenderer;
 
 import org.lwjgl.opengl.GL11;
@@ -60,7 +60,7 @@ public class RenderBow implements IItemRenderer {
 
 	public void render(ItemStack item, EntityPlayer player, boolean transform) {
 		int dmg = item.getItemDamage();
-		IIcon icon = item.getItem().getIconFromDamageForRenderPass(dmg, 0);
+		Icon icon = item.getItem().getIconFromDamageForRenderPass(dmg, 0);
 		if(player != null) {
 			ItemStack using = ReflectionHelper.getPrivateValue(EntityPlayer.class, player, LibObfuscation.ITEM_IN_USE);
 			int time = ReflectionHelper.getPrivateValue(EntityPlayer.class, player, LibObfuscation.ITEM_IN_USE_COUNT);

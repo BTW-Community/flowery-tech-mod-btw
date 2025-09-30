@@ -13,16 +13,16 @@ package vazkii.botania.common.item.lens;
 import java.awt.Color;
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.IIcon;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.src.NBTTagCompound;
+import net.minecraft.src.Icon;
+import net.minecraft.src.MovingObjectPosition;
 import net.minecraft.src.StatCollector;
 import net.minecraftforge.oredict.RecipeSorter;
 import net.minecraftforge.oredict.RecipeSorter.Category;
@@ -135,9 +135,9 @@ public class ItemLens extends ItemMod implements ILensControl, ICompositableLens
 	private static final String TAG_COLOR = "color";
 	private static final String TAG_COMPOSITE_LENS = "compositeLens";
 
-	public static IIcon iconGlass;
+	public static Icon iconGlass;
 
-	IIcon[] ringIcons;
+	Icon[] ringIcons;
 
 	public ItemLens() {
 		super();
@@ -152,10 +152,10 @@ public class ItemLens extends ItemMod implements ILensControl, ICompositableLens
 	}
 
 	@Override
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		iconGlass = IconHelper.forName(par1IconRegister, "lensInside");
 
-		ringIcons = new IIcon[SUBTYPES];
+		ringIcons = new Icon[SUBTYPES];
 		for(int i = 0; i < ringIcons.length; i++)
 			ringIcons[i] = IconHelper.forName(par1IconRegister, LibItemNames.LENS_NAMES[i]);
 	}
@@ -172,12 +172,12 @@ public class ItemLens extends ItemMod implements ILensControl, ICompositableLens
 	}
 
 	@Override
-	public IIcon getIconFromDamageForRenderPass(int par1, int par2) {
+	public Icon getIconFromDamageForRenderPass(int par1, int par2) {
 		return par2 == 1 ? ringIcons[Math.min(SUBTYPES - 1, par1)] : iconGlass;
 	}
 
 	@Override
-	public IIcon getIconFromDamage(int par1) {
+	public Icon getIconFromDamage(int par1) {
 		return getIconFromDamageForRenderPass(par1, 0);
 	}
 

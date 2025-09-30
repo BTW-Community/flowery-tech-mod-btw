@@ -2,7 +2,7 @@ package vazkii.botania.common.item.equipment.armor.elementium;
 
 import java.util.List;
 
-import net.minecraft.client.model.ModelBiped;
+import net.minecraft.src.ModelBiped;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.StatCollector;

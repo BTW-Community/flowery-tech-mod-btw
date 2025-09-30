@@ -12,8 +12,8 @@ package vazkii.botania.common.block.decor;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.src.World;

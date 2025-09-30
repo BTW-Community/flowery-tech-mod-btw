@@ -12,11 +12,11 @@ package vazkii.botania.common.item;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.lib.LibItemNames;
 
@@ -24,8 +24,8 @@ public class ItemSparkUpgrade extends ItemMod {
 
 	private static final int VARIANTS = 4;
 
-	public static IIcon[] worldIcons;
-	IIcon[] invIcons;
+	public static Icon[] worldIcons;
+	Icon[] invIcons;
 
 	public ItemSparkUpgrade() {
 		setUnlocalizedName(LibItemNames.SPARK_UPGRADE);
@@ -33,9 +33,9 @@ public class ItemSparkUpgrade extends ItemMod {
 	}
 
 	@Override
-	public void registerIcons(IIconRegister par1IconRegister) {
-		worldIcons = new IIcon[VARIANTS];
-		invIcons = new IIcon[VARIANTS];
+	public void registerIcons(IconRegister par1IconRegister) {
+		worldIcons = new Icon[VARIANTS];
+		invIcons = new Icon[VARIANTS];
 		for(int i = 0; i < VARIANTS; i++) {
 			worldIcons[i] = IconHelper.forItem(par1IconRegister, this, "L" + i);
 			invIcons[i] = IconHelper.forItem(par1IconRegister, this, i);
@@ -43,7 +43,7 @@ public class ItemSparkUpgrade extends ItemMod {
 	}
 
 	@Override
-	public IIcon getIconFromDamage(int meta) {
+	public Icon getIconFromDamage(int meta) {
 		return invIcons[Math.min(invIcons.length - 1, meta)];
 	}
 

@@ -13,13 +13,13 @@ package vazkii.botania.client.render.entity;
 import java.util.Random;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ItemRenderer;
-import net.minecraft.client.renderer.OpenGlHelper;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.src.ItemRenderer;
+import net.minecraft.src.OpenGlHelper;
+import net.minecraft.src.Tessellator;
+import net.minecraft.src.entity.Render;
+import net.minecraft.src.TextureMap;
 import net.minecraft.src.Entity;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
@@ -54,7 +54,7 @@ public class RenderBabylonWeapon extends Render {
 		GL11.glScalef(s, s, s);
 		GL11.glRotatef(-90F, 0F, 1F, 0F);
 		GL11.glRotatef(45F, 0F, 0F, 1F);
-		IIcon icon = ItemKingKey.weaponIcons[weapon.getVariety()];
+		Icon icon = ItemKingKey.weaponIcons[weapon.getVariety()];
 		GL11.glColor4f(1F, 1F, 1F, chargeMul);
 		float f = icon.getMinU();
 		float f1 = icon.getMaxU();

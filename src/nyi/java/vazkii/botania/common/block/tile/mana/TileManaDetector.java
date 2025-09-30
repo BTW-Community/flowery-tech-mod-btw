@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.block.tile.mana;
 
-import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.src.AxisAlignedBB;
 import vazkii.botania.api.internal.IManaBurst;
 import vazkii.botania.api.mana.IManaCollisionGhost;
 import vazkii.botania.common.Botania;

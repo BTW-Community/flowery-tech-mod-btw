@@ -5,12 +5,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.src.GuiScreen;
+import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.TextureManager;
+import net.minecraft.src.TextureMap;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.ResourceLocation;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -76,7 +76,7 @@ public class PageElvenRecipe extends PageRecipe {
 			i++;
 		}
 
-		IIcon portalIcon = BlockAlfPortal.portalTex;
+		Icon portalIcon = BlockAlfPortal.portalTex;
 		Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 		RenderItem.getInstance().renderIcon(gui.getLeft() + 22, gui.getTop() + 36, portalIcon, 48, 48);
 	}

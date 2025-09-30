@@ -11,7 +11,7 @@
 package vazkii.botania.common.entity;
 
 import net.minecraft.src.Entity;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.MathHelper;

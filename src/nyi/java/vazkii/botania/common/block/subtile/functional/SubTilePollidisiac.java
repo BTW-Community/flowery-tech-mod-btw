@@ -12,10 +12,10 @@ package vazkii.botania.common.block.subtile.functional;
 
 import java.util.List;
 
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.src.EntityItem;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.src.AxisAlignedBB;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.SubTileFunctional;

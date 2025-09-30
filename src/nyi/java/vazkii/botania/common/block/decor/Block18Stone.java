@@ -14,13 +14,13 @@ import java.util.List;
 
 import net.minecraft.src.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.IIcon;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.src.Icon;
+import net.minecraft.src.MovingObjectPosition;
 import net.minecraft.src.World;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -33,7 +33,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class Block18Stone extends BlockMod implements ILexiconable {
 
-	private static IIcon[] icons = new IIcon[16];
+	private static Icon[] icons = new Icon[16];
 
 	public Block18Stone() {
 		super(Material.rock);
@@ -44,7 +44,7 @@ public class Block18Stone extends BlockMod implements ILexiconable {
 	}
 
 	@Override
-	public void registerBlockIcons(IIconRegister register) {
+	public void registerBlockIcons(IconRegister register) {
 		for(int i = 0; i < 16; i++)
 			icons[i] = IconHelper.forBlock(register, this, i);
 	}
@@ -56,7 +56,7 @@ public class Block18Stone extends BlockMod implements ILexiconable {
 	}
 
 	@Override
-	public IIcon getIcon(int side, int meta) {
+	public Icon getIcon(int side, int meta) {
 		return icons[meta];
 	}
 

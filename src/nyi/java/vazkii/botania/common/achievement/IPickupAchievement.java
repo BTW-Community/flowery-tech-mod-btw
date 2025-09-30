@@ -10,10 +10,10 @@
  */
 package vazkii.botania.common.achievement;
 
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.stats.Achievement;
+import net.minecraft.src.Achievement;
 
 public interface IPickupAchievement {
 

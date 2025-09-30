@@ -14,11 +14,11 @@ import java.util.List;
 
 import net.minecraft.command.IEntitySelector;
 import net.minecraft.src.Entity;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.DamageSource;
+import net.minecraft.src.AxisAlignedBB;
+import net.minecraft.src.DamageSource;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.SubTileFunctional;

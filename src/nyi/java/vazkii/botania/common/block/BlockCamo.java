@@ -17,10 +17,10 @@ import net.minecraft.src.Block;
 import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.material.Material;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
 import vazkii.botania.common.block.tile.TileCamo;
@@ -36,7 +36,7 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 	}
 
 	@Override
-	public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side) {
+	public Icon getIcon(IBlockAccess world, int x, int y, int z, int side) {
 		TileEntity tile = world.getTileEntity(x, y, z);
 		int meta = world.getBlockMetadata(x, y, z);
 
@@ -140,7 +140,7 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 		return 0xFFFFFF;
 	}
 
-	public IIcon getIconFromSideAfterCheck(TileEntity tile, int meta, int side) {
+	public Icon getIconFromSideAfterCheck(TileEntity tile, int meta, int side) {
 		return getIcon(side, meta);
 	}
 

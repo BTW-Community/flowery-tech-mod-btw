@@ -11,12 +11,12 @@
 package vazkii.botania.client.render.tile;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.src.Tessellator;
+import net.minecraft.src.entity.RenderManager;
+import net.minecraft.src.TextureMap;
+import net.minecraft.src.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
@@ -30,7 +30,7 @@ public class RenderTileLightRelay extends TileEntitySpecialRenderer {
 	@Override
 	public void renderTileEntityAt(TileEntity tile, double x, double y, double z, float pticks) {
 		Minecraft mc = Minecraft.getMinecraft();
-		IIcon iicon = tile.getBlockMetadata() > 0 ? BlockLightRelay.worldIconRed : BlockLightRelay.worldIcon;
+		Icon Icon = tile.getBlockMetadata() > 0 ? BlockLightRelay.worldIconRed : BlockLightRelay.worldIcon;
 
 		GL11.glPushMatrix();
 		GL11.glTranslated(x + 0.5, y + 0.3, z + 0.5);
@@ -58,7 +58,7 @@ public class RenderTileLightRelay extends TileEntitySpecialRenderer {
 
 		mc.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 		ShaderHelper.useShader(ShaderHelper.halo);
-		func_77026_a(tessellator, iicon);
+		func_77026_a(tessellator, Icon);
 		ShaderHelper.releaseShader();
 		
 		GL11.glPopMatrix();
@@ -68,7 +68,7 @@ public class RenderTileLightRelay extends TileEntitySpecialRenderer {
 		GL11.glPopMatrix();
 	}
 
-	private void func_77026_a(Tessellator p_77026_1_, IIcon p_77026_2_) {
+	private void func_77026_a(Tessellator p_77026_1_, Icon p_77026_2_) {
 		float f = p_77026_2_.getMinU();
 		float f1 = p_77026_2_.getMaxU();
 		float f2 = p_77026_2_.getMinV();

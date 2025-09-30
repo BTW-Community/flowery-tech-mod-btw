@@ -12,7 +12,7 @@ package vazkii.botania.common.block.subtile.functional;
 
 import net.minecraft.src.Block;
 import net.minecraft.block.BlockFurnace;
-import net.minecraft.init.Blocks;
+import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.src.TileEntity;

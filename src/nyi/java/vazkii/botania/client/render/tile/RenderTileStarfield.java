@@ -15,10 +15,10 @@ import java.nio.FloatBuffer;
 import java.util.Random;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ActiveRenderInfo;
-import net.minecraft.client.renderer.GLAllocation;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.src.ActiveRenderInfo;
+import net.minecraft.src.GLAllocation;
+import net.minecraft.src.Tessellator;
+import net.minecraft.src.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.ResourceLocation;
 

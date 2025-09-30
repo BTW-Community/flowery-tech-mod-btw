@@ -13,14 +13,14 @@ package vazkii.botania.common.item;
 import java.util.List;
 
 import net.minecraft.src.Block;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.init.Blocks;
+import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.StatCollector;
 import net.minecraft.src.World;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
@@ -34,7 +34,7 @@ public class ItemSpawnerMover extends ItemMod {
 	public static final String TAG_SPAWNER = "spawner";
 	private static final String TAG_PLACE_DELAY = "placeDelay";
 
-	IIcon iconNormal, iconSpawner;
+	Icon iconNormal, iconSpawner;
 
 	public ItemSpawnerMover() {
 		setUnlocalizedName(LibItemNames.SPAWNER_MOVER);
@@ -42,18 +42,18 @@ public class ItemSpawnerMover extends ItemMod {
 	}
 
 	@Override
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		iconNormal = IconHelper.forItem(par1IconRegister, this, 0);
 		iconSpawner = IconHelper.forItem(par1IconRegister, this, 1);
 	}
 
 	@Override
-	public IIcon getIcon(ItemStack stack, int pass) {
+	public Icon getIcon(ItemStack stack, int pass) {
 		return getIconIndex(stack);
 	}
 
 	@Override
-	public IIcon getIconIndex(ItemStack par1ItemStack) {
+	public Icon getIconIndex(ItemStack par1ItemStack) {
 		return hasData(par1ItemStack) ? iconSpawner : iconNormal;
 	}
 

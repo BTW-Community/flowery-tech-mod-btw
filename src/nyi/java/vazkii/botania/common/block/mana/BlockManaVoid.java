@@ -12,11 +12,11 @@ package vazkii.botania.common.block.mana;
 
 import net.minecraft.src.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.World;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -29,7 +29,7 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockManaVoid extends BlockModContainer implements ILexiconable, IPoolOverlayProvider {
 
-	IIcon overlay;
+	Icon overlay;
 
 	public BlockManaVoid() {
 		super(Material.rock);
@@ -40,7 +40,7 @@ public class BlockManaVoid extends BlockModContainer implements ILexiconable, IP
 	}
 
 	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
+	public void registerBlockIcons(IconRegister par1IconRegister) {
 		blockIcon = IconHelper.forBlock(par1IconRegister, this, 0);
 		overlay = IconHelper.forBlock(par1IconRegister, this, 1);
 	}
@@ -56,7 +56,7 @@ public class BlockManaVoid extends BlockModContainer implements ILexiconable, IP
 	}
 
 	@Override
-	public IIcon getIcon(World world, int x, int y, int z) {
+	public Icon getIcon(World world, int x, int y, int z) {
 		return overlay;
 	}
 

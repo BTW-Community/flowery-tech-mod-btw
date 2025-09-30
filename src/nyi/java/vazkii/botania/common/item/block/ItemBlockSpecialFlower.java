@@ -13,13 +13,13 @@ package vazkii.botania.common.item.block;
 import java.util.List;
 
 import net.minecraft.src.Block;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.stats.Achievement;
+import net.minecraft.src.Achievement;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.EnumChatFormatting;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.StatCollector;
 import net.minecraft.src.World;
 import vazkii.botania.api.BotaniaAPI;
@@ -41,12 +41,12 @@ public class ItemBlockSpecialFlower extends ItemBlockMod implements IRecipeKeyPr
 	}
 
 	@Override
-	public IIcon getIconIndex(ItemStack stack) {
+	public Icon getIconIndex(ItemStack stack) {
 		return BotaniaAPI.getSignatureForName(getType(stack)).getIconForStack(stack);
 	}
 
 	@Override
-	public IIcon getIcon(ItemStack stack, int pass) {
+	public Icon getIcon(ItemStack stack, int pass) {
 		return getIconIndex(stack);
 	}
 

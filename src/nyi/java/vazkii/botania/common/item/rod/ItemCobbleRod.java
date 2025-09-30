@@ -12,7 +12,7 @@ package vazkii.botania.common.item.rod;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.init.Blocks;
+import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
 import vazkii.botania.api.item.IBlockProvider;

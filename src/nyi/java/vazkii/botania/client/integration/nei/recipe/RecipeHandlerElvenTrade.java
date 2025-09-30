@@ -6,8 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.TextureMap;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.StatCollector;
 import net.minecraftforge.oredict.OreDictionary;

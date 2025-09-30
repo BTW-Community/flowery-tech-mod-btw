@@ -10,8 +10,8 @@
  */
 package vazkii.botania.client.gui.lexicon.button;
 
-import net.minecraft.client.audio.PositionedSoundRecord;
-import net.minecraft.client.audio.SoundHandler;
+import net.minecraft.src.PositionedSoundRecord;
+import net.minecraft.src.SoundHandler;
 import net.minecraft.src.GuiButton;
 import net.minecraft.src.ResourceLocation;
 

@@ -19,22 +19,22 @@ import java.util.List;
 import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.renderer.ItemRenderer;
-import net.minecraft.client.renderer.OpenGlHelper;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.src.Gui;
+import net.minecraft.src.ScaledResolution;
+import net.minecraft.src.ItemRenderer;
+import net.minecraft.src.OpenGlHelper;
+import net.minecraft.src.Tessellator;
+import net.minecraft.src.IconRegister;
+import net.minecraft.src.TextureMap;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.Item;
+import net.minecraft.src.EntityPlayerMP;
+import net.minecraft.src.IInventory;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.stats.Achievement;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Achievement;
+import net.minecraft.src.Icon;
 import net.minecraft.src.ResourceLocation;
 import net.minecraft.src.StatCollector;
 import net.minecraftforge.client.event.RenderPlayerEvent;
@@ -83,7 +83,7 @@ public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaub
 	private static final int COST_OVERKILL = COST * 3;
 	private static final int MAX_FLY_TIME = 1200;
 
-	public static IIcon[] wingIcons;
+	public static Icon[] wingIcons;
 	private static final int SUBTYPES = 8;
 	private static final int WING_TYPES = 9;
 
@@ -101,9 +101,9 @@ public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaub
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		itemIcon = IconHelper.forItem(par1IconRegister, this, 0);
-		wingIcons = new IIcon[WING_TYPES];
+		wingIcons = new Icon[WING_TYPES];
 		for(int i = 0; i < WING_TYPES; i++)
 			wingIcons[i] = IconHelper.forItem(par1IconRegister, this, i + 1);
 	}
@@ -345,7 +345,7 @@ public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaub
 		int meta = stack.getItemDamage();
 		if(type == RenderType.BODY) {
 			if(meta > 0 && meta <= ItemFlightTiara.wingIcons.length) {
-				IIcon icon = ItemFlightTiara.wingIcons[meta - 1];
+				Icon icon = ItemFlightTiara.wingIcons[meta - 1];
 				Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.locationItemsTexture);
 
 				boolean flying = event.entityPlayer.capabilities.isFlying;

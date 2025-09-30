@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.src.RenderHelper;
+import net.minecraft.src.entity.RenderItem;
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.src.StatCollector;
 

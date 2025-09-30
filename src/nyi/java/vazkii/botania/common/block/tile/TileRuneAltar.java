@@ -14,15 +14,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.src.ScaledResolution;
+import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.item.Item;
+import net.minecraft.src.ISidedInventory;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.src.NBTTagCompound;
+import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.StatCollector;
 
 import org.lwjgl.opengl.GL11;

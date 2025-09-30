@@ -12,8 +12,8 @@ package vazkii.botania.client.core.handler;
 
 import java.awt.Rectangle;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.src.Minecraft;
+import net.minecraft.src.ScaledResolution;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ResourceLocation;

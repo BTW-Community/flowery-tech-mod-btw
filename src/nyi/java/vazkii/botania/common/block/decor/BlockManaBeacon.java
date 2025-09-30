@@ -15,14 +15,14 @@ import java.util.List;
 
 import net.minecraft.src.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
 import vazkii.botania.api.lexicon.ILexiconable;
@@ -37,7 +37,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockManaBeacon extends BlockModContainer implements ILexiconable {
 
-	IIcon[] icons;
+	Icon[] icons;
 
 	public BlockManaBeacon() {
 		super(Material.iron);
@@ -50,14 +50,14 @@ public class BlockManaBeacon extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
-		icons = new IIcon[2];
+	public void registerBlockIcons(IconRegister par1IconRegister) {
+		icons = new Icon[2];
 		for(int i = 0; i < 2; i++)
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
 	}
 
 	@Override
-	public IIcon getIcon(int par1, int par2) {
+	public Icon getIcon(int par1, int par2) {
 		return icons[par1 == 1 ? 1 : 0];
 	}
 

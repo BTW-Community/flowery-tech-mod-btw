@@ -12,11 +12,11 @@ package vazkii.botania.common.entity;
 
 import net.minecraft.src.Block;
 import net.minecraft.entity.item.EntityMinecart;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.DamageSource;
+import net.minecraft.src.DamageSource;
 import net.minecraft.src.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;

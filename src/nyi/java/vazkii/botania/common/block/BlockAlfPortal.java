@@ -11,11 +11,11 @@
 package vazkii.botania.common.block;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
 import vazkii.botania.api.lexicon.ILexiconable;
@@ -29,8 +29,8 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockAlfPortal extends BlockModContainer implements IWandable, ILexiconable {
 
-	IIcon iconOff, iconOn;
-	public static IIcon portalTex;
+	Icon iconOff, iconOn;
+	public static Icon portalTex;
 
 	public BlockAlfPortal() {
 		super(Material.wood);
@@ -40,14 +40,14 @@ public class BlockAlfPortal extends BlockModContainer implements IWandable, ILex
 	}
 
 	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
+	public void registerBlockIcons(IconRegister par1IconRegister) {
 		iconOff = IconHelper.forBlock(par1IconRegister, this, 0);
 		iconOn = IconHelper.forBlock(par1IconRegister, this, 1);
 		portalTex = IconHelper.forBlock(par1IconRegister, this, "Inside");
 	}
 
 	@Override
-	public IIcon getIcon(int side, int meta) {
+	public Icon getIcon(int side, int meta) {
 		return meta == 0 ? iconOff : iconOn;
 	}
 

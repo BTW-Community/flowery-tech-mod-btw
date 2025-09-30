@@ -11,8 +11,8 @@
 package vazkii.botania.client.gui;
 
 import net.minecraft.src.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.achievement.GuiAchievements;
+import net.minecraft.src.GuiScreen;
+import net.minecraft.src.achievement.GuiAchievements;
 import net.minecraft.stats.StatFileWriter;
 import vazkii.botania.common.achievement.ModAchievements;
 import cpw.mods.fml.relauncher.ReflectionHelper;

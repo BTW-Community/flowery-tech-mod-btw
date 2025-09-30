@@ -12,8 +12,8 @@ package vazkii.botania.common.block;
 
 import net.minecraft.src.Block;
 import net.minecraft.block.BlockDispenser;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
+import net.minecraft.src.Block;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
 import net.minecraftforge.oredict.OreDictionary;

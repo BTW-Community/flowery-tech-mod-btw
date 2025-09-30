@@ -13,11 +13,11 @@ package vazkii.botania.common.entity;
 import java.util.List;
 
 import net.minecraft.src.Block;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.src.AxisAlignedBB;
+import net.minecraft.src.DamageSource;
+import net.minecraft.src.MovingObjectPosition;
 import net.minecraft.src.World;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.core.handler.ConfigHandler;

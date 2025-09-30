@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.src.Entity;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.AxisAlignedBB;
+import net.minecraft.src.Icon;
 import net.minecraft.src.World;
 import net.minecraftforge.common.IShearable;
 import vazkii.botania.client.core.helper.IconHelper;
@@ -25,7 +25,7 @@ import net.fabricmc.api.EnvType;
 
 public class ItemElementiumShears extends ItemManasteelShears {
 
-	IIcon dammitReddit;
+	Icon dammitReddit;
 
 	public ItemElementiumShears() {
 		super(LibItemNames.ELEMENTIUM_SHEARS);
@@ -49,13 +49,13 @@ public class ItemElementiumShears extends ItemManasteelShears {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		super.registerIcons(par1IconRegister);
 		dammitReddit = IconHelper.forName(par1IconRegister, "dammitReddit");
 	}
 
 	@Override
-	public IIcon getIconIndex(ItemStack par1ItemStack) {
+	public Icon getIconIndex(ItemStack par1ItemStack) {
 		return par1ItemStack.getDisplayName().equalsIgnoreCase("dammit reddit") ? dammitReddit : super.getIconIndex(par1ItemStack);
 	}
 

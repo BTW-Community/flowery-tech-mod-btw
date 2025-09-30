@@ -17,7 +17,7 @@ import net.minecraft.src.Block;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.ChatComponentText;
+import net.minecraft.src.ChatComponentText;
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.src.World;
 import vazkii.botania.common.core.helper.ItemNBTHelper;

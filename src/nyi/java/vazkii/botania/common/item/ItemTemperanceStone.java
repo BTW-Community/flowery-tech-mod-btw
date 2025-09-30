@@ -12,11 +12,11 @@ package vazkii.botania.common.item;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.StatCollector;
 import net.minecraft.src.World;
 import vazkii.botania.client.core.helper.IconHelper;
@@ -26,7 +26,7 @@ import net.fabricmc.api.EnvType;
 
 public class ItemTemperanceStone extends ItemMod {
 
-	IIcon enabledIcon;
+	Icon enabledIcon;
 
 	public ItemTemperanceStone() {
 		setUnlocalizedName(LibItemNames.TEMPERANCE_STONE);
@@ -45,14 +45,14 @@ public class ItemTemperanceStone extends ItemMod {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		itemIcon = IconHelper.forItem(par1IconRegister, this, 0);
 		enabledIcon = IconHelper.forItem(par1IconRegister, this, 1);
 	}
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public IIcon getIconFromDamage(int par1) {
+	public Icon getIconFromDamage(int par1) {
 		return par1 == 1 ? enabledIcon : itemIcon;
 	}
 

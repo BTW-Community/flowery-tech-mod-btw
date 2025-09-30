@@ -12,7 +12,7 @@ package vazkii.botania.common.item;
 
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.ResourceLocation;
 import net.minecraft.src.World;

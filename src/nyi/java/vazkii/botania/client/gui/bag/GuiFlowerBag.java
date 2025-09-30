@@ -12,10 +12,10 @@ package vazkii.botania.client.gui.bag;
 
 import java.util.List;
 
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.client.resources.I18n;
+import net.minecraft.src.inventory.GuiContainer;
+import net.minecraft.src.RenderHelper;
+import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.I18n;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.src.ItemStack;

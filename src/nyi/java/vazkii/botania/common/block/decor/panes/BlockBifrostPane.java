@@ -10,8 +10,8 @@
  */
 package vazkii.botania.common.block.decor.panes;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.src.IconRegister;
+import net.minecraft.src.TextureAtlasSprite;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
 import vazkii.botania.client.render.block.InterpolatedIcon;
@@ -39,7 +39,7 @@ public class BlockBifrostPane extends BlockModPane {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerBlockIcons(IIconRegister reg) {
+	public void registerBlockIcons(IconRegister reg) {
 		// NO-OP
 	}
 

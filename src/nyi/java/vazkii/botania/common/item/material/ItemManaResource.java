@@ -13,17 +13,17 @@ package vazkii.botania.common.item.material;
 import java.awt.Color;
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
+import net.minecraft.src.IInventory;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.stats.Achievement;
-import net.minecraft.util.IIcon;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.src.Achievement;
+import net.minecraft.src.Icon;
+import net.minecraft.src.MovingObjectPosition;
 import net.minecraft.src.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -46,13 +46,13 @@ import net.fabricmc.api.EnvType;
 public class ItemManaResource extends ItemMod implements IFlowerComponent, IElvenItem, IPickupAchievement {
 
 	final int types = 24;
-	IIcon[] icons;
+	Icon[] icons;
 
 	// begin dank_memes
-	public IIcon tailIcon = null;
-	public IIcon phiFlowerIcon = null;
-	public IIcon goldfishIcon = null;
-	public IIcon nerfBatIcon = null;
+	public Icon tailIcon = null;
+	public Icon phiFlowerIcon = null;
+	public Icon goldfishIcon = null;
+	public Icon nerfBatIcon = null;
 	// end dank_memes
 
 	public ItemManaResource() {
@@ -130,8 +130,8 @@ public class ItemManaResource extends ItemMod implements IFlowerComponent, IElve
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerIcons(IIconRegister par1IconRegister) {
-		icons = new IIcon[types];
+	public void registerIcons(IconRegister par1IconRegister) {
+		icons = new Icon[types];
 		for(int i = 0; i < icons.length; i++)
 			icons[i] = IconHelper.forName(par1IconRegister, LibItemNames.MANA_RESOURCE_NAMES[i]);
 
@@ -157,7 +157,7 @@ public class ItemManaResource extends ItemMod implements IFlowerComponent, IElve
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public IIcon getIconFromDamage(int par1) {
+	public Icon getIconFromDamage(int par1) {
 		return icons[Math.min(icons.length - 1, par1)];
 	}
 

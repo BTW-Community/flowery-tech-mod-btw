@@ -11,10 +11,10 @@
 package vazkii.botania.common.block.tile.mana;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.src.ScaledResolution;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraftforge.common.util.ForgeDirection;

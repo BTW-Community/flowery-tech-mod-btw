@@ -14,17 +14,17 @@ import java.awt.Color;
 
 import net.minecraft.src.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ItemRenderer;
+import net.minecraft.src.ItemRenderer;
 import net.minecraft.src.RenderBlocks;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.init.Blocks;
+import net.minecraft.src.Tessellator;
+import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.TextureMap;
+import net.minecraft.src.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.src.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
@@ -133,7 +133,7 @@ public class RenderTileAltar extends TileEntitySpecialRenderer {
 							GL11.glTranslatef(-1F, -1.1F, 0F);
 							GL11.glScalef(2F, 2F, 2F);
 						} else {
-							IIcon icon = stack.getItem().getIcon(stack, 0);
+							Icon icon = stack.getItem().getIcon(stack, 0);
 							if (icon != null) {
 								Color color = new Color(stack.getItem().getColorFromItemStack(stack, 0));
 								GL11.glColor3ub((byte) color.getRed(), (byte) color.getGreen(), (byte) color.getBlue());
@@ -180,7 +180,7 @@ public class RenderTileAltar extends TileEntitySpecialRenderer {
 		forceMeta = -1;
 	}
 
-	public void renderIcon(int par1, int par2, IIcon par3Icon, int par4, int par5, int brightness) {
+	public void renderIcon(int par1, int par2, Icon par3Icon, int par4, int par5, int brightness) {
 		Tessellator tessellator = Tessellator.instance;
 		tessellator.startDrawingQuads();
 		if(brightness != -1)

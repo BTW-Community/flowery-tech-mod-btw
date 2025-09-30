@@ -10,10 +10,10 @@
  */
 package vazkii.botania.client.render.entity;
 
-import net.minecraft.client.renderer.OpenGlHelper;
-import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.src.OpenGlHelper;
+import net.minecraft.src.entity.RenderLiving;
 import net.minecraft.src.Entity;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.ResourceLocation;
 
 import org.lwjgl.opengl.ARBShaderObjects;

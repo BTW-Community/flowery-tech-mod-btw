@@ -10,7 +10,7 @@
  */
 package vazkii.botania.client.gui;
 
-import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.src.GuiScreen;
 import net.minecraftforge.common.config.ConfigElement;
 import net.minecraftforge.common.config.Configuration;
 import vazkii.botania.common.core.handler.ConfigHandler;

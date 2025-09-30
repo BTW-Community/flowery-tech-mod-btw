@@ -14,13 +14,13 @@ import java.awt.Color;
 import java.util.List;
 
 import net.minecraft.src.Block;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.src.Minecraft;
+import net.minecraft.src.Tessellator;
+import net.minecraft.src.entity.RenderManager;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.ChunkCoordinates;
 import net.minecraft.src.World;
 import net.minecraftforge.client.event.RenderWorldLastEvent;

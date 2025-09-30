@@ -13,7 +13,7 @@ package vazkii.botania.common.lexicon.page;
 import java.util.List;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.src.FontRenderer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.StatCollector;
 

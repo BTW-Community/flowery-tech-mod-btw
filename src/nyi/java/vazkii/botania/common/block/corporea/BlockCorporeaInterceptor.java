@@ -13,10 +13,10 @@ package vazkii.botania.common.block.corporea;
 import java.util.Random;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
 import vazkii.botania.api.lexicon.ILexiconable;
@@ -29,7 +29,7 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockCorporeaInterceptor extends BlockCorporeaBase implements ILexiconable {
 
-	IIcon[] icons;
+	Icon[] icons;
 
 	public BlockCorporeaInterceptor() {
 		super(Material.iron, LibBlockNames.CORPOREA_INTERCEPTOR);
@@ -38,14 +38,14 @@ public class BlockCorporeaInterceptor extends BlockCorporeaBase implements ILexi
 	}
 
 	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
-		icons = new IIcon[2];
+	public void registerBlockIcons(IconRegister par1IconRegister) {
+		icons = new Icon[2];
 		for(int i = 0; i < icons.length; i++)
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
 	}
 
 	@Override
-	public IIcon getIcon(int par1, int par2) {
+	public Icon getIcon(int par1, int par2) {
 		return icons[par1 > 1 ? 1 : 0];
 	}
 

@@ -11,8 +11,8 @@
 package vazkii.botania.client.model;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.src.ModelBase;
+import net.minecraft.src.ModelRenderer;
 
 public class ModelTeruTeruBozu extends ModelBase {
 

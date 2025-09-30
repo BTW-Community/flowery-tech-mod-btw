@@ -15,7 +15,7 @@ import java.util.List;
 import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.StatCollector;
 import net.minecraft.src.World;
 import vazkii.botania.common.achievement.ModAchievements;

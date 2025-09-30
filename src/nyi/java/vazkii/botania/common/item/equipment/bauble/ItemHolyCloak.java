@@ -11,8 +11,8 @@
 package vazkii.botania.common.item.equipment.bauble;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.ModelBiped;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.ModelBiped;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.ResourceLocation;

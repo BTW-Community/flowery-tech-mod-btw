@@ -14,12 +14,12 @@ import java.util.List;
 
 import net.minecraft.src.Block;
 import net.minecraft.block.BlockWall;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.World;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -60,7 +60,7 @@ public class BlockModWall extends BlockWall implements ILexiconable {
 	}
 
 	@Override
-	public IIcon getIcon(int side, int meta) {
+	public Icon getIcon(int side, int meta) {
 		return block.getIcon(side, this.meta);
 	}
 
@@ -70,7 +70,7 @@ public class BlockModWall extends BlockWall implements ILexiconable {
 	}
 
 	@Override
-	public void registerBlockIcons(IIconRegister p_149651_1_) {
+	public void registerBlockIcons(IconRegister p_149651_1_) {
 		// NO-OP
 	}
 

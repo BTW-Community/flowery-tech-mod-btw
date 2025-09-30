@@ -13,7 +13,7 @@ package vazkii.botania.common.block.subtile.functional;
 import java.util.Map;
 
 import net.minecraft.src.Block;
-import net.minecraft.init.Blocks;
+import net.minecraft.src.Block;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.common.lexicon.LexiconData;

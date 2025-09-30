@@ -14,8 +14,8 @@ import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.ChatComponentTranslation;
-import net.minecraft.util.ChatStyle;
+import net.minecraft.src.ChatComponentTranslation;
+import net.minecraft.src.ChatStyle;
 import net.minecraft.src.EnumChatFormatting;
 import vazkii.botania.common.item.ItemLexicon;
 

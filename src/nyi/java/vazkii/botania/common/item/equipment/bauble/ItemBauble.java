@@ -13,11 +13,11 @@ package vazkii.botania.common.item.equipment.bauble;
 import java.util.List;
 import java.util.UUID;
 
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.GuiScreen;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.StatCollector;
 import net.minecraft.src.World;
 import thaumcraft.api.IRunicArmor;

@@ -10,10 +10,10 @@
  */
 package vazkii.botania.common.crafting.recipe;
 
-import net.minecraft.init.Items;
+import net.minecraft.src.Item;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.src.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.src.IRecipe;
 import net.minecraft.src.World;
 import vazkii.botania.api.mana.ICompositableLens;
 import vazkii.botania.common.item.ModItems;

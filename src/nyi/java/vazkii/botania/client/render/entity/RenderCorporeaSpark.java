@@ -12,14 +12,14 @@ package vazkii.botania.client.render.entity;
 
 import net.minecraft.src.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ItemRenderer;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.src.ItemRenderer;
+import net.minecraft.src.Tessellator;
+import net.minecraft.src.TextureMap;
 import net.minecraft.entity.passive.EntitySheep;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraftforge.common.util.ForgeDirection;
 
 import org.lwjgl.opengl.GL11;
@@ -30,7 +30,7 @@ import vazkii.botania.common.item.ItemCorporeaSpark;
 public class RenderCorporeaSpark extends RenderSparkBase<EntityCorporeaSpark> {
 
 	@Override
-	public IIcon getBaseIcon(EntityCorporeaSpark entity) {
+	public Icon getBaseIcon(EntityCorporeaSpark entity) {
 		return entity.isMaster() ? ItemCorporeaSpark.worldIconMaster : ItemCorporeaSpark.worldIcon;
 	}
 
@@ -41,7 +41,7 @@ public class RenderCorporeaSpark extends RenderSparkBase<EntityCorporeaSpark> {
 	}
 
 	@Override
-	public IIcon getSpinningIcon(EntityCorporeaSpark entity) {
+	public Icon getSpinningIcon(EntityCorporeaSpark entity) {
 		return ItemCorporeaSpark.iconColorStar;
 	}
 
@@ -69,7 +69,7 @@ public class RenderCorporeaSpark extends RenderSparkBase<EntityCorporeaSpark> {
 		Item item = stack.getItem();
 		boolean block = item instanceof ItemBlock;
 		Minecraft.getMinecraft().renderEngine.bindTexture(block ? TextureMap.locationBlocksTexture : TextureMap.locationItemsTexture);
-		IIcon icon = block ? Block.getBlockFromItem(item).getBlockTextureFromSide(ForgeDirection.UP.ordinal()) : item.getIcon(stack, 0);
+		Icon icon = block ? Block.getBlockFromItem(item).getBlockTextureFromSide(ForgeDirection.UP.ordinal()) : item.getIcon(stack, 0);
 
 		if(icon != null) {
 			float minU = icon.getMinU();

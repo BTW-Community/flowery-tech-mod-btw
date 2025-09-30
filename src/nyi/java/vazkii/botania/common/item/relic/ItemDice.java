@@ -14,12 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.item.Item;
+import net.minecraft.src.EntityPlayerMP;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.stats.Achievement;
-import net.minecraft.util.ChatComponentTranslation;
-import net.minecraft.util.ChatStyle;
+import net.minecraft.src.Achievement;
+import net.minecraft.src.ChatComponentTranslation;
+import net.minecraft.src.ChatStyle;
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.src.World;
 import vazkii.botania.api.item.IRelic;

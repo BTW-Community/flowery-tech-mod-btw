@@ -14,12 +14,12 @@ import java.awt.Color;
 import java.util.List;
 
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.src.ISidedInventory;
 import net.minecraft.src.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.src.NBTTagCompound;
 import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.src.PotionEffect;
+import net.minecraft.src.AxisAlignedBB;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.brew.Brew;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;

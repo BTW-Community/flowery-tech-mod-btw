@@ -13,13 +13,13 @@ package vazkii.botania.client.render.tile;
 import java.awt.Color;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ItemRenderer;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.src.ItemRenderer;
+import net.minecraft.src.Tessellator;
+import net.minecraft.src.TextureMap;
+import net.minecraft.src.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 
 import org.lwjgl.opengl.GL11;
 
@@ -44,7 +44,7 @@ public class RenderTileSparkChanger extends TileEntitySpecialRenderer {
 
 			int renderPass = 0;
 			do {
-				IIcon icon = stack.getItem().getIcon(stack, renderPass);
+				Icon icon = stack.getItem().getIcon(stack, renderPass);
 				if(icon != null) {
 					Color color = new Color(stack.getItem().getColorFromItemStack(stack, renderPass));
 					GL11.glColor3ub((byte) color.getRed(), (byte) color.getGreen(), (byte) color.getBlue());

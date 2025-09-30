@@ -11,10 +11,10 @@
 package vazkii.botania.common.item;
 
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.Item;
+import net.minecraft.src.IInventory;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.src.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.src.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;

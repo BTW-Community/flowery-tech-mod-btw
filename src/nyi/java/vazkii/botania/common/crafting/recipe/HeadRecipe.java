@@ -10,8 +10,8 @@
  */
 package vazkii.botania.common.crafting.recipe;
 
-import net.minecraft.init.Items;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.src.Item;
+import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.StatCollector;
 import vazkii.botania.api.recipe.RecipeRuneAltar;

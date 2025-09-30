@@ -11,13 +11,13 @@
 package vazkii.botania.common.item;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.src.FontRenderer;
+import net.minecraft.src.ScaledResolution;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.init.Blocks;
+import net.minecraft.src.Block;
 import net.minecraft.item.EnumAction;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.src.MovingObjectPosition;
 import net.minecraft.src.World;
 
 import org.lwjgl.opengl.GL11;

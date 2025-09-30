@@ -15,14 +15,14 @@ import java.util.Random;
 
 import net.minecraft.src.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
+import net.minecraft.src.Block;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.IIcon;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.src.Icon;
+import net.minecraft.src.MovingObjectPosition;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
 import net.minecraftforge.common.EnumPlantType;
@@ -40,7 +40,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class BlockAltGrass extends BlockMod implements ILexiconable {
 
 	private static final int SUBTYPES = 6;
-	IIcon[] icons;
+	Icon[] icons;
 
 	public BlockAltGrass() {
 		super(Material.grass);
@@ -73,14 +73,14 @@ public class BlockAltGrass extends BlockMod implements ILexiconable {
 	}
 
 	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
-		icons = new IIcon[SUBTYPES * 2];
+	public void registerBlockIcons(IconRegister par1IconRegister) {
+		icons = new Icon[SUBTYPES * 2];
 		for(int i = 0; i < icons.length; i++)
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
 	}
 
 	@Override
-	public IIcon getIcon(int side, int meta) {
+	public Icon getIcon(int side, int meta) {
 		return side == 0 || meta >= SUBTYPES ? Blocks.dirt.getIcon(side, meta) : side == 1 ? icons[meta * 2] : icons[meta * 2 + 1];
 	}
 

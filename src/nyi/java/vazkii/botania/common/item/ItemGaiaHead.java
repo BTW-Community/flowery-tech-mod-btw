@@ -12,7 +12,7 @@ package vazkii.botania.common.item;
 
 import net.minecraft.block.BlockSkull;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.init.Blocks;
+import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
 import net.minecraft.tileentity.TileEntitySkull;

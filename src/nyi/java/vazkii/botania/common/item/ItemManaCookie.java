@@ -10,13 +10,13 @@
  */
 package vazkii.botania.common.item;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.src.ItemStack;
 import net.minecraft.potion.Potion;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.World;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.client.lib.LibResources;
@@ -29,7 +29,7 @@ import net.fabricmc.api.EnvType;
 
 public class ItemManaCookie extends ItemFood {
 
-	private IIcon totalBiscuitIcon;
+	private Icon totalBiscuitIcon;
 
 	public ItemManaCookie() {
 		super(0, 0.1F, false);
@@ -56,18 +56,18 @@ public class ItemManaCookie extends ItemFood {
 	}
 
 	@Override
-	public IIcon getIcon(ItemStack stack, int pass) {
+	public Icon getIcon(ItemStack stack, int pass) {
 		return getIconIndex(stack);
 	}
 
 	@Override
-	public IIcon getIconIndex(ItemStack stack) {
+	public Icon getIconIndex(ItemStack stack) {
 		return stack.getDisplayName().toLowerCase().equals("totalbiscuit") ? totalBiscuitIcon : super.getIconIndex(stack);
 	}
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		itemIcon = IconHelper.forItem(par1IconRegister, this);
 		totalBiscuitIcon = IconHelper.forName(par1IconRegister, "totalBiscuit");
 	}

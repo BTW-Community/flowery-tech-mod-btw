@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.item.rod;
 
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.src.ItemStack;

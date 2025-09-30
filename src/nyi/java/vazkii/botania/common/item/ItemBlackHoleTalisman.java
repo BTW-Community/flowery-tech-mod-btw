@@ -14,19 +14,19 @@ import java.util.Arrays;
 import java.util.List;
 
 import net.minecraft.src.Block;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.Entity;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.item.Item;
+import net.minecraft.src.Block;
+import net.minecraft.src.IInventory;
+import net.minecraft.src.ISidedInventory;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.EnumChatFormatting;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.StatCollector;
 import net.minecraft.src.World;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -49,7 +49,7 @@ public class ItemBlackHoleTalisman extends ItemMod implements IBlockProvider {
 	private static final String TAG_BLOCK_META = "blockMeta";
 	private static final String TAG_BLOCK_COUNT = "blockCount";
 
-	IIcon enabledIcon;
+	Icon enabledIcon;
 
 	public ItemBlackHoleTalisman() {
 		setUnlocalizedName(LibItemNames.BLACK_HOLE_TALISMAN);
@@ -238,14 +238,14 @@ public class ItemBlackHoleTalisman extends ItemMod implements IBlockProvider {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		itemIcon = IconHelper.forItem(par1IconRegister, this, 0);
 		enabledIcon = IconHelper.forItem(par1IconRegister, this, 1);
 	}
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public IIcon getIconFromDamage(int par1) {
+	public Icon getIconFromDamage(int par1) {
 		return par1 == 1 ? enabledIcon : itemIcon;
 	}
 

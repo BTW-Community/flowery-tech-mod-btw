@@ -14,13 +14,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import net.minecraft.client.gui.Gui;
+import net.minecraft.src.Gui;
 import net.minecraft.src.GuiButton;
-import net.minecraft.client.gui.GuiTextField;
-import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.init.Items;
+import net.minecraft.src.GuiTextField;
+import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.src.StatCollector;
 

@@ -10,10 +10,10 @@
  */
 package vazkii.botania.common.block.decor;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
 import thaumcraft.api.crafting.IInfusionStabiliser;
@@ -30,8 +30,8 @@ import cpw.mods.fml.common.Optional;
 @Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.crafting.IInfusionStabiliser", striprefs = true)
 public class BlockShinyFlower extends BlockModFlower implements IInfusionStabiliser, IHornHarvestable {
 
-	private static IIcon[] icons;
-	private static IIcon[] iconsAlt;
+	private static Icon[] icons;
+	private static Icon[] iconsAlt;
 
 	public BlockShinyFlower() {
 		super(LibBlockNames.SHINY_FLOWER);
@@ -45,9 +45,9 @@ public class BlockShinyFlower extends BlockModFlower implements IInfusionStabili
 	}
 
 	@Override
-	public void registerBlockIcons(IIconRegister register) {
-		icons = new IIcon[16];
-		iconsAlt = new IIcon[16];
+	public void registerBlockIcons(IconRegister register) {
+		icons = new Icon[16];
+		iconsAlt = new Icon[16];
 		for(int i = 0; i < 16; i++) {
 			icons[i] = IconHelper.forName(register, "flowerGlimmering" + i);
 			iconsAlt[i] = IconHelper.forName(register, "flowerGlimmering" + i, BlockModFlower.ALT_DIR);
@@ -55,7 +55,7 @@ public class BlockShinyFlower extends BlockModFlower implements IInfusionStabili
 	}
 
 	@Override
-	public IIcon getIcon(int par1, int par2) {
+	public Icon getIcon(int par1, int par2) {
 		return (ConfigHandler.altFlowerTextures ? iconsAlt : icons)[Math.min(icons.length - 1, par2)];
 	}
 

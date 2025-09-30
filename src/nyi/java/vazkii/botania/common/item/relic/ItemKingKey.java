@@ -12,11 +12,11 @@ package vazkii.botania.common.item.relic;
 
 import java.util.Random;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.World;
 import vazkii.botania.api.mana.IManaUsingItem;
@@ -33,17 +33,17 @@ public class ItemKingKey extends ItemRelic implements IManaUsingItem {
 	private static final String TAG_CHARGING = "charging";
 
 	private static final int WEAPON_TYPES = 12;
-	public static IIcon[] weaponIcons;
+	public static Icon[] weaponIcons;
 
 	public ItemKingKey() {
 		super(LibItemNames.KING_KEY);
 	}
 
 	@Override
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		super.registerIcons(par1IconRegister);
 
-		weaponIcons = new IIcon[WEAPON_TYPES];
+		weaponIcons = new Icon[WEAPON_TYPES];
 		for(int i = 0; i < WEAPON_TYPES; i++)
 			weaponIcons[i] = IconHelper.forName(par1IconRegister, "gateWeapon" + i);
 	}

@@ -11,8 +11,8 @@
 package vazkii.botania.client.gui.lexicon.button;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.OpenGlHelper;
-import net.minecraft.client.renderer.texture.TextureManager;
+import net.minecraft.src.OpenGlHelper;
+import net.minecraft.src.TextureManager;
 import net.minecraft.src.ResourceLocation;
 import net.minecraft.src.StatCollector;
 

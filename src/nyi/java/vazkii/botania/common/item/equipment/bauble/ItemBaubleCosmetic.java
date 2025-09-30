@@ -13,15 +13,15 @@ package vazkii.botania.common.item.equipment.bauble;
 import java.util.List;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ItemRenderer;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.src.ItemRenderer;
+import net.minecraft.src.Tessellator;
+import net.minecraft.src.IconRegister;
+import net.minecraft.src.TextureMap;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.StatCollector;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.oredict.RecipeSorter;
@@ -40,7 +40,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class ItemBaubleCosmetic extends ItemBauble implements ICosmeticBauble {
 
 	private static final int SUBTYPES = 32;
-	IIcon[] icons;
+	Icon[] icons;
 
 	public ItemBaubleCosmetic() {
 		super(LibItemNames.COSMETIC);
@@ -53,8 +53,8 @@ public class ItemBaubleCosmetic extends ItemBauble implements ICosmeticBauble {
 	}
 
 	@Override
-	public void registerIcons(IIconRegister par1IconRegister) {
-		icons = new IIcon[SUBTYPES];
+	public void registerIcons(IconRegister par1IconRegister) {
+		icons = new Icon[SUBTYPES];
 		for(int i = 0; i < SUBTYPES; i++)
 			icons[i] = IconHelper.forItem(par1IconRegister, this, i);
 	}
@@ -66,7 +66,7 @@ public class ItemBaubleCosmetic extends ItemBauble implements ICosmeticBauble {
 	}
 
 	@Override
-	public IIcon getIconFromDamage(int dmg) {
+	public Icon getIconFromDamage(int dmg) {
 		return icons[Math.min(SUBTYPES - 1, dmg)];
 	}
 
@@ -331,7 +331,7 @@ public class ItemBaubleCosmetic extends ItemBauble implements ICosmeticBauble {
 	}
 
 	public void renderIcon(int i) {
-		IIcon icon = icons[i];
+		Icon icon = icons[i];
 		float f = icon.getMinU();
 		float f1 = icon.getMaxU();
 		float f2 = icon.getMinV();

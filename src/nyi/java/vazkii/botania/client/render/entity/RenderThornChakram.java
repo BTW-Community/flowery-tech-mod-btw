@@ -10,11 +10,11 @@
  */
 package vazkii.botania.client.render.entity;
 
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.src.Tessellator;
+import net.minecraft.src.entity.Render;
+import net.minecraft.src.TextureMap;
 import net.minecraft.src.Entity;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
@@ -30,9 +30,9 @@ public class RenderThornChakram extends Render {
 	public void doRender(Entity p_76986_1_, double p_76986_2_, double p_76986_4_, double p_76986_6_, float p_76986_8_, float p_76986_9_) {
 		EntityThornChakram c = (EntityThornChakram) p_76986_1_;
 		boolean fire = c.isFire();
-		IIcon iicon = ModItems.thornChakram.getIconFromDamage(fire ? 1 : 0);
+		Icon Icon = ModItems.thornChakram.getIconFromDamage(fire ? 1 : 0);
 
-		if(iicon != null)  {
+		if(Icon != null)  {
 			GL11.glPushMatrix();
 			GL11.glTranslatef((float)p_76986_2_, (float)p_76986_4_, (float)p_76986_6_);
 			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
@@ -40,7 +40,7 @@ public class RenderThornChakram extends Render {
 			bindEntityTexture(p_76986_1_);
 			Tessellator tessellator = Tessellator.instance;
 
-			func_77026_a(tessellator, iicon, fire ? 240 : -1);
+			func_77026_a(tessellator, Icon, fire ? 240 : -1);
 			GL11.glDisable(GL12.GL_RESCALE_NORMAL);
 			GL11.glPopMatrix();
 		}
@@ -51,7 +51,7 @@ public class RenderThornChakram extends Render {
 		return TextureMap.locationItemsTexture;
 	}
 
-	private void func_77026_a(Tessellator p_77026_1_, IIcon p_77026_2_, int light) {
+	private void func_77026_a(Tessellator p_77026_1_, Icon p_77026_2_, int light) {
 		float f = p_77026_2_.getMinU();
 		float f1 = p_77026_2_.getMaxU();
 		float f2 = p_77026_2_.getMinV();

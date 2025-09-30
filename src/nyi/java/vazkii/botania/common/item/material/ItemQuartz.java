@@ -12,11 +12,11 @@ package vazkii.botania.common.item.material;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import vazkii.botania.api.recipe.IElvenItem;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.core.handler.ConfigHandler;
@@ -26,7 +26,7 @@ import vazkii.botania.common.lib.LibItemNames;
 public class ItemQuartz extends ItemMod implements IElvenItem {
 
 	private static final int SUBTYPES = 7;
-	IIcon[] icons;
+	Icon[] icons;
 
 	public ItemQuartz() {
 		setUnlocalizedName(LibItemNames.QUARTZ);
@@ -40,14 +40,14 @@ public class ItemQuartz extends ItemMod implements IElvenItem {
 	}
 
 	@Override
-	public void registerIcons(IIconRegister par1IconRegister) {
-		icons = new IIcon[SUBTYPES];
+	public void registerIcons(IconRegister par1IconRegister) {
+		icons = new Icon[SUBTYPES];
 		for(int i = 0; i < icons.length; i++)
 			icons[i] = IconHelper.forItem(par1IconRegister, this, i);
 	}
 
 	@Override
-	public IIcon getIconFromDamage(int par1) {
+	public Icon getIconFromDamage(int par1) {
 		return icons[Math.min(icons.length - 1, par1)];
 	}
 

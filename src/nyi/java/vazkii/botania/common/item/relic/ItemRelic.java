@@ -12,13 +12,13 @@ package vazkii.botania.common.item.relic;
 
 import java.util.List;
 
-import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.src.GuiScreen;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.item.EnumRarity;
+import net.minecraft.src.EnumRarity;
 import net.minecraft.src.ItemStack;
-import net.minecraft.stats.Achievement;
-import net.minecraft.util.DamageSource;
+import net.minecraft.src.Achievement;
+import net.minecraft.src.DamageSource;
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.src.StatCollector;
 import net.minecraft.src.World;

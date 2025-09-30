@@ -14,7 +14,7 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import net.minecraft.client.renderer.OpenGlHelper;
+import net.minecraft.src.OpenGlHelper;
 
 import org.apache.logging.log4j.Level;
 import org.lwjgl.opengl.ARBFragmentShader;

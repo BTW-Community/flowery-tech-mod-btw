@@ -14,9 +14,9 @@ import java.util.List;
 
 import net.minecraft.src.Block;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import vazkii.botania.common.item.block.ItemBlockWithMetadataAndName;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -47,7 +47,7 @@ public class BlockVariantWall extends BlockModWall {
 	}
 
 	@Override
-	public IIcon getIcon(int side, int meta) {
+	public Icon getIcon(int side, int meta) {
 		return block.getIcon(side, meta + metaShift);
 	}
 

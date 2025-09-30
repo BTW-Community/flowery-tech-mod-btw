@@ -11,9 +11,9 @@
 package vazkii.botania.common.achievement;
 
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
-import net.minecraft.stats.Achievement;
+import net.minecraft.src.Achievement;
 
 public interface ICraftAchievement {
 

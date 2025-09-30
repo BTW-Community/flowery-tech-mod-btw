@@ -13,15 +13,15 @@ package vazkii.botania.common.item.brew;
 import java.awt.Color;
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
+import net.minecraft.src.PotionEffect;
 import net.minecraft.src.EnumChatFormatting;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.StatCollector;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.brew.Brew;
@@ -38,7 +38,7 @@ public class ItemIncenseStick extends ItemMod implements IBrewItem, IBrewContain
 	private static final String TAG_BREW_KEY = "brewKey";
 	public static final int TIME_MULTIPLIER = 60;
 
-	IIcon[] icons;
+	Icon[] icons;
 
 	public ItemIncenseStick() {
 		setUnlocalizedName(LibItemNames.INCENSE_STICK);
@@ -56,8 +56,8 @@ public class ItemIncenseStick extends ItemMod implements IBrewItem, IBrewContain
 	}
 
 	@Override
-	public void registerIcons(IIconRegister par1IconRegister) {
-		icons = new IIcon[2];
+	public void registerIcons(IconRegister par1IconRegister) {
+		icons = new Icon[2];
 		for(int i = 0; i < icons.length; i++)
 			icons[i] = IconHelper.forItem(par1IconRegister, this, i);
 	}
@@ -68,7 +68,7 @@ public class ItemIncenseStick extends ItemMod implements IBrewItem, IBrewContain
 	}
 
 	@Override
-	public IIcon getIcon(ItemStack stack, int pass) {
+	public Icon getIcon(ItemStack stack, int pass) {
 		return icons[pass];
 	}
 

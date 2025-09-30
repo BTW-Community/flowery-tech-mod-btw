@@ -16,10 +16,10 @@ import java.util.List;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ChatComponentTranslation;
-import net.minecraft.util.ChatStyle;
+import net.minecraft.src.GuiScreen;
+import net.minecraft.src.NBTTagCompound;
+import net.minecraft.src.ChatComponentTranslation;
+import net.minecraft.src.ChatStyle;
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.src.StatCollector;
 

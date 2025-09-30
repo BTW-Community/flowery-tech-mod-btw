@@ -11,8 +11,8 @@
 package vazkii.botania.common.block.tile.string;
 
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.src.IInventory;
+import net.minecraft.src.ISidedInventory;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
 import vazkii.botania.common.core.helper.InventoryHelper;

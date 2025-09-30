@@ -15,8 +15,8 @@ import java.net.URI;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.GuiButton;
-import net.minecraft.util.ChatComponentTranslation;
-import net.minecraft.util.ChatStyle;
+import net.minecraft.src.ChatComponentTranslation;
+import net.minecraft.src.ChatStyle;
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.src.StatCollector;
 import vazkii.botania.api.internal.IGuiLexiconEntry;

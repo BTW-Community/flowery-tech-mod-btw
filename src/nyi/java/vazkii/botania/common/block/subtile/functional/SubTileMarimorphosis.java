@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import net.minecraft.src.Block;
-import net.minecraft.init.Blocks;
+import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.ChunkCoordinates;
 import net.minecraftforge.common.BiomeDictionary;

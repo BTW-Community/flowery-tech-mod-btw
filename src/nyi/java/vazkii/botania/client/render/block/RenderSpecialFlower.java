@@ -11,10 +11,10 @@
 package vazkii.botania.client.render.block;
 
 import net.minecraft.src.Block;
-import net.minecraft.client.renderer.EntityRenderer;
+import net.minecraft.src.EntityRenderer;
 import net.minecraft.src.RenderBlocks;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Tessellator;
+import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;
 import vazkii.botania.api.lexicon.multiblock.IMultiblockRenderHook;
 import vazkii.botania.api.lexicon.multiblock.Multiblock;
@@ -72,14 +72,14 @@ public class RenderSpecialFlower implements ISimpleBlockRenderingHandler, IMulti
 
 
 		// Only change here, to use xyz rather than side/meta
-		IIcon icon = render.getBlockIcon(par1Block, blockAccess, par2, par3, par4, 0);
+		Icon icon = render.getBlockIcon(par1Block, blockAccess, par2, par3, par4, 0);
 		drawCrossedSquares(blockAccess, par1Block, icon, par2, par3, par4, d1, d2, d0, 1.0F, render);
 
 		return true;
 	}
 
 	// Copied from RenderBlocks
-	public static void drawCrossedSquares(IBlockAccess blockAccess, Block par1Block, IIcon icon, int x, int y, int z, double par3, double par5, double par7, float par9, RenderBlocks render) {
+	public static void drawCrossedSquares(IBlockAccess blockAccess, Block par1Block, Icon icon, int x, int y, int z, double par3, double par5, double par7, float par9, RenderBlocks render) {
 		Tessellator tessellator = Tessellator.instance;
 
 		double d3 = icon.getMinU();

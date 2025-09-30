@@ -16,15 +16,15 @@ import java.util.Random;
 import net.minecraft.src.Block;
 import net.minecraft.block.BlockFlower;
 import net.minecraft.block.IGrowable;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.src.EntityItem;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.stats.Achievement;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Achievement;
+import net.minecraft.src.Icon;
 import net.minecraft.src.World;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -44,8 +44,8 @@ import net.fabricmc.api.EnvType;
 
 public class BlockModFlower extends BlockFlower implements ILexiconable, IPickupAchievement, IGrowable {
 
-	public static IIcon[] icons;
-	public static IIcon[] iconsAlt;
+	public static Icon[] icons;
+	public static Icon[] iconsAlt;
 
 	public int originalLight;
 
@@ -83,9 +83,9 @@ public class BlockModFlower extends BlockFlower implements ILexiconable, IPickup
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
-		icons = new IIcon[17];
-		iconsAlt = new IIcon[17];
+	public void registerBlockIcons(IconRegister par1IconRegister) {
+		icons = new Icon[17];
+		iconsAlt = new Icon[17];
 
 		for(int i = 0; i < icons.length; i++) {
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
@@ -100,7 +100,7 @@ public class BlockModFlower extends BlockFlower implements ILexiconable, IPickup
 	}
 
 	@Override
-	public IIcon getIcon(int par1, int par2) {
+	public Icon getIcon(int par1, int par2) {
 		return (ConfigHandler.altFlowerTextures ? iconsAlt : icons)[Math.min(icons.length - 1, par2)];
 	}
 

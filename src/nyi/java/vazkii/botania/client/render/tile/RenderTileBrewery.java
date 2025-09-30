@@ -14,16 +14,16 @@ import java.awt.Color;
 
 import net.minecraft.src.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ItemRenderer;
+import net.minecraft.src.ItemRenderer;
 import net.minecraft.src.RenderBlocks;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.src.Tessellator;
+import net.minecraft.src.TextureMap;
+import net.minecraft.src.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.src.EntityItem;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.ResourceLocation;
 import net.minecraftforge.client.ForgeHooksClient;
 
@@ -84,7 +84,7 @@ public class RenderTileBrewery extends TileEntitySpecialRenderer {
 				} else {
 					int renderPass = 0;
 					do {
-						IIcon icon = stack.getItem().getIcon(stack, renderPass);
+						Icon icon = stack.getItem().getIcon(stack, renderPass);
 						if(icon != null) {
 							Color color = new Color(stack.getItem().getColorFromItemStack(stack, renderPass));
 							GL11.glColor3ub((byte) color.getRed(), (byte) color.getGreen(), (byte) color.getBlue());

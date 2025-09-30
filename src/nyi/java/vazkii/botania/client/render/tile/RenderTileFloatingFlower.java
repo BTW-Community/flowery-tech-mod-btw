@@ -14,13 +14,13 @@ import java.awt.*;
 import java.util.Random;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ItemRenderer;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.src.ItemRenderer;
+import net.minecraft.src.Tessellator;
+import net.minecraft.src.TextureMap;
+import net.minecraft.src.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 
 import org.lwjgl.opengl.GL11;
 
@@ -63,7 +63,7 @@ public class RenderTileFloatingFlower extends TileEntitySpecialRenderer {
 		GL11.glColor3f(1f, 1f, 1f);
 
 		ItemStack stack = flower.getDisplayStack();
-		IIcon icon = stack.getIconIndex();
+		Icon icon = stack.getIconIndex();
 
 		Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 		float f = icon.getMinU();

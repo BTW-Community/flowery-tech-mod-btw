@@ -12,9 +12,9 @@ package vazkii.botania.client.render.block;
 
 import java.lang.reflect.Field;
 
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.renderer.texture.TextureUtil;
-import net.minecraft.client.resources.data.AnimationMetadataSection;
+import net.minecraft.src.TextureAtlasSprite;
+import net.minecraft.src.TextureUtil;
+import net.minecraft.src.AnimationMetadataSection;
 import vazkii.botania.common.lib.LibObfuscation;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.fabricmc.api.Environment;

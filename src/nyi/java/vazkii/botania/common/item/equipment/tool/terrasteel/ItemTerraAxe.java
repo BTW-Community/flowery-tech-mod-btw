@@ -20,14 +20,14 @@ import java.util.PriorityQueue;
 import java.util.Set;
 
 import net.minecraft.src.Block;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.ChunkCoordinates;
-import net.minecraft.util.IIcon;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.src.Icon;
+import net.minecraft.src.MovingObjectPosition;
 import net.minecraft.src.World;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.item.ISequentialBreaker;
@@ -76,7 +76,7 @@ public class ItemTerraAxe extends ItemManasteelAxe implements ISequentialBreaker
 	 */
 	private static Map<Integer, Set<BlockSwapper>> blockSwappers = new HashMap<Integer, Set<BlockSwapper>>();
 
-	IIcon iconOn, iconOff;
+	Icon iconOn, iconOff;
 
 	public ItemTerraAxe() {
 		super(BotaniaAPI.terrasteelToolMaterial, LibItemNames.TERRA_AXE);
@@ -85,18 +85,18 @@ public class ItemTerraAxe extends ItemManasteelAxe implements ISequentialBreaker
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		iconOn = IconHelper.forItem(par1IconRegister, this, 0);
 		iconOff = IconHelper.forItem(par1IconRegister, this, 1);
 	}
 
 	@Override
-	public IIcon getIconFromDamage(int p_77617_1_) {
+	public Icon getIconFromDamage(int p_77617_1_) {
 		return iconOn;
 	}
 
 	@Override
-	public IIcon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining) {
+	public Icon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining) {
 		return shouldBreak(player) ? iconOn : iconOff;
 	}
 

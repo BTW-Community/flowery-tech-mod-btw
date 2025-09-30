@@ -12,12 +12,12 @@ package vazkii.botania.common.core.handler;
 
 import java.util.List;
 
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.init.Blocks;
+import net.minecraft.src.EntityItem;
+import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
 import net.minecraft.tileentity.TileEntityBeacon;
-import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.MathHelper;
 import vazkii.botania.api.mana.IManaPool;
 import vazkii.botania.common.Botania;

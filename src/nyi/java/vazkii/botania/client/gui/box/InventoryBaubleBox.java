@@ -11,7 +11,7 @@
 package vazkii.botania.client.gui.box;
 
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
 import vazkii.botania.common.item.ItemBaubleBox;
 import vazkii.botania.common.item.ModItems;

@@ -12,9 +12,9 @@ package vazkii.botania.common.item;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.src.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.BaseAttributeMap;
@@ -22,10 +22,10 @@ import net.minecraft.entity.ai.attributes.IAttribute;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.DamageSource;
+import net.minecraft.src.Icon;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import vazkii.botania.client.core.helper.IconHelper;
@@ -38,7 +38,7 @@ import net.fabricmc.api.EnvType;
 
 public class ItemVirus extends ItemMod {
 
-	IIcon[] icons;
+	Icon[] icons;
 
 	private static final int SUBTYPES = 2;
 
@@ -92,7 +92,7 @@ public class ItemVirus extends ItemMod {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public IIcon getIconFromDamage(int par1) {
+	public Icon getIconFromDamage(int par1) {
 		return icons[Math.min(icons.length - 1, par1)];
 	}
 
@@ -107,8 +107,8 @@ public class ItemVirus extends ItemMod {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerIcons(IIconRegister par1IconRegister) {
-		icons = new IIcon[SUBTYPES];
+	public void registerIcons(IconRegister par1IconRegister) {
+		icons = new Icon[SUBTYPES];
 		for(int i = 0; i < SUBTYPES; i++)
 			icons[i] = IconHelper.forItem(par1IconRegister, this, i);
 	}

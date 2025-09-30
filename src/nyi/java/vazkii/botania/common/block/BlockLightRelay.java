@@ -15,14 +15,14 @@ import java.util.Random;
 
 import net.minecraft.src.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.AxisAlignedBB;
+import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
 import vazkii.botania.api.lexicon.ILexiconable;
@@ -38,7 +38,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockLightRelay extends BlockModContainer implements IWandable, ILexiconable {
 
-	public static IIcon invIcon, worldIcon, invIconRed, worldIconRed;
+	public static Icon invIcon, worldIcon, invIconRed, worldIconRed;
 
 	protected BlockLightRelay() {
 		super(Material.glass);
@@ -111,7 +111,7 @@ public class BlockLightRelay extends BlockModContainer implements IWandable, ILe
 	}
 
 	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
+	public void registerBlockIcons(IconRegister par1IconRegister) {
 		invIcon = IconHelper.forBlock(par1IconRegister, this, 0);
 		worldIcon = IconHelper.forBlock(par1IconRegister, this, 1);
 		invIconRed = IconHelper.forBlock(par1IconRegister, this, 2);
@@ -119,7 +119,7 @@ public class BlockLightRelay extends BlockModContainer implements IWandable, ILe
 	}
 
 	@Override
-	public IIcon getIcon(int side, int meta) {
+	public Icon getIcon(int side, int meta) {
 		return meta > 0 ? invIconRed : invIcon;
 	}
 

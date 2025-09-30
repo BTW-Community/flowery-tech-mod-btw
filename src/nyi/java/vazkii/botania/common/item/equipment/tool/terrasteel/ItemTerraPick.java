@@ -14,17 +14,17 @@ import java.awt.Color;
 import java.util.List;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.EnumChatFormatting;
-import net.minecraft.util.IIcon;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.src.Icon;
+import net.minecraft.src.MovingObjectPosition;
 import net.minecraft.src.StatCollector;
 import net.minecraft.src.World;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -71,7 +71,7 @@ public class ItemTerraPick extends ItemManasteelPick implements IManaItem, ISequ
 		10000 - 1, 1000000 - 1, 10000000 - 1, 100000000 - 1, 1000000000 - 1, MAX_MANA - 1
 	};
 
-	IIcon iconTool, iconOverlay, iconTipped;
+	Icon iconTool, iconOverlay, iconTipped;
 
 	public ItemTerraPick() {
 		super(BotaniaAPI.terrasteelToolMaterial, LibItemNames.TERRA_PICK);
@@ -189,7 +189,7 @@ public class ItemTerraPick extends ItemManasteelPick implements IManaItem, ISequ
 	}
 
 	@Override
-	public void registerIcons(IIconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		iconTool = IconHelper.forItem(par1IconRegister, this, 0);
 		iconOverlay = IconHelper.forItem(par1IconRegister, this, 1);
 		iconTipped = IconHelper.forItem(par1IconRegister, this, 2);
@@ -201,7 +201,7 @@ public class ItemTerraPick extends ItemManasteelPick implements IManaItem, ISequ
 	}
 
 	@Override
-	public IIcon getIcon(ItemStack stack, int pass) {
+	public Icon getIcon(ItemStack stack, int pass) {
 		return pass == 1 && isEnabled(stack) ? iconOverlay : isTipped(stack) ? iconTipped : iconTool;
 	}
 

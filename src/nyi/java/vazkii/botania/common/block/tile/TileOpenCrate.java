@@ -11,7 +11,7 @@
 package vazkii.botania.common.block.tile;
 
 import net.minecraft.src.Block;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraftforge.common.util.ForgeDirection;

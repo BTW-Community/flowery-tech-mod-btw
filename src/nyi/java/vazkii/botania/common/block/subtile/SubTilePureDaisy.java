@@ -11,7 +11,7 @@
 package vazkii.botania.common.block.subtile;
 
 import net.minecraft.src.Block;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.ChunkCoordinates;
 import net.minecraft.src.World;
 import vazkii.botania.api.BotaniaAPI;

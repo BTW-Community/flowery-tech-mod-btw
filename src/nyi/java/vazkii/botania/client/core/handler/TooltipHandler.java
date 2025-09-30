@@ -10,8 +10,8 @@
  */
 package vazkii.botania.client.core.handler;
 
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
+import net.minecraft.src.Block;
+import net.minecraft.src.Item;
 import net.minecraft.src.StatCollector;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import vazkii.botania.common.core.helper.ItemNBTHelper;

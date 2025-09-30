@@ -11,11 +11,11 @@
 package vazkii.botania.common.block.mana;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
-import net.minecraft.util.IIcon;
+import net.minecraft.src.Icon;
 import net.minecraft.src.World;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -28,7 +28,7 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockDistributor extends BlockModContainer implements ILexiconable {
 
-	IIcon iconSide, iconTop;
+	Icon iconSide, iconTop;
 
 	public BlockDistributor() {
 		super(Material.rock);
@@ -39,13 +39,13 @@ public class BlockDistributor extends BlockModContainer implements ILexiconable 
 	}
 
 	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister) {
+	public void registerBlockIcons(IconRegister par1IconRegister) {
 		iconTop = IconHelper.forBlock(par1IconRegister, this, 0);
 		iconSide = IconHelper.forBlock(par1IconRegister, this, 1);
 	}
 
 	@Override
-	public IIcon getIcon(int par1, int par2) {
+	public Icon getIcon(int par1, int par2) {
 		return par1 == 0 ? ModBlocks.livingrock.getIcon(0, 0) : par1 == 1 ? iconTop : iconSide;
 	}
 
