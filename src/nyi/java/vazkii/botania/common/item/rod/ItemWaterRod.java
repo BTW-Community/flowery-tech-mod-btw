@@ -1,9 +1,9 @@
 package vazkii.botania.common.item.rod;
 
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.mana.IManaUsingItem;
 import vazkii.botania.api.mana.ManaItemHandler;

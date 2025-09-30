@@ -10,7 +10,7 @@
  */
 package vazkii.botania.api.mana;
 
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 import vazkii.botania.api.internal.IManaBurst;
 
 /**

@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.block.subtile.functional;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.block.BlockSapling;

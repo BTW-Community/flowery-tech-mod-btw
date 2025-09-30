@@ -10,8 +10,8 @@
  */
 package vazkii.botania.api.item;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.ResourceLocation;
 
 /**
  * An Item that implements this can be wielded by an Avatar.

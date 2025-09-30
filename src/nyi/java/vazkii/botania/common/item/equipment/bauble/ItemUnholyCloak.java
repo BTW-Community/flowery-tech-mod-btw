@@ -14,11 +14,11 @@ import java.util.List;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.IMob;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.src.ResourceLocation;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import vazkii.botania.client.lib.LibResources;
 import vazkii.botania.common.Botania;

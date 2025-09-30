@@ -10,9 +10,9 @@
  */
 package vazkii.botania.common.item.block;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.item.ItemSlab;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import vazkii.botania.common.block.decor.slabs.BlockModSlab;
 
 public class ItemBlockModSlab extends ItemSlab {

@@ -28,15 +28,15 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.stats.Achievement;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.ResourceLocation;
+import net.minecraft.src.StatCollector;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
@@ -64,8 +64,8 @@ import baubles.common.lib.PlayerHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaubleRender, ICraftAchievement {
 
@@ -100,7 +100,7 @@ public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaub
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void registerIcons(IIconRegister par1IconRegister) {
 		itemIcon = IconHelper.forItem(par1IconRegister, this, 0);
 		wingIcons = new IIcon[WING_TYPES];
@@ -340,7 +340,7 @@ public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaub
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void onPlayerBaubleRender(ItemStack stack, RenderPlayerEvent event, RenderType type) {
 		int meta = stack.getItemDamage();
 		if(type == RenderType.BODY) {
@@ -463,7 +463,7 @@ public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaub
 			renderHalo(event.entityPlayer, event.partialRenderTick);
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public static void renderHalo(EntityPlayer player, float partialTicks) {
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
@@ -498,7 +498,7 @@ public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaub
 		GL11.glEnable(GL11.GL_CULL_FACE);
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public static void renderHUD(ScaledResolution resolution, EntityPlayer player, ItemStack stack) {
 		int u = Math.max(1, stack.getItemDamage()) * 9 - 9;
 		int v = 0;

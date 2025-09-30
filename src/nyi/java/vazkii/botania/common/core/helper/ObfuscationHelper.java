@@ -11,7 +11,7 @@
 package vazkii.botania.common.core.helper;
 
 import net.minecraft.client.particle.EffectRenderer;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.src.ResourceLocation;
 import vazkii.botania.common.lib.LibObfuscation;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 

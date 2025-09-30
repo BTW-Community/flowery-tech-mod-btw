@@ -13,22 +13,22 @@ package vazkii.botania.common.item;
 import java.util.Arrays;
 import java.util.List;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.Entity;
+import net.minecraft.src.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.StatCollector;
-import net.minecraft.world.World;
+import net.minecraft.src.StatCollector;
+import net.minecraft.src.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.oredict.RecipeSorter;
 import net.minecraftforge.oredict.RecipeSorter.Category;
@@ -40,8 +40,8 @@ import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.crafting.recipe.BlackHoleTalismanExtractRecipe;
 import vazkii.botania.common.lib.LibItemNames;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class ItemBlackHoleTalisman extends ItemMod implements IBlockProvider {
 
@@ -237,20 +237,20 @@ public class ItemBlackHoleTalisman extends ItemMod implements IBlockProvider {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void registerIcons(IIconRegister par1IconRegister) {
 		itemIcon = IconHelper.forItem(par1IconRegister, this, 0);
 		enabledIcon = IconHelper.forItem(par1IconRegister, this, 1);
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public IIcon getIconFromDamage(int par1) {
 		return par1 == 1 ? enabledIcon : itemIcon;
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
 		Block block = getBlock(par1ItemStack);
 		if(block != null && block != Blocks.air) {

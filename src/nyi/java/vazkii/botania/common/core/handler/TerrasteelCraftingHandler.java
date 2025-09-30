@@ -14,11 +14,11 @@ import java.util.List;
 
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.TileEntity;
 import net.minecraft.tileentity.TileEntityBeacon;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.MathHelper;
+import net.minecraft.src.MathHelper;
 import vazkii.botania.api.mana.IManaPool;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.block.tile.mana.TilePool;

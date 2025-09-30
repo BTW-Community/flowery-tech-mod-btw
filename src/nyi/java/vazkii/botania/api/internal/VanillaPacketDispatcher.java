@@ -13,8 +13,8 @@ package vazkii.botania.api.internal;
 import java.util.List;
 
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
+import net.minecraft.src.TileEntity;
+import net.minecraft.src.World;
 
 public final class VanillaPacketDispatcher {
 

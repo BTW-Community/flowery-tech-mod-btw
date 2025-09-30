@@ -13,10 +13,10 @@ package vazkii.botania.common.block.subtile.functional;
 import java.util.List;
 
 import net.minecraft.command.IEntitySelector;
-import net.minecraft.entity.Entity;
+import net.minecraft.src.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityWitch;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import vazkii.botania.api.lexicon.LexiconEntry;

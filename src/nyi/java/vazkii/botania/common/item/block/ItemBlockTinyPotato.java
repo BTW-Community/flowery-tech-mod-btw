@@ -13,13 +13,13 @@ package vazkii.botania.common.item.block;
 import java.util.Arrays;
 import java.util.List;
 
-import net.minecraft.block.Block;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.Block;
+import net.minecraft.src.Entity;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ItemStack;
 import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.world.World;
+import net.minecraft.src.EnumChatFormatting;
+import net.minecraft.src.World;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 
 public class ItemBlockTinyPotato extends ItemBlockMod {

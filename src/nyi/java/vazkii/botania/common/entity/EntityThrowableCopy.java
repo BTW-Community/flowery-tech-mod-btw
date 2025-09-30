@@ -12,20 +12,20 @@ package vazkii.botania.common.entity;
 
 import java.util.List;
 
-import net.minecraft.block.Block;
-import net.minecraft.entity.Entity;
+import net.minecraft.src.Block;
+import net.minecraft.src.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IProjectile;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.MathHelper;
+import net.minecraft.src.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
-import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.src.World;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 // A copy of the vanilla EntityThrowable class
 // Doing this because if I didn't do this it'd be an EntityThrowable
@@ -56,7 +56,7 @@ public abstract class EntityThrowableCopy extends Entity implements IProjectile 
 	 * length * 64 * renderDistanceWeight Args: distance
 	 */
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public boolean isInRangeToRenderDist(double p_70112_1_)
 	{
 		double d1 = boundingBox.getAverageEdgeLength() * 4.0D;
@@ -130,7 +130,7 @@ public abstract class EntityThrowableCopy extends Entity implements IProjectile 
 	 * Sets the velocity to the args. Args: x, y, z
 	 */
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void setVelocity(double p_70016_1_, double p_70016_3_, double p_70016_5_)
 	{
 		motionX = p_70016_1_;
@@ -350,7 +350,7 @@ public abstract class EntityThrowableCopy extends Entity implements IProjectile 
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public float getShadowSize()
 	{
 		return 0.0F;

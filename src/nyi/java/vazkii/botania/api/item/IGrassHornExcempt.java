@@ -10,7 +10,7 @@
  */
 package vazkii.botania.api.item;
 
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 
 /**
  * A BlockBush can implement this to check if it can be broken

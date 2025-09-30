@@ -12,15 +12,15 @@ package vazkii.botania.common.block.corporea;
 
 import java.util.Random;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.stats.Achievement;
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 import vazkii.botania.common.achievement.ICraftAchievement;
 import vazkii.botania.common.achievement.ModAchievements;
 import vazkii.botania.common.block.BlockModContainer;

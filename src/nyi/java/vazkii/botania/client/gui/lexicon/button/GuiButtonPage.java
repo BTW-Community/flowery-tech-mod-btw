@@ -13,7 +13,7 @@ package vazkii.botania.client.gui.lexicon.button;
 import java.util.Arrays;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.StatCollector;
 
 import org.lwjgl.opengl.GL11;
 

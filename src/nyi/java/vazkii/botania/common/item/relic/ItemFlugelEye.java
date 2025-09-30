@@ -10,13 +10,13 @@
  */
 package vazkii.botania.common.item.relic;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.Entity;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ChunkCoordinates;
-import net.minecraft.world.World;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.ChunkCoordinates;
+import net.minecraft.src.World;
 import vazkii.botania.api.mana.IManaUsingItem;
 import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.api.wand.ICoordBoundItem;
@@ -151,7 +151,7 @@ public class ItemFlugelEye extends ItemRelic implements ICoordBoundItem, IManaUs
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void registerIcons(IIconRegister par1IconRegister) {
 		super.registerIcons(par1IconRegister);
 		signs = new IIcon[12];
@@ -288,7 +288,7 @@ public class ItemFlugelEye extends ItemRelic implements ICoordBoundItem, IManaUs
 		return new MultiversePosition(x, y, z, dim);
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	@SubscribeEvent
 	public void onRenderWorldLast(RenderWorldLastEvent event) {
 		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
@@ -297,7 +297,7 @@ public class ItemFlugelEye extends ItemRelic implements ICoordBoundItem, IManaUs
 			render(stack, player, event.partialTicks);
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void render(ItemStack stack, EntityPlayer player, float partialTicks) {
 		Minecraft mc = Minecraft.getMinecraft();
 		Tessellator tess = Tessellator.instance;
@@ -390,7 +390,7 @@ public class ItemFlugelEye extends ItemRelic implements ICoordBoundItem, IManaUs
 		GL11.glPopMatrix();
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public static void renderHUD(ScaledResolution resolution, EntityPlayer player, ItemStack stack) {
 		Minecraft.getMinecraft();
 		int slot = getSegmentLookedAt(stack, player);

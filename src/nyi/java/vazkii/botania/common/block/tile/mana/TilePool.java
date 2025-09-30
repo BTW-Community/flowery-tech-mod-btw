@@ -13,20 +13,20 @@ package vazkii.botania.common.block.tile.mana;
 import java.awt.Color;
 import java.util.List;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.entity.Entity;
+import net.minecraft.src.Entity;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.src.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.StatCollector;
 import net.minecraftforge.common.util.ForgeDirection;
 
 import org.lwjgl.opengl.GL11;

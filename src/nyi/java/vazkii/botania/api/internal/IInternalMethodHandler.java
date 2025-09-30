@@ -14,16 +14,16 @@ import java.util.List;
 
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.Entity;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.src.TileEntity;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
+import net.minecraft.src.ResourceLocation;
+import net.minecraft.src.World;
 import vazkii.botania.api.boss.IBotaniaBoss;
 import vazkii.botania.api.corporea.IWrappedInventory;
 import vazkii.botania.api.lexicon.LexiconPage;
@@ -34,8 +34,8 @@ import vazkii.botania.api.recipe.RecipeManaInfusion;
 import vazkii.botania.api.recipe.RecipePetals;
 import vazkii.botania.api.recipe.RecipeRuneAltar;
 import vazkii.botania.api.subtile.SubTileEntity;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 /**
  * Any methods that refer to internal methods in Botania are here.
@@ -98,22 +98,22 @@ public interface IInternalMethodHandler {
 
 	public boolean hasSolegnoliaAround(Entity e);
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void drawSimpleManaHUD(int color, int mana, int maxMana, String name, ScaledResolution res);
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void drawComplexManaHUD(int color, int mana, int maxMana, String name, ScaledResolution res, ItemStack bindDisplay, boolean properlyBound);
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public ItemStack getBindDisplayForFlowerType(SubTileEntity e);
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void renderLexiconText(int x, int y, int width, int height, String unlocalizedText);
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public ResourceLocation getDefaultBossBarTexture();
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void setBossStatus(IBotaniaBoss status);
 
 	public boolean isBuildcraftPipe(TileEntity tile);

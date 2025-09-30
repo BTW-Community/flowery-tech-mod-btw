@@ -10,8 +10,8 @@
  */
 package vazkii.botania.common.block.tile.string;
 
-import net.minecraft.block.Block;
-import net.minecraft.util.ChunkCoordinates;
+import net.minecraft.src.Block;
+import net.minecraft.src.ChunkCoordinates;
 import net.minecraftforge.common.util.ForgeDirection;
 
 public class TileRedStringComparator extends TileRedString {

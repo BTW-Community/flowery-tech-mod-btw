@@ -10,16 +10,16 @@
  */
 package vazkii.botania.api.mana;
 
-import net.minecraft.item.ItemStack;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.src.ItemStack;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 /**
  * Have an Item implement this to be counted as a lens for the mana spreader.
  */
 public interface ILens extends ILensEffect {
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public int getLensColor(ItemStack stack);
 
 	/**

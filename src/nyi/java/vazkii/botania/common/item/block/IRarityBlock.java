@@ -11,7 +11,7 @@
 package vazkii.botania.common.item.block;
 
 import net.minecraft.item.EnumRarity;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 
 public interface IRarityBlock {
 

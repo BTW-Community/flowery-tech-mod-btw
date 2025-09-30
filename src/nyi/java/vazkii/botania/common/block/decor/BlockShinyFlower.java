@@ -11,11 +11,11 @@
 package vazkii.botania.common.block.decor;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
+import net.minecraft.src.IBlockAccess;
+import net.minecraft.src.World;
 import thaumcraft.api.crafting.IInfusionStabiliser;
 import vazkii.botania.api.item.IHornHarvestable;
 import vazkii.botania.api.lexicon.LexiconEntry;

@@ -11,8 +11,8 @@
 package vazkii.botania.common.achievement;
 
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ItemStack;
 import net.minecraft.stats.Achievement;
 
 public interface IPickupAchievement {

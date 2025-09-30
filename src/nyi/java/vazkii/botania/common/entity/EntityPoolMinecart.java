@@ -10,14 +10,14 @@
  */
 package vazkii.botania.common.entity;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.entity.item.EntityMinecart;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.src.TileEntity;
 import net.minecraft.util.DamageSource;
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
 import vazkii.botania.api.mana.IManaPool;

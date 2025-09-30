@@ -12,8 +12,8 @@ package vazkii.botania.common.crafting.recipe;
 
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.StatCollector;
 import vazkii.botania.api.recipe.RecipeRuneAltar;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 

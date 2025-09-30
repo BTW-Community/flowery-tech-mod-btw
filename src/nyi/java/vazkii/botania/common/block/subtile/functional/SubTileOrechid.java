@@ -15,11 +15,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ChunkCoordinates;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.ChunkCoordinates;
 import net.minecraft.util.WeightedRandom;
 import net.minecraftforge.oredict.OreDictionary;
 import vazkii.botania.api.BotaniaAPI;

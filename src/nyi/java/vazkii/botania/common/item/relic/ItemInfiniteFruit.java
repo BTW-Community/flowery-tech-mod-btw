@@ -11,19 +11,19 @@
 package vazkii.botania.common.item.relic;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 import vazkii.botania.api.mana.IManaUsingItem;
 import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.lib.LibItemNames;
 import vazkii.botania.common.lib.LibObfuscation;
 import cpw.mods.fml.relauncher.ReflectionHelper;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class ItemInfiniteFruit extends ItemRelic implements IManaUsingItem {
 
@@ -66,7 +66,7 @@ public class ItemInfiniteFruit extends ItemRelic implements IManaUsingItem {
 
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void registerIcons(IIconRegister par1IconRegister) {
 		itemIcon = IconHelper.forItem(par1IconRegister, this);
 		dasBootIcon = IconHelper.forName(par1IconRegister, "dasBoot");

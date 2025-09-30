@@ -12,7 +12,7 @@ package vazkii.botania.common.lexicon.page;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.src.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 

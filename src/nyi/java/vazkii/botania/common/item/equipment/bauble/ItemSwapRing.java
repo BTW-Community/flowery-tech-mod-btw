@@ -10,11 +10,11 @@
  */
 package vazkii.botania.common.item.equipment.bauble;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import vazkii.botania.api.item.ISortableTool;
 import vazkii.botania.api.item.ISortableTool.ToolType;

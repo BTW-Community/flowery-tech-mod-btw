@@ -3,9 +3,9 @@ package vazkii.botania.common.item.equipment.armor.elementium;
 import java.util.List;
 
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.StatCollector;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.item.IPixieSpawner;
 import vazkii.botania.client.lib.LibResources;
@@ -13,8 +13,8 @@ import vazkii.botania.client.model.armor.ModelArmorElementium;
 import vazkii.botania.common.core.handler.ConfigHandler;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.equipment.armor.manasteel.ItemManasteelArmor;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public abstract class ItemElementiumArmor extends ItemManasteelArmor implements IPixieSpawner {
 
@@ -23,7 +23,7 @@ public abstract class ItemElementiumArmor extends ItemManasteelArmor implements 
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public ModelBiped provideArmorModelForSlot(ItemStack stack, int slot) {
 		models[slot] = new ModelArmorElementium(slot);
 		return models[slot];

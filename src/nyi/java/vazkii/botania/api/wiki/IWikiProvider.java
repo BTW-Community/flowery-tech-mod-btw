@@ -11,7 +11,7 @@
 package vazkii.botania.api.wiki;
 
 import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 
 /**
  * An interface for a Wiki Provider, these are registered to allow a mod to provide a wiki

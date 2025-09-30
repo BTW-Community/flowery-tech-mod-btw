@@ -10,15 +10,15 @@
  */
 package vazkii.botania.common.item.rod;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.stats.Achievement;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.item.IBlockProvider;
 import vazkii.botania.api.mana.IManaUsingItem;

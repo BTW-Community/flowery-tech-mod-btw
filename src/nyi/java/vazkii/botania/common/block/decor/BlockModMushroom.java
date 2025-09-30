@@ -13,18 +13,18 @@ package vazkii.botania.common.block.decor;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.block.BlockMushroom;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.passive.EntitySheep;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
+import net.minecraft.src.IBlockAccess;
+import net.minecraft.src.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import thaumcraft.api.crafting.IInfusionStabiliser;
 import vazkii.botania.api.item.IHornHarvestable;
@@ -40,8 +40,8 @@ import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 @Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.crafting.IInfusionStabiliser", striprefs = true)
 public class BlockModMushroom extends BlockMushroom implements IInfusionStabiliser, IHornHarvestable, ILexiconable {
@@ -87,7 +87,7 @@ public class BlockModMushroom extends BlockMushroom implements IInfusionStabilis
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void registerBlockIcons(IIconRegister par1IconRegister) {
 		icons = new IIcon[16];
 

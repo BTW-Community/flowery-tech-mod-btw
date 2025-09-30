@@ -10,8 +10,8 @@
  */
 package vazkii.botania.common.block.decor;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.ResourceLocation;
 import vazkii.botania.client.lib.LibResources;
 
 import java.util.HashMap;

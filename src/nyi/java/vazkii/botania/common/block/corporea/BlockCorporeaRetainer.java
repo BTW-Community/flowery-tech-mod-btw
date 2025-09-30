@@ -10,14 +10,14 @@
  */
 package vazkii.botania.common.block.corporea;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.stats.Achievement;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
+import net.minecraft.src.TileEntity;
+import net.minecraft.src.World;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.common.achievement.ICraftAchievement;

@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.block.string;
 
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 import vazkii.botania.common.block.tile.string.TileRedString;
 import vazkii.botania.common.block.tile.string.TileRedStringComparator;
 import vazkii.botania.common.lib.LibBlockNames;

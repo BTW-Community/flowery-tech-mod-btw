@@ -12,7 +12,7 @@ package vazkii.botania.api.wand;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 
 /**
  * Any block that implements this has a HUD rendered when being hovered

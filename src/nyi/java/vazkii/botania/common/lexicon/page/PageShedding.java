@@ -20,11 +20,11 @@ import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.entity.EntityList;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.EnumChatFormatting;
+import net.minecraft.src.MathHelper;
+import net.minecraft.src.ResourceLocation;
+import net.minecraft.src.StatCollector;
 
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
@@ -35,8 +35,8 @@ import vazkii.botania.api.lexicon.LexiconRecipeMappings;
 import vazkii.botania.api.lexicon.LexiconRecipeMappings.EntryData;
 import vazkii.botania.client.gui.lexicon.GuiLexiconEntry;
 import vazkii.botania.client.lib.LibResources;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class PageShedding extends PageEntity {
 
@@ -54,7 +54,7 @@ public class PageShedding extends PageEntity {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void renderScreen(IGuiLexiconEntry gui, int mx, int my) {
 		prepDummy();
 		relativeMouseX = mx;
@@ -111,7 +111,7 @@ public class PageShedding extends PageEntity {
 		mouseDownLastTick = Mouse.isButtonDown(0);
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void renderItem(IGuiLexiconEntry gui, int xPos, int yPos, ItemStack stack) {
 		RenderItem render = new RenderItem();
 		boolean mouseDown = Mouse.isButtonDown(0);

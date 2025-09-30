@@ -12,12 +12,12 @@ package vazkii.botania.common.block.tile;
 
 import java.util.List;
 
-import net.minecraft.entity.Entity;
+import net.minecraft.src.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.MobSpawnerBaseLogic;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.src.TileEntity;
 import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.WeightedRandom;

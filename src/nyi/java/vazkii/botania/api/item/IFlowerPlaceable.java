@@ -9,8 +9,8 @@
  * File Created @ [17/11/2015, 20:10:53 (GMT)]
  */
 package vazkii.botania.api.item;
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.Block;
+import net.minecraft.src.ItemStack;
 import vazkii.botania.api.subtile.SubTileEntity;
 
 /**

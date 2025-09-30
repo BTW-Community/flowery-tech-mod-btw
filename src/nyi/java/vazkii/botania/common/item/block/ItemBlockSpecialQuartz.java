@@ -10,9 +10,9 @@
  */
 package vazkii.botania.common.item.block;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.item.ItemMultiTexture;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import vazkii.botania.common.block.decor.quartz.BlockSpecialQuartz;
 
 public class ItemBlockSpecialQuartz extends ItemMultiTexture {

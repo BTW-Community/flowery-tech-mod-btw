@@ -10,18 +10,18 @@
  */
 package vazkii.botania.common.block;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
+import net.minecraft.src.TileEntity;
+import net.minecraft.src.World;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.core.BotaniaCreativeTab;
 import vazkii.botania.common.item.block.ItemBlockMod;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public abstract class BlockModContainer<T extends TileEntity> extends BlockContainer {
 
@@ -51,7 +51,7 @@ public abstract class BlockModContainer<T extends TileEntity> extends BlockConta
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void registerBlockIcons(IIconRegister par1IconRegister) {
 		blockIcon = IconHelper.forBlock(par1IconRegister, this);
 	}

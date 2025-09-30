@@ -22,12 +22,12 @@ import java.util.regex.Pattern;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.ChatStyle;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.src.EnumChatFormatting;
 import net.minecraftforge.event.ServerChatEvent;
 
 import org.apache.commons.lang3.text.WordUtils;
@@ -41,8 +41,8 @@ import vazkii.botania.common.core.helper.MathHelper;
 import vazkii.botania.common.lib.LibBlockNames;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class TileCorporeaIndex extends TileCorporeaBase implements ICorporeaRequestor {
 
@@ -294,7 +294,7 @@ public class TileCorporeaIndex extends TileCorporeaBase implements ICorporeaRequ
 		}
 
 		@Override
-		@SideOnly(Side.CLIENT)
+		@Environment(EnvType.CLIENT)
 		public boolean shouldAutoComplete() {
 			return !getNearbyIndexes(Minecraft.getMinecraft().thePlayer).isEmpty();
 		}

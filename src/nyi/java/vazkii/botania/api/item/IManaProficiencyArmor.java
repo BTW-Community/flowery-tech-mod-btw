@@ -10,9 +10,9 @@
  */
 package vazkii.botania.api.item;
 
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 
 /**
  * An armor item that implements this gives the player wearing it mana proficiency, by

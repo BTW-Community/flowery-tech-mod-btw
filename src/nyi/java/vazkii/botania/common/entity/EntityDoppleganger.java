@@ -17,12 +17,12 @@ import java.util.Collection;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.entity.Entity;
+import net.minecraft.src.Entity;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -33,12 +33,12 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.monster.EntityZombie;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemRecord;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -46,13 +46,13 @@ import net.minecraft.tileentity.TileEntityBeacon;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.ChatStyle;
-import net.minecraft.util.ChunkCoordinates;
+import net.minecraft.src.ChunkCoordinates;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.src.EnumChatFormatting;
+import net.minecraft.src.MathHelper;
+import net.minecraft.src.ResourceLocation;
 import net.minecraft.world.EnumDifficulty;
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 import net.minecraftforge.common.util.FakePlayer;
 
 import org.lwjgl.opengl.ARBShaderObjects;
@@ -75,8 +75,8 @@ import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.relic.ItemRelic;
 import vazkii.botania.common.lib.LibObfuscation;
 import cpw.mods.fml.relauncher.ReflectionHelper;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWithShader {
 
@@ -857,18 +857,18 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public ResourceLocation getBossBarTexture() {
 		return BossBarHandler.defaultBossBar;
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	private static Rectangle barRect;
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	private static Rectangle hpBarRect;
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public Rectangle getBossBarTextureRect() {
 		if(barRect == null)
 			barRect = new Rectangle(0, 0, 185, 15);
@@ -876,7 +876,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public Rectangle getBossBarHPTextureRect() {
 		if(hpBarRect == null)
 			hpBarRect = new Rectangle(0, barRect.y + barRect.height, 181, 7);
@@ -884,7 +884,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void bossBarRenderCallback(ScaledResolution res, int x, int y) {
 		GL11.glPushMatrix();
 		int px = x + 160;
@@ -906,16 +906,16 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public int getBossBarShaderProgram(boolean background) {
 		return background ? 0 : ShaderHelper.dopplegangerBar;
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	private ShaderCallback shaderCallback;
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public ShaderCallback getBossBarShaderCallback(boolean background, int shader) {
 		if(shaderCallback == null)
 			shaderCallback = new ShaderCallback() {

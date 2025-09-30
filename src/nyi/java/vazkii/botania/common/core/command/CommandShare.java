@@ -12,10 +12,10 @@ package vazkii.botania.common.core.command;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.IChatComponent;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.StatCollector;
 
 public class CommandShare extends CommandBase {
 

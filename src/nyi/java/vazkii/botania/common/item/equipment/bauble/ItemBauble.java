@@ -15,11 +15,11 @@ import java.util.UUID;
 
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.StatCollector;
-import net.minecraft.world.World;
+import net.minecraft.src.StatCollector;
+import net.minecraft.src.World;
 import thaumcraft.api.IRunicArmor;
 import vazkii.botania.api.item.ICosmeticAttachable;
 import vazkii.botania.api.item.IPhantomInkable;
@@ -32,8 +32,8 @@ import baubles.api.IBauble;
 import baubles.common.container.InventoryBaubles;
 import baubles.common.lib.PlayerHandler;
 import cpw.mods.fml.common.Optional;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 @Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.IRunicArmor")
 public abstract class ItemBauble extends ItemMod implements IBauble, ICosmeticAttachable, IPhantomInkable, IRunicArmor {
@@ -81,7 +81,7 @@ public abstract class ItemBauble extends ItemMod implements IBauble, ICosmeticAt
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
 		if(GuiScreen.isShiftKeyDown())
 			addHiddenTooltip(par1ItemStack, par2EntityPlayer, par3List, par4);

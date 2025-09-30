@@ -13,7 +13,7 @@ package vazkii.botania.common.block.tile.corporea;
 import java.util.List;
 
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import vazkii.botania.api.corporea.CorporeaHelper;
 import vazkii.botania.api.corporea.ICorporeaRequestor;

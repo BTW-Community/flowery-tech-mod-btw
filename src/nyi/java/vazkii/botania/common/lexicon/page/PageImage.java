@@ -13,14 +13,14 @@ package vazkii.botania.common.lexicon.page;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.src.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
 import vazkii.botania.api.internal.IGuiLexiconEntry;
 import vazkii.botania.api.lexicon.LexiconPage;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class PageImage extends LexiconPage {
 
@@ -32,7 +32,7 @@ public class PageImage extends LexiconPage {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void renderScreen(IGuiLexiconEntry gui, int mx, int my) {
 		TextureManager render = Minecraft.getMinecraft().renderEngine;
 		render.bindTexture(resource);

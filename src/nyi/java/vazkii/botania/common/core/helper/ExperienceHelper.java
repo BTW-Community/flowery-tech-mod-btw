@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.core.helper;
 
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 
 // From OpenBlocksLib: https://github.com/OpenMods/OpenModsLib
 public class ExperienceHelper {

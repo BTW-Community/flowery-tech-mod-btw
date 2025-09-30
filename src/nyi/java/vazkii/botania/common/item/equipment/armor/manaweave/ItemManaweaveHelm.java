@@ -11,10 +11,10 @@
 package vazkii.botania.common.item.equipment.armor.manaweave;
 
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ItemStack;
 import net.minecraft.util.DamageSource;
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 import vazkii.botania.api.item.IManaProficiencyArmor;
 import vazkii.botania.api.mana.IManaDiscountArmor;
 import vazkii.botania.api.mana.ManaItemHandler;

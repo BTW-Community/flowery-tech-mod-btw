@@ -10,9 +10,9 @@
  */
 package vazkii.botania.common.item.block;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.Block;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.StatCollector;
 
 public class ItemBlockFloatingSpecialFlower extends ItemBlockSpecialFlower {
 

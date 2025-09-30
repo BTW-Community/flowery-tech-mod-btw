@@ -10,7 +10,7 @@
  */
 package vazkii.botania.api.mana;
 
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 
 /**
  * Have an Item implement this to be counted as a lens that can be combined with an ItemLens.

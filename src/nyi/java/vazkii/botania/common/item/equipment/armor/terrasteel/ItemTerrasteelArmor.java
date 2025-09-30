@@ -16,9 +16,9 @@ import java.util.UUID;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.StatCollector;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.client.lib.LibResources;
 import vazkii.botania.client.model.armor.ModelArmorTerrasteel;
@@ -29,8 +29,8 @@ import vazkii.botania.common.item.equipment.armor.manasteel.ItemManasteelArmor;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class ItemTerrasteelArmor extends ItemManasteelArmor {
 
@@ -39,7 +39,7 @@ public class ItemTerrasteelArmor extends ItemManasteelArmor {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public ModelBiped provideArmorModelForSlot(ItemStack stack, int slot) {
 		models[slot] = new ModelArmorTerrasteel(slot);
 		return models[slot];

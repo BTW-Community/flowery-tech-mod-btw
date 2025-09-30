@@ -4,10 +4,10 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.Block;
+import net.minecraft.src.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.StatCollector;
 import net.minecraftforge.oredict.OreDictionary;
 import vazkii.botania.common.block.BlockFloatingSpecialFlower;
 import vazkii.botania.common.block.BlockSpecialFlower;

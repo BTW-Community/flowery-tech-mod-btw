@@ -14,11 +14,11 @@ import java.util.List;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.TileEntity;
+import net.minecraft.src.StatCollector;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
 import vazkii.botania.api.item.IManaDissolvable;
 import vazkii.botania.api.mana.IManaPool;

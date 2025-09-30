@@ -17,12 +17,12 @@ import java.util.List;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.ResourceLocation;
+import net.minecraft.src.StatCollector;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
@@ -34,8 +34,8 @@ import vazkii.botania.api.lexicon.LexiconRecipeMappings;
 import vazkii.botania.client.core.helper.RenderHelper;
 import vazkii.botania.client.lib.LibResources;
 import cpw.mods.fml.relauncher.ReflectionHelper;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class PageCraftingRecipe extends PageRecipe {
 
@@ -64,7 +64,7 @@ public class PageCraftingRecipe extends PageRecipe {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void renderRecipe(IGuiLexiconEntry gui, int mx, int my) {
 		oreDictRecipe = shapelessRecipe = false;
 
@@ -109,7 +109,7 @@ public class PageCraftingRecipe extends PageRecipe {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void updateScreen() {
 		if(GuiScreen.isShiftKeyDown())
 			return;
@@ -123,7 +123,7 @@ public class PageCraftingRecipe extends PageRecipe {
 		++ticksElapsed;
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void renderCraftingRecipe(IGuiLexiconEntry gui, IRecipe recipe) {
 		if(recipe instanceof ShapedRecipes) {
 			ShapedRecipes shaped = (ShapedRecipes)recipe;

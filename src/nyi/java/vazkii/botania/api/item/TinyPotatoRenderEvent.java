@@ -10,15 +10,15 @@
  */
 package vazkii.botania.api.item;
 
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.src.TileEntity;
 import cpw.mods.fml.common.eventhandler.Event;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 /**
  * Why would you ever want this ._.
  */
-@SideOnly(Side.CLIENT)
+@Environment(EnvType.CLIENT)
 public class TinyPotatoRenderEvent extends Event {
 
 	public final TileEntity tile;

@@ -12,14 +12,14 @@ package vazkii.botania.common.item;
 
 import java.awt.Color;
 
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraftforge.oredict.RecipeSorter;
 import net.minecraftforge.oredict.RecipeSorter.Category;
 import vazkii.botania.common.crafting.recipe.SpellClothRecipe;
 import vazkii.botania.common.lib.LibItemNames;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class ItemSpellCloth extends ItemMod {
 
@@ -34,7 +34,7 @@ public class ItemSpellCloth extends ItemMod {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public int getColorFromItemStack(ItemStack par1ItemStack, int par2) {
 		return Color.HSBtoRGB(0.55F, ((float) par1ItemStack.getMaxDamage() - (float) par1ItemStack.getItemDamage()) / par1ItemStack.getMaxDamage() * 0.5F, 1F);
 	}

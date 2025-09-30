@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.lexicon;
 
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.src.ResourceLocation;
 import vazkii.botania.api.lexicon.LexiconCategory;
 import vazkii.botania.client.lib.LibResources;
 import vazkii.botania.common.lib.LibLexicon;

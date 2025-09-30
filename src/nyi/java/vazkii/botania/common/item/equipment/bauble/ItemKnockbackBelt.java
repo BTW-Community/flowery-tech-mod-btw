@@ -14,8 +14,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.ResourceLocation;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 
 import org.lwjgl.opengl.GL11;
@@ -27,8 +27,8 @@ import baubles.api.BaubleType;
 
 import com.google.common.collect.Multimap;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class ItemKnockbackBelt extends ItemBaubleModifier implements IBaubleRender {
 
@@ -50,7 +50,7 @@ public class ItemKnockbackBelt extends ItemBaubleModifier implements IBaubleRend
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void onPlayerBaubleRender(ItemStack stack, RenderPlayerEvent event, RenderType type) {
 		if(type == RenderType.BODY) {
 			Minecraft.getMinecraft().renderEngine.bindTexture(texture);

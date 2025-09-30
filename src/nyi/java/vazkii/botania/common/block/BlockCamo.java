@@ -13,19 +13,19 @@ package vazkii.botania.common.block;
 import java.util.Arrays;
 import java.util.List;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.TileEntity;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
+import net.minecraft.src.IBlockAccess;
+import net.minecraft.src.World;
 import vazkii.botania.common.block.tile.TileCamo;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 
@@ -127,7 +127,7 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public int colorMultiplier(IBlockAccess par1World, int par2, int par3, int par4) {
 		TileEntity tile = par1World.getTileEntity(par2, par3, par4);
 		if(tile instanceof TileCamo) {

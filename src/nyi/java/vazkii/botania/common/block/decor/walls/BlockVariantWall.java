@@ -12,10 +12,10 @@ package vazkii.botania.common.block.decor.walls;
 
 import java.util.List;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.util.IIcon;
 import vazkii.botania.common.item.block.ItemBlockWithMetadataAndName;
 import cpw.mods.fml.common.registry.GameRegistry;

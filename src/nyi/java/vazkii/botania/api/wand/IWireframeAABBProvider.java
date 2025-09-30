@@ -11,7 +11,7 @@
 package vazkii.botania.api.wand;
 
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 
 /**
  * A block that implements this can provide a custom AABB

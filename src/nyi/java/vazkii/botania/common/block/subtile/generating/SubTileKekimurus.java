@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.block.subtile.generating;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.block.BlockCake;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.subtile.RadiusDescriptor;

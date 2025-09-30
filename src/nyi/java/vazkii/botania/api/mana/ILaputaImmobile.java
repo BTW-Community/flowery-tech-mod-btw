@@ -10,7 +10,7 @@
  */
 package vazkii.botania.api.mana;
 
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 
 /**
  * A block that implements this has a flag for whether it can be moved by the Shard of Laputa.

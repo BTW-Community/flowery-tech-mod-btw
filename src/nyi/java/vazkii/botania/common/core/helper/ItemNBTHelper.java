@@ -14,7 +14,7 @@
 package vazkii.botania.common.core.helper;
 
 import codechicken.nei.PositionedStack;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;

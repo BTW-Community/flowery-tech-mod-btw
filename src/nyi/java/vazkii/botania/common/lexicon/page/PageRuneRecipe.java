@@ -14,8 +14,8 @@ import java.util.List;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.StatCollector;
 
 import org.lwjgl.opengl.GL11;
 
@@ -24,8 +24,8 @@ import vazkii.botania.api.recipe.RecipeRuneAltar;
 import vazkii.botania.client.core.handler.HUDHandler;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.block.tile.mana.TilePool;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class PageRuneRecipe extends PagePetalRecipe<RecipeRuneAltar> {
 
@@ -43,7 +43,7 @@ public class PageRuneRecipe extends PagePetalRecipe<RecipeRuneAltar> {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void renderManaBar(IGuiLexiconEntry gui, RecipeRuneAltar recipe, int mx, int my) {
 		FontRenderer font = Minecraft.getMinecraft().fontRenderer;
 		GL11.glEnable(GL11.GL_BLEND);

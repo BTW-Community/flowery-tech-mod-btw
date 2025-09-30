@@ -10,8 +10,8 @@
  */
 package vazkii.botania.common.network;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.world.World;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.World;
 import vazkii.botania.client.gui.bag.ContainerFlowerBag;
 import vazkii.botania.client.gui.bag.GuiFlowerBag;
 import vazkii.botania.client.gui.box.ContainerBaubleBox;

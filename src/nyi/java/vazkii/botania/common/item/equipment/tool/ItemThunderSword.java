@@ -15,12 +15,12 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.command.IEntitySelector;
-import net.minecraft.entity.Entity;
+import net.minecraft.src.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.IMob;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.stats.Achievement;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;

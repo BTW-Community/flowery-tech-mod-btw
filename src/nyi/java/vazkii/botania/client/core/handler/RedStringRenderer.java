@@ -17,8 +17,8 @@ import java.util.Random;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ChunkCoordinates;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ChunkCoordinates;
 import net.minecraftforge.common.util.ForgeDirection;
 
 import org.lwjgl.opengl.GL11;

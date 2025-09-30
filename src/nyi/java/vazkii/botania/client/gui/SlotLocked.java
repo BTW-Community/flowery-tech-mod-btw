@@ -10,10 +10,10 @@
  */
 package vazkii.botania.client.gui;
 
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 
 public class SlotLocked extends Slot {
 

@@ -10,7 +10,7 @@
  */
 package vazkii.botania.client.challenge;
 
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
 public class Challenge {

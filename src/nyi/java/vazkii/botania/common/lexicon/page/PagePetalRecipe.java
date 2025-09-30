@@ -18,9 +18,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.ResourceLocation;
+import net.minecraft.src.StatCollector;
 import net.minecraftforge.oredict.OreDictionary;
 
 import org.lwjgl.opengl.GL11;
@@ -33,8 +33,8 @@ import vazkii.botania.client.core.handler.ClientTickHandler;
 import vazkii.botania.client.lib.LibResources;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.core.handler.ConfigHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class PagePetalRecipe<T extends RecipePetals> extends PageRecipe {
 
@@ -62,7 +62,7 @@ public class PagePetalRecipe<T extends RecipePetals> extends PageRecipe {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void renderRecipe(IGuiLexiconEntry gui, int mx, int my) {
 		if (recipes.size() == 0) return;
 		T recipe = recipes.get(recipeAt);
@@ -103,7 +103,7 @@ public class PagePetalRecipe<T extends RecipePetals> extends PageRecipe {
 		return new ItemStack(ModBlocks.altar);
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void renderManaBar(IGuiLexiconEntry gui, T recipe, int mx, int my) {
 		FontRenderer font = Minecraft.getMinecraft().fontRenderer;
 		GL11.glEnable(GL11.GL_BLEND);
@@ -122,7 +122,7 @@ public class PagePetalRecipe<T extends RecipePetals> extends PageRecipe {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void updateScreen() {
 		if(GuiScreen.isShiftKeyDown())
 			return;

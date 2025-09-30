@@ -16,9 +16,9 @@ import java.util.List;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.ResourceLocation;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
@@ -35,13 +35,13 @@ import baubles.api.BaubleType;
 import baubles.common.lib.PlayerHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class ItemTravelBelt extends ItemBauble implements IBaubleRender, IManaUsingItem {
 
 	private static final ResourceLocation texture = new ResourceLocation(LibResources.MODEL_TRAVEL_BELT);
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	private static ModelBiped model;
 
 	private static final int COST = 1;
@@ -146,13 +146,13 @@ public class ItemTravelBelt extends ItemBauble implements IBaubleRender, IManaUs
 		return player.getGameProfile().getName() + ":" + player.worldObj.isRemote;
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	ResourceLocation getRenderTexture() {
 		return texture;
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void onPlayerBaubleRender(ItemStack stack, RenderPlayerEvent event, RenderType type) {
 		if(type == RenderType.BODY) {
 			Minecraft.getMinecraft().renderEngine.bindTexture(getRenderTexture());

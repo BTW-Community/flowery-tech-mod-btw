@@ -3,7 +3,7 @@ package vazkii.botania.common.integration.buildcraft;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.src.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.mana.IManaBlock;
 import vazkii.botania.api.mana.IManaReceiver;

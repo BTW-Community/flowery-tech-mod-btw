@@ -12,13 +12,13 @@ package vazkii.botania.common.item.relic;
 
 import java.util.List;
 
-import net.minecraft.entity.Entity;
+import net.minecraft.src.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.item.EnumRarity;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.stats.Achievement;
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.item.IRelic;
 import vazkii.botania.common.item.equipment.bauble.ItemBauble;

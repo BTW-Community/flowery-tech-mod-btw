@@ -13,12 +13,12 @@ package vazkii.botania.common.item;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 
 import org.lwjgl.opengl.GL11;
 
@@ -29,8 +29,8 @@ import vazkii.botania.common.core.helper.MathHelper;
 import vazkii.botania.common.core.helper.Vector3;
 import vazkii.botania.common.item.equipment.tool.ToolCommons;
 import vazkii.botania.common.lib.LibItemNames;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class ItemSextant extends ItemMod {
 
@@ -129,7 +129,7 @@ public class ItemSextant extends ItemMod {
 		return MathHelper.pointDistancePlane(source.x, source.z, lookVec.x, lookVec.z);
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public static void renderHUD(ScaledResolution resolution, EntityPlayer player, ItemStack stack) {
 		ItemStack onUse = player.getItemInUse();
 		int time = player.getItemInUseCount();

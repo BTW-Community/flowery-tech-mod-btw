@@ -23,9 +23,9 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Slot;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.EnumChatFormatting;
+import net.minecraft.src.StatCollector;
 
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;

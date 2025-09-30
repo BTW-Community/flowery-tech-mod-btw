@@ -11,7 +11,7 @@
 package vazkii.botania.common.integration.etfuturum;
 
 import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.item.ModItems;

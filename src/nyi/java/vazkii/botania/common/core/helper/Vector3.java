@@ -14,8 +14,8 @@ import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.src.Entity;
+import net.minecraft.src.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Vec3;
 
@@ -23,8 +23,8 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Vector3f;
 import org.lwjgl.util.vector.Vector4f;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class Vector3
 {
@@ -248,17 +248,17 @@ public class Vector3
 		return x == 0 ? y == 0 || z == 0 : y == 0 && z == 0;
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public Vector3f vector3f() {
 		return new Vector3f((float)x, (float)y, (float)z);
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public Vector4f vector4f() {
 		return new Vector4f((float)x, (float)y, (float)z, 1);
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void glVertex() {
 		GL11.glVertex3d(x, y, z);
 	}

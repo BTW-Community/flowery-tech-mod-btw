@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.item.lens;
 
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import vazkii.botania.api.mana.BurstProperties;
 
 public class LensTime extends Lens {

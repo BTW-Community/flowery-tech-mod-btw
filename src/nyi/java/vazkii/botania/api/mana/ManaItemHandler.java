@@ -10,9 +10,9 @@
  */
 package vazkii.botania.api.mana;
 
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import vazkii.botania.api.BotaniaAPI;
 
 public final class ManaItemHandler {

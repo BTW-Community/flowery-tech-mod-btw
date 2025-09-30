@@ -12,11 +12,11 @@ package vazkii.botania.api.item;
 
 import java.util.List;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ChunkCoordinates;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.ChunkCoordinates;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 /**
  * An item that implements this will allow for various wireframes to be drawn
@@ -29,7 +29,7 @@ public interface IWireframeCoordinateListProvider {
 	 * Returns a list of ChunkCoordinates for the wireframes to draw.
 	 * Can be null.
 	 */
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public List<ChunkCoordinates> getWireframesToDraw(EntityPlayer player, ItemStack stack);
 
 }

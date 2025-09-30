@@ -12,10 +12,10 @@ package vazkii.botania.common.entity;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 import vazkii.botania.common.Botania;
 
 public class EntityPixie extends EntityFlyingCreature {

@@ -10,10 +10,10 @@
  */
 package vazkii.botania.common.item.material;
 
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.World;
 import vazkii.botania.api.recipe.IFlowerComponent;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.item.Item16Colors;

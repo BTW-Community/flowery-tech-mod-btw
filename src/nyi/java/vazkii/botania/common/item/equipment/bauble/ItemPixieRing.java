@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.item.equipment.bauble;
 
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import vazkii.botania.api.item.IPixieSpawner;
 import vazkii.botania.common.lib.LibItemNames;
 import baubles.api.BaubleType;

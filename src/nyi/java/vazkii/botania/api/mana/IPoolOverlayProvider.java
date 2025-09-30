@@ -11,7 +11,7 @@
 package vazkii.botania.api.mana;
 
 import net.minecraft.util.IIcon;
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 
 /**
  * A block that implements this can provide an IIcon (block icons only)

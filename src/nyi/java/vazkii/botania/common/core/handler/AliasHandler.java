@@ -12,7 +12,7 @@ package vazkii.botania.common.core.handler;
 
 import java.util.List;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.item.Item;
 import vazkii.botania.client.lib.LibResources;
 import cpw.mods.fml.common.event.FMLMissingMappingsEvent;

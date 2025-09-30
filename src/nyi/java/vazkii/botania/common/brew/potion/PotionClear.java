@@ -12,7 +12,7 @@ package vazkii.botania.common.brew.potion;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import vazkii.botania.common.core.handler.ConfigHandler;
 import vazkii.botania.common.lib.LibPotionNames;
 

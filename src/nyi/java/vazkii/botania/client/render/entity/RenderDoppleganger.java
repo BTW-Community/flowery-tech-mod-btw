@@ -13,8 +13,8 @@ package vazkii.botania.client.render.entity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderBiped;
-import net.minecraft.entity.Entity;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.src.Entity;
+import net.minecraft.src.ResourceLocation;
 
 import org.lwjgl.opengl.ARBShaderObjects;
 

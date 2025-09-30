@@ -21,9 +21,9 @@ import net.minecraft.entity.ai.attributes.BaseAttributeMap;
 import net.minecraft.entity.ai.attributes.IAttribute;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.passive.EntityHorse;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.IIcon;
 import net.minecraftforge.common.MinecraftForge;
@@ -33,8 +33,8 @@ import vazkii.botania.common.lib.LibItemNames;
 import vazkii.botania.common.lib.LibObfuscation;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.ReflectionHelper;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class ItemVirus extends ItemMod {
 
@@ -84,14 +84,14 @@ public class ItemVirus extends ItemMod {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void getSubItems(Item item, CreativeTabs tab, List list) {
 		for(int i = 0; i < SUBTYPES; i++)
 			list.add(new ItemStack(item, 1, i));
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public IIcon getIconFromDamage(int par1) {
 		return icons[Math.min(icons.length - 1, par1)];
 	}
@@ -106,7 +106,7 @@ public class ItemVirus extends ItemMod {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void registerIcons(IIconRegister par1IconRegister) {
 		icons = new IIcon[SUBTYPES];
 		for(int i = 0; i < SUBTYPES; i++)

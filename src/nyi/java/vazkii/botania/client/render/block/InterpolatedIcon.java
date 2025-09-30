@@ -17,11 +17,11 @@ import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.client.resources.data.AnimationMetadataSection;
 import vazkii.botania.common.lib.LibObfuscation;
 import cpw.mods.fml.relauncher.ReflectionHelper;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 // This is all vanilla code from 1.8, thanks to ganymedes01 porting it to 1.7 :D
-@SideOnly(Side.CLIENT)
+@Environment(EnvType.CLIENT)
 public class InterpolatedIcon extends TextureAtlasSprite {
 
 	protected int[][] interpolatedFrameData;

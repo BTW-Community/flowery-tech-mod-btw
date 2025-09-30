@@ -3,8 +3,8 @@ package vazkii.botania.common.item.equipment.tool.elementium;
 import java.util.Arrays;
 import java.util.List;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.Block;
+import net.minecraft.src.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import net.minecraftforge.oredict.OreDictionary;

@@ -10,9 +10,9 @@
  */
 package vazkii.botania.api.wand;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.World;
 
 /**
  * Any block that implements this can be used with the Wand for the Forest for some purpose.

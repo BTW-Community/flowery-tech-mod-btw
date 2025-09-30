@@ -17,8 +17,8 @@ import net.minecraftforge.common.MinecraftForge;
 import vazkii.botania.client.render.block.InterpolatedIcon;
 import vazkii.botania.common.block.ModBlocks;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class BlockBifrostPane extends BlockModPane {
 
@@ -28,7 +28,7 @@ public class BlockBifrostPane extends BlockModPane {
 	}
 
 	@SubscribeEvent
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void loadTextures(TextureStitchEvent.Pre event) {
 		if(event.map.getTextureType() == 0) {
 			TextureAtlasSprite icon = new InterpolatedIcon("botania:bifrostPermPane");
@@ -38,7 +38,7 @@ public class BlockBifrostPane extends BlockModPane {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void registerBlockIcons(IIconRegister reg) {
 		// NO-OP
 	}

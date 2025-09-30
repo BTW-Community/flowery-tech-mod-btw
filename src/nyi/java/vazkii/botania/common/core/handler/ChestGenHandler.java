@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.core.handler;
 
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
 import vazkii.botania.common.item.ModItems;

@@ -10,12 +10,12 @@
  */
 package vazkii.botania.common.block.subtile.functional;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.block.BlockFurnace;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.src.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import vazkii.botania.api.item.IExoflameHeatable;
 import vazkii.botania.api.lexicon.LexiconEntry;

@@ -16,16 +16,16 @@ import java.util.List;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.Entity;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.StatCollector;
-import net.minecraft.world.World;
+import net.minecraft.src.StatCollector;
+import net.minecraft.src.World;
 import net.minecraftforge.oredict.RecipeSorter;
 import net.minecraftforge.oredict.RecipeSorter.Category;
 import vazkii.botania.api.mana.BurstProperties;
@@ -43,8 +43,8 @@ import vazkii.botania.common.crafting.recipe.ManaGunRemoveLensRecipe;
 import vazkii.botania.common.entity.EntityManaBurst;
 import vazkii.botania.common.lib.LibItemNames;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class ItemManaGun extends ItemMod implements IManaUsingItem {
 
@@ -155,7 +155,7 @@ public class ItemManaGun extends ItemMod implements IManaUsingItem {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public int getColorFromItemStack(ItemStack par1ItemStack, int par2) {
 		if(par2 == 0)
 			return 0xFFFFFF;

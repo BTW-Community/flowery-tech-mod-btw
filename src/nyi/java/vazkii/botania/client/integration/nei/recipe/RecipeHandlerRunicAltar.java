@@ -2,8 +2,8 @@ package vazkii.botania.client.integration.nei.recipe;
 
 import java.util.List;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.StatCollector;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.recipe.RecipePetals;
 import vazkii.botania.api.recipe.RecipeRuneAltar;

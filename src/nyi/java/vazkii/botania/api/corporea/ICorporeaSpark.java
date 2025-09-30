@@ -13,7 +13,7 @@ package vazkii.botania.api.corporea;
 import java.util.List;
 
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 
 /**
  * An interface for a Corporea Spark. Includes functions for handling

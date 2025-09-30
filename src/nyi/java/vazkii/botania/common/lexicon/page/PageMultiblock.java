@@ -15,16 +15,16 @@ import java.util.List;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.GuiButton;
+import net.minecraft.src.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.EnumChatFormatting;
+import net.minecraft.src.ResourceLocation;
+import net.minecraft.src.StatCollector;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
@@ -35,8 +35,8 @@ import vazkii.botania.api.lexicon.multiblock.Multiblock;
 import vazkii.botania.api.lexicon.multiblock.MultiblockSet;
 import vazkii.botania.client.core.handler.MultiblockRenderHandler;
 import vazkii.botania.client.lib.LibResources;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class PageMultiblock extends LexiconPage {
 
@@ -54,7 +54,7 @@ public class PageMultiblock extends LexiconPage {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void renderScreen(IGuiLexiconEntry gui, int mx, int my) {
 		TextureManager render = Minecraft.getMinecraft().renderEngine;
 		render.bindTexture(multiblockOverlay);
@@ -133,7 +133,7 @@ public class PageMultiblock extends LexiconPage {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void onActionPerformed(IGuiLexiconEntry gui, GuiButton button) {
 		if(button == this.button) {
 			if(MultiblockRenderHandler.currentMultiblock == set)
@@ -144,7 +144,7 @@ public class PageMultiblock extends LexiconPage {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void updateScreen() {
 		++ticksElapsed;
 	}

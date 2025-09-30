@@ -10,15 +10,15 @@
  */
 package vazkii.botania.common.item.equipment.tool;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.Entity;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.stats.Achievement;
 import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.common.achievement.ICraftAchievement;
 import vazkii.botania.common.achievement.ModAchievements;

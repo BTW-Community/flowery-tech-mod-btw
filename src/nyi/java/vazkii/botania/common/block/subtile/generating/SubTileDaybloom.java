@@ -12,7 +12,7 @@ package vazkii.botania.common.block.subtile.generating;
 
 import java.util.ArrayList;
 
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.subtile.signature.PassiveFlower;

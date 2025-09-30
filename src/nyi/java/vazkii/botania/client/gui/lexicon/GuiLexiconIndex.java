@@ -15,14 +15,14 @@ import java.util.Collections;
 import java.util.List;
 
 import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.GuiButton;
+import net.minecraft.src.GuiButton;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.EnumChatFormatting;
+import net.minecraft.src.StatCollector;
 
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;

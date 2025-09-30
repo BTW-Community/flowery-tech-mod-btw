@@ -1,7 +1,7 @@
 package vazkii.botania.common.item.block;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.Block;
+import net.minecraft.src.ItemStack;
 import vazkii.botania.api.recipe.IElvenItem;
 
 public class ItemBlockDreamwood extends ItemBlockWithMetadataAndName implements IElvenItem {

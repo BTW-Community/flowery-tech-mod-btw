@@ -11,8 +11,8 @@
 package vazkii.botania.api.internal;
 
 import vazkii.botania.api.lexicon.LexiconPage;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 /**
  * A dummy page. It does absolutely nothing and is only
@@ -26,7 +26,7 @@ public class DummyPage extends LexiconPage {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void renderScreen(IGuiLexiconEntry gui, int x, int y) {
 		// NO-OP
 	}

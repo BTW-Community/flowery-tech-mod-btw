@@ -12,7 +12,7 @@ package vazkii.botania.api.corporea;
 import java.util.List;
 
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 
 /**
  * This interface wraps IInventory corporea works with in order to provide

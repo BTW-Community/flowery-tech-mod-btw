@@ -10,8 +10,8 @@
  */
 package vazkii.botania.api.item;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ItemStack;
 
 /**
  * An item that implements this can break multiple blocks at once

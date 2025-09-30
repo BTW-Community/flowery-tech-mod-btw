@@ -11,7 +11,7 @@
 package vazkii.botania.common.block.tile.mana;
 
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.src.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.mana.IManaReceiver;
 import vazkii.botania.common.block.tile.TileMod;

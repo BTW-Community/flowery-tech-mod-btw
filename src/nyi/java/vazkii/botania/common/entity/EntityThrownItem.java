@@ -12,15 +12,15 @@ package vazkii.botania.common.entity;
 
 import java.util.List;
 
-import net.minecraft.entity.Entity;
+import net.minecraft.src.Entity;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 import vazkii.botania.common.core.helper.Vector3;
 
 public class EntityThrownItem extends EntityItem {

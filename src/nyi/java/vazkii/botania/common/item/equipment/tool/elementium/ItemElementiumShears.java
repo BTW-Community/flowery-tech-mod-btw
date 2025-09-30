@@ -7,21 +7,21 @@ import java.util.Random;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
+import net.minecraft.src.Entity;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 import net.minecraftforge.common.IShearable;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.item.equipment.tool.ToolCommons;
 import vazkii.botania.common.item.equipment.tool.manasteel.ItemManasteelShears;
 import vazkii.botania.common.lib.LibItemNames;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class ItemElementiumShears extends ItemManasteelShears {
 
@@ -48,7 +48,7 @@ public class ItemElementiumShears extends ItemManasteelShears {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void registerIcons(IIconRegister par1IconRegister) {
 		super.registerIcons(par1IconRegister);
 		dammitReddit = IconHelper.forName(par1IconRegister, "dammitReddit");

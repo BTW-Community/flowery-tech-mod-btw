@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.item.equipment.bauble;
 
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import vazkii.botania.common.lib.LibItemNames;
 
 public class ItemGreaterManaRing extends ItemManaRing {

@@ -19,10 +19,10 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.EnumChatFormatting;
+import net.minecraft.src.ResourceLocation;
+import net.minecraft.src.StatCollector;
 import net.minecraftforge.oredict.OreDictionary;
 
 import org.lwjgl.opengl.GL11;
@@ -37,8 +37,8 @@ import vazkii.botania.client.lib.LibResources;
 import vazkii.botania.client.render.tile.RenderTilePool;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.block.tile.mana.TilePool;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class PageManaInfusionRecipe extends PageRecipe {
 
@@ -65,7 +65,7 @@ public class PageManaInfusionRecipe extends PageRecipe {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void renderRecipe(IGuiLexiconEntry gui, int mx, int my) {
 		if (recipes.size() == 0) return;
 		RecipeManaInfusion recipe = recipes.get(recipeAt);
@@ -140,7 +140,7 @@ public class PageManaInfusionRecipe extends PageRecipe {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void updateScreen() {
 		if(GuiScreen.isShiftKeyDown())
 			return;

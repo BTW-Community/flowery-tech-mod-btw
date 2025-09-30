@@ -12,17 +12,17 @@ package vazkii.botania.common.item;
 
 import java.util.List;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.Entity;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.src.TileEntity;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.StatCollector;
-import net.minecraft.world.World;
+import net.minecraft.src.StatCollector;
+import net.minecraft.src.World;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.Botania;

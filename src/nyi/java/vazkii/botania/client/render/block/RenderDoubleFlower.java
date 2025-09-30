@@ -10,12 +10,12 @@
  */
 package vazkii.botania.client.render.block;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.block.BlockDoublePlant;
-import net.minecraft.client.renderer.RenderBlocks;
+import net.minecraft.src.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.IBlockAccess;
+import net.minecraft.src.IBlockAccess;
 import vazkii.botania.client.lib.LibRenderIDs;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 

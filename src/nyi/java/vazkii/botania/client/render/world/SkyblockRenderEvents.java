@@ -11,7 +11,7 @@
 package vazkii.botania.client.render.world;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import vazkii.botania.common.core.handler.ConfigHandler;
 import vazkii.botania.common.world.WorldTypeSkyblock;

@@ -12,8 +12,8 @@ package vazkii.botania.api.internal;
 
 import java.util.UUID;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ChunkCoordinates;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.ChunkCoordinates;
 
 /**
  * Interface for the Mana Burst entity. This can safely be casted to EntityThrowable.

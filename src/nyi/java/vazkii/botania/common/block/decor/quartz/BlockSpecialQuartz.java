@@ -12,15 +12,15 @@ package vazkii.botania.common.block.decor.quartz;
 
 import java.util.List;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.client.core.helper.IconHelper;
@@ -29,8 +29,8 @@ import vazkii.botania.common.block.ModFluffBlocks;
 import vazkii.botania.common.item.block.ItemBlockSpecialQuartz;
 import vazkii.botania.common.lexicon.LexiconData;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class BlockSpecialQuartz extends BlockMod implements ILexiconable {
 
@@ -70,7 +70,7 @@ public class BlockSpecialQuartz extends BlockMod implements ILexiconable {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public IIcon getIcon(int par1, int par2) {
 		if (par2 != 2 && par2 != 3 && par2 != 4) {
 			if (par1 != 1 && (par1 != 0 || par2 != 1)) {
@@ -124,7 +124,7 @@ public class BlockSpecialQuartz extends BlockMod implements ILexiconable {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void getSubBlocks(Item item, CreativeTabs tab, List par3List) {
 		par3List.add(new ItemStack(this, 1, 0));
 		par3List.add(new ItemStack(this, 1, 1));
@@ -132,7 +132,7 @@ public class BlockSpecialQuartz extends BlockMod implements ILexiconable {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void registerBlockIcons(IIconRegister par1IconRegister) {
 		specialQuartzIcons = new IIcon[iconNames.length];
 

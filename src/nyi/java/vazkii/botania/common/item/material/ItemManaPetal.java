@@ -11,7 +11,7 @@
 package vazkii.botania.common.item.material;
 
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import vazkii.botania.api.recipe.IFlowerComponent;
 import vazkii.botania.common.item.Item16Colors;
 import vazkii.botania.common.lib.LibItemNames;

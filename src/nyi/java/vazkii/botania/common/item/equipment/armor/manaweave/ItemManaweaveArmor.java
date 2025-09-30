@@ -14,12 +14,12 @@ import java.util.List;
 
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.stats.Achievement;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.StatCollector;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.client.core.proxy.ClientProxy;
@@ -30,8 +30,8 @@ import vazkii.botania.common.achievement.ModAchievements;
 import vazkii.botania.common.core.handler.ConfigHandler;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.equipment.armor.manasteel.ItemManasteelArmor;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class ItemManaweaveArmor extends ItemManasteelArmor implements ICraftAchievement {
 
@@ -42,7 +42,7 @@ public class ItemManaweaveArmor extends ItemManasteelArmor implements ICraftAchi
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public ModelBiped provideArmorModelForSlot(ItemStack stack, int slot) {
 		models[slot] = new ModelArmorManaweave(slot);
 		return models[slot];
@@ -65,7 +65,7 @@ public class ItemManaweaveArmor extends ItemManasteelArmor implements ICraftAchi
 	}
 	
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public String getUnlocalizedName(ItemStack p_77667_1_) {
 		String name = super.getUnlocalizedName(p_77667_1_);
 		if(ClientProxy.jingleTheBells)

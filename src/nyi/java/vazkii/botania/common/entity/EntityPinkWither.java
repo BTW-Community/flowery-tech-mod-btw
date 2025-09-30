@@ -10,12 +10,12 @@
  */
 package vazkii.botania.common.entity;
 
-import net.minecraft.entity.Entity;
+import net.minecraft.src.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.EntityWither;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.MathHelper;
-import net.minecraft.world.World;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.MathHelper;
+import net.minecraft.src.World;
 
 public class EntityPinkWither extends EntityWither {
 

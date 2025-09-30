@@ -12,7 +12,7 @@ package vazkii.botania.client.core.handler;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.StatCollector;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.item.ItemKeepIvy;

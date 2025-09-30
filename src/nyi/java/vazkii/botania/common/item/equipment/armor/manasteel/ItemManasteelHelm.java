@@ -10,8 +10,8 @@
  */
 package vazkii.botania.common.item.equipment.armor.manasteel;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ItemStack;
 import vazkii.botania.api.mana.IManaDiscountArmor;
 import vazkii.botania.common.lib.LibItemNames;
 

@@ -10,7 +10,7 @@
  */
 package vazkii.botania.api.recipe;
 
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import vazkii.botania.api.BotaniaAPI;
 
 public class RecipeMiniFlower extends RecipeManaInfusion {

@@ -11,14 +11,14 @@
 package vazkii.botania.api.item;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ItemStack;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 
 import org.lwjgl.opengl.GL11;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 /**
  * A Bauble Item that implements this will be have hooks to render something on
@@ -35,7 +35,7 @@ public interface IBaubleRender {
 	 * rendering. Will not be called if the item is a ICosmeticAttachable and
 	 * has a cosmetic bauble attached to it.
 	 */
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void onPlayerBaubleRender(ItemStack stack, RenderPlayerEvent event, RenderType type);
 
 	/**

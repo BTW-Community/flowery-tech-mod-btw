@@ -10,10 +10,10 @@
  */
 package vazkii.botania.api.wiki;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.Block;
+import net.minecraft.src.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 
 import org.apache.commons.lang3.text.WordUtils;
 

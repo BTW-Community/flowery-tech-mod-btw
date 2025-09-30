@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.core.proxy;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.boss.EntityDragonPart;
@@ -20,11 +20,11 @@ import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.entity.item.EntityPainting;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemRecord;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.StatCollector;
-import net.minecraft.world.World;
+import net.minecraft.src.StatCollector;
+import net.minecraft.src.World;
 import net.minecraftforge.common.MinecraftForge;
 
 import org.apache.logging.log4j.Level;

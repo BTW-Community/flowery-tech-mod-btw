@@ -10,7 +10,7 @@
  */
 package vazkii.botania.api.item;
 
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 
 /**
  * This interface describes a tool that can be sorted by the Ring of

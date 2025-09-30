@@ -11,7 +11,7 @@
 package vazkii.botania.common.item.interaction.thaumcraft;
 
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import thaumcraft.api.IGoggles;
 import thaumcraft.api.nodes.IRevealer;
 import vazkii.botania.client.lib.LibResources;

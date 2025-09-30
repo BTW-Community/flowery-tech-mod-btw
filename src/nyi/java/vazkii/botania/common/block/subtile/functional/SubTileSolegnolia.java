@@ -14,7 +14,7 @@ import java.util.Collections;
 import java.util.Set;
 import java.util.WeakHashMap;
 
-import net.minecraft.entity.Entity;
+import net.minecraft.src.Entity;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.SubTileFunctional;

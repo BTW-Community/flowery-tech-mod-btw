@@ -13,12 +13,12 @@ package vazkii.botania.common.lexicon.page;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
@@ -28,8 +28,8 @@ import vazkii.botania.api.lexicon.LexiconRecipeMappings;
 import vazkii.botania.client.lib.LibResources;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.item.ModItems;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class PageTerrasteel extends PageRecipe {
 
@@ -40,7 +40,7 @@ public class PageTerrasteel extends PageRecipe {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void renderRecipe(IGuiLexiconEntry gui, int mx, int my) {
 		Block block1 = ModBlocks.livingrock;
 		Block block2 = Blocks.lapis_block;

@@ -14,8 +14,8 @@ import java.util.List;
 
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.MathHelper;
-import net.minecraft.world.World;
+import net.minecraft.src.MathHelper;
+import net.minecraft.src.World;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import vazkii.botania.api.lexicon.LexiconEntry;

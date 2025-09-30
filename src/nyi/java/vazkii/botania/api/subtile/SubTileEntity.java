@@ -15,19 +15,19 @@ import java.util.ArrayList;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ChunkCoordinates;
+import net.minecraft.src.TileEntity;
+import net.minecraft.src.ChunkCoordinates;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.wand.IWandBindable;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 /**
  * A Sub-TileEntity, this is used for the flower system. Make sure to map subclasses
@@ -97,7 +97,7 @@ public class SubTileEntity {
 	/**
 	 * Gets the icon for this SubTileEntity, this is a block icon.
 	 */
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public IIcon getIcon() {
 		return BotaniaAPI.internalHandler.getSubTileIconForName(getUnlocalizedName());
 	}
@@ -154,7 +154,7 @@ public class SubTileEntity {
 	 * Gets the block coordinates this is bound to, for use with the wireframe render
 	 * when the sub tile is being hovered with a wand of the forest.
 	 */
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public ChunkCoordinates getBinding() {
 		return null;
 	}
@@ -163,7 +163,7 @@ public class SubTileEntity {
 	 * Returns a descriptor for the radius of this sub tile. This is called while a player
 	 * is looking at the block with a Manaseer Monocle (IBurstViewerBauble).
 	 */
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public RadiusDescriptor getRadius() {
 		return null;
 	}
@@ -193,7 +193,7 @@ public class SubTileEntity {
 	 * Called on the client when the block being pointed at is the one with this sub tile.
 	 * Used to render a HUD portraying some data from this sub tile.
 	 */
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void renderHUD(Minecraft mc, ScaledResolution res) {
 		// NO-OP
 	}

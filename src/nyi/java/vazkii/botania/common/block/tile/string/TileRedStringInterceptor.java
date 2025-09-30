@@ -13,10 +13,10 @@ package vazkii.botania.common.block.tile.string;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.block.Block;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ChunkCoordinates;
-import net.minecraft.world.World;
+import net.minecraft.src.Block;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ChunkCoordinates;
+import net.minecraft.src.World;
 
 public class TileRedStringInterceptor extends TileRedString {
 

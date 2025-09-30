@@ -13,20 +13,20 @@ package vazkii.botania.common.item.rod;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.Entity;
+import net.minecraft.src.Entity;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ChunkCoordinates;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.TileEntity;
+import net.minecraft.src.ChunkCoordinates;
+import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -43,8 +43,8 @@ import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.item.ItemMod;
 import vazkii.botania.common.lib.LibItemNames;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class ItemExchangeRod extends ItemMod implements IManaUsingItem, IWireframeCoordinateListProvider {
 
@@ -389,7 +389,7 @@ public class ItemExchangeRod extends ItemMod implements IManaUsingItem, IWirefra
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public List<ChunkCoordinates> getWireframesToDraw(EntityPlayer player, ItemStack stack) {
 		ItemStack holding = player.getCurrentEquippedItem();
 		if(holding != stack || !canExchange(stack))

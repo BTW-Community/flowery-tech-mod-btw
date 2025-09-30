@@ -15,13 +15,13 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityBlaze;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.MathHelper;
-import net.minecraft.world.World;
+import net.minecraft.src.MathHelper;
+import net.minecraft.src.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import vazkii.botania.api.lexicon.ILexiconable;
@@ -30,8 +30,8 @@ import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class BlockFelPumpkin extends BlockMod implements ILexiconable {
 
@@ -48,7 +48,7 @@ public class BlockFelPumpkin extends BlockMod implements ILexiconable {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public IIcon getIcon(int p_149691_1_, int p_149691_2_) {
 		return p_149691_1_ == 1 ? top : p_149691_1_ == 0 ? top : p_149691_2_ == 2 && p_149691_1_ == 2 ? face : p_149691_2_ == 3 && p_149691_1_ == 5 ? face : p_149691_2_ == 0 && p_149691_1_ == 3 ? face : p_149691_2_ == 1 && p_149691_1_ == 4 ? face : blockIcon;
 	}
@@ -78,7 +78,7 @@ public class BlockFelPumpkin extends BlockMod implements ILexiconable {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void registerBlockIcons(IIconRegister p_149651_1_)  {
 		face = IconHelper.forBlock(p_149651_1_, this);
 		top = Blocks.pumpkin.getIcon(0, 0);

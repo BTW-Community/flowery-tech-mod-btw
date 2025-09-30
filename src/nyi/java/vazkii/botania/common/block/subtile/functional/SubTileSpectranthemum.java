@@ -14,20 +14,20 @@ import java.util.List;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.ChunkCoordinates;
+import net.minecraft.src.ChunkCoordinates;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.mana.IManaItem;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.SubTileFunctional;
 import vazkii.botania.common.core.helper.MathHelper;
 import vazkii.botania.common.lexicon.LexiconData;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class SubTileSpectranthemum extends SubTileFunctional {
 
@@ -150,7 +150,7 @@ public class SubTileSpectranthemum extends SubTileFunctional {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public ChunkCoordinates getBinding() {
 		return Minecraft.getMinecraft().thePlayer.isSneaking() && bindY != -1 ? new ChunkCoordinates(bindX, bindY, bindZ) : super.getBinding();
 	}

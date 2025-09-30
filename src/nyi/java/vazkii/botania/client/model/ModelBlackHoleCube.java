@@ -12,7 +12,7 @@ package vazkii.botania.client.model;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.entity.Entity;
+import net.minecraft.src.Entity;
 
 public class ModelBlackHoleCube extends ModelBase {
 	public ModelRenderer shape1;

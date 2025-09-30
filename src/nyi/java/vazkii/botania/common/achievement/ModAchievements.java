@@ -11,7 +11,7 @@
 package vazkii.botania.common.achievement;
 
 import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.stats.Achievement;
 import net.minecraftforge.common.AchievementPage;
 import vazkii.botania.common.block.ModBlocks;

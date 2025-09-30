@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.block;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import vazkii.botania.common.block.decor.Block18Stone;
 import vazkii.botania.common.block.decor.BlockPavement;
 import vazkii.botania.common.block.decor.biomestone.BlockBiomeStoneA;

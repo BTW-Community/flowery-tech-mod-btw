@@ -14,9 +14,9 @@ import java.awt.Rectangle;
 
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.entity.boss.IBossDisplayData;
-import net.minecraft.util.ResourceLocation;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.src.ResourceLocation;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 /**
  * An extension of IBossDisplayData. This counts as a botania boss and as a normal
@@ -33,7 +33,7 @@ public interface IBotaniaBoss extends IBossDisplayData {
 	 * You can use BotaniaAPI.internalMethodHandler.getDefaultBossBarTexture() to get
 	 * the one used by botania bosses.
 	 */
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public ResourceLocation getBossBarTexture();
 
 	/**
@@ -41,7 +41,7 @@ public interface IBotaniaBoss extends IBossDisplayData {
 	 * boss bar texture. This is for the background, not the bar that shows
 	 * the HP.
 	 */
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public Rectangle getBossBarTextureRect();
 
 	/**
@@ -50,13 +50,13 @@ public interface IBotaniaBoss extends IBossDisplayData {
 	 * HP the boss has. The width of the rectangle will be multiplied by the
 	 * faction of the boss's current HP by max HP.
 	 */
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public Rectangle getBossBarHPTextureRect();
 
 	/**
 	 * A callback for when this boss's boss bar renders, you can do aditional rendering
 	 * here if needed.
 	 */
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void bossBarRenderCallback(ScaledResolution res, int x, int y);
 }

@@ -10,9 +10,9 @@
  */
 package vazkii.botania.api.item;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ChunkCoordinates;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.ChunkCoordinates;
 
 /**
  * An extension of IWireframeCoordinateListProvider that allows for

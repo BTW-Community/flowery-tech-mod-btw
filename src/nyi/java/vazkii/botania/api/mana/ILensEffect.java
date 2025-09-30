@@ -10,7 +10,7 @@
  */
 package vazkii.botania.api.mana;
 
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import vazkii.botania.api.internal.IManaBurst;
 

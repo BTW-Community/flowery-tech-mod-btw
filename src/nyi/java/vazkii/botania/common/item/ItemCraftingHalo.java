@@ -12,35 +12,35 @@ package vazkii.botania.common.item;
 
 import java.awt.Color;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.ItemRenderer;
-import net.minecraft.client.renderer.RenderBlocks;
+import net.minecraft.src.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.entity.Entity;
+import net.minecraft.src.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.ContainerWorkbench;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.stats.Achievement;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.MathHelper;
+import net.minecraft.src.ResourceLocation;
+import net.minecraft.src.StatCollector;
 import net.minecraft.util.Vec3;
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -63,8 +63,8 @@ import vazkii.botania.common.lib.LibItemNames;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class ItemCraftingHalo extends ItemMod implements ICraftAchievement {
 
@@ -389,7 +389,7 @@ public class ItemCraftingHalo extends ItemMod implements ICraftAchievement {
 		ItemNBTHelper.setFloat(stack, TAG_ROTATION_BASE, rotation);
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	@SubscribeEvent
 	public void onRenderWorldLast(RenderWorldLastEvent event) {
 		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
@@ -398,7 +398,7 @@ public class ItemCraftingHalo extends ItemMod implements ICraftAchievement {
 			render(stack, player, event.partialTicks);
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void render(ItemStack stack, EntityPlayer player, float partialTicks) {
 		Minecraft mc = Minecraft.getMinecraft();
 		Tessellator tess = Tessellator.instance;
@@ -513,12 +513,12 @@ public class ItemCraftingHalo extends ItemMod implements ICraftAchievement {
 		GL11.glPopMatrix();
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public ResourceLocation getGlowResource() {
 		return glowTexture;
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public static void renderHUD(ScaledResolution resolution, EntityPlayer player, ItemStack stack) {
 		Minecraft mc = Minecraft.getMinecraft();
 		int slot = getSegmentLookedAt(stack, player);
@@ -555,7 +555,7 @@ public class ItemCraftingHalo extends ItemMod implements ICraftAchievement {
 		}
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public static void renderRecipe(ScaledResolution resolution, String label, ItemStack[] recipe, EntityPlayer player, boolean setRecipe) {
 		Minecraft mc = Minecraft.getMinecraft();
 

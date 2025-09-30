@@ -1,9 +1,9 @@
 package vazkii.botania.common.block.decor.slabs;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.util.IIcon;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public abstract class BlockLivingSlab extends BlockModSlab {
 
@@ -18,7 +18,7 @@ public abstract class BlockLivingSlab extends BlockModSlab {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public IIcon getIcon(int par1, int par2) {
 		return source.getIcon(par1, meta);
 	}

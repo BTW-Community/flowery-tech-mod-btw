@@ -10,19 +10,19 @@
  */
 package vazkii.botania.common.item.equipment.bauble;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 
@@ -34,8 +34,8 @@ import vazkii.botania.api.item.ICosmeticBauble;
 import vazkii.botania.common.lib.LibItemNames;
 import baubles.api.BaubleType;
 import baubles.common.lib.PlayerHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class ItemMonocle extends ItemBauble implements IBurstViewerBauble, ICosmeticBauble {
 
@@ -66,7 +66,7 @@ public class ItemMonocle extends ItemBauble implements IBurstViewerBauble, ICosm
 		}
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public static void renderHUD(ScaledResolution resolution, EntityPlayer player) {
 		Minecraft mc = Minecraft.getMinecraft();
 		MovingObjectPosition pos = mc.objectMouseOver;

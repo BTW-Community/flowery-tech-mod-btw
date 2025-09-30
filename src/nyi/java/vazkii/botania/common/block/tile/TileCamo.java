@@ -11,7 +11,7 @@
 package vazkii.botania.common.block.tile;
 
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;

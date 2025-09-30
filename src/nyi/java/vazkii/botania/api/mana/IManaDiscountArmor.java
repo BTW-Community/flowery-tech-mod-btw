@@ -10,8 +10,8 @@
  */
 package vazkii.botania.api.mana;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ItemStack;
 
 /**
  * An armor item that implements this can provide a mana discount for mana tools.

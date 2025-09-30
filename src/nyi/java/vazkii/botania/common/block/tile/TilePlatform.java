@@ -10,8 +10,8 @@
  */
 package vazkii.botania.common.block.tile;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.mana.IManaCollisionGhost;
 

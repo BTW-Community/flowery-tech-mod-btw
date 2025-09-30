@@ -14,15 +14,15 @@ import java.awt.Desktop;
 import java.net.URI;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiButton;
+import net.minecraft.src.GuiButton;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.ChatStyle;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.EnumChatFormatting;
+import net.minecraft.src.StatCollector;
 import vazkii.botania.api.internal.IGuiLexiconEntry;
 import vazkii.botania.client.gui.lexicon.GuiLexicon;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class PageTutorial extends PageText {
 
@@ -62,7 +62,7 @@ public class PageTutorial extends PageText {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void onActionPerformed(IGuiLexiconEntry gui, GuiButton button) {
 		if(button == buttonText) {
 			GuiLexicon.startTutorial();

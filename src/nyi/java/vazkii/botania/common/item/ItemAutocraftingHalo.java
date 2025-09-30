@@ -10,12 +10,12 @@
  */
 package vazkii.botania.common.item;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.Entity;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.ResourceLocation;
+import net.minecraft.src.World;
 import vazkii.botania.client.lib.LibResources;
 import vazkii.botania.common.lib.LibItemNames;
 

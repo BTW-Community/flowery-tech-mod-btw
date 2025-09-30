@@ -13,7 +13,7 @@ package vazkii.botania.common.block.subtile.functional;
 import java.util.Random;
 
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraftforge.common.ChestGenHooks;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.lexicon.LexiconEntry;

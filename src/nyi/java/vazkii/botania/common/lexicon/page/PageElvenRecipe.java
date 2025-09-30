@@ -9,9 +9,9 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.src.ResourceLocation;
 import net.minecraftforge.oredict.OreDictionary;
 
 import org.lwjgl.opengl.GL11;
@@ -22,8 +22,8 @@ import vazkii.botania.api.lexicon.LexiconRecipeMappings;
 import vazkii.botania.api.recipe.RecipeElvenTrade;
 import vazkii.botania.client.lib.LibResources;
 import vazkii.botania.common.block.BlockAlfPortal;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class PageElvenRecipe extends PageRecipe {
 
@@ -50,7 +50,7 @@ public class PageElvenRecipe extends PageRecipe {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void renderRecipe(IGuiLexiconEntry gui, int mx, int my) {
 		if (recipes.size() == 0) return;
 		RecipeElvenTrade recipe = recipes.get(recipeAt);
@@ -81,7 +81,7 @@ public class PageElvenRecipe extends PageRecipe {
 		RenderItem.getInstance().renderIcon(gui.getLeft() + 22, gui.getTop() + 36, portalIcon, 48, 48);
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void renderItemAtInputPos(IGuiLexiconEntry gui, int x, ItemStack stack) {
 		if(stack == null || stack.getItem() == null)
 			return;
@@ -101,7 +101,7 @@ public class PageElvenRecipe extends PageRecipe {
 
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void updateScreen() {
 		if(GuiScreen.isShiftKeyDown())
 			return;

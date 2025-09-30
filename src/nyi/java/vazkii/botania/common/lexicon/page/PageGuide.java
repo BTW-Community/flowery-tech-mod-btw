@@ -13,8 +13,8 @@ package vazkii.botania.common.lexicon.page;
 import java.awt.Desktop;
 import java.net.URI;
 
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.GuiButton;
+import net.minecraft.src.StatCollector;
 import vazkii.botania.api.internal.IGuiLexiconEntry;
 
 public class PageGuide extends PageText {

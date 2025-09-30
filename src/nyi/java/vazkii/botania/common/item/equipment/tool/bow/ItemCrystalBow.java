@@ -12,10 +12,10 @@ package vazkii.botania.common.item.equipment.tool.bow;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.World;
 import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.common.lib.LibItemNames;
 

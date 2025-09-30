@@ -15,9 +15,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
 
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ChunkCoordinates;
-import net.minecraft.world.World;
+import net.minecraft.src.TileEntity;
+import net.minecraft.src.ChunkCoordinates;
+import net.minecraft.src.World;
 import vazkii.botania.api.internal.IManaNetwork;
 import vazkii.botania.api.mana.ManaNetworkEvent;
 import vazkii.botania.api.mana.ManaNetworkEvent.Action;

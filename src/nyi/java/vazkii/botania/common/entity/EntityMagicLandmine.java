@@ -12,14 +12,14 @@ package vazkii.botania.common.entity;
 
 import java.util.List;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.Entity;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 import vazkii.botania.common.Botania;
 
 public class EntityMagicLandmine extends Entity {

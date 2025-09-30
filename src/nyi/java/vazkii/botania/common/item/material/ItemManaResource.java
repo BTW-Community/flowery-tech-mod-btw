@@ -16,15 +16,15 @@ import java.util.List;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.stats.Achievement;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
@@ -40,8 +40,8 @@ import vazkii.botania.common.item.ItemMod;
 import vazkii.botania.common.item.equipment.tool.ToolCommons;
 import vazkii.botania.common.lib.LibItemNames;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class ItemManaResource extends ItemMod implements IFlowerComponent, IElvenItem, IPickupAchievement {
 
@@ -121,7 +121,7 @@ public class ItemManaResource extends ItemMod implements IFlowerComponent, IElve
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
 		for(int i = 0; i < types; i++)
 			if(Botania.gardenOfGlassLoaded || i != 20 && i != 21)
@@ -129,7 +129,7 @@ public class ItemManaResource extends ItemMod implements IFlowerComponent, IElve
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void registerIcons(IIconRegister par1IconRegister) {
 		icons = new IIcon[types];
 		for(int i = 0; i < icons.length; i++)
@@ -142,7 +142,7 @@ public class ItemManaResource extends ItemMod implements IFlowerComponent, IElve
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public int getColorFromItemStack(ItemStack par1ItemStack, int par2) {
 		if(par1ItemStack.getItemDamage() == 5 || par1ItemStack.getItemDamage() == 14)
 			return Color.HSBtoRGB(Botania.proxy.getWorldElapsedTicks() * 2 % 360 / 360F, 0.25F, 1F);
@@ -156,7 +156,7 @@ public class ItemManaResource extends ItemMod implements IFlowerComponent, IElve
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public IIcon getIconFromDamage(int par1) {
 		return icons[Math.min(icons.length - 1, par1)];
 	}

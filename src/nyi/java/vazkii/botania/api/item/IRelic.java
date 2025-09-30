@@ -10,7 +10,7 @@
  */
 package vazkii.botania.api.item;
 
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.stats.Achievement;
 
 /**

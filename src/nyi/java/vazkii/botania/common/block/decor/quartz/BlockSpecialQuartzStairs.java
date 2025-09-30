@@ -10,10 +10,10 @@
  */
 package vazkii.botania.common.block.decor.quartz;
 
-import net.minecraft.block.Block;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
+import net.minecraft.src.Block;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.World;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.common.block.ModFluffBlocks;
 import vazkii.botania.common.block.decor.stairs.BlockModStairs;

@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.item;
 
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraftforge.oredict.RecipeSorter;
 import net.minecraftforge.oredict.RecipeSorter.Category;
 import vazkii.botania.api.mana.ManaItemHandler;

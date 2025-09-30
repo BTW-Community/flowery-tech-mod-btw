@@ -16,18 +16,18 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
+import net.minecraft.src.Entity;
 import net.minecraft.entity.EntityList;
-import net.minecraft.util.MathHelper;
-import net.minecraft.world.World;
+import net.minecraft.src.MathHelper;
+import net.minecraft.src.World;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 import vazkii.botania.api.internal.IGuiLexiconEntry;
 import vazkii.botania.api.lexicon.LexiconPage;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class PageEntity extends LexiconPage{
 
@@ -49,7 +49,7 @@ public class PageEntity extends LexiconPage{
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void renderScreen(IGuiLexiconEntry gui, int mx, int my) {
 		prepDummy();
 		int text_x = gui.getLeft() + 16;
@@ -63,7 +63,7 @@ public class PageEntity extends LexiconPage{
 		PageText.renderText(text_x, text_y, gui.getWidth() - 30, gui.getHeight(), getUnlocalizedName());
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public int getEntityScale(int targetSize) {
 		float entity_size = dummyEntity.width;
 
@@ -80,7 +80,7 @@ public class PageEntity extends LexiconPage{
 		dummyEntity.ticksExisted++;
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void renderEntity(IGuiLexiconEntry gui, Entity entity, int x, int y, int scale, float rotation) {
 		dummyEntity.worldObj = Minecraft.getMinecraft() != null ? Minecraft.getMinecraft().theWorld : null;
 

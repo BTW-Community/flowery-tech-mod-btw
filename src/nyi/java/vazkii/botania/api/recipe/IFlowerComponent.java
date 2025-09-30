@@ -11,7 +11,7 @@
 package vazkii.botania.api.recipe;
 
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 
 /**
  * Have an Item implement this to allow it to be used in the Petal Apothecary.

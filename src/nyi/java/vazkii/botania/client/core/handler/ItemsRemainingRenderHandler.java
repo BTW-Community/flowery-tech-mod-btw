@@ -16,15 +16,15 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.EnumChatFormatting;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public final class ItemsRemainingRenderHandler {
 
@@ -34,7 +34,7 @@ public final class ItemsRemainingRenderHandler {
 	private static ItemStack stack;
 	private static int ticks, count;
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public static void render(ScaledResolution resolution, float partTicks) {
 		if(ticks > 0 && stack != null) {
 			int pos = maxTicks - ticks;
@@ -82,7 +82,7 @@ public final class ItemsRemainingRenderHandler {
 		}
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public static void tick() {
 		if(ticks > 0)
 			--ticks;

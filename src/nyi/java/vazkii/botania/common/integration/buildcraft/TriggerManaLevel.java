@@ -1,8 +1,8 @@
 package vazkii.botania.common.integration.buildcraft;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.TileEntity;
+import net.minecraft.src.StatCollector;
 import net.minecraftforge.common.util.ForgeDirection;
 
 import org.apache.commons.lang3.text.WordUtils;

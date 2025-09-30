@@ -10,9 +10,9 @@
  */
 package vazkii.botania.api.item;
 
-import net.minecraft.block.Block;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.Block;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ItemStack;
 
 /**
  * An Item that implements this can provide blocks to other items that use them.

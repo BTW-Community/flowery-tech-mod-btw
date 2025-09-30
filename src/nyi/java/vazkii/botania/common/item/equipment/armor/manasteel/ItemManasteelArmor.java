@@ -15,16 +15,16 @@ import java.util.List;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.Entity;
+import net.minecraft.src.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.StatCollector;
-import net.minecraft.world.World;
+import net.minecraft.src.EnumChatFormatting;
+import net.minecraft.src.StatCollector;
+import net.minecraft.src.World;
 import net.minecraftforge.common.ISpecialArmor;
 import thaumcraft.api.IRunicArmor;
 import vazkii.botania.api.BotaniaAPI;
@@ -41,8 +41,8 @@ import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.equipment.tool.ToolCommons;
 import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 @Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.IRunicArmor")
 public class ItemManasteelArmor extends ItemArmor implements ISpecialArmor, IManaUsingItem, IPhantomInkable, IRunicArmor {
@@ -77,7 +77,7 @@ public class ItemManasteelArmor extends ItemArmor implements ISpecialArmor, IMan
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void registerIcons(IIconRegister par1IconRegister) {
 		itemIcon = IconHelper.forItem(par1IconRegister, this);
 	}
@@ -121,7 +121,7 @@ public class ItemManasteelArmor extends ItemArmor implements ISpecialArmor, IMan
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot) {
 		if(ConfigHandler.enableArmorModels) {
 			ModelBiped model = getArmorModelForSlot(entityLiving, itemStack, armorSlot);
@@ -135,7 +135,7 @@ public class ItemManasteelArmor extends ItemArmor implements ISpecialArmor, IMan
 		return super.getArmorModel(entityLiving, itemStack, armorSlot);
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public ModelBiped getArmorModelForSlot(EntityLivingBase entity, ItemStack stack, int slot) {
 		if(models == null)
 			models = new ModelBiped[4];
@@ -143,7 +143,7 @@ public class ItemManasteelArmor extends ItemArmor implements ISpecialArmor, IMan
 		return models[slot];
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public ModelBiped provideArmorModelForSlot(ItemStack stack, int slot) {
 		models[slot] = new ModelArmorManasteel(slot);
 		return models[slot];

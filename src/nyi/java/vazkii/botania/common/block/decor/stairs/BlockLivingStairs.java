@@ -1,6 +1,6 @@
 package vazkii.botania.common.block.decor.stairs;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 
 public class BlockLivingStairs extends BlockModStairs {
 

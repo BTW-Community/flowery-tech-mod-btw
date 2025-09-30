@@ -14,10 +14,10 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.PlayerControllerMP;
 import net.minecraft.client.network.NetHandlerPlayClient;
 import vazkii.botania.api.item.IExtendedPlayerController;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
-@SideOnly(Side.CLIENT)
+@Environment(EnvType.CLIENT)
 public class BotaniaPlayerController extends PlayerControllerMP implements IExtendedPlayerController {
 
 	private float distance = 0F;

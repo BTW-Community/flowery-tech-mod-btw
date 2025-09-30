@@ -15,9 +15,9 @@ import java.util.List;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.EnumChatFormatting;
+import net.minecraft.src.StatCollector;
 import net.minecraftforge.oredict.OreDictionary;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.brew.Brew;
@@ -26,8 +26,8 @@ import vazkii.botania.api.lexicon.ILexicon;
 import vazkii.botania.api.lexicon.ITwoNamedPage;
 import vazkii.botania.api.recipe.RecipeBrew;
 import vazkii.botania.common.item.ModItems;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class PageBrew extends PageRecipe implements ITwoNamedPage {
 
@@ -78,7 +78,7 @@ public class PageBrew extends PageRecipe implements ITwoNamedPage {
 		super.renderRecipe(gui, mx, my);
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void renderItemAtLinePos(IGuiLexiconEntry gui, int offset, int pos, int yPos, ItemStack stack) {
 		if(stack == null || stack.getItem() == null)
 			return;

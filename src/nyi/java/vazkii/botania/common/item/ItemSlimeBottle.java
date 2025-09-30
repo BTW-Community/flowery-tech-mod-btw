@@ -11,11 +11,11 @@
 package vazkii.botania.common.item;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.Entity;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.Entity;
+import net.minecraft.src.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.MathHelper;
-import net.minecraft.world.World;
+import net.minecraft.src.MathHelper;
+import net.minecraft.src.World;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.block.subtile.generating.SubTileNarslimmus;
 import vazkii.botania.common.lib.LibItemNames;

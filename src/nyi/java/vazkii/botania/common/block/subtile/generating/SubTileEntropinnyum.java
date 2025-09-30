@@ -14,7 +14,7 @@ import java.util.List;
 
 import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.MathHelper;
+import net.minecraft.src.MathHelper;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.SubTileGenerating;

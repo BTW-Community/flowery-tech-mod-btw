@@ -10,7 +10,7 @@
  */
 package vazkii.botania.api.item;
 
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 
 /**
  * Any item that implements this allows for pixies to be spawned when the player takes damage when...<br>

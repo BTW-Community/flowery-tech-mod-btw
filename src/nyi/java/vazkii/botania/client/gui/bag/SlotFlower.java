@@ -12,7 +12,7 @@ package vazkii.botania.client.gui.bag;
 
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import vazkii.botania.common.block.ModBlocks;
 
 public class SlotFlower extends Slot {

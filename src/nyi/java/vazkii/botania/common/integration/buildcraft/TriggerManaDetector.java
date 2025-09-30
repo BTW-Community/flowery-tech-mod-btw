@@ -2,8 +2,8 @@ package vazkii.botania.common.integration.buildcraft;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.StatCollector;
-import net.minecraft.world.World;
+import net.minecraft.src.StatCollector;
+import net.minecraft.src.World;
 import vazkii.botania.api.internal.IManaBurst;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.Botania;

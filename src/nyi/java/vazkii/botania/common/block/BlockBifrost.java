@@ -12,16 +12,16 @@ package vazkii.botania.common.block;
 
 import java.util.Random;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.TileEntity;
 import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
+import net.minecraft.src.IBlockAccess;
+import net.minecraft.src.World;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
 import vazkii.botania.api.lexicon.ILexiconable;
@@ -32,8 +32,8 @@ import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class BlockBifrost extends BlockModContainer implements ILexiconable {
 
@@ -84,7 +84,7 @@ public class BlockBifrost extends BlockModContainer implements ILexiconable {
 	}
 
 	@SubscribeEvent
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void loadTextures(TextureStitchEvent.Pre event) {
 		if(event.map.getTextureType() == 0) {
 			TextureAtlasSprite icon = new InterpolatedIcon("botania:bifrost");
@@ -94,7 +94,7 @@ public class BlockBifrost extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void registerBlockIcons(IIconRegister par1IconRegister) {
 		// NO-OP
 	}

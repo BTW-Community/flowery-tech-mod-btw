@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.block.tile;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;

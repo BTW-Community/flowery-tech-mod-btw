@@ -12,8 +12,8 @@ package vazkii.botania.api.recipe;
 
 import java.util.List;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import cpw.mods.fml.common.eventhandler.Event;
 

@@ -10,10 +10,10 @@
  */
 package vazkii.botania.common.entity;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.Entity;
+import net.minecraft.src.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 import vazkii.botania.common.core.helper.Vector3;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.lens.ItemLens;

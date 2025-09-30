@@ -10,10 +10,10 @@
  */
 package vazkii.botania.common.block.tile;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ItemStack;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.common.lib.LibBlockNames;
 

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import vazkii.botania.api.corporea.CorporeaHelper;
 import vazkii.botania.api.corporea.CorporeaRequest;
 import vazkii.botania.api.corporea.ICorporeaSpark;

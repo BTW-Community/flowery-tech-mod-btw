@@ -10,11 +10,11 @@
  */
 package vazkii.botania.common.block.tile.string;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.block.BlockDoublePlant;
 import net.minecraft.block.BlockFlower;
 import net.minecraft.block.BlockMushroom;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.src.TileEntity;
 import vazkii.botania.api.subtile.ISubTileContainer;
 
 public class TileRedStringRelay extends TileRedString {

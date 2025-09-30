@@ -12,8 +12,8 @@ package vazkii.botania.client.core.handler;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.world.World;
+import net.minecraft.src.EnumChatFormatting;
+import net.minecraft.src.World;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 
 import org.lwjgl.opengl.ARBFragmentShader;

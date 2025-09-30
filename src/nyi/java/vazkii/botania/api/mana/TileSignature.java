@@ -1,6 +1,6 @@
 package vazkii.botania.api.mana;
 
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.src.TileEntity;
 
 public class TileSignature {
 

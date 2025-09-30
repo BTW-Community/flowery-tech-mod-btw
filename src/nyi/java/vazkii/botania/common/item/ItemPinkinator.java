@@ -13,11 +13,11 @@ package vazkii.botania.common.item;
 import java.util.List;
 
 import net.minecraft.entity.boss.EntityWither;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.StatCollector;
-import net.minecraft.world.World;
+import net.minecraft.src.StatCollector;
+import net.minecraft.src.World;
 import vazkii.botania.common.achievement.ModAchievements;
 import vazkii.botania.common.entity.EntityPinkWither;
 import vazkii.botania.common.lib.LibItemNames;

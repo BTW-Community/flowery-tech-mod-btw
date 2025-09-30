@@ -9,7 +9,7 @@
  * File Created @ [? (GMT)]
  */
 package vazkii.botania.api.item;
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 /**
  * A BiomeGenBase that implements this will not have Botania flowers generated.
  */

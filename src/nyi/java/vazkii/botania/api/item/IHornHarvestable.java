@@ -10,8 +10,8 @@
  */
 package vazkii.botania.api.item;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.World;
 
 /**
  * A Block that implements this can be uprooted by the various horns in Botania.

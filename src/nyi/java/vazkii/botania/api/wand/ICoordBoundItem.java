@@ -1,9 +1,9 @@
 package vazkii.botania.api.wand;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ChunkCoordinates;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.ChunkCoordinates;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 /**
  * The item equivalent of ITileBound, renders when the
@@ -12,7 +12,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public interface ICoordBoundItem {
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public ChunkCoordinates getBinding(ItemStack stack);
 
 }

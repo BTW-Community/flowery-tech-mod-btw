@@ -19,16 +19,16 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
-import net.minecraft.block.Block;
+import net.minecraft.src.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ChunkCoordinates;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.ChunkCoordinates;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.World;
+import net.minecraft.src.World;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.block.ModBlocks;
@@ -38,8 +38,8 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class ItemGrassSeeds extends ItemMod implements IFloatingFlowerVariant {
 
@@ -72,7 +72,7 @@ public class ItemGrassSeeds extends ItemMod implements IFloatingFlowerVariant {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void registerIcons(IIconRegister par1IconRegister) {
 		icons = new IIcon[SUBTYPES];
 		for(int i = 0; i < SUBTYPES; i++)
@@ -80,7 +80,7 @@ public class ItemGrassSeeds extends ItemMod implements IFloatingFlowerVariant {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public IIcon getIconFromDamage(int par1) {
 		return icons[Math.min(icons.length - 1, par1)];
 	}

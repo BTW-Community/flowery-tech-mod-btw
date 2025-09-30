@@ -15,9 +15,9 @@ import java.util.List;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.TileEntity;
 import vazkii.botania.api.mana.IManaCollector;
 import vazkii.botania.api.mana.TileSignature;
 import vazkii.botania.client.core.handler.LightningHandler.LightningBolt;

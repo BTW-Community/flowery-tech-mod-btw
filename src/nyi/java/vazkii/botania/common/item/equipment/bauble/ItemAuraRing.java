@@ -11,8 +11,8 @@
 package vazkii.botania.common.item.equipment.bauble;
 
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.ItemStack;
 import vazkii.botania.api.mana.IManaGivingItem;
 import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.common.lib.LibItemNames;

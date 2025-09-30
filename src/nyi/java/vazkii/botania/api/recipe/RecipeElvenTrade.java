@@ -3,7 +3,7 @@ package vazkii.botania.api.recipe;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class RecipeElvenTrade {

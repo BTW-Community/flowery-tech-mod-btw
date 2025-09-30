@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.item.equipment.bauble;
 
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.src.ResourceLocation;
 import vazkii.botania.client.lib.LibResources;
 import vazkii.botania.common.lib.LibItemNames;
 

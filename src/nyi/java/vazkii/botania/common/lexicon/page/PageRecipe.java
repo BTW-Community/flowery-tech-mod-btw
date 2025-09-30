@@ -18,9 +18,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.EnumChatFormatting;
+import net.minecraft.src.StatCollector;
 
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
@@ -32,8 +32,8 @@ import vazkii.botania.api.lexicon.LexiconPage;
 import vazkii.botania.api.lexicon.LexiconRecipeMappings;
 import vazkii.botania.api.lexicon.LexiconRecipeMappings.EntryData;
 import vazkii.botania.client.gui.lexicon.GuiLexiconEntry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class PageRecipe extends LexiconPage {
 
@@ -48,7 +48,7 @@ public class PageRecipe extends LexiconPage {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void renderScreen(IGuiLexiconEntry gui, int mx, int my) {
 		relativeMouseX = mx;
 		relativeMouseY = my;
@@ -93,12 +93,12 @@ public class PageRecipe extends LexiconPage {
 		mouseDownLastTick = Mouse.isButtonDown(0);
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void renderRecipe(IGuiLexiconEntry gui, int mx, int my) {
 		// NO-OP
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void renderItemAtAngle(IGuiLexiconEntry gui, float angle, ItemStack stack) {
 		if(stack == null || stack.getItem() == null)
 			return;
@@ -116,7 +116,7 @@ public class PageRecipe extends LexiconPage {
 		renderItem(gui, xPos, yPos, workStack, false);
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void renderItemAtGridPos(IGuiLexiconEntry gui, int x, int y, ItemStack stack, boolean accountForContainer) {
 		if(stack == null || stack.getItem() == null)
 			return;
@@ -134,7 +134,7 @@ public class PageRecipe extends LexiconPage {
 		renderItem(gui, xPos, yPos, stack1, accountForContainer);
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void renderItem(IGuiLexiconEntry gui, double xPos, double yPos, ItemStack stack, boolean accountForContainer) {
 		RenderItem render = new RenderItem();
 		boolean mouseDown = Mouse.isButtonDown(0);

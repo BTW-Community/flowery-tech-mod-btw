@@ -15,15 +15,15 @@ import java.util.List;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.StatCollector;
 import vazkii.botania.api.internal.IGuiLexiconEntry;
 import vazkii.botania.api.lexicon.LexiconPage;
 import vazkii.botania.common.core.handler.ConfigHandler;
 
 import com.google.common.base.Joiner;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class PageText extends LexiconPage {
 
@@ -32,7 +32,7 @@ public class PageText extends LexiconPage {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void renderScreen(IGuiLexiconEntry gui, int mx, int my) {
 		int width = gui.getWidth() - 30;
 		int x = gui.getLeft() + 16;
@@ -45,7 +45,7 @@ public class PageText extends LexiconPage {
 		renderText(x, y, width, height, 10, unlocalizedText);
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public static void renderText(int x, int y, int width, int height, int paragraphSize, String unlocalizedText) {
 		x += 2;
 		y += 10;

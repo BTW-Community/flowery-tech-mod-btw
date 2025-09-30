@@ -11,7 +11,7 @@
 package vazkii.botania.api.item;
 
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import vazkii.botania.api.mana.IManaPool;
 
 /**

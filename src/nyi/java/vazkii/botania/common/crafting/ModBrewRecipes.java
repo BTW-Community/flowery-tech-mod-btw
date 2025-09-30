@@ -13,7 +13,7 @@ package vazkii.botania.common.crafting;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.recipe.RecipeBrew;
 import vazkii.botania.common.brew.ModBrews;

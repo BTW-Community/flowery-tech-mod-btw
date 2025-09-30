@@ -15,13 +15,13 @@ import java.util.Random;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
+import net.minecraft.src.IBlockAccess;
+import net.minecraft.src.World;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
@@ -33,8 +33,8 @@ import vazkii.botania.client.render.block.InterpolatedIcon;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class BlockEnchantedSoil extends BlockMod implements ILexiconable {
 
@@ -54,13 +54,13 @@ public class BlockEnchantedSoil extends BlockMod implements ILexiconable {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void registerBlockIcons(IIconRegister par1IconRegister) {
 		// NO-OP
 	}
 
 	@SubscribeEvent
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public void loadTextures(TextureStitchEvent.Pre event) {
 		if(event.map.getTextureType() == 0) {
 			TextureAtlasSprite icon = new InterpolatedIcon("botania:enchantedSoil0");
@@ -74,7 +74,7 @@ public class BlockEnchantedSoil extends BlockMod implements ILexiconable {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public IIcon getIcon(int side, int meta) {
 		return side == 0 ? Blocks.dirt.getIcon(0, 0) : side == 1 ? blockIcon : iconSide;
 	}

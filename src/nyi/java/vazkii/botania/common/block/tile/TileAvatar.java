@@ -11,7 +11,7 @@
 package vazkii.botania.common.block.tile;
 
 import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.item.IAvatarTile;

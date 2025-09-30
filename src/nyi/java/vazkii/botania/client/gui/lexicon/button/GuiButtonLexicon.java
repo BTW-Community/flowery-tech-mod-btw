@@ -12,8 +12,8 @@ package vazkii.botania.client.gui.lexicon.button;
 
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundHandler;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.src.GuiButton;
+import net.minecraft.src.ResourceLocation;
 
 public class GuiButtonLexicon extends GuiButton {
 

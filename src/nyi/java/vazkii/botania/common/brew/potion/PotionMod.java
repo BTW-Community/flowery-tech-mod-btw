@@ -13,10 +13,10 @@ package vazkii.botania.common.brew.potion;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.Potion;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.src.ResourceLocation;
 import vazkii.botania.client.lib.LibResources;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 
 public class PotionMod extends Potion {
 
@@ -29,7 +29,7 @@ public class PotionMod extends Potion {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public int getStatusIconIndex() {
 		Minecraft.getMinecraft().renderEngine.bindTexture(resource);
 

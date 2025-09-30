@@ -12,9 +12,9 @@ package vazkii.botania.client.gui.lexicon;
 
 import java.util.List;
 
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.StatCollector;
+import net.minecraft.src.GuiButton;
+import net.minecraft.src.EnumChatFormatting;
+import net.minecraft.src.StatCollector;
 import vazkii.botania.client.challenge.Challenge;
 import vazkii.botania.client.challenge.EnumChallengeLevel;
 import vazkii.botania.client.challenge.ModChallenges;

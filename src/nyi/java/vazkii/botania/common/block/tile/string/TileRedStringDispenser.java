@@ -10,9 +10,9 @@
  */
 package vazkii.botania.common.block.tile.string;
 
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.src.TileEntity;
 import net.minecraft.tileentity.TileEntityDispenser;
-import net.minecraft.util.ChunkCoordinates;
+import net.minecraft.src.ChunkCoordinates;
 
 public class TileRedStringDispenser extends TileRedStringContainer {
 

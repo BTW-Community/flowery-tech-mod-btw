@@ -10,7 +10,7 @@
  */
 package vazkii.botania.api.mana;
 
-import net.minecraft.item.ItemStack;
+import net.minecraft.src.ItemStack;
 
 /**
  * Any item that implements this interface is an item that would use mana
