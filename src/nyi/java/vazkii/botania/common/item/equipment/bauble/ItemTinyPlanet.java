@@ -12,7 +12,7 @@ package vazkii.botania.common.item.equipment.bauble;
 
 import java.util.List;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.RenderBlocks;
 import net.minecraft.src.TextureMap;
 import net.minecraft.src.Entity;

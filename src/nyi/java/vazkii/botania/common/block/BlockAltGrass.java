@@ -16,7 +16,7 @@ import java.util.Random;
 import net.minecraft.src.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.src.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Block;
 import net.minecraft.src.Item;

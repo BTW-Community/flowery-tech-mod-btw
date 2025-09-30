@@ -11,8 +11,8 @@
 package vazkii.botania.common.item.lens;
 
 import net.minecraft.src.Block;
-import net.minecraft.entity.item.EntityFallingBlock;
-import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.src.item.EntityFallingBlock;
+import net.minecraft.src.projectile.EntityThrowable;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.MovingObjectPosition;
 import vazkii.botania.api.internal.IManaBurst;

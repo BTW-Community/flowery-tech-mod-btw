@@ -14,7 +14,7 @@ import java.awt.Color;
 import java.nio.FloatBuffer;
 import java.util.Random;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.ActiveRenderInfo;
 import net.minecraft.src.GLAllocation;
 import net.minecraft.src.Tessellator;

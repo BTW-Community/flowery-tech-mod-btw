@@ -13,11 +13,11 @@ package vazkii.botania.common.item.lens;
 import java.util.List;
 
 import net.minecraft.src.Entity;
-import net.minecraft.entity.item.EntityFallingBlock;
+import net.minecraft.src.item.EntityFallingBlock;
 import net.minecraft.src.EntityItem;
-import net.minecraft.entity.item.EntityXPOrb;
-import net.minecraft.entity.projectile.EntityArrow;
-import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.src.item.EntityXPOrb;
+import net.minecraft.src.projectile.EntityArrow;
+import net.minecraft.src.projectile.EntityThrowable;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.AxisAlignedBB;
 import vazkii.botania.api.internal.IManaBurst;

@@ -13,7 +13,7 @@ package vazkii.botania.common.block.tile;
 import java.util.Random;
 
 import net.minecraft.src.Block;
-import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.src.EntitySheep;
 import net.minecraft.src.TileEntity;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.block.ModBlocks;

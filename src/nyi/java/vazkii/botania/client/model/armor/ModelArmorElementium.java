@@ -15,7 +15,7 @@ import net.minecraft.src.ModelRenderer;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.item.EnumAction;
+import net.minecraft.src.EnumAction;
 import net.minecraft.src.ItemStack;
 
 public class ModelArmorElementium extends ModelBiped {

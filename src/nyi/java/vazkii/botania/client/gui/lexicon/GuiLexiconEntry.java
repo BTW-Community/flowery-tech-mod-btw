@@ -14,7 +14,7 @@ import java.awt.Desktop;
 import java.net.URI;
 import java.util.List;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.GuiButton;
 import net.minecraft.src.GuiScreen;
 import net.minecraft.src.NBTTagCompound;

@@ -13,7 +13,7 @@ package vazkii.botania.client.fx;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.EntityFX;
 import net.minecraft.src.Tessellator;
 import net.minecraft.src.EntityLivingBase;

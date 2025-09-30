@@ -11,16 +11,16 @@
 package vazkii.botania.common.block.tile;
 
 import net.minecraft.src.Block;
-import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.passive.EntityChicken;
-import net.minecraft.entity.passive.EntityCow;
-import net.minecraft.entity.passive.EntityHorse;
-import net.minecraft.entity.passive.EntityMooshroom;
-import net.minecraft.entity.passive.EntityOcelot;
-import net.minecraft.entity.passive.EntityPig;
-import net.minecraft.entity.passive.EntitySheep;
-import net.minecraft.entity.passive.EntityVillager;
-import net.minecraft.entity.passive.EntityWolf;
+import net.minecraft.src.EntityAgeable;
+import net.minecraft.src.EntityChicken;
+import net.minecraft.src.EntityCow;
+import net.minecraft.src.EntityHorse;
+import net.minecraft.src.EntityMooshroom;
+import net.minecraft.src.EntityOcelot;
+import net.minecraft.src.EntityPig;
+import net.minecraft.src.EntitySheep;
+import net.minecraft.src.EntityVillager;
+import net.minecraft.src.EntityWolf;
 import net.minecraft.src.NBTTagCompound;
 import cpw.mods.fml.common.registry.VillagerRegistry;
 

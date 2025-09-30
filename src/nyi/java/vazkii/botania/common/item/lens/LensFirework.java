@@ -10,12 +10,12 @@
  */
 package vazkii.botania.common.item.lens;
 
-import net.minecraft.entity.item.EntityFireworkRocket;
-import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.src.item.EntityFireworkRocket;
+import net.minecraft.src.projectile.EntityThrowable;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
+import net.minecraft.src.NBTTagList;
 import net.minecraft.src.ChunkCoordinates;
 import net.minecraft.src.MovingObjectPosition;
 import vazkii.botania.api.internal.IManaBurst;

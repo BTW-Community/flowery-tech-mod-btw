@@ -15,7 +15,7 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.src.projectile.EntityArrow;
 import net.minecraft.src.Item;
 import net.minecraft.src.Item;
 import net.minecraft.item.ItemBow;

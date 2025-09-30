@@ -11,7 +11,7 @@
 package vazkii.botania.common.entity;
 
 import net.minecraft.src.EntityLivingBase;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.src.SharedMonsterAttributes;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.PotionEffect;
 import net.minecraft.src.DamageSource;

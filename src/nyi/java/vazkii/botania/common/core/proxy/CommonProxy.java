@@ -12,12 +12,12 @@ package vazkii.botania.common.core.proxy;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityLivingBase;
-import net.minecraft.entity.boss.EntityDragon;
-import net.minecraft.entity.boss.EntityDragonPart;
-import net.minecraft.entity.boss.EntityWither;
-import net.minecraft.entity.item.EntityEnderCrystal;
-import net.minecraft.entity.item.EntityItemFrame;
-import net.minecraft.entity.item.EntityPainting;
+import net.minecraft.src.boss.EntityDragon;
+import net.minecraft.src.boss.EntityDragonPart;
+import net.minecraft.src.boss.EntityWither;
+import net.minecraft.src.item.EntityEnderCrystal;
+import net.minecraft.src.item.EntityItemFrame;
+import net.minecraft.src.item.EntityPainting;
 import net.minecraft.src.EntityPlayerMP;
 import net.minecraft.item.ItemRecord;
 import net.minecraft.src.ItemStack;

@@ -12,7 +12,7 @@ package vazkii.botania.client.integration.nei;
 
 import vazkii.botania.api.corporea.CorporeaHelper;
 import vazkii.botania.common.block.tile.corporea.TileCorporeaIndex;
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.GuiScreen;
 import net.minecraft.src.inventory.GuiContainer;
 import net.minecraft.src.ItemStack;

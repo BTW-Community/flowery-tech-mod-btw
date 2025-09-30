@@ -10,7 +10,7 @@
  */
 package vazkii.botania.client.gui.lexicon.button;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.OpenGlHelper;
 import net.minecraft.src.TextureManager;
 import net.minecraft.src.ResourceLocation;

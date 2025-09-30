@@ -15,7 +15,7 @@ import java.util.List;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.src.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.src.CreativeTabs;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityPlayer;

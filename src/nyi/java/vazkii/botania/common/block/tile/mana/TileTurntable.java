@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.block.tile.mana;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.ScaledResolution;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;

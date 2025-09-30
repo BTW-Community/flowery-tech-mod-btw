@@ -10,7 +10,7 @@
  */
 package vazkii.botania.client.render.entity;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.ModelBiped;
 import net.minecraft.src.entity.RenderBiped;
 import net.minecraft.src.Entity;

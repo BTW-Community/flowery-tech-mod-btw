@@ -13,7 +13,7 @@ package vazkii.botania.common.item.material;
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityItem;
-import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.src.EntitySheep;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;

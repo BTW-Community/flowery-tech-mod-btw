@@ -13,8 +13,8 @@ package vazkii.botania.common.item.relic;
 import java.util.List;
 
 import net.minecraft.src.EntityLivingBase;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.src.SharedMonsterAttributes;
+import net.minecraft.src.ai.attributes.AttributeModifier;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IInventory;

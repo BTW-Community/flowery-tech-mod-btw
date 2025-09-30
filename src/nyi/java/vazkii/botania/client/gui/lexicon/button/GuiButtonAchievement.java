@@ -13,7 +13,7 @@ package vazkii.botania.client.gui.lexicon.button;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.src.StatCollector;
 

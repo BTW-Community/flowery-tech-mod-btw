@@ -12,7 +12,7 @@ package vazkii.botania.common.item.lens;
 
 import java.awt.Color;
 
-import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.src.EntitySheep;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.MathHelper;

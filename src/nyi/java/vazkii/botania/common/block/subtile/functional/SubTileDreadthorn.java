@@ -12,7 +12,7 @@ package vazkii.botania.common.block.subtile.functional;
 
 import net.minecraft.command.IEntitySelector;
 import net.minecraft.src.Entity;
-import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.src.EntityAnimal;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.common.lexicon.LexiconData;
 

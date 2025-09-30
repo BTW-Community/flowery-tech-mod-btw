@@ -12,7 +12,7 @@ package vazkii.botania.common.block.subtile.generating;
 
 import java.util.List;
 
-import net.minecraft.entity.monster.EntitySlime;
+import net.minecraft.src.monster.EntitySlime;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.World;

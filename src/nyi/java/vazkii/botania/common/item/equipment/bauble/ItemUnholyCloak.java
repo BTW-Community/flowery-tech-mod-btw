@@ -13,7 +13,7 @@ package vazkii.botania.common.item.equipment.bauble;
 import java.util.List;
 
 import net.minecraft.src.EntityLivingBase;
-import net.minecraft.entity.monster.IMob;
+import net.minecraft.src.monster.IMob;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.AxisAlignedBB;

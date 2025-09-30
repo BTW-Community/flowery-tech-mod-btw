@@ -14,8 +14,8 @@ import java.util.List;
 import java.util.UUID;
 
 import net.minecraft.src.ModelBiped;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.src.SharedMonsterAttributes;
+import net.minecraft.src.ai.attributes.AttributeModifier;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.StatCollector;

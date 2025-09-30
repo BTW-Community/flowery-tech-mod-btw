@@ -10,7 +10,7 @@
  */
 package vazkii.botania.client.render.item;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.FontRenderer;
 import net.minecraft.src.ModelBook;
 import net.minecraft.src.ItemStack;

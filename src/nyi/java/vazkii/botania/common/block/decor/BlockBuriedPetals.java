@@ -13,7 +13,7 @@ package vazkii.botania.common.block.decor;
 import java.util.Random;
 
 import net.minecraft.src.IconRegister;
-import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.src.EntitySheep;
 import net.minecraft.src.Item;
 import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;

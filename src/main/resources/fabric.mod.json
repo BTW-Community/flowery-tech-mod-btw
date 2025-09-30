@@ -29,10 +29,12 @@
     "fabricloader": ">=0.14.19",
     "minecraft": "1.6.4"
   },
+  "accessWidener" : "botania.aw",
   "custom": {
     "loom:injected_interfaces": {
       "net/minecraft/class_1150": ["dev/bagel/interfaces/WorldExtensions"],
-      "net/minecraft/class_197": ["dev/bagel/interfaces/BlockExtensions"]
+      "net/minecraft/class_197": ["dev/bagel/interfaces/BlockExtensions"],
+      "net/minecraft/class_474": ["dev/bagel/interfaces/NBTTagListExtensions"]
     }
   }
 }

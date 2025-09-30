@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.WeakHashMap;
 
-import net.minecraft.entity.monster.EntityEnderman;
+import net.minecraft.src.monster.EntityEnderman;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import vazkii.botania.api.lexicon.LexiconEntry;

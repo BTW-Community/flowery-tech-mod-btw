@@ -11,7 +11,7 @@
 package vazkii.botania.client.core.handler;
 
 import net.minecraft.src.Block;
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.RenderBlocks;
 import net.minecraft.src.Tessellator;
 import net.minecraft.src.entity.RenderManager;

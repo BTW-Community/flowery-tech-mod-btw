@@ -12,7 +12,7 @@ package vazkii.botania.client.core.handler;
 
 import java.awt.Color;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.Tessellator;
 import net.minecraft.src.entity.RenderManager;
 import net.minecraft.src.ItemStack;

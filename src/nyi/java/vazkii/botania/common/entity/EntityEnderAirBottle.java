@@ -15,7 +15,7 @@ import java.util.List;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityLivingBase;
-import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.src.projectile.EntityThrowable;
 import net.minecraft.src.Block;
 import net.minecraft.src.ChunkCoordinates;
 import net.minecraft.src.MovingObjectPosition;

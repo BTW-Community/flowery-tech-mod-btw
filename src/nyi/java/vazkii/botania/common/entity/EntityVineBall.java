@@ -12,7 +12,7 @@ package vazkii.botania.common.entity;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.src.projectile.EntityThrowable;
 import net.minecraft.src.MovingObjectPosition;
 import net.minecraft.src.World;
 import net.minecraftforge.common.util.ForgeDirection;

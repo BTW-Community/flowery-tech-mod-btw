@@ -12,7 +12,7 @@ package vazkii.botania.common.item.equipment.armor.terrasteel;
 
 import java.util.List;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.ItemRenderer;
 import net.minecraft.src.Tessellator;
 import net.minecraft.src.IconRegister;

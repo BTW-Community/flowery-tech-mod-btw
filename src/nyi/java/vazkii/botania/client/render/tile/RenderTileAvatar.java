@@ -12,7 +12,7 @@ package vazkii.botania.client.render.tile;
 
 import java.awt.Color;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.ItemRenderer;
 import net.minecraft.src.OpenGlHelper;
 import net.minecraft.src.Tessellator;

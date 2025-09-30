@@ -20,7 +20,7 @@ import java.util.Random;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import net.minecraft.src.Block;
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.ActiveRenderInfo;
 import net.minecraft.src.Tessellator;
 import net.minecraft.src.TextureManager;

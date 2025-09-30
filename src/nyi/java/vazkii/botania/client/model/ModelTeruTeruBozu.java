@@ -10,7 +10,7 @@
  */
 package vazkii.botania.client.model;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.ModelBase;
 import net.minecraft.src.ModelRenderer;
 

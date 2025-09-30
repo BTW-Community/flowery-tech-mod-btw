@@ -12,7 +12,7 @@ package vazkii.botania.client.render.world;
 
 import java.util.Random;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.WorldClient;
 import net.minecraft.src.OpenGlHelper;
 import net.minecraft.src.RenderGlobal;

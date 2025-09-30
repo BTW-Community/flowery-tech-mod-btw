@@ -22,7 +22,7 @@ import net.minecraft.block.BlockLeaves;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.src.projectile.EntityThrowable;
 import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTTagCompound;

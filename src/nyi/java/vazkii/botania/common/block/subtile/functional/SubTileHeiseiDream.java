@@ -13,12 +13,12 @@ package vazkii.botania.common.block.subtile.functional;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.src.EntityLiving;
 import net.minecraft.src.EntityLivingBase;
-import net.minecraft.entity.ai.EntityAIAttackOnCollide;
-import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
-import net.minecraft.entity.ai.EntityAITasks.EntityAITaskEntry;
-import net.minecraft.entity.monster.IMob;
+import net.minecraft.src.ai.EntityAIAttackOnCollide;
+import net.minecraft.src.ai.EntityAINearestAttackableTarget;
+import net.minecraft.src.ai.EntityAITasks.EntityAITaskEntry;
+import net.minecraft.src.monster.IMob;
 import net.minecraft.src.AxisAlignedBB;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.subtile.RadiusDescriptor;

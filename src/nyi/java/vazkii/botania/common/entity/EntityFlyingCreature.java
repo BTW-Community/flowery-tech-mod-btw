@@ -11,7 +11,7 @@
 package vazkii.botania.common.entity;
 
 import net.minecraft.src.Block;
-import net.minecraft.entity.passive.EntityAmbientCreature;
+import net.minecraft.src.EntityAmbientCreature;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.World;
 

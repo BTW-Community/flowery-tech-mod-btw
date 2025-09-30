@@ -11,7 +11,7 @@
  */
 package vazkii.botania.client.fx;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.Tessellator;
 import net.minecraft.profiler.Profiler;
 

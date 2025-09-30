@@ -5,6 +5,8 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "extensions.BlockExtensionMixin",
+    "extensions.ItemExtensionMixin",
+    "extensions.NBTTagListExtensionMixin",
     "extensions.WorldExtensionMixin"
   ],
   "client": [

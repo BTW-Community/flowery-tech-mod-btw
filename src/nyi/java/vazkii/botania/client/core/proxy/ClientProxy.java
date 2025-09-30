@@ -17,7 +17,7 @@ import java.net.URI;
 import java.util.Calendar;
 
 import net.minecraft.src.Block;
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.PlayerControllerMP;
 import net.minecraft.src.NetHandlerPlayClient;
 import net.minecraft.src.entity.RenderSnowball;

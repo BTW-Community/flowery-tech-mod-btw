@@ -14,7 +14,7 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.Random;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.Tessellator;
 import net.minecraft.src.entity.RenderManager;
 import net.minecraft.src.EntityPlayer;

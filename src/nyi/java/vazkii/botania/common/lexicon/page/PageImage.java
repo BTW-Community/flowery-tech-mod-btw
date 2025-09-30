@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.lexicon.page;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.GuiScreen;
 import net.minecraft.src.TextureManager;
 import net.minecraft.src.ResourceLocation;

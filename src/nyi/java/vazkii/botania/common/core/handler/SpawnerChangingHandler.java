@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.core.handler;
 
-import net.minecraft.entity.EntityList;
+import net.minecraft.src.EntityList;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;

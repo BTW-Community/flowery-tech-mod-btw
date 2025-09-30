@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Queue;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.PositionedSoundRecord;
 import net.minecraft.src.FontRenderer;
 import net.minecraft.src.GuiButton;

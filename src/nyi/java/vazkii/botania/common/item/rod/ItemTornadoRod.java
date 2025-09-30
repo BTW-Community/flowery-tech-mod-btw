@@ -15,7 +15,7 @@ import java.util.List;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.item.EnumAction;
+import net.minecraft.src.EnumAction;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.PotionEffect;
 import net.minecraft.src.TileEntity;

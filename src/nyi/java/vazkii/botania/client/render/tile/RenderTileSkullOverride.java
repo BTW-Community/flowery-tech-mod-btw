@@ -12,7 +12,7 @@ package vazkii.botania.client.render.tile;
 
 import java.util.Map;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.AbstractClientPlayer;
 import net.minecraft.src.tileentity.TileEntitySkullRenderer;
 import net.minecraft.tileentity.TileEntitySkull;

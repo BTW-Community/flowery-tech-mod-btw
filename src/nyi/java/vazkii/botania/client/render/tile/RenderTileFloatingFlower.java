@@ -13,7 +13,7 @@ package vazkii.botania.client.render.tile;
 import java.awt.*;
 import java.util.Random;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.ItemRenderer;
 import net.minecraft.src.Tessellator;
 import net.minecraft.src.TextureMap;

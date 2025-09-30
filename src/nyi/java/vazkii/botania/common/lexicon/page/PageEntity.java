@@ -12,12 +12,12 @@ package vazkii.botania.common.lexicon.page;
 
 import java.lang.reflect.Constructor;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.OpenGlHelper;
 import net.minecraft.src.RenderHelper;
 import net.minecraft.src.entity.RenderManager;
 import net.minecraft.src.Entity;
-import net.minecraft.entity.EntityList;
+import net.minecraft.src.EntityList;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.World;
 

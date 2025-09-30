@@ -13,7 +13,7 @@ package vazkii.botania.common.block.subtile.functional;
 import java.util.List;
 
 import net.minecraft.src.EntityLivingBase;
-import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.src.EnumCreatureAttribute;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.potion.Potion;
 import net.minecraft.src.PotionEffect;

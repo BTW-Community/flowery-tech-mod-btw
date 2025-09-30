@@ -15,7 +15,7 @@ import java.util.List;
 import net.minecraft.src.Block;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityLivingBase;
-import net.minecraft.entity.IProjectile;
+import net.minecraft.src.IProjectile;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Block;
 import net.minecraft.src.NBTTagCompound;

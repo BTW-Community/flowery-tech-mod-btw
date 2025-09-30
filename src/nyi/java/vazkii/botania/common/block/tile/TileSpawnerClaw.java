@@ -13,8 +13,8 @@ package vazkii.botania.common.block.tile;
 import java.util.List;
 
 import net.minecraft.src.Entity;
-import net.minecraft.entity.EntityList;
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.src.EntityList;
+import net.minecraft.src.EntityLiving;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.tileentity.MobSpawnerBaseLogic;
 import net.minecraft.src.TileEntity;

@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.brew.potion;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.potion.Potion;
 import net.minecraft.src.ResourceLocation;

@@ -12,13 +12,13 @@ package vazkii.botania.common.item.equipment.bauble;
 
 import java.util.List;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.ItemRenderer;
 import net.minecraft.src.Tessellator;
 import net.minecraft.src.TextureMap;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.monster.EntityCreeper;
-import net.minecraft.entity.monster.IMob;
+import net.minecraft.src.EntityLiving;
+import net.minecraft.src.monster.EntityCreeper;
+import net.minecraft.src.monster.IMob;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.AxisAlignedBB;

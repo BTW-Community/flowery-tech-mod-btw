@@ -14,7 +14,7 @@ import java.awt.Color;
 import java.util.Random;
 
 import net.minecraft.src.Block;
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.RenderBlocks;
 import net.minecraft.src.TextureMap;
 import net.minecraft.src.tileentity.TileEntitySpecialRenderer;

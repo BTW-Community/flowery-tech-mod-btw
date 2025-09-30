@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.src.Block;
-import net.minecraft.entity.passive.EntitySheep;
-import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.src.EntitySheep;
+import net.minecraft.src.projectile.EntityThrowable;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.ChunkCoordinates;

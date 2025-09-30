@@ -11,11 +11,11 @@
 package vazkii.botania.client.render.entity;
 
 import net.minecraft.src.Block;
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.ItemRenderer;
 import net.minecraft.src.Tessellator;
 import net.minecraft.src.TextureMap;
-import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.src.EntitySheep;
 import net.minecraft.src.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.src.ItemStack;

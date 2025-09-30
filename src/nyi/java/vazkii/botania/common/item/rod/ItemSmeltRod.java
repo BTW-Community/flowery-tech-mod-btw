@@ -15,7 +15,7 @@ import java.util.WeakHashMap;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.item.EnumAction;
+import net.minecraft.src.EnumAction;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.src.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;

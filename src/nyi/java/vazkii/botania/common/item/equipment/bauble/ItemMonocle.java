@@ -11,7 +11,7 @@
 package vazkii.botania.common.item.equipment.bauble;
 
 import net.minecraft.src.Block;
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.ScaledResolution;
 import net.minecraft.src.ItemRenderer;
 import net.minecraft.src.Tessellator;

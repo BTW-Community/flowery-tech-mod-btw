@@ -16,7 +16,7 @@ import net.minecraft.block.BlockRailBase;
 import net.minecraft.block.material.Material;
 import net.minecraft.dispenser.BehaviorDefaultDispenseItem;
 import net.minecraft.dispenser.IBlockSource;
-import net.minecraft.entity.item.EntityMinecart;
+import net.minecraft.src.item.EntityMinecart;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.EnumFacing;
 import net.minecraft.src.World;

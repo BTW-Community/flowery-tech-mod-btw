@@ -14,7 +14,7 @@ import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.IRecipe;
-import net.minecraft.nbt.NBTTagList;
+import net.minecraft.src.NBTTagList;
 import net.minecraft.src.World;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.item.ModItems;

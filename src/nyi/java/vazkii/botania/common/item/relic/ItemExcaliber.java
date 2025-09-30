@@ -14,12 +14,12 @@ import java.util.List;
 
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityLivingBase;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.src.SharedMonsterAttributes;
+import net.minecraft.src.ai.attributes.AttributeModifier;
 import net.minecraft.src.IBossDisplayData;
-import net.minecraft.entity.monster.IMob;
+import net.minecraft.src.monster.IMob;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.src.projectile.EntityThrowable;
 import net.minecraft.src.EnumRarity;
 import net.minecraft.src.ItemStack;
 import net.minecraft.potion.Potion;

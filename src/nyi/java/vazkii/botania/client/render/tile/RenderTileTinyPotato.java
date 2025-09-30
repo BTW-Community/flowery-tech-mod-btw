@@ -10,7 +10,7 @@
  */
 package vazkii.botania.client.render.tile;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.ItemRenderer;
 import net.minecraft.src.OpenGlHelper;
 import net.minecraft.src.RenderBlocks;

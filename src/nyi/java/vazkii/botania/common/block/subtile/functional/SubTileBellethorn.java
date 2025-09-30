@@ -15,7 +15,7 @@ import java.util.List;
 import net.minecraft.command.IEntitySelector;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityLivingBase;
-import net.minecraft.entity.monster.EntityWitch;
+import net.minecraft.src.monster.EntityWitch;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.DamageSource;

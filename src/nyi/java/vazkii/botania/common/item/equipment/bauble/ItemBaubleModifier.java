@@ -11,7 +11,7 @@
 package vazkii.botania.common.item.equipment.bauble;
 
 import net.minecraft.src.EntityLivingBase;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.src.ai.attributes.AttributeModifier;
 import net.minecraft.src.ItemStack;
 
 import com.google.common.collect.HashMultimap;

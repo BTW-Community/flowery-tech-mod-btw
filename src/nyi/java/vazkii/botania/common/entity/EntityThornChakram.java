@@ -16,7 +16,7 @@ import net.minecraft.block.BlockLeaves;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.src.projectile.EntityThrowable;
 import net.minecraft.src.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.src.PotionEffect;

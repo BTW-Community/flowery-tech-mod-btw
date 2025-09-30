@@ -13,7 +13,7 @@ package vazkii.botania.client.render.tile;
 import java.awt.Color;
 
 import net.minecraft.src.Block;
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.ItemRenderer;
 import net.minecraft.src.RenderBlocks;
 import net.minecraft.src.Tessellator;

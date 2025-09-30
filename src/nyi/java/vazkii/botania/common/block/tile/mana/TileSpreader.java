@@ -13,7 +13,7 @@ package vazkii.botania.common.block.tile.mana;
 import java.util.List;
 import java.util.UUID;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.ScaledResolution;
 import net.minecraft.src.RenderHelper;
 import net.minecraft.src.entity.RenderItem;

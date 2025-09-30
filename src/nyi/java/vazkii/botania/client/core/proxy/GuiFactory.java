@@ -12,7 +12,7 @@ package vazkii.botania.client.core.proxy;
 
 import java.util.Set;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.GuiScreen;
 import vazkii.botania.client.gui.GuiBotaniaConfig;
 import cpw.mods.fml.client.IModGuiFactory;

@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.ItemRenderer;
 import net.minecraft.src.Tessellator;
 import net.minecraft.src.IconRegister;

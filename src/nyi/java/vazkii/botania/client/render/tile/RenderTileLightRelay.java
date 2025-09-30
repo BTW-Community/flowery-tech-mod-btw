@@ -10,7 +10,7 @@
  */
 package vazkii.botania.client.render.tile;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.Tessellator;
 import net.minecraft.src.entity.RenderManager;
 import net.minecraft.src.TextureMap;

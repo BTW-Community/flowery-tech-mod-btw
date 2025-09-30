@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 
-import net.minecraft.nbt.CompressedStreamTools;
+import net.minecraft.src.CompressedStreamTools;
 import net.minecraft.src.NBTTagCompound;
 import vazkii.botania.client.challenge.Challenge;
 import vazkii.botania.client.challenge.ModChallenges;

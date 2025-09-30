@@ -14,7 +14,7 @@ import java.awt.Color;
 import java.util.List;
 
 import net.minecraft.src.Block;
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.ScaledResolution;
 import net.minecraft.src.entity.RenderItem;
 import net.minecraft.src.Entity;

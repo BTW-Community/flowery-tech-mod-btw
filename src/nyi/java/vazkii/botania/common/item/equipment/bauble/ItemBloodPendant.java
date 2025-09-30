@@ -13,13 +13,13 @@ package vazkii.botania.common.item.equipment.bauble;
 import java.awt.Color;
 import java.util.List;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 import net.minecraft.src.ItemRenderer;
 import net.minecraft.src.OpenGlHelper;
 import net.minecraft.src.Tessellator;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.TextureMap;
-import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Item;

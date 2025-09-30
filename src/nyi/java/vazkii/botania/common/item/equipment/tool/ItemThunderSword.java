@@ -17,7 +17,7 @@ import java.util.Random;
 import net.minecraft.command.IEntitySelector;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityLivingBase;
-import net.minecraft.entity.monster.IMob;
+import net.minecraft.src.monster.IMob;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;

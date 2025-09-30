@@ -11,8 +11,8 @@
 package vazkii.botania.client.render.entity;
 
 import net.minecraft.src.entity.RenderWither;
-import net.minecraft.entity.boss.BossStatus;
-import net.minecraft.entity.boss.EntityWither;
+import net.minecraft.src.boss.BossStatus;
+import net.minecraft.src.boss.EntityWither;
 import net.minecraft.src.ResourceLocation;
 import vazkii.botania.client.lib.LibResources;
 
