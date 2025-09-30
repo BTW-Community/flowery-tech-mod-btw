@@ -13,18 +13,25 @@ package vazkii.botania.common.achievement;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.Achievement;
+import btw.achievement.AchievementProvider;
+import btw.achievement.event.BTWAchievementEvents;
+import net.minecraft.src.*;
 import vazkii.botania.api.item.IRelic;
 
-public class AchievementMod extends Achievement {
+public class AchievementMod {
 
 	public static List<Achievement> achievements = new ArrayList();
 
-	public AchievementMod(String name, int x, int y, ItemStack icon, Achievement parent) {
-		super("achievement.botania:" + name, "botania:" + name, x, y, icon, parent);
+	public static <T> Achievement<ItemStack> AchievementModd(String name, int x, int y, ItemStack icon, Achievement<?> parent) {
+		var achievement = AchievementProvider.getBuilder(BTWAchievementEvents.ItemEvent.class).name(new ResourceLocation("botania", name)).icon(icon).displayLocation(x, y).alwaysTrigger();
+		if (parent != null) {
+			achievement = achievement.parents(parent);
+		}
+		return achievement.build();
+	}
+
+/*	public AchievementMod(String name, int x, int y, ItemStack icon, Achievement parent) {
+		super(new ResourceLocation("botania:", name), "botania:" + name, x, y, icon, parent);
 		achievements.add(this);
 		registerStat();
 
@@ -38,6 +45,6 @@ public class AchievementMod extends Achievement {
 
 	public AchievementMod(String name, int x, int y, Block icon, Achievement parent) {
 		this(name, x, y, new ItemStack(icon), parent);
-	}
+	}*/
 
 }
