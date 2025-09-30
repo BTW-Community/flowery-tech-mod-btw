@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.src.Block;
 import net.minecraft.src.Entity;
 import net.minecraft.src.Item;
@@ -54,7 +55,6 @@ import vazkii.botania.api.wiki.WikiHooks;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 
-import cpw.mods.fml.common.Loader;
 
 public final class BotaniaAPI {
 
@@ -492,7 +492,8 @@ public final class BotaniaAPI {
 	 */
 	public static void registerSubTile(String key, Class<? extends SubTileEntity> subtileClass) {
 		subTiles.put(key, subtileClass);
-		subTileMods.put(key, Loader.instance().activeModContainer().getModId());
+		//todo figure out subtile handling, likely via just passing the mod id directly
+//		subTileMods.put(key, Loader.instance().activeModContainer().getModId());
 	}
 
 	/**

@@ -28,7 +28,7 @@ public class TileRedStringContainer extends TileRedString implements ISidedInven
 			if(inv instanceof ISidedInventory) {
 				ISidedInventory sidedInv = (ISidedInventory) inv;
 				for(int i = 0; i < 6; i++)
-					if(sidedInv.getAccessibleSlotsFromSide(i).length != 0)
+					if(sidedInv.getSlotsForFace(i).length != 0)
 						return true;
 				return false;
 			}
@@ -115,9 +115,9 @@ public class TileRedStringContainer extends TileRedString implements ISidedInven
 	}
 
 	@Override
-	public int[] getAccessibleSlotsFromSide(int side) {
+	public int[] getSlotsForFace(int side) {
 		IInventory inv = getInventory();
-		return inv instanceof ISidedInventory ? ((ISidedInventory) inv).getAccessibleSlotsFromSide(side) : inv instanceof IInventory ? InventoryHelper.buildSlotsForLinearInventory(inv) : new int[0];
+		return inv instanceof ISidedInventory ? ((ISidedInventory) inv).getSlotsForFace(side) : inv instanceof IInventory ? InventoryHelper.buildSlotsForLinearInventory(inv) : new int[0];
 	}
 
 	@Override

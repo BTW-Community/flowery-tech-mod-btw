@@ -65,7 +65,7 @@ public class TilePrism extends TileSimpleInventory implements IManaCollisionGhos
 	}
 
 	@Override
-	public int[] getAccessibleSlotsFromSide(int p_94128_1_) {
+	public int[] getSlotsForFace(int p_94128_1_) {
 		return new int[] { 0 };
 	}
 

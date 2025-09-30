@@ -15,7 +15,6 @@ import java.util.List;
 
 import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
 
 public class RecipePetals {
 
@@ -47,25 +46,28 @@ public class RecipePetals {
 
 			for(int j = 0; j < inputsMissing.size(); j++) {
 				Object input = inputsMissing.get(j);
-				if(input instanceof String) {
-					List<ItemStack> validStacks = OreDictionary.getOres((String) input);
-					boolean found = false;
-					for(ItemStack ostack : validStacks) {
-						ItemStack cstack = ostack.copy();
-						if(cstack.getItemDamage() == Short.MAX_VALUE)
-							cstack.setItemDamage(stack.getItemDamage());
-
-						if(stack.isItemEqual(cstack)) {
-							oredictIndex = j;
-							found = true;
-							break;
-						}
-					}
-
-
-					if(found)
-						break;
-				} else if(input instanceof ItemStack && simpleAreStacksEqual((ItemStack) input, stack)) {
+				//todo oredict -> tag
+//				if(input instanceof String) {
+//					List<ItemStack> validStacks = OreDictionary.getOres((String) input);
+//					boolean found = false;
+//					for(ItemStack ostack : validStacks) {
+//						ItemStack cstack = ostack.copy();
+//						if(cstack.getItemDamage() == Short.MAX_VALUE)
+//							cstack.setItemDamage(stack.getItemDamage());
+//
+//						if(stack.isItemEqual(cstack)) {
+//							oredictIndex = j;
+//							found = true;
+//							break;
+//						}
+//					}
+//
+//
+//					if(found)
+//						break;
+//				}
+//				else
+					if(input instanceof ItemStack && simpleAreStacksEqual((ItemStack) input, stack)) {
 					stackIndex = j;
 					break;
 				}

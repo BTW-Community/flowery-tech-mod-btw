@@ -10,6 +10,7 @@
  */
 package vazkii.botania.api.recipe;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +18,6 @@ import java.util.Map;
 import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
-import net.minecraftforge.oredict.OreDictionary;
 import vazkii.botania.api.subtile.SubTileEntity;
 
 public class RecipePureDaisy {
@@ -57,7 +57,10 @@ public class RecipePureDaisy {
 		if(oreMap.containsKey(entry))
 			ores = oreMap.get(entry);
 		else {
-			ores = OreDictionary.getOres(entry);
+			//todo oredict -> tags, temp fix
+			ores = new ArrayList<>();
+//			ores = OreDictionary.getOres(entry);
+
 			oreMap.put(entry, ores);
 		}
 

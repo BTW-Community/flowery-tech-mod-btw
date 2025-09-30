@@ -311,7 +311,7 @@ public class TileRuneAltar extends TileSimpleInventory implements ISidedInventor
 	}
 
 	@Override
-	public int[] getAccessibleSlotsFromSide(int var1) {
+	public int[] getSlotsForFace(int var1) {
 		int accessibleSlot = -1;
 		for(int i = 0; i < getSizeInventory(); i++)
 			if(getStackInSlot(i) != null)

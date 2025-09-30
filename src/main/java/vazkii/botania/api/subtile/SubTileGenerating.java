@@ -14,6 +14,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+import dev.bagel.interfaces.BlockExtensions;
 import net.minecraft.src.Block;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ScaledResolution;
@@ -99,9 +100,9 @@ public class SubTileGenerating extends SubTileEntity {
 			int muhBalance = BotaniaAPI.internalHandler.getPassiveFlowerDecay();
 
 			if(passive && muhBalance > 0 && passiveDecayTicks > muhBalance) {
-				supertile.getWorldObj().playAuxSFX(2001, supertile.xCoord, supertile.yCoord, supertile.zCoord, Block.getIdFromBlock(supertile.getBlockType()));
+				supertile.getWorldObj().playAuxSFX(2001, supertile.xCoord, supertile.yCoord, supertile.zCoord, BlockExtensions.getIdFromBlock(supertile.getBlockType()));
 				if(supertile.getWorldObj().getBlock(supertile.xCoord, supertile.yCoord - 1, supertile.zCoord).isSideSolid(supertile.getWorldObj(), supertile.xCoord, supertile.yCoord - 1, supertile.zCoord, ForgeDirection.UP))
-					supertile.getWorldObj().setBlock(supertile.xCoord, supertile.yCoord, supertile.zCoord, Blocks.deadbush);
+					supertile.getWorldObj().setBlock(supertile.xCoord, supertile.yCoord, supertile.zCoord, Block.deadBush.blockID);
 				else supertile.getWorldObj().setBlockToAir(supertile.xCoord, supertile.yCoord, supertile.zCoord);
 			}
 		}

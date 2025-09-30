@@ -87,7 +87,7 @@ public class InventoryHelper {
 		int[] attemptSlots;
 
 		if(inventory instanceof ISidedInventory && side != ForgeDirection.UNKNOWN) {
-			attemptSlots = ((ISidedInventory)inventory).getAccessibleSlotsFromSide(side.ordinal());
+			attemptSlots = ((ISidedInventory)inventory).getSlotsForFace(side.ordinal());
 			if(attemptSlots == null)
 				attemptSlots = new int[0];
 		} else {
@@ -130,7 +130,7 @@ public class InventoryHelper {
 		int[] availableSlots;
 
 		if(inventory instanceof ISidedInventory)
-			availableSlots = ((ISidedInventory) inventory).getAccessibleSlotsFromSide(side.ordinal());
+			availableSlots = ((ISidedInventory) inventory).getSlotsForFace(side.ordinal());
 		else {
 			availableSlots = buildSlotsForLinearInventory(inventory);
 		}

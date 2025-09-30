@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.src.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
 
 public class RecipeElvenTrade {
 
@@ -39,26 +38,29 @@ public class RecipeElvenTrade {
 
 			for(int j = 0; j < inputsMissing.size(); j++) {
 				Object input = inputsMissing.get(j);
-				if(input instanceof String) {
-					List<ItemStack> validStacks = OreDictionary.getOres((String) input);
-					boolean found = false;
-					for(ItemStack ostack : validStacks) {
-						ItemStack cstack = ostack.copy();
-						if(cstack.getItemDamage() == Short.MAX_VALUE)
-							cstack.setItemDamage(stack.getItemDamage());
-
-						if(stack.isItemEqual(cstack)) {
-							if(!stacksToRemove.contains(stack))
-								stacksToRemove.add(stack);
-							oredictIndex = j;
-							found = true;
-							break;
-						}
-					}
-
-					if(found)
-						break;
-				} else if(input instanceof ItemStack && simpleAreStacksEqual((ItemStack) input, stack)) {
+				//todo oredict -> tag
+//				if(input instanceof String) {
+//					List<ItemStack> validStacks = OreDictionary.getOres((String) input);
+//					boolean found = false;
+//					for(ItemStack ostack : validStacks) {
+//						ItemStack cstack = ostack.copy();
+//						if(cstack.getItemDamage() == Short.MAX_VALUE)
+//							cstack.setItemDamage(stack.getItemDamage());
+//
+//						if(stack.isItemEqual(cstack)) {
+//							if(!stacksToRemove.contains(stack))
+//								stacksToRemove.add(stack);
+//							oredictIndex = j;
+//							found = true;
+//							break;
+//						}
+//					}
+//
+//					if(found)
+//						break;
+//				}
+//				else
+					if(input instanceof ItemStack && simpleAreStacksEqual((ItemStack) input, stack)) {
 					if(!stacksToRemove.contains(stack))
 						stacksToRemove.add(stack);
 					stackIndex = j;

@@ -13,7 +13,6 @@ package vazkii.botania.api.recipe;
 import java.util.List;
 
 import net.minecraft.src.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
 
 public class RecipeManaInfusion {
 
@@ -38,7 +37,8 @@ public class RecipeManaInfusion {
 			return stack.isItemEqual(inputCopy);
 		}
 
-		if(input instanceof String) {
+		//todo replace with tags
+		/*if(input instanceof String) {
 			List<ItemStack> validStacks = OreDictionary.getOres((String) input);
 
 			for(ItemStack ostack : validStacks) {
@@ -49,7 +49,7 @@ public class RecipeManaInfusion {
 				if(stack.isItemEqual(cstack))
 					return true;
 			}
-		}
+		}*/
 
 		return false;
 	}

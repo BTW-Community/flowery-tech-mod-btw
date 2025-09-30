@@ -129,7 +129,7 @@ public class TileIncensePlate extends TileSimpleInventory implements ISidedInven
 	}
 
 	@Override
-	public int[] getAccessibleSlotsFromSide(int side) {
+	public int[] getSlotsForFace(int side) {
 		return new int[] { 0 };
 	}
 

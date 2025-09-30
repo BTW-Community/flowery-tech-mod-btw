@@ -84,7 +84,7 @@ public class ItemBlackHoleTalisman extends ItemMod implements IBlockProvider {
 			TileEntity tile = par3World.getTileEntity(par4, par5, par6);
 			if(tile != null && tile instanceof IInventory) {
 				IInventory inv = (IInventory) tile;
-				int[] slots = inv instanceof ISidedInventory ? ((ISidedInventory) inv).getAccessibleSlotsFromSide(par7) : InventoryHelper.buildSlotsForLinearInventory(inv);
+				int[] slots = inv instanceof ISidedInventory ? ((ISidedInventory) inv).getSlotsForFace(par7) : InventoryHelper.buildSlotsForLinearInventory(inv);
 				for(int slot : slots) {
 					ItemStack stackInSlot = inv.getStackInSlot(slot);
 					if(stackInSlot == null) {

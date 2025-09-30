@@ -85,7 +85,7 @@ public class TileAvatar extends TileSimpleInventory implements IAvatarTile, ISid
 	}
 
 	@Override
-	public int[] getAccessibleSlotsFromSide(int p_94128_1_) {
+	public int[] getSlotsForFace(int p_94128_1_) {
 		return new int[0];
 	}
 

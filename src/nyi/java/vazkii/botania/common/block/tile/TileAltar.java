@@ -312,7 +312,7 @@ public class TileAltar extends TileSimpleInventory implements ISidedInventory, I
 	}
 
 	@Override
-	public int[] getAccessibleSlotsFromSide(int var1) {
+	public int[] getSlotsForFace(int var1) {
 		return new int[0];
 	}
 

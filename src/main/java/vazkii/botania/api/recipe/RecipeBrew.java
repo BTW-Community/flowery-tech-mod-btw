@@ -16,7 +16,6 @@ import java.util.List;
 import net.minecraft.src.Item;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
 import vazkii.botania.api.brew.Brew;
 import vazkii.botania.api.brew.IBrewContainer;
 
@@ -53,7 +52,8 @@ public class RecipeBrew {
 
 			for(int j = 0; j < inputsMissing.size(); j++) {
 				Object input = inputsMissing.get(j);
-				if(input instanceof String) {
+				//todo replace oredict with tags
+/*				if(input instanceof String) {
 					List<ItemStack> validStacks = OreDictionary.getOres((String) input);
 					boolean found = false;
 					for(ItemStack ostack : validStacks) {
@@ -71,7 +71,9 @@ public class RecipeBrew {
 
 					if(found)
 						break;
-				} else if(input instanceof ItemStack && simpleAreStacksEqual((ItemStack) input, stack)) {
+				}
+				else */
+					if(input instanceof ItemStack && simpleAreStacksEqual((ItemStack) input, stack)) {
 					stackIndex = j;
 					break;
 				}
@@ -105,7 +107,7 @@ public class RecipeBrew {
 
 	public ItemStack getOutput(ItemStack stack) {
 		if(stack == null || !(stack.getItem() instanceof IBrewContainer))
-			return new ItemStack(Items.glass_bottle); // Fallback...
+			return new ItemStack(Item.glassBottle); // Fallback...
 		IBrewContainer container = (IBrewContainer) stack.getItem();
 
 		return container.getItemForBrew(brew, stack);
