@@ -12,7 +12,7 @@ package vazkii.botania.common.block;
 
 import java.util.ArrayList;
 
-import net.minecraft.block.material.Material;
+import net.minecraft.src.Material;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;

@@ -15,7 +15,7 @@ import net.minecraft.block.BlockBush;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.block.IGrowable;
-import net.minecraft.block.material.Material;
+import net.minecraft.src.Material;
 import net.minecraft.src.Block;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.subtile.RadiusDescriptor;

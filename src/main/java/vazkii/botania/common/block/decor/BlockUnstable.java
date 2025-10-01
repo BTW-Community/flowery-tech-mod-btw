@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.src.Block;
-import net.minecraft.block.material.Material;
+import net.minecraft.src.Material;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EntitySheep;
 import net.minecraft.src.EntityPlayer;

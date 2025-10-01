@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.src.Block;
-import net.minecraft.block.material.Material;
+import net.minecraft.src.Material;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.Entity;
@@ -81,7 +81,7 @@ public class BlockAltar extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List list) {
+	public void getSubBlocks(int item, CreativeTabs tab, List list) {
 		for(int i = 0; i < 9; i++)
 			list.add(new ItemStack(item, 1, i));
 	}
@@ -198,7 +198,7 @@ public class BlockAltar extends BlockModContainer implements ILexiconable {
 
 	private ItemStack getContainer(ItemStack stack) {
 		if(stack.getItem() == ModItems.waterBowl)
-			return new ItemStack(Items.bowl);
+			return new ItemStack(Item.bowlEmpty);
 
 		if (stack.getItem().hasContainerItem(stack))
 			return stack.getItem().getContainerItem(stack);
@@ -211,7 +211,7 @@ public class BlockAltar extends BlockModContainer implements ILexiconable {
 
 	@Override
 	public Icon getIcon(int par1, int par2) {
-		return par2 == 0 ? Blocks.cobblestone.getIcon(par1, par2) : ModFluffBlocks.biomeStoneA.getIcon(par1, par2 + 7);
+		return par2 == 0 ? Block.cobblestone.getIcon(par1, par2) : ModFluffBlocks.biomeStoneA.getIcon(par1, par2 + 7);
 	}
 
 	@Override

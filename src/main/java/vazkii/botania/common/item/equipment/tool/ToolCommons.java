@@ -11,7 +11,7 @@
 package vazkii.botania.common.item.equipment.tool;
 
 import net.minecraft.src.Block;
-import net.minecraft.block.material.Material;
+import net.minecraft.src.Material;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.src.Entity;

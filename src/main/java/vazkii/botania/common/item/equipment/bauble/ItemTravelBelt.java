@@ -13,7 +13,7 @@ package vazkii.botania.common.item.equipment.bauble;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.block.material.Material;
+import net.minecraft.src.Material;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ModelBiped;
 import net.minecraft.src.EntityPlayer;

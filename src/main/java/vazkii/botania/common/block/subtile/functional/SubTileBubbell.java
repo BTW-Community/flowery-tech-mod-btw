@@ -11,7 +11,7 @@
 package vazkii.botania.common.block.subtile.functional;
 
 import net.minecraft.src.Block;
-import net.minecraft.block.material.Material;
+import net.minecraft.src.Material;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;

@@ -11,8 +11,8 @@
 package vazkii.botania.common.block;
 
 import net.minecraft.src.Block;
-import net.minecraft.block.BlockContainer;
-import net.minecraft.block.material.Material;
+import net.minecraft.src.BlockContainer;
+import net.minecraft.src.Material;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
@@ -27,8 +27,8 @@ public abstract class BlockModContainer<T extends TileEntity> extends BlockConta
 
 	public int originalLight;
 
-	protected BlockModContainer(Material par2Material) {
-		super(par2Material);
+	protected BlockModContainer(int id, Material par2Material) {
+		super(id, par2Material);
 		if(registerInCreative())
 			setCreativeTab(BotaniaCreativeTab.INSTANCE);
 	}

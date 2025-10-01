@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.src.Block;
-import net.minecraft.block.material.Material;
+import net.minecraft.src.Material;
 import net.minecraft.src.Entity;
 import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;

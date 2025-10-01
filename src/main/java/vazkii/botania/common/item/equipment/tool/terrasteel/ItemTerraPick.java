@@ -13,7 +13,7 @@ package vazkii.botania.common.item.equipment.tool.terrasteel;
 import java.awt.Color;
 import java.util.List;
 
-import net.minecraft.block.material.Material;
+import net.minecraft.src.Material;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.enchantment.EnchantmentHelper;

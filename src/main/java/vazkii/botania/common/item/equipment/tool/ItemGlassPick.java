@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.item.equipment.tool;
 
-import net.minecraft.block.material.Material;
+import net.minecraft.src.Material;
 import net.minecraft.src.Block;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;

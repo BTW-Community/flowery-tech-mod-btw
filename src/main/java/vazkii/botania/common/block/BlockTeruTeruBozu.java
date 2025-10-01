@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.block;
 
-import net.minecraft.block.material.Material;
+import net.minecraft.src.Material;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityItem;
@@ -131,4 +131,8 @@ public class BlockTeruTeruBozu extends BlockModContainer implements ILexiconable
 		return LexiconData.teruTeruBozu;
 	}
 
+	@Override
+	public TileEntity createNewTileEntity(World world) {
+		return new TileTeruTeruBozu();
+	}
 }

@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.block.mana;
 
-import net.minecraft.block.material.Material;
+import net.minecraft.src.Material;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ScaledResolution;
 import net.minecraft.src.IconRegister;

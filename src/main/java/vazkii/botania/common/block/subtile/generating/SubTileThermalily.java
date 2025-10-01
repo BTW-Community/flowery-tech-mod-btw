@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.block.subtile.generating;
 
-import net.minecraft.block.material.Material;
+import net.minecraft.src.Material;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.lexicon.LexiconData;
