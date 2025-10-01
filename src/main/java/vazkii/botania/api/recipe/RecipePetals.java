@@ -24,7 +24,7 @@ public class RecipePetals {
 	public RecipePetals(ItemStack output, Object... inputs) {
 		this.output = output;
 
-		List<Object> inputsToSet = new ArrayList();
+		List<Object> inputsToSet = new ArrayList<>();
 		for(Object obj : inputs) {
 			if(obj instanceof String || obj instanceof ItemStack)
 				inputsToSet.add(obj);

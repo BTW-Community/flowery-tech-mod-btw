@@ -13,7 +13,7 @@ package vazkii.botania.common.item.equipment.bauble;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.potion.Potion;
+import net.minecraft.src.Potion;
 import net.minecraft.src.PotionEffect;
 import vazkii.botania.api.mana.IManaUsingItem;
 import vazkii.botania.api.mana.ManaItemHandler;

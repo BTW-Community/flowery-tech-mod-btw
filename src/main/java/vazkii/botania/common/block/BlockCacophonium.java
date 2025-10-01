@@ -79,7 +79,7 @@ public class BlockCacophonium extends BlockModContainer {
 
 	@Override
 	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
-		ArrayList<ItemStack> stacks = new ArrayList();
+		ArrayList<ItemStack> stacks = new ArrayList<>();
 
 		TileEntity tile = world.getTileEntity(x, y, z);
 		if(tile != null && tile instanceof TileCacophonium) {

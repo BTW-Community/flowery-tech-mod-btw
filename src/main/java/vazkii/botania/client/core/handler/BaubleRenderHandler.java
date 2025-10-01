@@ -20,7 +20,7 @@ import net.minecraft.src.TextureMap;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.potion.Potion;
+import net.minecraft.src.Potion;
 import net.minecraft.src.Icon;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 

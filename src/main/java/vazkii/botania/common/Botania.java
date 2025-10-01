@@ -11,12 +11,10 @@
 package vazkii.botania.common;
 
 import btw.BTWAddon;
-import dev.bagel.util.ICommonProxy;
 import net.fabricmc.loader.api.FabricLoader;
 import vazkii.botania.common.core.proxy.CommonProxy;
 import vazkii.botania.common.integration.coloredlights.ILightHelper;
 import vazkii.botania.common.integration.coloredlights.LightHelperVanilla;
-import vazkii.botania.common.lib.LibMisc;
 
 //@Mod(modid = LibMisc.MOD_ID, name = LibMisc.MOD_NAME, version = LibMisc.VERSION, dependencies = LibMisc.DEPENDENCIES, guiFactory = LibMisc.GUI_FACTORY)
 public class Botania extends BTWAddon {

@@ -246,7 +246,7 @@ public class ItemExchangeRod extends ItemMod implements IManaUsingItem, IWirefra
 	}
 
 	public static ItemStack removeFromInventory(EntityPlayer player, IInventory inv, ItemStack stack, Block block, int meta, boolean doit) {
-		List<ItemStack> providers = new ArrayList();
+		List<ItemStack> providers = new ArrayList<>();
 		for(int i = inv.getSizeInventory() - 1; i >= 0; i--) {
 			ItemStack invStack = inv.getStackInSlot(i);
 			if(invStack == null)

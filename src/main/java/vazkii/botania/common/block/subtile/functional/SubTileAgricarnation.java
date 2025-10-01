@@ -10,11 +10,10 @@
  */
 package vazkii.botania.common.block.subtile.functional;
 
+import dev.bagel.shim.BlockBush;
 import net.minecraft.src.Block;
-import net.minecraft.src.BlockBush;
 import net.minecraft.src.BlockCrops;
 import net.minecraft.src.BlockSapling;
-import net.minecraft.src.IGrowable;
 import net.minecraft.src.Material;
 import net.minecraft.src.Block;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -46,7 +45,7 @@ public class SubTileAgricarnation extends SubTileFunctional {
 				if(isPlant(x, y, z) && mana > 5) {
 					Block block = supertile.getWorldObj().getBlock(x, y, z);
 					mana -= 5;
-					supertile.getWorldObj().scheduleBlockUpdate(x, y, z, block, 1);
+					supertile.getWorldObj().scheduleBlockUpdate(x, y, z, block.blockID, 1);
 					if(ConfigHandler.blockBreakParticles)
 						supertile.getWorldObj().playAuxSFX(2005, x, y, z, 6 + supertile.getWorldObj().rand.nextInt(4));
 					supertile.getWorldObj().playSoundEffect(x, y, z, "botania:agricarnation", 0.01F, 0.5F + (float) Math.random() * 0.5F);
@@ -64,11 +63,11 @@ public class SubTileAgricarnation extends SubTileFunctional {
 
 	boolean isPlant(int x, int y, int z) {
 		Block block = supertile.getWorldObj().getBlock(x, y, z);
-		if(block == Blocks.grass || block == Blocks.leaves || block == Blocks.leaves2 || block instanceof BlockBush && !(block instanceof BlockCrops) && !(block instanceof BlockSapling))
+		if(block == Block.grass || block == Block.leaves /*|| block == Block.leaves2*/ || block instanceof BlockBush && !(block instanceof BlockCrops) && !(block instanceof BlockSapling))
 			return false;
 
-		Material mat = block.getMaterial();
-		return mat != null && (mat == Material.plants || mat == Material.cactus || mat == Material.grass || mat == Material.leaves || mat == Material.gourd) && block instanceof IGrowable && ((IGrowable) block).func_149851_a(supertile.getWorldObj(), x, y, z, supertile.getWorldObj().isRemote);
+		Material mat = block.blockMaterial;
+		return mat != null && (mat == Material.plants || mat == Material.cactus || mat == Material.grass || mat == Material.leaves || mat == Material.pumpkin)/* && block instanceof IGrowable && ((IGrowable) block).func_149851_a(supertile.getWorldObj(), x, y, z, supertile.getWorldObj().isRemote)*/;
 	}
 
 	@Override

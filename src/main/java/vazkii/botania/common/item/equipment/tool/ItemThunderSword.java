@@ -17,7 +17,7 @@ import java.util.Random;
 import net.minecraft.command.IEntitySelector;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.monster.IMob;
+import net.minecraft.src.IMob;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
@@ -45,7 +45,7 @@ public class ItemThunderSword extends ItemManasteelSword implements ICraftAchiev
 	public boolean hitEntity(ItemStack stack, EntityLivingBase entity, EntityLivingBase attacker) {
 		if(!(entity instanceof EntityPlayer) && entity != null) {
 			double range = 8;
-			final List<EntityLivingBase> alreadyTargetedEntities = new ArrayList();
+			final List<EntityLivingBase> alreadyTargetedEntities = new ArrayList<>();
 			int dmg = 5;
 			long lightningSeed = ItemNBTHelper.getLong(stack, TAG_LIGHTNING_SEED, 0);
 

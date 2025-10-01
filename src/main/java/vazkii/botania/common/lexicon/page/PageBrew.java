@@ -98,7 +98,7 @@ public class PageBrew extends PageRecipe implements ITwoNamedPage {
 
 	@Override
 	public List<ItemStack> getDisplayedRecipes() {
-		ArrayList<ItemStack> list = new ArrayList();
+		ArrayList<ItemStack> list = new ArrayList<>();
 		if (recipe != null) {
 			list.add(recipe.getOutput(new ItemStack(ModItems.vial)));
 		}

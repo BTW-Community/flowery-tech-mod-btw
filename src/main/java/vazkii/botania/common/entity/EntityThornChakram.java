@@ -18,7 +18,7 @@ import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EntityThrowable;
 import net.minecraft.src.ItemStack;
-import net.minecraft.potion.Potion;
+import net.minecraft.src.Potion;
 import net.minecraft.src.PotionEffect;
 import net.minecraft.src.DamageSource;
 import net.minecraft.src.MovingObjectPosition;

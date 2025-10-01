@@ -23,7 +23,7 @@ import net.minecraft.src.Potion;
 import net.minecraft.src.EnumChatFormatting;
 import vazkii.botania.common.lib.LibMisc;
 import vazkii.botania.common.lib.LibPotionNames;
-//todo update config
+//todofix move config to new system
 public final class ConfigHandler {
 
 //	public static Configuration config;
@@ -355,8 +355,8 @@ public final class ConfigHandler {
 
 		private boolean enabled;
 
-		private Map<String, List<AdaptableValue>> adaptableValues = new HashMap();
-		private List<String> changes = new ArrayList();
+		private Map<String, List<AdaptableValue>> adaptableValues = new HashMap<>();
+		private List<String> changes = new ArrayList<>();
 
 		public ConfigAdaptor(boolean enabled) {
 			this.enabled = enabled;
@@ -394,7 +394,7 @@ public final class ConfigHandler {
 
 			AdaptableValue<T> adapt = new AdaptableValue<T>(version, val);
 			if(!adaptableValues.containsKey(key)) {
-				ArrayList list = new ArrayList();
+				ArrayList list = new ArrayList<>();
 				adaptableValues.put(key, list);
 			}
 

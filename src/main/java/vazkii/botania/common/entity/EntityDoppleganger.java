@@ -30,9 +30,9 @@ import net.minecraft.src.SharedMonsterAttributes;
 import net.minecraft.src.ai.EntityAISwimming;
 import net.minecraft.src.ai.EntityAIWatchClosest;
 import net.minecraft.src.EntityItem;
-import net.minecraft.src.monster.EntitySkeleton;
-import net.minecraft.src.monster.EntityWitch;
-import net.minecraft.src.monster.EntityZombie;
+import net.minecraft.src.EntitySkeleton;
+import net.minecraft.src.EntityWitch;
+import net.minecraft.src.EntityZombie;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Block;
 import net.minecraft.src.Item;
@@ -40,7 +40,7 @@ import net.minecraft.src.Item;
 import net.minecraft.src.ItemRecord;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTTagCompound;
-import net.minecraft.potion.Potion;
+import net.minecraft.src.Potion;
 import net.minecraft.src.PotionEffect;
 import net.minecraft.src.TileEntityBeacon;
 import net.minecraft.src.AxisAlignedBB;
@@ -51,7 +51,7 @@ import net.minecraft.src.DamageSource;
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.ResourceLocation;
-import net.minecraft.world.EnumDifficulty;
+import net.minecraft.src.EnumDifficulty;
 import net.minecraft.src.World;
 import net.minecraftforge.common.util.FakePlayer;
 
@@ -116,7 +116,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 	boolean spawnPixies = false;
 	boolean anyWithArmor = false;
 
-	List<String> playersWhoAttacked = new ArrayList();
+	List<String> playersWhoAttacked = new ArrayList<>();
 
 	private static boolean isPlayingMusic = false;
 
@@ -584,7 +584,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 				if(player.inventory.armorInventory[0] != null || player.inventory.armorInventory[1] != null || player.inventory.armorInventory[2] != null || player.inventory.armorInventory[3] != null)
 					anyWithArmor = true;
 
-				List<PotionEffect> remove = new ArrayList();
+				List<PotionEffect> remove = new ArrayList<>();
 				Collection<PotionEffect> active = player.getActivePotionEffects();
 				for(PotionEffect effect : active)
 					if(effect.getDuration() < 200 && effect.getIsAmbient() && !ReflectionHelper.<Boolean, Potion>getPrivateValue(Potion.class, Potion.potionTypes[effect.getPotionID()], LibObfuscation.IS_BAD_EFFECT))

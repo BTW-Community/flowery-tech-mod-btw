@@ -16,7 +16,6 @@ import net.minecraft.src.TextureAtlasSprite;
 import net.minecraft.src.TextureUtil;
 import net.minecraft.src.AnimationMetadataSection;
 import vazkii.botania.common.lib.LibObfuscation;
-import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 

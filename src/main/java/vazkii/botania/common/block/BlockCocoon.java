@@ -81,7 +81,7 @@ public class BlockCocoon extends BlockModContainer implements ILexiconable {
 
 	@Override
 	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
-		return new ArrayList();
+		return new ArrayList<>();
 	}
 
 	@Override

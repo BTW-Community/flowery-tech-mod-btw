@@ -27,8 +27,8 @@ import vazkii.botania.api.lexicon.multiblock.component.MultiblockComponent;
  */
 public class Multiblock {
 
-	public List<MultiblockComponent> components = new ArrayList();
-	public List<ItemStack> materials = new ArrayList();
+	public List<MultiblockComponent> components = new ArrayList<>();
+	public List<ItemStack> materials = new ArrayList<>();
 
 	public int minX, minY, minZ, maxX, maxY, maxZ, offX, offY, offZ;
 

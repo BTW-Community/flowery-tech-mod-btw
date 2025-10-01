@@ -10,7 +10,6 @@
  */
 package vazkii.botania.common.core.proxy;
 
-import dev.bagel.util.ICommonProxy;
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityDragon;
@@ -82,22 +81,14 @@ import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.network.GuiHandler;
 import vazkii.botania.common.world.SkyblockWorldEvents;
 import vazkii.botania.common.world.WorldTypeSkyblock;
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.FMLLog;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLInterModComms;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.event.FMLServerAboutToStartEvent;
-import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import cpw.mods.fml.common.network.NetworkRegistry;
 
 public class CommonProxy {
 
 	public void preInit(FMLPreInitializationEvent event) {
 		BotaniaAPI.internalHandler = new InternalMethodHandler();
 
-		ConfigHandler.loadConfig(event.getSuggestedConfigurationFile());
+//		ConfigHandler.loadConfig(event.getSuggestedConfigurationFile());
 
 		ModBlocks.init();
 		ModItems.init();
@@ -159,7 +150,7 @@ public class CommonProxy {
 		ConfigHandler.loadPostInit();
 		LexiconData.postInit();
 
-		registerNEIStuff();
+//		registerNEIStuff();
 
 		int words = 0;
 		for(LexiconEntry entry : BotaniaAPI.getAllEntries())

@@ -34,7 +34,8 @@
     "loom:injected_interfaces": {
       "net/minecraft/class_1150": ["dev/bagel/interfaces/WorldExtensions"],
       "net/minecraft/class_197": ["dev/bagel/interfaces/BlockExtensions"],
-      "net/minecraft/class_474": ["dev/bagel/interfaces/NBTTagListExtensions"]
+      "net/minecraft/class_474": ["dev/bagel/interfaces/NBTTagListExtensions"],
+      "net/minecraft/class_864": ["dev/bagel/interfaces/EntityExtensions"]
     }
   }
 }

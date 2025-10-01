@@ -16,21 +16,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.Calendar;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.Minecraft;
-import net.minecraft.src.PlayerControllerMP;
-import net.minecraft.src.NetHandlerPlayClient;
-import net.minecraft.src.RenderSnowball;
-import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemRecord;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.TileEntitySkull;
-import net.minecraft.src.ChunkCoordinates;
-import net.minecraft.src.MovingObjectPosition;
-import net.minecraft.src.World;
-import net.minecraft.world.WorldSettings.GameType;
+import net.minecraft.src.*;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 import vazkii.botania.api.item.IExtendedPlayerController;
@@ -60,7 +46,6 @@ import vazkii.botania.client.fx.FXWisp;
 import vazkii.botania.client.gui.lexicon.GuiLexicon;
 import vazkii.botania.client.gui.lexicon.GuiLexiconEntry;
 import vazkii.botania.client.gui.lexicon.GuiLexiconIndex;
-import vazkii.botania.client.integration.nei.NEIGuiHooks;
 import vazkii.botania.client.lib.LibRenderIDs;
 import vazkii.botania.client.render.block.RenderAltar;
 import vazkii.botania.client.render.block.RenderAvatar;
@@ -173,15 +158,8 @@ import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.equipment.bauble.ItemMonocle;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibObfuscation;
-import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.FMLLog;
-import cpw.mods.fml.common.Optional;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.relauncher.ReflectionHelper;
 
 public class ClientProxy extends CommonProxy {
 
@@ -299,36 +277,36 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForgeClient.registerItemRenderer(ModItems.crystalBow, renderBow);
 
 		RenderTileFloatingFlower renderTileFloatingFlower = new RenderTileFloatingFlower();
-		ClientRegistry.bindTileEntitySpecialRenderer(TileAltar.class, new RenderTileAltar());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileSpreader.class, new RenderTileSpreader());
-		ClientRegistry.bindTileEntitySpecialRenderer(TilePool.class, new RenderTilePool());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileRuneAltar.class, new RenderTileRuneAltar());
-		ClientRegistry.bindTileEntitySpecialRenderer(TilePylon.class, new RenderTilePylon());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEnchanter.class, new RenderTileEnchanter());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileAlfPortal.class, new RenderTileAlfPortal());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileFloatingFlower.class, renderTileFloatingFlower);
-		ClientRegistry.bindTileEntitySpecialRenderer(TileFloatingSpecialFlower.class, renderTileFloatingFlower);
-		ClientRegistry.bindTileEntitySpecialRenderer(TileTinyPotato.class, new RenderTileTinyPotato());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileSpawnerClaw.class, new RenderTileSpawnerClaw());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileStarfield.class, new RenderTileStarfield());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileBrewery.class, new RenderTileBrewery());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileTerraPlate.class, new RenderTileTerraPlate());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileRedString.class, new RenderTileRedString());
-		ClientRegistry.bindTileEntitySpecialRenderer(TilePrism.class, new RenderTilePrism());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileCorporeaIndex.class, new RenderTileCorporeaIndex());
-		ClientRegistry.bindTileEntitySpecialRenderer(TilePump.class, new RenderTilePump());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileCorporeaCrystalCube.class, new RenderTileCorporeaCrystalCube());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileIncensePlate.class, new RenderTileIncensePlate());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileHourglass.class, new RenderTileHourglass());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileSparkChanger.class, new RenderTileSparkChanger());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileCocoon.class, new RenderTileCocoon());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileLightRelay.class, new RenderTileLightRelay());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileBellows.class, new RenderTileBellows());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileGaiaHead.class, new RenderTileSkullOverride());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileTeruTeruBozu.class, new RenderTileTeruTeruBozu());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileAvatar.class, new RenderTileAvatar());
+		TileEntityRenderer.instance.addSpecialRendererForClass(TileAltar.class, new RenderTileAltar());
+		TileEntityRenderer.instance.addSpecialRendererForClass(TileSpreader.class, new RenderTileSpreader());
+		TileEntityRenderer.instance.addSpecialRendererForClass(TilePool.class, new RenderTilePool());
+		TileEntityRenderer.instance.addSpecialRendererForClass(TileRuneAltar.class, new RenderTileRuneAltar());
+		TileEntityRenderer.instance.addSpecialRendererForClass(TilePylon.class, new RenderTilePylon());
+		TileEntityRenderer.instance.addSpecialRendererForClass(TileEnchanter.class, new RenderTileEnchanter());
+		TileEntityRenderer.instance.addSpecialRendererForClass(TileAlfPortal.class, new RenderTileAlfPortal());
+		TileEntityRenderer.instance.addSpecialRendererForClass(TileFloatingFlower.class, renderTileFloatingFlower);
+		TileEntityRenderer.instance.addSpecialRendererForClass(TileFloatingSpecialFlower.class, renderTileFloatingFlower);
+		TileEntityRenderer.instance.addSpecialRendererForClass(TileTinyPotato.class, new RenderTileTinyPotato());
+		TileEntityRenderer.instance.addSpecialRendererForClass(TileSpawnerClaw.class, new RenderTileSpawnerClaw());
+		TileEntityRenderer.instance.addSpecialRendererForClass(TileStarfield.class, new RenderTileStarfield());
+		TileEntityRenderer.instance.addSpecialRendererForClass(TileBrewery.class, new RenderTileBrewery());
+		TileEntityRenderer.instance.addSpecialRendererForClass(TileTerraPlate.class, new RenderTileTerraPlate());
+		TileEntityRenderer.instance.addSpecialRendererForClass(TileRedString.class, new RenderTileRedString());
+		TileEntityRenderer.instance.addSpecialRendererForClass(TilePrism.class, new RenderTilePrism());
+		TileEntityRenderer.instance.addSpecialRendererForClass(TileCorporeaIndex.class, new RenderTileCorporeaIndex());
+		TileEntityRenderer.instance.addSpecialRendererForClass(TilePump.class, new RenderTilePump());
+		TileEntityRenderer.instance.addSpecialRendererForClass(TileCorporeaCrystalCube.class, new RenderTileCorporeaCrystalCube());
+		TileEntityRenderer.instance.addSpecialRendererForClass(TileIncensePlate.class, new RenderTileIncensePlate());
+		TileEntityRenderer.instance.addSpecialRendererForClass(TileHourglass.class, new RenderTileHourglass());
+		TileEntityRenderer.instance.addSpecialRendererForClass(TileSparkChanger.class, new RenderTileSparkChanger());
+		TileEntityRenderer.instance.addSpecialRendererForClass(TileCocoon.class, new RenderTileCocoon());
+		TileEntityRenderer.instance.addSpecialRendererForClass(TileLightRelay.class, new RenderTileLightRelay());
+		TileEntityRenderer.instance.addSpecialRendererForClass(TileBellows.class, new RenderTileBellows());
+		TileEntityRenderer.instance.addSpecialRendererForClass(TileGaiaHead.class, new RenderTileSkullOverride());
+		TileEntityRenderer.instance.addSpecialRendererForClass(TileTeruTeruBozu.class, new RenderTileTeruTeruBozu());
+		TileEntityRenderer.instance.addSpecialRendererForClass(TileAvatar.class, new RenderTileAvatar());
 
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySkull.class, new RenderTileSkullOverride());
+		TileEntityRenderer.instance.addSpecialRendererForClass(TileEntitySkull.class, new RenderTileSkullOverride());
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityPixie.class, new RenderPixie());
 		RenderingRegistry.registerEntityRenderingHandler(EntityVineBall.class, new RenderSnowball(ModItems.vineBall));
@@ -346,9 +324,8 @@ public class ClientProxy extends CommonProxy {
 	}
 
 	@Override
-	@Optional.Method(modid = "NotEnoughItems")
 	public void registerNEIStuff() {
-		NEIGuiHooks.init();
+//		NEIGuiHooks.init();
 	}
 
 	@Override
@@ -384,8 +361,8 @@ public class ClientProxy extends CommonProxy {
 		EntityPlayer player = mc.thePlayer;
 		if(entity == player) {
 			if(!(mc.playerController instanceof IExtendedPlayerController)) {
-				GameType type = ReflectionHelper.getPrivateValue(PlayerControllerMP.class, mc.playerController, LibObfuscation.CURRENT_GAME_TYPE);
-				NetHandlerPlayClient net = ReflectionHelper.getPrivateValue(PlayerControllerMP.class, mc.playerController, LibObfuscation.NET_CLIENT_HANDLER);
+				EnumGameType type = mc.playerController.currentGameType;
+				NetClientHandler net = mc.playerController.getNetClientHandler();
 				BotaniaPlayerController controller = new BotaniaPlayerController(mc, net);
 				boolean isFlying = player.capabilities.isFlying;
 				boolean allowFlying = player.capabilities.allowFlying;
@@ -421,8 +398,8 @@ public class ClientProxy extends CommonProxy {
 		if(record == null)
 			world.playAuxSFXAtEntity(null, 1005, x, y, z, 0);
 		else {
-			world.playAuxSFXAtEntity(null, 1005, x, y, z, Item.getIdFromItem(record));
-			mc.ingameGUI.setRecordPlayingMessage(record.getRecordNameLocal());
+			world.playAuxSFXAtEntity(null, 1005, x, y, z, record.itemID);
+			mc.ingameGUI.setRecordPlayingMessage(record.recordName);
 		}
 	}
 

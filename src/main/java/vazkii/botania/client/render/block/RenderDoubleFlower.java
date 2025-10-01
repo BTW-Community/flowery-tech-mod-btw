@@ -10,12 +10,8 @@
  */
 package vazkii.botania.client.render.block;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.BlockDoublePlant;
-import net.minecraft.src.RenderBlocks;
-import net.minecraft.src.Tessellator;
-import net.minecraft.src.Icon;
-import net.minecraft.src.IBlockAccess;
+import dev.bagel.shim.BlockDoublePlant;
+import net.minecraft.src.*;
 import vazkii.botania.client.lib.LibRenderIDs;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
@@ -38,7 +34,8 @@ public class RenderDoubleFlower implements ISimpleBlockRenderingHandler {
 		boolean flag1 = BlockDoublePlant.func_149887_c(i1);
 		if (flag1)
 		{
-			if (world.getBlock(p_147774_2_, p_147774_3_ - 1, p_147774_4_) != p_147774_1_)
+			//todofix this cast may be unsafe
+			if (((World) world).getBlock(p_147774_2_, p_147774_3_ - 1, p_147774_4_) != p_147774_1_)
 			{
 				return false;
 			}

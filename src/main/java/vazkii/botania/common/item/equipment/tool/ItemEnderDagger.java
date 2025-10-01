@@ -15,7 +15,7 @@ import java.awt.Color;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.monster.EntityEnderman;
+import net.minecraft.src.EntityEnderman;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EnumAction;
 import net.minecraft.src.ItemStack;

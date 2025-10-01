@@ -15,7 +15,7 @@ import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemFood;
 import net.minecraft.src.ItemStack;
-import net.minecraft.potion.Potion;
+import net.minecraft.src.Potion;
 import net.minecraft.src.Icon;
 import net.minecraft.src.World;
 import vazkii.botania.client.core.helper.IconHelper;

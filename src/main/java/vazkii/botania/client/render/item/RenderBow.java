@@ -20,7 +20,6 @@ import net.minecraftforge.client.IItemRenderer;
 import org.lwjgl.opengl.GL11;
 
 import vazkii.botania.common.lib.LibObfuscation;
-import cpw.mods.fml.relauncher.ReflectionHelper;
 
 public class RenderBow implements IItemRenderer {
 
@@ -62,7 +61,8 @@ public class RenderBow implements IItemRenderer {
 		int dmg = item.getItemDamage();
 		Icon icon = item.getItem().getIconFromDamageForRenderPass(dmg, 0);
 		if(player != null) {
-			ItemStack using = ReflectionHelper.getPrivateValue(EntityPlayer.class, player, LibObfuscation.ITEM_IN_USE);
+
+			ItemStack using = player.getItemInUse();
 			int time = ReflectionHelper.getPrivateValue(EntityPlayer.class, player, LibObfuscation.ITEM_IN_USE_COUNT);
 			icon = item.getItem().getIcon(item, 0, player, using, time);
 			if(transform) {

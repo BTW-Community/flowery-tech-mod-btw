@@ -3,12 +3,12 @@ package vazkii.botania.common.item.equipment.tool.elementium;
 import java.util.Random;
 
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.src.EnchantmentHelper;
 import net.minecraft.src.EntityItem;
-import net.minecraft.src.monster.EntityCreeper;
-import net.minecraft.src.monster.EntityPigZombie;
-import net.minecraft.src.monster.EntitySkeleton;
-import net.minecraft.src.monster.EntityZombie;
+import net.minecraft.src.EntityCreeper;
+import net.minecraft.src.EntityPigZombie;
+import net.minecraft.src.EntitySkeleton;
+import net.minecraft.src.EntityZombie;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;

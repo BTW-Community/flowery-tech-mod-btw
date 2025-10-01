@@ -31,7 +31,7 @@ public class TileSparkChanger extends TileSimpleInventory {
 			return;
 
 		ItemStack changeStack = getStackInSlot(0);
-		List<ISparkAttachable> attachables = new ArrayList();
+		List<ISparkAttachable> attachables = new ArrayList<>();
 		for(ForgeDirection dir : LibMisc.CARDINAL_DIRECTIONS) {
 			TileEntity tile = worldObj.getTileEntity(xCoord + dir.offsetX, yCoord, zCoord + dir.offsetZ);
 			if(tile != null && tile instanceof ISparkAttachable) {

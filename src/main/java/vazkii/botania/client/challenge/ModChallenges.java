@@ -26,11 +26,11 @@ import vazkii.botania.common.lib.LibBlockNames;
 public final class ModChallenges {
 
 	public static final EnumMap<EnumChallengeLevel, List<Challenge>> challenges = new EnumMap(EnumChallengeLevel.class);
-	public static final HashMap<String, Challenge> challengeLookup = new HashMap();
+	public static final HashMap<String, Challenge> challengeLookup = new HashMap<>();
 
 	public static void init() {
 		for(EnumChallengeLevel level : EnumChallengeLevel.class.getEnumConstants())
-			challenges.put(level, new ArrayList());
+			challenges.put(level, new ArrayList<>());
 
 		addChallenge(EnumChallengeLevel.EASY, "flowerFarm", new ItemStack(ModBlocks.flower, 1, 6));
 		addChallenge(EnumChallengeLevel.EASY, "recordFarm", new ItemStack(Item.record13));

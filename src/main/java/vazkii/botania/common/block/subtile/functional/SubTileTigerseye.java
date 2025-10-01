@@ -18,7 +18,7 @@ import net.minecraft.src.ai.EntityAIAvoidEntity;
 import net.minecraft.src.ai.EntityAINearestAttackableTarget;
 import net.minecraft.src.ai.EntityAITasks.EntityAITaskEntry;
 import net.minecraft.src.EntityEnderCrystal;
-import net.minecraft.src.monster.EntityCreeper;
+import net.minecraft.src.EntityCreeper;
 import net.minecraft.src.EntityOcelot;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.AxisAlignedBB;

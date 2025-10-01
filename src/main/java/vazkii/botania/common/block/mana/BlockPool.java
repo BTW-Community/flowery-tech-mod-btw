@@ -98,7 +98,7 @@ public class BlockPool extends BlockModContainer implements IWandHUD, IWandable,
 
 	@Override
 	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
-		ArrayList<ItemStack> drops = new ArrayList();
+		ArrayList<ItemStack> drops = new ArrayList<>();
 
 		if(!lastFragile)
 			drops.add(new ItemStack(this, 1, metadata));

@@ -27,7 +27,7 @@ public class RecipeBrew {
 	public RecipeBrew(Brew brew, Object... inputs) {
 		this.brew = brew;
 
-		List<Object> inputsToSet = new ArrayList();
+		List<Object> inputsToSet = new ArrayList<>();
 		for(Object obj : inputs) {
 			if(obj instanceof String || obj instanceof ItemStack)
 				inputsToSet.add(obj);

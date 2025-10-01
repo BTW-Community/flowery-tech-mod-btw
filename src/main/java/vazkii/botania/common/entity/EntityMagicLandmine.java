@@ -15,7 +15,7 @@ import java.util.List;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.NBTTagCompound;
-import net.minecraft.potion.Potion;
+import net.minecraft.src.Potion;
 import net.minecraft.src.PotionEffect;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.DamageSource;

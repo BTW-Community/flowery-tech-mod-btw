@@ -10,6 +10,10 @@ public class MinecraftForgeClient {
         customItemRenderers[itemID] = renderer;
     }
 
+    public static void registerItemRenderer(Item item, IItemRenderer renderer) {
+        customItemRenderers[item.itemID] = renderer;
+    }
+
     public static IItemRenderer getItemRenderer(ItemStack item, IItemRenderer.ItemRenderType type) {
         IItemRenderer renderer = customItemRenderers[item.itemID];
         return renderer != null && renderer.handleRenderType(item, type) ? customItemRenderers[item.itemID] : null;

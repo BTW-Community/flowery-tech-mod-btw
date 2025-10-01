@@ -9,6 +9,10 @@ public interface WorldExtensions {
         return false;
     }
 
+    default boolean setBlock(int x, int y, int z, Block blockIn) {
+        return setBlock(x, y, z, blockIn, 0, 3);
+    }
+
     default Block getBlock(int x, int y, int z) {
         return null;
     }

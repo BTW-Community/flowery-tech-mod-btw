@@ -17,7 +17,7 @@ import net.minecraft.src.Block;
 import net.minecraft.src.Material;
 import net.minecraft.src.Minecraft;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.src.EnchantmentHelper;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EntityPlayerMP;
@@ -232,7 +232,7 @@ public class ItemLokiRing extends ItemRelicBauble implements IExtendedWireframeC
 
 	private static List<ChunkCoordinates> getCursorList(ItemStack stack) {
 		NBTTagCompound cmp = ItemNBTHelper.getCompound(stack, TAG_CURSOR_LIST, false);
-		List<ChunkCoordinates> cursors = new ArrayList();
+		List<ChunkCoordinates> cursors = new ArrayList<>();
 
 		int count = cmp.getInteger(TAG_CURSOR_COUNT);
 		for(int i = 0; i < count; i++) {

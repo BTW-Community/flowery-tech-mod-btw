@@ -14,7 +14,7 @@ import java.util.List;
 
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.potion.Potion;
+import net.minecraft.src.Potion;
 import net.minecraft.src.PotionEffect;
 import net.minecraft.src.AxisAlignedBB;
 import vazkii.botania.api.lexicon.LexiconEntry;

@@ -17,7 +17,7 @@ import net.minecraft.src.BlockBush;
 import net.minecraft.src.BlockLeaves;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.monster.IMob;
+import net.minecraft.src.IMob;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EntityThrowable;
 import net.minecraft.src.NBTTagCompound;

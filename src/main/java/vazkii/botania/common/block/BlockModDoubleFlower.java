@@ -14,11 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import dev.bagel.shim.BlockDoublePlant;
 import net.minecraft.src.Block;
-import net.minecraft.src.BlockDoublePlant;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.CreativeTabs;
-import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.src.EnchantmentHelper;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntitySheep;
 import net.minecraft.src.EntityPlayer;
@@ -26,7 +26,7 @@ import net.minecraft.src.Block;
 import net.minecraft.src.Item;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.stats.StatList;
+import net.minecraft.src.StatList;
 import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
@@ -54,13 +54,14 @@ public class BlockModDoubleFlower extends BlockDoublePlant implements ILexiconab
 
 	final int offset;
 
-	public BlockModDoubleFlower(boolean second) {
-		offset = second ? 8 : 0;
+	public BlockModDoubleFlower(int id, boolean second) {
+        super(id);
+        offset = second ? 8 : 0;
 		setBlockName(LibBlockNames.DOUBLE_FLOWER + (second ? 2 : 1));
 		setHardness(0F);
 		setStepSound(soundTypeGrass);
 		setTickRandomly(false);
-		setCreativeTab(BotaniaCreativeTab.INSTANCE);
+//		setCreativeTab(BotaniaCreativeTab.INSTANCE);
 	}
 
 	@Override
@@ -171,7 +172,7 @@ public class BlockModDoubleFlower extends BlockDoublePlant implements ILexiconab
 
 	@Override
 	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int meta, int fortune) {
-		return new ArrayList();
+		return new ArrayList<>();
 	}
 
 	@Override

@@ -16,7 +16,7 @@ import java.util.List;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ScaledResolution;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.src.EnchantmentHelper;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
@@ -61,7 +61,7 @@ public class TileEnchanter extends TileMod implements ISparkAttachable {
 	int mana = 0;
 
 	public ItemStack itemToEnchant = null;
-	List<EnchantmentData> enchants = new ArrayList();
+	List<EnchantmentData> enchants = new ArrayList<>();
 
 	private static final int[][] OBSIDIAN_LOCATIONS = new int[][] {
 		{ 0, -1, 0 },

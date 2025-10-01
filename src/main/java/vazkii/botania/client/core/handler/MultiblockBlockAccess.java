@@ -13,7 +13,7 @@ package vazkii.botania.client.core.handler;
 import net.minecraft.src.Block;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.IBlockAccess;
-import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.src.biome.BiomeGenBase;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.lexicon.multiblock.Multiblock;
 import vazkii.botania.api.lexicon.multiblock.component.MultiblockComponent;

@@ -11,6 +11,7 @@
 package vazkii.botania.client.core.handler;
 
 import net.minecraft.src.Minecraft;
+import net.minecraft.src.NetClientHandler;
 import net.minecraft.src.PlayerControllerMP;
 import net.minecraft.src.NetHandlerPlayClient;
 import vazkii.botania.api.item.IExtendedPlayerController;
@@ -22,7 +23,7 @@ public class BotaniaPlayerController extends PlayerControllerMP implements IExte
 
 	private float distance = 0F;
 
-	public BotaniaPlayerController(Minecraft p_i45062_1_, NetHandlerPlayClient p_i45062_2_) {
+	public BotaniaPlayerController(Minecraft p_i45062_1_, NetClientHandler p_i45062_2_) {
 		super(p_i45062_1_, p_i45062_2_);
 	}
 

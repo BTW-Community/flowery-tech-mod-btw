@@ -3,7 +3,7 @@ package vazkii.botania.common.item.equipment.tool.elementium;
 import net.minecraft.src.Block;
 import net.minecraft.src.BlockFalling;
 import net.minecraft.src.Material;
-import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.src.EnchantmentHelper;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.MovingObjectPosition;

@@ -186,7 +186,7 @@ public class PageCraftingRecipe extends PageRecipe {
 
 	@Override
 	public List<ItemStack> getDisplayedRecipes() {
-		ArrayList<ItemStack> list = new ArrayList();
+		ArrayList<ItemStack> list = new ArrayList<>();
 		for(IRecipe r : recipes)
 			list.add(r.getRecipeOutput());
 

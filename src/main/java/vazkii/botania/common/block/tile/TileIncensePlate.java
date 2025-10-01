@@ -17,7 +17,7 @@ import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ISidedInventory;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTTagCompound;
-import net.minecraft.potion.Potion;
+import net.minecraft.src.Potion;
 import net.minecraft.src.PotionEffect;
 import net.minecraft.src.AxisAlignedBB;
 import vazkii.botania.api.BotaniaAPI;

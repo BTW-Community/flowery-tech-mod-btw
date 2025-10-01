@@ -12,7 +12,7 @@ package vazkii.botania.common.brew.potion;
 
 import java.util.List;
 
-import net.minecraft.src.monster.IMob;
+import net.minecraft.src.IMob;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraftforge.common.MinecraftForge;

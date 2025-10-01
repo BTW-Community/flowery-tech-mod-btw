@@ -11,9 +11,9 @@
 package vazkii.botania.common.world;
 
 import net.minecraft.src.World;
-import net.minecraft.world.WorldType;
-import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.ChunkProviderFlat;
+import net.minecraft.src.WorldType;
+import net.minecraft.src.chunk.IChunkProvider;
+import net.minecraft.src.gen.ChunkProviderFlat;
 import net.minecraftforge.common.MinecraftForge;
 
 public class WorldTypeSkyblock extends WorldType {

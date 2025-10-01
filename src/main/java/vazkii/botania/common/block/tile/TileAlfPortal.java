@@ -65,7 +65,7 @@ public class TileAlfPortal extends TileMod {
 	private static final String TAG_STACK = "portalStack";
 	private static final String TAG_PORTAL_FLAG = "_elvenPortal";
 
-	List<ItemStack> stacksIn = new ArrayList();
+	List<ItemStack> stacksIn = new ArrayList<>();
 
 	public int ticksOpen = 0;
 	int ticksSinceLastItem = 0;

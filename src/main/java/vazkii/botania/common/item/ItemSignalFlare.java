@@ -21,7 +21,7 @@ import net.minecraft.src.EntitySheep;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.potion.Potion;
+import net.minecraft.src.Potion;
 import net.minecraft.src.PotionEffect;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.src.AxisAlignedBB;

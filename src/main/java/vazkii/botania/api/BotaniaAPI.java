@@ -84,7 +84,7 @@ public final class BotaniaAPI {
 
 	public static Map<String, Integer> oreWeights = new HashMap<String, Integer>();
 	public static Map<String, Integer> oreWeightsNether = new HashMap<String, Integer>();
-	public static Map<Item, Block> seeds = new HashMap();
+	public static Map<Item, Block> seeds = new HashMap<>();
 	public static Set<Item> looniumBlacklist = new LinkedHashSet<Item>();
 	public static Set<Block> paintableBlocks = new LinkedHashSet<Block>();
 	public static Set<String> magnetBlacklist = new LinkedHashSet<String>();
@@ -637,7 +637,7 @@ public final class BotaniaAPI {
 	 */
 	public static List<IRecipe> getLatestAddedRecipes(int x) {
 		List<IRecipe> list = CraftingManager.getInstance().getRecipeList();
-		List<IRecipe> newList = new ArrayList();
+		List<IRecipe> newList = new ArrayList<>();
 		for(int i = x - 1; i >= 0; i--)
 			newList.add(list.get(list.size() - 1 - i));
 

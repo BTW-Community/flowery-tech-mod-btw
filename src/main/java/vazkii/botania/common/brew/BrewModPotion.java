@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.brew;
 
-import net.minecraft.potion.Potion;
+import net.minecraft.src.Potion;
 import net.minecraft.src.PotionEffect;
 
 public class BrewModPotion extends BrewMod {

@@ -87,7 +87,7 @@ public class ItemTwigWand extends Item16Colors implements ICoordBoundItem {
 				par2EntityPlayer.swingItem();
 		}
 
-		if(block == Blocks.lapis_block && ConfigHandler.enchanterEnabled) {
+		if(block == Block.blockLapis && ConfigHandler.enchanterEnabled) {
 			int meta = -1;
 			if(TileEnchanter.canEnchanterExist(par3World, par4, par5, par6, 0))
 				meta = 0;

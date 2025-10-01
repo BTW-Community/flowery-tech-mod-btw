@@ -20,7 +20,7 @@ import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.world.Explosion;
+import net.minecraft.src.Explosion;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
 import vazkii.botania.common.block.tile.TileFakeAir;
@@ -93,7 +93,7 @@ public class BlockFakeAir extends BlockModContainer {
 
 	@Override
 	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
-		return new ArrayList(); // Empty List
+		return new ArrayList<>(); // Empty List
 	}
 
 	@Override

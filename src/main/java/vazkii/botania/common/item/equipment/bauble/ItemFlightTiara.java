@@ -16,8 +16,6 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
-
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.Gui;
 import net.minecraft.src.ScaledResolution;
@@ -39,7 +37,6 @@ import net.minecraft.src.ResourceLocation;
 import net.minecraft.src.StatCollector;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 
 import org.lwjgl.opengl.GL11;
 
@@ -59,11 +56,6 @@ import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.core.helper.Vector3;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.lib.LibItemNames;
-import baubles.api.BaubleType;
-import baubles.common.lib.PlayerHandler;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.PlayerEvent;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
@@ -78,7 +70,7 @@ public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaub
 	private static final String TAG_DASH_COOLDOWN = "dashCooldown";
 	private static final String TAG_IS_SPRINTING = "isSprinting";
 
-	public static List<String> playersWithFlight = new ArrayList();
+	public static List<String> playersWithFlight = new ArrayList<>();
 	private static final int COST = 35;
 	private static final int COST_OVERKILL = COST * 3;
 	private static final int MAX_FLY_TIME = 1200;
@@ -128,15 +120,15 @@ public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaub
 			stack.getTagCompound().removeTag("display");
 		}
 	}
-
+//todofix flugel hash
 	String hash(String str) {
-		if(str != null)
+/*		if(str != null)
 			try {
 				MessageDigest md = MessageDigest.getInstance("SHA-256");
 				return new HexBinaryAdapter().marshal(md.digest(salt(str).getBytes()));
 			} catch (NoSuchAlgorithmException e) {
 				e.printStackTrace();
-			}
+			}*/
 		return "";
 	}
 
@@ -310,13 +302,13 @@ public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaub
 
 	@SubscribeEvent
 	public void playerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event) {
-		String username = event.player.getGameProfile().getName();
+		String username = event.player.username;
 		playersWithFlight.remove(username + ":false");
 		playersWithFlight.remove(username + ":true");
 	}
 
 	public static String playerStr(EntityPlayer player) {
-		return player.getGameProfile().getName() + ":" + player.worldObj.isRemote;
+		return player.username + ":" + player.worldObj.isRemote;
 	}
 
 	private boolean shouldPlayerHaveFlight(EntityPlayer player) {
@@ -324,7 +316,7 @@ public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaub
 		if(armor != null && armor.getItem() == this) {
 			int left = ItemNBTHelper.getInt(armor, TAG_TIME_LEFT, MAX_FLY_TIME);
 			boolean flying = ItemNBTHelper.getBoolean(armor, TAG_FLYING, false);
-			return (left > (flying ? 0 : MAX_FLY_TIME / 10) || player.inventory.hasItem(ModItems.flugelEye)) && ManaItemHandler.requestManaExact(armor, player, getCost(armor, left), false);
+			return (left > (flying ? 0 : MAX_FLY_TIME / 10) || player.inventory.hasItem(ModItems.flugelEye.itemID)) && ManaItemHandler.requestManaExact(armor, player, getCost(armor, left), false);
 		}
 
 		return false;

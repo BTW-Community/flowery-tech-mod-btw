@@ -22,7 +22,7 @@ import java.util.Set;
 import net.minecraft.src.Block;
 import net.minecraft.src.IconRegister;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.src.EnchantmentHelper;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.ChunkCoordinates;

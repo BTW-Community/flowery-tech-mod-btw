@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import dev.bagel.interfaces.BlockExtensions;
 import net.minecraft.src.Block;
 import net.minecraft.src.Material;
 import net.minecraft.src.EntityItem;
@@ -29,7 +30,7 @@ import net.minecraft.src.NBTTagString;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
-import net.minecraft.world.WorldSavedData;
+import net.minecraft.src.WorldSavedData;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.world.WorldEvent;
@@ -46,19 +47,19 @@ import cpw.mods.fml.common.gameevent.TickEvent.Type;
 
 public class BlockPistonRelay extends BlockMod implements IWandable, ILexiconable {
 
-	public static Map<String, String> playerPositions = new HashMap();
-	public static Map<String, String> mappedPositions = new HashMap();
+	public static Map<String, String> playerPositions = new HashMap<>();
+	public static Map<String, String> mappedPositions = new HashMap<>();
 
-	static List<String> removeThese = new ArrayList();
-	static List<String> checkedCoords = new ArrayList();
-	static Map<String, Integer> coordsToCheck = new HashMap();
+	static List<String> removeThese = new ArrayList<>();
+	static List<String> checkedCoords = new ArrayList<>();
+	static Map<String, Integer> coordsToCheck = new HashMap<>();
 
 	public BlockPistonRelay() {
-		super(Material.gourd);
+		super(Material.pumpkin);
 		setBlockName(LibBlockNames.PISTON_RELAY);
 		setHardness(2F);
 		setResistance(10F);
-		setStepSound(soundTypeMetal);
+		setStepSound(soundMetalFootstep);
 
 		MinecraftForge.EVENT_BUS.register(this);
 		FMLCommonHandler.instance().bus().register(this);
@@ -103,7 +104,7 @@ public class BlockPistonRelay extends BlockMod implements IWandable, ILexiconabl
 	static Block getBlockAt(String key) {
 		MinecraftServer server = MinecraftServer.getServer();
 		if(server == null)
-			return Blocks.air;
+			return null;
 
 		String[] tokens = key.split(":");
 		int worldId = Integer.parseInt(tokens[0]), x = Integer.parseInt(tokens[1]), y = Integer.parseInt(tokens[2]), z = Integer.parseInt(tokens[3]);
@@ -134,7 +135,7 @@ public class BlockPistonRelay extends BlockMod implements IWandable, ILexiconabl
 			dropBlockAsItem(world, x, y, z, new ItemStack(this));
 			world.setBlockToAir(x, y, z);
 			if(!world.isRemote)
-				world.playAuxSFX(2001, x, y , z, Block.getIdFromBlock(this));
+				world.playAuxSFX(2001, x, y , z, BlockExtensions.getIdFromBlock(this));
 		}
 
 		return true;
@@ -162,11 +163,11 @@ public class BlockPistonRelay extends BlockMod implements IWandable, ILexiconabl
 		public void readFromNBT(NBTTagCompound nbttagcompound) {
 			mappedPositions.clear();
 
-			Collection<String> tags = nbttagcompound.func_150296_c();
+			Collection<String> tags = nbttagcompound.tagMap.keySet();
 			for(String key : tags) {
 				NBTBase tag = nbttagcompound.getTag(key);
 				if(tag instanceof NBTTagString) {
-					String value = ((NBTTagString) tag).func_150285_a_();
+					String value = ((NBTTagString) tag).toString();
 
 					mappedPositions.put(key, value);
 				}
@@ -197,14 +198,14 @@ public class BlockPistonRelay extends BlockMod implements IWandable, ILexiconabl
 	@SubscribeEvent
 	public void tickEnd(TickEvent event) {
 		if(event.type == Type.SERVER && event.phase == Phase.END) {
-			List<String> coordsToCheckCopy = new ArrayList(coordsToCheck.keySet());
+			List<String> coordsToCheckCopy = new ArrayList<>(coordsToCheck.keySet());
 			for(String s : coordsToCheckCopy) {
 				decrCoords(s);
 				if(checkedCoords.contains(s))
 					continue;
 
 				Block block = getBlockAt(s);
-				if(block == Blocks.piston_extension) {
+				if(block == Block.pistonExtension) {
 					int meta = getBlockMetaAt(s);
 					boolean sticky = (meta & 8) == 8;
 					ForgeDirection dir = ForgeDirection.getOrientation(meta & ~8);
@@ -219,7 +220,7 @@ public class BlockPistonRelay extends BlockMod implements IWandable, ILexiconabl
 							int worldId = Integer.parseInt(tokens[0]), x = Integer.parseInt(tokens[1]), y = Integer.parseInt(tokens[2]), z = Integer.parseInt(tokens[3]);
 							World world = server.worldServerForDimension(worldId);
 							if(world.isAirBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ))
-								world.setBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ, ModBlocks.pistonRelay);
+								world.setBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ, ModBlocks.pistonRelay.blockID);
 							else if(!world.isRemote) {
 								ItemStack stack = new ItemStack(ModBlocks.pistonRelay);
 								world.spawnEntityInWorld(new EntityItem(world, x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ, stack));
@@ -237,12 +238,12 @@ public class BlockPistonRelay extends BlockMod implements IWandable, ILexiconabl
 							Block srcBlock = world.getBlock(x, y, z);
 							int srcMeta = world.getBlockMetadata(x, y, z);
 							TileEntity tile = world.getTileEntity(x, y, z);
-							Material mat = srcBlock.getMaterial();
+							Material mat = srcBlock.blockMaterial;
 
 							if(!sticky && tile == null && mat.getMaterialMobility() == 0 && srcBlock.getBlockHardness(world, x, y, z) != -1 && !srcBlock.isAir(world, x, y, z)) {
-								Material destMat = world.getBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ).getMaterial();
+								Material destMat = world.getBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ).blockMaterial;
 								if(world.isAirBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ) || destMat.isReplaceable()) {
-									world.setBlock(x, y, z, Blocks.air);
+									world.setBlockToAir(x, y, z);
 									world.setBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ, srcBlock, srcMeta, 1 | 2);
 									mappedPositions.put(s, getCoordsAsString(world.provider.dimensionId, x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ));
 								}

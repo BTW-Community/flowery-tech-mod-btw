@@ -1161,7 +1161,7 @@ public final class LexiconData {
 
 		cosmeticBaubles = new BLexiconEntry(LibLexicon.BAUBLE_COSMETIC, categoryBaubles);
 		{
-			List<LexiconPage> pages = new ArrayList();
+			List<LexiconPage> pages = new ArrayList<>();
 			pages.add(new PageText("0"));
 			pages.add(new PageText("1"));
 			if (ModCraftingRecipes.recipesCosmeticItems != null) {

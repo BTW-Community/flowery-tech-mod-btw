@@ -18,7 +18,7 @@ import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.ai.EntityAIAttackOnCollide;
 import net.minecraft.src.ai.EntityAINearestAttackableTarget;
 import net.minecraft.src.ai.EntityAITasks.EntityAITaskEntry;
-import net.minecraft.src.monster.IMob;
+import net.minecraft.src.IMob;
 import net.minecraft.src.AxisAlignedBB;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.subtile.RadiusDescriptor;
