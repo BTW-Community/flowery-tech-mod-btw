@@ -10,10 +10,7 @@
  */
 package vazkii.botania.common.crafting.recipe;
 
-import net.minecraft.inventory.InventoryCrafting;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.IRecipe;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.item.ItemKeepIvy;
 import vazkii.botania.common.item.ModItems;
@@ -65,4 +62,18 @@ public class KeepIvyRecipe implements IRecipe {
 		return null;
 	}
 
+	@Override
+	public boolean matches(IRecipe iRecipe) {
+		return false;
+	}
+
+	@Override
+	public boolean hasSecondaryOutput() {
+		return false;
+	}
+
+	@Override
+	public ItemStack[] getSecondaryOutput(IInventory iInventory) {
+		return null;
+	}
 }

@@ -17,7 +17,7 @@ import net.minecraft.src.RenderHelper;
 import net.minecraft.src.entity.RenderItem;
 import net.minecraft.src.I18n;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.inventory.Slot;
+import net.minecraft.src.Slot;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.ResourceLocation;
 import net.minecraft.src.StatCollector;

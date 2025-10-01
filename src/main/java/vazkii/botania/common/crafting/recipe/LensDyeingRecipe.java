@@ -13,11 +13,7 @@ package vazkii.botania.common.crafting.recipe;
 import java.util.Arrays;
 import java.util.List;
 
-import net.minecraft.inventory.InventoryCrafting;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.IRecipe;
-import net.minecraft.src.World;
-import net.minecraftforge.oredict.OreDictionary;
+import net.minecraft.src.*;
 import vazkii.botania.api.mana.ILens;
 import vazkii.botania.common.item.lens.ItemLens;
 import vazkii.botania.common.lib.LibOreDict;
@@ -97,4 +93,18 @@ public class LensDyeingRecipe implements IRecipe {
 		return -1;
 	}
 
+	@Override
+	public boolean matches(IRecipe iRecipe) {
+		return false;
+	}
+
+	@Override
+	public boolean hasSecondaryOutput() {
+		return false;
+	}
+
+	@Override
+	public ItemStack[] getSecondaryOutput(IInventory iInventory) {
+		return null;
+	}
 }

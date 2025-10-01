@@ -311,7 +311,7 @@ public final class ModBlocks {
 		customBrick = new BlockCustomBrick();
 		enderEye = new BlockEnderEye();
 		starfield = new BlockStarfield();
-		rfGenerator	= new BlockRFGenerator();
+//		rfGenerator	= new BlockRFGenerator();
 		elfGlass = new BlockElfGlass();
 		brewery = new BlockBrewery();
 		manaGlass = new BlockManaGlass();
@@ -435,7 +435,7 @@ public final class ModBlocks {
 		registerTile(TileSpawnerClaw.class, LibBlockNames.SPAWNER_CLAW);
 		registerTile(TileEnderEye.class, LibBlockNames.ENDER_EYE_BLOCK);
 		registerTile(TileStarfield.class, LibBlockNames.STARFIELD);
-		registerTile(TileRFGenerator.class, LibBlockNames.RF_GENERATOR);
+//		registerTile(TileRFGenerator.class, LibBlockNames.RF_GENERATOR);
 		registerTile(TileBrewery.class, LibBlockNames.BREWERY);
 		registerTile(TileTerraPlate.class, LibBlockNames.TERRA_PLATE);
 		registerTile(TileRedStringContainer.class, LibBlockNames.RED_STRING_CONTAINER);

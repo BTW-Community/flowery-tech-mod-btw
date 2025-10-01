@@ -25,7 +25,7 @@ import net.minecraft.src.EntityHorse;
 import net.minecraft.src.EntityVillager;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.InventoryPlayer;
-import net.minecraft.inventory.AnimalChest;
+import net.minecraft.src.AnimalChest;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;

@@ -10,12 +10,7 @@
  */
 package vazkii.botania.common.crafting.recipe;
 
-import net.minecraft.inventory.InventoryCrafting;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.IRecipe;
-import net.minecraft.src.NBTTagList;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.item.ModItems;
 
@@ -23,7 +18,7 @@ public class HelmRevealingRecipe implements IRecipe {
 
 	@Override
 	public boolean matches(InventoryCrafting var1, World var2) {
-		Item goggles = (Item) Item.itemRegistry.getObject("Thaumcraft:ItemGoggles");
+		/*Item goggles = (Item) Item.itemRegistry.getObject("Thaumcraft:ItemGoggles");
 		if(goggles == null)
 			return false; // NO TC loaded
 
@@ -39,7 +34,8 @@ public class HelmRevealingRecipe implements IRecipe {
 				else return false; // Found an invalid item, breaking the recipe
 			}
 		}
-		return foundGoggles && foundHelm;
+		return foundGoggles && foundHelm;*/
+		return false;
 	}
 
 	@Override
@@ -100,4 +96,18 @@ public class HelmRevealingRecipe implements IRecipe {
 		return helmItem == ModItems.manasteelHelm || helmItem == ModItems.terrasteelHelm || helmItem == ModItems.elementiumHelm;
 	}
 
+	@Override
+	public boolean matches(IRecipe iRecipe) {
+		return false;
+	}
+
+	@Override
+	public boolean hasSecondaryOutput() {
+		return false;
+	}
+
+	@Override
+	public ItemStack[] getSecondaryOutput(IInventory iInventory) {
+		return null;
+	}
 }

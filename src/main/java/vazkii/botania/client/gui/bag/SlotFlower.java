@@ -10,7 +10,7 @@
  */
 package vazkii.botania.client.gui.bag;
 
-import net.minecraft.inventory.Slot;
+import net.minecraft.src.Slot;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import vazkii.botania.common.block.ModBlocks;

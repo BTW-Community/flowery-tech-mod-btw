@@ -153,10 +153,6 @@ public class CommonProxy {
 	}
 
 	public void postInit(FMLPostInitializationEvent event) {
-		if(Botania.thaumcraftLoaded) {
-			ModBrews.initTC();
-			ModBrewRecipes.initTC();
-		}
 
 		ModBlocks.addDispenserBehaviours();
 		ModBlocks.registerMultiparts();

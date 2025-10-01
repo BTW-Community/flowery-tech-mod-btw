@@ -22,7 +22,7 @@ import net.minecraft.src.ScaledResolution;
 import net.minecraft.src.inventory.GuiContainer;
 import net.minecraft.src.entity.RenderItem;
 import net.minecraft.src.InventoryPlayer;
-import net.minecraft.inventory.Slot;
+import net.minecraft.src.Slot;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.src.StatCollector;

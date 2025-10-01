@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.crafting.recipe;
 
-import net.minecraft.inventory.InventoryCrafting;
+import net.minecraft.src.InventoryCrafting;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.IRecipe;
 import net.minecraft.src.NBTTagCompound;

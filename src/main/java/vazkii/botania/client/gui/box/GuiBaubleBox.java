@@ -13,7 +13,7 @@ package vazkii.botania.client.gui.box;
 import net.minecraft.src.inventory.GuiInventory;
 import net.minecraft.src.InventoryEffectRenderer;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.inventory.Slot;
+import net.minecraft.src.Slot;
 import net.minecraft.src.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;

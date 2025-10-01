@@ -65,15 +65,4 @@ public class ModBrews {
 		clear = new BrewModPotion(LibBrewNames.CLEAR, 4000, new PotionEffect(ModPotions.clear.id, 0, 0));
 	}
 
-	public static void initTC() {
-		Potion warpWardPotion = null;
-		for(Potion potion : Potion.potionTypes)
-			if(potion != null && potion.getName().equals("potion.warpward")) {
-				warpWardPotion = potion;
-				break;
-			}
-
-		if(warpWardPotion != null)
-			warpWard = new BrewMod(LibBrewNames.WARP_WARD, 0xFBBDFF, 25000, new PotionEffect(warpWardPotion.id, 12000, 0)).setNotBloodPendantInfusable();
-	}
 }

@@ -12,9 +12,9 @@ package vazkii.botania.client.gui.crafting;
 
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.InventoryPlayer;
-import net.minecraft.inventory.ContainerWorkbench;
-import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotCrafting;
+import net.minecraft.src.ContainerWorkbench;
+import net.minecraft.src.Slot;
+import net.minecraft.src.SlotCrafting;
 import net.minecraft.src.World;
 
 public class ContainerCraftingHalo extends ContainerWorkbench {

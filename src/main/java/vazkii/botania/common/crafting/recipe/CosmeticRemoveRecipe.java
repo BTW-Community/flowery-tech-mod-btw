@@ -10,10 +10,7 @@
  */
 package vazkii.botania.common.crafting.recipe;
 
-import net.minecraft.inventory.InventoryCrafting;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.IRecipe;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import vazkii.botania.api.item.ICosmeticAttachable;
 import vazkii.botania.api.item.ICosmeticBauble;
 
@@ -64,4 +61,18 @@ public class CosmeticRemoveRecipe implements IRecipe {
 		return null;
 	}
 
+	@Override
+	public boolean matches(IRecipe iRecipe) {
+		return false;
+	}
+
+	@Override
+	public boolean hasSecondaryOutput() {
+		return false;
+	}
+
+	@Override
+	public ItemStack[] getSecondaryOutput(IInventory iInventory) {
+		return null;
+	}
 }

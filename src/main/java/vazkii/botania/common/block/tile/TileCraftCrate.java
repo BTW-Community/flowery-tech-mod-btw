@@ -13,8 +13,8 @@ package vazkii.botania.common.block.tile;
 import java.util.List;
 
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.inventory.Container;
-import net.minecraft.inventory.InventoryCrafting;
+import net.minecraft.src.Container;
+import net.minecraft.src.InventoryCrafting;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.CraftingManager;
 import net.minecraft.src.IRecipe;

@@ -10,8 +10,8 @@
  */
 package vazkii.botania.client.gui.crafting;
 
-import net.minecraft.inventory.Container;
-import net.minecraft.inventory.InventoryCrafting;
+import net.minecraft.src.Container;
+import net.minecraft.src.InventoryCrafting;
 
 public class InventoryCraftingHalo extends InventoryCrafting {
 

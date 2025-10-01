@@ -10,7 +10,6 @@
  */
 package vazkii.botania.common.block.decor;
 
-import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.src.Block;
 import net.minecraft.src.Material;
@@ -45,8 +44,7 @@ import vazkii.botania.common.lib.LibBlockNames;
 import java.util.List;
 import java.util.Random;
 
-@Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.crafting.IInfusionStabiliser", striprefs = true)
-public class BlockFloatingFlower extends BlockModContainer implements ILexiconable, IInfusionStabiliser {
+public class BlockFloatingFlower extends BlockModContainer implements ILexiconable {
 
 	public BlockFloatingFlower() {
 		this(LibBlockNames.MINI_ISLAND);

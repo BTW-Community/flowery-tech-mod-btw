@@ -15,12 +15,8 @@ import net.minecraft.src.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.mana.IManaReceiver;
 import vazkii.botania.common.block.tile.TileMod;
-import cofh.api.energy.IEnergyConnection;
-import cofh.api.energy.IEnergyReceiver;
-import cpw.mods.fml.common.Optional;
 
-@Optional.Interface(iface = "cofh.api.energy.IEnergyConnection", modid = "CoFHAPI|energy")
-public class TileRFGenerator extends TileMod implements IManaReceiver, IEnergyConnection {
+public class TileRFGenerator extends TileMod implements IManaReceiver {
 
 	private static final int CONVERSION_RATE = 10;
 	private static final int MAX_MANA = 1280 * CONVERSION_RATE;

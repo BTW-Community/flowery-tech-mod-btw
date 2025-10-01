@@ -49,35 +49,26 @@ public class ModBrewRecipes {
 	public static void init() {
 		if (!ConfigHandler.enableDefaultRecipes) return;
 
-		speedBrew = BotaniaAPI.registerBrewRecipe(ModBrews.speed, new ItemStack(Items.nether_wart), new ItemStack(Items.sugar), new ItemStack(Items.redstone));
-		strengthBrew = BotaniaAPI.registerBrewRecipe(ModBrews.strength, new ItemStack(Items.nether_wart), new ItemStack(Items.blaze_powder), new ItemStack(Items.glowstone_dust));
-		hasteBrew = BotaniaAPI.registerBrewRecipe(ModBrews.haste, new ItemStack(Items.nether_wart), new ItemStack(Items.sugar), new ItemStack(Items.gold_nugget));
-		healingBrew = BotaniaAPI.registerBrewRecipe(ModBrews.healing, new ItemStack(Items.nether_wart), new ItemStack(Items.speckled_melon), new ItemStack(Items.potato));
-		jumpBoostBrew = BotaniaAPI.registerBrewRecipe(ModBrews.jumpBoost, new ItemStack(Items.nether_wart), new ItemStack(Items.feather), new ItemStack(Items.carrot));
-		regenerationBrew = BotaniaAPI.registerBrewRecipe(ModBrews.regen, new ItemStack(Items.nether_wart), new ItemStack(Items.ghast_tear), new ItemStack(Items.glowstone_dust));
-		weakRegenerationBrew = BotaniaAPI.registerBrewRecipe(ModBrews.regenWeak, new ItemStack(Items.nether_wart), new ItemStack(Items.ghast_tear), new ItemStack(Items.redstone));
-		resistanceBrew = BotaniaAPI.registerBrewRecipe(ModBrews.resistance, new ItemStack(Items.nether_wart), new ItemStack(Items.iron_ingot), new ItemStack(Items.leather));
-		fireResistanceBrew = BotaniaAPI.registerBrewRecipe(ModBrews.fireResistance, new ItemStack(Items.nether_wart), new ItemStack(Items.magma_cream), new ItemStack(Blocks.netherrack));
-		waterBreathingBrew = BotaniaAPI.registerBrewRecipe(ModBrews.waterBreathing, new ItemStack(Items.nether_wart), new ItemStack(ModItems.manaResource, 1, 10), new ItemStack(Items.glowstone_dust));
-		invisibilityBrew = BotaniaAPI.registerBrewRecipe(ModBrews.invisibility, new ItemStack(Items.nether_wart), new ItemStack(Items.snowball), new ItemStack(Items.glowstone_dust));
-		nightVisionBrew = BotaniaAPI.registerBrewRecipe(ModBrews.nightVision, new ItemStack(Items.nether_wart), new ItemStack(Items.spider_eye), new ItemStack(Items.golden_carrot));
-		absorptionBrew = BotaniaAPI.registerBrewRecipe(ModBrews.absorption, new ItemStack(Items.nether_wart), new ItemStack(Items.golden_apple), new ItemStack(Items.potato));
+		speedBrew = BotaniaAPI.registerBrewRecipe(ModBrews.speed, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.sugar), new ItemStack(Item.redstone));
+		strengthBrew = BotaniaAPI.registerBrewRecipe(ModBrews.strength, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.blazePowder), new ItemStack(Item.glowstone));
+		hasteBrew = BotaniaAPI.registerBrewRecipe(ModBrews.haste, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.sugar), new ItemStack(Item.goldNugget));
+		healingBrew = BotaniaAPI.registerBrewRecipe(ModBrews.healing, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.speckledMelon), new ItemStack(Item.potato));
+		jumpBoostBrew = BotaniaAPI.registerBrewRecipe(ModBrews.jumpBoost, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.feather), new ItemStack(Item.carrot));
+		regenerationBrew = BotaniaAPI.registerBrewRecipe(ModBrews.regen, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.ghastTear), new ItemStack(Item.glowstone));
+		weakRegenerationBrew = BotaniaAPI.registerBrewRecipe(ModBrews.regenWeak, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.ghastTear), new ItemStack(Item.redstone));
+		resistanceBrew = BotaniaAPI.registerBrewRecipe(ModBrews.resistance, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.ingotIron), new ItemStack(Item.leather));
+		fireResistanceBrew = BotaniaAPI.registerBrewRecipe(ModBrews.fireResistance, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.magmaCream), new ItemStack(Block.netherrack));
+		waterBreathingBrew = BotaniaAPI.registerBrewRecipe(ModBrews.waterBreathing, new ItemStack(Item.netherStalkSeeds), new ItemStack(ModItems.manaResource, 1, 10), new ItemStack(Item.glowstone));
+		invisibilityBrew = BotaniaAPI.registerBrewRecipe(ModBrews.invisibility, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.snowball), new ItemStack(Item.glowstone));
+		nightVisionBrew = BotaniaAPI.registerBrewRecipe(ModBrews.nightVision, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.spiderEye), new ItemStack(Item.goldenCarrot));
+		absorptionBrew = BotaniaAPI.registerBrewRecipe(ModBrews.absorption, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.appleGold), new ItemStack(Item.potato));
 
-		overloadBrew = BotaniaAPI.registerBrewRecipe(ModBrews.overload, new ItemStack(Items.nether_wart), new ItemStack(Items.blaze_powder), new ItemStack(Items.sugar), new ItemStack(Items.glowstone_dust), new ItemStack(ModItems.manaResource), new ItemStack(Items.spider_eye));
-		soulCrossBrew = BotaniaAPI.registerBrewRecipe(ModBrews.soulCross, new ItemStack(Items.nether_wart), new ItemStack(Blocks.soul_sand), new ItemStack(Items.paper), new ItemStack(Items.apple), new ItemStack(Items.bone));
-		featherFeetBrew = BotaniaAPI.registerBrewRecipe(ModBrews.featherfeet, new ItemStack(Items.nether_wart), new ItemStack(Items.feather), new ItemStack(Items.leather), new ItemStack(Blocks.wool, 1, -1));
-		emptinessBrew = BotaniaAPI.registerBrewRecipe(ModBrews.emptiness, new ItemStack(Items.nether_wart), new ItemStack(Items.gunpowder), new ItemStack(Items.rotten_flesh), new ItemStack(Items.bone), new ItemStack(Items.string), new ItemStack(Items.ender_pearl));
-		bloodthirstBrew = BotaniaAPI.registerBrewRecipe(ModBrews.bloodthirst, new ItemStack(Items.nether_wart), new ItemStack(Items.fermented_spider_eye), new ItemStack(Items.dye, 1, 4), new ItemStack(Items.fire_charge), new ItemStack(Items.iron_ingot));
-		allureBrew = BotaniaAPI.registerBrewRecipe(ModBrews.allure, new ItemStack(Items.nether_wart), new ItemStack(Items.fish), new ItemStack(Items.quartz), new ItemStack(Items.golden_carrot));
-		clearBrew = BotaniaAPI.registerBrewRecipe(ModBrews.clear, new ItemStack(Items.nether_wart), new ItemStack(Items.quartz), new ItemStack(Items.emerald), new ItemStack(Items.melon));
+		overloadBrew = BotaniaAPI.registerBrewRecipe(ModBrews.overload, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.blazePowder), new ItemStack(Item.sugar), new ItemStack(Item.glowstone), new ItemStack(ModItems.manaResource), new ItemStack(Item.spiderEye));
+		soulCrossBrew = BotaniaAPI.registerBrewRecipe(ModBrews.soulCross, new ItemStack(Item.netherStalkSeeds), new ItemStack(Block.slowSand), new ItemStack(Item.paper), new ItemStack(Item.appleRed), new ItemStack(Item.bone));
+		featherFeetBrew = BotaniaAPI.registerBrewRecipe(ModBrews.featherfeet, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.feather), new ItemStack(Item.leather), new ItemStack(Block.cloth, 1, -1));
+		emptinessBrew = BotaniaAPI.registerBrewRecipe(ModBrews.emptiness, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.gunpowder), new ItemStack(Item.rottenFlesh), new ItemStack(Item.bone), new ItemStack(Item.silk), new ItemStack(Item.enderPearl));
+		bloodthirstBrew = BotaniaAPI.registerBrewRecipe(ModBrews.bloodthirst, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.fermentedSpiderEye), new ItemStack(Item.dyePowder, 1, 4), new ItemStack(Item.fireballCharge), new ItemStack(Item.ingotIron));
+		allureBrew = BotaniaAPI.registerBrewRecipe(ModBrews.allure, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.fishRaw), new ItemStack(Item.netherQuartz), new ItemStack(Item.goldenCarrot));
+		clearBrew = BotaniaAPI.registerBrewRecipe(ModBrews.clear, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.netherQuartz), new ItemStack(Item.emerald), new ItemStack(Item.melon));
 	}
-
-	public static void initTC() {
-		Item resource = (Item) Item.itemRegistry.getObject("Thaumcraft:ItemResource");
-		Item bathSalts = (Item) Item.itemRegistry.getObject("Thaumcraft:ItemBathSalts");
-
-		warpWardBrew = BotaniaAPI.registerBrewRecipe(ModBrews.warpWard, new ItemStack(Items.nether_wart), new ItemStack(resource, 1, 14), new ItemStack(bathSalts), new ItemStack(resource, 1, 6));
-	}
-
-
 }

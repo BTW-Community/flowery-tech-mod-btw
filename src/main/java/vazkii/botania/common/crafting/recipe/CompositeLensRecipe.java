@@ -10,11 +10,7 @@
  */
 package vazkii.botania.common.crafting.recipe;
 
-import net.minecraft.src.Item;
-import net.minecraft.inventory.InventoryCrafting;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.IRecipe;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import vazkii.botania.api.mana.ICompositableLens;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.lens.ItemLens;
@@ -34,7 +30,7 @@ public class CompositeLensRecipe implements IRecipe {
 					if(foundLens)
 						foundSecondLens = true;
 					else foundLens = true;
-				} else if(stack.getItem() == Items.slime_ball)
+				} else if(stack.getItem() == Item.slimeBall)
 					foundSlimeball = true;
 				else return false; // Found an invalid item, breaking the recipe
 			}
@@ -79,6 +75,21 @@ public class CompositeLensRecipe implements IRecipe {
 
 	@Override
 	public ItemStack getRecipeOutput() {
+		return null;
+	}
+
+	@Override
+	public boolean matches(IRecipe iRecipe) {
+		return false;
+	}
+
+	@Override
+	public boolean hasSecondaryOutput() {
+		return false;
+	}
+
+	@Override
+	public ItemStack[] getSecondaryOutput(IInventory iInventory) {
 		return null;
 	}
 }
