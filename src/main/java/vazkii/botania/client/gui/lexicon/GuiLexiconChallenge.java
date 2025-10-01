@@ -65,21 +65,21 @@ public class GuiLexiconChallenge extends GuiLexicon implements IParented {
 
 		RenderHelper.enableGUIStandardItemLighting();
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-		RenderInstances.getItemInstance().renderItemIntoGUI(fontRendererObj, mc.renderEngine, challenge.icon, left + 18, top + 15);
+		RenderInstances.getItemInstance().renderItemIntoGUI(fontRenderer, mc.renderEngine, challenge.icon, left + 18, top + 15);
 		RenderHelper.disableStandardItemLighting();
 		GL11.glEnable(GL11.GL_BLEND);
 
-		boolean unicode = fontRendererObj.getUnicodeFlag();
-		fontRendererObj.setUnicodeFlag(true);
-		fontRendererObj.drawString(EnumChatFormatting.BOLD + StatCollector.translateToLocal(challenge.unlocalizedName), left + 38, top + 13, 0);
-		fontRendererObj.drawString(StatCollector.translateToLocal(challenge.level.getName()) + " / " + (challenge.complete ? EnumChatFormatting.DARK_GREEN : EnumChatFormatting.DARK_RED) + StatCollector.translateToLocal(challenge.complete ? "botaniamisc.completed" : "botaniamisc.notCompleted"), left + 38, top + 23, 0);
+		boolean unicode = fontRenderer.getUnicodeFlag();
+		fontRenderer.setUnicodeFlag(true);
+		fontRenderer.drawString(EnumChatFormatting.BOLD + StatCollector.translateToLocal(challenge.unlocalizedName), left + 38, top + 13, 0);
+		fontRenderer.drawString(StatCollector.translateToLocal(challenge.level.getName()) + " / " + (challenge.complete ? EnumChatFormatting.DARK_GREEN : EnumChatFormatting.DARK_RED) + StatCollector.translateToLocal(challenge.complete ? "botaniamisc.completed" : "botaniamisc.notCompleted"), left + 38, top + 23, 0);
 
 		int width = guiWidth - 30;
 		int x = left + 16;
 		int y = top + 28;
 
 		PageText.renderText(x, y, width, guiHeight, challenge.unlocalizedName + ".desc");
-		fontRendererObj.setUnicodeFlag(unicode);
+		fontRenderer.setUnicodeFlag(unicode);
 	}
 
 	@Override

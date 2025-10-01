@@ -14,12 +14,12 @@ import java.awt.Desktop;
 import java.net.URI;
 import java.util.List;
 
+import emi.shims.java.net.minecraft.text.Text;
+import emi.shims.java.net.minecraft.util.Formatting;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.GuiButton;
 import net.minecraft.src.GuiScreen;
 import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.ChatComponentTranslation;
-import net.minecraft.src.ChatStyle;
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.src.StatCollector;
 
@@ -213,7 +213,7 @@ public class GuiLexiconEntry extends GuiLexicon implements IGuiLexiconEntry, IPa
 				tutorial.poll();
 				positionTutorialArrow();
 				if(tutorial.isEmpty()) {
-					mc.thePlayer.addChatMessage(new ChatComponentTranslation("botaniamisc.tutorialEnded").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.RED)));
+					mc.thePlayer.addChatMessage(Text.translatable("botaniamisc.tutorialEnded").formatted(Formatting.RED).toString());
 					hasTutorialArrow = false;
 				}
 			}
@@ -228,7 +228,7 @@ public class GuiLexiconEntry extends GuiLexicon implements IGuiLexiconEntry, IPa
 			return;
 		}
 
-		if(rightButton.enabled && rightButton.visible)
+		if(rightButton.enabled && rightButton.drawButton)
 			orientTutorialArrowWithButton(rightButton);
 	}
 

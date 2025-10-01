@@ -10,27 +10,26 @@
  */
 package vazkii.botania.client.render.world;
 
-import java.util.Random;
-
-import net.minecraft.src.Minecraft;
-import net.minecraft.src.WorldClient;
-import net.minecraft.src.OpenGlHelper;
-import net.minecraft.src.RenderGlobal;
-import net.minecraft.src.RenderHelper;
-import net.minecraft.src.Tessellator;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.ResourceLocation;
-import net.minecraft.src.Vec3;
-import net.minecraftforge.client.IRenderHandler;
-
-import org.lwjgl.opengl.GL11;
-
-import vazkii.botania.client.core.handler.ClientTickHandler;
-import vazkii.botania.client.lib.LibResources;
-import vazkii.botania.common.lib.LibObfuscation;
-import cpw.mods.fml.relauncher.ReflectionHelper;
-
-public class SkyblockSkyRenderer extends IRenderHandler {
+//import java.util.Random;
+//
+//import net.minecraft.src.Minecraft;
+//import net.minecraft.src.WorldClient;
+//import net.minecraft.src.OpenGlHelper;
+//import net.minecraft.src.RenderGlobal;
+//import net.minecraft.src.RenderHelper;
+//import net.minecraft.src.Tessellator;
+//import net.minecraft.src.MathHelper;
+//import net.minecraft.src.ResourceLocation;
+//import net.minecraft.src.Vec3;
+//
+//import org.lwjgl.opengl.GL11;
+//
+//import vazkii.botania.client.core.handler.ClientTickHandler;
+//import vazkii.botania.client.lib.LibResources;
+//import vazkii.botania.common.lib.LibObfuscation;
+//todofix GOG rendering
+public class SkyblockSkyRenderer /*extends IRenderHandler*/ {
+/*
 
 	private static final ResourceLocation textureSkybox = new ResourceLocation(LibResources.MISC_SKYBOX);
 	private static final ResourceLocation textureRainbow = new ResourceLocation(LibResources.MISC_RAINBOW);
@@ -366,5 +365,6 @@ public class SkyblockSkyRenderer extends IRenderHandler {
 		tess.addVertexWithUV((double)(-f10), 100.0D, (double)f10, 0.0D, 1.0D);
 		tess.draw();
 	}
+*/
 
 }

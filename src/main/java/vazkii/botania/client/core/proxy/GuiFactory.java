@@ -15,10 +15,9 @@ import java.util.Set;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.GuiScreen;
 import vazkii.botania.client.gui.GuiBotaniaConfig;
-import cpw.mods.fml.client.IModGuiFactory;
 
-public class GuiFactory implements IModGuiFactory {
-
+public class GuiFactory /*implements IModGuiFactory*/ {
+/*
 	@Override
 	public void initialize(Minecraft minecraftInstance) {
 		// NO-OP
@@ -37,6 +36,6 @@ public class GuiFactory implements IModGuiFactory {
 	@Override
 	public RuntimeOptionGuiHandler getHandlerFor(RuntimeOptionCategoryElement element) {
 		return null;
-	}
+	}*/
 
 }

@@ -13,7 +13,7 @@ package vazkii.botania.client.gui.box;
 import net.minecraft.src.Slot;
 import net.minecraft.src.ItemStack;
 import vazkii.botania.api.mana.IManaItem;
-import baubles.api.IBauble;
+//import baubles.api.IBauble;
 
 public class SlotAnyBauble extends Slot {
 

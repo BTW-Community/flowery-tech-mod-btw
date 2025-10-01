@@ -26,18 +26,90 @@ import vazkii.botania.client.model.ModelSkullOverride;
 import vazkii.botania.client.render.entity.RenderDoppleganger;
 import vazkii.botania.common.block.tile.TileGaiaHead;
 
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.minecraft.MinecraftProfileTexture;
-
 public class RenderTileSkullOverride extends TileEntitySkullRenderer {
 
 	public static final ModelSkullOverride modelSkull = new ModelSkullOverride();
 
 	@Override
-	public void renderTileEntityAt(TileEntitySkull p_147500_1_, double p_147500_2_, double p_147500_4_, double p_147500_6_, float p_147500_8_) {
-		render(p_147500_1_, (float) p_147500_2_, (float) p_147500_4_, (float) p_147500_6_, p_147500_1_.getBlockMetadata() & 7, p_147500_1_.func_145906_b() * 360 / 16.0F, p_147500_1_.func_145904_a(), p_147500_1_.func_152108_a());
-	}
+	public void renderTileEntitySkullAt(TileEntitySkull skull, double u, double v, double w, float part) {
 
+		render(skull, (float) u, (float) v, (float) w, skull.getBlockMetadata() & 7, skull.func_145906_b() * 360 / 16.0F, skull.func_145904_a(), skull.func_152108_a());
+
+	}
+/* render method from TileEntitySkullRenderer
+   public void func_82393_a(float par1, float par2, float par3, int par4, float par5, int par6, String par7Str) {
+        ModelSkeletonHead var8 = this.field_82396_c;
+        switch (par6) {
+            default: {
+                this.bindTexture(field_110642_c);
+                break;
+            }
+            case 1: {
+                this.bindTexture(field_110640_d);
+                break;
+            }
+            case 2: {
+                this.bindTexture(field_110641_e);
+                var8 = this.field_82395_d;
+                break;
+            }
+            case 3: {
+                ResourceLocation var9 = AbstractClientPlayer.locationStevePng;
+                if (par7Str != null && par7Str.length() > 0) {
+                    var9 = AbstractClientPlayer.getLocationSkull(par7Str);
+                    AbstractClientPlayer.getDownloadImageSkin(var9, par7Str);
+                }
+                this.bindTexture(var9);
+                var8 = this.field_82395_d;
+                break;
+            }
+            case 4: {
+                this.bindTexture(field_110639_f);
+                break;
+            }
+            case 5: {
+                this.bindTexture(INFUSED_SKULL_TEXTURES);
+                var8 = this.infusedModel;
+            }
+        }
+        GL11.glPushMatrix();
+        GL11.glDisable(2884);
+        if (par4 != 1) {
+            switch (par4) {
+                case 2: {
+                    GL11.glTranslatef(par1 + 0.5f, par2 + 0.25f, par3 + 0.74f);
+                    break;
+                }
+                case 3: {
+                    GL11.glTranslatef(par1 + 0.5f, par2 + 0.25f, par3 + 0.26f);
+                    par5 = 180.0f;
+                    break;
+                }
+                case 4: {
+                    GL11.glTranslatef(par1 + 0.74f, par2 + 0.25f, par3 + 0.5f);
+                    par5 = 270.0f;
+                    break;
+                }
+                default: {
+                    GL11.glTranslatef(par1 + 0.26f, par2 + 0.25f, par3 + 0.5f);
+                    par5 = 90.0f;
+                    break;
+                }
+            }
+        } else {
+            GL11.glTranslatef(par1 + 0.5f, par2, par3 + 0.5f);
+        }
+        float var10 = 0.0625f;
+        GL11.glEnable(32826);
+        GL11.glScalef(-1.0f, -1.0f, 1.0f);
+        GL11.glEnable(3008);
+        var8.render(null, 0.0f, 0.0f, 0.0f, par5, 0.0f, var10);
+        if (par6 == 5) {
+            this.renderInfusedEyes(var8, par5);
+        }
+        GL11.glPopMatrix();
+    }*/
+	//todofix render gaia head
 	public void render(TileEntitySkull skull, float par1, float par2, float par3, int par4, float par5, int par6, GameProfile gameProfile) {
 		boolean gaia = skull instanceof TileGaiaHead;
 		if(par6 == 3 || gaia) {

@@ -22,7 +22,6 @@ import java.util.List;
 import java.util.Queue;
 
 import net.minecraft.src.Minecraft;
-import net.minecraft.src.PositionedSoundRecord;
 import net.minecraft.src.FontRenderer;
 import net.minecraft.src.GuiButton;
 import net.minecraft.src.GuiScreen;
@@ -174,7 +173,7 @@ public class GuiLexicon extends GuiScreen {
 
 			if(PersistentVariableHelper.lastBotaniaVersion.equals(LibMisc.VERSION)) {
 				button.enabled = false;
-				button.visible = false;
+				button.drawButton = false;
 			}
 
 			if(Calendar.getInstance().get(Calendar.MONTH) == Calendar.NOVEMBER && Calendar.getInstance().get(Calendar.DATE) == 22)
@@ -279,13 +278,13 @@ public class GuiLexicon extends GuiScreen {
 		if(notesEnabled && ClientTickHandler.ticksInGame % 20 < 10)
 			noteDisplay += "&r_";
 
-		fontRendererObj.drawString(StatCollector.translateToLocal("botaniamisc.notes"), x + 5, y - 7, 0x666666);
+		fontRenderer.drawString(StatCollector.translateToLocal("botaniamisc.notes"), x + 5, y - 7, 0x666666);
 
-		boolean unicode = fontRendererObj.getUnicodeFlag();
-		fontRendererObj.setUnicodeFlag(true);
+		boolean unicode = fontRenderer.getUnicodeFlag();
+		fontRenderer.setUnicodeFlag(true);
 
 		PageText.renderText(x + 5, y - 3, 92, 120, 0, noteDisplay);
-		fontRendererObj.setUnicodeFlag(unicode);
+		fontRenderer.setUnicodeFlag(unicode);
 	}
 
 
@@ -298,7 +297,7 @@ public class GuiLexicon extends GuiScreen {
 	}
 
 	public void drawBookmark(int x, int y, String s, boolean drawLeft, int color, int v) {
-		// This function is called from the buttons so I can't use fontRendererObj
+		// This function is called from the buttons so I can't use fontRenderer
 		FontRenderer font = Minecraft.getMinecraft().fontRenderer;
 		boolean unicode = font.getUnicodeFlag();
 		font.setUnicodeFlag(true);
@@ -330,15 +329,15 @@ public class GuiLexicon extends GuiScreen {
 		drawTexturedModalRect(left - 8, top + 9, 0, 224, 140, 31);
 
 		int color = 0xffd200;
-		boolean unicode = fontRendererObj.getUnicodeFlag();
-		fontRendererObj.drawString(title, left + 18, top + 13, color);
-		fontRendererObj.setUnicodeFlag(true);
-		fontRendererObj.drawString(String.format(StatCollector.translateToLocal("botaniamisc.edition"), ItemLexicon.getEdition()), left + 24, top + 22, color);
+		boolean unicode = fontRenderer.getUnicodeFlag();
+		fontRenderer.drawString(title, left + 18, top + 13, color);
+		fontRenderer.setUnicodeFlag(true);
+		fontRenderer.drawString(String.format(StatCollector.translateToLocal("botaniamisc.edition"), ItemLexicon.getEdition()), left + 24, top + 22, color);
 
 		String s = EnumChatFormatting.BOLD + categoryHighlight;
-		fontRendererObj.drawString(s, left + guiWidth / 2 - fontRendererObj.getStringWidth(s) / 2, top + 36, 0);
+		fontRenderer.drawString(s, left + guiWidth / 2 - fontRenderer.getStringWidth(s) / 2, top + 36, 0);
 
-		fontRendererObj.setUnicodeFlag(unicode);
+		fontRenderer.setUnicodeFlag(unicode);
 		GL11.glPopMatrix();
 
 		categoryHighlight = "";
@@ -367,7 +366,7 @@ public class GuiLexicon extends GuiScreen {
 			mc.displayGuiScreen(new GuiBotaniaConfig(this));
 			break;
 		case -2 :
-			mc.displayGuiScreen(new GuiAchievementsHacky(this, mc.thePlayer.getStatFileWriter()));
+			mc.displayGuiScreen(new GuiAchievementsHacky( mc.thePlayer.getStatFileWriter()));
 			break;
 		case -3 :
 			mc.displayGuiScreen(new GuiLexiconChallengesList());
@@ -432,13 +431,13 @@ public class GuiLexicon extends GuiScreen {
 	}
 
 	public int bookmarkWidth(String b) {
-		if(fontRendererObj == null)
-			fontRendererObj = Minecraft.getMinecraft().fontRenderer;
+		if(fontRenderer == null)
+			fontRenderer = Minecraft.getMinecraft().fontRenderer;
 
-		boolean unicode = fontRendererObj.getUnicodeFlag();
-		fontRendererObj.setUnicodeFlag(true);
-		int width = fontRendererObj.getStringWidth(b) + 15;
-		fontRendererObj.setUnicodeFlag(unicode);
+		boolean unicode = fontRenderer.getUnicodeFlag();
+		fontRenderer.setUnicodeFlag(true);
+		int width = fontRenderer.getStringWidth(b) + 15;
+		fontRenderer.setUnicodeFlag(unicode);
 		return width;
 	}
 
@@ -564,7 +563,7 @@ public class GuiLexicon extends GuiScreen {
 	protected void keyTyped(char par1, int par2) {
 		handleNoteKey(par1, par2);
 
-		if(!notesEnabled && closeScreenOnInvKey() && mc.gameSettings.keyBindInventory.getKeyCode() == par2) {
+		if(!notesEnabled && closeScreenOnInvKey() && mc.gameSettings.keyBindInventory.keyCode == par2) {
 			mc.displayGuiScreen(null);
 			mc.setIngameFocus();
 		}

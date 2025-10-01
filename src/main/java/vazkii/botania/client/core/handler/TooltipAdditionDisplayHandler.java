@@ -14,12 +14,13 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+import dev.bagel.client.RenderInstances;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.FontRenderer;
 import net.minecraft.src.Gui;
 import net.minecraft.src.GuiScreen;
 import net.minecraft.src.ScaledResolution;
-import net.minecraft.src.inventory.GuiContainer;
+import net.minecraft.src.GuiContainer;
 import net.minecraft.src.RenderItem;
 import net.minecraft.src.InventoryPlayer;
 import net.minecraft.src.Slot;
@@ -40,7 +41,6 @@ import vazkii.botania.common.item.ItemLexicon;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.equipment.tool.terrasteel.ItemTerraPick;
 import vazkii.botania.common.lib.LibObfuscation;
-import cpw.mods.fml.relauncher.ReflectionHelper;
 
 public final class TooltipAdditionDisplayHandler {
 
@@ -51,11 +51,11 @@ public final class TooltipAdditionDisplayHandler {
 		GuiScreen gui = mc.currentScreen;
 		if(gui != null && gui instanceof GuiContainer && mc.thePlayer != null && mc.thePlayer.inventory.getItemStack() == null) {
 			GuiContainer container = (GuiContainer) gui;
-			Slot slot = ReflectionHelper.getPrivateValue(GuiContainer.class, container, LibObfuscation.THE_SLOT);
+			Slot slot = container.getTheSlot();
 			if(slot != null && slot.getHasStack()) {
 				ItemStack stack = slot.getStack();
 				if(stack != null) {
-					ScaledResolution res = new ScaledResolution(mc, mc.displayWidth, mc.displayHeight);
+					ScaledResolution res = new ScaledResolution(mc.gameSettings, mc.displayWidth, mc.displayHeight);
 					FontRenderer font = mc.fontRenderer;
 					int mouseX = Mouse.getX() * res.getScaledWidth() / mc.displayWidth;
 					int mouseY = res.getScaledHeight() - Mouse.getY() * res.getScaledHeight() / mc.displayHeight;

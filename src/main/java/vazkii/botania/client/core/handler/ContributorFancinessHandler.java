@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ItemRenderer;
 import net.minecraft.src.Tessellator;
@@ -42,7 +43,7 @@ public final class ContributorFancinessHandler {
 	private volatile static boolean startedLoading = false;
 
 	private static boolean phi = true;
-
+	@SubscribeEvent
 	public static void render(RenderPlayerEvent.Specials event) {
 		String name = event.entityPlayer.getDisplayName();
 
@@ -114,6 +115,7 @@ public final class ContributorFancinessHandler {
 		ItemRenderer.renderItemIn2D(Tessellator.instance, f1, f2, f, f3, icon.getIconWidth(), icon.getIconHeight(), 1F / 16F);
 		GL11.glPopMatrix();
 	}
+
 
 	private static void renderPhiFlower(RenderPlayerEvent event) {
 		GL11.glPushMatrix();

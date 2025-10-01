@@ -12,6 +12,7 @@ package vazkii.botania.client.core.handler;
 
 import java.awt.Color;
 
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ItemRenderer;
 import net.minecraft.src.OpenGlHelper;
@@ -34,9 +35,8 @@ import vazkii.botania.api.item.IPhantomInkable;
 import vazkii.botania.common.core.handler.ConfigHandler;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.equipment.armor.terrasteel.ItemTerrasteelHelm;
-import baubles.common.container.InventoryBaubles;
-import baubles.common.lib.PlayerHandler;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+//import baubles.common.container.InventoryBaubles;
+//import baubles.common.lib.PlayerHandler;
 
 public final class BaubleRenderHandler {
 
@@ -104,6 +104,7 @@ public final class BaubleRenderHandler {
 		}
 	}
 
+	@SubscribeEvent
 	private void renderManaTablet(RenderPlayerEvent event) {
 		EntityPlayer player = event.entityPlayer;
 		boolean renderedOne = false;

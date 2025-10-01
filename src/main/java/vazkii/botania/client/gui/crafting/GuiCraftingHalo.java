@@ -10,7 +10,7 @@
  */
 package vazkii.botania.client.gui.crafting;
 
-import net.minecraft.src.inventory.GuiContainer;
+import net.minecraft.src.GuiContainer;
 import net.minecraft.src.I18n;
 import net.minecraft.src.InventoryPlayer;
 import net.minecraft.src.ResourceLocation;
@@ -29,8 +29,8 @@ public class GuiCraftingHalo extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_) {
-		fontRendererObj.drawString(I18n.format("container.crafting", new Object[0]), 28, 6, 4210752);
-		fontRendererObj.drawString(I18n.format("container.inventory", new Object[0]), 8, ySize - 96 + 2, 4210752);
+		fontRenderer.drawString(I18n.getStringParams("container.crafting", new Object[0]), 28, 6, 4210752);
+		fontRenderer.drawString(I18n.getStringParams("container.inventory", new Object[0]), 8, ySize - 96 + 2, 4210752);
 	}
 
 	@Override

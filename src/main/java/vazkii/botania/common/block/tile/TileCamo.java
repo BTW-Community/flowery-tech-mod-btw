@@ -13,8 +13,8 @@ package vazkii.botania.common.block.tile;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.NBTTagCompound;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
+import net.minecraft.src.NetworkManager;
+import net.minecraft.src.S35PacketUpdateTileEntity;
 
 public class TileCamo extends TileMod {
 

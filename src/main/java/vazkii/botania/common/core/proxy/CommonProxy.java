@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.core.proxy;
 
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityDragon;
@@ -84,7 +85,7 @@ import vazkii.botania.common.world.WorldTypeSkyblock;
 import cpw.mods.fml.common.FMLLog;
 
 public class CommonProxy {
-
+	@SubscribeEvent
 	public void preInit(FMLPreInitializationEvent event) {
 		BotaniaAPI.internalHandler = new InternalMethodHandler();
 
@@ -118,7 +119,7 @@ public class CommonProxy {
 
 		LexiconData.preInit();
 	}
-
+	@SubscribeEvent
 	public void init(FMLInitializationEvent event) {
 		NetworkRegistry.INSTANCE.registerGuiHandler(Botania.instance, new GuiHandler());
 
@@ -142,7 +143,7 @@ public class CommonProxy {
 
 		LexiconData.init();
 	}
-
+	@SubscribeEvent
 	public void postInit(FMLPostInitializationEvent event) {
 
 		ModBlocks.addDispenserBehaviours();
@@ -193,6 +194,7 @@ public class CommonProxy {
 
 	// Overriding the internal method handler will break everything as it changes regularly.
 	// So just don't be a moron and don't override it. Thanks.
+	@SubscribeEvent
 	public void serverAboutToStart(FMLServerAboutToStartEvent event) {
 		String clname = BotaniaAPI.internalHandler.getClass().getName();
 		String expect = "vazkii.botania.common.core.handler.InternalMethodHandler";
@@ -205,6 +207,7 @@ public class CommonProxy {
 		}
 	}
 
+	@SubscribeEvent
 	public void serverStarting(FMLServerStartingEvent event) {
 		event.registerServerCommand(new CommandShare());
 		event.registerServerCommand(new CommandOpen());

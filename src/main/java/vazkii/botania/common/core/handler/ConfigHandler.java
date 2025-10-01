@@ -465,7 +465,8 @@ public final class ConfigHandler {
 
 	public static class ChangeListener {
 
-/*		public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
+/*		@SubscribeEvent
+		public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
 			if(eventArgs.modID.equals(LibMisc.MOD_ID))
 				load();
 		}*/

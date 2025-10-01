@@ -13,6 +13,7 @@ package vazkii.botania.client.core.handler;
 import java.util.ArrayList;
 import java.util.List;
 
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.GuiScreen;
 import net.minecraft.src.EntityPlayer;
@@ -41,6 +42,7 @@ public class ClientTickHandler {
 	}
 	//todo implement tick handler
 	// *all comments are to do
+	@SubscribeEvent
 	public void renderTick(RenderTickEvent event) {
 		if(event.phase == Phase.START)
 			partialTicks = event.renderTickTime;
@@ -50,6 +52,7 @@ public class ClientTickHandler {
 		}
 	}
 
+	@SubscribeEvent
 	public void clientTickEnd(ClientTickEvent event) {
 		if(event.phase == Phase.END) {
 			/*LightningBolt.update();

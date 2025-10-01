@@ -57,8 +57,8 @@ public class GuiLexiconChallengesList extends GuiLexicon implements IParented {
 	public void drawScreen(int par1, int par2, float par3) {
 		super.drawScreen(par1, par2, par3);
 
-		boolean unicode = fontRendererObj.getUnicodeFlag();
-		fontRendererObj.setUnicodeFlag(true);
+		boolean unicode = fontRenderer.getUnicodeFlag();
+		fontRenderer.setUnicodeFlag(true);
 		for(EnumChallengeLevel level : EnumChallengeLevel.class.getEnumConstants()) {
 			List<Challenge> list = ModChallenges.challenges.get(level);
 			int complete = 0;
@@ -66,9 +66,9 @@ public class GuiLexiconChallengesList extends GuiLexicon implements IParented {
 				if(c.complete)
 					complete++;
 
-			fontRendererObj.drawString(EnumChatFormatting.BOLD + StatCollector.translateToLocal(level.getName()) + EnumChatFormatting.RESET + " (" + complete + "/" + list.size() + ")", left + 20, top + 11 + level.ordinal() * 44, 0);
+			fontRenderer.drawString(EnumChatFormatting.BOLD + StatCollector.translateToLocal(level.getName()) + EnumChatFormatting.RESET + " (" + complete + "/" + list.size() + ")", left + 20, top + 11 + level.ordinal() * 44, 0);
 		}
-		fontRendererObj.setUnicodeFlag(unicode);
+		fontRenderer.setUnicodeFlag(unicode);
 	}
 
 	@Override

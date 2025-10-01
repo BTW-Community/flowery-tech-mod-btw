@@ -63,7 +63,7 @@ public class RenderBow implements IItemRenderer {
 		if(player != null) {
 
 			ItemStack using = player.getItemInUse();
-			int time = ReflectionHelper.getPrivateValue(EntityPlayer.class, player, LibObfuscation.ITEM_IN_USE_COUNT);
+			int time = player.getItemInUseCount();
 			icon = item.getItem().getIcon(item, 0, player, using, time);
 			if(transform) {
 				GL11.glTranslatef(0.2F, -0.3F, 0.1F);

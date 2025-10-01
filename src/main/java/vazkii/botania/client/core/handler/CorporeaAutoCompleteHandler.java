@@ -10,12 +10,7 @@
  */
 package vazkii.botania.client.core.handler;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.*;
 
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.GuiChat;
@@ -24,16 +19,13 @@ import net.minecraft.src.GuiTextField;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.src.ChatComponentText;
 
 import org.lwjgl.input.Keyboard;
 
 import vazkii.botania.api.corporea.CorporeaHelper;
 import vazkii.botania.common.lib.LibObfuscation;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
-import cpw.mods.fml.relauncher.ReflectionHelper;
 
 public class CorporeaAutoCompleteHandler {
 
@@ -42,19 +34,13 @@ public class CorporeaAutoCompleteHandler {
 	List<CompletionData> completions = new ArrayList<CompletionData>();
 	int position;
 
-	static TreeSet<String> itemNames = new TreeSet<String>(
-			new Comparator<String>() {
-				@Override
-				public int compare(String arg0, String arg1) {
-					return arg0.compareToIgnoreCase(arg1);
-				}
-			});
+	static TreeSet<String> itemNames = new TreeSet<>(String::compareToIgnoreCase);
 
 	private boolean tabLastTick = false;
 
 	public static void updateItemList() {
 		itemNames.clear();
-		Iterator<Item> iterator = Item.itemRegistry.iterator();
+		Iterator<Item> iterator = Arrays.asList(Item.itemsList).iterator();
 		ArrayList<ItemStack> curList = new ArrayList<ItemStack>();
 
 		while(iterator.hasNext()) {
@@ -63,7 +49,7 @@ public class CorporeaAutoCompleteHandler {
 			if(item != null && item.getCreativeTab() != null) {
 				curList.clear();
 				try {
-					item.getSubItems(item, (CreativeTabs) null, curList);
+					item.getSubItems(item.itemID, null, curList);
 					for(ItemStack stack : curList)
 						itemNames.add(CorporeaHelper.stripControlCodes(stack.getDisplayName().trim()));
 				}
@@ -83,7 +69,7 @@ public class CorporeaAutoCompleteHandler {
 		}
 		GuiChat chat = (GuiChat) screen;
 		if(isAutoCompleted) {
-			boolean valid = ReflectionHelper.getPrivateValue(GuiChat.class, chat, LibObfuscation.COMPLETE_FLAG);
+			boolean valid = chat.field_73905_m;
 			if(!valid)
 				isAutoCompleted = false;
 		}
@@ -99,7 +85,7 @@ public class CorporeaAutoCompleteHandler {
 		if(!CorporeaHelper.shouldAutoComplete())
 			return;
 
-		GuiTextField inputField = ReflectionHelper.getPrivateValue(GuiChat.class, chat, LibObfuscation.INPUT_FIELD);
+		GuiTextField inputField = chat.inputField;
 		if(!isAutoCompleted)
 			buildAutoCompletes(inputField, chat);
 		if(isAutoCompleted && !completions.isEmpty())
@@ -127,7 +113,7 @@ public class CorporeaAutoCompleteHandler {
 		if(completions.isEmpty())
 			return;
 		position = -1;
-		ReflectionHelper.setPrivateValue(GuiChat.class, chat, true, LibObfuscation.COMPLETE_FLAG);
+		chat.field_73905_m = true;
 		StringBuilder stringbuilder = new StringBuilder();
 		CompletionData data;
 		for(Iterator<CompletionData> iterator = completions.iterator(); iterator.hasNext(); stringbuilder.append(data.string)) {
@@ -136,7 +122,7 @@ public class CorporeaAutoCompleteHandler {
 				stringbuilder.append(", ");
 		}
 
-		Minecraft.getMinecraft().ingameGUI.getChatGUI().printChatMessageWithOptionalDeletion(new ChatComponentText(stringbuilder.toString()), 1);
+		Minecraft.getMinecraft().ingameGUI.getChatGUI().printChatMessageWithOptionalDeletion(stringbuilder.toString(), 1);
 		isAutoCompleted = true;
 		originalString = inputField.getText();
 	}

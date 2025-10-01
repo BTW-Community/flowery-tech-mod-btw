@@ -12,7 +12,8 @@ package vazkii.botania.client.gui.bag;
 
 import java.util.List;
 
-import net.minecraft.src.inventory.GuiContainer;
+import dev.bagel.client.RenderInstances;
+import net.minecraft.src.GuiContainer;
 import net.minecraft.src.RenderHelper;
 import net.minecraft.src.RenderItem;
 import net.minecraft.src.I18n;
@@ -38,8 +39,8 @@ public class GuiFlowerBag extends GuiContainer {
 	@Override
 	protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_) {
 		String s = StatCollector.translateToLocal("item.botania:flowerBag.name");
-		fontRendererObj.drawString(s, xSize / 2 - fontRendererObj.getStringWidth(s) / 2, 6, 4210752);
-		fontRendererObj.drawString(I18n.format("container.inventory", new Object[0]), 8, ySize - 96 + 2, 4210752);
+		fontRenderer.drawString(s, xSize / 2 - fontRenderer.getStringWidth(s) / 2, 6, 4210752);
+		fontRenderer.drawString(I18n.getStringParams("container.inventory", new Object[0]), 8, ySize - 96 + 2, 4210752);
 	}
 
 	@Override

@@ -10,18 +10,17 @@
  */
 package vazkii.botania.client.gui;
 
+import net.minecraft.src.GuiAchievements;
 import net.minecraft.src.GuiButton;
 import net.minecraft.src.GuiScreen;
-import net.minecraft.src.achievement.GuiAchievements;
-import net.minecraft.stats.StatFileWriter;
+import net.minecraft.src.StatFileWriter;
 import vazkii.botania.common.achievement.ModAchievements;
-import cpw.mods.fml.relauncher.ReflectionHelper;
 
 public class GuiAchievementsHacky extends GuiAchievements {
 
-	public GuiAchievementsHacky(GuiScreen p_i45026_1_, StatFileWriter p_i45026_2_) {
-		super(p_i45026_1_, p_i45026_2_);
-		ReflectionHelper.setPrivateValue(GuiAchievements.class, this, ModAchievements.pageIndex, "currentPage");
+	public GuiAchievementsHacky(StatFileWriter p_i45026_2_) {
+		super(p_i45026_2_);
+//		ReflectionHelper.setPrivateValue(GuiAchievements.class, this, ModAchievements.pageIndex, "currentPage");
 	}
 
 	@Override
