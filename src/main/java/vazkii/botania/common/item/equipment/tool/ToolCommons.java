@@ -20,7 +20,7 @@ import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Item;
 import net.minecraft.src.EnumToolMaterial;
 import net.minecraft.src.ItemStack;
-import net.minecraft.item.ItemTool;
+import net.minecraft.src.ItemTool;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.MovingObjectPosition;
 import net.minecraft.src.Vec3;

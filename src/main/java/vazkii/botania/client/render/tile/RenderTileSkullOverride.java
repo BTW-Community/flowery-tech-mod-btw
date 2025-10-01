@@ -14,7 +14,7 @@ import java.util.Map;
 
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.AbstractClientPlayer;
-import net.minecraft.src.tileentity.TileEntitySkullRenderer;
+import net.minecraft.src.TileEntitySkullRenderer;
 import net.minecraft.src.TileEntitySkull;
 import net.minecraft.src.ResourceLocation;
 

@@ -13,7 +13,7 @@ package vazkii.botania.common.block;
 import java.util.Random;
 
 import net.minecraft.src.Block;
-import net.minecraft.block.BlockVine;
+import net.minecraft.src.BlockVine;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;

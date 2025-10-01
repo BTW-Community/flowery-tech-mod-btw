@@ -13,7 +13,7 @@ package vazkii.botania.common.block.decor.walls;
 import java.util.List;
 
 import net.minecraft.src.Block;
-import net.minecraft.block.BlockWall;
+import net.minecraft.src.BlockWall;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EntityPlayer;

@@ -12,7 +12,7 @@ package vazkii.botania.common.block.string;
 
 import java.util.Random;
 
-import net.minecraft.block.IGrowable;
+import net.minecraft.src.IGrowable;
 import net.minecraft.src.World;
 import vazkii.botania.common.block.tile.string.TileRedString;
 import vazkii.botania.common.block.tile.string.TileRedStringFertilizer;

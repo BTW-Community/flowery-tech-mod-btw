@@ -20,7 +20,7 @@ import net.minecraft.src.Block;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ScaledResolution;
 import net.minecraft.src.EntityItem;
-import net.minecraft.src.item.EntityItemFrame;
+import net.minecraft.src.EntityItemFrame;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;

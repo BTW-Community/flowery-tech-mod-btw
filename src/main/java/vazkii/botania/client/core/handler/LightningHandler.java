@@ -25,7 +25,7 @@ import net.minecraft.src.ActiveRenderInfo;
 import net.minecraft.src.Tessellator;
 import net.minecraft.src.TextureManager;
 import net.minecraft.src.Entity;
-import net.minecraft.profiler.Profiler;
+import net.minecraft.src.Profiler;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.ChunkCoordinates;

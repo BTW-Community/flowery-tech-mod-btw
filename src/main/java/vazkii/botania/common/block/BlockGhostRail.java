@@ -11,7 +11,7 @@
 package vazkii.botania.common.block;
 
 import net.minecraft.src.Block;
-import net.minecraft.block.BlockRailBase;
+import net.minecraft.src.BlockRailBase;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;

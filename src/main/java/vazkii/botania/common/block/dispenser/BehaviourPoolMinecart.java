@@ -11,12 +11,12 @@
 package vazkii.botania.common.block.dispenser;
 
 import net.minecraft.src.Block;
-import net.minecraft.block.BlockDispenser;
-import net.minecraft.block.BlockRailBase;
+import net.minecraft.src.BlockDispenser;
+import net.minecraft.src.BlockRailBase;
 import net.minecraft.src.Material;
 import net.minecraft.dispenser.BehaviorDefaultDispenseItem;
 import net.minecraft.dispenser.IBlockSource;
-import net.minecraft.src.item.EntityMinecart;
+import net.minecraft.src.EntityMinecart;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.EnumFacing;
 import net.minecraft.src.World;

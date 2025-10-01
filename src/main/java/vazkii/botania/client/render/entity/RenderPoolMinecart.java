@@ -12,7 +12,7 @@ package vazkii.botania.client.render.entity;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.entity.RenderMinecart;
-import net.minecraft.src.item.EntityMinecart;
+import net.minecraft.src.EntityMinecart;
 import vazkii.botania.client.render.tile.RenderTilePool;
 import vazkii.botania.common.entity.EntityPoolMinecart;
 

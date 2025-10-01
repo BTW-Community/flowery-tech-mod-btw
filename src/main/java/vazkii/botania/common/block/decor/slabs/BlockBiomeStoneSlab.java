@@ -11,7 +11,7 @@
 package vazkii.botania.common.block.decor.slabs;
 
 import net.minecraft.src.Block;
-import net.minecraft.block.BlockSlab;
+import net.minecraft.src.BlockSlab;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;

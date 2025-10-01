@@ -12,7 +12,7 @@ package vazkii.botania.common.block.subtile.generating;
 
 import java.util.List;
 
-import net.minecraft.src.item.EntityTNTPrimed;
+import net.minecraft.src.EntityTNTPrimed;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.MathHelper;
 import vazkii.botania.api.lexicon.LexiconEntry;

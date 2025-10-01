@@ -1,6 +1,6 @@
 package vazkii.botania.common.block.decor.slabs.prismarine;
 
-import net.minecraft.block.BlockSlab;
+import net.minecraft.src.BlockSlab;
 import vazkii.botania.common.block.ModFluffBlocks;
 
 public class BlockPrismarineBrickSlab extends BlockPrismarineSlab {

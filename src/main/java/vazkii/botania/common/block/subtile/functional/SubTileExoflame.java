@@ -11,10 +11,10 @@
 package vazkii.botania.common.block.subtile.functional;
 
 import net.minecraft.src.Block;
-import net.minecraft.block.BlockFurnace;
+import net.minecraft.src.BlockFurnace;
 import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraft.src.crafting.FurnaceRecipes;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.TileEntityFurnace;
 import vazkii.botania.api.item.IExoflameHeatable;

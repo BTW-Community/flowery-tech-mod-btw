@@ -11,10 +11,10 @@
 package vazkii.botania.common.block.subtile.functional;
 
 import net.minecraft.src.Block;
-import net.minecraft.block.BlockBush;
-import net.minecraft.block.BlockCrops;
-import net.minecraft.block.BlockSapling;
-import net.minecraft.block.IGrowable;
+import net.minecraft.src.BlockBush;
+import net.minecraft.src.BlockCrops;
+import net.minecraft.src.BlockSapling;
+import net.minecraft.src.IGrowable;
 import net.minecraft.src.Material;
 import net.minecraft.src.Block;
 import vazkii.botania.api.lexicon.LexiconEntry;

@@ -10,7 +10,7 @@
  */
 package vazkii.botania.client.render.item;
 
-import net.minecraft.src.tileentity.TileEntityRendererDispatcher;
+import net.minecraft.src.TileEntityRendererDispatcher;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraftforge.client.IItemRenderer;

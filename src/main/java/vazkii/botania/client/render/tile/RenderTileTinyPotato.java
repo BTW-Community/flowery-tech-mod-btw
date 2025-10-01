@@ -15,9 +15,9 @@ import net.minecraft.src.ItemRenderer;
 import net.minecraft.src.OpenGlHelper;
 import net.minecraft.src.RenderBlocks;
 import net.minecraft.src.Tessellator;
-import net.minecraft.src.entity.RenderManager;
+import net.minecraft.src.RenderManager;
 import net.minecraft.src.TextureMap;
-import net.minecraft.src.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.src.TileEntitySpecialRenderer;
 import net.minecraft.src.Block;
 import net.minecraft.src.Item;
 import net.minecraft.src.TileEntity;
@@ -193,7 +193,7 @@ public class RenderTileTinyPotato extends TileEntitySpecialRenderer {
 				GL11.glRotatef(180F, 0F, 0F, 1F);
 				GL11.glRotatef(90F, 0F, 1F, 0F);
 				GL11.glTranslatef(-0.5F, -1.5F, -0.4F);
-				renderIcon(Items.book.getIconFromDamage(0));
+				renderIcon(Item.book.getIconFromDamage(0));
 
 				mc.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 				GL11.glTranslatef(0.5F, 0.5F, 0F);
@@ -205,7 +205,7 @@ public class RenderTileTinyPotato extends TileEntitySpecialRenderer {
 				GL11.glRotatef(180F, 0F, 0F, 1F);
 				GL11.glRotatef(90F, 0F, 1F, 0F);
 				GL11.glTranslatef(-0.5F, -1.2F, -0.4F);
-				renderIcon(Items.bread.getIconFromDamage(0));
+				renderIcon(Item.bread.getIconFromDamage(0));
 			} else if(name.equals("martysgames") || name.equals("marty")) {
 				GL11.glScalef(0.7F, 0.7F, 0.7F);
 				GL11.glRotatef(180F, 0F, 0F, 1F);
@@ -246,7 +246,7 @@ public class RenderTileTinyPotato extends TileEntitySpecialRenderer {
 				GL11.glRotatef(180F, 0F, 0F, 1F);
 				GL11.glRotatef(90F, 0F, 1F, 0F);
 				GL11.glTranslatef(-0.5F, -1.1F, -0.325F);
-				renderIcon(Items.painting.getIconFromDamage(0));
+				renderIcon(Item.painting.getIconFromDamage(0));
 			} else if(name.equals("jibril")) {
 				GL11.glScalef(1.5F, 1.5F, 1.5F);
 				GL11.glTranslatef(0F, 0.7F, 0F);
@@ -255,7 +255,7 @@ public class RenderTileTinyPotato extends TileEntitySpecialRenderer {
 			} else if(name.equals("nebris")) {
 				mc.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 				GL11.glRotatef(180F, 1F, 0F, 0F);
-				RenderBlocks.getInstance().renderBlockAsItem(Blocks.glowstone, 0, 1F);
+				RenderBlocks.getInstance().renderBlockAsItem(Block.glowStone, 0, 1F);
 			} else if(name.equals("ible")) {
 				mc.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 				GL11.glScalef(1.2F, 1.2F, 1.2F);
@@ -263,7 +263,7 @@ public class RenderTileTinyPotato extends TileEntitySpecialRenderer {
 				GL11.glRotatef(180F, 1F, 0F, 0F);
 				GL11.glEnable(GL11.GL_BLEND);
 				GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-				RenderBlocks.getInstance().renderBlockAsItem(Blocks.portal, 0, 1F);
+				RenderBlocks.getInstance().renderBlockAsItem(Block.portal, 0, 1F);
 			} else if(name.equals("razz") || name.equals("razzleberryfox")) {
 				GL11.glScalef(1.25F, 1.25F, 1.25F);
 				GL11.glRotatef(180F, 0F, 0F, 1F);
@@ -275,18 +275,18 @@ public class RenderTileTinyPotato extends TileEntitySpecialRenderer {
 				GL11.glRotatef(180F, 0F, 0F, 1F);
 				GL11.glRotatef(90F, 0F, 1F, 0F);
 				GL11.glTranslatef(-0.5F, -1.2F, -0.4F);
-				renderIcon(Items.cookie.getIconFromDamage(0));
+				renderIcon(Item.cookie.getIconFromDamage(0));
 			} else if(name.equals("sethbling")) {
 				mc.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 				GL11.glScalef(1.2F, 1.2F, 1.2F);
 				GL11.glTranslatef(0F, 0.9F, 0F);
 				GL11.glRotatef(180F, 1F, 0F, 0F);
-				RenderBlocks.getInstance().renderBlockAsItem(Blocks.command_block, 0, 1F);
+				RenderBlocks.getInstance().renderBlockAsItem(Block.commandBlock, 0, 1F);
 			} else if(name.equals("bdoubleo100") || name.equals("bdoubleo")) {
 				GL11.glScalef(1.25F, 1.25F, 1.25F);
 				GL11.glRotatef(180F, 0F, 0F, 1F);
 				GL11.glTranslatef(-1F, -1.1F, -0.1F);
-				renderIcon(Items.stick.getIconFromDamage(0));
+				renderIcon(Item.stick.getIconFromDamage(0));
 			} else if(name.equals("kingdaddydmac")) {
 				GL11.glScalef(0.5F, 0.5F, 0.5F);
 				GL11.glRotatef(180F, 0F, 0F, 1F);
@@ -299,7 +299,7 @@ public class RenderTileTinyPotato extends TileEntitySpecialRenderer {
 				mc.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 				GL11.glScalef(1.5F, 1.5F, 1.5F);
 				GL11.glTranslatef(1.5F, -0.5F, 0.7F);
-				RenderBlocks.getInstance().renderBlockAsItem(Blocks.cake, 0, 1F);
+				RenderBlocks.getInstance().renderBlockAsItem(Block.cake, 0, 1F);
 			} else if(name.equals("sjin")) {
 				GL11.glScalef(1.25F, 1.25F, 1.25F);
 				GL11.glRotatef(180F, 0F, 0F, 1F);
@@ -310,7 +310,7 @@ public class RenderTileTinyPotato extends TileEntitySpecialRenderer {
 				GL11.glRotatef(180F, 0F, 0F, 1F);
 				GL11.glTranslatef(-0.5F, -0.45F, -0.1F);
 				mc.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
-				renderIcon(Blocks.sapling.getIcon(0, 0));
+				renderIcon(Block.sapling.getIcon(0, 0));
 			}else if(ContributorFancinessHandler.flowerMap != null && ContributorFancinessHandler.flowerMap.containsKey(name)) {
 				Icon icon = ContributorFancinessHandler.flowerMap.get(name);
 				if(icon != null) {

@@ -1,7 +1,7 @@
 package vazkii.botania.common.block.decor.stairs;
 
 import net.minecraft.src.Block;
-import net.minecraft.block.BlockStairs;
+import net.minecraft.src.BlockStairs;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;

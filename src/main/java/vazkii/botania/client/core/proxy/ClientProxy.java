@@ -24,7 +24,7 @@ import net.minecraft.src.entity.RenderSnowball;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Item;
-import net.minecraft.item.ItemRecord;
+import net.minecraft.src.ItemRecord;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntitySkull;
 import net.minecraft.src.ChunkCoordinates;

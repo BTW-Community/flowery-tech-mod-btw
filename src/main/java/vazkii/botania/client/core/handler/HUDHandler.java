@@ -13,7 +13,7 @@ package vazkii.botania.client.core.handler;
 import java.awt.Color;
 
 import net.minecraft.src.Block;
-import net.minecraft.block.BlockLiquid;
+import net.minecraft.src.BlockLiquid;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.FontRenderer;
 import net.minecraft.src.Gui;
@@ -25,7 +25,7 @@ import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.profiler.Profiler;
+import net.minecraft.src.Profiler;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.src.MovingObjectPosition;

@@ -22,7 +22,7 @@ import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Item;
-import net.minecraft.item.ItemShears;
+import net.minecraft.src.ItemShears;
 import net.minecraft.src.ItemStack;
 import net.minecraft.stats.StatList;
 import net.minecraft.src.World;

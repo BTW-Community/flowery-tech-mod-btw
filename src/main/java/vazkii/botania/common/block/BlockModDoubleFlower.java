@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.src.Block;
-import net.minecraft.block.BlockDoublePlant;
+import net.minecraft.src.BlockDoublePlant;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.enchantment.EnchantmentHelper;

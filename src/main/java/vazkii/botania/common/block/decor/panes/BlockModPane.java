@@ -11,7 +11,7 @@
 package vazkii.botania.common.block.decor.panes;
 
 import net.minecraft.src.Block;
-import net.minecraft.block.BlockPane;
+import net.minecraft.src.BlockPane;
 import net.minecraft.src.Material;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.Icon;

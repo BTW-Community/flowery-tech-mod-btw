@@ -14,7 +14,7 @@ import java.util.List;
 
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.Item;
-import net.minecraft.item.ItemFood;
+import net.minecraft.src.ItemFood;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.AxisAlignedBB;

@@ -11,7 +11,7 @@
 package vazkii.botania.client.render.entity;
 
 import net.minecraft.src.Tessellator;
-import net.minecraft.src.entity.Render;
+import net.minecraft.src.Render;
 import net.minecraft.src.TextureMap;
 import net.minecraft.src.Entity;
 import net.minecraft.src.Icon;

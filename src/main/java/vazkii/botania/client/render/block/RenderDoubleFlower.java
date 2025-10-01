@@ -11,7 +11,7 @@
 package vazkii.botania.client.render.block;
 
 import net.minecraft.src.Block;
-import net.minecraft.block.BlockDoublePlant;
+import net.minecraft.src.BlockDoublePlant;
 import net.minecraft.src.RenderBlocks;
 import net.minecraft.src.Tessellator;
 import net.minecraft.src.Icon;

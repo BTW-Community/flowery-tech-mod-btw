@@ -14,7 +14,7 @@ import java.awt.Color;
 
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.Tessellator;
-import net.minecraft.src.entity.RenderManager;
+import net.minecraft.src.RenderManager;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.AxisAlignedBB;

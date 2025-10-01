@@ -16,7 +16,7 @@ import net.minecraft.src.Minecraft;
 import net.minecraft.src.ItemRenderer;
 import net.minecraft.src.OpenGlHelper;
 import net.minecraft.src.Tessellator;
-import net.minecraft.src.entity.Render;
+import net.minecraft.src.Render;
 import net.minecraft.src.TextureMap;
 import net.minecraft.src.Entity;
 import net.minecraft.src.Icon;

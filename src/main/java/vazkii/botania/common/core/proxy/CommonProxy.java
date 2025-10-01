@@ -13,14 +13,14 @@ package vazkii.botania.common.core.proxy;
 import dev.bagel.util.ICommonProxy;
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.boss.EntityDragon;
-import net.minecraft.src.boss.EntityDragonPart;
-import net.minecraft.src.boss.EntityWither;
-import net.minecraft.src.item.EntityEnderCrystal;
-import net.minecraft.src.item.EntityItemFrame;
-import net.minecraft.src.item.EntityPainting;
+import net.minecraft.src.EntityDragon;
+import net.minecraft.src.EntityDragonPart;
+import net.minecraft.src.EntityWither;
+import net.minecraft.src.EntityEnderCrystal;
+import net.minecraft.src.EntityItemFrame;
+import net.minecraft.src.EntityPainting;
 import net.minecraft.src.EntityPlayerMP;
-import net.minecraft.item.ItemRecord;
+import net.minecraft.src.ItemRecord;
 import net.minecraft.src.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.src.MovingObjectPosition;
@@ -75,8 +75,8 @@ import vazkii.botania.common.entity.EntityPinkWither;
 import vazkii.botania.common.entity.EntitySignalFlare;
 import vazkii.botania.common.entity.EntitySpark;
 import vazkii.botania.common.entity.ModEntities;
-import vazkii.botania.common.integration.buildcraft.StatementAPIPlugin;
-import vazkii.botania.common.integration.etfuturum.ModBanners;
+//import vazkii.botania.common.integration.buildcraft.StatementAPIPlugin;
+//import vazkii.botania.common.integration.etfuturum.ModBanners;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.network.GuiHandler;
@@ -92,7 +92,7 @@ import cpw.mods.fml.common.event.FMLServerAboutToStartEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 
-public class CommonProxy implements ICommonProxy {
+public class CommonProxy {
 
 	public void preInit(FMLPreInitializationEvent event) {
 		BotaniaAPI.internalHandler = new InternalMethodHandler();
@@ -117,8 +117,8 @@ public class CommonProxy implements ICommonProxy {
 		ModAchievements.init();
 		ModMultiblocks.init();
 
-		if(Botania.etFuturumLoaded)
-			ModBanners.init();
+//		if(Botania.etFuturumLoaded)
+//			ModBanners.init();
 
 		ChestGenHandler.init();
 

@@ -18,7 +18,7 @@ import net.minecraft.src.Minecraft;
 import net.minecraft.src.ActiveRenderInfo;
 import net.minecraft.src.GLAllocation;
 import net.minecraft.src.Tessellator;
-import net.minecraft.src.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.src.TileEntitySpecialRenderer;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.ResourceLocation;
 

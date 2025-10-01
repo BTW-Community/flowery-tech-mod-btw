@@ -14,7 +14,7 @@ import net.minecraft.src.Block;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IInventory;
-import net.minecraft.item.ItemBlockWithMetadata;
+import net.minecraft.src.ItemBlockWithMetadata;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Achievement;
 import vazkii.botania.client.lib.LibResources;

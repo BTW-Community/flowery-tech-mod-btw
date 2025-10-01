@@ -17,8 +17,8 @@ import java.util.List;
 import java.util.Map;
 
 import net.minecraft.src.Block;
-import net.minecraft.block.BlockFlower;
-import net.minecraft.block.ITileEntityProvider;
+import net.minecraft.src.BlockFlower;
+import net.minecraft.src.ITileEntityProvider;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ScaledResolution;
 import net.minecraft.src.IconRegister;

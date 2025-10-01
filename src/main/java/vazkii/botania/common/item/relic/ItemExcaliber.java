@@ -19,7 +19,7 @@ import net.minecraft.src.ai.attributes.AttributeModifier;
 import net.minecraft.src.IBossDisplayData;
 import net.minecraft.src.monster.IMob;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.projectile.EntityThrowable;
+import net.minecraft.src.EntityThrowable;
 import net.minecraft.src.EnumRarity;
 import net.minecraft.src.ItemStack;
 import net.minecraft.potion.Potion;

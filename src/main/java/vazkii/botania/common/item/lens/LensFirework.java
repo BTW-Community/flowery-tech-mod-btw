@@ -10,8 +10,8 @@
  */
 package vazkii.botania.common.item.lens;
 
-import net.minecraft.src.item.EntityFireworkRocket;
-import net.minecraft.src.projectile.EntityThrowable;
+import net.minecraft.src.EntityFireworkRocket;
+import net.minecraft.src.EntityThrowable;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTTagCompound;

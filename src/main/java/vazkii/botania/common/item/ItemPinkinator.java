@@ -12,7 +12,7 @@ package vazkii.botania.common.item;
 
 import java.util.List;
 
-import net.minecraft.src.boss.EntityWither;
+import net.minecraft.src.EntityWither;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.AxisAlignedBB;

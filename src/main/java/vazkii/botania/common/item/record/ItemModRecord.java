@@ -12,7 +12,7 @@ package vazkii.botania.common.item.record;
 
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.Item;
-import net.minecraft.item.ItemRecord;
+import net.minecraft.src.ItemRecord;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.ResourceLocation;
 import vazkii.botania.client.core.helper.IconHelper;

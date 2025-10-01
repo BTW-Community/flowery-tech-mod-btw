@@ -11,7 +11,7 @@
 package vazkii.botania.common.item.block;
 
 import net.minecraft.src.Block;
-import net.minecraft.item.ItemSlab;
+import net.minecraft.src.ItemSlab;
 import net.minecraft.src.ItemStack;
 import vazkii.botania.common.block.decor.slabs.BlockModSlab;
 

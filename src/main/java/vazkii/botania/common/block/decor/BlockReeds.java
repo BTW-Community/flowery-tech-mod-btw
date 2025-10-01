@@ -11,7 +11,7 @@
 package vazkii.botania.common.block.decor;
 
 import net.minecraft.src.Block;
-import net.minecraft.block.BlockRotatedPillar;
+import net.minecraft.src.BlockRotatedPillar;
 import net.minecraft.src.Material;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityPlayer;

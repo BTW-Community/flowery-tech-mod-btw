@@ -17,12 +17,11 @@ import java.util.Random;
 import java.util.UUID;
 
 import net.minecraft.src.Block;
-import net.minecraft.block.BlockBush;
-import net.minecraft.block.BlockLeaves;
+import net.minecraft.src.BlockLeaves;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.projectile.EntityThrowable;
+import net.minecraft.src.EntityThrowable;
 import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTTagCompound;
@@ -94,7 +93,7 @@ public class EntityManaBurst extends EntityThrowable implements IManaBurst {
 			if(i == 4 || i == 5)
 				dataWatcher.addObject(j, 0F);
 			else if(i == 9)
-				dataWatcher.addObject(j, new ItemStack(Blocks.stone, 0, 0));
+				dataWatcher.addObject(j, new ItemStack(Block.stone, 0, 0));
 			else dataWatcher.addObject(j, 0);
 
 			dataWatcher.setObjectWatched(j);
@@ -231,7 +230,7 @@ public class EntityManaBurst extends EntityThrowable implements IManaBurst {
 				Block block = worldObj.getBlock(l, i1, j1);
 				int l1 = worldObj.getBlockMetadata(l, i1, j1);
 
-				if (block != null && (!par4 || block == null || block.getCollisionBoundingBoxFromPool(worldObj, l, i1, j1) != null) && block != Blocks.air && block.canCollideCheck(l1, par3)) {
+				if (block != null && (!par4 || block == null || block.getCollisionBoundingBoxFromPool(worldObj, l, i1, j1) != null) && block.canCollideCheck(l1, par3)) {
 					MovingObjectPosition movingobjectposition = block.collisionRayTrace(worldObj, l, i1, j1, par1Vec3, par2Vec3);
 
 					if (movingobjectposition != null)
@@ -341,7 +340,7 @@ public class EntityManaBurst extends EntityThrowable implements IManaBurst {
 					Block block1 = worldObj.getBlock(l, i1, j1);
 					int j2 = worldObj.getBlockMetadata(l, i1, j1);
 
-					if ((!par4 || block1 == null || block1.getCollisionBoundingBoxFromPool(worldObj, l, i1, j1) != null) && block1 != Blocks.air && block1.canCollideCheck(j2, par3)) {
+					if ((!par4 || block1 == null || block1.getCollisionBoundingBoxFromPool(worldObj, l, i1, j1) != null) && block1 != null && block1.canCollideCheck(j2, par3)) {
 						MovingObjectPosition movingobjectposition1 = block1.collisionRayTrace(worldObj, l, i1, j1, par1Vec3, par2Vec3);
 
 						if (movingobjectposition1 != null)
@@ -473,7 +472,7 @@ public class EntityManaBurst extends EntityThrowable implements IManaBurst {
 		ItemStack stack = ItemStack.loadItemStackFromNBT(lensCmp);
 		if(stack != null)
 			setSourceLens(stack);
-		else setSourceLens(new ItemStack(Blocks.stone, 0, 0));
+		else setSourceLens(new ItemStack(Block.stone, 0, 0));
 
 		int x = par1nbtTagCompound.getInteger(TAG_SPREADER_X);
 		int y = par1nbtTagCompound.getInteger(TAG_SPREADER_Y);
@@ -584,7 +583,7 @@ public class EntityManaBurst extends EntityThrowable implements IManaBurst {
 			TileEntity tile = worldObj.getTileEntity(movingobjectposition.blockX, movingobjectposition.blockY, movingobjectposition.blockZ);
 			Block block = worldObj.getBlock(movingobjectposition.blockX, movingobjectposition.blockY, movingobjectposition.blockZ);
 
-			if(tile instanceof IManaCollisionGhost && ((IManaCollisionGhost) tile).isGhost() && !(block instanceof IManaTrigger) || block instanceof BlockBush || block instanceof BlockLeaves)
+			if(tile instanceof IManaCollisionGhost && ((IManaCollisionGhost) tile).isGhost() && !(block instanceof IManaTrigger) || block instanceof BlockLeaves)
 				return;
 
 			if(BotaniaAPI.internalHandler.isBuildcraftPipe(tile))
@@ -770,7 +769,7 @@ public class EntityManaBurst extends EntityThrowable implements IManaBurst {
 
 	@Override
 	public void setSourceLens(ItemStack lens) {
-		dataWatcher.updateObject(dataWatcherStart + 9, lens == null ? new ItemStack(Blocks.stone, 0, 0) : lens);
+		dataWatcher.updateObject(dataWatcherStart + 9, lens == null ? new ItemStack(Block.stone, 0, 0) : lens);
 	}
 
 	@Override

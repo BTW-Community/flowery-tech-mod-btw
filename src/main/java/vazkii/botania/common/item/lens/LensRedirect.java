@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.item.lens;
 
-import net.minecraft.src.projectile.EntityThrowable;
+import net.minecraft.src.EntityThrowable;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.AxisAlignedBB;

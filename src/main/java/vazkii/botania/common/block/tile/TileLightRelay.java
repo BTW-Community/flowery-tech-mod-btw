@@ -16,7 +16,7 @@ import java.util.List;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.Entity;
-import net.minecraft.src.item.EntityEnderPearl;
+import net.minecraft.src.EntityEnderPearl;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;

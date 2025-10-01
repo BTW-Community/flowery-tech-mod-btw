@@ -11,7 +11,7 @@
 package vazkii.botania.common.block;
 
 import net.minecraft.src.Block;
-import net.minecraft.block.BlockDispenser;
+import net.minecraft.src.BlockDispenser;
 import net.minecraft.src.Block;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;

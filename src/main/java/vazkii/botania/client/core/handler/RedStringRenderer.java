@@ -16,7 +16,7 @@ import java.util.Random;
 
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.Tessellator;
-import net.minecraft.src.entity.RenderManager;
+import net.minecraft.src.RenderManager;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ChunkCoordinates;
 import net.minecraftforge.common.util.ForgeDirection;

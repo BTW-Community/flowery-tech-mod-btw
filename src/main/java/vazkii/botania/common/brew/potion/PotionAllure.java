@@ -12,7 +12,7 @@ package vazkii.botania.common.brew.potion;
 
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.projectile.EntityFishHook;
+import net.minecraft.src.EntityFishHook;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import vazkii.botania.common.core.handler.ConfigHandler;

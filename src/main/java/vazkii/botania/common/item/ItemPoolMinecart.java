@@ -11,8 +11,8 @@
 package vazkii.botania.common.item;
 
 import mods.railcraft.api.core.items.IMinecartItem;
-import net.minecraft.block.BlockRailBase;
-import net.minecraft.src.item.EntityMinecart;
+import net.minecraft.src.BlockRailBase;
+import net.minecraft.src.EntityMinecart;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;

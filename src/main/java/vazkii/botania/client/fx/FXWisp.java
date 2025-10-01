@@ -25,7 +25,6 @@ import org.lwjgl.opengl.GL11;
 import vazkii.botania.client.lib.LibResources;
 import vazkii.botania.common.core.handler.ConfigHandler;
 import vazkii.botania.common.core.helper.ObfuscationHelper;
-import cpw.mods.fml.client.FMLClientHandler;
 
 public class FXWisp extends EntityFX {
 
@@ -57,11 +56,11 @@ public class FXWisp extends EntityFX {
 		moteHalfLife = particleMaxAge / 2;
 		noClip = true;
 		setSize(0.01F, 0.01F);
-		EntityLivingBase renderentity = FMLClientHandler.instance().getClient().renderViewEntity;
+		EntityLivingBase renderentity = Minecraft.getMinecraft().renderViewEntity;
 
 		if(distanceLimit) {
 			int visibleDistance = 50;
-			if (!FMLClientHandler.instance().getClient().gameSettings.fancyGraphics)
+			if (!Minecraft.getMinecraft().gameSettings.fancyGraphics)
 				visibleDistance = 25;
 
 			if (renderentity == null || renderentity.getDistance(posX, posY, posZ) > visibleDistance)

@@ -13,7 +13,7 @@ package vazkii.botania.common.item;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Item;
-import net.minecraft.item.ItemFood;
+import net.minecraft.src.ItemFood;
 import net.minecraft.src.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.src.Icon;

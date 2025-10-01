@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.block.decor.slabs.bricks;
 
-import net.minecraft.block.BlockSlab;
+import net.minecraft.src.BlockSlab;
 import vazkii.botania.common.block.ModFluffBlocks;
 
 public class BlockTileSlab extends BlockCustomBrickSlab {

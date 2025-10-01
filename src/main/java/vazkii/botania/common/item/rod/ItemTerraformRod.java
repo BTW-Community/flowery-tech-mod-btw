@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import net.minecraft.src.Block;
-import net.minecraft.block.BlockFlower;
+import net.minecraft.src.BlockFlower;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Block;
 import net.minecraft.src.IInventory;

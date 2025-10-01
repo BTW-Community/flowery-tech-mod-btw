@@ -13,10 +13,10 @@ package vazkii.botania.common.item;
 import java.util.List;
 
 import net.minecraft.src.Block;
-import net.minecraft.block.BlockFalling;
+import net.minecraft.src.BlockFalling;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.projectile.EntityThrowable;
+import net.minecraft.src.EntityThrowable;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTTagCompound;

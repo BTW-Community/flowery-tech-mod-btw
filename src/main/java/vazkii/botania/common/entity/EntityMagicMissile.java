@@ -13,13 +13,13 @@ package vazkii.botania.common.entity;
 import java.util.List;
 
 import net.minecraft.src.Block;
-import net.minecraft.block.BlockBush;
-import net.minecraft.block.BlockLeaves;
+import net.minecraft.src.BlockBush;
+import net.minecraft.src.BlockLeaves;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.monster.IMob;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.projectile.EntityThrowable;
+import net.minecraft.src.EntityThrowable;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.DamageSource;

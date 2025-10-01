@@ -11,12 +11,12 @@
 package vazkii.botania.client.render.tile;
 
 import net.minecraft.src.Minecraft;
-import net.minecraft.src.entity.Render;
-import net.minecraft.src.entity.RenderManager;
-import net.minecraft.src.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.src.Render;
+import net.minecraft.src.RenderManager;
+import net.minecraft.src.TileEntitySpecialRenderer;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.Block;
-import net.minecraft.item.ItemBlock;
+import net.minecraft.src.ItemBlock;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.ResourceLocation;

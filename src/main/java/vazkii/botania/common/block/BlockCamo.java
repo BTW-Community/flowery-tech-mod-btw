@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import net.minecraft.src.Block;
-import net.minecraft.block.BlockDirectional;
+import net.minecraft.src.BlockDirectional;
 import net.minecraft.src.Material;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Item;

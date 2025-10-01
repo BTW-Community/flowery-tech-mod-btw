@@ -23,34 +23,34 @@ import vazkii.botania.common.block.ModFluffBlocks;
 import vazkii.botania.common.core.handler.ConfigHandler;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.lib.LibMisc;
-
-public final class BotaniaCreativeTab extends CreativeTabs {
+//todo creative tab, potentitally use fapi?
+public final class BotaniaCreativeTab/* extends CreativeTabs*/ {
 
 	public static BotaniaCreativeTab INSTANCE = new BotaniaCreativeTab();
 	List list;
 
 	public BotaniaCreativeTab() {
-		super(LibMisc.MOD_ID);
-		setNoTitle();
-		setBackgroundImageName(LibResources.GUI_CREATIVE);
+//		super(LibMisc.MOD_ID);
+//		setNoTitle();
+//		setBackgroundImageName(LibResources.GUI_CREATIVE);
 	}
 
-	@Override
-	public ItemStack getIconItemStack() {
-		return new ItemStack(ModItems.lexicon);
-	}
-
-	@Override
-	public Item getTabIconItem() {
-		return getIconItemStack().getItem();
-	}
-
-	@Override
-	public boolean hasSearchBar() {
-		return true;
-	}
-
-	@Override
+//	@Override
+//	public ItemStack getIconItemStack() {
+//		return new ItemStack(ModItems.lexicon);
+//	}
+//
+//	@Override
+//	public Item getTabIconItem() {
+//		return getIconItemStack().getItem();
+//	}
+//
+//	@Override
+//	public boolean hasSearchBar() {
+//		return true;
+//	}
+//
+//	@Override
 	public void displayAllReleventItems(List list) {
 		this.list = list;
 
@@ -298,7 +298,7 @@ public final class BotaniaCreativeTab extends CreativeTabs {
 		addBlock(ModBlocks.manaBeacon);
 		addItem(ModItems.signalFlare);
 
-		addStack(new ItemStack(Blocks.dirt, 1, 1));
+		addStack(new ItemStack(Block.dirt, 1, 1));
 		addBlock(ModBlocks.dirtPath);
 		addBlock(ModFluffBlocks.dirtPathSlab);
 
@@ -413,12 +413,12 @@ public final class BotaniaCreativeTab extends CreativeTabs {
 	}
 
 	private void addItem(Item item) {
-		item.getSubItems(item, this, list);
+//		item.getSubItems(item.itemID, this, list);
 	}
 
 	private void addBlock(Block block) {
 		ItemStack stack = new ItemStack(block);
-		block.getSubBlocks(stack.getItem(), this, list);
+//		block.getSubBlocks(stack.itemID, this, list);
 	}
 
 	private void addStack(ItemStack stack) {

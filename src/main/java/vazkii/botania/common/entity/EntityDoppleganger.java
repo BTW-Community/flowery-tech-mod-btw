@@ -37,7 +37,7 @@ import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Block;
 import net.minecraft.src.Item;
 import net.minecraft.src.Item;
-import net.minecraft.item.ItemRecord;
+import net.minecraft.src.ItemRecord;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.potion.Potion;

@@ -15,7 +15,7 @@ import java.lang.reflect.Constructor;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.OpenGlHelper;
 import net.minecraft.src.RenderHelper;
-import net.minecraft.src.entity.RenderManager;
+import net.minecraft.src.RenderManager;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityList;
 import net.minecraft.src.MathHelper;

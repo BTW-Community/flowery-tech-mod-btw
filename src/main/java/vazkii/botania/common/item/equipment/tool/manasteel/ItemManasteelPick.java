@@ -19,7 +19,7 @@ import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Block;
 import net.minecraft.src.Item;
-import net.minecraft.item.ItemPickaxe;
+import net.minecraft.src.ItemPickaxe;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
 import vazkii.botania.api.BotaniaAPI;

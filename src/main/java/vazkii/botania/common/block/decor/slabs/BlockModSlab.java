@@ -2,7 +2,7 @@ package vazkii.botania.common.block.decor.slabs;
 
 import java.util.Random;
 
-import net.minecraft.block.BlockSlab;
+import net.minecraft.src.BlockSlab;
 import net.minecraft.src.Material;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityPlayer;

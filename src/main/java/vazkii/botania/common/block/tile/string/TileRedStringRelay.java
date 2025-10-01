@@ -11,9 +11,9 @@
 package vazkii.botania.common.block.tile.string;
 
 import net.minecraft.src.Block;
-import net.minecraft.block.BlockDoublePlant;
-import net.minecraft.block.BlockFlower;
-import net.minecraft.block.BlockMushroom;
+import net.minecraft.src.BlockDoublePlant;
+import net.minecraft.src.BlockFlower;
+import net.minecraft.src.BlockMushroom;
 import net.minecraft.src.TileEntity;
 import vazkii.botania.api.subtile.ISubTileContainer;
 

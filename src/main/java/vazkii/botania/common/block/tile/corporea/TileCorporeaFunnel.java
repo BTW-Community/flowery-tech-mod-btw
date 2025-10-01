@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.src.EntityItem;
-import net.minecraft.src.item.EntityItemFrame;
+import net.minecraft.src.EntityItemFrame;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.AxisAlignedBB;

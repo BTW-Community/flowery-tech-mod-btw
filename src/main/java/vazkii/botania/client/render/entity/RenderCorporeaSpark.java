@@ -17,7 +17,7 @@ import net.minecraft.src.Tessellator;
 import net.minecraft.src.TextureMap;
 import net.minecraft.src.EntitySheep;
 import net.minecraft.src.Item;
-import net.minecraft.item.ItemBlock;
+import net.minecraft.src.ItemBlock;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Icon;
 import net.minecraftforge.common.util.ForgeDirection;
