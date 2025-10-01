@@ -12,6 +12,7 @@ package vazkii.botania.common.block.subtile.generating;
 
 import java.util.List;
 
+import cpw.mods.fml.common.eventhandler.Event;
 import net.minecraft.src.EntitySlime;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.MathHelper;
@@ -84,7 +85,7 @@ public class SubTileNarslimmus extends SubTileGenerating {
 
 		@SubscribeEvent
 		public void onSpawn(LivingSpawnEvent.CheckSpawn event) {
-			if(event.entityLiving instanceof EntitySlime && event.getResult() != Result.DENY && isSlimeChunk(event.entityLiving.worldObj, MathHelper.floor_double(event.x), MathHelper.floor_double(event.z)))
+			if(event.entityLiving instanceof EntitySlime && event.getResult() != Event.Result.DENY && isSlimeChunk(event.entityLiving.worldObj, MathHelper.floor_double(event.x), MathHelper.floor_double(event.z)))
 				event.entityLiving.getEntityData().setBoolean(TAG_WORLD_SPAWNED, true);
 		}
 
