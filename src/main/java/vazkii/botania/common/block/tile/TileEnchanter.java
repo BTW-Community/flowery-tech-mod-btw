@@ -15,7 +15,7 @@ import java.util.List;
 
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ScaledResolution;
-import net.minecraft.enchantment.Enchantment;
+import net.minecraft.src.Enchantment;
 import net.minecraft.src.EnchantmentHelper;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityItem;

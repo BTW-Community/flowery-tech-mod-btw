@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.block.subtile.functional;
 
-import net.minecraft.command.IEntitySelector;
+import net.minecraft.src.IEntitySelector;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityAnimal;
 import vazkii.botania.api.lexicon.LexiconEntry;

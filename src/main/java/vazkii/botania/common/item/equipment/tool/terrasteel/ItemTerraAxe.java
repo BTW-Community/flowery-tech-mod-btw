@@ -21,7 +21,7 @@ import java.util.Set;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.IconRegister;
-import net.minecraft.enchantment.Enchantment;
+import net.minecraft.src.Enchantment;
 import net.minecraft.src.EnchantmentHelper;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;

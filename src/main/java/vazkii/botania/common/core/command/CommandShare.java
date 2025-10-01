@@ -10,8 +10,8 @@
  */
 package vazkii.botania.common.core.command;
 
-import net.minecraft.command.CommandBase;
-import net.minecraft.command.ICommandSender;
+import net.minecraft.src.CommandBase;
+import net.minecraft.src.ICommandSender;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.src.IChatComponent;

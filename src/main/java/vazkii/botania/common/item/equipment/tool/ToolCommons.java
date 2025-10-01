@@ -12,7 +12,7 @@ package vazkii.botania.common.item.equipment.tool;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.Material;
-import net.minecraft.enchantment.Enchantment;
+import net.minecraft.src.Enchantment;
 import net.minecraft.src.EnchantmentHelper;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityLivingBase;

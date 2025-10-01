@@ -16,7 +16,7 @@ import java.util.List;
 import net.minecraft.src.Block;
 import net.minecraft.src.Material;
 import net.minecraft.src.Minecraft;
-import net.minecraft.enchantment.Enchantment;
+import net.minecraft.src.Enchantment;
 import net.minecraft.src.EnchantmentHelper;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;

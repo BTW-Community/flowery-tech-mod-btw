@@ -12,7 +12,7 @@ package vazkii.botania.common.world;
 
 import net.minecraft.src.World;
 import net.minecraft.src.WorldType;
-import net.minecraft.src.chunk.IChunkProvider;
+import net.minecraft.src.IChunkProvider;
 import net.minecraft.src.gen.ChunkProviderFlat;
 import net.minecraftforge.common.MinecraftForge;
 

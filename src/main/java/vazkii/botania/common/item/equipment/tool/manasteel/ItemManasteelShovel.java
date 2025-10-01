@@ -21,7 +21,6 @@ import net.minecraft.src.ItemSpade;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.player.UseHoeEvent;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.item.ISortableTool;
 import vazkii.botania.api.mana.IManaUsingItem;
@@ -87,14 +86,15 @@ public class ItemManasteelShovel extends ItemSpade implements IManaUsingItem, IS
 		if(!p_77648_2_.canPlayerEdit(p_77648_4_, p_77648_5_, p_77648_6_, p_77648_7_, p_77648_1_))
 			return false;
 		else {
-			UseHoeEvent event = new UseHoeEvent(p_77648_2_, p_77648_1_, p_77648_3_, p_77648_4_, p_77648_5_, p_77648_6_);
-			if(MinecraftForge.EVENT_BUS.post(event))
-				return false;
-
-			if(event.getResult() == Result.ALLOW) {
-				ToolCommons.damageItem(p_77648_1_, 1, p_77648_2_, MANA_PER_DAMAGE);
-				return true;
-			}
+//			UseHoeEvent event = new UseHoeEvent(p_77648_2_, p_77648_1_, p_77648_3_, p_77648_4_, p_77648_5_, p_77648_6_);
+//			if(MinecraftForge.EVENT_BUS.post(event))
+//				return false;
+//
+//			if(event.getResult() == Result.ALLOW) {
+//				ToolCommons.damageItem(p_77648_1_, 1, p_77648_2_, MANA_PER_DAMAGE);
+//				return true;
+//			}
+			ToolCommons.damageItem(p_77648_1_, 1, p_77648_2_, MANA_PER_DAMAGE);
 
 			Block block = p_77648_3_.getBlock(p_77648_4_, p_77648_5_, p_77648_6_);
 

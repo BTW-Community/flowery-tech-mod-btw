@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.command.IEntitySelector;
+import net.minecraft.src.IEntitySelector;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.IMob;

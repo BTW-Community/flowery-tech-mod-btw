@@ -2,7 +2,7 @@ package vazkii.botania.common.item.equipment.tool.elementium;
 
 import java.util.Random;
 
-import net.minecraft.enchantment.Enchantment;
+import net.minecraft.src.Enchantment;
 import net.minecraft.src.EnchantmentHelper;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityCreeper;

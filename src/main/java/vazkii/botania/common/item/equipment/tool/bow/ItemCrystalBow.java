@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.item.equipment.tool.bow;
 
-import net.minecraft.enchantment.Enchantment;
+import net.minecraft.src.Enchantment;
 import net.minecraft.src.EnchantmentHelper;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EntityArrow;

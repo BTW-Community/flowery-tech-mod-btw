@@ -12,7 +12,7 @@ package vazkii.botania.common.block.subtile.functional;
 
 import java.util.List;
 
-import net.minecraft.command.IEntitySelector;
+import net.minecraft.src.IEntitySelector;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityWitch;
