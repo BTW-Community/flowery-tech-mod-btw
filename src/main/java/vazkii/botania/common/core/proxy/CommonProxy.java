@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.core.proxy;
 
+import dev.bagel.util.ICommonProxy;
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.boss.EntityDragon;

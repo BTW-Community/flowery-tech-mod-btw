@@ -11,10 +11,9 @@
 package vazkii.botania.common.core.handler;
 
 import net.minecraft.src.EntityList;
-import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
-import net.minecraft.tileentity.TileEntityMobSpawner;
+import net.minecraft.src.TileEntityMobSpawner;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;

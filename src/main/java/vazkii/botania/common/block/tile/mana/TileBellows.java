@@ -13,7 +13,7 @@ package vazkii.botania.common.block.tile.mana;
 import net.minecraft.src.Block;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.TileEntity;
-import net.minecraft.tileentity.TileEntityFurnace;
+import net.minecraft.src.TileEntityFurnace;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
 import vazkii.botania.common.block.subtile.functional.SubTileExoflame;

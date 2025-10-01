@@ -15,7 +15,7 @@ import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Item;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.tileentity.TileEntityFurnace;
+import net.minecraft.src.TileEntityFurnace;
 import net.minecraft.src.World;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;

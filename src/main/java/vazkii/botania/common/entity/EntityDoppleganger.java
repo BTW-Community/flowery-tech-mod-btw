@@ -42,7 +42,7 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.src.PotionEffect;
-import net.minecraft.tileentity.TileEntityBeacon;
+import net.minecraft.src.TileEntityBeacon;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.ChatComponentTranslation;
 import net.minecraft.src.ChatStyle;

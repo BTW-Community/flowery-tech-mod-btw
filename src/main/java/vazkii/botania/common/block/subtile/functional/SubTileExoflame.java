@@ -16,7 +16,7 @@ import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.src.TileEntity;
-import net.minecraft.tileentity.TileEntityFurnace;
+import net.minecraft.src.TileEntityFurnace;
 import vazkii.botania.api.item.IExoflameHeatable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.subtile.RadiusDescriptor;

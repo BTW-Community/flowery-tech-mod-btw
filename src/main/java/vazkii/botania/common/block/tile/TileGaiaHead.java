@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.block.tile;
 
-import net.minecraft.tileentity.TileEntitySkull;
+import net.minecraft.src.TileEntitySkull;
 
 public class TileGaiaHead extends TileEntitySkull {
 

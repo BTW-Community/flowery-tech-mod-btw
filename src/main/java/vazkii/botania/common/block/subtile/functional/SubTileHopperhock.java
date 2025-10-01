@@ -26,7 +26,7 @@ import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.TileEntity;
-import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.src.TileEntityChest;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.StatCollector;
 import net.minecraftforge.common.util.ForgeDirection;

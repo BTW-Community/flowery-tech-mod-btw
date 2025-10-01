@@ -13,6 +13,7 @@ package vazkii.botania.common;
 import btw.BTWAddon;
 import dev.bagel.util.ICommonProxy;
 import net.fabricmc.loader.api.FabricLoader;
+import vazkii.botania.common.core.proxy.CommonProxy;
 import vazkii.botania.common.integration.coloredlights.ILightHelper;
 import vazkii.botania.common.integration.coloredlights.LightHelperVanilla;
 import vazkii.botania.common.lib.LibMisc;
@@ -35,37 +36,7 @@ public class Botania extends BTWAddon {
 
 //	@SidedProxy(serverSide = LibMisc.PROXY_COMMON, clientSide = LibMisc.PROXY_CLIENT)
 	//ADDED interface
-	public static ICommonProxy proxy = new ICommonProxy() {
-	@Override
-	public void preInit() {
-		System.out.println("pre init");
-	}
-
-	@Override
-	public void init() {
-		System.out.println("init");
-	}
-
-	@Override
-	public void postInit() {
-		System.out.println("post init");
-	}
-
-	@Override
-	public void serverAboutToStart() {
-		System.out.println("server about to start");
-	}
-
-	@Override
-	public void serverStarting() {
-		System.out.println("server starting");
-	}
-
-	@Override
-	public void serverStopping() {
-		System.out.println("server stopping");
-	}
-};
+	public static CommonProxy proxy = new CommonProxy();
 
 	@Override
 	public void preInitialize() {

@@ -26,7 +26,7 @@ import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Item;
 import net.minecraft.item.ItemRecord;
 import net.minecraft.src.ItemStack;
-import net.minecraft.tileentity.TileEntitySkull;
+import net.minecraft.src.TileEntitySkull;
 import net.minecraft.src.ChunkCoordinates;
 import net.minecraft.src.MovingObjectPosition;
 import net.minecraft.src.World;

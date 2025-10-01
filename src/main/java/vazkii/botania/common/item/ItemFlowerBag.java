@@ -17,7 +17,7 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.NBTTagList;
 import net.minecraft.src.TileEntity;
-import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.src.TileEntityChest;
 import net.minecraft.src.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -35,8 +35,9 @@ public class ItemFlowerBag extends ItemMod {
 	private static final String TAG_ITEMS = "InvItems";
 	private static final String TAG_SLOT = "Slot";
 
-	public ItemFlowerBag() {
-		setUnlocalizedName(LibItemNames.FLOWER_BAG);
+	public ItemFlowerBag(int id) {
+        super(id);
+        setUnlocalizedName(LibItemNames.FLOWER_BAG);
 		setMaxStackSize(1);
 		MinecraftForge.EVENT_BUS.register(this);
 	}

@@ -20,7 +20,7 @@ import net.minecraft.src.Block;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
-import net.minecraft.tileentity.TileEntitySkull;
+import net.minecraft.src.TileEntitySkull;
 import net.minecraft.src.Icon;
 import net.minecraft.src.World;
 import vazkii.botania.common.block.tile.TileGaiaHead;

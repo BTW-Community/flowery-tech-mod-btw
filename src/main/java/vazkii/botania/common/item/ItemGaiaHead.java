@@ -14,7 +14,7 @@ import net.minecraft.block.BlockSkull;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
-import net.minecraft.tileentity.TileEntitySkull;
+import net.minecraft.src.TileEntitySkull;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.World;
 import net.minecraftforge.common.util.ForgeDirection;
