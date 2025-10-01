@@ -16,7 +16,7 @@ import java.util.Random;
 import net.minecraft.src.Block;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.Tessellator;
-import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.RenderItem;
 import net.minecraft.src.TextureMap;
 import net.minecraft.src.TileEntitySpecialRenderer;
 import net.minecraft.src.EntitySheep;

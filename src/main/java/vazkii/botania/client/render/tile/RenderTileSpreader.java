@@ -13,6 +13,7 @@ package vazkii.botania.client.render.tile;
 import java.awt.Color;
 import java.util.Random;
 
+import dev.bagel.client.RenderInstances;
 import net.minecraft.src.Block;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.RenderBlocks;
@@ -98,9 +99,9 @@ public class RenderTileSpreader extends TileEntitySpecialRenderer {
 		if(spreader.paddingColor != -1) {
 			Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 
-			Block block = Blocks.carpet;
+			Block block = Block.carpet;
 			int color = spreader.paddingColor;
-			RenderBlocks render = RenderBlocks.getInstance();
+			RenderBlocks render = RenderInstances.getBlocksInstance();
 			float f = 1F / 16F;
 			GL11.glTranslatef(0F, -f, 0F);
 			render.renderBlockAsItem(block, color, 1F);

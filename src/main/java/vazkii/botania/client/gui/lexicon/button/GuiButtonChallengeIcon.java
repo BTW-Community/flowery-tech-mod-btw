@@ -15,7 +15,7 @@ import java.util.List;
 
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.RenderHelper;
-import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.RenderItem;
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.src.StatCollector;
 
@@ -40,7 +40,7 @@ public class GuiButtonChallengeIcon extends GuiButtonLexicon {
 
 		RenderHelper.enableGUIStandardItemLighting();
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-		RenderItem.getInstance().renderItemIntoGUI(par1Minecraft.fontRenderer, par1Minecraft.renderEngine, challenge.icon, xPosition, yPosition);
+		RenderInstances.getItemInstance().renderItemIntoGUI(par1Minecraft.fontRenderer, par1Minecraft.renderEngine, challenge.icon, xPosition, yPosition);
 		RenderHelper.disableStandardItemLighting();
 		GL11.glEnable(GL11.GL_BLEND);
 

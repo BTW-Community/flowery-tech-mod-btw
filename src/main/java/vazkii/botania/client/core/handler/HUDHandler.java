@@ -20,7 +20,7 @@ import net.minecraft.src.Gui;
 import net.minecraft.src.GuiChat;
 import net.minecraft.src.GuiIngame;
 import net.minecraft.src.ScaledResolution;
-import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.RenderItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.Item;
@@ -289,9 +289,9 @@ public final class HUDHandler {
 					GL11.glColor4f(1F, 1F, 1F, 1F);
 
 					net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
-					RenderItem.getInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, stack, x - 20, y);
-					RenderItem.getInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, recipe.getOutput(), x + 26, y);
-					RenderItem.getInstance().renderItemOverlayIntoGUI(mc.fontRenderer, mc.renderEngine, recipe.getOutput(), x + 26, y);
+					RenderInstances.getItemInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, stack, x - 20, y);
+					RenderInstances.getItemInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, recipe.getOutput(), x + 26, y);
+					RenderInstances.getItemInstance().renderItemOverlayIntoGUI(mc.fontRenderer, mc.renderEngine, recipe.getOutput(), x + 26, y);
 					net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
 
 					GL11.glDisable(GL11.GL_LIGHTING);
@@ -323,7 +323,7 @@ public final class HUDHandler {
 			mc.fontRenderer.drawStringWithShadow(tile.getItemCount() + "x", w / 2 + 30, h / 2, 0xFFFFFF);
 			net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
 			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-			RenderItem.getInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, target, w / 2 + 10, h / 2 - 10);
+			RenderInstances.getItemInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, target, w / 2 + 10, h / 2 - 10);
 			net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
 		}
 
@@ -379,7 +379,7 @@ public final class HUDHandler {
 				font = mc.fontRenderer;
 			}
 
-			RenderItem.getInstance().renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, new ItemStack(ModItems.lexicon), sx, sy);
+			RenderInstances.getItemInstance().renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, new ItemStack(ModItems.lexicon), sx, sy);
 			GL11.glDisable(GL11.GL_LIGHTING);
 			font.drawStringWithShadow(drawStr, sx + 10, sy + 8, 0xFFFFFFFF);
 			font.drawStringWithShadow(secondLine, sx + 10, sy + 18, 0xFFAAAAAA);
@@ -410,7 +410,7 @@ public final class HUDHandler {
 		Gui.drawRect(x - 4, y - 4, x + l + 4, y + 35, 0x44000000);
 		net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-		RenderItem.getInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, new ItemStack(ModBlocks.corporeaIndex), x, y + 10);
+		RenderInstances.getItemInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, new ItemStack(ModBlocks.corporeaIndex), x, y + 10);
 		net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
 
 		mc.fontRenderer.drawStringWithShadow(txt0, x + 20, y, 0xFFFFFF);
@@ -452,7 +452,7 @@ public final class HUDHandler {
 
 		net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-		RenderItem.getInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, bindDisplay, x, y);
+		RenderInstances.getItemInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, bindDisplay, x, y);
 		net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
 
 		GL11.glDisable(GL11.GL_DEPTH_TEST);

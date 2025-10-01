@@ -12,7 +12,7 @@ package vazkii.botania.client.render.block;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.RenderBlocks;
-import net.minecraft.src.TileEntityRendererDispatcher;
+import net.minecraft.src.TileEntityRenderer;
 import net.minecraft.src.IBlockAccess;
 
 import org.lwjgl.opengl.GL11;
@@ -30,7 +30,7 @@ public class RenderBrewery implements ISimpleBlockRenderingHandler {
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 		GL11.glScalef(1.2F, 1.2F, 1.2F);
 		RenderTileBrewery.rotate = false;
-		TileEntityRendererDispatcher.instance.renderTileEntityAt(new TileBrewery(), 0.0D, 0.0D, 0.0D, 0.0F);
+		TileEntityRenderer.instance.renderTileEntityAt(new TileBrewery(), 0.0D, 0.0D, 0.0D, 0.0F);
 		RenderTileBrewery.rotate = true;
 		GL11.glPopMatrix();
 	}

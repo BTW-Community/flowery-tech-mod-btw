@@ -12,7 +12,7 @@ package vazkii.botania.client.render.block;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.RenderBlocks;
-import net.minecraft.src.TileEntityRendererDispatcher;
+import net.minecraft.src.TileEntityRenderer;
 import net.minecraft.src.IBlockAccess;
 
 import org.lwjgl.opengl.GL11;
@@ -30,7 +30,7 @@ public class RenderPylon implements ISimpleBlockRenderingHandler {
 		GL11.glTranslatef(-0.5F, -0.7F, -0.5F);
 		RenderTilePylon.green = metadata == 1;
 		RenderTilePylon.pink = metadata == 2;
-		TileEntityRendererDispatcher.instance.renderTileEntityAt(new TilePylon(), 0.0D, 0.0D, 0.0D, 0.0F);
+		TileEntityRenderer.instance.renderTileEntityAt(new TilePylon(), 0.0D, 0.0D, 0.0D, 0.0F);
 		GL11.glPopMatrix();
 	}
 

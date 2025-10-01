@@ -18,7 +18,7 @@ import net.minecraft.src.Material;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.Gui;
 import net.minecraft.src.ScaledResolution;
-import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.RenderItem;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EntityItem;
@@ -212,7 +212,7 @@ public class BlockOpenCrate extends BlockModContainer implements ILexiconable, I
 					ItemStack item = craft.getStackInSlot(index);
 					net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
 					GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-					RenderItem.getInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, item, xp, yp);
+					RenderInstances.getItemInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, item, xp, yp);
 					net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
 				}
 		}

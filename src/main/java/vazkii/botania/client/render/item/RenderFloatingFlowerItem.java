@@ -10,7 +10,7 @@
  */
 package vazkii.botania.client.render.item;
 
-import net.minecraft.src.TileEntityRendererDispatcher;
+import net.minecraft.src.TileEntityRenderer;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraftforge.client.IItemRenderer;
@@ -46,7 +46,7 @@ public class RenderFloatingFlowerItem implements IItemRenderer {
 		Item item = stack.getItem();
 		TileFloatingFlower.forcedStack = item instanceof ItemBlockFloatingSpecialFlower ? ItemBlockSpecialFlower.ofType(ItemBlockSpecialFlower.getType(stack)) : new ItemStack(ModBlocks.flower, 1, stack.getItemDamage());
 
-		TileEntityRendererDispatcher.instance.renderTileEntityAt(new TileFloatingFlower(), 0.0D, 0.0D, 0.0D, 0.0F);
+		TileEntityRenderer.instance.renderTileEntityAt(new TileFloatingFlower(), 0.0D, 0.0D, 0.0D, 0.0F);
 		GL11.glDisable(GL11.GL_BLEND);
 		GL11.glPopMatrix();
 	}

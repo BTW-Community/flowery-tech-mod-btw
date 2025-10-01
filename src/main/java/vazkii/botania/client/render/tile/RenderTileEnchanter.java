@@ -14,7 +14,7 @@ import net.minecraft.src.Minecraft;
 import net.minecraft.src.OpenGlHelper;
 import net.minecraft.src.Tessellator;
 import net.minecraft.src.Render;
-import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.RenderItem;
 import net.minecraft.src.RenderManager;
 import net.minecraft.src.TextureMap;
 import net.minecraft.src.TileEntitySpecialRenderer;

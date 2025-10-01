@@ -40,7 +40,7 @@ public class RenderTileCorporeaCrystalCube extends TileEntitySpecialRenderer {
 		TileCorporeaCrystalCube cube = (TileCorporeaCrystalCube) tileentity;
 
 		if(entity == null)
-			entity = new EntityItem(cube.getWorldObj(), cube.xCoord, cube.yCoord, cube.zCoord, new ItemStack(Blocks.stone));
+			entity = new EntityItem(cube.getWorldObj(), cube.xCoord, cube.yCoord, cube.zCoord, new ItemStack(Block.stone));
 
 		entity.age = ClientTickHandler.ticksInGame;
 		ItemStack stack = cube.getRequestTarget();

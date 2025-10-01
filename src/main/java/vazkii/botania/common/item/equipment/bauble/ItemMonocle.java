@@ -15,7 +15,7 @@ import net.minecraft.src.Minecraft;
 import net.minecraft.src.ScaledResolution;
 import net.minecraft.src.ItemRenderer;
 import net.minecraft.src.Tessellator;
-import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.RenderItem;
 import net.minecraft.src.TextureMap;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Block;
@@ -97,7 +97,7 @@ public class ItemMonocle extends ItemBauble implements IBurstViewerBauble, ICosm
 		int y = resolution.getScaledHeight() / 2 - 8;
 
 		net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
-		RenderItem.getInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, dispStack, x, y);
+		RenderInstances.getItemInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, dispStack, x, y);
 		net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
 
 		mc.fontRenderer.drawStringWithShadow(text, x + 20, y + 4, 0xFFFFFF);

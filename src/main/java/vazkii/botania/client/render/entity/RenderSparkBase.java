@@ -13,7 +13,7 @@ package vazkii.botania.client.render.entity;
 import java.util.Random;
 
 import net.minecraft.src.Tessellator;
-import net.minecraft.src.entity.RenderEntity;
+import net.minecraft.src.RenderEntity;
 import net.minecraft.src.TextureMap;
 import net.minecraft.src.Entity;
 import net.minecraft.src.Icon;
@@ -41,7 +41,7 @@ public class RenderSparkBase<T extends Entity> extends RenderEntity {
 		GL11.glAlphaFunc(GL11.GL_GREATER, 0.05F);
 
 		double time = ClientTickHandler.ticksInGame + par9;
-		time += new Random(par1Entity.getEntityId()).nextInt();
+		time += new Random(par1Entity.entityId).nextInt();
 		float a = 0.1F + (1 - par1Entity.getDataWatcher().getWatchableObjectInt(EntitySpark.INVISIBILITY_DATA_WATCHER_KEY)) * 0.8F;
 
 		GL11.glColor4f(1F, 1F, 1F, (0.7F + 0.3F * (float) (Math.sin(time / 5.0) + 0.5) * 2) * a);

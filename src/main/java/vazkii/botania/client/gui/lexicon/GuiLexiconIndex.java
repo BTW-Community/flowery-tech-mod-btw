@@ -17,7 +17,7 @@ import java.util.List;
 import net.minecraft.src.Gui;
 import net.minecraft.src.GuiButton;
 import net.minecraft.src.GuiTextField;
-import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.RenderItem;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTTagCompound;
@@ -244,15 +244,15 @@ public class GuiLexiconIndex extends GuiLexicon implements IParented {
 			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 			ItemStack paper = new ItemStack(Items.paper, currentEntry.pages.size());
 
-			RenderItem.getInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, paper, 14, -28);
-			RenderItem.getInstance().renderItemOverlayIntoGUI(mc.fontRenderer, mc.renderEngine, paper, 14, -28);
+			RenderInstances.getItemInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, paper, 14, -28);
+			RenderInstances.getItemInstance().renderItemOverlayIntoGUI(mc.fontRenderer, mc.renderEngine, paper, 14, -28);
 			List<ItemStack> stacks = currentEntry.getDisplayedRecipes();
 
 			if(stacks.size() > 0) {
 				int spaceForEach = Math.min(18, (width - 30) / stacks.size());
 				for(int i = 0; i < stacks.size(); i++) {
 					ItemStack stack = stacks.get(i);
-					RenderItem.getInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, stack, 38 + spaceForEach * i, -28);
+					RenderInstances.getItemInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, stack, 38 + spaceForEach * i, -28);
 				}
 			}
 

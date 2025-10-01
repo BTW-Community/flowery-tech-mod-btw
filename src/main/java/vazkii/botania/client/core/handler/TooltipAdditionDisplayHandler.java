@@ -20,7 +20,7 @@ import net.minecraft.src.Gui;
 import net.minecraft.src.GuiScreen;
 import net.minecraft.src.ScaledResolution;
 import net.minecraft.src.inventory.GuiContainer;
-import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.RenderItem;
 import net.minecraft.src.InventoryPlayer;
 import net.minecraft.src.Slot;
 import net.minecraft.src.ItemStack;
@@ -152,7 +152,7 @@ public final class TooltipAdditionDisplayHandler {
 								}
 							} else lexiconLookupTime = 0F;
 
-							RenderItem.getInstance().renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, new ItemStack(ModItems.lexicon), x, y);
+							RenderInstances.getItemInstance().renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, new ItemStack(ModItems.lexicon), x, y);
 							GL11.glDisable(GL11.GL_LIGHTING);
 
 							font.drawStringWithShadow("?", x + 10, y + 8, 0xFFFFFFFF);

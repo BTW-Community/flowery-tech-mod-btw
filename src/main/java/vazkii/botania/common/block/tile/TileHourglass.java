@@ -13,7 +13,7 @@ package vazkii.botania.common.block.tile;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ScaledResolution;
 import net.minecraft.src.RenderHelper;
-import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.RenderItem;
 import net.minecraft.src.Block;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
@@ -149,8 +149,8 @@ public class TileHourglass extends TileSimpleInventory {
 		if(stack != null) {
 			RenderHelper.enableGUIStandardItemLighting();
 			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-			RenderItem.getInstance().renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, stack, x, y);
-			RenderItem.getInstance().renderItemOverlayIntoGUI(mc.fontRenderer, mc.renderEngine, stack, x, y);
+			RenderInstances.getItemInstance().renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, stack, x, y);
+			RenderInstances.getItemInstance().renderItemOverlayIntoGUI(mc.fontRenderer, mc.renderEngine, stack, x, y);
 			GL11.glDisable(GL12.GL_RESCALE_NORMAL);
 			RenderHelper.disableStandardItemLighting();
 

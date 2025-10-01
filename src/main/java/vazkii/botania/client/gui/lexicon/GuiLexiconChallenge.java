@@ -12,7 +12,7 @@ package vazkii.botania.client.gui.lexicon;
 
 import net.minecraft.src.GuiButton;
 import net.minecraft.src.RenderHelper;
-import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.RenderItem;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.src.StatCollector;
@@ -65,7 +65,7 @@ public class GuiLexiconChallenge extends GuiLexicon implements IParented {
 
 		RenderHelper.enableGUIStandardItemLighting();
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-		RenderItem.getInstance().renderItemIntoGUI(fontRendererObj, mc.renderEngine, challenge.icon, left + 18, top + 15);
+		RenderInstances.getItemInstance().renderItemIntoGUI(fontRendererObj, mc.renderEngine, challenge.icon, left + 18, top + 15);
 		RenderHelper.disableStandardItemLighting();
 		GL11.glEnable(GL11.GL_BLEND);
 

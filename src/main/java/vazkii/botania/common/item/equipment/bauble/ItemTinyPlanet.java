@@ -12,6 +12,7 @@ package vazkii.botania.common.item.equipment.bauble;
 
 import java.util.List;
 
+import dev.bagel.client.RenderInstances;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.RenderBlocks;
 import net.minecraft.src.TextureMap;
@@ -108,7 +109,7 @@ public class ItemTinyPlanet extends ItemBauble implements IBaubleRender {
 			Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 			GL11.glTranslatef(0.25F, -0.5F, 0F);
 			GL11.glScalef(0.5F, 0.5F, 0.5F);
-			RenderBlocks.getInstance().renderBlockAsItem(ModBlocks.tinyPlanet, 0, 1F);
+			RenderInstances.getBlocksInstance().renderBlockAsItem(ModBlocks.tinyPlanet, 0, 1F);
 		}
 	}
 

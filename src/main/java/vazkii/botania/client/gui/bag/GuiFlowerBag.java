@@ -14,7 +14,7 @@ import java.util.List;
 
 import net.minecraft.src.inventory.GuiContainer;
 import net.minecraft.src.RenderHelper;
-import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.RenderItem;
 import net.minecraft.src.I18n;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Slot;
@@ -59,7 +59,7 @@ public class GuiFlowerBag extends GuiContainer {
 					int x = guiLeft + slotf.xDisplayPosition;
 					int y = guiTop + slotf.yDisplayPosition;
 					RenderHelper.enableGUIStandardItemLighting();
-					RenderItem.getInstance().renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, stack, x, y);
+					RenderInstances.getItemInstance().renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, stack, x, y);
 					RenderHelper.disableStandardItemLighting();
 					mc.fontRenderer.drawStringWithShadow("0", x + 11, y + 9, 0xFF6666);
 				}

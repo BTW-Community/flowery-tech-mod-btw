@@ -12,7 +12,7 @@ package vazkii.botania.client.render.block;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.RenderBlocks;
-import net.minecraft.src.TileEntityRendererDispatcher;
+import net.minecraft.src.TileEntityRenderer;
 import net.minecraft.src.IBlockAccess;
 
 import org.lwjgl.opengl.GL11;
@@ -30,7 +30,7 @@ public class RenderCorporeaIndex implements ISimpleBlockRenderingHandler {
 		GL11.glTranslatef(-0.5F, -0.3F, -0.5F);
 		GL11.glScalef(1.4F, 1.4F, 1.4F);
 		RenderTileCorporeaIndex.move = false;
-		TileEntityRendererDispatcher.instance.renderTileEntityAt(new TileCorporeaIndex(), 0.0D, 0.0D, 0.0D, 0.0F);
+		TileEntityRenderer.instance.renderTileEntityAt(new TileCorporeaIndex(), 0.0D, 0.0D, 0.0D, 0.0F);
 		RenderTileCorporeaIndex.move = true;
 		GL11.glPopMatrix();
 	}

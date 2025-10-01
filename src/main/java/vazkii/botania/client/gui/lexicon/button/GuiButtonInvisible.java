@@ -12,7 +12,7 @@ package vazkii.botania.client.gui.lexicon.button;
 
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.RenderHelper;
-import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.RenderItem;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.src.ResourceLocation;
@@ -109,7 +109,7 @@ public class GuiButtonInvisible extends GuiButtonLexicon {
 			GL11.glScalef(0.5F, 0.5F, 0.5F);
 			RenderHelper.enableGUIStandardItemLighting();
 			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-			RenderItem.getInstance().renderItemIntoGUI(par1Minecraft.fontRenderer, par1Minecraft.renderEngine, displayStack, xPosition * 2 - 6, yPosition * 2 + 4);
+			RenderInstances.getItemInstance().renderItemIntoGUI(par1Minecraft.fontRenderer, par1Minecraft.renderEngine, displayStack, xPosition * 2 - 6, yPosition * 2 + 4);
 			RenderHelper.disableStandardItemLighting();
 			GL11.glEnable(GL11.GL_BLEND);
 		}

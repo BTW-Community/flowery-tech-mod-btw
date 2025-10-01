@@ -10,6 +10,7 @@
  */
 package vazkii.botania.client.core.handler;
 
+import dev.bagel.client.RenderInstances;
 import net.minecraft.src.Block;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.RenderBlocks;
@@ -17,8 +18,6 @@ import net.minecraft.src.Tessellator;
 import net.minecraft.src.RenderManager;
 import net.minecraft.src.TextureMap;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.ChatComponentTranslation;
-import net.minecraft.src.ChatStyle;
 import net.minecraft.src.ChunkCoordinates;
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.src.MathHelper;
@@ -43,7 +42,7 @@ public final class MultiblockRenderHandler {
 
 	private static MultiblockBlockAccess blockAccess = new MultiblockBlockAccess();
 
-	private static RenderBlocks blockRender = RenderBlocks.getInstance();
+	private static RenderBlocks blockRender = RenderInstances.getBlocksInstance();
 	public static MultiblockSet currentMultiblock;
 	public static ChunkCoordinates anchor;
 	public static int angle;

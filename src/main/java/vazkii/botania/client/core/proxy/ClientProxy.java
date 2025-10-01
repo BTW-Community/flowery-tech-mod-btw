@@ -20,7 +20,7 @@ import net.minecraft.src.Block;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.PlayerControllerMP;
 import net.minecraft.src.NetHandlerPlayClient;
-import net.minecraft.src.entity.RenderSnowball;
+import net.minecraft.src.RenderSnowball;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Item;

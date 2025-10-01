@@ -12,7 +12,7 @@ package vazkii.botania.client.render.block;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.RenderBlocks;
-import net.minecraft.src.TileEntityRendererDispatcher;
+import net.minecraft.src.TileEntityRenderer;
 import net.minecraft.src.IBlockAccess;
 
 import org.lwjgl.opengl.GL11;
@@ -27,7 +27,7 @@ public class RenderSpawnerClaw implements ISimpleBlockRenderingHandler {
 	public void renderInventoryBlock(Block block, int metadata, int modelId, RenderBlocks renderer) {
 		GL11.glPushMatrix();
 		GL11.glTranslatef(-0.5F, 0F, -0.5F);
-		TileEntityRendererDispatcher.instance.renderTileEntityAt(new TileSpawnerClaw(), 0.0D, 0.0D, 0.0D, 0.0F);
+		TileEntityRenderer.instance.renderTileEntityAt(new TileSpawnerClaw(), 0.0D, 0.0D, 0.0D, 0.0F);
 		GL11.glPopMatrix();
 	}
 

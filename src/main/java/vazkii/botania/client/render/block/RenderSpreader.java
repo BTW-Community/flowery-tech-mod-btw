@@ -12,7 +12,7 @@ package vazkii.botania.client.render.block;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.RenderBlocks;
-import net.minecraft.src.TileEntityRendererDispatcher;
+import net.minecraft.src.TileEntityRenderer;
 import net.minecraft.src.IBlockAccess;
 
 import org.lwjgl.opengl.GL11;
@@ -33,7 +33,7 @@ public class RenderSpreader implements ISimpleBlockRenderingHandler {
 
 		TileSpreader spreader = new TileSpreader();
 		spreader.rotationX = -180F;
-		TileEntityRendererDispatcher.instance.renderTileEntityAt(spreader, 0.0D, 0.0D, 0.0D, 0.0F);
+		TileEntityRenderer.instance.renderTileEntityAt(spreader, 0.0D, 0.0D, 0.0D, 0.0F);
 		GL11.glPopMatrix();
 	}
 

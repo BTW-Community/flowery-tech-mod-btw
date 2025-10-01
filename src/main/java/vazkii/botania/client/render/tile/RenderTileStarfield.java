@@ -37,9 +37,9 @@ public class RenderTileStarfield extends TileEntitySpecialRenderer {
 	FloatBuffer field_147528_b = GLAllocation.createDirectFloatBuffer(16);
 	@Override
 	public void renderTileEntityAt(TileEntity p_147500_1_, double p_147500_2_, double p_147500_4_, double p_147500_6_, float p_147500_8_) {
-		float f1 = (float)field_147501_a.field_147560_j;
-		float f2 = (float)field_147501_a.field_147561_k;
-		float f3 = (float)field_147501_a.field_147558_l;
+		float f1 = (float)tileEntityRenderer.playerX;
+		float f2 = (float)tileEntityRenderer.playerY;
+		float f3 = (float)tileEntityRenderer.playerZ;
 		GL11.glDisable(GL11.GL_LIGHTING);
 		field_147527_e.setSeed(31100L);
 		float f4 = 0.24F;

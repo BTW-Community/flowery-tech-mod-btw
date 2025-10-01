@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.src.Minecraft;
-import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.RenderItem;
 import net.minecraft.src.TextureMap;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
@@ -40,8 +40,8 @@ public class GuiButtonDoot extends GuiButtonLexicon {
 
 		par1Minecraft.renderEngine.bindTexture(TextureMap.locationItemsTexture);
 		GL11.glColor4f(1F, 1F, 1F, 1F);
-		RenderItem.getInstance().renderItemIntoGUI(par1Minecraft.fontRenderer, par1Minecraft.renderEngine, new ItemStack(ModItems.cacophonium), xPosition, yPosition);
-		RenderItem.getInstance().renderItemIntoGUI(par1Minecraft.fontRenderer, par1Minecraft.renderEngine, new ItemStack(Items.fireworks), xPosition + 8, yPosition + 2);
+		RenderInstances.getItemInstance().renderItemIntoGUI(par1Minecraft.fontRenderer, par1Minecraft.renderEngine, new ItemStack(ModItems.cacophonium), xPosition, yPosition);
+		RenderInstances.getItemInstance().renderItemIntoGUI(par1Minecraft.fontRenderer, par1Minecraft.renderEngine, new ItemStack(Items.fireworks), xPosition + 8, yPosition + 2);
 
 		GL11.glDisable(GL11.GL_LIGHTING);
 

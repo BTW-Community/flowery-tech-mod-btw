@@ -12,6 +12,7 @@ package vazkii.botania.common.item;
 
 import java.awt.Color;
 
+import dev.bagel.client.RenderInstances;
 import net.minecraft.src.Block;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.Gui;
@@ -19,7 +20,7 @@ import net.minecraft.src.ScaledResolution;
 import net.minecraft.src.ItemRenderer;
 import net.minecraft.src.RenderBlocks;
 import net.minecraft.src.Tessellator;
-import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.RenderItem;
 import net.minecraft.src.RenderManager;
 import net.minecraft.src.TextureMap;
 import net.minecraft.src.Entity;
@@ -444,13 +445,13 @@ public class ItemCraftingHalo extends ItemMod implements ICraftAchievement {
 			if(slotStack != null) {
 				mc.renderEngine.bindTexture(slotStack.getItem() instanceof ItemBlock ? TextureMap.locationBlocksTexture : TextureMap.locationItemsTexture);
 
-				if(slotStack.getItem() instanceof ItemBlock && RenderBlocks.renderItemIn3d(Block.getBlockFromItem(slotStack.getItem()).getRenderType())) {
+				if(slotStack.getItem() instanceof ItemBlock && RenderBlocks.doesRenderIDRenderItemIn3D(Block.getBlockFromItem(slotStack.getItem()).getRenderType())) {
 					float scale = seg == 0 ? 0.75F : 0.6F;
 					GL11.glScalef(scale, scale, scale);
 					GL11.glRotatef(180F, 0F, 1F, 0F);
 					GL11.glTranslatef(seg == 0 ? 0.5F : 0F, seg == 0 ? -0.1F : 0.6F, 0F);
 
-					RenderBlocks.getInstance().renderBlockAsItem(Block.getBlockFromItem(slotStack.getItem()), slotStack.getItemDamage(), 1F);
+					RenderInstances.getBlocksInstance().renderBlockAsItem(Block.getBlockFromItem(slotStack.getItem()), slotStack.getItemDamage(), 1F);
 				} else {
 					GL11.glScalef(0.75F, 0.75F, 0.75F);
 					GL11.glTranslatef(0F, 0F, 0.5F);
@@ -534,7 +535,7 @@ public class ItemCraftingHalo extends ItemMod implements ICraftAchievement {
 			Gui.drawRect(x - 4, y - 4, x + l + 4, y + 35, 0x22000000);
 			net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
 			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-			RenderItem.getInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, craftingTable, resolution.getScaledWidth() / 2 - 8, resolution.getScaledHeight() / 2 - 52);
+			RenderInstances.getItemInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, craftingTable, resolution.getScaledWidth() / 2 - 8, resolution.getScaledHeight() / 2 - 52);
 			net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
 
 			mc.fontRenderer.drawStringWithShadow(name, x, y, 0xFFFFFF);
@@ -577,12 +578,12 @@ public class ItemCraftingHalo extends ItemMod implements ICraftAchievement {
 					int ypos = y + i / 3 * 18;
 					Gui.drawRect(xpos, ypos, xpos + 16, ypos + 16, 0x22000000);
 
-					RenderItem.getInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, stack, xpos, ypos);
+					RenderInstances.getItemInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, stack, xpos, ypos);
 				}
 			}
 
-			RenderItem.getInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, recipe[9], x + 72, y + 18);
-			RenderItem.getInstance().renderItemOverlayIntoGUI(mc.fontRenderer, mc.renderEngine, recipe[9], x + 72, y + 18);
+			RenderInstances.getItemInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, recipe[9], x + 72, y + 18);
+			RenderInstances.getItemInstance().renderItemOverlayIntoGUI(mc.fontRenderer, mc.renderEngine, recipe[9], x + 72, y + 18);
 
 			net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
 		}

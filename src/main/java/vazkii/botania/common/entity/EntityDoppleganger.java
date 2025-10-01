@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
 import net.minecraft.src.Block;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ScaledResolution;
-import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.RenderItem;
 import net.minecraft.src.TextureMap;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityCreature;
@@ -895,7 +895,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 		mc.renderEngine.bindTexture(TextureMap.locationItemsTexture);
 		net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-		RenderItem.getInstance().renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, stack, px, py);
+		RenderInstances.getItemInstance().renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, stack, px, py);
 		net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
 
 		boolean unicode = mc.fontRenderer.getUnicodeFlag();

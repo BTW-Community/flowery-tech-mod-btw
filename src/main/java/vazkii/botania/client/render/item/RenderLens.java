@@ -15,7 +15,7 @@ import java.awt.Color;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ItemRenderer;
 import net.minecraft.src.Tessellator;
-import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.RenderItem;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Icon;
 import net.minecraftforge.client.IItemRenderer;

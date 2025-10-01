@@ -10,6 +10,8 @@
  */
 package vazkii.botania.client.render.tile;
 
+import dev.bagel.client.OpenGlHelper2;
+import dev.bagel.client.RenderInstances;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ItemRenderer;
 import net.minecraft.src.OpenGlHelper;
@@ -199,7 +201,7 @@ public class RenderTileTinyPotato extends TileEntitySpecialRenderer {
 				GL11.glTranslatef(0.5F, 0.5F, 0F);
 				GL11.glScalef(0.3F, 0.3F, 0.3F);
 
-				RenderBlocks.getInstance().renderBlockAsItem(Blocks.iron_ore, 0, 1F);
+				RenderInstances.getBlocksInstance().renderBlockAsItem(Block.oreIron, 0, 1F);
 			} else if(name.equals("profmobius")) {
 				GL11.glScalef(1.25F, 1.25F, 1.25F);
 				GL11.glRotatef(180F, 0F, 0F, 1F);
@@ -255,7 +257,7 @@ public class RenderTileTinyPotato extends TileEntitySpecialRenderer {
 			} else if(name.equals("nebris")) {
 				mc.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 				GL11.glRotatef(180F, 1F, 0F, 0F);
-				RenderBlocks.getInstance().renderBlockAsItem(Block.glowStone, 0, 1F);
+				RenderInstances.getBlocksInstance().renderBlockAsItem(Block.glowStone, 0, 1F);
 			} else if(name.equals("ible")) {
 				mc.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 				GL11.glScalef(1.2F, 1.2F, 1.2F);
@@ -263,7 +265,7 @@ public class RenderTileTinyPotato extends TileEntitySpecialRenderer {
 				GL11.glRotatef(180F, 1F, 0F, 0F);
 				GL11.glEnable(GL11.GL_BLEND);
 				GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-				RenderBlocks.getInstance().renderBlockAsItem(Block.portal, 0, 1F);
+				RenderInstances.getBlocksInstance().renderBlockAsItem(Block.portal, 0, 1F);
 			} else if(name.equals("razz") || name.equals("razzleberryfox")) {
 				GL11.glScalef(1.25F, 1.25F, 1.25F);
 				GL11.glRotatef(180F, 0F, 0F, 1F);
@@ -281,7 +283,7 @@ public class RenderTileTinyPotato extends TileEntitySpecialRenderer {
 				GL11.glScalef(1.2F, 1.2F, 1.2F);
 				GL11.glTranslatef(0F, 0.9F, 0F);
 				GL11.glRotatef(180F, 1F, 0F, 0F);
-				RenderBlocks.getInstance().renderBlockAsItem(Block.commandBlock, 0, 1F);
+				RenderInstances.getBlocksInstance().renderBlockAsItem(Block.commandBlock, 0, 1F);
 			} else if(name.equals("bdoubleo100") || name.equals("bdoubleo")) {
 				GL11.glScalef(1.25F, 1.25F, 1.25F);
 				GL11.glRotatef(180F, 0F, 0F, 1F);
@@ -299,7 +301,7 @@ public class RenderTileTinyPotato extends TileEntitySpecialRenderer {
 				mc.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 				GL11.glScalef(1.5F, 1.5F, 1.5F);
 				GL11.glTranslatef(1.5F, -0.5F, 0.7F);
-				RenderBlocks.getInstance().renderBlockAsItem(Block.cake, 0, 1F);
+				RenderInstances.getBlocksInstance().renderBlockAsItem(Block.cake, 0, 1F);
 			} else if(name.equals("sjin")) {
 				GL11.glScalef(1.25F, 1.25F, 1.25F);
 				GL11.glRotatef(180F, 0F, 0F, 1F);
@@ -346,7 +348,7 @@ public class RenderTileTinyPotato extends TileEntitySpecialRenderer {
 			GL11.glTranslatef(0.0F, 0F / f1, 0.0F);
 			GL11.glDepthMask(false);
 			GL11.glEnable(GL11.GL_BLEND);
-			OpenGlHelper.glBlendFunc(770, 771, 1, 0);
+			OpenGlHelper2.glBlendFunc(770, 771, 1, 0);
 			Tessellator tessellator = Tessellator.instance;
 			GL11.glDisable(GL11.GL_TEXTURE_2D);
 			tessellator.startDrawingQuads();
@@ -365,7 +367,7 @@ public class RenderTileTinyPotato extends TileEntitySpecialRenderer {
 				String s = name.equals("pahimar") ? "[WIP]" : "(soon)";
 				GL11.glDepthMask(false);
 				GL11.glEnable(GL11.GL_BLEND);
-				OpenGlHelper.glBlendFunc(770, 771, 1, 0);
+				OpenGlHelper2.glBlendFunc(770, 771, 1, 0);
 				GL11.glDisable(GL11.GL_TEXTURE_2D);
 				tessellator.startDrawingQuads();
 				i = mc.fontRenderer.getStringWidth(s) / 2;

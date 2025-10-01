@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.RenderItem;
 import net.minecraft.src.TextureMap;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.StatCollector;
@@ -91,7 +91,7 @@ public class RecipeHandlerElvenTrade extends TemplateRecipeHandler {
 		GuiDraw.drawTexturedModalRect(30, 10, 17, 17, 100, 80);
 		GL11.glDisable(GL11.GL_BLEND);
 		GuiDraw.changeTexture(TextureMap.locationBlocksTexture);
-		RenderItem.getInstance().renderIcon(35, 29, BlockAlfPortal.portalTex, 48, 48);
+		RenderInstances.getItemInstance().renderIcon(35, 29, BlockAlfPortal.portalTex, 48, 48);
 	}
 
 	private static boolean hasElvenKnowledge() {

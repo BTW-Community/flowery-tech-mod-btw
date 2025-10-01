@@ -16,7 +16,7 @@ import java.util.List;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ScaledResolution;
 import net.minecraft.src.RenderHelper;
-import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.RenderItem;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.Block;
 import net.minecraft.src.Item;
@@ -111,7 +111,7 @@ public class SubTileSpectrolus extends SubTileGenerating {
 
 			mc.fontRenderer.drawStringWithShadow(stackName, x + 20, y + 5, color);
 			RenderHelper.enableGUIStandardItemLighting();
-			RenderItem.getInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, stack, x, y);
+			RenderInstances.getItemInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, stack, x, y);
 			RenderHelper.disableStandardItemLighting();
 		}
 

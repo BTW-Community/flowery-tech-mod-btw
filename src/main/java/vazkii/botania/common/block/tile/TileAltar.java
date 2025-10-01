@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
 
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ScaledResolution;
-import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.RenderItem;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EntityPlayerMP;
@@ -371,8 +371,8 @@ public class TileAltar extends TileSimpleInventory implements ISidedInventory, I
 					ItemStack stack = recipe.getOutput();
 
 					net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
-					RenderItem.getInstance().renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, stack, xc + radius + 32, yc - 8);
-					RenderItem.getInstance().renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, new ItemStack(Items.wheat_seeds), xc + radius + 16, yc + 6);
+					RenderInstances.getItemInstance().renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, stack, xc + radius + 32, yc - 8);
+					RenderInstances.getItemInstance().renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, new ItemStack(Items.wheat_seeds), xc + radius + 16, yc + 6);
 					net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
 					mc.fontRenderer.drawStringWithShadow("+", xc + radius + 14, yc + 10, 0xFFFFFF);
 				}
@@ -382,7 +382,7 @@ public class TileAltar extends TileSimpleInventory implements ISidedInventory, I
 				double xPos = xc + Math.cos(angle * Math.PI / 180D) * radius - 8;
 				double yPos = yc + Math.sin(angle * Math.PI / 180D) * radius - 8;
 				GL11.glTranslated(xPos, yPos, 0);
-				RenderItem.getInstance().renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, getStackInSlot(i), 0, 0);
+				RenderInstances.getItemInstance().renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, getStackInSlot(i), 0, 0);
 				GL11.glTranslated(-xPos, -yPos, 0);
 
 				angle += anglePer;

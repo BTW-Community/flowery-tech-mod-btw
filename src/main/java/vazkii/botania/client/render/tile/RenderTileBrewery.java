@@ -12,6 +12,7 @@ package vazkii.botania.client.render.tile;
 
 import java.awt.Color;
 
+import dev.bagel.client.RenderInstances;
 import net.minecraft.src.Block;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ItemRenderer;
@@ -71,13 +72,13 @@ public class RenderTileBrewery extends TileEntitySpecialRenderer {
 			float s = 0.25F;
 			GL11.glScalef(s, s, s);
 			GL11.glScalef(2F, 2F, 2F);
-			if(!ForgeHooksClient.renderEntityItem(new EntityItem(brewery.getWorldObj(), brewery.xCoord, brewery.yCoord, brewery.zCoord, stack), stack, 0F, 0F, brewery.getWorldObj().rand, mc.renderEngine, RenderBlocks.getInstance(), 1)) {
+			if(!ForgeHooksClient.renderEntityItem(new EntityItem(brewery.getWorldObj(), brewery.xCoord, brewery.yCoord, brewery.zCoord, stack), stack, 0F, 0F, brewery.getWorldObj().rand, mc.renderEngine, RenderInstances.getBlocksInstance(), 1)) {
 				GL11.glScalef(0.5F, 0.5F, 0.5F);
-				if(stack.getItem() instanceof ItemBlock && RenderBlocks.renderItemIn3d(Block.getBlockFromItem(stack.getItem()).getRenderType())) {
+				if(stack.getItem() instanceof ItemBlock && RenderBlocks.doesRenderIDRenderItemIn3D(Block.getBlockFromItem(stack.getItem()).getRenderType())) {
 					GL11.glScalef(0.5F, 0.5F, 0.5F);
 					GL11.glTranslatef(1F, 1.1F, 0F);
 					GL11.glPushMatrix();
-					RenderBlocks.getInstance().renderBlockAsItem(Block.getBlockFromItem(stack.getItem()), stack.getItemDamage(), 1F);
+					RenderInstances.getBlocksInstance().renderBlockAsItem(Block.getBlockFromItem(stack.getItem()), stack.getItemDamage(), 1F);
 					GL11.glPopMatrix();
 					GL11.glTranslatef(-1F, -1.1F, 0F);
 					GL11.glScalef(2F, 2F, 2F);

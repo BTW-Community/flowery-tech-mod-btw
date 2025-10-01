@@ -10,10 +10,7 @@
  */
 package vazkii.botania.client.render.entity;
 
-import net.minecraft.src.entity.RenderWither;
-import net.minecraft.src.BossStatus;
-import net.minecraft.src.EntityWither;
-import net.minecraft.src.ResourceLocation;
+import net.minecraft.src.*;
 import vazkii.botania.client.lib.LibResources;
 
 public class RenderPinkWither extends RenderWither {
@@ -23,16 +20,18 @@ public class RenderPinkWither extends RenderWither {
 	int idk = -1;
 
 	@Override
-	public void doRender(EntityWither p_76986_1_, double p_76986_2_, double p_76986_4_, double p_76986_6_, float p_76986_8_, float p_76986_9_) {
-		super.doRender(p_76986_1_, p_76986_2_, p_76986_4_, p_76986_6_, p_76986_8_, p_76986_9_);
-		if(BossStatus.bossName.equals(p_76986_1_.func_145748_c_().getFormattedText())) {
-			BossStatus.statusBarTime = -1;
-			BossStatus.hasColorModifier = false;
+	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
+		super.doRender(par1Entity, par2, par4, par6, par8, par9);
+		//todofix changed to getEntityName
+		if(BossStatus.bossName.equals(par1Entity.getEntityName())) {
+			BossStatus.statusBarLength = -1;
+			//was BossStatus.hasColorModifier
+			BossStatus.field_82825_d = false;
 		}
 	}
 
-	@Override
-	protected ResourceLocation getEntityTexture(EntityWither p_110775_1_) {
+	@Override //getEntityTexture
+	protected ResourceLocation func_110911_a(EntityWither p_110775_1_) {
 		return resource;
 	}
 

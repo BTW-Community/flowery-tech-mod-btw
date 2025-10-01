@@ -16,7 +16,7 @@ import java.util.List;
 import net.minecraft.src.Block;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ScaledResolution;
-import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.RenderItem;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
@@ -356,8 +356,8 @@ public class TilePool extends TileMod implements IManaPool, IDyablePool, IKeyLoc
 		ItemManaTablet.setStackCreative(tablet);
 
 		net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
-		RenderItem.getInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, tablet, x - 20, y);
-		RenderItem.getInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, pool, x + 26, y);
+		RenderInstances.getItemInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, tablet, x - 20, y);
+		RenderInstances.getItemInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, pool, x + 26, y);
 		net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
 
 		GL11.glDisable(GL11.GL_LIGHTING);

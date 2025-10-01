@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ScaledResolution;
 import net.minecraft.src.RenderHelper;
-import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.RenderItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.EnumChatFormatting;
@@ -55,7 +55,7 @@ public final class ItemsRemainingRenderHandler {
 			int xp = x + (int) (16F * (1F - alpha));
 			GL11.glTranslatef(xp, y, 0F);
 			GL11.glScalef(alpha, 1F, 1F);
-			RenderItem.getInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, stack, 0, 0);
+			RenderInstances.getItemInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, stack, 0, 0);
 			GL11.glScalef(1F / alpha,1F, 1F);
 			GL11.glTranslatef(-xp, -y, 0F);
 			RenderHelper.disableStandardItemLighting();

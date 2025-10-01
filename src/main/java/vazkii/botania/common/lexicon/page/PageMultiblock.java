@@ -18,7 +18,7 @@ import net.minecraft.src.FontRenderer;
 import net.minecraft.src.GuiButton;
 import net.minecraft.src.GuiScreen;
 import net.minecraft.src.RenderHelper;
-import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.RenderItem;
 import net.minecraft.src.TextureManager;
 import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
@@ -96,7 +96,7 @@ public class PageMultiblock extends LexiconPage {
 		RenderHelper.enableGUIStandardItemLighting();
 		int x = gui.getLeft() + 15;
 		int y = gui.getTop() + 25;
-		RenderItem.getInstance().renderItemIntoGUI(font, render, new ItemStack(Blocks.stonebrick), x, y);
+		RenderInstances.getItemInstance().renderItemIntoGUI(font, render, new ItemStack(Blocks.stonebrick), x, y);
 		RenderHelper.disableStandardItemLighting();
 		GL11.glDisable(GL12.GL_RESCALE_NORMAL);
 

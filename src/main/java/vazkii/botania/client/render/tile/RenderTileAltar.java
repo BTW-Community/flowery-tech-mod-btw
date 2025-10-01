@@ -17,7 +17,7 @@ import net.minecraft.src.Minecraft;
 import net.minecraft.src.ItemRenderer;
 import net.minecraft.src.RenderBlocks;
 import net.minecraft.src.Tessellator;
-import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.RenderItem;
 import net.minecraft.src.TextureMap;
 import net.minecraft.src.TileEntitySpecialRenderer;
 import net.minecraft.src.Block;
@@ -126,7 +126,7 @@ public class RenderTileAltar extends TileEntitySpecialRenderer {
 						ItemStack stack = altar.getStackInSlot(i);
 						minecraft.renderEngine.bindTexture(stack.getItem() instanceof ItemBlock ? TextureMap.locationBlocksTexture : TextureMap.locationItemsTexture);
 
-						if(stack.getItem() instanceof ItemBlock && RenderBlocks.renderItemIn3d(Block.getBlockFromItem(stack.getItem()).getRenderType())) {
+						if(stack.getItem() instanceof ItemBlock && RenderBlocks.doesRenderIDRenderItemIn3D(Block.getBlockFromItem(stack.getItem()).getRenderType())) {
 							GL11.glScalef(0.5F, 0.5F, 0.5F);
 							GL11.glTranslatef(1F, 1.1F, 0F);
 							renderBlocks.renderBlockAsItem(Block.getBlockFromItem(stack.getItem()), stack.getItemDamage(), 1F);

@@ -15,7 +15,7 @@ import java.util.List;
 
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ScaledResolution;
-import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.RenderItem;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ISidedInventory;
@@ -380,9 +380,9 @@ public class TileRuneAltar extends TileSimpleInventory implements ISidedInventor
 
 					net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
 					if(progress == 1F) {
-						RenderItem.getInstance().renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, new ItemStack(ModBlocks.livingrock), xc + radius + 16, yc + 8);
+						RenderInstances.getItemInstance().renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, new ItemStack(ModBlocks.livingrock), xc + radius + 16, yc + 8);
 						GL11.glTranslatef(0F, 0F, 100F);
-						RenderItem.getInstance().renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, new ItemStack(ModItems.twigWand), xc + radius + 24, yc + 8);
+						RenderInstances.getItemInstance().renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, new ItemStack(ModItems.twigWand), xc + radius + 24, yc + 8);
 						GL11.glTranslatef(0F, 0F, -100F);
 					}
 
@@ -398,7 +398,7 @@ public class TileRuneAltar extends TileSimpleInventory implements ISidedInventor
 				double xPos = xc + Math.cos(angle * Math.PI / 180D) * radius - 8;
 				double yPos = yc + Math.sin(angle * Math.PI / 180D) * radius - 8;
 				GL11.glTranslated(xPos, yPos, 0);
-				RenderItem.getInstance().renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, getStackInSlot(i), 0, 0);
+				RenderInstances.getItemInstance().renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, getStackInSlot(i), 0, 0);
 				GL11.glTranslated(-xPos, -yPos, 0);
 
 				angle += anglePer;

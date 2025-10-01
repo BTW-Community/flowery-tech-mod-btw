@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import dev.bagel.client.RenderInstances;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.GuiScreen;
-import net.minecraft.src.entity.RenderItem;
+import net.minecraft.src.RenderItem;
 import net.minecraft.src.TextureManager;
 import net.minecraft.src.TextureMap;
 import net.minecraft.src.ItemStack;
@@ -78,7 +79,7 @@ public class PageElvenRecipe extends PageRecipe {
 
 		Icon portalIcon = BlockAlfPortal.portalTex;
 		Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
-		RenderItem.getInstance().renderIcon(gui.getLeft() + 22, gui.getTop() + 36, portalIcon, 48, 48);
+		RenderInstances.getItemInstance().renderIcon(gui.getLeft() + 22, gui.getTop() + 36, portalIcon, 48, 48);
 	}
 
 	@Environment(EnvType.CLIENT)
