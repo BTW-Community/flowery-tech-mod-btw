@@ -39,24 +39,23 @@ import vazkii.botania.common.item.block.ItemBlockWithMetadataAndName;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 import cpw.mods.fml.common.Optional;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
-@Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.crafting.IInfusionStabiliser", striprefs = true)
-public class BlockModMushroom extends BlockMushroom implements IInfusionStabiliser, IHornHarvestable, ILexiconable {
+public class BlockModMushroom extends BlockMushroom implements IHornHarvestable, ILexiconable {
 
 	public static Icon[] icons;
 	public int originalLight;
 
 	public BlockModMushroom() {
 		setBlockName(LibBlockNames.MUSHROOM);
-		setLightLevel(0.2F);
+		setLightValue(0.2F);
 		setHardness(0F);
-		setStepSound(soundTypeGrass);
+		setStepSound(soundGrassFootstep);
 		setBlockBounds(0.3F, 0.0F, 0.3F, 0.8F, 1, 0.8F);
 		setTickRandomly(false);
-		setCreativeTab(BotaniaCreativeTab.INSTANCE);
+		setCreativeTab(CreativeTabs.tabMisc);
 	}
 
 	@Override
@@ -75,20 +74,21 @@ public class BlockModMushroom extends BlockMushroom implements IInfusionStabilis
 	}
 
 	@Override
-	public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
+	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
 		for(int i = 0; i < 16; i++)
 			par3List.add(new ItemStack(par1, 1, i));
 	}
 
 	@Override
 	public Block setBlockName(String par1Str) {
-		GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
+		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
+//GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
 		return super.setBlockName(par1Str);
 	}
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		icons = new Icon[16];
 
 		for(int i = 0; i < icons.length; i++)
@@ -96,9 +96,9 @@ public class BlockModMushroom extends BlockMushroom implements IInfusionStabilis
 	}
 
 	@Override
-	public Block setLightLevel(float p_149715_1_) {
+	public Block setLightValue(float p_149715_1_) {
 		originalLight = (int) (p_149715_1_ * 15);
-		return super.setLightLevel(p_149715_1_);
+		return super.setLightValue(p_149715_1_);
 	}
 
 	@Override

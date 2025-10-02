@@ -10,15 +10,11 @@
  */
 package vazkii.botania.common.block;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.Material;
-import net.minecraft.src.IconRegister;
+import net.minecraft.src.*;
 import vazkii.botania.api.recipe.IElvenItem;
 import vazkii.botania.client.core.helper.IconHelper;
-import vazkii.botania.common.core.BotaniaCreativeTab;
 import vazkii.botania.common.item.block.ItemBlockElven;
 import vazkii.botania.common.item.block.ItemBlockMod;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
@@ -26,17 +22,18 @@ public class BlockMod extends Block {
 
 	public int originalLight;
 
-	public BlockMod(Material par2Material) {
-		super(par2Material);
+	public BlockMod(int id, Material par2Material) {
+		super(id, par2Material);
 		if(registerInCreative())
-			setCreativeTab(BotaniaCreativeTab.INSTANCE);
+			setCreativeTab(CreativeTabs.tabMisc /*BotaniaCreativeTab.INSTANCE*/);
 	}
 
-	@Override
+//	@Override
 	public Block setBlockName(String par1Str) {
-		if(shouldRegisterInNameSet())
-			GameRegistry.registerBlock(this, this instanceof IElvenItem ? ItemBlockElven.class : ItemBlockMod.class, par1Str);
-		return super.setBlockName(par1Str);
+		if(shouldRegisterInNameSet()) {
+			Item registered = this instanceof IElvenItem ? new ItemBlockElven(this) : new ItemBlockMod(this);
+//			GameRegistry.registerBlock(this, this instanceof IElvenItem ? ItemBlockElven.class : ItemBlockMod.class, par1Str);
+		}return this /*super.setBlockName(par1Str)*/;
 	}
 
 	protected boolean shouldRegisterInNameSet() {
@@ -44,14 +41,14 @@ public class BlockMod extends Block {
 	}
 
 	@Override
-	public Block setLightLevel(float p_149715_1_) {
-		originalLight = (int) (p_149715_1_ * 15);
-		return super.setLightLevel(p_149715_1_);
+	public Block setLightValue(float value) {
+		originalLight = (int) (value * 15);
+		return super.setLightValue(value);
 	}
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		blockIcon = IconHelper.forBlock(par1IconRegister, this);
 	}
 

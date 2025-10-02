@@ -33,14 +33,14 @@ public class BlockStarfield extends BlockModContainer implements ILexiconable {
 		super(Material.iron);
 		setHardness(5F);
 		setResistance(2000F);
-		setStepSound(soundTypeMetal);
+		setStepSound(soundMetalFootstep);
 		setBlockName(LibBlockNames.STARFIELD);
 
 		setBlockBounds(0F, 0F, 0F, 1F, 0.25F, 1F);
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		icons = new Icon[3];
 		for(int i = 0; i < icons.length; i++)
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
@@ -62,7 +62,7 @@ public class BlockStarfield extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileStarfield();
 	}
 

@@ -36,12 +36,12 @@ public class BlockTurntable extends BlockModContainer implements IWandable, IWan
 	public BlockTurntable() {
 		super(Material.wood);
 		setHardness(2.0F);
-		setStepSound(soundTypeWood);
+		setStepSound(soundWoodFootstep);
 		setBlockName(LibBlockNames.TURNTABLE);
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		icons = new Icon[2];
 		for(int i = 0; i < icons.length; i++)
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
@@ -53,7 +53,7 @@ public class BlockTurntable extends BlockModContainer implements IWandable, IWan
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileTurntable();
 	}
 

@@ -29,7 +29,7 @@ public class BlockRFGenerator extends BlockModContainer implements ILexiconable 
 		super(Material.rock);
 		setHardness(2.0F);
 		setResistance(10.0F);
-		setStepSound(soundTypeStone);
+		setStepSound(soundStoneFootstep);
 		setBlockName(LibBlockNames.RF_GENERATOR);
 	}
 
@@ -42,7 +42,7 @@ public class BlockRFGenerator extends BlockModContainer implements ILexiconable 
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileRFGenerator();
 	}
 

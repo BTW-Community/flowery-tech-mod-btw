@@ -15,7 +15,7 @@ import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.common.core.BotaniaCreativeTab;
 import vazkii.botania.common.item.block.ItemBlockModSlab;
 import vazkii.botania.common.lexicon.LexiconData;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
@@ -28,7 +28,7 @@ public abstract class BlockModSlab extends BlockSlab implements ILexiconable {
 		this.name = name;
 		setBlockName(name);
 		if(!full) {
-			setCreativeTab(BotaniaCreativeTab.INSTANCE);
+			setCreativeTab(CreativeTabs.tabMisc);
 			useNeighborBrightness = true;
 		}
 	}
@@ -59,7 +59,7 @@ public abstract class BlockModSlab extends BlockSlab implements ILexiconable {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		// NO-OP
 	}
 

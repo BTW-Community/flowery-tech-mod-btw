@@ -41,7 +41,6 @@ import vazkii.botania.api.wand.IWandable;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.client.lib.LibRenderIDs;
 import vazkii.botania.common.achievement.ICraftAchievement;
-import vazkii.botania.common.achievement.IPickupAchievement;
 import vazkii.botania.common.achievement.ModAchievements;
 import vazkii.botania.common.block.BlockModContainer;
 import vazkii.botania.common.block.ModBlocks;
@@ -49,7 +48,6 @@ import vazkii.botania.common.block.tile.mana.TilePool;
 import vazkii.botania.common.item.block.ItemBlockPool;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockPool extends BlockModContainer implements IWandHUD, IWandable, ILexiconable, ICraftAchievement {
 
@@ -57,11 +55,11 @@ public class BlockPool extends BlockModContainer implements IWandHUD, IWandable,
 
 	public static Icon manaIcon;
 
-	public BlockPool() {
-		super(Material.rock);
+	public BlockPool(int id) {
+		super(id, Material.rock);
 		setHardness(2.0F);
 		setResistance(10.0F);
-		setStepSound(soundTypeStone);
+		setStepSound(soundStoneFootstep);
 		setBlockName(LibBlockNames.POOL);
 		setBlockBounds(0F, 0F, 0F, 1F, 0.5F, 1F);
 
@@ -80,7 +78,7 @@ public class BlockPool extends BlockModContainer implements IWandHUD, IWandable,
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		manaIcon = IconHelper.forName(par1IconRegister, "manaWater");
 	}
 
@@ -90,7 +88,7 @@ public class BlockPool extends BlockModContainer implements IWandHUD, IWandable,
 	}
 
 	@Override
-	public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6) {
+	public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
 		TilePool pool = (TilePool) par1World.getTileEntity(par2, par3, par4);
 		lastFragile = pool.fragile;
 		super.breakBlock(par1World, par2, par3, par4, par5, par6);
@@ -107,7 +105,7 @@ public class BlockPool extends BlockModContainer implements IWandHUD, IWandable,
 	}
 
 	@Override
-	public void getSubBlocks(Item par1, CreativeTabs par2, List par3) {
+	public void getSubBlocks(int par1, CreativeTabs par2, List par3) {
 		par3.add(new ItemStack(par1, 1, 0));
 		par3.add(new ItemStack(par1, 1, 2));
 		par3.add(new ItemStack(par1, 1, 3));
@@ -115,7 +113,7 @@ public class BlockPool extends BlockModContainer implements IWandHUD, IWandable,
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TilePool();
 	}
 
@@ -144,10 +142,10 @@ public class BlockPool extends BlockModContainer implements IWandHUD, IWandable,
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
 	}
 
-	@Override
-	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, ForgeDirection side) {
-		return side == ForgeDirection.DOWN;
-	}
+//	@Override
+//	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, ForgeDirection side) {
+//		return side == ForgeDirection.DOWN;
+//	}
 
 	@Override
 	public boolean isOpaqueCube() {

@@ -27,13 +27,14 @@ import vazkii.botania.common.block.tile.TileGaiaHead;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.block.ItemBlockMod;
 import vazkii.botania.common.lib.LibBlockNames;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
 public class BlockGaiaHead extends BlockSkull {
 
-	public BlockGaiaHead() {
+	public BlockGaiaHead(int id) {
+		super(id);
 		setBlockName(LibBlockNames.GAIA_HEAD);
 		setHardness(1.0F);
 	}
@@ -51,7 +52,7 @@ public class BlockGaiaHead extends BlockSkull {
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister p_149651_1_) {
+	public void registerIcons(IconRegister p_149651_1_) {
 		// NO-OP
 	}
 
@@ -72,8 +73,8 @@ public class BlockGaiaHead extends BlockSkull {
 	}
 
 	@Override
-	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
-		return ModItems.gaiaHead;
+	public int idDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
+		return ModItems.gaiaHead.itemID;
 	}
 
 	@Override
@@ -87,14 +88,14 @@ public class BlockGaiaHead extends BlockSkull {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
+	public TileEntity createNewTileEntity(World p_149915_1_) {
 		return new TileGaiaHead();
 	}
 
 	@Override
 	@Environment(EnvType.CLIENT)
 	public Icon getIcon(int p_149691_1_, int p_149691_2_) {
-		return Blocks.coal_block.getBlockTextureFromSide(p_149691_1_);
+		return Block.coalBlock.getBlockTextureFromSide(p_149691_1_);
 	}
 
 }

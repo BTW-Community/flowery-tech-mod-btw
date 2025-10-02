@@ -60,8 +60,8 @@ public class BiomeDecorationHandler {
 								SubTileDaybloom subtile = (SubTileDaybloom) flower.getSubTile();
 								subtile.setPrimusPosition();
 							} else {
-								event.world.setBlock(x1, y1, z1, ModBlocks.flower, color, 2);
-								if(event.rand.nextDouble() < ConfigHandler.flowerTallChance && ((BlockModFlower) ModBlocks.flower).func_149851_a(event.world, x1, y1, z1, false))
+								event.world.setBlock(x1, y1, z1, ModBlocks.flower, color, 2);//todofix double check if the flower can grow
+								if(event.rand.nextDouble() < ConfigHandler.flowerTallChance && true/*((BlockModFlower) ModBlocks.flower).func_149851_a(event.world, x1, y1, z1, false)*/)
 									BlockModFlower.placeDoubleFlower(event.world, x1, y1, z1, color, 0);
 							}
 						}

@@ -31,7 +31,7 @@ public class BlockManaBomb extends BlockMod implements IManaTrigger, ILexiconabl
 	public BlockManaBomb() {
 		super(Material.wood);
 		setHardness(12.0F);
-		setStepSound(soundTypeWood);
+		setStepSound(soundWoodFootstep);
 		setBlockName(LibBlockNames.MANA_BOMB);
 	}
 

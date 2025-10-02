@@ -25,7 +25,7 @@ import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.common.item.block.ItemBlockMod;
 import vazkii.botania.common.lexicon.LexiconData;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 
 public class BlockModWall extends BlockWall implements ILexiconable {
 
@@ -55,7 +55,7 @@ public class BlockModWall extends BlockWall implements ILexiconable {
 	}
 
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tabs, List list) {
+	public void getSubBlocks(int item, CreativeTabs tabs, List list) {
 		list.add(new ItemStack(item));
 	}
 
@@ -70,7 +70,7 @@ public class BlockModWall extends BlockWall implements ILexiconable {
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister p_149651_1_) {
+	public void registerIcons(IconRegister p_149651_1_) {
 		// NO-OP
 	}
 

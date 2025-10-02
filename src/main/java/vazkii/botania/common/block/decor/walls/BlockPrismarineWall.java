@@ -23,7 +23,7 @@ public class BlockPrismarineWall extends BlockModWall {
 		super(ModBlocks.prismarine, 0);
 		setHardness(2.0F);
 		setResistance(10.0F);
-		setStepSound(soundTypeStone);
+		setStepSound(soundStoneFootstep);
 	}
 
 	@Override

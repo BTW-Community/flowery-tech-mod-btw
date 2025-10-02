@@ -10,6 +10,8 @@
  */
 package vazkii.botania.client.gui.lexicon;
 
+import dev.bagel.client.RenderInstances;
+import dev.bagel.util.GuiButtonSound;
 import net.minecraft.src.GuiButton;
 import net.minecraft.src.RenderHelper;
 import net.minecraft.src.RenderItem;
@@ -122,9 +124,9 @@ public class GuiLexiconChallenge extends GuiLexicon implements IParented {
 	}
 
 	void back() {
-		if(backButton.enabled) {
+		if(backButton.enabled && backButton instanceof GuiButtonSound bs) {
 			actionPerformed(backButton);
-			backButton.func_146113_a(mc.getSoundHandler());
+			bs.func_146113_a();
 		}
 	}
 

@@ -34,12 +34,12 @@ public class BlockDistributor extends BlockModContainer implements ILexiconable 
 		super(Material.rock);
 		setHardness(2.0F);
 		setResistance(10.0F);
-		setStepSound(soundTypeStone);
+		setStepSound(soundStoneFootstep);
 		setBlockName(LibBlockNames.DISTRIBUTOR);
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		iconTop = IconHelper.forBlock(par1IconRegister, this, 0);
 		iconSide = IconHelper.forBlock(par1IconRegister, this, 1);
 	}
@@ -50,7 +50,7 @@ public class BlockDistributor extends BlockModContainer implements ILexiconable 
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileDistributor();
 	}
 

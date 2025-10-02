@@ -14,6 +14,7 @@ import java.awt.Desktop;
 import java.net.URI;
 import java.util.List;
 
+import dev.bagel.util.GuiButtonSound;
 import emi.shims.java.net.minecraft.text.Text;
 import emi.shims.java.net.minecraft.util.Formatting;
 import net.minecraft.src.Minecraft;
@@ -334,25 +335,23 @@ public class GuiLexiconEntry extends GuiLexicon implements IGuiLexiconEntry, IPa
 	}
 
 	void back() {
-		if(backButton.enabled) {
+		if(backButton.enabled && backButton instanceof GuiButtonSound bs) {
 			actionPerformed(backButton);
-			backButton.func_146113_a(mc.getSoundHandler());
+			bs.func_146113_a();
 		}
 	}
 
 	void nextPage() {
-		if(rightButton.enabled) {
-			actionPerformed(rightButton);
-			rightButton.func_146113_a(mc.getSoundHandler());
-			updateNote();
+		if(rightButton.enabled && backButton instanceof GuiButtonSound bs) {
+			actionPerformed(backButton);
+			bs.func_146113_a();
 		}
 	}
 
 	void prevPage() {
-		if(leftButton.enabled) {
-			actionPerformed(leftButton);
-			leftButton.func_146113_a(mc.getSoundHandler());
-			updateNote();
+		if(leftButton.enabled && backButton instanceof GuiButtonSound bs) {
+			actionPerformed(backButton);
+			bs.func_146113_a();
 		}
 	}
 

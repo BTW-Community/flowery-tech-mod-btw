@@ -33,7 +33,7 @@ import vazkii.botania.common.core.BotaniaCreativeTab;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.equipment.tool.ToolCommons;
 import vazkii.botania.common.lib.LibItemNames;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
@@ -49,7 +49,7 @@ public class ItemManasteelPick extends ItemPickaxe implements IManaUsingItem, IS
 
 	public ItemManasteelPick(ToolMaterial mat, String name) {
 		super(mat);
-		setCreativeTab(BotaniaCreativeTab.INSTANCE);
+		setCreativeTab(CreativeTabs.tabMisc);
 		setUnlocalizedName(name);
 	}
 

@@ -22,7 +22,7 @@ public class BlockRedStringContainer extends BlockRedString {
 	}
 
 	@Override
-	public TileRedString createNewTileEntity(World world, int meta) {
+	public TileRedString createNewTileEntityT(World world, int meta) {
 		return new TileRedStringContainer();
 	}
 

@@ -292,7 +292,7 @@ public class TileAlfPortal extends TileMod {
 	}
 
 	private boolean checkMultipleConverters(Function<int[], int[]>... converters) {
-		if(!check2DArray(AIR_POSITIONS, Blocks.air, -1, converters))
+		if(!check2DArray(AIR_POSITIONS, null, -1, converters))
 			return false;
 		if(!check2DArray(LIVINGWOOD_POSITIONS, ModBlocks.livingwood, 0, converters))
 			return false;
@@ -361,7 +361,7 @@ public class TileAlfPortal extends TileMod {
 		}
 
 		Block blockat = worldObj.getBlock(x, y, z);
-		if(block == Blocks.air ? blockat.isAir(worldObj, x, y, z) : blockat == block) {
+		if(block == null ? blockat.isAir(worldObj, x, y, z) : blockat == block) {
 			if(meta == -1)
 				return true;
 
@@ -372,8 +372,9 @@ public class TileAlfPortal extends TileMod {
 		return false;
 	}
 
-	@Override
-	public AxisAlignedBB getRenderBoundingBox() {
+	//todofix visual bounding box for tile entity
+/*	@Override
+	public AxisAlignedBB getVisualBoundingBox() {
 		return INFINITE_EXTENT_AABB;
-	}
+	}*/
 }

@@ -27,7 +27,7 @@ public class BlockTinyPlanet extends BlockModContainer implements ILexiconable {
 		super(Material.rock);
 		setHardness(20F);
 		setResistance(100F);
-		setStepSound(soundTypeStone);
+		setStepSound(soundStoneFootstep);
 		float size = 3F / 16F;
 		setBlockBounds(size, size, size, 1F - size, 1F - size, 1F - size);
 		setBlockName(LibBlockNames.TINY_PLANET);
@@ -44,7 +44,7 @@ public class BlockTinyPlanet extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileTinyPlanet();
 	}
 

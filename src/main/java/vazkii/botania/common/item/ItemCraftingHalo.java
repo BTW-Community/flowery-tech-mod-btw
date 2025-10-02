@@ -533,10 +533,10 @@ public class ItemCraftingHalo extends ItemMod implements ICraftAchievement {
 
 			Gui.drawRect(x - 6, y - 6, x + l + 6, y + 37, 0x22000000);
 			Gui.drawRect(x - 4, y - 4, x + l + 4, y + 35, 0x22000000);
-			net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
+			net.minecraft.src.RenderHelper.enableGUIStandardItemLighting();
 			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 			RenderInstances.getItemInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, craftingTable, resolution.getScaledWidth() / 2 - 8, resolution.getScaledHeight() / 2 - 52);
-			net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
+			net.minecraft.src.RenderHelper.disableStandardItemLighting();
 
 			mc.fontRenderer.drawStringWithShadow(name, x, y, 0xFFFFFF);
 		} else {
@@ -569,7 +569,7 @@ public class ItemCraftingHalo extends ItemMod implements ICraftAchievement {
 			Gui.drawRect(x + 66, y + 14, x + 92, y + 40, 0x22000000);
 			Gui.drawRect(x - 2, y - 2, x + 56, y + 56, 0x22000000);
 
-			net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
+			net.minecraft.src.RenderHelper.enableGUIStandardItemLighting();
 			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 			for(int i = 0; i < 9; i++) {
 				ItemStack stack = recipe[i];
@@ -585,7 +585,7 @@ public class ItemCraftingHalo extends ItemMod implements ICraftAchievement {
 			RenderInstances.getItemInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, recipe[9], x + 72, y + 18);
 			RenderInstances.getItemInstance().renderItemOverlayIntoGUI(mc.fontRenderer, mc.renderEngine, recipe[9], x + 72, y + 18);
 
-			net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
+			net.minecraft.src.RenderHelper.disableStandardItemLighting();
 		}
 
 		int yoff = 110;

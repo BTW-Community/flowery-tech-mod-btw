@@ -21,7 +21,7 @@ import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.core.BotaniaCreativeTab;
 import vazkii.botania.common.item.block.ItemBlockMod;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
@@ -34,10 +34,10 @@ public class BlockModPane extends BlockPane {
 		super("", "", Material.glass, false);
 		this.source = source;
 		setBlockName(source.getUnlocalizedName().replaceAll("tile.", "") + "Pane");
-		setCreativeTab(BotaniaCreativeTab.INSTANCE);
+		setCreativeTab(CreativeTabs.tabMisc);
 		setHardness(0.3F);
 		setStepSound(soundTypeGlass);
-		setLightLevel(1.0F);
+		setLightValue(1.0F);
 		useNeighborBrightness = true;
 	}
 
@@ -49,7 +49,7 @@ public class BlockModPane extends BlockPane {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerBlockIcons(IconRegister reg) {
+	public void registerIcons(IconRegister reg) {
 		iconTop = IconHelper.forBlock(reg, this);
 	}
 

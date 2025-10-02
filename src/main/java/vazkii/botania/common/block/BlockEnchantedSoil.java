@@ -23,8 +23,6 @@ import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
 import net.minecraftforge.client.event.TextureStitchEvent;
-import net.minecraftforge.common.EnumPlantType;
-import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.lexicon.ILexiconable;
@@ -40,10 +38,10 @@ public class BlockEnchantedSoil extends BlockMod implements ILexiconable {
 
 	Icon iconSide;
 
-	public BlockEnchantedSoil() {
-		super(Material.grass);
+	public BlockEnchantedSoil(int id) {
+		super(id, Material.grass);
 		setHardness(0.6F);
-		setStepSound(soundTypeGrass);
+		setStepSound(soundGrassFootstep);
 		setBlockName(LibBlockNames.ENCHANTED_SOIL);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
@@ -55,7 +53,7 @@ public class BlockEnchantedSoil extends BlockMod implements ILexiconable {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		// NO-OP
 	}
 
@@ -64,11 +62,11 @@ public class BlockEnchantedSoil extends BlockMod implements ILexiconable {
 	public void loadTextures(TextureStitchEvent.Pre event) {
 		if(event.map.getTextureType() == 0) {
 			TextureAtlasSprite icon = new InterpolatedIcon("botania:enchantedSoil0");
-			if(event.map.setTextureEntry("botania:enchantedSoil0", icon))
+			if(event.map.registerIcon("botania:enchantedSoil0", icon) != null)
 				blockIcon = icon;
 
 			icon = new InterpolatedIcon("botania:enchantedSoil1");
-			if(event.map.setTextureEntry("botania:enchantedSoil1", icon))
+			if(event.map.registerIcon("botania:enchantedSoil1", icon) != null)
 				iconSide = icon;
 		}
 	}
@@ -76,18 +74,24 @@ public class BlockEnchantedSoil extends BlockMod implements ILexiconable {
 	@Override
 	@Environment(EnvType.CLIENT)
 	public Icon getIcon(int side, int meta) {
-		return side == 0 ? Blocks.dirt.getIcon(0, 0) : side == 1 ? blockIcon : iconSide;
+		return side == 0 ? Block.dirt.getIcon(0, 0) : side == 1 ? blockIcon : iconSide;
 	}
 
 	@Override
-	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
-		return Blocks.dirt.getItemDropped(0, p_149650_2_, p_149650_3_);
+	public int idDropped(int par1, Random par2Random, int par3) {
+		return Block.dirt.idDropped(par1, par2Random, par3);
 	}
 
-	@Override
+//	@Override
+//	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
+//		return Blocks.dirt.getItemDropped(0, p_149650_2_, p_149650_3_);
+//	}
+
+	//todofix canSustain plant
+/*	@Override
 	public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection direction, IPlantable plantable) {
 		return plantable.getPlantType(world, x, y - 1, z) == EnumPlantType.Plains;
-	}
+	}*/
 
 	@Override
 	protected boolean canSilkHarvest() {

@@ -42,7 +42,7 @@ public class BlockSparkChanger extends BlockModContainer implements ILexiconable
 		setBlockBounds(0F, 0F, 0F, 1F, 3F / 16F, 1F);
 		setHardness(2.0F);
 		setResistance(10.0F);
-		setStepSound(soundTypeStone);
+		setStepSound(soundStoneFootstep);
 		setBlockName(LibBlockNames.SPARK_CHANGER);
 
 		random = new Random();
@@ -64,7 +64,7 @@ public class BlockSparkChanger extends BlockModContainer implements ILexiconable
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		icons = new Icon[3];
 		for(int i = 0; i < icons.length; i++)
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
@@ -95,14 +95,14 @@ public class BlockSparkChanger extends BlockModContainer implements ILexiconable
 		ItemStack pstack = player.getCurrentEquippedItem();
 		if(cstack != null) {
 			changer.setInventorySlotContents(0, null);
-			world.func_147453_f(x, y, z, this);
+			world.func_96440_m(x, y, z, this);
 			changer.markDirty();
 			if(!player.inventory.addItemStackToInventory(cstack))
 				player.dropPlayerItemWithRandomChoice(cstack, false);
 			return true;
 		} else if(pstack != null && pstack.getItem() == ModItems.sparkUpgrade) {
 			changer.setInventorySlotContents(0, pstack.copy().splitStack(1));
-			world.func_147453_f(x, y, z, this);
+			world.func_96440_m(x, y, z, this);
 			changer.markDirty();
 
 			pstack.stackSize--;
@@ -147,7 +147,7 @@ public class BlockSparkChanger extends BlockModContainer implements ILexiconable
 				}
 			}
 
-			par1World.func_147453_f(par2, par3, par4, par5);
+			par1World.func_96440_m(par2, par3, par4, par5);
 		}
 
 		super.breakBlock(par1World, par2, par3, par4, par5, par6);
@@ -168,7 +168,7 @@ public class BlockSparkChanger extends BlockModContainer implements ILexiconable
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileSparkChanger();
 	}
 

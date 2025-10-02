@@ -18,7 +18,6 @@ import net.minecraft.src.Material;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.Gui;
 import net.minecraft.src.ScaledResolution;
-import net.minecraft.src.RenderItem;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EntityItem;
@@ -45,7 +44,7 @@ import vazkii.botania.common.block.tile.TileSimpleInventory;
 import vazkii.botania.common.item.block.ItemBlockWithMetadataAndName;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 
 public class BlockOpenCrate extends BlockModContainer implements ILexiconable, IWandable, IWandHUD {
 
@@ -63,7 +62,7 @@ public class BlockOpenCrate extends BlockModContainer implements ILexiconable, I
 	public BlockOpenCrate() {
 		super(Material.wood);
 		setHardness(2.0F);
-		setStepSound(soundTypeWood);
+		setStepSound(soundWoodFootstep);
 		setBlockName(LibBlockNames.OPEN_CRATE);
 
 		random = new Random();
@@ -76,12 +75,13 @@ public class BlockOpenCrate extends BlockModContainer implements ILexiconable, I
 
 	@Override
 	public Block setBlockName(String par1Str) {
-		GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
+		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
+//GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
 		return super.setBlockName(par1Str);
 	}
 
 	@Override
-	public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
+	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
 		for(int i = 0; i < SUBTYPES; i++)
 			par3List.add(new ItemStack(par1, 1, i));
 	}
@@ -135,14 +135,14 @@ public class BlockOpenCrate extends BlockModContainer implements ILexiconable, I
 				}
 			}
 
-			par1World.func_147453_f(par2, par3, par4, par5);
+			par1World.func_96440_m(par2, par3, par4, par5);
 		}
 
 		super.breakBlock(par1World, par2, par3, par4, par5, par6);
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		iconSide = IconHelper.forBlock(par1IconRegister, this, 0);
 		iconBottom = IconHelper.forBlock(par1IconRegister, this, 1);
 		iconSideCraft = IconHelper.forBlock(par1IconRegister, this, 2);
@@ -168,7 +168,7 @@ public class BlockOpenCrate extends BlockModContainer implements ILexiconable, I
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return meta == 0 ? new TileOpenCrate() : new TileCraftCrate();
 	}
 
@@ -210,10 +210,10 @@ public class BlockOpenCrate extends BlockModContainer implements ILexiconable, I
 					Gui.drawRect(xp, yp, xp + 16, yp + 16, enabled ? 0x22FFFFFF : 0x22FF0000);
 
 					ItemStack item = craft.getStackInSlot(index);
-					net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
+					net.minecraft.src.RenderHelper.enableGUIStandardItemLighting();
 					GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 					RenderInstances.getItemInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, item, xp, yp);
-					net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
+					net.minecraft.src.RenderHelper.disableStandardItemLighting();
 				}
 		}
 	}

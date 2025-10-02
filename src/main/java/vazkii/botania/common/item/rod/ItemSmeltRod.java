@@ -18,7 +18,7 @@ import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EnumAction;
 import net.minecraft.src.ItemBlock;
 import net.minecraft.src.ItemStack;
-import net.minecraft.src.crafting.FurnaceRecipes;
+import net.minecraft.src.FurnaceRecipes;
 import net.minecraft.src.MovingObjectPosition;
 import net.minecraft.src.World;
 import vazkii.botania.api.item.IManaProficiencyArmor;

@@ -19,7 +19,6 @@ import net.minecraft.src.ScaledResolution;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.TileEntity;
@@ -46,7 +45,7 @@ public class BlockBrewery extends BlockModContainer implements ILexiconable, IWa
 		setBlockName(LibBlockNames.BREWERY);
 		setHardness(2.0F);
 		setResistance(10.0F);
-		setStepSound(soundTypeStone);
+		setStepSound(soundStoneFootstep);
 
 		random = new Random();
 	}
@@ -69,7 +68,7 @@ public class BlockBrewery extends BlockModContainer implements ILexiconable, IWa
 						if(!par5EntityPlayer.inventory.addItemStackToInventory(copy))
 							par5EntityPlayer.dropPlayerItemWithRandomChoice(copy, false);
 						brew.setInventorySlotContents(i, null);
-						par1World.func_147453_f(par2, par3, par4, this);
+						par1World.func_96440_m(par2, par3, par4, this);
 						break;
 					}
 				}
@@ -113,7 +112,7 @@ public class BlockBrewery extends BlockModContainer implements ILexiconable, IWa
 				}
 			}
 
-			par1World.func_147453_f(par2, par3, par4, par5);
+			par1World.func_96440_m(par2, par3, par4, par5);
 		}
 
 		super.breakBlock(par1World, par2, par3, par4, par5, par6);
@@ -131,7 +130,7 @@ public class BlockBrewery extends BlockModContainer implements ILexiconable, IWa
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		// NO-OP
 	}
 
@@ -151,7 +150,7 @@ public class BlockBrewery extends BlockModContainer implements ILexiconable, IWa
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileBrewery();
 	}
 

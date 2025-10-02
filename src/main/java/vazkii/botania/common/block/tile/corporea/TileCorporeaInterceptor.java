@@ -38,7 +38,7 @@ public class TileCorporeaInterceptor extends TileCorporeaBase implements ICorpor
 	}
 
 	@Override
-	public String getInventoryName() {
+	public String getInvName() {
 		return LibBlockNames.CORPOREA_INTERCEPTOR;
 	}
 

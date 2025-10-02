@@ -14,13 +14,13 @@ import net.minecraftforge.oredict.RecipeSorter;
 import net.minecraftforge.oredict.RecipeSorter.Category;
 import vazkii.botania.common.crafting.recipe.PhantomInkRecipe;
 import vazkii.botania.common.lib.LibItemNames;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 
 public class ItemPhantomInk extends ItemMod {
 
 	public ItemPhantomInk() {
 		setUnlocalizedName(LibItemNames.PHANTOM_INK);
-		GameRegistry.addRecipe(new PhantomInkRecipe());
+		CraftingManager.getInstance().getRecipeList().add(new PhantomInkRecipe());
 		RecipeSorter.register("botania:phantomInk", PhantomInkRecipe.class, Category.SHAPELESS, "");
 	}
 

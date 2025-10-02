@@ -71,7 +71,7 @@ public class TileRedStringContainer extends TileRedString implements ISidedInven
 	}
 
 	@Override
-	public String getInventoryName() {
+	public String getInvName() {
 		IInventory inv = getInventory();
 		return inv != null ? inv.getInventoryName() : LibBlockNames.RED_STRING_CONTAINER;
 	}

@@ -14,7 +14,6 @@ import net.minecraft.src.Material;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.Icon;
@@ -22,7 +21,6 @@ import net.minecraft.src.MathHelper;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.common.util.RotationHelper;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.client.lib.LibRenderIDs;
@@ -36,11 +34,11 @@ public class BlockPump extends BlockModContainer implements ILexiconable {
 
 	private static final int[] META_ROTATIONS = new int[] { 2, 5, 3, 4 };
 
-	public BlockPump() {
-		super(Material.rock);
+	public BlockPump(int id) {
+		super(id, Material.rock);
 		setHardness(2.0F);
 		setResistance(10.0F);
-		setStepSound(soundTypeStone);
+		setStepSound(soundStoneFootstep);
 		setBlockName(LibBlockNames.PUMP);
 		setBlockBounds(true);
 	}
@@ -62,13 +60,13 @@ public class BlockPump extends BlockModContainer implements ILexiconable {
 		else setBlockBounds(0F, 0F, 0.25F, 1F, 0.5F, 0.75F);
 	}
 
-	@Override
-	public boolean rotateBlock(World worldObj, int x, int y, int z, ForgeDirection axis) {
-		return RotationHelper.rotateVanillaBlock(Blocks.furnace, worldObj, x, y, z, axis);
-	}
+//	@Override
+//	public boolean rotateBlock(World worldObj, int x, int y, int z, ForgeDirection axis) {
+//		return RotationHelper.rotateVanillaBlock(Blocks.furnace, worldObj, x, y, z, axis);
+//	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		// NO-OP
 	}
 
@@ -108,7 +106,7 @@ public class BlockPump extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TilePump();
 	}
 }

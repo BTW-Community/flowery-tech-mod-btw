@@ -29,21 +29,21 @@ import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.item.block.ItemBlockWithMetadataAndName;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 
 public class BlockLivingwood extends BlockMod implements ILexiconable {
 
 	private static final int TYPES = 6;
 	Icon[] icons;
 
-	public BlockLivingwood() {
-		this(LibBlockNames.LIVING_WOOD);
+	public BlockLivingwood(int id) {
+		this(id, LibBlockNames.LIVING_WOOD);
 	}
 
-	public BlockLivingwood(String name) {
-		super(Material.wood);
+	public BlockLivingwood(int id, String name) {
+		super(id, Material.wood);
 		setHardness(2.0F);
-		setStepSound(soundTypeWood);
+		setStepSound(soundWoodFootstep);
 		setBlockName(name);
 	}
 
@@ -64,17 +64,18 @@ public class BlockLivingwood extends BlockMod implements ILexiconable {
 	}
 
 	void register(String name) {
-		GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, name);
+		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
+//GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, name);
 	}
 
 	@Override
-	public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
+	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
 		for(int i = 0; i < TYPES; i++)
 			par3List.add(new ItemStack(par1, 1, i));
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		icons = new Icon[TYPES];
 		for(int i = 0; i < TYPES; i++)
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
@@ -103,8 +104,12 @@ public class BlockLivingwood extends BlockMod implements ILexiconable {
 	}
 
 	@Override
-	public boolean canSustainLeaves(IBlockAccess world, int x, int y, int z) {
+	public boolean canSupportLeaves(IBlockAccess world, int x, int y, int z) {
 		return world.getBlockMetadata(x, y, z) == 0;
 	}
 
+	@Override
+	public boolean isLog(IBlockAccess blockAccess, int x, int y, int z) {
+		return blockAccess.getBlockMetadata(x, y, z) == 0;
+	}
 }

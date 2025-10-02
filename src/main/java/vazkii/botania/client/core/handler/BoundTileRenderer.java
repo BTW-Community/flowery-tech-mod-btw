@@ -24,6 +24,7 @@ import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.ChunkCoordinates;
 import net.minecraft.src.World;
 
+import net.minecraftforge.client.event.RenderWorldLastEvent;
 import org.lwjgl.opengl.GL11;
 
 import vazkii.botania.api.BotaniaAPI;
@@ -44,7 +45,8 @@ public final class BoundTileRenderer {
 		GL11.glDisable(GL11.GL_LIGHTING);
 		GL11.glEnable(GL11.GL_BLEND);
 
-		Tessellator.renderingWorldRenderer = false;
+		//unecessary
+//		Tessellator.renderingWorldRenderer = false;
 
 		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
 		ItemStack stack = player.getCurrentEquippedItem();

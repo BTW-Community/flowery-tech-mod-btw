@@ -39,7 +39,6 @@ import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.wand.IWandable;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
@@ -54,21 +53,26 @@ public class BlockPistonRelay extends BlockMod implements IWandable, ILexiconabl
 	static List<String> checkedCoords = new ArrayList<>();
 	static Map<String, Integer> coordsToCheck = new HashMap<>();
 
-	public BlockPistonRelay() {
-		super(Material.pumpkin);
+	public BlockPistonRelay(int id) {
+		super(id, Material.pumpkin);
 		setBlockName(LibBlockNames.PISTON_RELAY);
 		setHardness(2F);
 		setResistance(10F);
 		setStepSound(soundMetalFootstep);
 
 		MinecraftForge.EVENT_BUS.register(this);
-		FMLCommonHandler.instance().bus().register(this);
+//		FMLCommonHandler.instance().bus().register(this);
 	}
 
 	@Override
-	public int quantityDropped(int meta, int fortune, Random random) {
+	public int idDropped(int par1, Random par2Random, int par3) {
 		return 0;
 	}
+
+	/*	@Override
+	public int quantityDropped(int meta, int fortune, Random random) {
+		return 0;
+	}*/
 
 	@Override
 	public boolean isOpaqueCube() {
@@ -76,7 +80,7 @@ public class BlockPistonRelay extends BlockMod implements IWandable, ILexiconabl
 	}
 
 	@Override
-	public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6) {
+	public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
 		mapCoords(par1World.provider.dimensionId, par2, par3, par4, 2);
 	}
 
@@ -132,7 +136,7 @@ public class BlockPistonRelay extends BlockMod implements IWandable, ILexiconabl
 			playerPositions.put(player.getCommandSenderName(), getCoordsAsString(world.provider.dimensionId, x, y, z));
 			world.playSoundEffect(x, y, z, "botania:ding", 0.5F, 1F);
 		} else {
-			dropBlockAsItem(world, x, y, z, new ItemStack(this));
+			dropBlockAsItem(world, x, y, z, new ItemStack(this).itemID, world.getBlockMetadata(x, y, z));
 			world.setBlockToAir(x, y, z);
 			if(!world.isRemote)
 				world.playAuxSFX(2001, x, y , z, BlockExtensions.getIdFromBlock(this));

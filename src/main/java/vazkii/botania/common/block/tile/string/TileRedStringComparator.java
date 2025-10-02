@@ -33,7 +33,7 @@ public class TileRedStringComparator extends TileRedString {
 		} else comparatorValue = 0;
 
 		if(origVal != comparatorValue)
-			worldObj.func_147453_f(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
+			worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
 	}
 
 	public int getComparatorValue() {

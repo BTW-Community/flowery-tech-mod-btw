@@ -197,7 +197,7 @@ public class TileCorporeaIndex extends TileCorporeaBase implements ICorporeaRequ
 	}
 
 	@Override
-	public String getInventoryName() {
+	public String getInvName() {
 		return LibBlockNames.CORPOREA_INDEX;
 	}
 

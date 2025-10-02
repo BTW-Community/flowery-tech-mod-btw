@@ -148,7 +148,7 @@ public class InventoryFlowerBag implements IInventory {
 	}
 
 	@Override
-	public String getInventoryName() {
+	public String getInvName() {
 		return LibItemNames.FLOWER_BAG;
 	}
 

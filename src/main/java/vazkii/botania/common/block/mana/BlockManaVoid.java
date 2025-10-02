@@ -35,18 +35,18 @@ public class BlockManaVoid extends BlockModContainer implements ILexiconable, IP
 		super(Material.rock);
 		setHardness(2.0F);
 		setResistance(2000F);
-		setStepSound(Block.soundTypeStone);
+		setStepSound(Block.soundStoneFootstep);
 		setBlockName(LibBlockNames.MANA_VOID);
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		blockIcon = IconHelper.forBlock(par1IconRegister, this, 0);
 		overlay = IconHelper.forBlock(par1IconRegister, this, 1);
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int id) {
+	public TileEntity createNewTileEntityT(World world, int id) {
 		return new TileManaVoid();
 	}
 

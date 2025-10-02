@@ -13,6 +13,7 @@ package vazkii.botania.common.block.tile.mana;
 import java.awt.Color;
 import java.util.List;
 
+import dev.bagel.client.RenderInstances;
 import net.minecraft.src.Block;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ScaledResolution;
@@ -23,7 +24,7 @@ import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EntityPlayerMP;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.S35PacketUpdateTileEntity;
+import net.minecraft.src.Packet132TileEntityData;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.StatCollector;
@@ -105,7 +106,7 @@ public class TilePool extends TileMod implements IManaPool, IDyablePool, IKeyLoc
 	@Override
 	public void recieveMana(int mana) {
 		this.mana = Math.max(0, Math.min(getCurrentMana() + mana, manaCap));
-		worldObj.func_147453_f(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
+		worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlockId(xCoord, yCoord, zCoord));
 		markDispatchable();
 	}
 
@@ -115,11 +116,12 @@ public class TilePool extends TileMod implements IManaPool, IDyablePool, IKeyLoc
 		ManaNetworkEvent.removePool(this);
 	}
 
-	@Override
+	//todofix onChunkUnload
+/*	@Override
 	public void onChunkUnload() {
 		super.onChunkUnload();
 		invalidate();
-	}
+	}*/
 
 	public boolean collideEntityItem(EntityItem item) {
 		if(item.isDead)
@@ -327,7 +329,7 @@ public class TilePool extends TileMod implements IManaPool, IDyablePool, IKeyLoc
 			writeCustomNBT(nbttagcompound);
 			nbttagcompound.setInteger(TAG_KNOWN_MANA, getCurrentMana());
 			if(player instanceof EntityPlayerMP)
-				((EntityPlayerMP) player).playerNetServerHandler.sendPacket(new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, -999, nbttagcompound));
+				((EntityPlayerMP) player).playerNetServerHandler.sendPacket(new Packet132TileEntityData(xCoord, yCoord, zCoord, -999, nbttagcompound));
 		}
 
 		worldObj.playSoundAtEntity(player, "botania:ding", 0.11F, 1F);
@@ -355,10 +357,10 @@ public class TilePool extends TileMod implements IManaPool, IDyablePool, IKeyLoc
 		ItemStack tablet = new ItemStack(ModItems.manaTablet);
 		ItemManaTablet.setStackCreative(tablet);
 
-		net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
+		net.minecraft.src.RenderHelper.enableGUIStandardItemLighting();
 		RenderInstances.getItemInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, tablet, x - 20, y);
 		RenderInstances.getItemInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, pool, x + 26, y);
-		net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
+		net.minecraft.src.RenderHelper.disableStandardItemLighting();
 
 		GL11.glDisable(GL11.GL_LIGHTING);
 		GL11.glDisable(GL11.GL_BLEND);

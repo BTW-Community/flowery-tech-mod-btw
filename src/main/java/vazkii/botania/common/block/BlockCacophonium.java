@@ -16,7 +16,6 @@ import net.minecraft.src.Block;
 import net.minecraft.src.Material;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.Icon;
@@ -36,7 +35,7 @@ public class BlockCacophonium extends BlockModContainer {
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister reg) {
+	public void registerIcons(IconRegister reg) {
 		blockIcon = IconHelper.forBlock(reg, this, 0);
 		top = IconHelper.forBlock(reg, this, 1);
 	}
@@ -93,7 +92,7 @@ public class BlockCacophonium extends BlockModContainer {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileCacophonium();
 	}
 

@@ -103,7 +103,7 @@ public class BlockSpecialQuartzSlab extends BlockModSlab {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		// NO-OP
 	}
 

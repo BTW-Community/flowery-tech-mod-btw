@@ -22,7 +22,7 @@ import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
 import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 
 public class ItemRegenIvy extends ItemMod {
 
@@ -31,7 +31,7 @@ public class ItemRegenIvy extends ItemMod {
 
 	public ItemRegenIvy() {
 		setUnlocalizedName(LibItemNames.REGEN_IVY);
-		GameRegistry.addRecipe(new RegenIvyRecipe());
+		CraftingManager.getInstance().getRecipeList().add(new RegenIvyRecipe());
 		RecipeSorter.register("botania:regenIvy", RegenIvyRecipe.class, Category.SHAPELESS, "");
 		FMLCommonHandler.instance().bus().register(this);
 	}

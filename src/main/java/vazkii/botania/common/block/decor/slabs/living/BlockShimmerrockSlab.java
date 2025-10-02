@@ -21,7 +21,7 @@ public class BlockShimmerrockSlab extends BlockLivingSlab {
 		super(full, ModBlocks.shimmerrock, 0);
 		setHardness(2.0F);
 		setResistance(10.0F);
-		setStepSound(soundTypeStone);
+		setStepSound(soundStoneFootstep);
 	}
 
 	@Override

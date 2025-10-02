@@ -15,9 +15,9 @@ import java.util.List;
 
 import net.minecraft.src.EntityLiving;
 import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.ai.EntityAIAttackOnCollide;
-import net.minecraft.src.ai.EntityAINearestAttackableTarget;
-import net.minecraft.src.ai.EntityAITasks.EntityAITaskEntry;
+import net.minecraft.src.EntityAIAttackOnCollide;
+import net.minecraft.src.EntityAINearestAttackableTarget;
+import net.minecraft.src.EntityAITaskEntry;
 import net.minecraft.src.IMob;
 import net.minecraft.src.AxisAlignedBB;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -25,7 +25,6 @@ import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.SubTileFunctional;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibObfuscation;
-import cpw.mods.fml.relauncher.ReflectionHelper;
 
 public class SubTileHeiseiDream extends SubTileFunctional {
 
@@ -82,12 +81,15 @@ public class SubTileHeiseiDream extends SubTileFunctional {
 	}
 
 	private static void messWithGetTargetAI(EntityAINearestAttackableTarget aiEntry, EntityLivingBase target) {
-		ReflectionHelper.setPrivateValue(EntityAINearestAttackableTarget.class, aiEntry, IMob.class, LibObfuscation.TARGET_CLASS);
-		ReflectionHelper.setPrivateValue(EntityAINearestAttackableTarget.class, aiEntry, target, LibObfuscation.TARGET_ENTITY);
+		aiEntry.targetClass = IMob.class;
+		aiEntry.targetEntity = target;
+//		ReflectionHelper.setPrivateValue(EntityAINearestAttackableTarget.class, aiEntry, IMob.class, LibObfuscation.TARGET_CLASS);
+//		ReflectionHelper.setPrivateValue(EntityAINearestAttackableTarget.class, aiEntry, target, LibObfuscation.TARGET_ENTITY);
 	}
 
 	private static void messWithAttackOnCollideAI(EntityAIAttackOnCollide aiEntry) {
-		ReflectionHelper.setPrivateValue(EntityAIAttackOnCollide.class, aiEntry, IMob.class, LibObfuscation.CLASS_TARGET);
+		aiEntry.classTarget = IMob.class;
+//		ReflectionHelper.setPrivateValue(EntityAIAttackOnCollide.class, aiEntry, IMob.class, LibObfuscation.CLASS_TARGET);
 	}
 
 	@Override

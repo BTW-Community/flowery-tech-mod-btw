@@ -39,7 +39,7 @@ public class BlockTerraPlate extends BlockModContainer implements ILexiconable {
 		setBlockBounds(0F, 0F, 0F, 1F, 3F / 16F, 1F);
 		setHardness(3F);
 		setResistance(10F);
-		setStepSound(soundTypeMetal);
+		setStepSound(soundMetalFootstep);
 		setBlockName(LibBlockNames.TERRA_PLATE);
 
 		BotaniaAPI.blacklistBlockFromMagnet(this, Short.MAX_VALUE);
@@ -85,7 +85,7 @@ public class BlockTerraPlate extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		icons = new Icon[3];
 		for(int i = 0; i < icons.length; i++)
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
@@ -98,7 +98,7 @@ public class BlockTerraPlate extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileTerraPlate();
 	}
 

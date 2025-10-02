@@ -15,12 +15,10 @@ import net.minecraft.src.Material;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Icon;
 import net.minecraft.src.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.common.util.RotationHelper;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.client.core.helper.IconHelper;
@@ -35,11 +33,11 @@ public abstract class BlockRedString extends BlockModContainer<TileRedString> im
 	Icon senderIcon;
 	Icon sideIcon;
 
-	public BlockRedString(String name) {
-		super(Material.rock);
+	public BlockRedString(int id, String name) {
+		super(id, Material.rock);
 		setHardness(2.0F);
 		setResistance(10.0F);
-		setStepSound(soundTypeStone);
+		setStepSound(soundStoneFootstep);
 		setBlockName(name);
 	}
 
@@ -49,14 +47,14 @@ public abstract class BlockRedString extends BlockModContainer<TileRedString> im
 		par1World.setBlockMetadataWithNotify(par2, par3, par4, orientation, 1 | 2);
 	}
 
-	@Override
-	public boolean rotateBlock(World worldObj, int x, int y, int z, ForgeDirection axis) {
-		return RotationHelper.rotateVanillaBlock(Blocks.piston, worldObj, x, y, z, axis);
-	}
+//	@Override
+//	public boolean rotateBlock(World worldObj, int x, int y, int z, ForgeDirection axis) {
+//		return RotationHelper.rotateVanillaBlock(Block.piston, worldObj, x, y, z, axis);
+//	}
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		senderIcon = IconHelper.forName(par1IconRegister, "redStringSender");
 		sideIcon = registerSideIcon(par1IconRegister);
 	}

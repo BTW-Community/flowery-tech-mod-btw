@@ -34,31 +34,32 @@ import vazkii.botania.common.block.tile.TileLightRelay;
 import vazkii.botania.common.item.block.ItemBlockWithMetadataAndName;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockLightRelay extends BlockModContainer implements IWandable, ILexiconable {
 
 	public static Icon invIcon, worldIcon, invIconRed, worldIconRed;
 
-	protected BlockLightRelay() {
-		super(Material.glass);
+	protected BlockLightRelay(int id) {
+		super(id, Material.glass);
 		float f = 5F / 16F;
 		setBlockBounds(f, f, f, 1F - f, 1F - f, 1F - f);
-		setBlockName(LibBlockNames.LIGHT_RELAY);
+//		setBlockName(LibBlockNames.LIGHT_RELAY);
 	}
 
-	@Override
+/*	@Override
 	public Block setBlockName(String par1Str) {
 		register(par1Str);
 		return super.setBlockName(par1Str);
-	}
+	}*/
 
 	void register(String name) {
-		GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, name);
+		new ItemBlockWithMetadataAndName(this.blockID, this);
+//		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
+//GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, name);
 	}
 
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List list) {
+	public void getSubBlocks(int item, CreativeTabs tab, List list) {
 		for(int i = 0; i < 2; i++)
 			list.add(new ItemStack(item, 1, i));
 	}
@@ -111,7 +112,7 @@ public class BlockLightRelay extends BlockModContainer implements IWandable, ILe
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		invIcon = IconHelper.forBlock(par1IconRegister, this, 0);
 		worldIcon = IconHelper.forBlock(par1IconRegister, this, 1);
 		invIconRed = IconHelper.forBlock(par1IconRegister, this, 2);
@@ -139,7 +140,7 @@ public class BlockLightRelay extends BlockModContainer implements IWandable, ILe
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileLightRelay();
 	}
 

@@ -27,7 +27,7 @@ import vazkii.botania.common.lib.LibItemNames;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 
 public class ItemKeepIvy extends ItemMod {
 
@@ -39,7 +39,7 @@ public class ItemKeepIvy extends ItemMod {
 
 	public ItemKeepIvy() {
 		setUnlocalizedName(LibItemNames.KEEP_IVY);
-		GameRegistry.addRecipe(new KeepIvyRecipe());
+		CraftingManager.getInstance().getRecipeList().add(new KeepIvyRecipe());
 		RecipeSorter.register("botania:keepIvy", KeepIvyRecipe.class, Category.SHAPELESS, "");
 		MinecraftForge.EVENT_BUS.register(this);
 		FMLCommonHandler.instance().bus().register(this);

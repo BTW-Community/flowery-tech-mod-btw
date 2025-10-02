@@ -27,7 +27,7 @@ import vazkii.botania.common.item.block.ItemBlockMod;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
@@ -37,7 +37,7 @@ public class BlockGhostRail extends BlockRailBase implements ILexiconable {
 
 	public BlockGhostRail() {
 		super(true);
-		setCreativeTab(BotaniaCreativeTab.INSTANCE);
+		setCreativeTab(CreativeTabs.tabMisc);
 		MinecraftForge.EVENT_BUS.register(this);
 		setBlockName(LibBlockNames.GHOST_RAIL);
 	}
@@ -50,7 +50,7 @@ public class BlockGhostRail extends BlockRailBase implements ILexiconable {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		blockIcon = IconHelper.forBlock(par1IconRegister, this);
 	}
 

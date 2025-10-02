@@ -10,15 +10,12 @@
  */
 package vazkii.botania.common.core.command;
 
-import net.minecraft.src.CommandBase;
-import net.minecraft.src.ICommandSender;
-import net.minecraft.src.EntityPlayer;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import net.minecraft.src.*;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.src.IChatComponent;
-import net.minecraft.src.StatCollector;
 
 public class CommandShare extends CommandBase {
-
 	@Override
 	public String getCommandName() {
 		return "botania-share";
@@ -36,7 +33,8 @@ public class CommandShare extends CommandBase {
 		json = json.replaceAll("%entry%", args[0]);
 		json = json.replaceAll("%entryname%", StatCollector.translateToLocal(args[0]));
 
-		IChatComponent component = IChatComponent.Serializer.func_150699_a(json);
+		ChatMessageComponent component = ChatMessageComponent.createFromJson(json);
+		MinecraftServer.getServer().getConfigurationManager().sendChatMsg(component);
 		MinecraftServer.getServer().getConfigurationManager().sendChatMsg(component);
 	}
 

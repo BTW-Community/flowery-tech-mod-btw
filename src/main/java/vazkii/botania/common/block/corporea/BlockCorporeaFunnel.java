@@ -32,11 +32,11 @@ public class BlockCorporeaFunnel extends BlockCorporeaBase implements ILexiconab
 	public BlockCorporeaFunnel() {
 		super(Material.iron, LibBlockNames.CORPOREA_FUNNEL);
 		setHardness(5.5F);
-		setStepSound(soundTypeMetal);
+		setStepSound(soundMetalFootstep);
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		icons = new Icon[2];
 		for(int i = 0; i < icons.length; i++)
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
@@ -61,7 +61,7 @@ public class BlockCorporeaFunnel extends BlockCorporeaBase implements ILexiconab
 	}
 
 	@Override
-	public TileCorporeaBase createNewTileEntity(World world, int meta) {
+	public TileCorporeaBase createNewTileEntityT(World world, int meta) {
 		return new TileCorporeaFunnel();
 	}
 

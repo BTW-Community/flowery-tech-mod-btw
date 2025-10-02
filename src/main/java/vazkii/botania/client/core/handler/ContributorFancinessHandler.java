@@ -17,12 +17,7 @@ import java.util.Map;
 import java.util.Properties;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import net.minecraft.src.Minecraft;
-import net.minecraft.src.ItemRenderer;
-import net.minecraft.src.Tessellator;
-import net.minecraft.src.TextureMap;
-import net.minecraft.src.GameSettings.Options;
-import net.minecraft.src.Icon;
+import net.minecraft.src.*;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 
 import org.lwjgl.opengl.GL11;
@@ -45,7 +40,7 @@ public final class ContributorFancinessHandler {
 	private static boolean phi = true;
 	@SubscribeEvent
 	public static void render(RenderPlayerEvent.Specials event) {
-		String name = event.entityPlayer.getDisplayName();
+		String name = event.entityPlayer.username;
 
 		if(name.equals("Vazkii") || name.equals("_phi")) {
 			if(phi)
@@ -57,7 +52,7 @@ public final class ContributorFancinessHandler {
 		firstStart();
 		
 		name = name.toLowerCase();
-		if(Minecraft.getMinecraft().gameSettings.getOptionOrdinalValue(Options.SHOW_CAPE) && flowerMap != null && flowerMap.containsKey(name))
+		if(Minecraft.getMinecraft().gameSettings.getOptionOrdinalValue(EnumOptions.SHOW_CAPE) && flowerMap != null && flowerMap.containsKey(name))
 			renderFlower(event, flowerMap.get(name));
 	}
 
@@ -77,7 +72,7 @@ public final class ContributorFancinessHandler {
 				int i = Integer.parseInt(value);
 				if(i < 0 || i >= 16)
 					throw new NumberFormatException();
-				flowerMap.put(key, ModBlocks.flower.func_149735_b(0, i));
+				flowerMap.put(key, ModBlocks.flower.getIcon(0, i));
 			} catch(NumberFormatException e) {
 				SubTileSignature sig = BotaniaAPI.getSignatureForName(value);
 				if(sig != null)

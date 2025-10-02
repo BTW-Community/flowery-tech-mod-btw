@@ -20,7 +20,6 @@ import vazkii.botania.client.gui.crafting.ContainerCraftingHalo;
 import vazkii.botania.client.gui.crafting.GuiCraftingHalo;
 import vazkii.botania.client.gui.lexicon.GuiLexicon;
 import vazkii.botania.common.lib.LibGuiIDs;
-import cpw.mods.fml.common.network.IGuiHandler;
 
 public class GuiHandler implements IGuiHandler {
 

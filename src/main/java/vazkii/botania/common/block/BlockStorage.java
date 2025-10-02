@@ -28,7 +28,7 @@ import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.item.block.ItemBlockStorage;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
@@ -42,12 +42,12 @@ public class BlockStorage extends BlockMod implements ILexiconable {
 		super(Material.iron);
 		setHardness(3F);
 		setResistance(10F);
-		setStepSound(soundTypeMetal);
+		setStepSound(soundMetalFootstep);
 		setBlockName(LibBlockNames.STORAGE);
 	}
 
 	@Override
-	public void getSubBlocks(Item par1, CreativeTabs par2, List par3) {
+	public void getSubBlocks(int par1, CreativeTabs par2, List par3) {
 		for(int i = 0; i < SUBTYPES; i++)
 			par3.add(new ItemStack(par1, 1, i));
 	}
@@ -70,7 +70,7 @@ public class BlockStorage extends BlockMod implements ILexiconable {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		icons = new Icon[SUBTYPES];
 		for(int i = 0; i < icons.length; i++)
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);

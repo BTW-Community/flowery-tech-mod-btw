@@ -25,7 +25,7 @@ public class TileOpenCrate extends TileSimpleInventory {
 	}
 
 	@Override
-	public String getInventoryName() {
+	public String getInvName() {
 		return LibBlockNames.OPEN_CRATE;
 	}
 

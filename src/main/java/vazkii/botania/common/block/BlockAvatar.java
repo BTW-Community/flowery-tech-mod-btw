@@ -18,7 +18,6 @@ import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.TileEntity;
@@ -27,7 +26,7 @@ import net.minecraft.src.MathHelper;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.common.util.RotationHelper;
+//import net.minecraftforge.common.util.RotationHelper;
 import vazkii.botania.api.item.IAvatarWieldable;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -43,10 +42,10 @@ public class BlockAvatar extends BlockModContainer implements ILexiconable {
 
 	Random random;
 
-	protected BlockAvatar() {
-		super(Material.wood);
+	protected BlockAvatar(int id) {
+		super(id, Material.wood);
 		setHardness(2.0F);
-		setStepSound(soundTypeWood);
+		setStepSound(soundWoodFootstep);
 		setBlockName(LibBlockNames.AVATAR);
 		setBlockBounds(true);
 
@@ -92,7 +91,7 @@ public class BlockAvatar extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6) {
+	public void breakBlock(World par1World, int par2, int par3, int par4, int block, int par6) {
 		TileSimpleInventory inv = (TileSimpleInventory) par1World.getTileEntity(par2, par3, par4);
 
 		if (inv != null) {
@@ -123,10 +122,10 @@ public class BlockAvatar extends BlockModContainer implements ILexiconable {
 				}
 			}
 
-			par1World.func_147453_f(par2, par3, par4, par5);
+			par1World.func_96440_m(par2, par3, par4, block);
 		}
 
-		super.breakBlock(par1World, par2, par3, par4, par5, par6);
+		super.breakBlock(par1World, par2, par3, par4, block, par6);
 	}
 
 	@Override
@@ -135,13 +134,14 @@ public class BlockAvatar extends BlockModContainer implements ILexiconable {
 		p_149689_1_.setBlockMetadataWithNotify(p_149689_2_, p_149689_3_, p_149689_4_, META_ROTATIONS[l], 2);
 	}
 
-	@Override
+	//todofix rotation
+/*	@Override
 	public boolean rotateBlock(World worldObj, int x, int y, int z, ForgeDirection axis) {
-		return RotationHelper.rotateVanillaBlock(Blocks.furnace, worldObj, x, y, z, axis);
-	}
+		return RotationHelper.rotateVanillaBlock(Block.furnaceIdle, worldObj, x, y, z, axis);
+	}*/
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		// NO-OP
 	}
 
@@ -166,7 +166,7 @@ public class BlockAvatar extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileAvatar();
 	}
 

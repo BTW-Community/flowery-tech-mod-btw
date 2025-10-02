@@ -34,11 +34,11 @@ public class BlockCorporeaInterceptor extends BlockCorporeaBase implements ILexi
 	public BlockCorporeaInterceptor() {
 		super(Material.iron, LibBlockNames.CORPOREA_INTERCEPTOR);
 		setHardness(5.5F);
-		setStepSound(soundTypeMetal);
+		setStepSound(soundMetalFootstep);
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		icons = new Icon[2];
 		for(int i = 0; i < icons.length; i++)
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
@@ -70,7 +70,7 @@ public class BlockCorporeaInterceptor extends BlockCorporeaBase implements ILexi
 	}
 
 	@Override
-	public TileCorporeaBase createNewTileEntity(World world, int meta) {
+	public TileCorporeaBase createNewTileEntityT(World world, int meta) {
 		return new TileCorporeaInterceptor();
 	}
 

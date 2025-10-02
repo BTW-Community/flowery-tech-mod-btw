@@ -15,13 +15,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import net.minecraft.src.*;
 import net.minecraft.src.Block;
-import net.minecraft.src.Block;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.ChunkCoordinates;
-import net.minecraft.src.WeightedRandom;
-import net.minecraftforge.oredict.OreDictionary;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.subtile.RadiusDescriptor;
@@ -67,7 +62,7 @@ public class SubTileOrechid extends SubTileFunctional {
 	}
 
 	public ItemStack getOreToPut() {
-		Collection<WeightedRandom.Item> values = new ArrayList<>();
+		Collection<WeightedRandomItem> values = new ArrayList<>();
 		Map<String, Integer> map = getOreMap();
 		for(String s : map.keySet())
 			values.add(new StringRandomItem(map.get(s), s));
@@ -125,7 +120,7 @@ public class SubTileOrechid extends SubTileFunctional {
 	}
 
 	public Block getSourceBlock() {
-		return Blocks.stone;
+		return Block.stone;
 	}
 
 	public int getCost() {
@@ -161,7 +156,7 @@ public class SubTileOrechid extends SubTileFunctional {
 		return LexiconData.orechid;
 	}
 
-	private static class StringRandomItem extends WeightedRandom.Item {
+	private static class StringRandomItem extends WeightedRandomItem {
 
 		public String s;
 

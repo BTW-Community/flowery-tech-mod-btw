@@ -23,7 +23,7 @@ import vazkii.botania.client.lib.LibResources;
 import vazkii.botania.common.achievement.ModAchievements;
 import vazkii.botania.common.core.BotaniaCreativeTab;
 import vazkii.botania.common.lib.LibItemNames;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
@@ -34,7 +34,7 @@ public class ItemManaCookie extends ItemFood {
 	public ItemManaCookie() {
 		super(0, 0.1F, false);
 		setPotionEffect(Potion.field_76443_y.id, 1,  0, 1F);
-		setCreativeTab(BotaniaCreativeTab.INSTANCE);
+		setCreativeTab(CreativeTabs.tabMisc);
 		setUnlocalizedName(LibItemNames.MANA_COOKIE);
 	}
 

@@ -25,7 +25,7 @@ import vazkii.botania.common.core.BotaniaCreativeTab;
 import vazkii.botania.common.item.block.ItemBlockMod;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
@@ -36,9 +36,9 @@ public class BlockReeds extends BlockRotatedPillar implements ILexiconable {
 	public BlockReeds() {
 		super(Material.wood);
 		setHardness(1.0F);
-		setStepSound(soundTypeWood);
+		setStepSound(soundWoodFootstep);
 		setBlockName(LibBlockNames.REED_BLOCK);
-		setCreativeTab(BotaniaCreativeTab.INSTANCE);
+		setCreativeTab(CreativeTabs.tabMisc);
 	}
 
 
@@ -50,7 +50,7 @@ public class BlockReeds extends BlockRotatedPillar implements ILexiconable {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		blockIcon = IconHelper.forBlock(par1IconRegister, this, 0);
 		topIcon = IconHelper.forBlock(par1IconRegister, this, 1);
 	}

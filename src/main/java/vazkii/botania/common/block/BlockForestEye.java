@@ -32,13 +32,13 @@ public class BlockForestEye extends BlockModContainer implements ILexiconable {
 		super(Material.iron);
 		setHardness(5.0F);
 		setResistance(10.0F);
-		setStepSound(soundTypeMetal);
+		setStepSound(soundMetalFootstep);
 		setBlockBounds(0.25F, 0.25F, 0.25F, 0.75F, 0.75F, 0.75F);
 		setBlockName(LibBlockNames.FOREST_EYE);
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		icons = new Icon[6];
 		for(int i = 0; i < icons.length; i++)
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
@@ -71,7 +71,7 @@ public class BlockForestEye extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileForestEye();
 	}
 

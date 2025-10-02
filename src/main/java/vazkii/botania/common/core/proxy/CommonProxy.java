@@ -86,7 +86,7 @@ import cpw.mods.fml.common.FMLLog;
 
 public class CommonProxy {
 	@SubscribeEvent
-	public void preInit(FMLPreInitializationEvent event) {
+	public void preInit() {
 		BotaniaAPI.internalHandler = new InternalMethodHandler();
 
 //		ConfigHandler.loadConfig(event.getSuggestedConfigurationFile());
@@ -120,7 +120,7 @@ public class CommonProxy {
 		LexiconData.preInit();
 	}
 	@SubscribeEvent
-	public void init(FMLInitializationEvent event) {
+	public void init() {
 		NetworkRegistry.INSTANCE.registerGuiHandler(Botania.instance, new GuiHandler());
 
 		MinecraftForge.TERRAIN_GEN_BUS.register(new BiomeDecorationHandler());
@@ -138,13 +138,13 @@ public class CommonProxy {
 
 		FMLInterModComms.sendMessage("ProjectE", "interdictionblacklist", EntityManaBurst.class.getCanonicalName());
 
-		if(Botania.bcTriggersLoaded)
-			new StatementAPIPlugin();
+//		if(Botania.bcTriggersLoaded)
+//			new StatementAPIPlugin();
 
 		LexiconData.init();
 	}
 	@SubscribeEvent
-	public void postInit(FMLPostInitializationEvent event) {
+	public void postInit() {
 
 		ModBlocks.addDispenserBehaviours();
 		ModBlocks.registerMultiparts();
@@ -192,6 +192,7 @@ public class CommonProxy {
 		BotaniaAPI.blacklistEntityFromGravityRod(EntityPlayerMover.class);
 	}
 
+/*
 	// Overriding the internal method handler will break everything as it changes regularly.
 	// So just don't be a moron and don't override it. Thanks.
 	@SubscribeEvent
@@ -205,14 +206,16 @@ public class CommonProxy {
 					+ " back to elementary school and learn to read. (Expected classname: " + expect + ", Actual classname: " + clname + ")").printStackTrace();
 			FMLCommonHandler.instance().exitJava(1, true);
 		}
-	}
+	}*/
 
-	@SubscribeEvent
-	public void serverStarting(FMLServerStartingEvent event) {
-		event.registerServerCommand(new CommandShare());
-		event.registerServerCommand(new CommandOpen());
-		if(Botania.gardenOfGlassLoaded)
-			event.registerServerCommand(new CommandSkyblockSpread());
+	//todofix server commands
+	@SubscribeEvent //FMLServerStartingEvent event
+	public void serverStarting() {
+//		event.registerServerCommand(new CommandShare());
+//		event.registerServerCommand(new CommandOpen());
+
+/*		if(Botania.gardenOfGlassLoaded)
+			event.registerServerCommand(new CommandSkyblockSpread());*/
 	}
 
 	public void registerNEIStuff() {
@@ -239,9 +242,10 @@ public class CommonProxy {
 		return false;
 	}
 
+	//todofix set extra entity reach
 	public void setExtraReach(EntityLivingBase entity, float reach) {
-		if(entity instanceof EntityPlayerMP)
-			((EntityPlayerMP) entity).theItemInWorldManager.setBlockReachDistance(Math.max(5, ((EntityPlayerMP) entity).theItemInWorldManager.getBlockReachDistance() + reach));
+//		if(entity instanceof EntityPlayerMP)
+//			((EntityPlayerMP) entity).theItemInWorldManager.setBlockReachDistance(Math.max(5, ((EntityPlayerMP) entity).theItemInWorldManager.getBlockReachDistance() + reach));
 	}
 
 	public boolean openWikiPage(World world, Block block, MovingObjectPosition pos) {

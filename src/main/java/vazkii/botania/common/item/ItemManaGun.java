@@ -42,7 +42,7 @@ import vazkii.botania.common.crafting.recipe.ManaGunLensRecipe;
 import vazkii.botania.common.crafting.recipe.ManaGunRemoveLensRecipe;
 import vazkii.botania.common.entity.EntityManaBurst;
 import vazkii.botania.common.lib.LibItemNames;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
@@ -64,9 +64,9 @@ public class ItemManaGun extends ItemMod implements IManaUsingItem {
 		setNoRepair();
 		setUnlocalizedName(LibItemNames.MANA_GUN);
 
-		GameRegistry.addRecipe(new ManaGunLensRecipe());
-		GameRegistry.addRecipe(new ManaGunRemoveLensRecipe());
-		GameRegistry.addRecipe(new ManaGunClipRecipe());
+		CraftingManager.getInstance().getRecipeList().add(new ManaGunLensRecipe());
+		CraftingManager.getInstance().getRecipeList().add(new ManaGunRemoveLensRecipe());
+		CraftingManager.getInstance().getRecipeList().add(new ManaGunClipRecipe());
 		RecipeSorter.register("botania:manaGunLens", ManaGunLensRecipe.class, Category.SHAPELESS, "");
 		RecipeSorter.register("botania:manaGunRemoveLens", ManaGunRemoveLensRecipe.class, Category.SHAPELESS, "");
 		RecipeSorter.register("botania:manaGunClip", ManaGunClipRecipe.class, Category.SHAPELESS, "");

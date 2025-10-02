@@ -10,13 +10,9 @@
  */
 package vazkii.botania.common.core.command;
 
-import net.minecraft.src.CommandBase;
-import net.minecraft.src.ICommandSender;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.ChatComponentTranslation;
-import net.minecraft.src.ChatStyle;
-import net.minecraft.src.EnumChatFormatting;
+import emi.shims.java.net.minecraft.text.Text;
+import emi.shims.java.net.minecraft.util.Formatting;
+import net.minecraft.src.*;
 import vazkii.botania.common.item.ItemLexicon;
 
 public class CommandOpen extends CommandBase {
@@ -33,13 +29,12 @@ public class CommandOpen extends CommandBase {
 
 	@Override
 	public void processCommand(ICommandSender sender, String[] args) {
-		if(sender instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) sender;
-			ItemStack stack = player.getCurrentEquippedItem();
+		if(sender instanceof EntityPlayer player) {
+            ItemStack stack = player.getCurrentEquippedItem();
 			if(stack != null && stack.getItem() instanceof ItemLexicon) {
 				ItemLexicon.setForcedPage(stack, args[0]);
 				ItemLexicon.setQueueTicks(stack, 5);
-			} else sender.addChatMessage(new ChatComponentTranslation("botaniamisc.noLexicon").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.RED)));
+			} else player.sendChatToPlayer(ChatMessageComponent.createFromTranslationKey("botaniamisc.noLexicon").setColor(EnumChatFormatting.RED));
 		}
 	}
 

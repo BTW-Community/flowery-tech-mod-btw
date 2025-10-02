@@ -40,7 +40,7 @@ import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.equipment.tool.ToolCommons;
 import cpw.mods.fml.common.Optional;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
@@ -61,7 +61,7 @@ public class ItemManasteelArmor extends ItemArmor implements ISpecialArmor, IMan
 	public ItemManasteelArmor(int type, String name, ArmorMaterial mat) {
 		super(mat, 0, type);
 		this.type = type;
-		setCreativeTab(BotaniaCreativeTab.INSTANCE);
+		setCreativeTab(CreativeTabs.tabMisc);
 		setUnlocalizedName(name);
 	}
 

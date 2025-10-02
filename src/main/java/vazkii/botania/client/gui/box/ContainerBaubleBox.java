@@ -17,11 +17,11 @@ import net.minecraft.src.Slot;
 import net.minecraft.src.ItemStack;
 import vazkii.botania.api.mana.IManaItem;
 import vazkii.botania.client.gui.SlotLocked;
-//import baubles.api.BaubleType;
-//import baubles.api.IBauble;
-//import baubles.common.container.InventoryBaubles;
-//import baubles.common.container.SlotBauble;
-//import baubles.common.lib.PlayerHandler;
+import baubles.api.BaubleType;
+import baubles.api.IBauble;
+import baubles.common.container.InventoryBaubles;
+import baubles.common.container.SlotBauble;
+import baubles.common.lib.PlayerHandler;
 
 public class ContainerBaubleBox extends Container {
 

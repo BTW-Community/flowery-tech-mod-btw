@@ -20,7 +20,7 @@ import net.minecraft.src.CraftingManager;
 import net.minecraft.src.IRecipe;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.NetworkManager;
-import net.minecraft.src.S35PacketUpdateTileEntity;
+import net.minecraft.src.Packet132TileEntityData;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
 import vazkii.botania.common.item.ModItems;
 
@@ -102,7 +102,7 @@ public class TileCraftCrate extends TileOpenCrate {
 
 		if(newSignal != signal) {
 			signal = newSignal;
-			worldObj.func_147453_f(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
+			worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
 		}
 	}
 
@@ -193,7 +193,7 @@ public class TileCraftCrate extends TileOpenCrate {
 	}
 
 	@Override
-	public void onDataPacket(NetworkManager manager, S35PacketUpdateTileEntity packet) {
+	public void onDataPacket(NetworkManager manager, Packet132TileEntityData packet) {
 		int lastPattern = pattern;
 		super.onDataPacket(manager, packet);
 		if(pattern != lastPattern)

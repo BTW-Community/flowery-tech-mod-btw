@@ -85,7 +85,7 @@ public class TileIncensePlate extends TileSimpleInventory implements ISidedInven
 			newComparator = 2;
 		if(comparatorOutput != newComparator) {
 			comparatorOutput = newComparator;
-			worldObj.func_147453_f(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
+			worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
 		}
 	}
 
@@ -105,7 +105,7 @@ public class TileIncensePlate extends TileSimpleInventory implements ISidedInven
 	}
 
 	@Override
-	public String getInventoryName() {
+	public String getInvName() {
 		return LibBlockNames.INCENSE_PLATE;
 	}
 

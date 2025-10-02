@@ -36,7 +36,7 @@ public class BlockBellows extends BlockModContainer implements ILexiconable {
 	public BlockBellows() {
 		super(Material.wood);
 		setHardness(2.0F);
-		setStepSound(soundTypeWood);
+		setStepSound(soundWoodFootstep);
 		setBlockName(LibBlockNames.BELLOWS);
 
 		float f = (1F - 10 / 16F) / 2F;
@@ -50,7 +50,7 @@ public class BlockBellows extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		// NO-OP
 	}
 
@@ -82,7 +82,7 @@ public class BlockBellows extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileBellows();
 	}
 

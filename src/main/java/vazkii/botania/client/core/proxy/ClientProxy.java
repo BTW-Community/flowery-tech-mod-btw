@@ -167,7 +167,7 @@ public class ClientProxy extends CommonProxy {
 	public static boolean dootDoot = false;
 
 	@Override
-	public void preInit(FMLPreInitializationEvent event) {
+	public void preInit() {
 		PersistentVariableHelper.setCacheFile(new File(Minecraft.getMinecraft().mcDataDir, "BotaniaVars.dat"));
 		try {
 			PersistentVariableHelper.load();
@@ -177,12 +177,12 @@ public class ClientProxy extends CommonProxy {
 			e.printStackTrace();
 		}
 
-		super.preInit(event);
+		super.preInit();
 	}
 
 	@Override
-	public void init(FMLInitializationEvent event) {
-		super.init(event);
+	public void init() {
+		super.init();
 
 		ModChallenges.init();
 
@@ -211,8 +211,8 @@ public class ClientProxy extends CommonProxy {
 	}
 
 	@Override
-	public void postInit(FMLPostInitializationEvent event) {
-		super.postInit(event);
+	public void postInit() {
+		super.postInit();
 		CorporeaAutoCompleteHandler.updateItemList();
 	}
 

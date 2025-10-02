@@ -32,7 +32,7 @@ import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.equipment.tool.ToolCommons;
 import vazkii.botania.common.lib.LibItemNames;
 import cpw.mods.fml.common.eventhandler.Event.Result;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
@@ -46,7 +46,7 @@ public class ItemManasteelShovel extends ItemSpade implements IManaUsingItem, IS
 
 	public ItemManasteelShovel(ToolMaterial mat, String name) {
 		super(mat);
-		setCreativeTab(BotaniaCreativeTab.INSTANCE);
+		setCreativeTab(CreativeTabs.tabMisc);
 		setUnlocalizedName(name);
 	}
 

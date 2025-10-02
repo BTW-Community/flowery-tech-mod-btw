@@ -17,7 +17,7 @@ import net.minecraftforge.oredict.RecipeSorter;
 import net.minecraftforge.oredict.RecipeSorter.Category;
 import vazkii.botania.common.crafting.recipe.SpellClothRecipe;
 import vazkii.botania.common.lib.LibItemNames;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
@@ -29,7 +29,7 @@ public class ItemSpellCloth extends ItemMod {
 		setNoRepair();
 		setUnlocalizedName(LibItemNames.SPELL_CLOTH);
 
-		GameRegistry.addRecipe(new SpellClothRecipe());
+		CraftingManager.getInstance().getRecipeList().add(new SpellClothRecipe());
 		RecipeSorter.register("botania:spellCloth", SpellClothRecipe.class, Category.SHAPELESS, "");
 	}
 

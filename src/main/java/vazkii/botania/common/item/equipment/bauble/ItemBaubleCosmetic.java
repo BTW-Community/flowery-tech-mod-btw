@@ -35,7 +35,7 @@ import vazkii.botania.common.crafting.recipe.CosmeticAttachRecipe;
 import vazkii.botania.common.crafting.recipe.CosmeticRemoveRecipe;
 import vazkii.botania.common.lib.LibItemNames;
 import baubles.api.BaubleType;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 
 public class ItemBaubleCosmetic extends ItemBauble implements ICosmeticBauble {
 
@@ -46,8 +46,8 @@ public class ItemBaubleCosmetic extends ItemBauble implements ICosmeticBauble {
 		super(LibItemNames.COSMETIC);
 		setHasSubtypes(true);
 
-		GameRegistry.addRecipe(new CosmeticAttachRecipe());
-		GameRegistry.addRecipe(new CosmeticRemoveRecipe());
+		CraftingManager.getInstance().getRecipeList().add(new CosmeticAttachRecipe());
+		CraftingManager.getInstance().getRecipeList().add(new CosmeticRemoveRecipe());
 		RecipeSorter.register("botania:cosmeticAttach", CosmeticAttachRecipe.class, Category.SHAPELESS, "");
 		RecipeSorter.register("botania:cosmeticRemove", CosmeticRemoveRecipe.class, Category.SHAPELESS, "");
 	}

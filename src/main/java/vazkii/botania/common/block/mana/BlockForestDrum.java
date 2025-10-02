@@ -14,21 +14,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.Material;
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.EntityLiving;
-import net.minecraft.src.EntityItem;
-import net.minecraft.src.EntityCow;
-import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.*;
 import net.minecraft.src.Item;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.Icon;
-import net.minecraft.src.World;
-import net.minecraftforge.common.IShearable;
 import vazkii.botania.api.internal.IManaBurst;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -39,7 +26,6 @@ import vazkii.botania.common.item.ItemGrassHorn;
 import vazkii.botania.common.item.block.ItemBlockWithMetadataAndName;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockForestDrum extends BlockMod implements IManaTrigger, ILexiconable {
 
@@ -47,13 +33,13 @@ public class BlockForestDrum extends BlockMod implements IManaTrigger, ILexicona
 	Icon iconBasesA, iconFacesA;
 	Icon iconBasesB, iconFacesB;
 
-	public BlockForestDrum() {
-		super(Material.wood);
+	public BlockForestDrum(int id) {
+		super(id, Material.wood);
 		float f = 1F / 16F;
 		setBlockBounds(f * 3, 0F, f * 3, 1F - f * 3, 1F - f * 2, 1F - f * 3);
 
 		setHardness(2.0F);
-		setStepSound(soundTypeWood);
+		setStepSound(soundWoodFootstep);
 		setBlockName(LibBlockNames.FOREST_DRUM);
 	}
 
@@ -64,7 +50,8 @@ public class BlockForestDrum extends BlockMod implements IManaTrigger, ILexicona
 
 	@Override
 	public Block setBlockName(String par1Str) {
-		GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
+		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
+//GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
 		return super.setBlockName(par1Str);
 	}
 
@@ -84,7 +71,7 @@ public class BlockForestDrum extends BlockMod implements IManaTrigger, ILexicona
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		iconBases = IconHelper.forBlock(par1IconRegister, this, 0);
 		iconFaces = IconHelper.forBlock(par1IconRegister, this, 1);
 		iconBasesA = IconHelper.forBlock(par1IconRegister, this, 2);
@@ -94,7 +81,7 @@ public class BlockForestDrum extends BlockMod implements IManaTrigger, ILexicona
 	}
 
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List list) {
+	public void getSubBlocks(int item, CreativeTabs tab, List list) {
 		for(int i = 0; i < 3; i++)
 			list.add(new ItemStack(item, 1, i));
 	}
@@ -122,15 +109,15 @@ public class BlockForestDrum extends BlockMod implements IManaTrigger, ILexicona
 			ItemStack stack = new ItemStack(this, 1, 1);
 
 			for(EntityLiving entity : entities) {
-				if(entity instanceof IShearable && ((IShearable) entity).isShearable(stack, world, (int) entity.posX, (int) entity.posY, (int) entity.posZ)) {
+				if(entity instanceof EntitySheep sheep && !sheep.getSheared(/*stack, world, (int) entity.posX, (int) entity.posY, (int) entity.posZ*/)) {
 					shearables.add(entity);
 				} else if(entity instanceof EntityCow) {
 					List<EntityItem> items = world.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(entity.posX, entity.posY, entity.posZ, entity.posX + entity.width, entity.posY + entity.height, entity.posZ + entity.width));
 					for(EntityItem item : items) {
 						ItemStack itemstack = item.getEntityItem();
-						if(itemstack != null && itemstack.getItem() == Items.bucket && !world.isRemote) {
+						if(itemstack != null && itemstack.getItem() == Item.bucketEmpty && !world.isRemote) {
 							while(itemstack.stackSize > 0) {
-								EntityItem ent = entity.entityDropItem(new ItemStack(Items.milk_bucket), 1.0F);
+								EntityItem ent = entity.entityDropItem(new ItemStack(Item.bucketMilk), 1.0F);
 								ent.motionY += world.rand.nextFloat() * 0.05F;
 								ent.motionX += (world.rand.nextFloat() - world.rand.nextFloat()) * 0.1F;
 								ent.motionZ += (world.rand.nextFloat() - world.rand.nextFloat()) * 0.1F;
@@ -148,8 +135,9 @@ public class BlockForestDrum extends BlockMod implements IManaTrigger, ILexicona
 			for(EntityLiving entity : shearables) {
 				if(sheared > 4)
 					break;
-
-				List<ItemStack> stacks = ((IShearable) entity).onSheared(stack, world, (int) entity.posX, (int) entity.posY, (int) entity.posZ, 0);
+				//todofix shear implementation
+				List<ItemStack> stacks = null;
+//				List<ItemStack> stacks = ((EntitySheep) entity).onSheared(stack, world, (int) entity.posX, (int) entity.posY, (int) entity.posZ, 0);
 				if(stacks != null)
 					for(ItemStack wool : stacks) {
 						EntityItem ent = entity.entityDropItem(wool, 1.0F);

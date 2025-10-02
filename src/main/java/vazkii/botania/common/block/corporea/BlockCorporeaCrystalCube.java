@@ -30,7 +30,7 @@ public class BlockCorporeaCrystalCube extends BlockCorporeaBase implements ILexi
 	public BlockCorporeaCrystalCube() {
 		super(Material.iron, LibBlockNames.CORPOREA_CRYSTAL_CUBE);
 		setHardness(5.5F);
-		setStepSound(soundTypeMetal);
+		setStepSound(soundMetalFootstep);
 		float f = (1F - 10F / 16F) / 2F;
 		setBlockBounds(f, 0F, f, 1F - f, 1F, 1F - f);
 	}
@@ -71,7 +71,7 @@ public class BlockCorporeaCrystalCube extends BlockCorporeaBase implements ILexi
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		// NO-OP
 	}
 
@@ -81,7 +81,7 @@ public class BlockCorporeaCrystalCube extends BlockCorporeaBase implements ILexi
 	}
 
 	@Override
-	public TileCorporeaBase createNewTileEntity(World world, int meta) {
+	public TileCorporeaBase createNewTileEntityT(World world, int meta) {
 		return new TileCorporeaCrystalCube();
 	}
 

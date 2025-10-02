@@ -23,7 +23,6 @@ import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Block;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTTagCompound;
@@ -45,16 +44,15 @@ import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.block.ItemBlockWithMetadataAndName;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockSpreader extends BlockModContainer implements IWandable, IWandHUD, ILexiconable, IWireframeAABBProvider {
 
 	Random random;
 
-	public BlockSpreader() {
-		super(Material.wood);
+	public BlockSpreader(int id) {
+		super(id, Material.wood);
 		setHardness(2.0F);
-		setStepSound(soundTypeWood);
+		setStepSound(soundWoodFootstep);
 		setBlockName(LibBlockNames.SPREADER);
 
 		random = new Random();
@@ -67,17 +65,18 @@ public class BlockSpreader extends BlockModContainer implements IWandable, IWand
 
 	@Override
 	public Block setBlockName(String par1Str) {
-		GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
+		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
+//GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
 		return super.setBlockName(par1Str);
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		// NO-OP
 	}
 
 	@Override
-	public void getSubBlocks(Item par1, CreativeTabs par2, List par3) {
+	public void getSubBlocks(int par1, CreativeTabs par2, List par3) {
 		for(int i = 0; i < 4; i++)
 			par3.add(new ItemStack(par1, 1, i));
 	}
@@ -137,14 +136,13 @@ public class BlockSpreader extends BlockModContainer implements IWandable, IWand
 	@Override
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
 		TileEntity tile = par1World.getTileEntity(par2, par3, par4);
-		if(!(tile instanceof TileSpreader))
+		if(!(tile instanceof TileSpreader spreader))
 			return false;
 
-		TileSpreader spreader = (TileSpreader) tile;
-		ItemStack lens = spreader.getStackInSlot(0);
+        ItemStack lens = spreader.getStackInSlot(0);
 		ItemStack heldItem = par5EntityPlayer.getCurrentEquippedItem();
 		boolean isHeldItemLens = heldItem != null && heldItem.getItem() instanceof ILens;
-		boolean wool = heldItem != null && heldItem.getItem() == Item.getItemFromBlock(Blocks.wool);
+		boolean wool = heldItem != null && heldItem.getItem() == new ItemStack(Block.cloth).getItem();
 
 		if(heldItem != null)
 			if(heldItem.getItem() == ModItems.twigWand)
@@ -170,7 +168,7 @@ public class BlockSpreader extends BlockModContainer implements IWandable, IWand
 			if(heldItem.stackSize == 0)
 				par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, null);
 		} else if(heldItem == null && spreader.paddingColor != -1 && lens == null) {
-			ItemStack pad = new ItemStack(Blocks.wool, 1, spreader.paddingColor);
+			ItemStack pad = new ItemStack(Block.cloth, 1, spreader.paddingColor);
 			if(!par5EntityPlayer.inventory.addItemStackToInventory(pad))
 				par5EntityPlayer.dropPlayerItemWithRandomChoice(pad, false);
 			spreader.paddingColor = -1;
@@ -181,7 +179,7 @@ public class BlockSpreader extends BlockModContainer implements IWandable, IWand
 	}
 
 	@Override
-	public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6) {
+	public void breakBlock(World par1World, int par2, int par3, int par4, int block, int par6) {
 		TileEntity tile = par1World.getTileEntity(par2, par3, par4);
 		if(!(tile instanceof TileSpreader))
 			return;
@@ -190,7 +188,7 @@ public class BlockSpreader extends BlockModContainer implements IWandable, IWand
 
 		if (inv != null) {
 			for (int j1 = 0; j1 < inv.getSizeInventory() + 1; ++j1) {
-				ItemStack itemstack = j1 >= inv.getSizeInventory() ? inv.paddingColor == -1 ? null : new ItemStack(Blocks.wool, 1, inv.paddingColor) : inv.getStackInSlot(j1);
+				ItemStack itemstack = j1 >= inv.getSizeInventory() ? inv.paddingColor == -1 ? null : new ItemStack(Block.cloth, 1, inv.paddingColor) : inv.getStackInSlot(j1);
 
 				if(itemstack != null) {
 					float f = random.nextFloat() * 0.8F + 0.1F;
@@ -216,10 +214,10 @@ public class BlockSpreader extends BlockModContainer implements IWandable, IWand
 				}
 			}
 
-			par1World.func_147453_f(par2, par3, par4, par5);
+			par1World.func_96440_m(par2, par3, par4, block);
 		}
 
-		super.breakBlock(par1World, par2, par3, par4, par5, par6);
+		super.breakBlock(par1World, par2, par3, par4, block, par6);
 	}
 
 	@Override
@@ -229,7 +227,7 @@ public class BlockSpreader extends BlockModContainer implements IWandable, IWand
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileSpreader();
 	}
 

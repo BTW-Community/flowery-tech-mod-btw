@@ -15,7 +15,7 @@ import java.util.List;
 
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.SharedMonsterAttributes;
-import net.minecraft.src.ai.attributes.AttributeModifier;
+import net.minecraft.src.AttributeModifier;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.DamageSource;

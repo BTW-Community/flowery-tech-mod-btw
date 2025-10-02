@@ -31,7 +31,7 @@ import vazkii.botania.common.core.helper.Vector3;
 import vazkii.botania.common.item.block.ItemBlockWithMetadataAndName;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 
 public class BlockUnstable extends BlockMod implements ILexiconable {
 
@@ -39,20 +39,21 @@ public class BlockUnstable extends BlockMod implements ILexiconable {
 		super(Material.iron);
 		setHardness(5.0F);
 		setResistance(10.0F);
-		setStepSound(soundTypeMetal);
+		setStepSound(soundMetalFootstep);
 		setBlockBounds(0.25F, 0.25F, 0.25F, 0.75F, 0.75F, 0.75F);
 		setBlockName(LibBlockNames.UNSTABLE_BLOCK);
 	}
 
 	@Override
-	public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
+	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
 		for(int i = 0; i < 16; i++)
 			par3List.add(new ItemStack(par1, 1, i));
 	}
 
 	@Override
 	public Block setBlockName(String par1Str) {
-		GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
+		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
+//GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
 		return super.setBlockName(par1Str);
 	}
 

@@ -11,7 +11,7 @@ public class BlockLivingrockSlab extends BlockLivingSlab {
 		super(full, ModBlocks.livingrock, 0);
 		setHardness(2.0F);
 		setResistance(10.0F);
-		setStepSound(soundTypeStone);
+		setStepSound(soundStoneFootstep);
 	}
 
 	@Override

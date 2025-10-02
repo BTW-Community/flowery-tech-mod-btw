@@ -23,8 +23,8 @@ import vazkii.botania.common.achievement.IPickupAchievement;
 
 public class ItemBlockWithMetadataAndName extends ItemBlockWithMetadata implements IPickupAchievement, ICraftAchievement {
 
-	public ItemBlockWithMetadataAndName(Block par2Block) {
-		super(par2Block, par2Block);
+	public ItemBlockWithMetadataAndName(int id, Block par2Block) {
+		super(id, par2Block);
 	}
 
 	@Override
@@ -39,12 +39,12 @@ public class ItemBlockWithMetadataAndName extends ItemBlockWithMetadata implemen
 
 	@Override
 	public Achievement getAchievementOnCraft(ItemStack stack, EntityPlayer player, IInventory matrix) {
-		return field_150939_a instanceof ICraftAchievement ? ((ICraftAchievement) field_150939_a).getAchievementOnCraft(stack, player, matrix) : null;
+		return Block.blocksList[blockID] instanceof ICraftAchievement ca ? ca.getAchievementOnCraft(stack, player, matrix) : null;
 	}
 
 	@Override
 	public Achievement getAchievementOnPickup(ItemStack stack, EntityPlayer player, EntityItem item) {
-		return field_150939_a instanceof IPickupAchievement ? ((IPickupAchievement) field_150939_a).getAchievementOnPickup(stack, player, item) : null;
+		return Block.blocksList[blockID] instanceof IPickupAchievement pa ? pa.getAchievementOnPickup(stack, player, item) : null;
 	}
 
 }

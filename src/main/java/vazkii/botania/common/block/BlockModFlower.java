@@ -15,7 +15,6 @@ import java.util.Random;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.BlockFlower;
-import net.minecraft.src.IGrowable;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EntityItem;
@@ -38,11 +37,11 @@ import vazkii.botania.common.core.handler.ConfigHandler;
 import vazkii.botania.common.item.block.ItemBlockWithMetadataAndName;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
-public class BlockModFlower extends BlockFlower implements ILexiconable, IPickupAchievement, IGrowable {
+public class BlockModFlower extends BlockFlower implements ILexiconable, IPickupAchievement {
 
 	public static Icon[] icons;
 	public static Icon[] iconsAlt;
@@ -51,18 +50,18 @@ public class BlockModFlower extends BlockFlower implements ILexiconable, IPickup
 
 	public static final String ALT_DIR = "alt";
 
-	protected BlockModFlower() {
-		this(LibBlockNames.FLOWER);
+	protected BlockModFlower(int id) {
+		this(id, LibBlockNames.FLOWER);
 	}
 
-	protected BlockModFlower(String name) {
-		super(0);
+	protected BlockModFlower(int id, String name) {
+		super(id);
 		setBlockName(name);
 		setHardness(0F);
-		setStepSound(soundTypeGrass);
+		setStepSound(soundGrassFootstep);
 		setBlockBounds(0.3F, 0.0F, 0.3F, 0.8F, 1, 0.8F);
 		setTickRandomly(false);
-		setCreativeTab(registerInCreative() ? BotaniaCreativeTab.INSTANCE : null);
+		setCreativeTab(registerInCreative() ? CreativeTabs.tabMisc/*BotaniaCreativeTab.INSTANCE*/ : null);
 	}
 
 	public boolean registerInCreative() {
@@ -70,20 +69,21 @@ public class BlockModFlower extends BlockFlower implements ILexiconable, IPickup
 	}
 
 	@Override
-	public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
+	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
 		for(int i = 0; i < 16; i++)
 			par3List.add(new ItemStack(par1, 1, i));
 	}
 
-	@Override
+//	@Override
 	public Block setBlockName(String par1Str) {
-		GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
-		return super.setBlockName(par1Str);
+		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
+//GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
+		return this/*super.setBlockName(par1Str)*/;
 	}
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		icons = new Icon[17];
 		iconsAlt = new Icon[17];
 
@@ -94,9 +94,9 @@ public class BlockModFlower extends BlockFlower implements ILexiconable, IPickup
 	}
 
 	@Override
-	public Block setLightLevel(float p_149715_1_) {
+	public Block setLightValue(float p_149715_1_) {
 		originalLight = (int) (p_149715_1_ * 15);
-		return super.setLightLevel(p_149715_1_);
+		return super.setLightValue(p_149715_1_);
 	}
 
 	@Override
@@ -132,8 +132,8 @@ public class BlockModFlower extends BlockFlower implements ILexiconable, IPickup
 	public Achievement getAchievementOnPickup(ItemStack stack, EntityPlayer player, EntityItem item) {
 		return ModAchievements.flowerPickup;
 	}
-
-	@Override
+	//todofix bonemeal support for flower
+/*	@Override
 	public boolean func_149851_a(World world, int x, int y, int z, boolean fuckifiknow) {
 		return world.isAirBlock(x, y + 1, z);
 	}
@@ -147,7 +147,7 @@ public class BlockModFlower extends BlockFlower implements ILexiconable, IPickup
 	public void func_149853_b(World world, Random rand, int x, int y, int z) {
 		int meta = world.getBlockMetadata(x, y, z);
 		placeDoubleFlower(world, x, y, z, meta, 1 | 2);
-	}
+	}*/
 
 	public static void placeDoubleFlower(World world, int x, int y, int z, int meta, int flags) {
 		Block flower = meta >= 8 ? ModBlocks.doubleFlower2 : ModBlocks.doubleFlower1;

@@ -43,7 +43,7 @@ public class BlockFelPumpkin extends BlockMod implements ILexiconable {
 		super(Material.gourd);
 		setBlockName(LibBlockNames.FEL_PUMPKIN);
 		setHardness(1F);
-		setStepSound(soundTypeWood);
+		setStepSound(soundWoodFootstep);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
@@ -79,7 +79,7 @@ public class BlockFelPumpkin extends BlockMod implements ILexiconable {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerBlockIcons(IconRegister p_149651_1_)  {
+	public void registerIcons(IconRegister p_149651_1_)  {
 		face = IconHelper.forBlock(p_149651_1_, this);
 		top = Blocks.pumpkin.getIcon(0, 0);
 		blockIcon = Blocks.pumpkin.getIcon(2, 0);

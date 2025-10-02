@@ -70,7 +70,7 @@ public abstract class BlockCorporeaBase extends BlockModContainer<TileCorporeaBa
 				}
 			}
 
-			par1World.func_147453_f(par2, par3, par4, par5);
+			par1World.func_96440_m(par2, par3, par4, par5);
 		}
 
 		super.breakBlock(par1World, par2, par3, par4, par5, par6);

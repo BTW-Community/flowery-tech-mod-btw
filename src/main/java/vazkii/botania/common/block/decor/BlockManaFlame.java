@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import net.minecraft.src.Material;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Block;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
@@ -41,7 +40,7 @@ public class BlockManaFlame extends BlockModContainer implements ILexiconable {
 		float f = 0.25F;
 		setStepSound(soundTypeCloth);
 		setBlockBounds(f, f, f, 1F - f, 1F - f, 1F - f);
-		setLightLevel(1F);
+		setLightValue(1F);
 	}
 
 	@Override
@@ -56,7 +55,7 @@ public class BlockManaFlame extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		// NO-OP
 	}
 
@@ -112,7 +111,7 @@ public class BlockManaFlame extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileManaFlame();
 	}
 

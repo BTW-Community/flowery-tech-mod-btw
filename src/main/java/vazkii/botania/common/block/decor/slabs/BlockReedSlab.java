@@ -24,7 +24,7 @@ public class BlockReedSlab extends BlockLivingSlab {
 	public BlockReedSlab(boolean full) {
 		super(full, ModBlocks.reedBlock, 0);
 		setHardness(1.0F);
-		setStepSound(soundTypeWood);
+		setStepSound(soundWoodFootstep);
 	}
 
 	@Override

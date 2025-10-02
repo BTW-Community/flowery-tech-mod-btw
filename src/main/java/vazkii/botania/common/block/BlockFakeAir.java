@@ -16,7 +16,6 @@ import java.util.Random;
 import net.minecraft.src.Block;
 import net.minecraft.src.Material;
 import net.minecraft.src.Entity;
-import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.AxisAlignedBB;
@@ -107,7 +106,7 @@ public class BlockFakeAir extends BlockModContainer {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileFakeAir();
 	}
 

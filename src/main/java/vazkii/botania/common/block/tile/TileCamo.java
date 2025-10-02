@@ -11,12 +11,12 @@
 package vazkii.botania.common.block.tile;
 
 
+import btw.block.tileentity.TileEntityDataPacketHandler;
 import net.minecraft.src.Block;
 import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.NetworkManager;
-import net.minecraft.src.S35PacketUpdateTileEntity;
+import net.minecraft.src.Packet132TileEntityData;
 
-public class TileCamo extends TileMod {
+public class TileCamo extends TileMod implements TileEntityDataPacketHandler {
 
 	private static final String TAG_CAMO = "camo";
 	private static final String TAG_CAMO_META = "camoMeta";
@@ -24,28 +24,34 @@ public class TileCamo extends TileMod {
 	public Block camo;
 	public int camoMeta;
 
-	@Override
-	public boolean canUpdate() {
-		return false;
-	}
+//	@Override
+//	public boolean canUpdate() {
+//		return false;
+//	}
 
 	@Override
 	public void writeCustomNBT(NBTTagCompound cmp) {
 		if(camo != null) {
-			cmp.setString(TAG_CAMO, Block.blockRegistry.getNameForObject(camo));
+			cmp.setInteger(TAG_CAMO, camo.blockID);
 			cmp.setInteger(TAG_CAMO_META, camoMeta);
 		}
 	}
 
 	@Override
 	public void readCustomNBT(NBTTagCompound cmp) {
-		camo = Block.getBlockFromName(cmp.getString(TAG_CAMO));
+		camo = Block.blocksList[cmp.getInteger(TAG_CAMO)];
 		camoMeta = cmp.getInteger(TAG_CAMO_META);
 	}
 
 	@Override
-	public void onDataPacket(NetworkManager manager, S35PacketUpdateTileEntity packet) {
-		super.onDataPacket(manager, packet);
+	public void readNBTFromPacket(NBTTagCompound tag) {
+		super.readNBTFromPacket(tag);
 		worldObj.markBlockRangeForRenderUpdate(xCoord,yCoord,zCoord,xCoord,yCoord,zCoord);
 	}
+/*
+	@Override
+	public void onDataPacket(NetworkManager manager, Packet132TileEntityData packet) {
+		super.onDataPacket(manager, packet);
+		worldObj.markBlockRangeForRenderUpdate(xCoord,yCoord,zCoord,xCoord,yCoord,zCoord);
+	}*/
 }

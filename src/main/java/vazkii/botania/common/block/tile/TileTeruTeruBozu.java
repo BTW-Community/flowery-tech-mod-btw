@@ -21,7 +21,7 @@ public class TileTeruTeruBozu extends TileMod {
 			worldObj.getWorldInfo().setRaining(false);
 
 		if(wasRaining != isRaining)
-			worldObj.func_147453_f(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
+			worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
 		wasRaining = isRaining;
 	}
 

@@ -35,12 +35,12 @@ public class BlockAlfPortal extends BlockModContainer implements IWandable, ILex
 	public BlockAlfPortal() {
 		super(Material.wood);
 		setHardness(10F);
-		setStepSound(soundTypeWood);
+		setStepSound(soundWoodFootstep);
 		setBlockName(LibBlockNames.ALF_PORTAL);
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		iconOff = IconHelper.forBlock(par1IconRegister, this, 0);
 		iconOn = IconHelper.forBlock(par1IconRegister, this, 1);
 		portalTex = IconHelper.forBlock(par1IconRegister, this, "Inside");
@@ -52,7 +52,7 @@ public class BlockAlfPortal extends BlockModContainer implements IWandable, ILex
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileAlfPortal();
 	}
 

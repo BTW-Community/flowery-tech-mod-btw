@@ -33,7 +33,7 @@ public class BlockShimmerwoodPlanks  extends BlockMod implements ILexiconable {
 	public BlockShimmerwoodPlanks() {
 		super(Material.wood);
 		setHardness(2.0F);
-		setStepSound(soundTypeWood);
+		setStepSound(soundWoodFootstep);
 		setBlockName(LibBlockNames.SHIMMERWOOD_PLANKS);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
@@ -50,7 +50,7 @@ public class BlockShimmerwoodPlanks  extends BlockMod implements ILexiconable {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		// NO-OP
 	}
 

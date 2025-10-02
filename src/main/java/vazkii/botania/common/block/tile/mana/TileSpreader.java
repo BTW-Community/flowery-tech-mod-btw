@@ -22,7 +22,7 @@ import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EntityPlayerMP;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.S35PacketUpdateTileEntity;
+import net.minecraft.src.Packet132TileEntityData;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.ChunkCoordinates;
@@ -371,7 +371,7 @@ public class TileSpreader extends TileSimpleInventory implements IManaCollector,
 				writeCustomNBT(nbttagcompound);
 				nbttagcompound.setInteger(TAG_KNOWN_MANA, mana);
 				if(player instanceof EntityPlayerMP)
-					((EntityPlayerMP) player).playerNetServerHandler.sendPacket(new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, -999, nbttagcompound));
+					((EntityPlayerMP) player).playerNetServerHandler.sendPacket(new Packet132TileEntityData(xCoord, yCoord, zCoord, -999, nbttagcompound));
 			}
 			worldObj.playSoundAtEntity(player, "botania:ding", 0.1F, 1F);
 		} else {
@@ -603,7 +603,7 @@ public class TileSpreader extends TileSimpleInventory implements IManaCollector,
 	}
 
 	@Override
-	public String getInventoryName() {
+	public String getInvName() {
 		return LibBlockNames.SPREADER;
 	}
 

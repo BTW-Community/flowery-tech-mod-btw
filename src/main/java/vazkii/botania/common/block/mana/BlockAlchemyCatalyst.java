@@ -37,12 +37,12 @@ public class BlockAlchemyCatalyst extends BlockMod implements ILexiconable, IPoo
 		super(Material.rock);
 		setHardness(2.0F);
 		setResistance(10.0F);
-		setStepSound(Block.soundTypeStone);
+		setStepSound(Block.soundStoneFootstep);
 		setBlockName(name);
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		icons = new Icon[4];
 		for(int i = 0; i < icons.length; i++)
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);

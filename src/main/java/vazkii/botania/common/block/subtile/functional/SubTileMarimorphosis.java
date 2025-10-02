@@ -18,8 +18,6 @@ import net.minecraft.src.Block;
 import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.ChunkCoordinates;
-import net.minecraftforge.common.BiomeDictionary;
-import net.minecraftforge.common.BiomeDictionary.Type;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.SubTileFunctional;
@@ -27,6 +25,7 @@ import vazkii.botania.common.block.ModFluffBlocks;
 import vazkii.botania.common.core.handler.ConfigHandler;
 import vazkii.botania.common.lexicon.LexiconData;
 
+//todofix rock types
 public class SubTileMarimorphosis extends SubTileFunctional {
 
 	private static final int COST = 12;

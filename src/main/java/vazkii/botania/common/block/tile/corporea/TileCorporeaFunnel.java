@@ -80,7 +80,7 @@ public class TileCorporeaFunnel extends TileCorporeaBase implements ICorporeaReq
 	}
 
 	@Override
-	public String getInventoryName() {
+	public String getInvName() {
 		return LibBlockNames.CORPOREA_FUNNEL;
 	}
 

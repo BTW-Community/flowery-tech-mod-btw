@@ -17,7 +17,7 @@ public class BlockReedWall extends BlockModWall {
 	public BlockReedWall() {
 		super(ModBlocks.reedBlock, 0);
 		setHardness(1.0F);
-		setStepSound(soundTypeWood);
+		setStepSound(soundWoodFootstep);
 	}
 
 }

@@ -12,25 +12,8 @@ package vazkii.botania.client.core.handler;
 
 import java.awt.Color;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.BlockLiquid;
-import net.minecraft.src.Minecraft;
-import net.minecraft.src.FontRenderer;
-import net.minecraft.src.Gui;
-import net.minecraft.src.GuiChat;
-import net.minecraft.src.GuiIngame;
-import net.minecraft.src.ScaledResolution;
-import net.minecraft.src.RenderItem;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.IInventory;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.Profiler;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.EnumChatFormatting;
-import net.minecraft.src.MovingObjectPosition;
-import net.minecraft.src.ResourceLocation;
-import net.minecraft.src.StatCollector;
+import dev.bagel.client.RenderInstances;
+import net.minecraft.src.*;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 
@@ -68,7 +51,6 @@ import vazkii.botania.common.lib.LibObfuscation;
 import baubles.common.lib.PlayerHandler;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.relauncher.ReflectionHelper;
 
 public final class HUDHandler {
 
@@ -221,7 +203,7 @@ public final class HUDHandler {
 		Profiler profiler = mc.mcProfiler;
 
 		profiler.startSection("wandMode");
-		int ticks = ReflectionHelper.getPrivateValue(GuiIngame.class, mc.ingameGUI, LibObfuscation.REMAINING_HIGHLIGHT_TICKS);
+		int ticks = mc.ingameGUI.remainingHighlightTicks;
 		ticks -= 15;
 		if(ticks > 0) {
 			int alpha = Math.min(255, (int) (ticks * 256.0F / 10.0F));
@@ -288,11 +270,11 @@ public final class HUDHandler {
 					RenderHelper.drawTexturedModalRect(x, y, 0, u, v, 22, 15);
 					GL11.glColor4f(1F, 1F, 1F, 1F);
 
-					net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
+					net.minecraft.src.RenderHelper.enableGUIStandardItemLighting();
 					RenderInstances.getItemInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, stack, x - 20, y);
 					RenderInstances.getItemInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, recipe.getOutput(), x + 26, y);
 					RenderInstances.getItemInstance().renderItemOverlayIntoGUI(mc.fontRenderer, mc.renderEngine, recipe.getOutput(), x + 26, y);
-					net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
+					net.minecraft.src.RenderHelper.disableStandardItemLighting();
 
 					GL11.glDisable(GL11.GL_LIGHTING);
 					GL11.glDisable(GL11.GL_BLEND);
@@ -321,10 +303,10 @@ public final class HUDHandler {
 
 			mc.fontRenderer.drawStringWithShadow(target.getDisplayName(), w / 2 + 30, h / 2 - 10, 0x6666FF);
 			mc.fontRenderer.drawStringWithShadow(tile.getItemCount() + "x", w / 2 + 30, h / 2, 0xFFFFFF);
-			net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
+			net.minecraft.src.RenderHelper.enableGUIStandardItemLighting();
 			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 			RenderInstances.getItemInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, target, w / 2 + 10, h / 2 - 10);
-			net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
+			net.minecraft.src.RenderHelper.disableStandardItemLighting();
 		}
 
 		profiler.endSection();
@@ -359,7 +341,7 @@ public final class HUDHandler {
 
 		if(!draw && pos.entityHit == null) {
 			profiler.startSection("wikiLookup");
-			if(!block.isAir(mc.theWorld, pos.blockX, pos.blockY, pos.blockZ) && !(block instanceof BlockLiquid)) {
+			if(!block.isAir(mc.theWorld, pos.blockX, pos.blockY, pos.blockZ) && !(block instanceof BlockFluid)) {
 				IWikiProvider provider = WikiHooks.getWikiFor(block);
 				String url = provider.getWikiURL(mc.theWorld, pos);
 				if(url != null && !url.isEmpty()) {
@@ -408,10 +390,10 @@ public final class HUDHandler {
 
 		Gui.drawRect(x - 6, y - 6, x + l + 6, y + 37, 0x44000000);
 		Gui.drawRect(x - 4, y - 4, x + l + 4, y + 35, 0x44000000);
-		net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
+		net.minecraft.src.RenderHelper.enableGUIStandardItemLighting();
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 		RenderInstances.getItemInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, new ItemStack(ModBlocks.corporeaIndex), x, y + 10);
-		net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
+		net.minecraft.src.RenderHelper.disableStandardItemLighting();
 
 		mc.fontRenderer.drawStringWithShadow(txt0, x + 20, y, 0xFFFFFF);
 		mc.fontRenderer.drawStringWithShadow(txt1, x + 20, y + 14, 0xFFFFFF);
@@ -450,10 +432,10 @@ public final class HUDHandler {
 		int x = res.getScaledWidth() / 2 + 55;
 		int y = res.getScaledHeight() / 2 + 12;
 
-		net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
+		net.minecraft.src.RenderHelper.enableGUIStandardItemLighting();
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 		RenderInstances.getItemInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, bindDisplay, x, y);
-		net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
+		net.minecraft.src.RenderHelper.disableStandardItemLighting();
 
 		GL11.glDisable(GL11.GL_DEPTH_TEST);
 		if(properlyBound) {

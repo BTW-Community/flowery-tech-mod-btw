@@ -25,7 +25,7 @@ public class BlockThatch extends BlockMod implements ILexiconable {
 	public BlockThatch() {
 		super(Material.grass);
 		setHardness(1.0F);
-		setStepSound(soundTypeGrass);
+		setStepSound(soundGrassFootstep);
 		setBlockName(LibBlockNames.THATCH);
 	}
 

@@ -37,7 +37,7 @@ public class BlockLightLauncher extends BlockMod implements ILexiconable {
 	public BlockLightLauncher() {
 		super(Material.wood);
 		setHardness(2.0F);
-		setStepSound(soundTypeWood);
+		setStepSound(soundWoodFootstep);
 		setBlockName(LibBlockNames.LIGHT_LAUNCHER);
 		setBlockBounds(0F, 0F, 0F, 1F, 0.25F, 1F);
 	}

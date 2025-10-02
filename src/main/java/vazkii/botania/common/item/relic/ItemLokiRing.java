@@ -157,7 +157,7 @@ public class ItemLokiRing extends ItemRelicBauble implements IExtendedWireframeC
 			int zp = z + coords.posZ;
 			Block block = world.getBlock(xp, yp, zp);
 			breaker.breakOtherBlock(player, stack, xp, yp, zp, x, y, z, side);
-			ToolCommons.removeBlockWithDrops(player, stack, player.worldObj, xp, yp, zp, x, y, z, block, new Material[] { block.getMaterial() }, silk, fortune, block.getBlockHardness(world, xp, yp, zp), dispose);
+			ToolCommons.removeBlockWithDrops(player, stack, player.worldObj, xp, yp, zp, x, y, z, block, new Material[] { block.blockMaterial }, silk, fortune, block.getBlockHardness(world, xp, yp, zp), dispose);
 		}
 	}
 

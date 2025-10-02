@@ -33,7 +33,7 @@ public class BlockBifrostPerm extends BlockMod implements ILexiconable {
 		setBlockName(LibBlockNames.BIFROST_PERM);
 		setLightOpacity(0);
 		setHardness(0.3F);
-		setLightLevel(1F);
+		setLightValue(1F);
 		setStepSound(soundTypeGlass);
 		setTickRandomly(true);
 	}
@@ -44,7 +44,7 @@ public class BlockBifrostPerm extends BlockMod implements ILexiconable {
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		// NO-OP
 	}
 

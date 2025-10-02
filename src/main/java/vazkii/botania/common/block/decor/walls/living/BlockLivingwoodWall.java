@@ -18,7 +18,7 @@ public class BlockLivingwoodWall extends BlockModWall {
 	public BlockLivingwoodWall() {
 		super(ModBlocks.livingwood, 0);
 		setHardness(2.0F);
-		setStepSound(soundTypeWood);
+		setStepSound(soundWoodFootstep);
 	}
 
 }

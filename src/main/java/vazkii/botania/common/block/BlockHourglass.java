@@ -12,20 +12,7 @@ package vazkii.botania.common.block;
 
 import java.util.Random;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.Material;
-import net.minecraft.src.Minecraft;
-import net.minecraft.src.ScaledResolution;
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.EntityItem;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.ChatComponentTranslation;
-import net.minecraft.src.Icon;
-import net.minecraft.src.IBlockAccess;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import vazkii.botania.api.internal.IManaBurst;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
 import vazkii.botania.api.lexicon.ILexiconable;
@@ -44,11 +31,11 @@ public class BlockHourglass extends BlockModContainer implements IManaTrigger, I
 
 	Random random;
 
-	protected BlockHourglass() {
-		super(Material.iron);
+	protected BlockHourglass(int id) {
+		super(id, Material.iron);
 		setBlockName(LibBlockNames.HOURGLASS);
 		setHardness(2.0F);
-		setStepSound(soundTypeMetal);
+		setStepSound(soundMetalFootstep);
 
 		float f = 1F / 16F;
 		float w = 8F * f;
@@ -68,7 +55,7 @@ public class BlockHourglass extends BlockModContainer implements IManaTrigger, I
 
 		if(hourglass.lock) {
 			if(!player.worldObj.isRemote)
-				player.addChatMessage(new ChatComponentTranslation("botaniamisc.hourglassLock"));
+				player.addChatMessage(StatCollector.translateToLocal("botaniamisc.hourglassLock"));
 			return true;
 		}
 
@@ -110,7 +97,7 @@ public class BlockHourglass extends BlockModContainer implements IManaTrigger, I
 	}
 
 	@Override
-	public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6) {
+	public void breakBlock(World par1World, int par2, int par3, int par4, int block, int par6) {
 		TileSimpleInventory inv = (TileSimpleInventory) par1World.getTileEntity(par2, par3, par4);
 
 		if (inv != null) {
@@ -141,14 +128,14 @@ public class BlockHourglass extends BlockModContainer implements IManaTrigger, I
 				}
 			}
 
-			par1World.func_147453_f(par2, par3, par4, par5);
+			par1World.func_96440_m(par2, par3, par4, block);
 		}
 
-		super.breakBlock(par1World, par2, par3, par4, par5, par6);
+		super.breakBlock(par1World, par2, par3, par4, block, par6);
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		// NO-OP
 	}
 
@@ -173,7 +160,7 @@ public class BlockHourglass extends BlockModContainer implements IManaTrigger, I
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileHourglass();
 	}
 

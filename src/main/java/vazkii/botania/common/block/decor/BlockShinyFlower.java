@@ -27,15 +27,14 @@ import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 import cpw.mods.fml.common.Optional;
 
-@Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.crafting.IInfusionStabiliser", striprefs = true)
-public class BlockShinyFlower extends BlockModFlower implements IInfusionStabiliser, IHornHarvestable {
+public class BlockShinyFlower extends BlockModFlower implements IHornHarvestable {
 
 	private static Icon[] icons;
 	private static Icon[] iconsAlt;
 
 	public BlockShinyFlower() {
 		super(LibBlockNames.SHINY_FLOWER);
-		setLightLevel(1F);
+		setLightValue(1F);
 	}
 
 	@Override
@@ -45,7 +44,7 @@ public class BlockShinyFlower extends BlockModFlower implements IInfusionStabili
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister register) {
+	public void registerIcons(IconRegister register) {
 		icons = new Icon[16];
 		iconsAlt = new Icon[16];
 		for(int i = 0; i < 16; i++) {

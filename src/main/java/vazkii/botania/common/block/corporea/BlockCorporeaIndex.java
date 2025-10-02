@@ -30,7 +30,7 @@ public class BlockCorporeaIndex extends BlockCorporeaBase implements ILexiconabl
 	public BlockCorporeaIndex() {
 		super(Material.iron, LibBlockNames.CORPOREA_INDEX);
 		setHardness(5.5F);
-		setStepSound(soundTypeMetal);
+		setStepSound(soundMetalFootstep);
 	}
 
 	@Override
@@ -44,7 +44,7 @@ public class BlockCorporeaIndex extends BlockCorporeaBase implements ILexiconabl
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		// NO-OP
 	}
 
@@ -59,7 +59,7 @@ public class BlockCorporeaIndex extends BlockCorporeaBase implements ILexiconabl
 	}
 
 	@Override
-	public TileCorporeaBase createNewTileEntity(World world, int meta) {
+	public TileCorporeaBase createNewTileEntityT(World world, int meta) {
 		return new TileCorporeaIndex();
 	}
 

@@ -170,7 +170,7 @@ public class TileHourglass extends TileSimpleInventory {
 	}
 
 	@Override
-	public String getInventoryName() {
+	public String getInvName() {
 		return LibBlockNames.HOURGLASS;
 	}
 

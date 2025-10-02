@@ -33,7 +33,6 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 import org.lwjgl.opengl.GL11;
 
-import scala.reflect.internal.util.WeakHashSet;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.mana.IManaItem;
 import vazkii.botania.api.subtile.RadiusDescriptor;
@@ -121,7 +120,7 @@ public class SubTileHopperhock extends SubTileFunctional {
 				} else {
 					InventoryHelper.insertItemIntoInventory(invToPutItemIn, stack.splitStack(amountToPutIn), sideToPutItemIn, -1);
 					item.setEntityItemStack(stack); // Just in case someone subclasses EntityItem and changes something important.
-					invToPutItemIn.markDirty();
+					invToPutItemIn.onInventoryChanged();
 					if(item.getEntityItem().stackSize == 0)
 						item.setDead();
 					pulledAny = true;

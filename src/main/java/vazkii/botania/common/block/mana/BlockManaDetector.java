@@ -40,12 +40,12 @@ public class BlockManaDetector extends BlockModContainer implements ILexiconable
 		super(Material.rock);
 		setHardness(2.0F);
 		setResistance(10.0F);
-		setStepSound(Block.soundTypeStone);
+		setStepSound(Block.soundStoneFootstep);
 		setBlockName(LibBlockNames.MANA_DETECTOR);
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		icons = new Icon[2];
 		for(int i = 0; i < icons.length; i++)
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
@@ -73,7 +73,7 @@ public class BlockManaDetector extends BlockModContainer implements ILexiconable
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileManaDetector();
 	}
 

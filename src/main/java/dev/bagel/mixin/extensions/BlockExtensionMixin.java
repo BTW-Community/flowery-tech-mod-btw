@@ -39,7 +39,7 @@ public abstract class BlockExtensionMixin implements BlockExtensions {
     }
 
     @Override
-    public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune) {
+    public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
         ArrayList<ItemStack> ret = new ArrayList<>();
         int count = this.quantityDroppedWithBonus(fortune, world.rand);
 

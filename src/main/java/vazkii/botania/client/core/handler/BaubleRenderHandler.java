@@ -12,6 +12,9 @@ package vazkii.botania.client.core.handler;
 
 import java.awt.Color;
 
+import baubles.common.container.InventoryBaubles;
+import baubles.common.lib.PlayerHandler;
+import com.prupe.mcpatcher.cit.CITUtils;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ItemRenderer;
@@ -42,7 +45,7 @@ public final class BaubleRenderHandler {
 
 	@SubscribeEvent
 	public void onPlayerRender(RenderPlayerEvent.Specials.Post event) {
-		if(!ConfigHandler.renderBaubles || event.entityLiving.getActivePotionEffect(Potion.invisibility) != null)
+		if(!ConfigHandler.renderBaubles || event.entityPlayer.getActivePotionEffect(Potion.invisibility) != null)
 			return;
 
 		EntityPlayer player = event.entityPlayer;
@@ -127,7 +130,9 @@ public final class BaubleRenderHandler {
 				int lightmapY = light / 65536;
 				OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, lightmapX, lightmapY);
 				for(int j = 0; j < 2; j++) {
-					Icon icon = item.getIcon(stack, j);
+					//todofix get icon based on render pass
+//					Icon icon = item.getIcon(stack, j);
+					Icon icon = CITUtils.getIcon(item.getIconFromDamage(stack.getItemDamage()), stack, j);
 					float f = icon.getMinU();
 					float f1 = icon.getMaxU();
 					float f2 = icon.getMinV();

@@ -39,7 +39,7 @@ public class BlockBifrostPane extends BlockModPane {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerBlockIcons(IconRegister reg) {
+	public void registerIcons(IconRegister reg) {
 		// NO-OP
 	}
 

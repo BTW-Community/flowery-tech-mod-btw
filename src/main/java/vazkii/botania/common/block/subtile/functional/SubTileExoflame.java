@@ -14,7 +14,7 @@ import net.minecraft.src.Block;
 import net.minecraft.src.BlockFurnace;
 import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
-import net.minecraft.src.crafting.FurnaceRecipes;
+import net.minecraft.src.FurnaceRecipes;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.TileEntityFurnace;
 import vazkii.botania.api.item.IExoflameHeatable;
@@ -46,13 +46,13 @@ public class SubTileExoflame extends SubTileFunctional {
 						TileEntity tile = supertile.getWorldObj().getTileEntity(x, y, z);
 						Block block = supertile.getWorldObj().getBlock(x, y, z);
 						if(tile != null) {
-							if(tile instanceof TileEntityFurnace && (block == Blocks.furnace || block == Blocks.lit_furnace)) {
+							if(tile instanceof TileEntityFurnace && (block == Block.furnaceIdle || block == Block.furnaceBurning)) {
 								TileEntityFurnace furnace = (TileEntityFurnace) tile;
 								boolean canSmelt = canFurnaceSmelt(furnace);
 								if(canSmelt && mana > 2) {
 									if(furnace.furnaceBurnTime < 2) {
 										if(furnace.furnaceBurnTime == 0)
-											BlockFurnace.updateFurnaceBlockState(true, supertile.getWorldObj(), x, y, z);
+											((BlockFurnace) block).updateFurnaceBlockState(true, supertile.getWorldObj(), x, y, z, true);
 										furnace.furnaceBurnTime = 200;
 										mana = Math.max(0, mana - cost);
 									}
@@ -92,7 +92,7 @@ public class SubTileExoflame extends SubTileFunctional {
 		if(furnace.getStackInSlot(0) == null)
 			return false;
 		else {
-			ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(furnace.getStackInSlot(0));
+			ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(furnace.getStackInSlot(0).itemID);
 
 			if(itemstack == null)
 				return false;

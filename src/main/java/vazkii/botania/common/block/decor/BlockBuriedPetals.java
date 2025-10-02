@@ -31,7 +31,7 @@ public class BlockBuriedPetals extends BlockModFlower {
 	public BlockBuriedPetals() {
 		super(LibBlockNames.BURIED_PETALS);
 		setBlockBounds(0F, 0F, 0F, 1F, 0.1F, 1F);
-		setLightLevel(0.25F);
+		setLightValue(0.25F);
 	}
 
 	@Override
@@ -56,7 +56,7 @@ public class BlockBuriedPetals extends BlockModFlower {
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		blockIcon = IconHelper.forBlock(par1IconRegister, this);
 	}
 

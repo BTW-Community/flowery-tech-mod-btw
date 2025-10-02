@@ -17,7 +17,6 @@ import net.minecraft.src.Material;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.Icon;
@@ -32,7 +31,7 @@ import vazkii.botania.common.block.tile.TileTinyPotato;
 import vazkii.botania.common.item.block.ItemBlockTinyPotato;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 
 public class BlockTinyPotato extends BlockModContainer implements ILexiconable {
 
@@ -56,7 +55,7 @@ public class BlockTinyPotato extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		// NO-OP
 	}
 
@@ -123,7 +122,7 @@ public class BlockTinyPotato extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileTinyPotato();
 	}
 

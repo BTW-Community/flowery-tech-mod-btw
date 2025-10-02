@@ -34,7 +34,7 @@ public class BlockShimmerrock extends BlockMod implements ILexiconable {
 		super(Material.rock);
 		setHardness(2.0F);
 		setResistance(10.0F);
-		setStepSound(soundTypeStone);
+		setStepSound(soundStoneFootstep);
 		setBlockName(LibBlockNames.SHIMMERROCK);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
@@ -51,7 +51,7 @@ public class BlockShimmerrock extends BlockMod implements ILexiconable {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		// NO-OP
 	}
 

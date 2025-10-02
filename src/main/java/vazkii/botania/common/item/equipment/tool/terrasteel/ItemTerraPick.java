@@ -48,7 +48,7 @@ import vazkii.botania.common.item.equipment.tool.manasteel.ItemManasteelPick;
 import vazkii.botania.common.item.relic.ItemLokiRing;
 import vazkii.botania.common.item.relic.ItemThorRing;
 import vazkii.botania.common.lib.LibItemNames;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
@@ -75,7 +75,7 @@ public class ItemTerraPick extends ItemManasteelPick implements IManaItem, ISequ
 
 	public ItemTerraPick() {
 		super(BotaniaAPI.terrasteelToolMaterial, LibItemNames.TERRA_PICK);
-		GameRegistry.addRecipe(new TerraPickTippingRecipe());
+		CraftingManager.getInstance().getRecipeList().add(new TerraPickTippingRecipe());
 		RecipeSorter.register("botania:terraPickTipping", TerraPickTippingRecipe.class, Category.SHAPELESS, "");
 	}
 

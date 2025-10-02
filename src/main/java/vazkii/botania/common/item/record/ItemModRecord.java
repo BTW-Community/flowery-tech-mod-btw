@@ -18,7 +18,7 @@ import net.minecraft.src.ResourceLocation;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.client.lib.LibResources;
 import vazkii.botania.common.core.BotaniaCreativeTab;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
@@ -28,7 +28,7 @@ public class ItemModRecord extends ItemRecord {
 
 	public ItemModRecord(String record, String name) {
 		super("botania:" + record);
-		setCreativeTab(BotaniaCreativeTab.INSTANCE);
+		setCreativeTab(CreativeTabs.tabMisc);
 		setUnlocalizedName(name);
 		file = "botania:music." + record;
 	}

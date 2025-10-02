@@ -14,50 +14,38 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.src.Minecraft;
-import net.minecraft.src.ScaledResolution;
-import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.MovingObjectPosition;
-import net.minecraft.src.IBlockAccess;
-import net.minecraft.src.World;
-import net.minecraftforge.oredict.RecipeSorter;
-import net.minecraftforge.oredict.RecipeSorter.Category;
+import net.minecraft.src.*;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.subtile.ISpecialFlower;
 import vazkii.botania.api.wand.IWandHUD;
 import vazkii.botania.api.wand.IWandable;
+import vazkii.botania.common.Botania;
 import vazkii.botania.common.block.decor.BlockFloatingFlower;
 import vazkii.botania.common.block.tile.TileFloatingSpecialFlower;
 import vazkii.botania.common.block.tile.TileSpecialFlower;
 import vazkii.botania.common.crafting.recipe.SpecialFloatingFlowerRecipe;
-import vazkii.botania.common.integration.coloredlights.LightHelper;
 import vazkii.botania.common.item.block.ItemBlockFloatingSpecialFlower;
 import vazkii.botania.common.item.block.ItemBlockSpecialFlower;
 import vazkii.botania.common.lib.LibBlockNames;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 
 public class BlockFloatingSpecialFlower extends BlockFloatingFlower implements ISpecialFlower, IWandable, ILexiconable, IWandHUD {
 
 	public BlockFloatingSpecialFlower() {
 		super(LibBlockNames.FLOATING_SPECIAL_FLOWER);
 
-		GameRegistry.addRecipe(new SpecialFloatingFlowerRecipe());
-		RecipeSorter.register("botania:floatingSpecialFlower", SpecialFloatingFlowerRecipe.class, Category.SHAPELESS, "");
+		CraftingManager.getInstance().getRecipeList().add(new SpecialFloatingFlowerRecipe());
+//		RecipeSorter.register("botania:floatingSpecialFlower", SpecialFloatingFlowerRecipe.class, Category.SHAPELESS, "");
 	}
 
 	@Override
 	public int getLightValue(IBlockAccess world, int x, int y, int z) {
-		int currentLight = ((TileSpecialFlower) world.getTileEntity(x, y, z)).getLightValue();
+		int currentLight = ((TileSpecialFlower) world.getBlockTileEntity(x, y, z)).getLightValue();
 		if(currentLight == -1)
 			currentLight = originalLight;
-		return LightHelper.getPackedColor(world.getBlockMetadata(x, y, z), currentLight);
+		return Botania.lightHelper.getPackedColor(world.getBlockMetadata(x, y, z), currentLight);
 	}
 
 	@Override
@@ -72,7 +60,7 @@ public class BlockFloatingSpecialFlower extends BlockFloatingFlower implements I
 
 	@Override
 	public int isProvidingWeakPower(IBlockAccess world, int x, int y, int z, int side) {
-		return ((TileSpecialFlower) world.getTileEntity(x, y, z)).getPowerLevel(side);
+		return ((TileSpecialFlower) world.getBlockTileEntity(x, y, z)).getPowerLevel(side);
 	}
 
 	@Override
@@ -91,11 +79,11 @@ public class BlockFloatingSpecialFlower extends BlockFloatingFlower implements I
 	}
 
 	@Override
-	public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
+	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
 		for(String s : BotaniaAPI.subtilesForCreativeMenu) {
-			par3List.add(ItemBlockSpecialFlower.ofType(new ItemStack(par1), s));
+			par3List.add(ItemBlockSpecialFlower.ofType(new ItemStack(par1, 1, 0), s));
 			if(BotaniaAPI.miniFlowers.containsKey(s))
-				par3List.add(ItemBlockSpecialFlower.ofType(new ItemStack(par1), BotaniaAPI.miniFlowers.get(s)));
+				par3List.add(ItemBlockSpecialFlower.ofType(new ItemStack(par1, 1, 0), BotaniaAPI.miniFlowers.get(s)));
 		}
 	}
 
@@ -161,11 +149,12 @@ public class BlockFloatingSpecialFlower extends BlockFloatingFlower implements I
 
 	@Override
 	protected void register(String name) {
-		GameRegistry.registerBlock(this, ItemBlockFloatingSpecialFlower.class, name);
+		var registered = new ItemBlockFloatingSpecialFlower(this);
+//		GameRegistry.registerBlock(this, ItemBlockFloatingSpecialFlower.class, name);
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileFloatingSpecialFlower();
 	}
 

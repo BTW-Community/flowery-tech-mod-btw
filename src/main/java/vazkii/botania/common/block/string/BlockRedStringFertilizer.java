@@ -12,19 +12,18 @@ package vazkii.botania.common.block.string;
 
 import java.util.Random;
 
-import net.minecraft.src.IGrowable;
 import net.minecraft.src.World;
 import vazkii.botania.common.block.tile.string.TileRedString;
 import vazkii.botania.common.block.tile.string.TileRedStringFertilizer;
 import vazkii.botania.common.lib.LibBlockNames;
 
-public class BlockRedStringFertilizer extends BlockRedString implements IGrowable {
+public class BlockRedStringFertilizer extends BlockRedString /*implements IGrowable */{
 
-	public BlockRedStringFertilizer() {
-		super(LibBlockNames.RED_STRING_FERTILIZER);
+	public BlockRedStringFertilizer(int id) {
+		super(id, LibBlockNames.RED_STRING_FERTILIZER);
 	}
-
-	@Override
+	//todofix growable
+/*	@Override
 	public boolean func_149851_a(World world, int x, int y, int z, boolean something) {
 		return ((TileRedStringFertilizer) world.getTileEntity(x, y, z)).func_149851_a(world, something);
 	}
@@ -37,10 +36,10 @@ public class BlockRedStringFertilizer extends BlockRedString implements IGrowabl
 	@Override
 	public void func_149853_b(World world, Random rand, int x, int y, int z) {
 		((TileRedStringFertilizer) world.getTileEntity(x, y, z)).func_149853_b(world, rand);
-	}
+	}*/
 
 	@Override
-	public TileRedString createNewTileEntity(World world, int meta) {
+	public TileRedString createNewTileEntityT(World world, int meta) {
 		return new TileRedStringFertilizer();
 	}
 

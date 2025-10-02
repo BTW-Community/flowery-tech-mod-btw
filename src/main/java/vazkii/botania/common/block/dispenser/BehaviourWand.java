@@ -12,8 +12,8 @@ package vazkii.botania.common.block.dispenser;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.BlockDispenser;
-import net.minecraft.dispenser.BehaviorDefaultDispenseItem;
-import net.minecraft.dispenser.IBlockSource;
+import net.minecraft.src.BehaviorDefaultDispenseItem;
+import net.minecraft.src.IBlockSource;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
 import net.minecraftforge.common.util.ForgeDirection;

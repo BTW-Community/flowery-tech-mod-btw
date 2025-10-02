@@ -22,7 +22,7 @@ import vazkii.botania.common.crafting.recipe.HelmRevealingRecipe;
 import vazkii.botania.common.item.equipment.armor.manasteel.ItemManasteelHelm;
 import vazkii.botania.common.lib.LibItemNames;
 import cpw.mods.fml.common.Optional;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 
 @Optional.InterfaceList({
 	@Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.IGoggles", striprefs = true),
@@ -31,7 +31,7 @@ public class ItemManasteelHelmRevealing extends ItemManasteelHelm implements IGo
 
 	public ItemManasteelHelmRevealing() {
 		super(LibItemNames.MANASTEEL_HELM_R);
-		GameRegistry.addRecipe(new HelmRevealingRecipe()); //Manasteel is the base so it gets the recipe added in its constructor so that ModItems can call it
+		CraftingManager.getInstance().getRecipeList().add(new HelmRevealingRecipe()); //Manasteel is the base so it gets the recipe added in its constructor so that ModItems can call it
 		RecipeSorter.register("botania:helmRevealing", HelmRevealingRecipe.class, Category.SHAPELESS, "");
 	}
 

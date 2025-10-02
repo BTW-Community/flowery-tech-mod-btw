@@ -145,7 +145,7 @@ public class TileBrewery extends TileSimpleInventory implements ISidedInventory,
 
 		if(newSignal != signal) {
 			signal = newSignal;
-			worldObj.func_147453_f(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
+			worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
 		}
 
 		manaLastTick = mana;
@@ -197,7 +197,7 @@ public class TileBrewery extends TileSimpleInventory implements ISidedInventory,
 	}
 
 	@Override
-	public String getInventoryName() {
+	public String getInvName() {
 		return LibBlockNames.RUNE_ALTAR;
 	}
 

@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Queue;
 
+import dev.bagel.util.BotaniaSounds;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.FontRenderer;
 import net.minecraft.src.GuiButton;
@@ -382,7 +383,7 @@ public class GuiLexicon extends GuiScreen {
 			} else {
 				PersistentVariableHelper.lastBotaniaVersion = LibMisc.VERSION;
 				PersistentVariableHelper.saveSafe();
-				par1GuiButton.visible = false;
+				par1GuiButton.drawButton = false;
 				par1GuiButton.enabled = false;
 			}
 
@@ -571,7 +572,7 @@ public class GuiLexicon extends GuiScreen {
 		if(par2 == KONAMI_CODE[konamiIndex]) {
 			konamiIndex++;
 			if(konamiIndex >= KONAMI_CODE.length) {
-				mc.getSoundHandler().playSound(PositionedSoundRecord.func_147673_a(new ResourceLocation("botania:way")));
+				mc.sndManager.playSoundFX(BotaniaSounds.WAY.sound(), 1.0f, 1.0f);
 				konamiIndex = 0;
 			}
 		} else konamiIndex = 0;

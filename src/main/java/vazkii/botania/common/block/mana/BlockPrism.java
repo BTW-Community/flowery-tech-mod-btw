@@ -44,7 +44,7 @@ public class BlockPrism extends BlockModContainer implements IManaTrigger, ILexi
 		super(Material.glass);
 		setHardness(0.3F);
 		setStepSound(soundTypeGlass);
-		setLightLevel(1.0F);
+		setLightValue(1.0F);
 		setBlockName(LibBlockNames.PRISM);
 		float f = 0.25F;
 		setBlockBounds(f, 0F, f, 1F - f, 1F, 1F - f);
@@ -53,7 +53,7 @@ public class BlockPrism extends BlockModContainer implements IManaTrigger, ILexi
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		icons = new Icon[2];
 		for(int i = 0; i < icons.length; i++)
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
@@ -165,14 +165,14 @@ public class BlockPrism extends BlockModContainer implements IManaTrigger, ILexi
 				}
 			}
 
-			par1World.func_147453_f(par2, par3, par4, par5);
+			par1World.func_96440_m(par2, par3, par4, par5);
 		}
 
 		super.breakBlock(par1World, par2, par3, par4, par5, par6);
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TilePrism();
 	}
 

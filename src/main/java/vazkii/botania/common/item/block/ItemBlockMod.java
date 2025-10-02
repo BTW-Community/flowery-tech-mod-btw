@@ -24,7 +24,7 @@ import vazkii.botania.common.achievement.IPickupAchievement;
 public class ItemBlockMod extends ItemBlock implements IPickupAchievement, ICraftAchievement {
 
 	public ItemBlockMod(Block block) {
-		super(block);
+		super(block.blockID - 256);
 	}
 
 	@Override
@@ -38,12 +38,12 @@ public class ItemBlockMod extends ItemBlock implements IPickupAchievement, ICraf
 
 	@Override
 	public Achievement getAchievementOnCraft(ItemStack stack, EntityPlayer player, IInventory matrix) {
-		return field_150939_a instanceof ICraftAchievement ? ((ICraftAchievement) field_150939_a).getAchievementOnCraft(stack, player, matrix) : null;
+		return Block.blocksList[blockID] instanceof ICraftAchievement pa ? pa.getAchievementOnCraft(stack, player, matrix) : null;
 	}
 
 	@Override
 	public Achievement getAchievementOnPickup(ItemStack stack, EntityPlayer player, EntityItem item) {
-		return field_150939_a instanceof IPickupAchievement ? ((IPickupAchievement) field_150939_a).getAchievementOnPickup(stack, player, item) : null;
+		return Block.blocksList[blockID] instanceof IPickupAchievement ca ? ca.getAchievementOnPickup(stack, player, item) : null;
 	}
 
 }

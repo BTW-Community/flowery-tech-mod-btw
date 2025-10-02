@@ -60,7 +60,7 @@ public class TilePrism extends TileSimpleInventory implements IManaCollisionGhos
 	}
 
 	@Override
-	public String getInventoryName() {
+	public String getInvName() {
 		return LibBlockNames.PRISM;
 	}
 

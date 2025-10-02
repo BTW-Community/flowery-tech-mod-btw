@@ -33,7 +33,7 @@ import vazkii.botania.common.core.BotaniaCreativeTab;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.equipment.tool.ToolCommons;
 import vazkii.botania.common.lib.LibItemNames;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
@@ -48,7 +48,7 @@ public class ItemLivingwoodBow extends ItemBow implements IManaUsingItem {
 
 	public ItemLivingwoodBow(String name) {
 		super();
-		setCreativeTab(BotaniaCreativeTab.INSTANCE);
+		setCreativeTab(CreativeTabs.tabMisc);
 		setUnlocalizedName(name);
 		setMaxDamage(500);
 		setFull3D();

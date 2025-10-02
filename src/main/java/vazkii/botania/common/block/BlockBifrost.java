@@ -41,7 +41,7 @@ public class BlockBifrost extends BlockModContainer implements ILexiconable {
 		super(Material.glass);
 		setBlockName(LibBlockNames.BIFROST);
 		setLightOpacity(0);
-		setLightLevel(1F);
+		setLightValue(1F);
 		setBlockUnbreakable();
 		setStepSound(soundTypeGlass);
 		MinecraftForge.EVENT_BUS.register(this);
@@ -95,12 +95,12 @@ public class BlockBifrost extends BlockModContainer implements ILexiconable {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		// NO-OP
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileBifrost();
 	}
 

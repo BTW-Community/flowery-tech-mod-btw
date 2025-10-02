@@ -30,7 +30,7 @@ public class BlockCustomBrickSlab extends BlockLivingSlab {
 		super(full, ModBlocks.customBrick, meta);
 		setHardness(2.0F);
 		setResistance(5.0F);
-		setStepSound(soundTypeStone);
+		setStepSound(soundStoneFootstep);
 	}
 
 	@Override

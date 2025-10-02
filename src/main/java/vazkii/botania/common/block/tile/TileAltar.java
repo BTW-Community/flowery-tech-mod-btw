@@ -15,9 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import dev.bagel.client.RenderInstances;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ScaledResolution;
-import net.minecraft.src.RenderItem;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EntityPlayerMP;
@@ -25,7 +25,6 @@ import net.minecraft.src.Block;
 import net.minecraft.src.Item;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.ISidedInventory;
-import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.AxisAlignedBB;
@@ -66,9 +65,9 @@ public class TileAltar extends TileSimpleInventory implements ISidedInventory, I
 			return false;
 
 		if(!isMossy && getBlockMetadata() == 0) {
-			if(stack.getItem() == Item.getItemFromBlock(Blocks.vine) && !worldObj.isRemote) {
+			if(stack.getItem() == new ItemStack(Block.vine).getItem() && !worldObj.isRemote) {
 				isMossy = true;
-				worldObj.func_147453_f(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
+				worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlockId(xCoord, yCoord, zCoord));
 				stack.stackSize--;
 				if(stack.stackSize == 0)
 					item.setDead();
@@ -77,14 +76,14 @@ public class TileAltar extends TileSimpleInventory implements ISidedInventory, I
 		}
 
 		if(!hasWater() && !hasLava()) {
-			if(stack.getItem() == Items.water_bucket && !worldObj.isRemote) {
+			if(stack.getItem() == Item.bucketWater && !worldObj.isRemote) {
 				setWater(true);
-				worldObj.func_147453_f(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
-				stack.func_150996_a(Items.bucket); // Set item
-			} else if(stack.getItem() == Items.lava_bucket && !worldObj.isRemote) {
+				worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlockId(xCoord, yCoord, zCoord));
+				stack.itemID = Item.bucketEmpty.itemID; // Set item
+			} else if(stack.getItem() == Item.bucketLava && !worldObj.isRemote) {
 				setLava(true);
-				worldObj.func_147453_f(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
-				stack.func_150996_a(Items.bucket); // Set item
+				worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlockId(xCoord, yCoord, zCoord));
+				stack.itemID = Item.bucketEmpty.itemID; // Set item
 			} else return false;
 		}
 
@@ -132,7 +131,7 @@ public class TileAltar extends TileSimpleInventory implements ISidedInventory, I
 						worldObj.spawnEntityInWorld(outputItem);
 
 						setWater(false);
-						worldObj.func_147453_f(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
+						worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlockId(xCoord, yCoord, zCoord));
 					}
 
 					craftingFanciness();
@@ -292,7 +291,7 @@ public class TileAltar extends TileSimpleInventory implements ISidedInventory, I
 	}
 
 	@Override
-	public String getInventoryName() {
+	public String getInvName() {
 		return LibBlockNames.ALTAR;
 	}
 
@@ -302,8 +301,23 @@ public class TileAltar extends TileSimpleInventory implements ISidedInventory, I
 	}
 
 	@Override
+	public boolean isInvNameLocalized() {
+		return false;
+	}
+
+	@Override
 	public int getInventoryStackLimit() {
 		return 1;
+	}
+
+	@Override
+	public void openChest() {
+
+	}
+
+	@Override
+	public void closeChest() {
+
 	}
 
 	@Override
@@ -370,14 +384,14 @@ public class TileAltar extends TileSimpleInventory implements ISidedInventory, I
 
 					ItemStack stack = recipe.getOutput();
 
-					net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
+					net.minecraft.src.RenderHelper.enableGUIStandardItemLighting();
 					RenderInstances.getItemInstance().renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, stack, xc + radius + 32, yc - 8);
-					RenderInstances.getItemInstance().renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, new ItemStack(Items.wheat_seeds), xc + radius + 16, yc + 6);
-					net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
+					RenderInstances.getItemInstance().renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, new ItemStack(Item.seeds), xc + radius + 16, yc + 6);
+					net.minecraft.src.RenderHelper.disableStandardItemLighting();
 					mc.fontRenderer.drawStringWithShadow("+", xc + radius + 14, yc + 10, 0xFFFFFF);
 				}
 
-			net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
+			net.minecraft.src.RenderHelper.enableGUIStandardItemLighting();
 			for(int i = 0; i < amt; i++) {
 				double xPos = xc + Math.cos(angle * Math.PI / 180D) * radius - 8;
 				double yPos = yc + Math.sin(angle * Math.PI / 180D) * radius - 8;
@@ -387,7 +401,7 @@ public class TileAltar extends TileSimpleInventory implements ISidedInventory, I
 
 				angle += anglePer;
 			}
-			net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
+			net.minecraft.src.RenderHelper.disableStandardItemLighting();
 		} else if(recipeKeepTicks > 0 && hasWater) {
 			String s = StatCollector.translateToLocal("botaniamisc.altarRefill0");
 			mc.fontRenderer.drawStringWithShadow(s, xc - mc.fontRenderer.getStringWidth(s) / 2, yc + 10, 0xFFFFFF);

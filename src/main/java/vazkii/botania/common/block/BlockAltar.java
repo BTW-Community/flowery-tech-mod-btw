@@ -20,8 +20,6 @@ import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Block;
-import net.minecraft.src.Item;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTTagCompound;
@@ -29,10 +27,6 @@ import net.minecraft.src.TileEntity;
 import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
-import net.minecraftforge.fluids.FluidContainerRegistry;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.IFluidContainerItem;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -46,16 +40,15 @@ import vazkii.botania.common.item.block.ItemBlockWithMetadataAndName;
 import vazkii.botania.common.item.rod.ItemWaterRod;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockAltar extends BlockModContainer implements ILexiconable {
 
 	Random random;
 
-	protected BlockAltar() {
-		super(Material.rock);
+	protected BlockAltar(int id) {
+		super(id, Material.rock);
 		setHardness(3.5F);
-		setStepSound(soundTypeStone);
+		setStepSound(soundStoneFootstep);
 		setBlockName(LibBlockNames.ALTAR);
 
 		float f = 1F / 16F * 2F;
@@ -65,7 +58,7 @@ public class BlockAltar extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		// NO-OP
 	}
 
@@ -76,7 +69,8 @@ public class BlockAltar extends BlockModContainer implements ILexiconable {
 
 	@Override
 	public Block setBlockName(String par1Str) {
-		GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
+		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
+//GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
 		return super.setBlockName(par1Str);
 	}
 
@@ -97,7 +91,7 @@ public class BlockAltar extends BlockModContainer implements ILexiconable {
 
 	@Override
 	public int getLightValue(IBlockAccess world, int x, int y, int z) {
-		TileAltar tile = (TileAltar) world.getTileEntity(x, y, z);
+		TileAltar tile = (TileAltar) world.getBlockTileEntity(x, y, z);
 		return tile.hasLava ? 15 : 0;
 	}
 
@@ -114,7 +108,7 @@ public class BlockAltar extends BlockModContainer implements ILexiconable {
 					if(!par5EntityPlayer.inventory.addItemStackToInventory(copy))
 						par5EntityPlayer.dropPlayerItemWithRandomChoice(copy, false);
 					tile.setInventorySlotContents(i, null);
-					par1World.func_147453_f(par2, par3, par4, this);
+					par1World.func_96440_m(par2, par3, par4, this.blockID);
 					break;
 				}
 			}
@@ -129,21 +123,21 @@ public class BlockAltar extends BlockModContainer implements ILexiconable {
 						par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, getContainer(stack));
 
 					tile.setWater(true);
-					par1World.func_147453_f(par2, par3, par4, this);
+					par1World.func_96440_m(par2, par3, par4, this.blockID);
 				}
 
 				return true;
-			} else if(stack != null && stack.getItem() == Items.lava_bucket) {
+			} else if(stack != null && stack.getItem() == Item.bucketLava) {
 				if(!par5EntityPlayer.capabilities.isCreativeMode)
 					par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, getContainer(stack));
 
 				tile.setLava(true);
 				tile.setWater(false);
-				par1World.func_147453_f(par2, par3, par4, this);
+				par1World.func_96440_m(par2, par3, par4, this.blockID);
 
 				return true;
-			} else if(stack != null && stack.getItem() == Items.bucket && (tile.hasWater || tile.hasLava) && !Botania.gardenOfGlassLoaded) {
-				ItemStack bucket = tile.hasLava ? new ItemStack(Items.lava_bucket) : new ItemStack(Items.water_bucket);
+			} else if(stack != null && stack.getItem() == Item.bucketEmpty && (tile.hasWater || tile.hasLava) && !Botania.gardenOfGlassLoaded) {
+				ItemStack bucket = tile.hasLava ? new ItemStack(Item.bucketLava) : new ItemStack(Item.bucketWater);
 				if(stack.stackSize == 1)
 					par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, bucket);
 				else {
@@ -155,7 +149,7 @@ public class BlockAltar extends BlockModContainer implements ILexiconable {
 				if(tile.hasLava)
 					tile.setLava(false);
 				else tile.setWater(false);
-				par1World.func_147453_f(par2, par3, par4, this);
+				par1World.func_96440_m(par2, par3, par4, this.blockID);
 
 				return true;
 			}
@@ -172,7 +166,7 @@ public class BlockAltar extends BlockModContainer implements ILexiconable {
 				TileAltar altar = (TileAltar) tile;
 				if(!altar.hasLava && !altar.hasWater)
 					altar.setWater(true);
-				world.func_147453_f(x, y, z, this);
+				world.func_96440_m(x, y, z, this.blockID);
 			}
 		}
 	}
@@ -188,25 +182,31 @@ public class BlockAltar extends BlockModContainer implements ILexiconable {
 		if(stack.getItem() == ModItems.waterBowl)
 			return true;
 
-		if(stack.getItem() instanceof IFluidContainerItem) {
-			FluidStack fluidStack = ((IFluidContainerItem) stack.getItem()).getFluid(stack);
-			return fluidStack != null && fluidStack.getFluid() == FluidRegistry.WATER && fluidStack.amount >= FluidContainerRegistry.BUCKET_VOLUME;
-		}
-		FluidStack fluidStack = FluidContainerRegistry.getFluidForFilledItem(stack);
-		return fluidStack != null && fluidStack.getFluid() == FluidRegistry.WATER && fluidStack.amount >= FluidContainerRegistry.BUCKET_VOLUME;
+		return false;
+		//todofix maybe????? implement fluid support
+//		if(stack.getItem() instanceof IFluidContainerItem) {
+//			FluidStack fluidStack = ((IFluidContainerItem) stack.getItem()).getFluid(stack);
+//			return fluidStack != null && fluidStack.getFluid() == FluidRegistry.WATER && fluidStack.amount >= FluidContainerRegistry.BUCKET_VOLUME;
+//		}
+//		FluidStack fluidStack = FluidContainerRegistry.getFluidForFilledItem(stack);
+//		return fluidStack != null && fluidStack.getFluid() == FluidRegistry.WATER && fluidStack.amount >= FluidContainerRegistry.BUCKET_VOLUME;
 	}
 
 	private ItemStack getContainer(ItemStack stack) {
 		if(stack.getItem() == ModItems.waterBowl)
 			return new ItemStack(Item.bowlEmpty);
+		if(stack.getItem() == Item.bucketWater)
+			return new ItemStack(Item.bucketEmpty);
+		return null;
 
-		if (stack.getItem().hasContainerItem(stack))
-			return stack.getItem().getContainerItem(stack);
-		else if (stack.getItem() instanceof IFluidContainerItem) {
-			((IFluidContainerItem) stack.getItem()).drain(stack, FluidContainerRegistry.BUCKET_VOLUME, true);
-			return stack;
-		}
-		return FluidContainerRegistry.drainFluidContainer(stack);
+		//fluid registry stuff!
+//		if (stack.getItem().hasContainerItem(stack))
+//			return stack.getItem().getContainerItem(stack);
+//		else if (stack.getItem() instanceof IFluidContainerItem) {
+//			((IFluidContainerItem) stack.getItem()).drain(stack, FluidContainerRegistry.BUCKET_VOLUME, true);
+//			return stack;
+//		}
+//		return FluidContainerRegistry.drainFluidContainer(stack);
 	}
 
 	@Override
@@ -230,12 +230,12 @@ public class BlockAltar extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileAltar();
 	}
 
 	@Override
-	public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6) {
+	public void breakBlock(World par1World, int par2, int par3, int par4, int block, int par6) {
 		TileSimpleInventory inv = (TileSimpleInventory) par1World.getTileEntity(par2, par3, par4);
 
 		if (inv != null) {
@@ -266,10 +266,10 @@ public class BlockAltar extends BlockModContainer implements ILexiconable {
 				}
 			}
 
-			par1World.func_147453_f(par2, par3, par4, par5);
+			par1World.func_96440_m(par2, par3, par4, block);
 		}
 
-		super.breakBlock(par1World, par2, par3, par4, par5, par6);
+		super.breakBlock(par1World, par2, par3, par4, block, par6);
 	}
 
 	@Override

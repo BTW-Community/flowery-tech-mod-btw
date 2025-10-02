@@ -12,22 +12,7 @@ package vazkii.botania.common.block.mana;
 
 import java.util.Random;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.Material;
-import net.minecraft.src.Minecraft;
-import net.minecraft.src.ScaledResolution;
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.EntityItem;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Block;
-import net.minecraft.src.Item;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.ChatComponentTranslation;
-import net.minecraft.src.Icon;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.wand.IWandHUD;
@@ -44,12 +29,12 @@ public class BlockEnchanter extends BlockModContainer implements IWandable, ILex
 	Random random;
 	public static Icon overlay;
 
-	public BlockEnchanter() {
-		super(Material.rock);
+	public BlockEnchanter(int id) {
+		super(id, Material.rock);
 		setHardness(3.0F);
 		setResistance(5.0F);
-		setLightLevel(1.0F);
-		setStepSound(soundTypeStone);
+		setLightValue(1.0F);
+		setStepSound(soundStoneFootstep);
 		setBlockName(LibBlockNames.ENCHANTER);
 
 		random = new Random();
@@ -61,20 +46,25 @@ public class BlockEnchanter extends BlockModContainer implements IWandable, ILex
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
-		super.registerBlockIcons(par1IconRegister);
+	public void registerIcons(IconRegister par1IconRegister) {
+		super.registerIcons(par1IconRegister);
 		overlay = IconHelper.forBlock(par1IconRegister, this, "Overlay");
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileEnchanter();
 	}
 
 	@Override
-	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
-		return Item.getItemFromBlock(Blocks.lapis_block);
+	public int idDropped(int par1, Random par2Random, int par3) {
+		return new ItemStack(Block.blockLapis).itemID;
 	}
+
+//	@Override
+//	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
+//		return Item.getItemFromBlock(Blocks.lapis_block);
+//	}
 
 	@Override
 	public boolean isOpaqueCube() {
@@ -88,7 +78,7 @@ public class BlockEnchanter extends BlockModContainer implements IWandable, ILex
 		if(stack != null && stack.getItem() == ModItems.twigWand)
 			return false;
 
-		boolean stackEnchantable = stack != null && stack.getItem() != Items.book && stack.isItemEnchantable() && stack.stackSize == 1 && stack.getItem().getItemEnchantability(stack) > 0;
+		boolean stackEnchantable = stack != null && stack.getItem() != Item.book && stack.isItemEnchantable() && stack.stackSize == 1 && stack.getItem().getItemEnchantability(/*stack*/) > 0;
 
 		if(enchanter.itemToEnchant == null) {
 			if(stackEnchantable) {
@@ -100,14 +90,14 @@ public class BlockEnchanter extends BlockModContainer implements IWandable, ILex
 			if(par5EntityPlayer.inventory.addItemStackToInventory(enchanter.itemToEnchant.copy())) {
 				enchanter.itemToEnchant = null;
 				enchanter.sync();
-			} else par5EntityPlayer.addChatMessage(new ChatComponentTranslation("botaniamisc.invFull"));
+			} else par5EntityPlayer.addChatMessage(StatCollector.translateToLocal("botaniamisc.invFull"));
 		}
 
 		return true;
 	}
 
 	@Override
-	public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6) {
+	public void breakBlock(World par1World, int par2, int par3, int par4, int block, int par6) {
 		TileEnchanter enchanter = (TileEnchanter) par1World.getTileEntity(par2, par3, par4);
 
 		ItemStack itemstack = enchanter.itemToEnchant;
@@ -135,9 +125,9 @@ public class BlockEnchanter extends BlockModContainer implements IWandable, ILex
 			}
 		}
 
-		par1World.func_147453_f(par2, par3, par4, par5);
+		par1World.func_96440_m(par2, par3, par4, block);
 
-		super.breakBlock(par1World, par2, par3, par4, par5, par6);
+		super.breakBlock(par1World, par2, par3, par4, block, par6);
 	}
 
 	@Override

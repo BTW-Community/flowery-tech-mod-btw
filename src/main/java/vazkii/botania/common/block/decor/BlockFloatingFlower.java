@@ -10,22 +10,19 @@
  */
 package vazkii.botania.common.block.decor;
 
-import cpw.mods.fml.common.registry.GameRegistry;
+
 import net.minecraft.src.Block;
 import net.minecraft.src.Material;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EntitySheep;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Block;
-import net.minecraft.src.Item;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
-import thaumcraft.api.crafting.IInfusionStabiliser;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -46,25 +43,19 @@ import java.util.Random;
 
 public class BlockFloatingFlower extends BlockModContainer implements ILexiconable {
 
-	public BlockFloatingFlower() {
-		this(LibBlockNames.MINI_ISLAND);
+	public BlockFloatingFlower(int id) {
+		this(id, LibBlockNames.MINI_ISLAND);
 	}
 
-	public BlockFloatingFlower(String name) {
-		super(Material.ground);
+	public BlockFloatingFlower(int id, String name) {
+		super(id, Material.ground);
 		setBlockName(name);
 		setHardness(0.5F);
-		setStepSound(soundTypeGravel);
-		setLightLevel(1F);
+		setStepSound(soundGravelFootstep);
+		setLightValue(1F);
 
 		float f = 0.1F;
 		setBlockBounds(f, f, f, 1F - f, 1F - f, 1F - f);
-	}
-
-	@Override
-	@Optional.Method(modid = "easycoloredlights")
-	public int getLightValue(IBlockAccess world, int x, int y, int z) {
-		return ColoredLightHelper.getPackedColor(world.getBlockMetadata(x, y, z), originalLight);
 	}
 
 	@Override
@@ -79,7 +70,8 @@ public class BlockFloatingFlower extends BlockModContainer implements ILexiconab
 	}
 
 	protected void register(String name) {
-		GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, name);
+		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
+//GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, name);
 	}
 
 	@Override
@@ -92,12 +84,12 @@ public class BlockFloatingFlower extends BlockModContainer implements ILexiconab
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		// NO-OP
 	}
 
 	@Override
-	public void getSubBlocks(Item par1, CreativeTabs par2, List par3) {
+	public void getSubBlocks(int par1, CreativeTabs par2, List par3) {
 		for(int i = 0; i < 16; i++)
 			par3.add(new ItemStack(par1, 1, i));
 	}
@@ -119,7 +111,7 @@ public class BlockFloatingFlower extends BlockModContainer implements ILexiconab
 
 	@Override
 	public Icon getIcon(int par1, int par2) {
-		return Blocks.dirt.getIcon(par1, par2);
+		return Block.dirt.getIcon(par1, par2);
 	}
 
 	@Override
@@ -128,7 +120,7 @@ public class BlockFloatingFlower extends BlockModContainer implements ILexiconab
 		if(stack != null) {
 			IFloatingFlower flower = (IFloatingFlower) world.getTileEntity(x, y, z);
 			IslandType type = null;
-			if(stack.getItem() == Items.snowball)
+			if(stack.getItem() == Item.snowball)
 				type = IslandType.SNOW;
 			else if(stack.getItem() instanceof IFloatingFlowerVariant) {
 				IslandType newType = ((IFloatingFlowerVariant) stack.getItem()).getIslandType(stack);
@@ -156,17 +148,12 @@ public class BlockFloatingFlower extends BlockModContainer implements ILexiconab
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileFloatingFlower();
 	}
 
 	@Override
 	public LexiconEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon) {
 		return LexiconData.shinyFlowers;
-	}
-
-	@Override
-	public boolean canStabaliseInfusion(World world, int x, int y, int z) {
-		return ConfigHandler.enableThaumcraftStablizers;
 	}
 }

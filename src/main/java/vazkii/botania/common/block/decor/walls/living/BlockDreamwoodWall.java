@@ -18,7 +18,7 @@ public class BlockDreamwoodWall extends BlockModWall {
 	public BlockDreamwoodWall() {
 		super(ModBlocks.dreamwood, 0);
 		setHardness(2.0F);
-		setStepSound(soundTypeWood);
+		setStepSound(soundWoodFootstep);
 	}
 
 }

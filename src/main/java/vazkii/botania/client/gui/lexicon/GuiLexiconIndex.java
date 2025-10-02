@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import dev.bagel.client.RenderInstances;
+import dev.bagel.util.GuiButtonSound;
 import net.minecraft.src.Gui;
 import net.minecraft.src.GuiButton;
 import net.minecraft.src.GuiTextField;
@@ -240,9 +242,9 @@ public class GuiLexiconIndex extends GuiLexicon implements IParented {
 			drawBookmark(width / 2 + 16, -8, s, true, 0xFFFFFF, 180);
 			mc.fontRenderer.setUnicodeFlag(unicode);
 
-			net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
+			net.minecraft.src.RenderHelper.enableGUIStandardItemLighting();
 			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-			ItemStack paper = new ItemStack(Items.paper, currentEntry.pages.size());
+			ItemStack paper = new ItemStack(Item.paper, currentEntry.pages.size());
 
 			RenderInstances.getItemInstance().renderItemAndEffectIntoGUI(mc.fontRenderer, mc.renderEngine, paper, 14, -28);
 			RenderInstances.getItemInstance().renderItemOverlayIntoGUI(mc.fontRenderer, mc.renderEngine, paper, 14, -28);
@@ -256,7 +258,7 @@ public class GuiLexiconIndex extends GuiLexicon implements IParented {
 				}
 			}
 
-			net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
+			net.minecraft.src.RenderHelper.disableStandardItemLighting();
 
 			GL11.glPopMatrix();
 		}
@@ -426,23 +428,23 @@ public class GuiLexiconIndex extends GuiLexicon implements IParented {
 	}
 
 	void back() {
-		if(backButton.enabled) {
+		if(backButton.enabled && backButton instanceof GuiButtonSound bs) {
 			actionPerformed(backButton);
-			backButton.func_146113_a(mc.getSoundHandler());
+			bs.func_146113_a();
 		}
 	}
 
 	void nextPage() {
-		if(rightButton.enabled) {
-			actionPerformed(rightButton);
-			rightButton.func_146113_a(mc.getSoundHandler());
+		if(rightButton.enabled && backButton instanceof GuiButtonSound bs) {
+			actionPerformed(backButton);
+			bs.func_146113_a();
 		}
 	}
 
 	void prevPage() {
-		if(leftButton.enabled) {
-			actionPerformed(leftButton);
-			leftButton.func_146113_a(mc.getSoundHandler());
+		if(leftButton.enabled && backButton instanceof GuiButtonSound bs) {
+			actionPerformed(backButton);
+			bs.func_146113_a();
 		}
 	}
 

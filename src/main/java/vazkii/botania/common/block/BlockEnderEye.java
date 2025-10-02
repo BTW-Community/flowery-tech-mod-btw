@@ -33,12 +33,12 @@ public class BlockEnderEye extends BlockModContainer implements ILexiconable {
 		super(Material.iron);
 		setHardness(3F);
 		setResistance(10F);
-		setStepSound(soundTypeMetal);
+		setStepSound(soundMetalFootstep);
 		setBlockName(LibBlockNames.ENDER_EYE_BLOCK);
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		iconOff = IconHelper.forBlock(par1IconRegister, this, 0);
 		iconOn = IconHelper.forBlock(par1IconRegister, this, 1);
 	}
@@ -59,7 +59,7 @@ public class BlockEnderEye extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileEnderEye();
 	}
 

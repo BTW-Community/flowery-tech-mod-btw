@@ -24,7 +24,7 @@ import vazkii.botania.common.block.BlockMod;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 import cpw.mods.fml.common.IFuelHandler;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 
 public class BlockBlaze extends BlockMod implements ILexiconable, IFuelHandler {
 
@@ -32,8 +32,8 @@ public class BlockBlaze extends BlockMod implements ILexiconable, IFuelHandler {
 		super(Material.iron);
 		setHardness(3F);
 		setResistance(10F);
-		setStepSound(soundTypeMetal);
-		setLightLevel(1F);
+		setStepSound(soundMetalFootstep);
+		setLightValue(1F);
 		setBlockName(LibBlockNames.BLAZE_BLOCK);
 		GameRegistry.registerFuelHandler(this);
 	}

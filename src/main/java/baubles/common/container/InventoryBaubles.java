@@ -60,7 +60,7 @@ public class InventoryBaubles implements IInventory {
 	 * Returns the name of the inventory
 	 */
 	@Override
-	public String getInventoryName() {
+	public String getInvName() {
 		return "";
 	}
 

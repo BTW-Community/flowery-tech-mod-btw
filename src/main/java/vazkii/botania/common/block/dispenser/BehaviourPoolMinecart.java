@@ -14,8 +14,8 @@ import net.minecraft.src.Block;
 import net.minecraft.src.BlockDispenser;
 import net.minecraft.src.BlockRailBase;
 import net.minecraft.src.Material;
-import net.minecraft.dispenser.BehaviorDefaultDispenseItem;
-import net.minecraft.dispenser.IBlockSource;
+import net.minecraft.src.BehaviorDefaultDispenseItem;
+import net.minecraft.src.IBlockSource;
 import net.minecraft.src.EntityMinecart;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.EnumFacing;
@@ -26,7 +26,7 @@ public class BehaviourPoolMinecart extends BehaviorDefaultDispenseItem {
 
 	@Override
 	public ItemStack dispenseStack(IBlockSource p_82487_1_, ItemStack p_82487_2_) {
-		EnumFacing enumfacing = BlockDispenser.func_149937_b(p_82487_1_.getBlockMetadata());
+		EnumFacing enumfacing = BlockDispenser.getDispenserFacing(p_82487_1_.getBlockMetadata());
 		World world = p_82487_1_.getWorld();
 		double d0 = p_82487_1_.getX() + enumfacing.getFrontOffsetX() * 1.125F;
 		double d1 = p_82487_1_.getY() + enumfacing.getFrontOffsetY() * 1.125F;
@@ -37,10 +37,10 @@ public class BehaviourPoolMinecart extends BehaviorDefaultDispenseItem {
 		Block block = world.getBlock(i, j, k);
 		double d3;
 
-		if(BlockRailBase.func_150051_a(block))
+		if(BlockRailBase.isRailBlock(block.blockID))
 			d3 = 0.0D;
 		else {
-			if(block.getMaterial() != Material.air || !BlockRailBase.func_150051_a(world.getBlock(i, j - 1, k)))
+			if(block.blockMaterial != Material.air || !BlockRailBase.isRailBlock(world.getBlockId(i, j - 1, k)))
 				return super.dispenseStack(p_82487_1_, p_82487_2_);
 
 			d3 = -1.0D;

@@ -32,7 +32,7 @@ public class BlockCorporeaRetainer extends BlockModContainer implements ILexicon
 	public BlockCorporeaRetainer() {
 		super(Material.iron);
 		setHardness(5.5F);
-		setStepSound(soundTypeMetal);
+		setStepSound(soundMetalFootstep);
 		setBlockName(LibBlockNames.CORPOREA_RETAINER);
 	}
 
@@ -60,7 +60,7 @@ public class BlockCorporeaRetainer extends BlockModContainer implements ILexicon
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileCorporeaRetainer();
 	}
 

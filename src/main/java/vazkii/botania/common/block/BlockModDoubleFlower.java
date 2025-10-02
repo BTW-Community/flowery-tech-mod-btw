@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import dev.bagel.interfaces.BlockExtensions;
 import dev.bagel.shim.BlockDoublePlant;
 import net.minecraft.src.Block;
 import net.minecraft.src.IconRegister;
@@ -41,7 +42,6 @@ import vazkii.botania.common.core.handler.ConfigHandler;
 import vazkii.botania.common.item.block.ItemBlockWithMetadataAndName;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 //todo double flower block backport
@@ -57,19 +57,20 @@ public class BlockModDoubleFlower extends BlockDoublePlant implements ILexiconab
 	public BlockModDoubleFlower(int id, boolean second) {
         super(id);
         offset = second ? 8 : 0;
-		setBlockName(LibBlockNames.DOUBLE_FLOWER + (second ? 2 : 1));
+//		setBlockName(LibBlockNames.DOUBLE_FLOWER + (second ? 2 : 1));
 		setHardness(0F);
-		setStepSound(soundTypeGrass);
+		setStepSound(soundGrassFootstep);
 		setTickRandomly(false);
-//		setCreativeTab(BotaniaCreativeTab.INSTANCE);
+//		setCreativeTab(CreativeTabs.tabMisc);
 	}
 
-	@Override
-	public Block setBlockName(String par1Str) {
+//	@Override
+/*	public Block setBlockName(String par1Str) {
 		if(!par1Str.equals("doublePlant"))
-			GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
+			var item = new ItemBlockWithMetadataAndName(this.blockID, this);
+//GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
 		return super.setBlockName(par1Str);
-	}
+	}*/
 
 	@Override
 	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
@@ -105,30 +106,30 @@ public class BlockModDoubleFlower extends BlockDoublePlant implements ILexiconab
 
 	@Override
 	public void harvestBlock(World p_149636_1_, EntityPlayer p_149636_2_, int p_149636_3_, int p_149636_4_, int p_149636_5_, int p_149636_6_) {
-		if(p_149636_1_.isRemote || p_149636_2_.getCurrentEquippedItem() == null || p_149636_2_.getCurrentEquippedItem().getItem() != Items.shears || func_149887_c(p_149636_6_))
+		if(p_149636_1_.isRemote || p_149636_2_.getCurrentEquippedItem() == null || p_149636_2_.getCurrentEquippedItem().getItem() != Item.shears || func_149887_c(p_149636_6_))
 			harvestBlockCopy(p_149636_1_, p_149636_2_, p_149636_3_, p_149636_4_, p_149636_5_, p_149636_6_);
 	}
 
 	// This is how I get around encapsulation
-	public void harvestBlockCopy(World p_149636_1_, EntityPlayer p_149636_2_, int p_149636_3_, int p_149636_4_, int p_149636_5_, int p_149636_6_) {
-		p_149636_2_.addStat(StatList.mineBlockStatArray[getIdFromBlock(this)], 1);
-		p_149636_2_.addExhaustion(0.025F);
+	public void harvestBlockCopy(World world, EntityPlayer player, int x, int y, int z, int meta) {
+		player.addStat(StatList.mineBlockStatArray[BlockExtensions.getIdFromBlock(this)], 1);
+		player.addExhaustion(0.025F);
 
-		if(this.canSilkHarvest(p_149636_1_, p_149636_2_, p_149636_3_, p_149636_4_, p_149636_5_, p_149636_6_) && EnchantmentHelper.getSilkTouchModifier(p_149636_2_)) {
+		if(this.canSilkHarvest(meta) && EnchantmentHelper.getSilkTouchModifier(player)) {
 			ArrayList<ItemStack> items = new ArrayList<ItemStack>();
-			ItemStack itemstack = createStackedBlock(p_149636_6_);
+			ItemStack itemstack = createStackedBlock(meta);
 
 			if(itemstack != null)
 				items.add(itemstack);
 
-			ForgeEventFactory.fireBlockHarvesting(items, p_149636_1_, this, p_149636_3_, p_149636_4_, p_149636_5_, p_149636_6_, 0, 1.0f, true, p_149636_2_);
+			ForgeEventFactory.fireBlockHarvesting(items, world, this, x, y, z, meta, 0, 1.0f, true, player);
 			for(ItemStack is : items)
-				this.dropBlockAsItem(p_149636_1_, p_149636_3_, p_149636_4_, p_149636_5_, is);
+				this.dropBlockAsItem(world, x, y, z, meta, is.itemID);
 		} else {
-			harvesters.set(p_149636_2_);
-			int i1 = EnchantmentHelper.getFortuneModifier(p_149636_2_);
-			this.dropBlockAsItem(p_149636_1_, p_149636_3_, p_149636_4_, p_149636_5_, p_149636_6_, i1);
-			harvesters.set(null);
+//			harvesters.set(player);
+			int i1 = EnchantmentHelper.getFortuneModifier(player);
+			this.dropBlockAsItem(world, x, y, z, meta, i1);
+//			harvesters.set(null);
 		}
 	}
 
@@ -153,7 +154,7 @@ public class BlockModDoubleFlower extends BlockDoublePlant implements ILexiconab
 				} else p_149681_1_.setBlockToAir(p_149681_2_, p_149681_3_ - 1, p_149681_4_);
 			}
 		} else if(p_149681_6_.capabilities.isCreativeMode && p_149681_1_.getBlock(p_149681_2_, p_149681_3_ + 1, p_149681_4_) == this)
-			p_149681_1_.setBlock(p_149681_2_, p_149681_3_ + 1, p_149681_4_, Blocks.air, 0, 2);
+			p_149681_1_.setBlock(p_149681_2_, p_149681_3_ + 1, p_149681_4_, null, 0, 2);
 
 		//super.onBlockHarvested(p_149681_1_, p_149681_2_, p_149681_3_, p_149681_4_, p_149681_5_, p_149681_6_);
 	}
@@ -170,10 +171,10 @@ public class BlockModDoubleFlower extends BlockDoublePlant implements ILexiconab
 		return ret;
 	}
 
-	@Override
+/*	@Override
 	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int meta, int fortune) {
 		return new ArrayList<>();
-	}
+	}*/
 
 	@Override
 	public Icon getIcon(int p_149691_1_, int p_149691_2_) {
@@ -181,7 +182,9 @@ public class BlockModDoubleFlower extends BlockDoublePlant implements ILexiconab
 		return (ConfigHandler.altFlowerTextures ? top ? doublePlantTopIconsAlt : doublePlantBottomIconsAlt : top ? doublePlantTopIcons : doublePlantBottomIcons)[p_149691_2_ & 7];
 	}
 
-	@Override
+
+	//todofix world sensetive getIcon
+//	@Override
 	public Icon getIcon(IBlockAccess world, int x, int y, int z, int side) {
 		int meta = world.getBlockMetadata(x, y, z);
 		boolean top = func_149887_c(meta);
@@ -192,7 +195,7 @@ public class BlockModDoubleFlower extends BlockDoublePlant implements ILexiconab
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister register) {
+	public void registerIcons(IconRegister register) {
 		doublePlantTopIcons = new Icon[COUNT];
 		doublePlantBottomIcons = new Icon[COUNT];
 		doublePlantTopIconsAlt = new Icon[COUNT];
@@ -212,9 +215,9 @@ public class BlockModDoubleFlower extends BlockDoublePlant implements ILexiconab
 	}
 
 	@Override
-	public void getSubBlocks(Item p_149666_1_, CreativeTabs p_149666_2_, List p_149666_3_) {
+	public void getSubBlocks(int id, CreativeTabs tab, List items) {
 		for(int i = 0; i < COUNT; ++i)
-			p_149666_3_.add(new ItemStack(p_149666_1_, 1, i));
+			items.add(new ItemStack(id, 1, i));
 	}
 
 	@Override

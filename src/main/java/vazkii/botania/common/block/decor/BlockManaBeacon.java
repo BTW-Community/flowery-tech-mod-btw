@@ -33,7 +33,7 @@ import vazkii.botania.common.block.tile.TileManaBeacon;
 import vazkii.botania.common.item.block.ItemBlockWithMetadataAndName;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 
 public class BlockManaBeacon extends BlockModContainer implements ILexiconable {
 
@@ -43,14 +43,14 @@ public class BlockManaBeacon extends BlockModContainer implements ILexiconable {
 		super(Material.iron);
 		setHardness(5.0F);
 		setResistance(10.0F);
-		setStepSound(soundTypeMetal);
+		setStepSound(soundMetalFootstep);
 		float size = 3F / 16F;
 		setBlockBounds(size, size, size, 1F - size, 1F - size, 1F - size);
 		setBlockName(LibBlockNames.MANA_BEACON);
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		icons = new Icon[2];
 		for(int i = 0; i < 2; i++)
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
@@ -62,14 +62,15 @@ public class BlockManaBeacon extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
+	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
 		for(int i = 0; i < 16; i++)
 			par3List.add(new ItemStack(par1, 1, i));
 	}
 
 	@Override
 	public Block setBlockName(String par1Str) {
-		GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
+		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
+//GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
 		return super.setBlockName(par1Str);
 	}
 
@@ -110,7 +111,7 @@ public class BlockManaBeacon extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileManaBeacon();
 	}
 }

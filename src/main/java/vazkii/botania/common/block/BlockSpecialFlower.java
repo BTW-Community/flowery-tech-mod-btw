@@ -47,7 +47,7 @@ import vazkii.botania.common.integration.coloredlights.LightHelper;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.block.ItemBlockSpecialFlower;
 import vazkii.botania.common.lib.LibBlockNames;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 
 public class BlockSpecialFlower extends BlockFlower implements ITileEntityProvider, ISpecialFlower, IWandable, ILexiconable, IWandHUD {
 
@@ -105,19 +105,19 @@ public class BlockSpecialFlower extends BlockFlower implements ITileEntityProvid
 		}));
 	}
 
-	protected BlockSpecialFlower() {
-		super(0);
+	protected BlockSpecialFlower(int id) {
+		super(id);
 		setBlockName(LibBlockNames.SPECIAL_FLOWER);
 		setHardness(0.1F);
-		setStepSound(soundTypeGrass);
+		setStepSound(soundGrassFootstep);
 		setTickRandomly(false);
-		setCreativeTab(BotaniaCreativeTab.INSTANCE);
+		setCreativeTab(CreativeTabs.tabMisc);
 		setBlockBounds(0.3F, 0.0F, 0.3F, 0.8F, 1, 0.8F);
 	}
 
 	@Override
 	public int getLightValue(IBlockAccess world, int x, int y, int z) {
-		int currentLight = ((TileSpecialFlower) world.getTileEntity(x, y, z)).getLightValue();
+		int currentLight = ((TileSpecialFlower) world.getBlockTileEntity(x, y, z)).getLightValue();
 		if(currentLight == -1)
 			currentLight = 0;
 		return LightHelper.getPackedColor(world.getBlockMetadata(x, y, z), currentLight);
@@ -135,7 +135,7 @@ public class BlockSpecialFlower extends BlockFlower implements ITileEntityProvid
 
 	@Override
 	public int isProvidingWeakPower(IBlockAccess world, int x, int y, int z, int side) {
-		return ((TileSpecialFlower) world.getTileEntity(x, y, z)).getPowerLevel(side);
+		return ((TileSpecialFlower) world.getBlockTileEntity(x, y, z)).getPowerLevel(side);
 	}
 
 	@Override
@@ -153,14 +153,15 @@ public class BlockSpecialFlower extends BlockFlower implements ITileEntityProvid
 		return LibRenderIDs.idSpecialFlower;
 	}
 
-	@Override
+//	@Override
 	public Block setBlockName(String par1Str) {
-		GameRegistry.registerBlock(this, ItemBlockSpecialFlower.class, par1Str);
-		return super.setBlockName(par1Str);
+		var item = new ItemBlockSpecialFlower(this);
+//		GameRegistry.registerBlock(this, ItemBlockSpecialFlower.class, par1Str);
+		return this/*super.setBlockName(par1Str)*/;
 	}
 
 	@Override
-	public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
+	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
 		for(String s : BotaniaAPI.subtilesForCreativeMenu) {
 			par3List.add(ItemBlockSpecialFlower.ofType(s));
 			if(BotaniaAPI.miniFlowers.containsKey(s))
@@ -169,15 +170,16 @@ public class BlockSpecialFlower extends BlockFlower implements ITileEntityProvid
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		for(String s : BotaniaAPI.getAllSubTiles())
 			if(!s.isEmpty())
 				BotaniaAPI.getSignatureForName(s).registerIcons(par1IconRegister);
 	}
 
-	@Override
+	//todofix getIcon impl
+//	@Override
 	public Icon getIcon(IBlockAccess par1iBlockAccess, int par2, int par3, int par4, int par5) {
-		return ((TileSpecialFlower) par1iBlockAccess.getTileEntity(par2, par3, par4)).getIcon();
+		return ((TileSpecialFlower) par1iBlockAccess.getBlockTileEntity(par2, par3, par4)).getIcon();
 	}
 
 	@Override
@@ -191,10 +193,11 @@ public class BlockSpecialFlower extends BlockFlower implements ITileEntityProvid
 		return ItemBlockSpecialFlower.ofType(name);
 	}
 
-	@Override
+	//todofix canPlaceBlockOn
+/*	@Override
 	protected boolean canPlaceBlockOn(Block block) {
-		return super.canPlaceBlockOn(block) || block == ModBlocks.redStringRelay || block == Blocks.mycelium;
-	}
+		return super.canPlaceBlockOn(block) || block == ModBlocks.redStringRelay || block == Block.mycelium;
+	}*/
 
 	@Override
 	public void onBlockHarvested(World par1World, int par2, int par3, int par4, int par5, EntityPlayer par6EntityPlayer) {
@@ -226,7 +229,7 @@ public class BlockSpecialFlower extends BlockFlower implements ITileEntityProvid
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntity(World world) {
 		return new TileSpecialFlower();
 	}
 

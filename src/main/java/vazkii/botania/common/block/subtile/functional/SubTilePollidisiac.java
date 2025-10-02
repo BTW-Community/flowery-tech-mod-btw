@@ -20,8 +20,6 @@ import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.SubTileFunctional;
 import vazkii.botania.common.lexicon.LexiconData;
-import vazkii.botania.common.lib.LibObfuscation;
-import cpw.mods.fml.relauncher.ReflectionHelper;
 
 public class SubTilePollidisiac extends SubTileFunctional {
 
@@ -42,7 +40,7 @@ public class SubTilePollidisiac extends SubTileFunctional {
 				if(mana < manaCost)
 					break;
 
-				int love = ReflectionHelper.getPrivateValue(EntityAnimal.class, animal, LibObfuscation.IN_LOVE);
+				int love = animal.getInLove();
 				if(animal.getGrowingAge() == 0 && love <= 0) {
 					for(EntityItem item : items) {
 						if(item.age < (60 + slowdown) || item.isDead)
@@ -55,8 +53,7 @@ public class SubTilePollidisiac extends SubTileFunctional {
 								item.setDead();
 
 							mana -= manaCost;
-
-							ReflectionHelper.setPrivateValue(EntityAnimal.class, animal, 1200, LibObfuscation.IN_LOVE);
+							animal.setInLove(1200);
 							animal.setTarget(null);
 							supertile.getWorldObj().setEntityState(animal, (byte)18);
 						}

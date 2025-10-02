@@ -148,7 +148,7 @@ public class InventoryBaubleBox implements IInventory {
 	}
 
 	@Override
-	public String getInventoryName() {
+	public String getInvName() {
 		return LibItemNames.BAUBLE_BOX;
 	}
 

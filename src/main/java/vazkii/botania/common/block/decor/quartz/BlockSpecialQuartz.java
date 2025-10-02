@@ -28,7 +28,7 @@ import vazkii.botania.common.block.BlockMod;
 import vazkii.botania.common.block.ModFluffBlocks;
 import vazkii.botania.common.item.block.ItemBlockSpecialQuartz;
 import vazkii.botania.common.lexicon.LexiconData;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
@@ -125,7 +125,7 @@ public class BlockSpecialQuartz extends BlockMod implements ILexiconable {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void getSubBlocks(Item item, CreativeTabs tab, List par3List) {
+	public void getSubBlocks(int item, CreativeTabs tab, List par3List) {
 		par3List.add(new ItemStack(this, 1, 0));
 		par3List.add(new ItemStack(this, 1, 1));
 		par3List.add(new ItemStack(this, 1, 2));
@@ -133,7 +133,7 @@ public class BlockSpecialQuartz extends BlockMod implements ILexiconable {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		specialQuartzIcons = new Icon[iconNames.length];
 
 		for (int i = 0; i < specialQuartzIcons.length; ++i) {

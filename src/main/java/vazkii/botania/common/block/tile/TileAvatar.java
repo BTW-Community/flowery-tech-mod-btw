@@ -100,7 +100,7 @@ public class TileAvatar extends TileSimpleInventory implements IAvatarTile, ISid
 	}
 
 	@Override
-	public String getInventoryName() {
+	public String getInvName() {
 		return LibBlockNames.AVATAR;
 	}
 

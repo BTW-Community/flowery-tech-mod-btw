@@ -14,7 +14,7 @@ import java.util.List;
 
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.SharedMonsterAttributes;
-import net.minecraft.src.ai.attributes.AttributeModifier;
+import net.minecraft.src.AttributeModifier;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IInventory;
@@ -39,7 +39,7 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 
 public class ItemAesirRing extends ItemRelicBauble implements IExtendedWireframeCoordinateListProvider, ICraftAchievement {
 
@@ -47,7 +47,7 @@ public class ItemAesirRing extends ItemRelicBauble implements IExtendedWireframe
 
 	public ItemAesirRing() {
 		super(LibItemNames.AESIR_RING);
-		GameRegistry.addRecipe(new AesirRingRecipe());
+		CraftingManager.getInstance().getRecipeList().add(new AesirRingRecipe());
 		RecipeSorter.register("botania:aesirRing", AesirRingRecipe.class, Category.SHAPELESS, "");
 		MinecraftForge.EVENT_BUS.register(this);
 	}

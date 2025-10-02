@@ -29,7 +29,7 @@ import vazkii.botania.common.block.BlockMod;
 import vazkii.botania.common.item.block.ItemBlockWithMetadataAndName;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 
 public class Block18Stone extends BlockMod implements ILexiconable {
 
@@ -39,18 +39,18 @@ public class Block18Stone extends BlockMod implements ILexiconable {
 		super(Material.rock);
 		setHardness(1.5F);
 		setResistance(10F);
-		setStepSound(soundTypeStone);
+		setStepSound(soundStoneFootstep);
 		setBlockName(LibBlockNames.STONE);
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister register) {
+	public void registerIcons(IconRegister register) {
 		for(int i = 0; i < 16; i++)
 			icons[i] = IconHelper.forBlock(register, this, i);
 	}
 
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List list) {
+	public void getSubBlocks(int item, CreativeTabs tab, List list) {
 		for(int i = 0; i < 16; i++)
 			list.add(new ItemStack(item, 1, i));
 	}
@@ -72,7 +72,8 @@ public class Block18Stone extends BlockMod implements ILexiconable {
 
 	@Override
 	public Block setBlockName(String par1Str) {
-		GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
+		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
+//GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
 		return super.setBlockName(par1Str);
 	}
 

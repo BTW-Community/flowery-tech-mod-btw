@@ -32,7 +32,7 @@ public class BlockManaGlass extends BlockMod implements ILexiconable {
 		super(Material.glass);
 		setHardness(0.3F);
 		setStepSound(soundTypeGlass);
-		setLightLevel(1.0F);
+		setLightValue(1.0F);
 		setBlockName(name);
 	}
 

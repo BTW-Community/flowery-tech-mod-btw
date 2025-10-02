@@ -33,7 +33,7 @@ public class RenderTileSkullOverride extends TileEntitySkullRenderer {
 	@Override
 	public void renderTileEntitySkullAt(TileEntitySkull skull, double u, double v, double w, float part) {
 
-		render(skull, (float) u, (float) v, (float) w, skull.getBlockMetadata() & 7, skull.func_145906_b() * 360 / 16.0F, skull.func_145904_a(), skull.func_152108_a());
+		render(skull, (float) u, (float) v, (float) w, skull.getBlockMetadata() & 7, (float)(skull.func_82119_b() * 360) / 16.0f, skull.getSkullType(), skull.getExtraType());
 
 	}
 /* render method from TileEntitySkullRenderer
@@ -110,15 +110,15 @@ public class RenderTileSkullOverride extends TileEntitySkullRenderer {
         GL11.glPopMatrix();
     }*/
 	//todofix render gaia head
-	public void render(TileEntitySkull skull, float par1, float par2, float par3, int par4, float par5, int par6, GameProfile gameProfile) {
-		boolean gaia = skull instanceof TileGaiaHead;
+	public void render(TileEntitySkull skull, float par1, float par2, float par3, int par4, float par5, int par6, String playerName) {
+		/*boolean gaia = skull instanceof TileGaiaHead;
 		if(par6 == 3 || gaia) {
 			ResourceLocation resourcelocation = AbstractClientPlayer.locationStevePng;
 			Minecraft minecraft = Minecraft.getMinecraft();
 			if(gaia)
 				resourcelocation = minecraft.thePlayer.getLocationSkin();
-			else if(gameProfile != null) {
-				Map map = minecraft.func_152342_ad().func_152788_a(gameProfile);
+			else if(playerName != null) {
+				Map map = minecraft.func_152342_ad().func_152788_a(playerName);
 
 				if (map.containsKey(MinecraftProfileTexture.Type.SKIN)) {
 					resourcelocation = minecraft.func_152342_ad().func_152792_a((MinecraftProfileTexture)map.get(MinecraftProfileTexture.Type.SKIN), MinecraftProfileTexture.Type.SKIN);
@@ -158,6 +158,6 @@ public class RenderTileSkullOverride extends TileEntitySkullRenderer {
 			if(gaia)
 				ShaderHelper.releaseShader();
 			GL11.glPopMatrix();
-		} else super.func_152674_a(par1, par2, par3, par4, par5, par6, gameProfile);
+		} else super.func_152674_a(par1, par2, par3, par4, par5, par6, playerName);*/
 	}
 }

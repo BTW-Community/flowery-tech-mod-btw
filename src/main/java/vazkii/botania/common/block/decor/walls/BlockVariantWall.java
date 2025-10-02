@@ -18,7 +18,7 @@ import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Icon;
 import vazkii.botania.common.item.block.ItemBlockWithMetadataAndName;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 
 public class BlockVariantWall extends BlockModWall {
 
@@ -37,11 +37,12 @@ public class BlockVariantWall extends BlockModWall {
 
 	@Override
 	public void register(String name) {
-		GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, name);
+		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
+//GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, name);
 	}
 
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tabs, List list) {
+	public void getSubBlocks(int item, CreativeTabs tabs, List list) {
 		for(int i = 0; i < metaStates; i++)
 			list.add(new ItemStack(item, 1, i));
 	}

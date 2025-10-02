@@ -11,8 +11,8 @@
 package vazkii.botania.client.model;
 
 import net.minecraft.src.ResourceLocation;
-//import net.minecraftforge.client.model.AdvancedModelLoader;
-//import net.minecraftforge.client.model.IModelCustom;
+import net.minecraftforge.client.model.AdvancedModelLoader;
+import net.minecraftforge.client.model.IModelCustom;
 import vazkii.botania.client.lib.LibResources;
 
 public class ModelPylon implements IPylonModel {

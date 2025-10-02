@@ -24,7 +24,7 @@ public class BlockThatchSlab extends BlockLivingSlab {
 	public BlockThatchSlab(boolean full) {
 		super(full, ModBlocks.thatch, 0);
 		setHardness(1.0F);
-		setStepSound(soundTypeGrass);
+		setStepSound(soundGrassFootstep);
 	}
 
 	@Override

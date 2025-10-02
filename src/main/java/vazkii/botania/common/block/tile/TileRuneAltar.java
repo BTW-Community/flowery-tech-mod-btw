@@ -142,7 +142,7 @@ public class TileRuneAltar extends TileSimpleInventory implements ISidedInventor
 
 		if(newSignal != signal) {
 			signal = newSignal;
-			worldObj.func_147453_f(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
+			worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
 		}
 
 		if(recipeKeepTicks > 0)
@@ -301,7 +301,7 @@ public class TileRuneAltar extends TileSimpleInventory implements ISidedInventor
 	}
 
 	@Override
-	public String getInventoryName() {
+	public String getInvName() {
 		return LibBlockNames.RUNE_ALTAR;
 	}
 
@@ -378,7 +378,7 @@ public class TileRuneAltar extends TileSimpleInventory implements ISidedInventor
 					GL11.glColor4f(1F, 1F, 1F, 1F);
 					RenderHelper.drawTexturedModalRect(xc + radius + 9, yc - 8, 0, progress == 1F ? 0 : 22, 8, 22, 15);
 
-					net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
+					net.minecraft.src.RenderHelper.enableGUIStandardItemLighting();
 					if(progress == 1F) {
 						RenderInstances.getItemInstance().renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, new ItemStack(ModBlocks.livingrock), xc + radius + 16, yc + 8);
 						GL11.glTranslatef(0F, 0F, 100F);
@@ -387,13 +387,13 @@ public class TileRuneAltar extends TileSimpleInventory implements ISidedInventor
 					}
 
 					RenderHelper.renderProgressPie(xc + radius + 32, yc - 8, progress, recipe.getOutput());
-					net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
+					net.minecraft.src.RenderHelper.disableStandardItemLighting();
 
 					if(progress == 1F)
 						mc.fontRenderer.drawStringWithShadow("+", xc + radius + 14, yc + 12, 0xFFFFFF);
 				}
 
-			net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
+			net.minecraft.src.RenderHelper.enableGUIStandardItemLighting();
 			for(int i = 0; i < amt; i++) {
 				double xPos = xc + Math.cos(angle * Math.PI / 180D) * radius - 8;
 				double yPos = yc + Math.sin(angle * Math.PI / 180D) * radius - 8;
@@ -403,7 +403,7 @@ public class TileRuneAltar extends TileSimpleInventory implements ISidedInventor
 
 				angle += anglePer;
 			}
-			net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
+			net.minecraft.src.RenderHelper.disableStandardItemLighting();
 		} else if(recipeKeepTicks > 0) {
 			String s = StatCollector.translateToLocal("botaniamisc.altarRefill0");
 			mc.fontRenderer.drawStringWithShadow(s, xc - mc.fontRenderer.getStringWidth(s) / 2, yc + 10, 0xFFFFFF);

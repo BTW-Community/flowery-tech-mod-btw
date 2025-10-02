@@ -12,6 +12,7 @@ package vazkii.botania.client.gui.lexicon;
 
 import java.util.List;
 
+import dev.bagel.util.GuiButtonSound;
 import net.minecraft.src.GuiButton;
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.src.StatCollector;
@@ -106,9 +107,9 @@ public class GuiLexiconChallengesList extends GuiLexicon implements IParented {
 	}
 
 	void back() {
-		if(backButton.enabled) {
+		if(backButton.enabled && backButton instanceof GuiButtonSound bs) {
 			actionPerformed(backButton);
-			backButton.func_146113_a(mc.getSoundHandler());
+			bs.func_146113_a();
 		}
 	}
 

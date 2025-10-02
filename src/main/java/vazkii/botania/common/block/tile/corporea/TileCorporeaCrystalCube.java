@@ -92,7 +92,7 @@ public class TileCorporeaCrystalCube extends TileCorporeaBase implements ICorpor
 
 	private void onUpdateCount() {
 		compValue = getComparatorValue();
-		worldObj.func_147453_f(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
+		worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
 	}
 
 	@Override
@@ -130,7 +130,7 @@ public class TileCorporeaCrystalCube extends TileCorporeaBase implements ICorpor
 	}
 
 	@Override
-	public String getInventoryName() {
+	public String getInvName() {
 		return LibBlockNames.CORPOREA_CRYSTAL_CUBE;
 	}
 

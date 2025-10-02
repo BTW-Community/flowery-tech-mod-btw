@@ -43,7 +43,7 @@ public class BlockRuneAltar extends BlockModContainer implements IWandable, ILex
 		setBlockBounds(0F, 0F, 0F, 1F, 0.75F, 1F);
 		setHardness(2.0F);
 		setResistance(10.0F);
-		setStepSound(soundTypeStone);
+		setStepSound(soundStoneFootstep);
 		setBlockName(LibBlockNames.RUNE_ALTAR);
 
 		BotaniaAPI.blacklistBlockFromMagnet(this, Short.MAX_VALUE);
@@ -62,7 +62,7 @@ public class BlockRuneAltar extends BlockModContainer implements IWandable, ILex
 	}
 
 	@Override
-	public void registerBlockIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		icons = new Icon[3];
 		for(int i = 0; i < icons.length; i++)
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
@@ -82,7 +82,7 @@ public class BlockRuneAltar extends BlockModContainer implements IWandable, ILex
 						if(!par5EntityPlayer.inventory.addItemStackToInventory(copy))
 							par5EntityPlayer.dropPlayerItemWithRandomChoice(copy, false);
 						altar.setInventorySlotContents(i, null);
-						par1World.func_147453_f(par2, par3, par4, this);
+						par1World.func_96440_m(par2, par3, par4, this);
 						break;
 					}
 				}
@@ -125,7 +125,7 @@ public class BlockRuneAltar extends BlockModContainer implements IWandable, ILex
 				}
 			}
 
-			par1World.func_147453_f(par2, par3, par4, par5);
+			par1World.func_96440_m(par2, par3, par4, par5);
 		}
 
 		super.breakBlock(par1World, par2, par3, par4, par5, par6);
@@ -137,7 +137,7 @@ public class BlockRuneAltar extends BlockModContainer implements IWandable, ILex
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileRuneAltar();
 	}
 
