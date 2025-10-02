@@ -23,18 +23,17 @@ import vazkii.botania.common.block.tile.mana.TileRFGenerator;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
-public class BlockRFGenerator extends BlockModContainer implements ILexiconable {
+public class BlockRFGenerator/* extends BlockModContainer implements ILexiconable*/ {
 
 	public BlockRFGenerator() {
-		super(Material.rock);
-		setHardness(2.0F);
-		setResistance(10.0F);
-		setStepSound(soundStoneFootstep);
-		setBlockName(LibBlockNames.RF_GENERATOR);
+//		super(Material.rock);
+//		setHardness(2.0F);
+//		setResistance(10.0F);
+//		setStepSound(soundStoneFootstep);
+//		setBlockName(LibBlockNames.RF_GENERATOR);
 	}
-
+/*
 	@Override
-	@Optional.Method(modid = "CoFHAPI|energy")
 	public void onNeighborChange(IBlockAccess world, int x, int y, int z, int tileX, int tileY, int tileZ) {
 		TileEntity tile = world.getTileEntity(x, y, z);
 		if(tile != null && tile instanceof TileRFGenerator)
@@ -49,6 +48,6 @@ public class BlockRFGenerator extends BlockModContainer implements ILexiconable 
 	@Override
 	public LexiconEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon) {
 		return LexiconData.rfGenerator;
-	}
+	}*/
 
 }

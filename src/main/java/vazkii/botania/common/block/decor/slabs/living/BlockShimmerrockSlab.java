@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.block.decor.slabs.living;
 
-import net.minecraft.src.BlockSlab;
+import net.minecraft.src.BlockHalfSlab;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.block.ModFluffBlocks;
 import vazkii.botania.common.block.decor.slabs.BlockLivingSlab;
@@ -25,13 +25,13 @@ public class BlockShimmerrockSlab extends BlockLivingSlab {
 	}
 
 	@Override
-	public BlockSlab getFullBlock() {
-		return (BlockSlab) ModFluffBlocks.shimmerrockSlabFull;
+	public BlockHalfSlab getFullBlock() {
+		return (BlockHalfSlab) ModFluffBlocks.shimmerrockSlabFull;
 	}
 
 	@Override
-	public BlockSlab getSingleBlock() {
-		return (BlockSlab) ModFluffBlocks.shimmerrockSlab;
+	public BlockHalfSlab getSingleBlock() {
+		return (BlockHalfSlab) ModFluffBlocks.shimmerrockSlab;
 	}
 
 }

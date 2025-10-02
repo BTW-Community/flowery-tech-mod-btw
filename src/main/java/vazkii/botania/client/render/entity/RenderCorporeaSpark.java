@@ -10,6 +10,7 @@
  */
 package vazkii.botania.client.render.entity;
 
+import dev.bagel.util.Blocks;
 import net.minecraft.src.Block;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ItemRenderer;
@@ -69,7 +70,7 @@ public class RenderCorporeaSpark extends RenderSparkBase<EntityCorporeaSpark> {
 		Item item = stack.getItem();
 		boolean block = item instanceof ItemBlock;
 		Minecraft.getMinecraft().renderEngine.bindTexture(block ? TextureMap.locationBlocksTexture : TextureMap.locationItemsTexture);
-		Icon icon = block ? Block.getBlockFromItem(item).getBlockTextureFromSide(ForgeDirection.UP.ordinal()) : item.getIcon(stack, 0);
+		Icon icon = block ? Blocks.getBlockFromItem(item).getBlockTextureFromSide(ForgeDirection.UP.ordinal()) : item.getIcon(stack, 0);
 
 		if(icon != null) {
 			float minU = icon.getMinU();

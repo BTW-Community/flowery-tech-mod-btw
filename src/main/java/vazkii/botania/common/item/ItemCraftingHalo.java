@@ -13,6 +13,7 @@ package vazkii.botania.common.item;
 import java.awt.Color;
 
 import dev.bagel.client.RenderInstances;
+import dev.bagel.util.Blocks;
 import net.minecraft.src.Block;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.Gui;
@@ -60,7 +61,6 @@ import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.core.helper.Vector3;
 import vazkii.botania.common.lib.LibGuiIDs;
 import vazkii.botania.common.lib.LibItemNames;
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 import net.fabricmc.api.Environment;
@@ -69,7 +69,7 @@ import net.fabricmc.api.EnvType;
 public class ItemCraftingHalo extends ItemMod implements ICraftAchievement {
 
 	private static final ResourceLocation glowTexture = new ResourceLocation(LibResources.MISC_GLOW_GREEN);
-	private static final ItemStack craftingTable = new ItemStack(Blocks.crafting_table);
+	private static final ItemStack craftingTable = new ItemStack(Block.workbench);
 
 	public static final int SEGMENTS = 12;
 
@@ -79,14 +79,15 @@ public class ItemCraftingHalo extends ItemMod implements ICraftAchievement {
 	private static final String TAG_EQUIPPED = "equipped";
 	private static final String TAG_ROTATION_BASE = "rotationBase";
 
-	public ItemCraftingHalo() {
-		this(LibItemNames.CRAFTING_HALO);
+	public ItemCraftingHalo(int id) {
+		this(id, LibItemNames.CRAFTING_HALO);
 		MinecraftForge.EVENT_BUS.register(this);
-		FMLCommonHandler.instance().bus().register(this);
+//		FMLCommonHandler.instance().bus().register(this);
 	}
 
-	public ItemCraftingHalo(String name) {
-		setUnlocalizedName(name);
+	public ItemCraftingHalo(int id, String name) {
+        super(id);
+        setUnlocalizedName(name);
 		setMaxStackSize(1);
 	}
 
@@ -199,7 +200,7 @@ public class ItemCraftingHalo extends ItemMod implements ICraftAchievement {
 			if(stackAt != null && stack.isItemEqual(stackAt) && ItemStack.areItemStackTagsEqual(stack, stackAt)) {
 				boolean consume = true;
 
-				ItemStack container = stackAt.getItem().getContainerItem(stackAt);
+				ItemStack container = new ItemStack(stackAt.getItem().getContainerItem(/*stackAt*/));
 				if(container != null) {
 					if(container == stackAt)
 						consume = false;
@@ -402,7 +403,7 @@ public class ItemCraftingHalo extends ItemMod implements ICraftAchievement {
 	public void render(ItemStack stack, EntityPlayer player, float partialTicks) {
 		Minecraft mc = Minecraft.getMinecraft();
 		Tessellator tess = Tessellator.instance;
-		Tessellator.renderingWorldRenderer = false;
+//		Tessellator.renderingWorldRenderer = false;
 
 		GL11.glPushMatrix();
 		GL11.glEnable(GL11.GL_BLEND);
@@ -445,13 +446,13 @@ public class ItemCraftingHalo extends ItemMod implements ICraftAchievement {
 			if(slotStack != null) {
 				mc.renderEngine.bindTexture(slotStack.getItem() instanceof ItemBlock ? TextureMap.locationBlocksTexture : TextureMap.locationItemsTexture);
 
-				if(slotStack.getItem() instanceof ItemBlock && RenderBlocks.doesRenderIDRenderItemIn3D(Block.getBlockFromItem(slotStack.getItem()).getRenderType())) {
+				if(slotStack.getItem() instanceof ItemBlock && RenderBlocks.doesRenderIDRenderItemIn3D(Blocks.getBlockFromItem(slotStack.getItem()).getRenderType())) {
 					float scale = seg == 0 ? 0.75F : 0.6F;
 					GL11.glScalef(scale, scale, scale);
 					GL11.glRotatef(180F, 0F, 1F, 0F);
 					GL11.glTranslatef(seg == 0 ? 0.5F : 0F, seg == 0 ? -0.1F : 0.6F, 0F);
 
-					RenderInstances.getBlocksInstance().renderBlockAsItem(Block.getBlockFromItem(slotStack.getItem()), slotStack.getItemDamage(), 1F);
+					RenderInstances.getBlocksInstance().renderBlockAsItem(Blocks.getBlockFromItem(slotStack.getItem()), slotStack.getItemDamage(), 1F);
 				} else {
 					GL11.glScalef(0.75F, 0.75F, 0.75F);
 					GL11.glTranslatef(0F, 0F, 0.5F);

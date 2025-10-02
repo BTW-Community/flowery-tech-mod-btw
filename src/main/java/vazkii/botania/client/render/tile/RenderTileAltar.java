@@ -12,6 +12,7 @@ package vazkii.botania.client.render.tile;
 
 import java.awt.Color;
 
+import dev.bagel.util.Blocks;
 import net.minecraft.src.Block;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ItemRenderer;
@@ -126,10 +127,10 @@ public class RenderTileAltar extends TileEntitySpecialRenderer {
 						ItemStack stack = altar.getStackInSlot(i);
 						minecraft.renderEngine.bindTexture(stack.getItem() instanceof ItemBlock ? TextureMap.locationBlocksTexture : TextureMap.locationItemsTexture);
 
-						if(stack.getItem() instanceof ItemBlock && RenderBlocks.doesRenderIDRenderItemIn3D(Block.getBlockFromItem(stack.getItem()).getRenderType())) {
+						if(stack.getItem() instanceof ItemBlock && RenderBlocks.doesRenderIDRenderItemIn3D(Blocks.getBlockFromItem(stack.getItem()).getRenderType())) {
 							GL11.glScalef(0.5F, 0.5F, 0.5F);
 							GL11.glTranslatef(1F, 1.1F, 0F);
-							renderBlocks.renderBlockAsItem(Block.getBlockFromItem(stack.getItem()), stack.getItemDamage(), 1F);
+							renderBlocks.renderBlockAsItem(Blocks.getBlockFromItem(stack.getItem()), stack.getItemDamage(), 1F);
 							GL11.glTranslatef(-1F, -1.1F, 0F);
 							GL11.glScalef(2F, 2F, 2F);
 						} else {
@@ -154,7 +155,7 @@ public class RenderTileAltar extends TileEntitySpecialRenderer {
 			}
 
 			Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
-			Block block = lava ? Blocks.lava : Blocks.water;
+			Block block = lava ? Block.lavaStill : Block.waterStill;
 			int brightness = lava ? 240 : -1;
 			float alpha = lava ? 1F : 0.7F;
 

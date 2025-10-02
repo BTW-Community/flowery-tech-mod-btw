@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.block.decor.slabs;
 
-import net.minecraft.src.BlockSlab;
+import net.minecraft.src.BlockHalfSlab;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
@@ -29,13 +29,13 @@ public class BlockEnderBrickSlab extends BlockLivingSlab {
 	}
 
 	@Override
-	public BlockSlab getFullBlock() {
-		return (BlockSlab) ModFluffBlocks.enderBrickSlabFull;
+	public BlockHalfSlab getFullBlock() {
+		return (BlockHalfSlab) ModFluffBlocks.enderBrickSlabFull;
 	}
 
 	@Override
-	public BlockSlab getSingleBlock() {
-		return (BlockSlab) ModFluffBlocks.enderBrickSlab;
+	public BlockHalfSlab getSingleBlock() {
+		return (BlockHalfSlab) ModFluffBlocks.enderBrickSlab;
 	}
 
 	@Override

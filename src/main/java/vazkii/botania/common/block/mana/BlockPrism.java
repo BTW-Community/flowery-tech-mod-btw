@@ -43,7 +43,7 @@ public class BlockPrism extends BlockModContainer implements IManaTrigger, ILexi
 	public BlockPrism() {
 		super(Material.glass);
 		setHardness(0.3F);
-		setStepSound(soundTypeGlass);
+		setStepSound(soundGlassFootstep);
 		setLightValue(1.0F);
 		setBlockName(LibBlockNames.PRISM);
 		float f = 0.25F;

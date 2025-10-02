@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.block.decor.slabs;
 
-import net.minecraft.src.BlockSlab;
+import net.minecraft.src.BlockHalfSlab;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
@@ -30,13 +30,13 @@ public class Block18StoneSlab extends BlockLivingSlab {
 	}
 
 	@Override
-	public BlockSlab getFullBlock() {
-		return (BlockSlab) ModFluffBlocks.stoneFullSlabs[index];
+	public BlockHalfSlab getFullBlock() {
+		return (BlockHalfSlab) ModFluffBlocks.stoneFullSlabs[index];
 	}
 
 	@Override
-	public BlockSlab getSingleBlock() {
-		return (BlockSlab) ModFluffBlocks.stoneSlabs[index];
+	public BlockHalfSlab getSingleBlock() {
+		return (BlockHalfSlab) ModFluffBlocks.stoneSlabs[index];
 	}
 
 	@Override

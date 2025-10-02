@@ -162,7 +162,7 @@ public class ItemSpawnerMover extends ItemMod {
 			return false;
 		else if(!player.canPlayerEdit(x, y, z, side, itemstack))
 			return false;
-		else if(y == 255 && block.getMaterial().isSolid())
+		else if(y == 255 && block.blockMaterial.isSolid())
 			return false;
 		else if(world.canPlaceEntityOnSide(Block.mobSpawner.blockID, x, y, z, false, side, player, itemstack)) {
 			int meta = block.onBlockPlaced(world, x, y, z, side, xOffset, yOffset, zOffset, 0);

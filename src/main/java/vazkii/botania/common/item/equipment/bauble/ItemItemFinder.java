@@ -48,7 +48,6 @@ import baubles.common.container.InventoryBaubles;
 import baubles.common.lib.PlayerHandler;
 import baubles.common.network.PacketHandler;
 import baubles.common.network.PacketSyncBauble;
-import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 

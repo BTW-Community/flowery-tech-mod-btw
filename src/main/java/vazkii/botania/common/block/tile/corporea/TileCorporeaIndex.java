@@ -20,13 +20,13 @@ import java.util.WeakHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import emi.shims.java.net.minecraft.text.Text;
+import emi.shims.java.net.minecraft.util.Formatting;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.ChatComponentTranslation;
-import net.minecraft.src.ChatStyle;
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraftforge.event.ServerChatEvent;
 
@@ -185,11 +185,12 @@ public class TileCorporeaIndex extends TileCorporeaBase implements ICorporeaRequ
 		indexes.remove(this);
 	}
 
-	@Override
-	public void onChunkUnload() {
-		super.onChunkUnload();
-		indexes.remove(this);
-	}
+	//todofix onChunkUnload
+//	@Override
+//	public void onChunkUnload() {
+//		super.onChunkUnload();
+//		indexes.remove(this);
+//	}
 
 	@Override
 	public int getSizeInventory() {
@@ -275,7 +276,7 @@ public class TileCorporeaIndex extends TileCorporeaBase implements ICorporeaRequ
 
 						index.doCorporeaRequest(name, count, spark);
 
-						event.player.addChatMessage(new ChatComponentTranslation("botaniamisc.requestMsg", count, WordUtils.capitalizeFully(name), CorporeaHelper.lastRequestMatches, CorporeaHelper.lastRequestExtractions).setChatStyle(new ChatStyle().setColor(EnumChatFormatting.LIGHT_PURPLE)));
+						event.player.addChatMessage(Text.translatable("botaniamisc.requestMsg", count, WordUtils.capitalizeFully(name), CorporeaHelper.lastRequestMatches, CorporeaHelper.lastRequestExtractions).formatted(Formatting.LIGHT_PURPLE).toString());
 						if(CorporeaHelper.lastRequestExtractions >= 50000)
 							event.player.addStat(ModAchievements.superCorporeaRequest, 1);
 					}

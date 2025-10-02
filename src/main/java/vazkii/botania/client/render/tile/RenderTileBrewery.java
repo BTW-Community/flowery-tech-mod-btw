@@ -13,6 +13,7 @@ package vazkii.botania.client.render.tile;
 import java.awt.Color;
 
 import dev.bagel.client.RenderInstances;
+import dev.bagel.util.Blocks;
 import net.minecraft.src.Block;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ItemRenderer;
@@ -74,18 +75,18 @@ public class RenderTileBrewery extends TileEntitySpecialRenderer {
 			GL11.glScalef(2F, 2F, 2F);
 			if(!ForgeHooksClient.renderEntityItem(new EntityItem(brewery.getWorldObj(), brewery.xCoord, brewery.yCoord, brewery.zCoord, stack), stack, 0F, 0F, brewery.getWorldObj().rand, mc.renderEngine, RenderInstances.getBlocksInstance(), 1)) {
 				GL11.glScalef(0.5F, 0.5F, 0.5F);
-				if(stack.getItem() instanceof ItemBlock && RenderBlocks.doesRenderIDRenderItemIn3D(Block.getBlockFromItem(stack.getItem()).getRenderType())) {
+				if(stack.getItem() instanceof ItemBlock && RenderBlocks.doesRenderIDRenderItemIn3D(Blocks.getBlockFromItem(stack.getItem()).getRenderType())) {
 					GL11.glScalef(0.5F, 0.5F, 0.5F);
 					GL11.glTranslatef(1F, 1.1F, 0F);
 					GL11.glPushMatrix();
-					RenderInstances.getBlocksInstance().renderBlockAsItem(Block.getBlockFromItem(stack.getItem()), stack.getItemDamage(), 1F);
+					RenderInstances.getBlocksInstance().renderBlockAsItem(Blocks.getBlockFromItem(stack.getItem()), stack.getItemDamage(), 1F);
 					GL11.glPopMatrix();
 					GL11.glTranslatef(-1F, -1.1F, 0F);
 					GL11.glScalef(2F, 2F, 2F);
 				} else {
 					int renderPass = 0;
 					do {
-						Icon icon = stack.getItem().getIcon(stack, renderPass);
+						Icon icon = stack.getItem().getIconFromDamageForRenderPass(stack.getItemDamage(), renderPass);
 						if(icon != null) {
 							Color color = new Color(stack.getItem().getColorFromItemStack(stack, renderPass));
 							GL11.glColor3ub((byte) color.getRed(), (byte) color.getGreen(), (byte) color.getBlue());

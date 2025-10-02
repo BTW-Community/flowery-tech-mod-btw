@@ -13,6 +13,7 @@ package vazkii.botania.common.item.rod;
 import java.util.Map;
 import java.util.WeakHashMap;
 
+import dev.bagel.util.Blocks;
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EnumAction;
@@ -37,8 +38,9 @@ public class ItemSmeltRod extends ItemMod implements IManaUsingItem {
 
 	public static Map<EntityPlayer, SmeltData> playerData = new WeakHashMap<>();
 
-	public ItemSmeltRod() {
-		setUnlocalizedName(LibItemNames.SMELT_ROD);
+	public ItemSmeltRod(int id) {
+        super(id);
+        setUnlocalizedName(LibItemNames.SMELT_ROD);
 		setMaxStackSize(1);
 	}
 
@@ -58,6 +60,7 @@ public class ItemSmeltRod extends ItemMod implements IManaUsingItem {
 		return par1ItemStack;
 	}
 
+	//todofix implement onUsingTick
 	@Override
 	public void onUsingTick(ItemStack stack, EntityPlayer p, int time) {
 		if(!ManaItemHandler.requestManaExactForTool(stack, p, COST_PER_TICK, false))
@@ -70,7 +73,7 @@ public class ItemSmeltRod extends ItemMod implements IManaUsingItem {
 			int meta = p.worldObj.getBlockMetadata(pos.blockX, pos.blockY, pos.blockZ);
 
 			ItemStack blockStack = new ItemStack(block, 1, meta);
-			ItemStack result = FurnaceRecipes.smelting().getSmeltingResult(blockStack);
+			ItemStack result = FurnaceRecipes.smelting().getSmeltingResult(blockStack.itemID);
 
 			if(result != null && result.getItem() instanceof ItemBlock) {
 				boolean decremented = false;
@@ -83,12 +86,12 @@ public class ItemSmeltRod extends ItemMod implements IManaUsingItem {
 						decremented = true;
 						if(data.progress <= 0) {
 							if(!p.worldObj.isRemote) {
-								p.worldObj.setBlock(pos.blockX, pos.blockY, pos.blockZ, Block.getBlockFromItem(result.getItem()), result.getItemDamage(), 1 | 2);
+								p.worldObj.setBlock(pos.blockX, pos.blockY, pos.blockZ, Blocks.getBlockFromItem(result.getItem()), result.getItemDamage(), 1 | 2);
 								p.worldObj.playSoundAtEntity(p, "fire.ignite", 0.6F, 1F);
 								p.worldObj.playSoundAtEntity(p, "fire.fire", 1F, 1F);
 
 								ManaItemHandler.requestManaExactForTool(stack, p, COST_PER_TICK, true);
-								playerData.remove(p.getGameProfile().getName());
+								playerData.remove(p);
 								decremented = false;
 							}
 

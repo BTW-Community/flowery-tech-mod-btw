@@ -38,7 +38,6 @@ import vazkii.botania.common.lib.LibObfuscation;
 import baubles.api.BaubleType;
 import baubles.common.lib.PlayerHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 

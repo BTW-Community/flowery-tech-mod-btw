@@ -21,7 +21,6 @@ import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.lib.LibItemNames;
 import vazkii.botania.common.lib.LibObfuscation;
-import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 

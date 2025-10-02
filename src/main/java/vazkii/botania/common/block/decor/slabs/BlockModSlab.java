@@ -2,14 +2,8 @@ package vazkii.botania.common.block.decor.slabs;
 
 import java.util.Random;
 
-import net.minecraft.src.BlockSlab;
-import net.minecraft.src.Material;
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.MovingObjectPosition;
-import net.minecraft.src.World;
+import dev.bagel.util.Items;
+import net.minecraft.src.*;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.common.core.BotaniaCreativeTab;
@@ -19,23 +13,23 @@ import vazkii.botania.common.lexicon.LexiconData;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
-public abstract class BlockModSlab extends BlockSlab implements ILexiconable {
+public abstract class BlockModSlab extends BlockHalfSlab implements ILexiconable {
 
 	String name;
 
-	public BlockModSlab(boolean full, Material mat, String name) {
-		super(full, mat);
+	public BlockModSlab(int id, boolean full, Material mat, String name) {
+		super(id, full, mat);
 		this.name = name;
-		setBlockName(name);
+//		setBlockName(name);
 		if(!full) {
 			setCreativeTab(CreativeTabs.tabMisc);
-			useNeighborBrightness = true;
+			useNeighborBrightness[0] = true;
 		}
 	}
 
-	public abstract BlockSlab getFullBlock();
+	public abstract BlockHalfSlab getFullBlock();
 
-	public abstract BlockSlab getSingleBlock();
+	public abstract BlockHalfSlab getSingleBlock();
 
 	@Override
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
@@ -43,13 +37,13 @@ public abstract class BlockModSlab extends BlockSlab implements ILexiconable {
 	}
 
 	@Override
-	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
-		return Item.getItemFromBlock(getSingleBlock());
+	public int idDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
+		return new ItemStack(getSingleBlock()).itemID;
 	}
 
 	@Override
-	public int quantityDropped(int meta, int fortune, Random random) {
-		return super.quantityDropped(meta, fortune, random);
+	public int quantityDropped(Random par1Random) {
+		return super.quantityDropped(par1Random);
 	}
 
 	@Override
@@ -63,14 +57,20 @@ public abstract class BlockModSlab extends BlockSlab implements ILexiconable {
 		// NO-OP
 	}
 
-	public void register() {
-		GameRegistry.registerBlock(this, ItemBlockModSlab.class, name);
+	public void register(int id) {
+		var item = new ItemBlockModSlab(id, this);
+//		GameRegistry.registerBlock(this, ItemBlockModSlab.class, name);
 	}
 
 	@Override
-	public String func_150002_b(int i) {
+	public String getUnlocalizedName2() {
 		return name;
 	}
+
+/*	@Override
+	public String func_150002_b(int i) {
+		return name;
+	}*/
 
 	@Override
 	public LexiconEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon) {

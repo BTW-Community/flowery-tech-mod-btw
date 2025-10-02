@@ -28,7 +28,6 @@ import net.minecraft.src.World;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.core.helper.Vector3;
 import vazkii.botania.common.lib.LibObfuscation;
-import cpw.mods.fml.relauncher.ReflectionHelper;
 
 public class EntityMagicMissile extends EntityThrowable {
 

@@ -25,7 +25,7 @@ public class ItemElementiumShovel extends ItemManasteelShovel {
 	@Override
 	public boolean onBlockStartBreak(ItemStack stack, int x, int y, int z, EntityPlayer player) {
 		World world = player.worldObj;
-		Material mat = world.getBlock(x, y, z).getMaterial();
+		Material mat = world.getBlock(x, y, z).blockMaterial;
 		if (!ToolCommons.isRightMaterial(mat, materialsShovel))
 			return false;
 

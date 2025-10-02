@@ -61,13 +61,13 @@ public class SubTileHydroangeas extends SubTilePassiveGenerating {
 					};
 
 					Material search = getMaterialToSearchFor();
-					if(supertile.getWorldObj().getBlock(positions[0], supertile.yCoord, positions[1]).getMaterial() == search && (getBlockToSearchBelow() == null || supertile.getWorldObj().getBlock(positions[0], supertile.yCoord - 1, positions[1]) == getBlockToSearchBelow()) && supertile.getWorldObj().getBlockMetadata(positions[0], supertile.yCoord, positions[1]) == 0) {
+					if(supertile.getWorldObj().getBlock(positions[0], supertile.yCoord, positions[1]).blockMaterial == search && (getBlockToSearchBelow() == null || supertile.getWorldObj().getBlock(positions[0], supertile.yCoord - 1, positions[1]) == getBlockToSearchBelow()) && supertile.getWorldObj().getBlockMetadata(positions[0], supertile.yCoord, positions[1]) == 0) {
 						if(search != Material.water)
 							supertile.getWorldObj().setBlockToAir(positions[0], supertile.yCoord, positions[1]);
 						else {
 							int waterAround = 0;
 							for(ForgeDirection dir : LibMisc.CARDINAL_DIRECTIONS)
-								if(supertile.getWorldObj().getBlock(positions[0] + dir.offsetX, supertile.yCoord, positions[1] + dir.offsetZ).getMaterial() == search)
+								if(supertile.getWorldObj().getBlock(positions[0] + dir.offsetX, supertile.yCoord, positions[1] + dir.offsetZ).blockMaterial == search)
 									waterAround++;
 
 							if(waterAround < 2)

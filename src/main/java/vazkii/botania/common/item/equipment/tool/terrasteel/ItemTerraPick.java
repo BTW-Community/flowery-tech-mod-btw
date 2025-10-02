@@ -117,7 +117,7 @@ public class ItemTerraPick extends ItemManasteelPick implements IManaItem, ISequ
 	}
 
 	@Override
-	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
+	public void onUpdate(ItemStack par1ItemStack, World par2World, EntityPlayer par3Entity, int par4, boolean par5) {
 		super.onUpdate(par1ItemStack, par2World, par3Entity, par4, par5);
 		if(isEnabled(par1ItemStack)) {
 			int level = getLevel(par1ItemStack);
@@ -152,7 +152,7 @@ public class ItemTerraPick extends ItemManasteelPick implements IManaItem, ISequ
 			return;
 
 		World world = player.worldObj;
-		Material mat = world.getBlock(x, y, z).getMaterial();
+		Material mat = world.getBlock(x, y, z).blockMaterial;
 		if(!ToolCommons.isRightMaterial(mat, MATERIALS))
 			return;
 

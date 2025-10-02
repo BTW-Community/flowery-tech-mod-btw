@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.block.decor.slabs;
 
-import net.minecraft.src.BlockSlab;
+import net.minecraft.src.BlockHalfSlab;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
@@ -21,21 +21,21 @@ import vazkii.botania.common.lexicon.LexiconData;
 
 public class BlockEndStoneSlab extends BlockLivingSlab {
 
-	public BlockEndStoneSlab(boolean full) {
-		super(full, ModBlocks.endStoneBrick, 0);
+	public BlockEndStoneSlab(int id, boolean full) {
+		super(id, full, ModBlocks.endStoneBrick, 0);
 		setHardness(1.5F);
 		setResistance(10F);
 		setStepSound(soundStoneFootstep);
 	}
 
 	@Override
-	public BlockSlab getFullBlock() {
-		return (BlockSlab) ModFluffBlocks.endStoneSlabFull;
+	public BlockHalfSlab getFullBlock() {
+		return (BlockHalfSlab) ModFluffBlocks.endStoneSlabFull;
 	}
 
 	@Override
-	public BlockSlab getSingleBlock() {
-		return (BlockSlab) ModFluffBlocks.endStoneSlab;
+	public BlockHalfSlab getSingleBlock() {
+		return (BlockHalfSlab) ModFluffBlocks.endStoneSlab;
 	}
 
 	@Override
@@ -43,4 +43,8 @@ public class BlockEndStoneSlab extends BlockLivingSlab {
 		return LexiconData.endStoneDecor;
 	}
 
+	@Override
+	public String getFullSlabName(int i) {
+		return "todo.endstone";
+	}
 }

@@ -66,7 +66,7 @@ public class SubTileMunchdew extends SubTileGenerating {
 							int yp = y + j;
 							int zp = z + k;
 							Block block = supertile.getWorldObj().getBlock(xp, yp, zp);
-							if(block.getMaterial() == Material.leaves) {
+							if(block.blockMaterial == Material.leaves) {
 								boolean exposed = false;
 								for(ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS)
 									if(supertile.getWorldObj().getBlock(xp + dir.offsetX, yp + dir.offsetY, zp + dir.offsetZ).isAir(supertile.getWorldObj(), xp + dir.offsetX, yp + dir.offsetY, zp + dir.offsetZ)) {

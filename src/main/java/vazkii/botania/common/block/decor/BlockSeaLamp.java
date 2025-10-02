@@ -21,25 +21,24 @@ import vazkii.botania.common.block.BlockMod;
 import vazkii.botania.common.integration.coloredlights.ColoredLightHelper;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
-import cpw.mods.fml.common.Optional;
 
 public class BlockSeaLamp extends BlockMod implements ILexiconable {
 
-	public BlockSeaLamp() {
-		super(Material.glass);
+	public BlockSeaLamp(int id) {
+		super(id, Material.glass);
 		setHardness(0.3F);
-		setStepSound(soundTypeGlass);
+		setStepSound(soundGlassFootstep);
 		setLightValue(1.0F);
 		setBlockName(LibBlockNames.SEA_LAMP);
 	}
 
 	int coloredLight = -1;
 
-	@Override
+/*	@Override
 	@Optional.Method(modid = "easycoloredlights")
 	public int getLightValue(IBlockAccess world, int x, int y, int z) {
 		return coloredLight == -1 ? (coloredLight = ColoredLightHelper.makeRGBLightValue(85, 136, 125, originalLight)) : coloredLight;
-	}
+	}*/
 
 	@Override
 	public LexiconEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon) {

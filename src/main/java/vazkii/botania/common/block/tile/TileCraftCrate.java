@@ -19,7 +19,6 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.CraftingManager;
 import net.minecraft.src.IRecipe;
 import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.NetworkManager;
 import net.minecraft.src.Packet132TileEntityData;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
 import vazkii.botania.common.item.ModItems;
@@ -102,7 +101,7 @@ public class TileCraftCrate extends TileOpenCrate {
 
 		if(newSignal != signal) {
 			signal = newSignal;
-			worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
+			worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlockId(xCoord, yCoord, zCoord));
 		}
 	}
 
@@ -135,7 +134,7 @@ public class TileCraftCrate extends TileOpenCrate {
 					if(stack == null)
 						continue;
 
-					ItemStack container = stack.getItem().getContainerItem(stack);
+					ItemStack container = new ItemStack(stack.getItem().getContainerItem(/*stack*/));
 					setInventorySlotContents(i, container);
 				}
 				return true;
@@ -158,7 +157,7 @@ public class TileCraftCrate extends TileOpenCrate {
 			if(stack != null)
 				eject(stack, false);
 			setInventorySlotContents(i, null);
-			markDirty();
+			onInventoryChanged();
 		}
 	}
 
@@ -182,22 +181,35 @@ public class TileCraftCrate extends TileOpenCrate {
 	}
 
 	@Override
+	public void onInventoryChanged() {
+		super.onInventoryChanged();
+		VanillaPacketDispatcher.dispatchTEToNearbyPlayers(this);
+	}
+
+/*	@Override
 	public void markDirty() {
 		super.markDirty();
 		VanillaPacketDispatcher.dispatchTEToNearbyPlayers(this);
-	}
+	}*/
 
 	@Override
 	public int getSignal() {
 		return signal;
 	}
 
+//	@Override
+//	public void onDataPacket(NetworkManager manager, Packet132TileEntityData packet) {
+//		int lastPattern = pattern;
+//		super.onDataPacket(manager, packet);
+//		if(pattern != lastPattern)
+//			worldObj.markBlockRangeForRenderUpdate(xCoord,yCoord,zCoord,xCoord,yCoord,zCoord);
+//	}
+
 	@Override
-	public void onDataPacket(NetworkManager manager, Packet132TileEntityData packet) {
+	public void readNBTFromPacket(NBTTagCompound tag) {
 		int lastPattern = pattern;
-		super.onDataPacket(manager, packet);
+		super.readNBTFromPacket(tag);
 		if(pattern != lastPattern)
 			worldObj.markBlockRangeForRenderUpdate(xCoord,yCoord,zCoord,xCoord,yCoord,zCoord);
 	}
-
 }

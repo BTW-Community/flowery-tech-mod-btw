@@ -13,7 +13,7 @@ public class ForgeHooksClient {
     static int renderPass = -1;
     static int stencilBits = 0;
 
-    public static boolean renderEntityItem(EntityItem entity, ItemStack item, float bobing, float rotation, Random random, TextureManager engine, RenderBlocks renderBlocks) {
+    public static boolean renderEntityItem(EntityItem entity, ItemStack item, float bobing, float rotation, Random random, TextureManager engine, RenderBlocks renderBlocks, int count) {
         IItemRenderer customRenderer = MinecraftForgeClient.getItemRenderer(item, ENTITY);
         if (customRenderer == null) {
             return false;
@@ -41,8 +41,8 @@ public class ForgeHooksClient {
 
             GL11.glScalef(scale, scale, scale);
 
-            int size = item.stackSize;
-            int count = (size > 40 ? 5 : (size > 20 ? 4 : (size > 5 ? 3 : (size > 1 ? 2 : 1))));
+//            int size = item.stackSize;
+//            int count = (size > 40 ? 5 : (size > 20 ? 4 : (size > 5 ? 3 : (size > 1 ? 2 : 1))));
 
             for (int j = 0; j < count; j++) {
                 GL11.glPushMatrix();

@@ -13,7 +13,7 @@ package vazkii.botania.common.block.decor.quartz;
 import java.util.Random;
 
 import net.minecraft.src.Block;
-import net.minecraft.src.BlockSlab;
+import net.minecraft.src.BlockHalfSlab;
 import net.minecraft.src.Material;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityPlayer;
@@ -41,41 +41,41 @@ public class BlockSpecialQuartzSlab extends BlockModSlab {
 	}
 
 	@Override
-	public BlockSlab getFullBlock() {
+	public BlockHalfSlab getFullBlock() {
 		if(source == ModFluffBlocks.darkQuartz)
-			return (BlockSlab) ModFluffBlocks.darkQuartzSlabFull;
+			return (BlockHalfSlab) ModFluffBlocks.darkQuartzSlabFull;
 		if(source == ModFluffBlocks.manaQuartz)
-			return (BlockSlab) ModFluffBlocks.manaQuartzSlabFull;
+			return (BlockHalfSlab) ModFluffBlocks.manaQuartzSlabFull;
 		if(source == ModFluffBlocks.blazeQuartz)
-			return (BlockSlab) ModFluffBlocks.blazeQuartzSlabFull;
+			return (BlockHalfSlab) ModFluffBlocks.blazeQuartzSlabFull;
 		if(source == ModFluffBlocks.lavenderQuartz)
-			return (BlockSlab) ModFluffBlocks.lavenderQuartzSlabFull;
+			return (BlockHalfSlab) ModFluffBlocks.lavenderQuartzSlabFull;
 		if(source == ModFluffBlocks.redQuartz)
-			return (BlockSlab) ModFluffBlocks.redQuartzSlabFull;
+			return (BlockHalfSlab) ModFluffBlocks.redQuartzSlabFull;
 		if(source == ModFluffBlocks.elfQuartz)
-			return (BlockSlab) ModFluffBlocks.elfQuartzSlabFull;
+			return (BlockHalfSlab) ModFluffBlocks.elfQuartzSlabFull;
 		if(source == ModFluffBlocks.sunnyQuartz)
-			return (BlockSlab) ModFluffBlocks.sunnyQuartzSlabFull;
+			return (BlockHalfSlab) ModFluffBlocks.sunnyQuartzSlabFull;
 
 		return this;
 	}
 
 	@Override
-	public BlockSlab getSingleBlock() {
+	public BlockHalfSlab getSingleBlock() {
 		if(source == ModFluffBlocks.darkQuartz)
-			return (BlockSlab) ModFluffBlocks.darkQuartzSlab;
+			return (BlockHalfSlab) ModFluffBlocks.darkQuartzSlab;
 		if(source == ModFluffBlocks.manaQuartz)
-			return (BlockSlab) ModFluffBlocks.manaQuartzSlab;
+			return (BlockHalfSlab) ModFluffBlocks.manaQuartzSlab;
 		if(source == ModFluffBlocks.blazeQuartz)
-			return (BlockSlab) ModFluffBlocks.blazeQuartzSlab;
+			return (BlockHalfSlab) ModFluffBlocks.blazeQuartzSlab;
 		if(source == ModFluffBlocks.lavenderQuartz)
-			return (BlockSlab) ModFluffBlocks.lavenderQuartzSlab;
+			return (BlockHalfSlab) ModFluffBlocks.lavenderQuartzSlab;
 		if(source == ModFluffBlocks.redQuartz)
-			return (BlockSlab) ModFluffBlocks.redQuartzSlab;
+			return (BlockHalfSlab) ModFluffBlocks.redQuartzSlab;
 		if(source == ModFluffBlocks.elfQuartz)
-			return (BlockSlab) ModFluffBlocks.elfQuartzSlab;
+			return (BlockHalfSlab) ModFluffBlocks.elfQuartzSlab;
 		if(source == ModFluffBlocks.sunnyQuartz)
-			return (BlockSlab) ModFluffBlocks.sunnyQuartzSlab;
+			return (BlockHalfSlab) ModFluffBlocks.sunnyQuartzSlab;
 
 		return this;
 	}

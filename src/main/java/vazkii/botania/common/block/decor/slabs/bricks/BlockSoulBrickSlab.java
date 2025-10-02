@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.block.decor.slabs.bricks;
 
-import net.minecraft.src.BlockSlab;
+import net.minecraft.src.BlockHalfSlab;
 import vazkii.botania.common.block.ModFluffBlocks;
 
 public class BlockSoulBrickSlab extends BlockCustomBrickSlab {
@@ -20,13 +20,13 @@ public class BlockSoulBrickSlab extends BlockCustomBrickSlab {
 	}
 
 	@Override
-	public BlockSlab getFullBlock() {
-		return (BlockSlab) ModFluffBlocks.soulBrickSlabFull;
+	public BlockHalfSlab getFullBlock() {
+		return (BlockHalfSlab) ModFluffBlocks.soulBrickSlabFull;
 	}
 
 	@Override
-	public BlockSlab getSingleBlock() {
-		return (BlockSlab) ModFluffBlocks.soulBrickSlab;
+	public BlockHalfSlab getSingleBlock() {
+		return (BlockHalfSlab) ModFluffBlocks.soulBrickSlab;
 	}
 
 }

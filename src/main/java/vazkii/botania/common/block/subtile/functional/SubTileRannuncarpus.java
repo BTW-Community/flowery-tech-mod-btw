@@ -13,6 +13,9 @@ package vazkii.botania.common.block.subtile.functional;
 import java.util.ArrayList;
 import java.util.List;
 
+import btw.item.items.PlaceAsBlockItem;
+import dev.bagel.interfaces.BlockExtensions;
+import dev.bagel.util.Items;
 import net.minecraft.src.Block;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ScaledResolution;
@@ -43,7 +46,6 @@ import vazkii.botania.common.core.handler.ConfigHandler;
 import vazkii.botania.common.item.block.ItemBlockSpecialFlower;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibObfuscation;
-import cpw.mods.fml.relauncher.ReflectionHelper;
 
 public class SubTileRannuncarpus extends SubTileFunctional {
 
@@ -95,7 +97,7 @@ public class SubTileRannuncarpus extends SubTileFunctional {
 									int zp = z + l;
 									Block blockAbove = supertile.getWorldObj().getBlock(xp, yp + 1, zp);
 
-									if(filter.equals(supertile.getWorldObj(), xp, yp, zp) && (blockAbove.isAir(supertile.getWorldObj(), xp, yp + 1, zp) || blockAbove.isReplaceable(supertile.getWorldObj(), xp, yp + 1, zp)))
+									if(filter.equals(supertile.getWorldObj(), xp, yp, zp) && (blockAbove.isAir(supertile.getWorldObj(), xp, yp + 1, zp) || blockAbove.isReplaceableVegetation(supertile.getWorldObj(), xp, yp + 1, zp)))
 										validPositions.add(new ChunkCoordinates(xp, yp + 1, zp));
 								}
 
@@ -109,18 +111,15 @@ public class SubTileRannuncarpus extends SubTileFunctional {
 						Block blockToPlace = null;
 						if(stackItem instanceof IFlowerPlaceable)
 							blockToPlace = ((IFlowerPlaceable) stackItem).getBlockToPlaceByFlower(stack, this, coords.posX, coords.posY, coords.posZ);
-						if(stackItem instanceof ItemBlock)
-							blockToPlace = ((ItemBlock) stackItem).field_150939_a;
-						else if(stackItem instanceof ItemReed)
-							blockToPlace = ReflectionHelper.getPrivateValue(ItemReed.class, (ItemReed) stackItem, LibObfuscation.REED_ITEM);
+						if(stackItem instanceof PlaceAsBlockItem pabi)
+							blockToPlace = Block.blocksList[pabi.getBlockID()];
 						else if(stackItem instanceof ItemRedstone)
-							blockToPlace = Blocks.redstone_wire;
-
+							blockToPlace = Block.redstoneWire;
 						if(blockToPlace != null) {
 							if(blockToPlace.canPlaceBlockAt(supertile.getWorldObj(), coords.posX, coords.posY, coords.posZ)) {
 								supertile.getWorldObj().setBlock(coords.posX, coords.posY, coords.posZ, blockToPlace, stack.getItemDamage(), 1 | 2);
 								if(ConfigHandler.blockBreakParticles)
-									supertile.getWorldObj().playAuxSFX(2001, coords.posX, coords.posY, coords.posZ, Block.getIdFromBlock(blockToPlace) + (stack.getItemDamage() << 12));
+									supertile.getWorldObj().playAuxSFX(2001, coords.posX, coords.posY, coords.posZ, BlockExtensions.getIdFromBlock(blockToPlace) + (stack.getItemDamage() << 12));
 								validPositions.remove(coords);
 
 								TileEntity tile = supertile.getWorldObj().getTileEntity(coords.posX, coords.posY, coords.posZ);
@@ -166,7 +165,7 @@ public class SubTileRannuncarpus extends SubTileFunctional {
 		super.renderHUD(mc, res);
 
 		BlockData filter = getUnderlyingBlock();
-		ItemStack recieverStack = new ItemStack(Item.getItemFromBlock(filter.block), 1, filter.meta);
+		ItemStack recieverStack = new ItemStack(Items.getItemFromBlock(filter.block), 1, filter.meta);
 		int color = getColor();
 
 		GL11.glEnable(GL11.GL_BLEND);

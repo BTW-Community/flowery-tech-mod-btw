@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.block.tile;
 
+import dev.bagel.interfaces.BlockExtensions;
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityAgeable;
 import net.minecraft.src.EntityChicken;
@@ -22,7 +23,6 @@ import net.minecraft.src.EntitySheep;
 import net.minecraft.src.EntityVillager;
 import net.minecraft.src.EntityWolf;
 import net.minecraft.src.NBTTagCompound;
-import cpw.mods.fml.common.registry.VillagerRegistry;
 
 public class TileCocoon extends TileMod {
 
@@ -44,7 +44,7 @@ public class TileCocoon extends TileMod {
 
 	public void hatch() {
 		if(!worldObj.isRemote) {
-			worldObj.playAuxSFX(2001, xCoord, yCoord, zCoord, Block.getIdFromBlock(getBlockType()));
+			worldObj.playAuxSFX(2001, xCoord, yCoord, zCoord, BlockExtensions.getIdFromBlock(getBlockType()));
 			worldObj.setBlockToAir(xCoord, yCoord, zCoord);
 
 			EntityAgeable entity = null;
@@ -52,8 +52,9 @@ public class TileCocoon extends TileMod {
 			float villagerChance = Math.min(1F, (float) emeraldsGiven / (float) MAX_EMERALDS);
 
 			if(Math.random() < villagerChance) {
-				EntityVillager villager = new EntityVillager(worldObj);
-				VillagerRegistry.applyRandomTrade(villager, worldObj.rand);
+
+				EntityVillager villager = new EntityVillager(worldObj, worldObj.rand.nextInt(0, EntityVillager.professionMap.size() - 1));
+//				VillagerRegistry.applyRandomTrade(villager, worldObj.rand);
 				entity = villager;
 			} else {
 				float specialChance = 0.05F;

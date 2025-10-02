@@ -93,7 +93,7 @@ public final class SkyblockWorldEvents {
 						int j = movingobjectposition.blockY;
 						int k = movingobjectposition.blockZ;
 
-						if(event.world.getBlock(i, j, k).getMaterial() == Material.water) {
+						if(event.world.getBlock(i, j, k).blockMaterial == Material.water) {
 							--equipped.stackSize;
 
 							if(equipped.stackSize <= 0)

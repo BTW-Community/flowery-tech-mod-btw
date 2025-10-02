@@ -14,10 +14,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import dev.bagel.interfaces.BlockExtensions;
+import dev.bagel.util.Blocks;
+import net.minecraft.src.*;
 import net.minecraft.src.Block;
-import net.minecraft.src.Block;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.ChunkCoordinates;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.SubTileFunctional;
@@ -35,7 +35,7 @@ public class SubTileMarimorphosis extends SubTileFunctional {
 	private static final int RANGE_MINI = 2;
 	private static final int RANGE_Y_MINI = 1;
 
-	private static final Type[] TYPES = new Type[] {
+/*	private static final Type[] TYPES = new Type[] {
 		Type.FOREST,
 		Type.PLAINS,
 		Type.MOUNTAIN,
@@ -44,7 +44,7 @@ public class SubTileMarimorphosis extends SubTileFunctional {
 		Type.SANDY,
 		Type.COLD,
 		Type.MESA
-	};
+	};*/
 
 	@Override
 	public void onUpdate() {
@@ -57,11 +57,11 @@ public class SubTileMarimorphosis extends SubTileFunctional {
 			if(coords != null) {
 				ItemStack stack = getStoneToPut(coords);
 				if(stack != null) {
-					Block block = Block.getBlockFromItem(stack.getItem());
+					Block block = Blocks.getBlockFromItem(stack.getItem());
 					int meta = stack.getItemDamage();
 					supertile.getWorldObj().setBlock(coords.posX, coords.posY, coords.posZ, block, meta, 1 | 2);
 					if(ConfigHandler.blockBreakParticles)
-						supertile.getWorldObj().playAuxSFX(2001, coords.posX, coords.posY, coords.posZ, Block.getIdFromBlock(block) + (meta << 12));
+						supertile.getWorldObj().playAuxSFX(2001, coords.posX, coords.posY, coords.posZ, BlockExtensions.getIdFromBlock(block) + (meta << 12));
 
 					mana -= COST;
 					sync();
@@ -71,7 +71,7 @@ public class SubTileMarimorphosis extends SubTileFunctional {
 	}
 
 	public ItemStack getStoneToPut(ChunkCoordinates coords) {
-		List<Type> types = Arrays.asList(BiomeDictionary.getTypesForBiome(supertile.getWorldObj().getBiomeGenForCoords(coords.posX, coords.posZ)));
+/*		List<Type> types = Arrays.asList(BiomeDictionary.getTypesForBiome(supertile.getWorldObj().getBiomeGenForCoords(coords.posX, coords.posZ)));
 
 		List<Integer> values = new ArrayList<>();
 		for(int i = 0; i < 8; i++) {
@@ -81,9 +81,9 @@ public class SubTileMarimorphosis extends SubTileFunctional {
 
 			for(int j = 0; j < times; j++)
 				values.add(i);
-		}
-
-		return new ItemStack(ModFluffBlocks.biomeStoneA, 1, values.get(supertile.getWorldObj().rand.nextInt(values.size())));
+		}*/
+		//todofix get stone to put
+		return new ItemStack(ModFluffBlocks.biomeStoneA, 1, 0/*values.get(supertile.getWorldObj().rand.nextInt(values.size()))*/);
 	}
 
 	public ChunkCoordinates getCoordsToPut() {
@@ -99,7 +99,7 @@ public class SubTileMarimorphosis extends SubTileFunctional {
 					int y = supertile.yCoord + j;
 					int z = supertile.zCoord + k;
 					Block block = supertile.getWorldObj().getBlock(x, y, z);
-					if(block != null && block.isReplaceableOreGen(supertile.getWorldObj(), x, y, z, Blocks.stone))
+					if(block != null && block instanceof BlockStone /*.isReplaceableOreGen(supertile.getWorldObj(), x, y, z, Block.stone)*/)
 						possibleCoords.add(new ChunkCoordinates(x, y, z));
 				}
 

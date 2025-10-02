@@ -99,17 +99,17 @@ public abstract class TileSimpleInventory extends TileMod implements IInventory 
 	}
 
 	@Override
-	public boolean hasCustomInventoryName() {
+	public boolean isInvNameLocalized() {
 		return false;
 	}
 
 	@Override
-	public void openInventory() {
+	public void openChest() {
 		// NO-OP
 	}
 
 	@Override
-	public void closeInventory() {
+	public void closeChest() {
 		// NO-OP
 	}
 }

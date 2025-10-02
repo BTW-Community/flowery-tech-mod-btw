@@ -13,6 +13,7 @@ package vazkii.botania.common.block;
 import java.util.Arrays;
 import java.util.List;
 
+import dev.bagel.util.Blocks;
 import net.minecraft.src.Block;
 import net.minecraft.src.BlockDirectional;
 import net.minecraft.src.Material;
@@ -31,13 +32,14 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 
 	static List<Integer> validRenderTypes = Arrays.asList(0, 31, 39);
 
-	protected BlockCamo(Material par2Material) {
-		super(par2Material);
+	protected BlockCamo(int id, Material par2Material) {
+		super(id, par2Material);
 	}
 
-	@Override
+	//todofix world sensitive getIcon
+//	@Override
 	public Icon getIcon(IBlockAccess world, int x, int y, int z, int side) {
-		TileEntity tile = world.getTileEntity(x, y, z);
+		TileEntity tile = world.getBlockTileEntity(x, y, z);
 		int meta = world.getBlockMetadata(x, y, z);
 
 		if(tile instanceof TileCamo) {
@@ -66,25 +68,25 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 			TileCamo camo = (TileCamo) tile;
 			ItemStack currentStack = par5EntityPlayer.getCurrentEquippedItem();
 
-			if(currentStack == null)
-				currentStack = new ItemStack(Block.getBlockFromName("air"), 1, 0);
+//			if(currentStack == null)
+//				currentStack = new ItemStack(ModBlocks.fakeAir, 1, 0);
 
 			boolean doChange = true;
 			Block block = null;
 			checkChange : {
-				if(currentStack.getItem() != Item.getItemFromBlock(Block.getBlockFromName("air"))) {
-					if(Item.getIdFromItem(currentStack.getItem()) == 0) {
+				if(currentStack != null) {
+					if(currentStack.itemID == 0) {
 						doChange = false;
 						break checkChange;
 					}
 
-					block = Block.getBlockFromItem(currentStack.getItem());
-					if(block == null || !isValidBlock(block) || block instanceof BlockCamo || block.getMaterial() == Material.air)
+					block = Blocks.getBlockFromItem(currentStack.getItem());
+					if(block == null || !isValidBlock(block) || block instanceof BlockCamo || block.blockMaterial == Material.air)
 						doChange = false;
 				}
 			}
 
-			if(doChange && currentStack.getItem() != null) {
+			if(doChange && currentStack != null && currentStack.getItem() != null) {
 				int metadata = currentStack.getItemDamage();
 				if(block instanceof BlockDirectional) {
 					switch (par6) {
@@ -105,7 +107,7 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 						break;
 					}
 				}
-				camo.camo = Block.getBlockFromItem(currentStack.getItem());
+				camo.camo = Blocks.getBlockFromItem(currentStack.getItem());
 				camo.camoMeta = metadata;
 				par1World.markBlockForUpdate(par2,par3,par4);
 
@@ -129,7 +131,7 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 	@Override
 	@Environment(EnvType.CLIENT)
 	public int colorMultiplier(IBlockAccess par1World, int par2, int par3, int par4) {
-		TileEntity tile = par1World.getTileEntity(par2, par3, par4);
+		TileEntity tile = par1World.getBlockTileEntity(par2, par3, par4);
 		if(tile instanceof TileCamo) {
 			TileCamo camo = (TileCamo) tile;
 			Block block = camo.camo;

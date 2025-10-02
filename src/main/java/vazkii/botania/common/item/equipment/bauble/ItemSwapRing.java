@@ -47,7 +47,7 @@ public class ItemSwapRing extends ItemBauble {
 			Block block = entity.worldObj.getBlock(pos.blockX, pos.blockY, pos.blockZ);
 
 			if(block != null) {
-				Material mat = block.getMaterial();
+				Material mat = block.blockMaterial;
 				if(ToolCommons.isRightMaterial(mat, ToolCommons.materialsPick))
 					typeToFind = ToolType.PICK;
 				else if(ToolCommons.isRightMaterial(mat, ToolCommons.materialsShovel))

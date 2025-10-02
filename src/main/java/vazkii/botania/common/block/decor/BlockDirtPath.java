@@ -18,8 +18,6 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
-import net.minecraftforge.common.EnumPlantType;
-import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -29,19 +27,19 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockDirtPath extends BlockMod implements ILexiconable {
 
-	public BlockDirtPath() {
-		super(Material.ground);
+	public BlockDirtPath(int id) {
+		super(id, Material.ground);
 		setBlockBounds(0F, 0F, 0F, 1F, 15F / 16F, 1F);
 		setLightOpacity(255);
 		setHardness(0.6F);
 		setStepSound(soundGravelFootstep);
 		setBlockName(LibBlockNames.DIRT_PATH);
-		useNeighborBrightness = true;
+		useNeighborBrightness[0] = true;
 	}
 
 	@Override
-	public boolean isToolEffective(String type, int metadata) {
-		return type.equals("shovel");
+	public boolean areShovelsEffectiveOn() {
+		return true;
 	}
 
 	@Override
@@ -59,19 +57,19 @@ public class BlockDirtPath extends BlockMod implements ILexiconable {
 
 	@Override
 	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z) {
-		Block blockAbove = world.getBlock(x, y + 1, z);
-		if(!blockAbove.isAir(world, x, y + 1, z))
+		Block blockAbove = ((World) world).getBlock(x, y + 1, z);
+		if(!blockAbove.isAir(((World) world), x, y + 1, z))
 			setBlockBounds(0F, 0F, 0F, 1F, 1, 1F);
 		else setBlockBounds(0F, 0F, 0F, 1F, 15F / 16F, 1F);
 	}
 
 	@Override
-	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, ForgeDirection side) {
+	public boolean isSideSolid(World worldObj, int xCoord, int i, int zCoord, ForgeDirection side) {
 		return side == ForgeDirection.DOWN;
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
+	public void onNeighborBlockChange(World world, int x, int y, int z, int block) {
 		setBlockBoundsBasedOnState(world, x, y, z);
 	}
 
@@ -90,10 +88,11 @@ public class BlockDirtPath extends BlockMod implements ILexiconable {
 		return false;
 	}
 
-	@Override
+	//todofix canSustainPlant
+/*	@Override
 	public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection direction, IPlantable plantable) {
 		return plantable.getPlantType(world, x, y - 1, z) == EnumPlantType.Plains;
-	}
+	}*/
 
 	@Override
 	public LexiconEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon) {

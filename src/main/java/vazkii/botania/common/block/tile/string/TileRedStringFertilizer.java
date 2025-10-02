@@ -13,13 +13,12 @@ package vazkii.botania.common.block.tile.string;
 import java.util.Random;
 
 import net.minecraft.src.Block;
-import net.minecraft.src.IGrowable;
 import net.minecraft.src.ChunkCoordinates;
 import net.minecraft.src.World;
-
+//todofix IGrowing pains
 public class TileRedStringFertilizer extends TileRedString {
 
-	public boolean func_149851_a(World p_149851_1_, boolean p_149851_5_) {
+/*	public boolean func_149851_a(World p_149851_1_, boolean p_149851_5_) {
 		ChunkCoordinates binding = getBinding();
 		Block block = getBlockAtBinding();
 
@@ -37,11 +36,11 @@ public class TileRedStringFertilizer extends TileRedString {
 		Block block = getBlockAtBinding();
 		if(block instanceof IGrowable)
 			((IGrowable) block).func_149853_b(p_149853_1_, p_149853_2_, binding.posX, binding.posY, binding.posZ);
-	}
+	}*/
 
 	@Override
 	public boolean acceptBlock(int x, int y, int z) {
-		return worldObj.getBlock(x, y, z) instanceof IGrowable;
+		return false /*worldObj.getBlock(x, y, z) instanceof IGrowable*/;
 	}
 
 }

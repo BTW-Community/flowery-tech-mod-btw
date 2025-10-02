@@ -43,7 +43,7 @@ public class ItemOpenBucket extends ItemMod {
 				if(!par3EntityPlayer.canPlayerEdit(i, j, k, movingobjectposition.sideHit, par1ItemStack))
 					return par1ItemStack;
 
-				Material material = par2World.getBlock(i, j, k).getMaterial();
+				Material material = par2World.getBlock(i, j, k).blockMaterial;
 				int l = par2World.getBlockMetadata(i, j, k);
 
 				if((material == Material.lava || material == Material.water) && l == 0) {

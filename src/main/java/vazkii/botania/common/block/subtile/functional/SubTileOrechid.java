@@ -15,6 +15,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import dev.bagel.interfaces.BlockExtensions;
+import dev.bagel.util.Blocks;
 import net.minecraft.src.*;
 import net.minecraft.src.Block;
 import vazkii.botania.api.BotaniaAPI;
@@ -47,11 +49,11 @@ public class SubTileOrechid extends SubTileFunctional {
 			if(coords != null) {
 				ItemStack stack = getOreToPut();
 				if(stack != null) {
-					Block block = Block.getBlockFromItem(stack.getItem());
+					Block block = Blocks.getBlockFromItem(stack.getItem());
 					int meta = stack.getItemDamage();
 					supertile.getWorldObj().setBlock(coords.posX, coords.posY, coords.posZ, block, meta, 1 | 2);
 					if(ConfigHandler.blockBreakParticles)
-						supertile.getWorldObj().playAuxSFX(2001, coords.posX, coords.posY, coords.posZ, Block.getIdFromBlock(block) + (meta << 12));
+						supertile.getWorldObj().playAuxSFX(2001, coords.posX, coords.posY, coords.posZ, BlockExtensions.getIdFromBlock(block) + (meta << 12));
 					supertile.getWorldObj().playSoundEffect(supertile.xCoord, supertile.yCoord, supertile.zCoord, "botania:orechid", 2F, 1F);
 
 					mana -= cost;

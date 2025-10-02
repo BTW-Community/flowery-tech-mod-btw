@@ -3,11 +3,12 @@ package vazkii.botania.common.item.equipment.tool.elementium;
 import java.util.Arrays;
 import java.util.List;
 
+import dev.bagel.util.Blocks;
 import net.minecraft.src.Block;
+import net.minecraft.src.EnumToolMaterial;
 import net.minecraft.src.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
-import net.minecraftforge.oredict.OreDictionary;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.equipment.tool.manasteel.ItemManasteelPick;
@@ -17,8 +18,8 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class ItemElementiumPick extends ItemManasteelPick {
 
-	public ItemElementiumPick() {
-		super(BotaniaAPI.elementiumToolMaterial, LibItemNames.ELEMENTIUM_PICK);
+	public ItemElementiumPick(int id) {
+		super(id, EnumToolMaterial.EMERALD/*BotaniaAPI.elementiumToolMaterial*/, LibItemNames.ELEMENTIUM_PICK);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
@@ -30,7 +31,7 @@ public class ItemElementiumPick extends ItemManasteelPick {
 				for(int i = 0; i < event.drops.size(); i++) {
 					ItemStack drop = event.drops.get(i);
 					if(drop != null) {
-						Block block = Block.getBlockFromItem(drop.getItem());
+						Block block = Blocks.getBlockFromItem(drop.getItem());
 						if(block != null){
 							if(isDisposable(block) || (isSemiDisposable(block) && !event.harvester.isSneaking()))
 								event.drops.remove(i);
@@ -40,22 +41,22 @@ public class ItemElementiumPick extends ItemManasteelPick {
 			}
 		}
 	}
-
+	//todo easy, disposable item tag
 	public static boolean isDisposable(Block block) {
-		for(int id : OreDictionary.getOreIDs(new ItemStack(block))) {
-			String name = OreDictionary.getOreName(id);
-			if(BotaniaAPI.disposableBlocks.contains(name))
-				return true;
-		}
+//		for(int id : OreDictionary.getOreIDs(new ItemStack(block))) {
+//			String name = OreDictionary.getOreName(id);
+//			if(BotaniaAPI.disposableBlocks.contains(name))
+//				return true;
+//		}
 		return false;
 	}
 	
 	public static boolean isSemiDisposable(Block block) {
-		for(int id : OreDictionary.getOreIDs(new ItemStack(block))) {
-			String name = OreDictionary.getOreName(id);
-			if(BotaniaAPI.semiDisposableBlocks.contains(name))
-				return true;
-		}
+//		for(int id : OreDictionary.getOreIDs(new ItemStack(block))) {
+//			String name = OreDictionary.getOreName(id);
+//			if(BotaniaAPI.semiDisposableBlocks.contains(name))
+//				return true;
+//		}
 		return false;
 	}
 }

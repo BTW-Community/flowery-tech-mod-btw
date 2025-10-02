@@ -43,7 +43,7 @@ public class BlockBifrost extends BlockModContainer implements ILexiconable {
 		setLightOpacity(0);
 		setLightValue(1F);
 		setBlockUnbreakable();
-		setStepSound(soundTypeGlass);
+		setStepSound(soundGlassFootstep);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 

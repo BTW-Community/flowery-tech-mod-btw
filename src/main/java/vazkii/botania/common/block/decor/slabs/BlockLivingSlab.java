@@ -10,8 +10,8 @@ public abstract class BlockLivingSlab extends BlockModSlab {
 	Block source;
 	int meta;
 
-	public BlockLivingSlab(boolean full, Block source, int meta) {
-		super(full, source.getMaterial(), source.getUnlocalizedName().replaceAll("tile.", "") + meta + "Slab" + (full ? "Full" : ""));
+	public BlockLivingSlab(int id, boolean full, Block source, int meta) {
+		super(id, full, source.blockMaterial, source.getUnlocalizedName().replaceAll("tile.", "") + meta + "Slab" + (full ? "Full" : ""));
 		setStepSound(source.stepSound);
 		this.source = source;
 		this.meta = meta;

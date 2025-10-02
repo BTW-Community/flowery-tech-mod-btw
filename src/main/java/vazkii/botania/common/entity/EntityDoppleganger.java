@@ -74,7 +74,6 @@ import vazkii.botania.common.core.helper.Vector3;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.relic.ItemRelic;
 import vazkii.botania.common.lib.LibObfuscation;
-import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
@@ -812,7 +811,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 			while(!flag1 && j > 0) {
 				Block block = worldObj.getBlock(i, j - 1, k);
 
-				if(block.getMaterial().blocksMovement())
+				if(block.blockMaterial.blocksMovement())
 					flag1 = true;
 				else {
 					--posY;

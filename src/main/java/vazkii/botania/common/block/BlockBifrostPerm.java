@@ -34,7 +34,7 @@ public class BlockBifrostPerm extends BlockMod implements ILexiconable {
 		setLightOpacity(0);
 		setHardness(0.3F);
 		setLightValue(1F);
-		setStepSound(soundTypeGlass);
+		setStepSound(soundGlassFootstep);
 		setTickRandomly(true);
 	}
 

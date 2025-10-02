@@ -10,8 +10,8 @@
  */
 package vazkii.botania.common.block.tile.string;
 
+import dev.bagel.shim.BlockDoublePlant;
 import net.minecraft.src.Block;
-import net.minecraft.src.BlockDoublePlant;
 import net.minecraft.src.BlockFlower;
 import net.minecraft.src.BlockMushroom;
 import net.minecraft.src.TileEntity;

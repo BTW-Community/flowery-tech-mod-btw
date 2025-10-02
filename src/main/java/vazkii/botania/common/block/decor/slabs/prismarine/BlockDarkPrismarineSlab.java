@@ -1,6 +1,6 @@
 package vazkii.botania.common.block.decor.slabs.prismarine;
 
-import net.minecraft.src.BlockSlab;
+import net.minecraft.src.BlockHalfSlab;
 import vazkii.botania.common.block.ModFluffBlocks;
 
 public class BlockDarkPrismarineSlab extends BlockPrismarineSlab {
@@ -10,13 +10,13 @@ public class BlockDarkPrismarineSlab extends BlockPrismarineSlab {
 	}
 
 	@Override
-	public BlockSlab getFullBlock() {
-		return (BlockSlab) ModFluffBlocks.darkPrismarineSlabFull;
+	public BlockHalfSlab getFullBlock() {
+		return (BlockHalfSlab) ModFluffBlocks.darkPrismarineSlabFull;
 	}
 
 	@Override
-	public BlockSlab getSingleBlock() {
-		return (BlockSlab) ModFluffBlocks.darkPrismarineSlab;
+	public BlockHalfSlab getSingleBlock() {
+		return (BlockHalfSlab) ModFluffBlocks.darkPrismarineSlab;
 	}
 
 }

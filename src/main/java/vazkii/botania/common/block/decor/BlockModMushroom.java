@@ -26,7 +26,6 @@ import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import thaumcraft.api.crafting.IInfusionStabiliser;
 import vazkii.botania.api.item.IHornHarvestable;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -38,7 +37,6 @@ import vazkii.botania.common.integration.coloredlights.ColoredLightHelper;
 import vazkii.botania.common.item.block.ItemBlockWithMetadataAndName;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
-import cpw.mods.fml.common.Optional;
 
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
@@ -48,8 +46,9 @@ public class BlockModMushroom extends BlockMushroom implements IHornHarvestable,
 	public static Icon[] icons;
 	public int originalLight;
 
-	public BlockModMushroom() {
-		setBlockName(LibBlockNames.MUSHROOM);
+	public BlockModMushroom(int id) {
+        super(id);
+        setBlockName(LibBlockNames.MUSHROOM);
 		setLightValue(0.2F);
 		setHardness(0F);
 		setStepSound(soundGrassFootstep);
@@ -67,7 +66,7 @@ public class BlockModMushroom extends BlockMushroom implements IHornHarvestable,
 	public boolean canBlockStay(World p_149718_1_, int p_149718_2_, int p_149718_3_, int p_149718_4_) {
 		if(p_149718_3_ >= 0 && p_149718_3_ < 256) {
 			Block block = p_149718_1_.getBlock(p_149718_2_, p_149718_3_ - 1, p_149718_4_);
-			return block == Blocks.mycelium || block == Blocks.dirt && p_149718_1_.getBlockMetadata(p_149718_2_, p_149718_3_ - 1, p_149718_4_) == 2 || block.canSustainPlant(p_149718_1_, p_149718_2_, p_149718_3_ - 1, p_149718_4_, ForgeDirection.UP, this);
+			return block == Block.mycelium || block == Block.dirt && p_149718_1_.getBlockMetadata(p_149718_2_, p_149718_3_ - 1, p_149718_4_) == 2/* || block.canSustainPlant(p_149718_1_, p_149718_2_, p_149718_3_ - 1, p_149718_4_, ForgeDirection.UP, this)*/;
 		}
 
 		return false;
@@ -79,11 +78,11 @@ public class BlockModMushroom extends BlockMushroom implements IHornHarvestable,
 			par3List.add(new ItemStack(par1, 1, i));
 	}
 
-	@Override
+//	@Override
 	public Block setBlockName(String par1Str) {
 		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
 //GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
-		return super.setBlockName(par1Str);
+		return this;
 	}
 
 	@Override
@@ -101,11 +100,11 @@ public class BlockModMushroom extends BlockMushroom implements IHornHarvestable,
 		return super.setLightValue(p_149715_1_);
 	}
 
-	@Override
+/*	@Override
 	@Optional.Method(modid = "easycoloredlights")
 	public int getLightValue(IBlockAccess world, int x, int y, int z) {
 		return ColoredLightHelper.getPackedColor(world.getBlockMetadata(x, y, z), originalLight);
-	}
+	}*/
 
 	@Override
 	public Icon getIcon(int par1, int par2) {
@@ -124,11 +123,6 @@ public class BlockModMushroom extends BlockMushroom implements IHornHarvestable,
 
 		if(par5Random.nextDouble() < ConfigHandler.flowerParticleFrequency * 0.25F)
 			Botania.proxy.sparkleFX(par1World, par2 + 0.3 + par5Random.nextFloat() * 0.5, par3 + 0.5 + par5Random.nextFloat() * 0.5, par4 + 0.3 + par5Random.nextFloat() * 0.5, color[0], color[1], color[2], par5Random.nextFloat(), 5);
-	}
-
-	@Override
-	public boolean canStabaliseInfusion(World world, int x, int y, int z) {
-		return ConfigHandler.enableThaumcraftStablizers;
 	}
 
 	@Override

@@ -16,8 +16,8 @@ import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.mana.IManaReceiver;
 import vazkii.botania.common.block.tile.TileMod;
 
-public class TileRFGenerator extends TileMod implements IManaReceiver {
-
+public class TileRFGenerator /*extends TileMod implements IManaReceiver*/ {
+/*
 	private static final int CONVERSION_RATE = 10;
 	private static final int MAX_MANA = 1280 * CONVERSION_RATE;
 
@@ -30,7 +30,6 @@ public class TileRFGenerator extends TileMod implements IManaReceiver {
 	private boolean deadCache;
 
 	@Override
-	@Optional.Method(modid = "CoFHAPI|energy")
 	public void validate() {
 		super.validate();
 		deadCache = true;
@@ -142,6 +141,6 @@ public class TileRFGenerator extends TileMod implements IManaReceiver {
 	@Override
 	public boolean canConnectEnergy(ForgeDirection from) {
 		return true;
-	}
+	}*/
 
 }

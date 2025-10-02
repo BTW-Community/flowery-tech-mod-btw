@@ -12,7 +12,6 @@ package vazkii.botania.common.item;
 
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.common.item.brew.ItemBrewFlask;
 import vazkii.botania.common.item.brew.ItemBrewVial;

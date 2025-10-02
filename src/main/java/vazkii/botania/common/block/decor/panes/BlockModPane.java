@@ -36,7 +36,7 @@ public class BlockModPane extends BlockPane {
 		setBlockName(source.getUnlocalizedName().replaceAll("tile.", "") + "Pane");
 		setCreativeTab(CreativeTabs.tabMisc);
 		setHardness(0.3F);
-		setStepSound(soundTypeGlass);
+		setStepSound(soundGlassFootstep);
 		setLightValue(1.0F);
 		useNeighborBrightness = true;
 	}

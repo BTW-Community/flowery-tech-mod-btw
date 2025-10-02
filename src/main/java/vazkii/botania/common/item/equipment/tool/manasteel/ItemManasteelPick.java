@@ -12,16 +12,8 @@ package vazkii.botania.common.item.equipment.tool.manasteel;
 
 import java.util.regex.Pattern;
 
+import net.minecraft.src.*;
 import net.minecraft.src.Block;
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Block;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemPickaxe;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.World;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.item.ISortableTool;
 import vazkii.botania.api.mana.IManaUsingItem;
@@ -36,26 +28,26 @@ import vazkii.botania.common.lib.LibItemNames;
 
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
-
+//todofix this and subclasses use enumtoolmaterial
 public class ItemManasteelPick extends ItemPickaxe implements IManaUsingItem, ISortableTool {
 
 	private static final Pattern TORCH_PATTERN = Pattern.compile("(?:(?:(?:[A-Z-_.:]|^)torch)|(?:(?:[a-z-_.:]|^)Torch))(?:[A-Z-_.:]|$)");
 
 	private static final int MANA_PER_DAMAGE = 60;
 
-	public ItemManasteelPick() {
-		this(BotaniaAPI.manasteelToolMaterial, LibItemNames.MANASTEEL_PICK);
+	public ItemManasteelPick(int id) {
+		this(id, EnumToolMaterial.EMERALD/*BotaniaAPI.manasteelToolMaterial*/, LibItemNames.MANASTEEL_PICK);
 	}
 
-	public ItemManasteelPick(ToolMaterial mat, String name) {
-		super(mat);
+	public ItemManasteelPick(int id, EnumToolMaterial mat, String name) {
+		super(id, mat);
 		setCreativeTab(CreativeTabs.tabMisc);
 		setUnlocalizedName(name);
 	}
 
 	@Override
 	public Item setUnlocalizedName(String par1Str) {
-		GameRegistry.registerItem(this, par1Str);
+//		GameRegistry.registerItem(this, par1Str);
 		return super.setUnlocalizedName(par1Str);
 	}
 
@@ -77,8 +69,8 @@ public class ItemManasteelPick extends ItemPickaxe implements IManaUsingItem, IS
 	}
 
 	@Override
-	public boolean onBlockDestroyed(ItemStack stack, World world, Block block, int x, int y, int z, EntityLivingBase entity) {
-		if(block.getBlockHardness(world, x, y, z) != 0F)
+	public boolean onBlockDestroyed(ItemStack stack, World world, int block, int x, int y, int z, EntityLivingBase entity) {
+		if(Block.blocksList[block].getBlockHardness(world, x, y, z) != 0F)
 			ToolCommons.damageItem(stack, 1, entity, getManaPerDmg());
 
 		return true;
@@ -93,7 +85,7 @@ public class ItemManasteelPick extends ItemPickaxe implements IManaUsingItem, IS
 				if(stackAt.stackSize == 0)
 					player.inventory.setInventorySlotContents(i, null);
 
-				ItemsRemainingRenderHandler.set(player, new ItemStack(Blocks.torch), TORCH_PATTERN);
+				ItemsRemainingRenderHandler.set(player, new ItemStack(Block.torchWood), TORCH_PATTERN);
 				return did;
 			}
 		}
@@ -106,7 +98,7 @@ public class ItemManasteelPick extends ItemPickaxe implements IManaUsingItem, IS
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World world, Entity player, int par4, boolean par5) {
+	public void onUpdate(ItemStack stack, World world, EntityPlayer player, int par4, boolean par5) {
 		if(!world.isRemote && player instanceof EntityPlayer && stack.getItemDamage() > 0 && ManaItemHandler.requestManaExactForTool(stack, (EntityPlayer) player, MANA_PER_DAMAGE * 2, true))
 			stack.setItemDamage(stack.getItemDamage() - 1);
 	}
