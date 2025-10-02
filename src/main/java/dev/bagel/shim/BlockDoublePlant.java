@@ -23,7 +23,7 @@ public class BlockDoublePlant extends BlockBush/* implements IGrowable, IShearab
     {
         super(id, Material.plants);
         this.setHardness(0.0F);
-        this.setStepSound(soundTypeGrass);
+        this.setStepSound(soundGrassFootstep);
         this.setBlockName("doublePlant");
     }
 
@@ -240,7 +240,7 @@ public class BlockDoublePlant extends BlockBush/* implements IGrowable, IShearab
     }
 
     @Environment(EnvType.CLIENT)
-    public void registerBlockIcons(IconRegister reg)
+    public void registerIcons(IconRegister reg)
     {
         this.doublePlantBottomIcons = new Icon[field_149892_a.length];
         this.doublePlantTopIcons = new Icon[field_149892_a.length];

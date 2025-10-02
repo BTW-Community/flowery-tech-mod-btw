@@ -1,0 +1,336 @@
+package baubles.client.gui;
+
+import baubles.api.expanded.BaubleExpandedSlots;
+import baubles.common.Baubles;
+import baubles.common.BaublesConfig;
+import baubles.common.container.ContainerPlayerExpanded;
+import net.minecraft.src.Minecraft;
+import net.minecraft.src.EntityPlayerSP;
+import net.minecraft.src.GuiButton;
+import net.minecraft.src.GuiAchievements;
+import net.minecraft.src.GuiStats;
+import net.minecraft.src.GuiContainer;
+import net.minecraft.src.GuiInventory;
+import net.minecraft.src.I18n;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.Slot;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.Potion;
+import net.minecraft.src.PotionEffect;
+import net.minecraft.src.MathHelper;
+import net.minecraft.src.ResourceLocation;
+import org.lwjgl.input.Mouse;
+import org.lwjgl.opengl.GL11;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
+import static baubles.common.BaublesConfig.useOldGuiRendering;
+
+//todobaubles rendering of guiPlayer
+public class GuiPlayerExpanded extends GuiContainer {
+
+    public static final ResourceLocation background = new ResourceLocation("baubles","textures/gui/bauble_inventory.png");
+    public static final ResourceLocation gui_background = new ResourceLocation("baubles","textures/gui/bauble_background.png");
+    private static final ResourceLocation creative_inventory_tabs = new ResourceLocation("textures/gui/container/creative_inventory/tabs.png");
+
+    private static final boolean hasLwjgl3 = false;
+
+	/**
+     * x size of the inventory window in pixels. Defined as  float, passed as int.
+     */
+    private float xSizeFloat;
+    /**
+     * y size of the inventory window in pixels. Defined as  float, passed as int.
+     */
+    private float ySizeFloat;
+
+    public boolean showActivePotionEffects;
+
+    /** Amount scrolled in inventory (0 = top, 1 = bottom) */
+    private float currentScroll;
+    /** True if the scrollbar is being dragged */
+    private boolean isScrolling;
+    /** True if the left mouse button was held down last time drawScreen was called. */
+    private boolean wasClicking;
+
+    public GuiPlayerExpanded(EntityPlayer player) {
+        super(new ContainerPlayerExpanded(player.inventory, !player.worldObj.isRemote, player));
+        allowUserInput = true;
+    }
+
+    /**
+     * Called from the main game loop to update the screen.
+     */
+    @Override
+    public void updateScreen() {
+    	try {
+			((ContainerPlayerExpanded) inventorySlots).baubles.blockEvents = false;
+		} catch (Exception ignored) {}
+    }
+
+    /**
+     * Adds the buttons (and other controls) to the screen in question.
+     */
+    @Override
+    public void initGui() {
+        buttonList.clear();
+        super.initGui();
+
+        if (!this.mc.thePlayer.getActivePotionEffects().isEmpty() && !useOldGuiRendering) {
+            this.showActivePotionEffects = true;
+        }
+    }
+
+    /**
+     * Draws the screen and all the components in it.
+     */
+    @Override
+    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+        super.drawScreen(mouseX, mouseY, partialTicks);
+        xSizeFloat = (float) mouseX;
+        ySizeFloat = (float) mouseY;
+
+        handleScrollbar(mouseX, mouseY);
+    }
+
+    @Override
+    protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+        if (!useOldGuiRendering) {
+            this.fontRenderer.drawString(I18n.getString("container.crafting"), 86, 16, 4210752);
+        }
+    }
+
+    @Override
+    protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+        if (useOldGuiRendering) {
+            mc.getTextureManager().bindTexture(background);
+        } else {
+            mc.getTextureManager().bindTexture(GuiInventory.field_110408_a);
+        }
+
+        this.drawBaubleSlots();
+        if (showActivePotionEffects) {
+            drawPotionEffects();
+        }
+
+        // Player model
+        func_147046_a(guiLeft + 51, guiTop + 75, 30, (float) (guiLeft + 51) - xSizeFloat, (float) (guiTop + 25) - ySizeFloat, mc.thePlayer);
+    }
+
+    private void drawBaubleSlots() {
+        drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
+        int upperHeight = 7 + BaubleExpandedSlots.slotsCurrentlyUsed() * 18;
+        if (!useOldGuiRendering) {
+            this.mc.getTextureManager().bindTexture(gui_background);
+        }
+
+        final int slotOffset = 18;
+        int slotStartX = guiLeft - 26;
+        int slotStartY = 12;
+
+        if (useOldGuiRendering) {
+            slotStartX = guiLeft + 79;
+            slotStartY = guiTop + 7;
+        } else {
+            if (BaubleExpandedSlots.slotsCurrentlyUsed() <= 8) {
+                this.drawTexturedModalRect(this.guiLeft - 26, this.guiTop + 4, 0, 0, 27, upperHeight);
+                this.drawTexturedModalRect(this.guiLeft - 26, this.guiTop + 4 + upperHeight, 0, 151, 27, 7);
+            } else {
+                this.drawTexturedModalRect(this.guiLeft - 26, this.guiTop + 4, 0, 0, 27, 158);
+                this.drawTexturedModalRect(this.guiLeft - 42, this.guiTop + 4, 27, 0, 23, 158);
+                this.mc.getTextureManager().bindTexture(creative_inventory_tabs);
+                this.drawTexturedModalRect(this.guiLeft - 34, this.guiTop + 12 + (int) (127f * this.currentScroll), 232, 0, 12, 15);
+            }
+        }
+
+        // Bauble slot backgrounds
+        for (int slotIndex = 0; slotIndex < BaubleExpandedSlots.slotLimit; slotIndex++) {
+            String slotType = BaubleExpandedSlots.getSlotType(slotIndex);
+            if (!BaublesConfig.showUnusedSlots && slotType.equals(BaubleExpandedSlots.unknownType)) {
+                continue;
+            }
+            if (useOldGuiRendering) {
+                drawTexturedModalRect(slotStartX + (slotOffset * (slotIndex / 4)), slotStartY + (slotOffset * (slotIndex % 4)), 200, 0, 18, 18);
+            } else {
+                drawTexturedModalRect(slotStartX + (slotOffset * (slotIndex / 4)), slotStartY + (slotOffset * slotIndex), 200, 0, 18, 18);
+            }
+        }
+    }
+
+    private void drawPotionEffects() {
+/*        int slotIndent = 26;
+        if (BaubleExpandedSlots.slotsCurrentlyUsed() > 8) {
+            slotIndent = 42;
+        }
+        int positionHorizontal = guiLeft - slotIndent - 124;
+        int positionVertical = guiTop;
+        Collection<PotionEffect> potionCollection = this.mc.thePlayer.getActivePotionEffects();
+
+        if (potionCollection.isEmpty()) {
+            return;
+        }
+
+        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+        GL11.glDisable(GL11.GL_LIGHTING);
+        int maxNumber = 33;
+
+        if (potionCollection.size() > 5) {
+            maxNumber = 132 / (potionCollection.size() - 1);
+        }
+
+        for (PotionEffect effect : potionCollection) {
+            Potion potion = Potion.potionTypes[effect.getPotionID()];
+            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+            this.mc.getTextureManager().bindTexture(field_147001_a);
+            this.drawTexturedModalRect(positionHorizontal, positionVertical, 0, 166, 140, 32);
+
+            if (potion.hasStatusIcon()) {
+                int potionIconIndex = potion.getStatusIconIndex();
+                this.drawTexturedModalRect(positionHorizontal + 6, positionVertical + 7, potionIconIndex % 8 * 18, 198 + potionIconIndex / 8 * 18, 18, 18);
+            }
+
+            potion.renderInventoryEffect(positionHorizontal, positionVertical, effect, mc);
+            if (!potion.shouldRenderInvText(effect)) continue;
+            String potionName = I18n.format(potion.getName());
+
+            if (effect.getAmplifier() >= 1) {
+                potionName = potionName + " " + I18n.format("enchantment.level." + effect.getAmplifier());
+            }
+            this.fontRendererObj.drawStringWithShadow(potionName, positionHorizontal + 10 + 18, positionVertical + 6, 16777215);
+            String s = Potion.getDurationString(effect);
+            this.fontRendererObj.drawStringWithShadow(s, positionHorizontal + 10 + 18, positionVertical + 6 + 10, 8355711);
+            positionVertical += maxNumber;
+        }*/
+    }
+
+    private boolean needsScrollBars() {
+        return ((ContainerPlayerExpanded) this.inventorySlots).canScroll();
+    }
+
+    private void handleScrollbar(int mouseX, int mouseY) {
+        boolean leftMouseDown = Mouse.isButtonDown(0);
+
+        if (!this.wasClicking && leftMouseDown && isClickInScrollbar(mouseX, mouseY)) {
+            this.isScrolling = this.needsScrollBars();
+        }
+
+        if (!leftMouseDown) {
+            this.isScrolling = false;
+        }
+
+        this.wasClicking = leftMouseDown;
+
+        if (this.isScrolling) {
+            int scrollbarYStart = this.guiTop + 12;
+            int scrollbarYEnd = scrollbarYStart + 139;
+
+            this.currentScroll = ((float) (mouseY - scrollbarYStart) - 7.5F) /
+                ((float) (scrollbarYEnd - scrollbarYStart) - 15.0F);
+
+            if (this.currentScroll < 0.0F) {
+                this.currentScroll = 0.0F;
+            }
+            if (this.currentScroll > 1.0F) {
+                this.currentScroll = 1.0F;
+            }
+
+            ((ContainerPlayerExpanded) this.inventorySlots).scrollTo(this.currentScroll);
+        }
+    }
+
+    @Override
+    public void handleMouseInput() {
+        super.handleMouseInput();
+        int wheel = Mouse.getEventDWheel();
+        if (wheel == 0 || !this.needsScrollBars()) {
+            return;
+        }
+        if (!hasLwjgl3) {
+            // LWJGL2 reports different scroll values for every platform, 120 for one tick on Windows.
+            // LWJGL3 reports the delta in exact scroll ticks.
+            // Round away from zero to avoid dropping small scroll events
+            if (wheel > 0) {
+                wheel = Math.addExact(Math.addExact(wheel, 120), -1) / 120;
+            } else {
+                wheel = -(int) Math.addExact(Math.addExact(-wheel, 120), -1) / 120;
+            }
+        }
+        int i = BaubleExpandedSlots.slotsCurrentlyUsed();
+        this.currentScroll = (float) ((double) this.currentScroll - wheel / (double) i);
+        this.currentScroll = MathHelper.clamp_float(this.currentScroll, 0.0F, 1.0F);
+        ((ContainerPlayerExpanded) this.inventorySlots).scrollTo(this.currentScroll);
+    }
+
+    @Override
+    protected void actionPerformed(GuiButton button) {
+        if (button.id == 0) {
+            mc.displayGuiScreen(new GuiAchievements(mc.statFileWriter));
+        } else if (button.id == 1) {
+            mc.displayGuiScreen(new GuiStats(this, mc.statFileWriter));
+        }
+    }
+
+	@Override
+	protected void keyTyped(char par1, int keyCode) {
+		if (keyCode == Baubles.proxy.keyHandler.key.keyCode) {
+            mc.thePlayer.closeScreen();
+        } else {
+        	super.keyTyped(par1, keyCode);
+        }
+	}
+
+    @Override
+    protected void handleMouseClick(Slot slotIn, int slotId, int clickedButton, int clickType) {
+        if (slotIn != null && clickType == 4 && slotIn.xDisplayPosition < 0 && !useOldGuiRendering) {
+            clickType = 0;
+        }
+        super.handleMouseClick(slotIn, slotId, clickedButton, clickType);
+    }
+
+    @Override
+    protected void mouseClicked(int mouseX, int mouseY, int mouseButton) {
+        if (isClickInUI(mouseX, mouseY)) { // Prevent dropping items when clicking in UI
+            return;
+        }
+
+        super.mouseClicked(mouseX, mouseY, mouseButton);
+    }
+
+    @Override
+    protected void mouseMovedOrUp(int mouseX, int mouseY, int mouseButton) {
+        if (isClickInUI(mouseX, mouseY)) { // Prevent dropping items when clicking in UI
+            return;
+        }
+
+        super.mouseMovedOrUp(mouseX, mouseY, mouseButton);
+    }
+
+    /**
+     * Returns true if the mouse is clicked in the scroll bar.
+     */
+    private boolean isClickInScrollbar(int mouseX, int mouseY) {
+        int scrollbarXStart = this.guiLeft - 34;
+        int scrollbarYStart = this.guiTop + 12;
+        int scrollbarXEnd = scrollbarXStart + 14;
+        int scrollbarYEnd = scrollbarYStart + 139;
+
+        return mouseX >= scrollbarXStart && mouseY >= scrollbarYStart &&
+            mouseX < scrollbarXEnd && mouseY < scrollbarYEnd;
+    }
+
+    /**
+     * Returns true if the mouse is clicked in the scrollbar or the surrounding area.
+     */
+    private boolean isClickInUI(int mouseX, int mouseY) {
+        int scrollbarXStart = this.guiLeft - 42;
+        int scrollbarYStart = this.guiTop + 5;
+        int scrollbarXEnd = scrollbarXStart + 27;
+        int scrollbarYEnd = scrollbarYStart + 156;
+
+        return mouseX >= scrollbarXStart && mouseY >= scrollbarYStart &&
+            mouseX < scrollbarXEnd && mouseY < scrollbarYEnd;
+    }
+}

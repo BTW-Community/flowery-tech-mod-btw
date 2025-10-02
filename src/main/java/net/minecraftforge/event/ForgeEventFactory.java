@@ -3,15 +3,11 @@ package net.minecraftforge.event;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import net.minecraft.src.*;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.event.brewing.PotionBrewEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent.AllowDespawn;
 import net.minecraftforge.event.entity.player.*;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
 import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.event.world.BlockEvent.MultiPlaceEvent;
-import net.minecraftforge.event.world.BlockEvent.PlaceEvent;
 import net.minecraftforge.event.world.ExplosionEvent;
 import net.minecraftforge.event.world.WorldEvent;
 
@@ -21,24 +17,6 @@ import java.util.List;
 
 public class ForgeEventFactory
 {
-
-    /*public static MultiPlaceEvent onPlayerMultiBlockPlace(EntityPlayer player, List<BlockSnapshot> blockSnapshots, ForgeDirection direction)
-    {
-        Block placedAgainst = blockSnapshots.get(0).world.getBlock(blockSnapshots.get(0).x + direction.getOpposite().offsetX, blockSnapshots.get(0).y + direction.getOpposite().offsetY, blockSnapshots.get(0).z + direction.getOpposite().offsetZ);
-
-        MultiPlaceEvent event = new MultiPlaceEvent(blockSnapshots, placedAgainst, player);
-        MinecraftForge.EVENT_BUS.post(event);
-        return event;
-    }
-
-    public static PlaceEvent onPlayerBlockPlace(EntityPlayer player, BlockSnapshot blockSnapshot, ForgeDirection direction)
-    {
-        Block placedAgainst = blockSnapshot.world.getBlock(blockSnapshot.x + direction.getOpposite().offsetX, blockSnapshot.y + direction.getOpposite().offsetY, blockSnapshot.z + direction.getOpposite().offsetZ);
-
-        PlaceEvent event = new PlaceEvent(blockSnapshot, placedAgainst, player);
-        MinecraftForge.EVENT_BUS.post(event);
-        return event;
-    }*/
 
     public static boolean doPlayerHarvestCheck(EntityPlayer player, Block block, boolean success)
     {

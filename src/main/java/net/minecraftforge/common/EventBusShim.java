@@ -11,4 +11,8 @@ public class EventBusShim {
     public boolean post(Event event) {
         return (event.isCancelable() ? event.isCanceled() : false);
     }
+
+    public boolean register(Object event) {
+        return true;
+    }
 }

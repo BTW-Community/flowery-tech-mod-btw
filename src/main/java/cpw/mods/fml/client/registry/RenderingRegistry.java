@@ -8,7 +8,7 @@ import java.util.Map;
 public class RenderingRegistry {
     private static final RenderingRegistry INSTANCE = new RenderingRegistry();
     private int nextRenderId = 40;
-    public Map<Integer, ISimpleBlockRenderingHandler> blockRenderers = Maps.newHashMap<>();
+    public Map<Integer, ISimpleBlockRenderingHandler> blockRenderers = Maps.newHashMap();
 
     public static void registerEntityRenderingHandler(Class<? extends Entity> entityClass, Render renderer) {
         RenderManager.addEntityRenderer(entityClass, renderer);
@@ -51,7 +51,7 @@ public class RenderingRegistry {
 
     public boolean renderItemAsFull3DBlock(int modelId) {
         ISimpleBlockRenderingHandler bri = blockRenderers.get(modelId);
-        return bri != null && bri.shouldRender3DInInventory();
+        return bri != null && bri.shouldRender3DInInventory(modelId);
     }
 
     public void loadEntityRenderers() {
