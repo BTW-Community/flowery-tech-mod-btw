@@ -35,8 +35,8 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockUnstable extends BlockMod implements ILexiconable {
 
-	public BlockUnstable() {
-		super(Material.iron);
+	public BlockUnstable(int id) {
+		super(id, Material.iron);
 		setHardness(5.0F);
 		setResistance(10.0F);
 		setStepSound(soundMetalFootstep);

@@ -30,8 +30,8 @@ public class BlockDistributor extends BlockModContainer implements ILexiconable 
 
 	Icon iconSide, iconTop;
 
-	public BlockDistributor() {
-		super(Material.rock);
+	public BlockDistributor(int id) {
+		super(id, Material.rock);
 		setHardness(2.0F);
 		setResistance(10.0F);
 		setStepSound(soundStoneFootstep);

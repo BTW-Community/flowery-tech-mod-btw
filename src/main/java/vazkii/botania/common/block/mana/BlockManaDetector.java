@@ -36,8 +36,8 @@ public class BlockManaDetector extends BlockModContainer implements ILexiconable
 
 	Icon[] icons;
 
-	public BlockManaDetector() {
-		super(Material.rock);
+	public BlockManaDetector(int id) {
+		super(id, Material.rock);
 		setHardness(2.0F);
 		setResistance(10.0F);
 		setStepSound(Block.soundStoneFootstep);

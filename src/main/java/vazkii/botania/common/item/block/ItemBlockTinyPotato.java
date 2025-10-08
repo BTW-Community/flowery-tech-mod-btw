@@ -17,7 +17,6 @@ import net.minecraft.src.Block;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.src.ChatComponentText;
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.src.World;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
@@ -55,12 +54,12 @@ public class ItemBlockTinyPotato extends ItemBlockMod {
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World world, Entity e, int t, boolean idunno) {
+	public void onUpdate(ItemStack stack, World world, EntityPlayer e, int t, boolean idunno) {
 		if(!world.isRemote && e instanceof EntityPlayer && e.ticksExisted % 30 == 0 && TYPOS.contains(stack.getDisplayName().toLowerCase())) {
 			EntityPlayer player = (EntityPlayer) e;
 			int ticks = ItemNBTHelper.getInt(stack, TAG_TICKS, 0);
 			if(ticks < NOT_MY_NAME.length) {
-				player.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + NOT_MY_NAME[ticks]));
+				player.addChatMessage(EnumChatFormatting.RED + NOT_MY_NAME[ticks]);
 				ItemNBTHelper.setInt(stack, TAG_TICKS, ticks + 1);
 			}
 		}

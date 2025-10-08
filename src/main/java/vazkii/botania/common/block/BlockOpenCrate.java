@@ -13,6 +13,7 @@ package vazkii.botania.common.block;
 import java.util.List;
 import java.util.Random;
 
+import dev.bagel.client.RenderInstances;
 import net.minecraft.src.Block;
 import net.minecraft.src.Material;
 import net.minecraft.src.Minecraft;
@@ -59,8 +60,8 @@ public class BlockOpenCrate extends BlockModContainer implements ILexiconable, I
 
 	private static final int SUBTYPES = 2;
 
-	public BlockOpenCrate() {
-		super(Material.wood);
+	public BlockOpenCrate(int id) {
+		super(id, Material.wood);
 		setHardness(2.0F);
 		setStepSound(soundWoodFootstep);
 		setBlockName(LibBlockNames.OPEN_CRATE);
@@ -104,7 +105,7 @@ public class BlockOpenCrate extends BlockModContainer implements ILexiconable, I
 	}
 
 	@Override
-	public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6) {
+	public void breakBlock(World par1World, int par2, int par3, int par4, int block, int par6) {
 		TileSimpleInventory inv = (TileSimpleInventory) par1World.getTileEntity(par2, par3, par4);
 
 		if (inv != null) {
@@ -135,10 +136,10 @@ public class BlockOpenCrate extends BlockModContainer implements ILexiconable, I
 				}
 			}
 
-			par1World.func_96440_m(par2, par3, par4, par5);
+			par1World.func_96440_m(par2, par3, par4, block);
 		}
 
-		super.breakBlock(par1World, par2, par3, par4, par5, par6);
+		super.breakBlock(par1World, par2, par3, par4, block, par6);
 	}
 
 	@Override
@@ -160,7 +161,7 @@ public class BlockOpenCrate extends BlockModContainer implements ILexiconable, I
 
 	@Override
 	public Icon getIcon(IBlockAccess world, int x, int y, int z, int side) {
-		TileEntity tile = world.getTileEntity(x, y, z);
+		TileEntity tile = world.getBlockTileEntity(x, y, z);
 		if(tile != null && tile instanceof TileCraftCrate && ((TileCraftCrate) tile).pattern != -1 && side != 0)
 			return sidePatternIcons[((TileCraftCrate) tile).pattern];
 

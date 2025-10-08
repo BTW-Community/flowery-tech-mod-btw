@@ -38,8 +38,8 @@ public class BlockRuneAltar extends BlockModContainer implements IWandable, ILex
 	Random random;
 	Icon[] icons;
 
-	public BlockRuneAltar() {
-		super(Material.rock);
+	public BlockRuneAltar(int id) {
+		super(id, Material.rock);
 		setBlockBounds(0F, 0F, 0F, 1F, 0.75F, 1F);
 		setHardness(2.0F);
 		setResistance(10.0F);
@@ -82,7 +82,7 @@ public class BlockRuneAltar extends BlockModContainer implements IWandable, ILex
 						if(!par5EntityPlayer.inventory.addItemStackToInventory(copy))
 							par5EntityPlayer.dropPlayerItemWithRandomChoice(copy, false);
 						altar.setInventorySlotContents(i, null);
-						par1World.func_96440_m(par2, par3, par4, this);
+						par1World.func_96440_m(par2, par3, par4, this.blockID);
 						break;
 					}
 				}
@@ -94,7 +94,7 @@ public class BlockRuneAltar extends BlockModContainer implements IWandable, ILex
 	}
 
 	@Override
-	public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6) {
+	public void breakBlock(World par1World, int par2, int par3, int par4, int block, int par6) {
 		TileSimpleInventory inv = (TileSimpleInventory) par1World.getTileEntity(par2, par3, par4);
 
 		if (inv != null) {
@@ -125,10 +125,10 @@ public class BlockRuneAltar extends BlockModContainer implements IWandable, ILex
 				}
 			}
 
-			par1World.func_96440_m(par2, par3, par4, par5);
+			par1World.func_96440_m(par2, par3, par4, block);
 		}
 
-		super.breakBlock(par1World, par2, par3, par4, par5, par6);
+		super.breakBlock(par1World, par2, par3, par4, block, par6);
 	}
 
 	@Override

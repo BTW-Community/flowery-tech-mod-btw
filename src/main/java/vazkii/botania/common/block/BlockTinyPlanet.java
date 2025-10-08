@@ -23,8 +23,8 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockTinyPlanet extends BlockModContainer implements ILexiconable {
 
-	protected BlockTinyPlanet() {
-		super(Material.rock);
+	protected BlockTinyPlanet(int id) {
+		super(id, Material.rock);
 		setHardness(20F);
 		setResistance(100F);
 		setStepSound(soundStoneFootstep);

@@ -39,8 +39,8 @@ public class BlockManaBeacon extends BlockModContainer implements ILexiconable {
 
 	Icon[] icons;
 
-	public BlockManaBeacon() {
-		super(Material.iron);
+	public BlockManaBeacon(int id) {
+		super(id, Material.iron);
 		setHardness(5.0F);
 		setResistance(10.0F);
 		setStepSound(soundMetalFootstep);

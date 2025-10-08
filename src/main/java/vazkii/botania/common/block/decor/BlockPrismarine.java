@@ -43,8 +43,8 @@ public class BlockPrismarine extends BlockMod implements ILexiconable {
 	private static final int TYPES = 3;
 	Icon[] icons;
 
-	public BlockPrismarine() {
-		super(Material.rock);
+	public BlockPrismarine(int id) {
+		super(id, Material.rock);
 		setHardness(2.0F);
 		setResistance(10.0F);
 		setStepSound(soundStoneFootstep);
@@ -88,7 +88,7 @@ public class BlockPrismarine extends BlockMod implements ILexiconable {
 	public void loadTextures(TextureStitchEvent.Pre event) {
 		if(event.map.getTextureType() == 0) {
 			TextureAtlasSprite icon = new InterpolatedIcon("botania:prismarine0");
-			if(event.map.setTextureEntry("botania:prismarine0", icon))
+			if(event.map.registerIcon("botania:prismarine0", icon) != null)
 				icons[0] = icon;
 		}
 	}

@@ -57,8 +57,8 @@ public abstract class BlockModSlab extends BlockHalfSlab implements ILexiconable
 		// NO-OP
 	}
 
-	public void register(int id) {
-		var item = new ItemBlockModSlab(id, this);
+	public void register() {
+		var item = new ItemBlockModSlab(0, this);
 //		GameRegistry.registerBlock(this, ItemBlockModSlab.class, name);
 	}
 

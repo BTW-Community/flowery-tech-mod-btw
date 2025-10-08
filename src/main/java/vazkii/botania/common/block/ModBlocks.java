@@ -358,7 +358,8 @@ public final class ModBlocks {
 		avatar = new BlockAvatar(507);
 		altGrass = new BlockAltGrass(508);
 
-		ModFluffBlocks.init();
+		//todo fluff blocks
+//		ModFluffBlocks.init();
 /*
 
 		for(int i = 0; i < 16; i++)

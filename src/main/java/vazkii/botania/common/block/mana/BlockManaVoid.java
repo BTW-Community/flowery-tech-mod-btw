@@ -31,8 +31,8 @@ public class BlockManaVoid extends BlockModContainer implements ILexiconable, IP
 
 	Icon overlay;
 
-	public BlockManaVoid() {
-		super(Material.rock);
+	public BlockManaVoid(int id) {
+		super(id, Material.rock);
 		setHardness(2.0F);
 		setResistance(2000F);
 		setStepSound(Block.soundStoneFootstep);

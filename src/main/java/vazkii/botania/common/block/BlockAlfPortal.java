@@ -32,8 +32,8 @@ public class BlockAlfPortal extends BlockModContainer implements IWandable, ILex
 	Icon iconOff, iconOn;
 	public static Icon portalTex;
 
-	public BlockAlfPortal() {
-		super(Material.wood);
+	public BlockAlfPortal(int id) {
+		super(id, Material.wood);
 		setHardness(10F);
 		setStepSound(soundWoodFootstep);
 		setBlockName(LibBlockNames.ALF_PORTAL);

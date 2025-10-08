@@ -28,8 +28,8 @@ public class BlockForestEye extends BlockModContainer implements ILexiconable {
 
 	Icon[] icons;
 
-	public BlockForestEye() {
-		super(Material.iron);
+	public BlockForestEye(int id) {
+		super(id, Material.iron);
 		setHardness(5.0F);
 		setResistance(10.0F);
 		setStepSound(soundMetalFootstep);

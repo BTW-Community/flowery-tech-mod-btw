@@ -38,8 +38,8 @@ public class BlockStorage extends BlockMod implements ILexiconable {
 
 	Icon[] icons;
 
-	public BlockStorage() {
-		super(Material.iron);
+	public BlockStorage(int id) {
+		super(id, Material.iron);
 		setHardness(3F);
 		setResistance(10F);
 		setStepSound(soundMetalFootstep);
@@ -54,7 +54,8 @@ public class BlockStorage extends BlockMod implements ILexiconable {
 
 	@Override
 	public Block setBlockName(String par1Str) {
-		GameRegistry.registerBlock(this, ItemBlockStorage.class, par1Str);
+		var item = new ItemBlockStorage(this);
+//		GameRegistry.registerBlock(this, ItemBlockStorage.class, par1Str);
 		return super.setBlockName(par1Str);
 	}
 
@@ -81,10 +82,11 @@ public class BlockStorage extends BlockMod implements ILexiconable {
 		return icons[Math.min(icons.length - 1, par2)];
 	}
 
-	@Override
-	public boolean isBeaconBase(IBlockAccess worldObj, int x, int y, int z, int beaconX, int beaconY, int beaconZ) {
-		return true;
-	}
+	//todo beacon base... need uses
+//	@Override
+//	public boolean isBeaconBase(IBlockAccess worldObj, int x, int y, int z, int beaconX, int beaconY, int beaconZ) {
+//		return true;
+//	}
 
 	@Override
 	public LexiconEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon) {

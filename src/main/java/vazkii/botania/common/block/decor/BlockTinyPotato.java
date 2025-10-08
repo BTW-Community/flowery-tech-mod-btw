@@ -35,8 +35,8 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockTinyPotato extends BlockModContainer implements ILexiconable {
 
-	public BlockTinyPotato() {
-		super(Material.cloth);
+	public BlockTinyPotato(int id) {
+		super(id, Material.cloth);
 		setHardness(0.25F);
 		setBlockName(LibBlockNames.TINY_POTATO);
 		float f = 1F / 16F * 6F;
@@ -45,7 +45,8 @@ public class BlockTinyPotato extends BlockModContainer implements ILexiconable {
 
 	@Override
 	public Block setBlockName(String par1Str) {
-		GameRegistry.registerBlock(this, ItemBlockTinyPotato.class, par1Str);
+		var item = new ItemBlockTinyPotato(this);
+//		GameRegistry.registerBlock(this, ItemBlockTinyPotato.class, par1Str);
 		return super.setBlockName(par1Str);
 	}
 
@@ -61,7 +62,7 @@ public class BlockTinyPotato extends BlockModContainer implements ILexiconable {
 
 	@Override
 	public Icon getIcon(int side, int meta) {
-		return Blocks.hardened_clay.getIcon(0, 0);
+		return Block.hardenedClay.getIcon(0, 0);
 	}
 
 	@Override
@@ -98,8 +99,9 @@ public class BlockTinyPotato extends BlockModContainer implements ILexiconable {
 		if(tile != null) {
 			ItemStack stack = new ItemStack(this);
 			String name = ((TileTinyPotato) tile).name;
-			if(!name.isEmpty())
-				stack.setStackDisplayName(name);
+			if(!name.isEmpty()) {
+				stack.setItemName(name);
+			}
 			list.add(stack);
 		}
 

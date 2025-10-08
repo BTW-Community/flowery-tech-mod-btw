@@ -29,12 +29,12 @@ public class BlockAlchemyCatalyst extends BlockMod implements ILexiconable, IPoo
 
 	Icon[] icons;
 
-	public BlockAlchemyCatalyst() {
-		this(LibBlockNames.ALCHEMY_CATALYST);
+	public BlockAlchemyCatalyst(int id) {
+		this(id, LibBlockNames.ALCHEMY_CATALYST);
 	}
 
-	public BlockAlchemyCatalyst(String name) {
-		super(Material.rock);
+	public BlockAlchemyCatalyst(int id, String name) {
+		super(id, Material.rock);
 		setHardness(2.0F);
 		setResistance(10.0F);
 		setStepSound(Block.soundStoneFootstep);

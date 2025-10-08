@@ -33,8 +33,8 @@ public class BlockTurntable extends BlockModContainer implements IWandable, IWan
 
 	Icon[] icons;
 
-	public BlockTurntable() {
-		super(Material.wood);
+	public BlockTurntable(int id) {
+		super(id, Material.wood);
 		setHardness(2.0F);
 		setStepSound(soundWoodFootstep);
 		setBlockName(LibBlockNames.TURNTABLE);

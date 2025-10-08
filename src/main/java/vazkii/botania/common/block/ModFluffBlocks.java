@@ -202,220 +202,220 @@ public final class ModFluffBlocks {
 	public static Block alfglassPane;
 	public static Block bifrostPane;
 
-	public static void init() {
-		livingwoodStairs = new BlockLivingwoodStairs();
-		livingwoodSlab = new BlockLivingwoodSlab(false);
-		livingwoodSlabFull = new BlockLivingwoodSlab(true);
-		livingwoodWall = new BlockLivingwoodWall();
-		livingwoodPlankStairs = new BlockLivingwoodPlankStairs();
-		livingwoodPlankSlab = new BlockLivingwoodPlankSlab(false);
-		livingwoodPlankSlabFull = new BlockLivingwoodPlankSlab(true);
-		livingrockStairs = new BlockLivingrockStairs();
-		livingrockSlab = new BlockLivingrockSlab(false);
-		livingrockSlabFull = new BlockLivingrockSlab(true);
-		livingrockWall = new BlockLivingrockWall();
-		livingrockBrickStairs = new BlockLivingrockBrickStairs();
-		livingrockBrickSlab = new BlockLivingrockBrickSlab(false);
-		livingrockBrickSlabFull = new BlockLivingrockBrickSlab(true);
-		dreamwoodStairs = new BlockDreamwoodStairs();
-		dreamwoodSlab = new BlockDreamwoodSlab(false);
-		dreamwoodSlabFull = new BlockDreamwoodSlab(true);
-		dreamwoodWall = new BlockDreamwoodWall();
-		dreamwoodPlankStairs = new BlockDreamwoodPlankStairs();
-		dreamwoodPlankSlab = new BlockDreamwoodPlankSlab(false);
-		dreamwoodPlankSlabFull = new BlockDreamwoodPlankSlab(true);
-
-		prismarineStairs = new BlockPrismarineStairs();
-		prismarineSlab = new BlockPrismarineSlab(false);
-		prismarineSlabFull = new BlockPrismarineSlab(true);
-		prismarineWall = new BlockPrismarineWall();
-		prismarineBrickStairs = new BlockPrismarineBrickStairs();
-		prismarineBrickSlab = new BlockPrismarineBrickSlab(false);
-		prismarineBrickSlabFull = new BlockPrismarineBrickSlab(true);
-		darkPrismarineStairs = new BlockDarkPrismarineStairs();
-		darkPrismarineSlab = new BlockDarkPrismarineSlab(false);
-		darkPrismarineSlabFull = new BlockDarkPrismarineSlab(true);
-
-		reedStairs = new BlockReedStairs();
-		reedSlab = new BlockReedSlab(false);
-		reedSlabFull = new BlockReedSlab(true);
-		reedWall = new BlockReedWall();
-		thatchStairs = new BlockThatchStairs();
-		thatchSlab = new BlockThatchSlab(false);
-		thatchSlabFull = new BlockThatchSlab(true);
-
-		netherBrickStairs = new BlockCustomBrickStairs();
-		netherBrickSlab = new BlockCustomBrickSlab(false);
-		netherBrickSlabFull = new BlockCustomBrickSlab(true);
-		soulBrickStairs = new BlockSoulBrickStairs();
-		soulBrickSlab = new BlockSoulBrickSlab(false);
-		soulBrickSlabFull = new BlockSoulBrickSlab(true);
-		snowBrickStairs = new BlockSnowBrickStairs();
-		snowBrickSlab = new BlockSnowBrickSlab(false);
-		snowBrickSlabFull = new BlockSnowBrickSlab(true);
-		tileStairs = new BlockTileStairs();
-		tileSlab = new BlockTileSlab(false);
-		tileSlabFull = new BlockTileSlab(true);
-
-		biomeStoneA = new BlockBiomeStoneA();
-		biomeStoneB = new BlockBiomeStoneB();
-		stone = new Block18Stone();
-		pavement = new BlockPavement();
-
-		if(ConfigHandler.darkQuartzEnabled) {
-			darkQuartz = new BlockSpecialQuartz(LibBlockNames.QUARTZ_DARK);
-			darkQuartzSlab = new BlockSpecialQuartzSlab(darkQuartz, false);
-			darkQuartzSlabFull = new BlockSpecialQuartzSlab(darkQuartz, true);
-			darkQuartzStairs = new BlockSpecialQuartzStairs(darkQuartz);
-		}
-
-		manaQuartz = new BlockSpecialQuartz(LibBlockNames.QUARTZ_MANA);
-		manaQuartzSlab = new BlockSpecialQuartzSlab(manaQuartz, false);
-		manaQuartzSlabFull = new BlockSpecialQuartzSlab(manaQuartz, true);
-		manaQuartzStairs = new BlockSpecialQuartzStairs(manaQuartz);
-		blazeQuartz = new BlockSpecialQuartz(LibBlockNames.QUARTZ_BLAZE);
-		blazeQuartzSlab = new BlockSpecialQuartzSlab(blazeQuartz, false);
-		blazeQuartzSlabFull = new BlockSpecialQuartzSlab(blazeQuartz, true);
-		blazeQuartzStairs = new BlockSpecialQuartzStairs(blazeQuartz);
-		lavenderQuartz = new BlockSpecialQuartz(LibBlockNames.QUARTZ_LAVENDER);
-		lavenderQuartzSlab = new BlockSpecialQuartzSlab(lavenderQuartz, false);
-		lavenderQuartzSlabFull = new BlockSpecialQuartzSlab(lavenderQuartz, true);
-		lavenderQuartzStairs = new BlockSpecialQuartzStairs(lavenderQuartz);
-		redQuartz = new BlockSpecialQuartz(LibBlockNames.QUARTZ_RED);
-		redQuartzSlab = new BlockSpecialQuartzSlab(redQuartz, false);
-		redQuartzSlabFull = new BlockSpecialQuartzSlab(redQuartz, true);
-		redQuartzStairs = new BlockSpecialQuartzStairs(redQuartz);
-		elfQuartz = new BlockSpecialQuartz(LibBlockNames.QUARTZ_ELF);
-		elfQuartzSlab = new BlockSpecialQuartzSlab(elfQuartz, false);
-		elfQuartzSlabFull = new BlockSpecialQuartzSlab(elfQuartz, true);
-		elfQuartzStairs = new BlockSpecialQuartzStairs(elfQuartz);
-		sunnyQuartz = new BlockSpecialQuartz(LibBlockNames.QUARTZ_SUNNY);
-		sunnyQuartzSlab = new BlockSpecialQuartzSlab(sunnyQuartz, false);
-		sunnyQuartzSlabFull = new BlockSpecialQuartzSlab(sunnyQuartz, true);
-		sunnyQuartzStairs = new BlockSpecialQuartzStairs(sunnyQuartz);
-
-		dirtPathSlab = new BlockDirtPathSlab(false);
-		dirtPathSlabFull = new BlockDirtPathSlab(true);
-
-		for(int i = 0; i < 24; i++) {
-			int meta = i % 16;
-			Block block = i < 16 ? biomeStoneA : biomeStoneB;
-			biomeStoneStairs[i] = new BlockBiomeStoneStairs(block, meta);
-			biomeStoneSlabs[i] = new BlockBiomeStoneSlab(false, block, meta, i);
-			biomeStoneFullSlabs[i] = new BlockBiomeStoneSlab(true, block, meta, i);
-		}
-		biomeStoneWall = new BlockBiomeStoneWall();
-
-		for(int i = 0; i < 8; i++) {
-			int meta = i > 3 ? i + 4 : i;
-			stoneStairs[i] = new Block18StoneStairs(meta);
-			stoneSlabs[i] = new Block18StoneSlab(false, meta, i);
-			stoneFullSlabs[i] = new Block18StoneSlab(true, meta, i);
-		}
-		stoneWall = new Block18StoneWall();
-
-		for(int i = 0; i < pavementStairs.length; i++) {
-			pavementStairs[i] = new BlockPavementStairs(i);
-			pavementSlabs[i] = new BlockPavementSlab(false, i, i);
-			pavementFullSlabs[i] = new BlockPavementSlab(true, i, i);
-		}
-
-		endStoneSlab = new BlockEndStoneSlab(false);
-		endStoneSlabFull = new BlockEndStoneSlab(true);
-		endStoneStairs = new BlockEndStoneStairs();
-		enderBrickSlab = new BlockEnderBrickSlab(false);
-		enderBrickSlabFull = new BlockEnderBrickSlab(true);
-		enderBrickStairs = new BlockEnderBrickStairs();
-
-		shimmerrockSlab = new BlockShimmerrockSlab(false);
-		shimmerrockSlabFull = new BlockShimmerrockSlab(true);
-		shimmerrockStairs = new BlockShimmerrockStairs();
-		shimmerwoodPlankSlab = new BlockShimmerwoodPlankSlab(false);
-		shimmerwoodPlankSlabFull = new BlockShimmerwoodPlankSlab(true);
-		shimmerwoodPlankStairs = new BlockShimmerwoodPlankStairs();
-
-		managlassPane = new BlockManaglassPane();
-		alfglassPane = new BlockAlfglassPane();
-		bifrostPane = new BlockBifrostPane();
-
-		if(ConfigHandler.darkQuartzEnabled) {
-			((BlockModSlab) darkQuartzSlab).register();
-			((BlockModSlab) darkQuartzSlabFull).register();
-		}
-		((BlockModSlab) manaQuartzSlab).register();
-		((BlockModSlab) manaQuartzSlabFull).register();
-		((BlockModSlab) blazeQuartzSlab).register();
-		((BlockModSlab) blazeQuartzSlabFull).register();
-		((BlockModSlab) lavenderQuartzSlab).register();
-		((BlockModSlab) lavenderQuartzSlabFull).register();
-		((BlockModSlab) redQuartzSlab).register();
-		((BlockModSlab) redQuartzSlabFull).register();
-		((BlockModSlab) elfQuartzSlab).register();
-		((BlockModSlab) elfQuartzSlabFull).register();
-		((BlockModSlab) sunnyQuartzSlab).register();
-		((BlockModSlab) sunnyQuartzSlabFull).register();
-
-		((BlockModSlab) livingwoodSlab).register();
-		((BlockModSlab) livingwoodSlabFull).register();
-		((BlockModSlab) livingwoodPlankSlab).register();
-		((BlockModSlab) livingwoodPlankSlabFull).register();
-		((BlockModSlab) livingrockSlab).register();
-		((BlockModSlab) livingrockSlabFull).register();
-		((BlockModSlab) livingrockBrickSlab).register();
-		((BlockModSlab) livingrockBrickSlabFull).register();
-		((BlockModSlab) dreamwoodSlab).register();
-		((BlockModSlab) dreamwoodSlabFull).register();
-		((BlockModSlab) dreamwoodPlankSlab).register();
-		((BlockModSlab) dreamwoodPlankSlabFull).register();
-
-		((BlockModSlab) reedSlab).register();
-		((BlockModSlab) reedSlabFull).register();
-		((BlockModSlab) thatchSlab).register();
-		((BlockModSlab) thatchSlabFull).register();
-
-		((BlockModSlab) prismarineSlab).register();
-		((BlockModSlab) prismarineSlabFull).register();
-		((BlockModSlab) prismarineBrickSlab).register();
-		((BlockModSlab) prismarineBrickSlabFull).register();
-		((BlockModSlab) darkPrismarineSlab).register();
-		((BlockModSlab) darkPrismarineSlabFull).register();
-
-		((BlockModSlab) netherBrickSlab).register();
-		((BlockModSlab) netherBrickSlabFull).register();
-		((BlockModSlab) soulBrickSlab).register();
-		((BlockModSlab) soulBrickSlabFull).register();
-		((BlockModSlab) snowBrickSlab).register();
-		((BlockModSlab) snowBrickSlabFull).register();
-		((BlockModSlab) tileSlab).register();
-		((BlockModSlab) tileSlabFull).register();
-
-		((BlockModSlab) dirtPathSlab).register();
-		((BlockModSlab) dirtPathSlabFull).register();
-
-		((BlockModSlab) endStoneSlab).register();
-		((BlockModSlab) endStoneSlabFull).register();
-		((BlockModSlab) enderBrickSlab).register();
-		((BlockModSlab) enderBrickSlabFull).register();
-
-		((BlockModSlab) shimmerrockSlab).register();
-		((BlockModSlab) shimmerrockSlabFull).register();
-		((BlockModSlab) shimmerwoodPlankSlab).register();
-		((BlockModSlab) shimmerwoodPlankSlabFull).register();
-
-		for(int i = 0; i < 24; i++) {
-			((BlockModSlab) biomeStoneSlabs[i]).register();
-			((BlockModSlab) biomeStoneFullSlabs[i]).register();
-		}
-
-		for(int i = 0; i < 8; i++) {
-			((BlockModSlab) stoneSlabs[i]).register();
-			((BlockModSlab) stoneFullSlabs[i]).register();
-		}
-
-		for(int i = 0; i < pavementSlabs.length; i++) {
-			((BlockModSlab) pavementSlabs[i]).register();
-			((BlockModSlab) pavementFullSlabs[i]).register();
-		}
-	}
+//	public static void init() {
+//		livingwoodStairs = new BlockLivingwoodStairs();
+//		livingwoodSlab = new BlockLivingwoodSlab(false);
+//		livingwoodSlabFull = new BlockLivingwoodSlab(true);
+//		livingwoodWall = new BlockLivingwoodWall();
+//		livingwoodPlankStairs = new BlockLivingwoodPlankStairs();
+//		livingwoodPlankSlab = new BlockLivingwoodPlankSlab(false);
+//		livingwoodPlankSlabFull = new BlockLivingwoodPlankSlab(true);
+//		livingrockStairs = new BlockLivingrockStairs();
+//		livingrockSlab = new BlockLivingrockSlab(false);
+//		livingrockSlabFull = new BlockLivingrockSlab(true);
+//		livingrockWall = new BlockLivingrockWall();
+//		livingrockBrickStairs = new BlockLivingrockBrickStairs();
+//		livingrockBrickSlab = new BlockLivingrockBrickSlab(false);
+//		livingrockBrickSlabFull = new BlockLivingrockBrickSlab(true);
+//		dreamwoodStairs = new BlockDreamwoodStairs();
+//		dreamwoodSlab = new BlockDreamwoodSlab(false);
+//		dreamwoodSlabFull = new BlockDreamwoodSlab(true);
+//		dreamwoodWall = new BlockDreamwoodWall();
+//		dreamwoodPlankStairs = new BlockDreamwoodPlankStairs();
+//		dreamwoodPlankSlab = new BlockDreamwoodPlankSlab(false);
+//		dreamwoodPlankSlabFull = new BlockDreamwoodPlankSlab(true);
+//
+//		prismarineStairs = new BlockPrismarineStairs();
+//		prismarineSlab = new BlockPrismarineSlab(false);
+//		prismarineSlabFull = new BlockPrismarineSlab(true);
+//		prismarineWall = new BlockPrismarineWall();
+//		prismarineBrickStairs = new BlockPrismarineBrickStairs();
+//		prismarineBrickSlab = new BlockPrismarineBrickSlab(false);
+//		prismarineBrickSlabFull = new BlockPrismarineBrickSlab(true);
+//		darkPrismarineStairs = new BlockDarkPrismarineStairs();
+//		darkPrismarineSlab = new BlockDarkPrismarineSlab(false);
+//		darkPrismarineSlabFull = new BlockDarkPrismarineSlab(true);
+//
+//		reedStairs = new BlockReedStairs();
+//		reedSlab = new BlockReedSlab(false);
+//		reedSlabFull = new BlockReedSlab(true);
+//		reedWall = new BlockReedWall();
+//		thatchStairs = new BlockThatchStairs();
+//		thatchSlab = new BlockThatchSlab(false);
+//		thatchSlabFull = new BlockThatchSlab(true);
+//
+//		netherBrickStairs = new BlockCustomBrickStairs();
+//		netherBrickSlab = new BlockCustomBrickSlab(false);
+//		netherBrickSlabFull = new BlockCustomBrickSlab(true);
+//		soulBrickStairs = new BlockSoulBrickStairs();
+//		soulBrickSlab = new BlockSoulBrickSlab(false);
+//		soulBrickSlabFull = new BlockSoulBrickSlab(true);
+//		snowBrickStairs = new BlockSnowBrickStairs();
+//		snowBrickSlab = new BlockSnowBrickSlab(false);
+//		snowBrickSlabFull = new BlockSnowBrickSlab(true);
+//		tileStairs = new BlockTileStairs();
+//		tileSlab = new BlockTileSlab(false);
+//		tileSlabFull = new BlockTileSlab(true);
+//
+//		biomeStoneA = new BlockBiomeStoneA();
+//		biomeStoneB = new BlockBiomeStoneB();
+//		stone = new Block18Stone();
+//		pavement = new BlockPavement();
+//
+//		if(ConfigHandler.darkQuartzEnabled) {
+//			darkQuartz = new BlockSpecialQuartz(LibBlockNames.QUARTZ_DARK);
+//			darkQuartzSlab = new BlockSpecialQuartzSlab(darkQuartz, false);
+//			darkQuartzSlabFull = new BlockSpecialQuartzSlab(darkQuartz, true);
+//			darkQuartzStairs = new BlockSpecialQuartzStairs(darkQuartz);
+//		}
+//
+//		manaQuartz = new BlockSpecialQuartz(LibBlockNames.QUARTZ_MANA);
+//		manaQuartzSlab = new BlockSpecialQuartzSlab(manaQuartz, false);
+//		manaQuartzSlabFull = new BlockSpecialQuartzSlab(manaQuartz, true);
+//		manaQuartzStairs = new BlockSpecialQuartzStairs(manaQuartz);
+//		blazeQuartz = new BlockSpecialQuartz(LibBlockNames.QUARTZ_BLAZE);
+//		blazeQuartzSlab = new BlockSpecialQuartzSlab(blazeQuartz, false);
+//		blazeQuartzSlabFull = new BlockSpecialQuartzSlab(blazeQuartz, true);
+//		blazeQuartzStairs = new BlockSpecialQuartzStairs(blazeQuartz);
+//		lavenderQuartz = new BlockSpecialQuartz(LibBlockNames.QUARTZ_LAVENDER);
+//		lavenderQuartzSlab = new BlockSpecialQuartzSlab(lavenderQuartz, false);
+//		lavenderQuartzSlabFull = new BlockSpecialQuartzSlab(lavenderQuartz, true);
+//		lavenderQuartzStairs = new BlockSpecialQuartzStairs(lavenderQuartz);
+//		redQuartz = new BlockSpecialQuartz(LibBlockNames.QUARTZ_RED);
+//		redQuartzSlab = new BlockSpecialQuartzSlab(redQuartz, false);
+//		redQuartzSlabFull = new BlockSpecialQuartzSlab(redQuartz, true);
+//		redQuartzStairs = new BlockSpecialQuartzStairs(redQuartz);
+//		elfQuartz = new BlockSpecialQuartz(LibBlockNames.QUARTZ_ELF);
+//		elfQuartzSlab = new BlockSpecialQuartzSlab(elfQuartz, false);
+//		elfQuartzSlabFull = new BlockSpecialQuartzSlab(elfQuartz, true);
+//		elfQuartzStairs = new BlockSpecialQuartzStairs(elfQuartz);
+//		sunnyQuartz = new BlockSpecialQuartz(LibBlockNames.QUARTZ_SUNNY);
+//		sunnyQuartzSlab = new BlockSpecialQuartzSlab(sunnyQuartz, false);
+//		sunnyQuartzSlabFull = new BlockSpecialQuartzSlab(sunnyQuartz, true);
+//		sunnyQuartzStairs = new BlockSpecialQuartzStairs(sunnyQuartz);
+//
+//		dirtPathSlab = new BlockDirtPathSlab(false);
+//		dirtPathSlabFull = new BlockDirtPathSlab(true);
+//
+//		for(int i = 0; i < 24; i++) {
+//			int meta = i % 16;
+//			Block block = i < 16 ? biomeStoneA : biomeStoneB;
+//			biomeStoneStairs[i] = new BlockBiomeStoneStairs(block, meta);
+//			biomeStoneSlabs[i] = new BlockBiomeStoneSlab(false, block, meta, i);
+//			biomeStoneFullSlabs[i] = new BlockBiomeStoneSlab(true, block, meta, i);
+//		}
+//		biomeStoneWall = new BlockBiomeStoneWall();
+//
+//		for(int i = 0; i < 8; i++) {
+//			int meta = i > 3 ? i + 4 : i;
+//			stoneStairs[i] = new Block18StoneStairs(meta);
+//			stoneSlabs[i] = new Block18StoneSlab(false, meta, i);
+//			stoneFullSlabs[i] = new Block18StoneSlab(true, meta, i);
+//		}
+//		stoneWall = new Block18StoneWall();
+//
+//		for(int i = 0; i < pavementStairs.length; i++) {
+//			pavementStairs[i] = new BlockPavementStairs(i);
+//			pavementSlabs[i] = new BlockPavementSlab(false, i, i);
+//			pavementFullSlabs[i] = new BlockPavementSlab(true, i, i);
+//		}
+//
+//		endStoneSlab = new BlockEndStoneSlab(false);
+//		endStoneSlabFull = new BlockEndStoneSlab(true);
+//		endStoneStairs = new BlockEndStoneStairs();
+//		enderBrickSlab = new BlockEnderBrickSlab(false);
+//		enderBrickSlabFull = new BlockEnderBrickSlab(true);
+//		enderBrickStairs = new BlockEnderBrickStairs();
+//
+//		shimmerrockSlab = new BlockShimmerrockSlab(false);
+//		shimmerrockSlabFull = new BlockShimmerrockSlab(true);
+//		shimmerrockStairs = new BlockShimmerrockStairs();
+//		shimmerwoodPlankSlab = new BlockShimmerwoodPlankSlab(false);
+//		shimmerwoodPlankSlabFull = new BlockShimmerwoodPlankSlab(true);
+//		shimmerwoodPlankStairs = new BlockShimmerwoodPlankStairs();
+//
+//		managlassPane = new BlockManaglassPane();
+//		alfglassPane = new BlockAlfglassPane();
+//		bifrostPane = new BlockBifrostPane();
+//
+//		if(ConfigHandler.darkQuartzEnabled) {
+//			((BlockModSlab) darkQuartzSlab).register();
+//			((BlockModSlab) darkQuartzSlabFull).register();
+//		}
+//		((BlockModSlab) manaQuartzSlab).register();
+//		((BlockModSlab) manaQuartzSlabFull).register();
+//		((BlockModSlab) blazeQuartzSlab).register();
+//		((BlockModSlab) blazeQuartzSlabFull).register();
+//		((BlockModSlab) lavenderQuartzSlab).register();
+//		((BlockModSlab) lavenderQuartzSlabFull).register();
+//		((BlockModSlab) redQuartzSlab).register();
+//		((BlockModSlab) redQuartzSlabFull).register();
+//		((BlockModSlab) elfQuartzSlab).register();
+//		((BlockModSlab) elfQuartzSlabFull).register();
+//		((BlockModSlab) sunnyQuartzSlab).register();
+//		((BlockModSlab) sunnyQuartzSlabFull).register();
+//
+//		((BlockModSlab) livingwoodSlab).register();
+//		((BlockModSlab) livingwoodSlabFull).register();
+//		((BlockModSlab) livingwoodPlankSlab).register();
+//		((BlockModSlab) livingwoodPlankSlabFull).register();
+//		((BlockModSlab) livingrockSlab).register();
+//		((BlockModSlab) livingrockSlabFull).register();
+//		((BlockModSlab) livingrockBrickSlab).register();
+//		((BlockModSlab) livingrockBrickSlabFull).register();
+//		((BlockModSlab) dreamwoodSlab).register();
+//		((BlockModSlab) dreamwoodSlabFull).register();
+//		((BlockModSlab) dreamwoodPlankSlab).register();
+//		((BlockModSlab) dreamwoodPlankSlabFull).register();
+//
+//		((BlockModSlab) reedSlab).register();
+//		((BlockModSlab) reedSlabFull).register();
+//		((BlockModSlab) thatchSlab).register();
+//		((BlockModSlab) thatchSlabFull).register();
+//
+//		((BlockModSlab) prismarineSlab).register();
+//		((BlockModSlab) prismarineSlabFull).register();
+//		((BlockModSlab) prismarineBrickSlab).register();
+//		((BlockModSlab) prismarineBrickSlabFull).register();
+//		((BlockModSlab) darkPrismarineSlab).register();
+//		((BlockModSlab) darkPrismarineSlabFull).register();
+//
+//		((BlockModSlab) netherBrickSlab).register();
+//		((BlockModSlab) netherBrickSlabFull).register();
+//		((BlockModSlab) soulBrickSlab).register();
+//		((BlockModSlab) soulBrickSlabFull).register();
+//		((BlockModSlab) snowBrickSlab).register();
+//		((BlockModSlab) snowBrickSlabFull).register();
+//		((BlockModSlab) tileSlab).register();
+//		((BlockModSlab) tileSlabFull).register();
+//
+//		((BlockModSlab) dirtPathSlab).register();
+//		((BlockModSlab) dirtPathSlabFull).register();
+//
+//		((BlockModSlab) endStoneSlab).register();
+//		((BlockModSlab) endStoneSlabFull).register();
+//		((BlockModSlab) enderBrickSlab).register();
+//		((BlockModSlab) enderBrickSlabFull).register();
+//
+//		((BlockModSlab) shimmerrockSlab).register();
+//		((BlockModSlab) shimmerrockSlabFull).register();
+//		((BlockModSlab) shimmerwoodPlankSlab).register();
+//		((BlockModSlab) shimmerwoodPlankSlabFull).register();
+//
+//		for(int i = 0; i < 24; i++) {
+//			((BlockModSlab) biomeStoneSlabs[i]).register();
+//			((BlockModSlab) biomeStoneFullSlabs[i]).register();
+//		}
+//
+//		for(int i = 0; i < 8; i++) {
+//			((BlockModSlab) stoneSlabs[i]).register();
+//			((BlockModSlab) stoneFullSlabs[i]).register();
+//		}
+//
+//		for(int i = 0; i < pavementSlabs.length; i++) {
+//			((BlockModSlab) pavementSlabs[i]).register();
+//			((BlockModSlab) pavementFullSlabs[i]).register();
+//		}
+//	}
 
 }

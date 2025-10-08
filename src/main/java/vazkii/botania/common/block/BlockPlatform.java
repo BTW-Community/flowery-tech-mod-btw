@@ -39,8 +39,8 @@ public class BlockPlatform extends BlockCamo implements ILexiconable, IWandable 
 	Icon[] icons;
 	private static final int SUBTYPES = 3;
 
-	public BlockPlatform() {
-		super(Material.wood);
+	public BlockPlatform(int id) {
+		super(id, Material.wood);
 		setHardness(2.0F);
 		setResistance(5.0F);
 		setStepSound(Block.soundWoodFootstep);

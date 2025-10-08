@@ -37,8 +37,8 @@ import net.fabricmc.api.EnvType;
 
 public class BlockBifrost extends BlockModContainer implements ILexiconable {
 
-	public BlockBifrost() {
-		super(Material.glass);
+	public BlockBifrost(int id) {
+		super(id, Material.glass);
 		setBlockName(LibBlockNames.BIFROST);
 		setLightOpacity(0);
 		setLightValue(1F);
@@ -63,7 +63,7 @@ public class BlockBifrost extends BlockModContainer implements ILexiconable {
 	}
 
 	public boolean shouldSideBeRendered1(IBlockAccess p_149646_1_, int p_149646_2_, int p_149646_3_, int p_149646_4_, int p_149646_5_) {
-		Block block = p_149646_1_.getBlock(p_149646_2_, p_149646_3_, p_149646_4_);
+		Block block = Block.blocksList[p_149646_1_.getBlockId(p_149646_2_, p_149646_3_, p_149646_4_)];
 
 		return block == this ? false : super.shouldSideBeRendered(p_149646_1_, p_149646_2_, p_149646_3_, p_149646_4_, p_149646_5_);
 	}
@@ -79,7 +79,7 @@ public class BlockBifrost extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public int quantityDropped(int meta, int fortune, Random random) {
+	public int quantityDropped(Random par1Random) {
 		return 0;
 	}
 
@@ -88,7 +88,7 @@ public class BlockBifrost extends BlockModContainer implements ILexiconable {
 	public void loadTextures(TextureStitchEvent.Pre event) {
 		if(event.map.getTextureType() == 0) {
 			TextureAtlasSprite icon = new InterpolatedIcon("botania:bifrost");
-			if(event.map.setTextureEntry("botania:bifrost", icon))
+			if(event.map.registerIcon("botania:bifrost", icon) != null)
 				blockIcon = icon;
 		}
 	}
