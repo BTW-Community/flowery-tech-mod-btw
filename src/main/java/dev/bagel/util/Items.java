@@ -15,4 +15,8 @@ public class Items {
     {
         return Item.itemsList[blockId - 256];
     }
+
+    public static int getIdFromItem(Item item) {
+        return item == null ? 0 : item.itemID;
+    }
 }

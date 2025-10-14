@@ -200,7 +200,7 @@ public class ItemCraftingHalo extends ItemMod implements ICraftAchievement {
 			if(stackAt != null && stack.isItemEqual(stackAt) && ItemStack.areItemStackTagsEqual(stack, stackAt)) {
 				boolean consume = true;
 
-				ItemStack container = new ItemStack(stackAt.getItem().getContainerItem(/*stackAt*/));
+				ItemStack container = new ItemStack(stackAt.getItem().getContainerItem(stackAt));
 				if(container != null) {
 					if(container == stackAt)
 						consume = false;

@@ -10,15 +10,13 @@
  */
 package vazkii.botania.common.entity;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EntityThrowable;
-import net.minecraft.src.MovingObjectPosition;
-import net.minecraft.src.World;
+import btw.entity.EntityWithCustomPacket;
+import dev.bagel.interfaces.BlockExtensions;
+import net.minecraft.src.*;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.common.block.ModBlocks;
 
-public class EntityVineBall extends EntityThrowable {
+public class EntityVineBall extends EntityThrowable implements EntityWithCustomPacket {
 
 	public EntityVineBall(World par1World) {
 		super(par1World);
@@ -49,7 +47,7 @@ public class EntityVineBall extends EntityThrowable {
 					Block block = worldObj.getBlock(x, y, z);
 					if(block.isAir(worldObj, x, y, z)) {
 						worldObj.setBlock(x, y, z, ModBlocks.solidVines, metaPlace[meta - 2], 1 | 2);
-						worldObj.playAuxSFX(2001, x, y, z, Block.getIdFromBlock(ModBlocks.solidVines) + (metaPlace[meta - 2] << 12));
+						worldObj.playAuxSFX(2001, x, y, z, BlockExtensions.getIdFromBlock(ModBlocks.solidVines) + (metaPlace[meta - 2] << 12));
 						y--;
 					} else break;
 				}
@@ -65,4 +63,28 @@ public class EntityVineBall extends EntityThrowable {
 		return dataWatcher.getWatchableObjectFloat(30);
 	}
 
+	@Override
+	public Packet getSpawnPacketForThisEntity() {
+		return null;
+	}
+
+	@Override
+	public int getTrackerViewDistance() {
+		return 64;
+	}
+
+	@Override
+	public int getTrackerUpdateFrequency() {
+		return 10;
+	}
+
+	@Override
+	public boolean getTrackMotion() {
+		return true;
+	}
+
+	@Override
+	public boolean shouldServerTreatAsOversized() {
+		return false;
+	}
 }

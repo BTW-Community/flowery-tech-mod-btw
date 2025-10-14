@@ -12,16 +12,8 @@ package vazkii.botania.common.block.decor;
 
 import java.util.ArrayList;
 
-import net.minecraft.src.Material;
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.Icon;
-import net.minecraft.src.IBlockAccess;
-import net.minecraft.src.World;
+import dev.bagel.util.Items;
+import net.minecraft.src.*;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.common.block.BlockModContainer;
@@ -30,15 +22,14 @@ import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 import vazkii.botania.common.world.WorldTypeSkyblock;
-import cpw.mods.fml.common.Optional;
 
 public class BlockManaFlame extends BlockModContainer implements ILexiconable {
 
-	public BlockManaFlame() {
-		super(Material.cloth);
+	public BlockManaFlame(int id) {
+		super(id, Material.cloth);
 		setBlockName(LibBlockNames.MANA_FLAME);
 		float f = 0.25F;
-		setStepSound(soundTypeCloth);
+		setStepSound(soundClothFootstep);
 		setBlockBounds(f, f, f, 1F - f, 1F - f, 1F - f);
 		setLightValue(1F);
 	}
@@ -48,11 +39,11 @@ public class BlockManaFlame extends BlockModContainer implements ILexiconable {
 		return false;
 	}
 
-	@Override
-	@Optional.Method(modid = "easycoloredlights")
-	public int getLightValue(IBlockAccess world, int x, int y, int z) {
-		return ((TileManaFlame) world.getTileEntity(x, y, z)).getLightColor();
-	}
+//	@Override
+//	@Optional.Method(modid = "easycoloredlights")
+//	public int getLightValue(IBlockAccess world, int x, int y, int z) {
+//		return ((TileManaFlame) world.getTileEntity(x, y, z)).getLightColor();
+//	}
 
 	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
@@ -88,7 +79,7 @@ public class BlockManaFlame extends BlockModContainer implements ILexiconable {
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int s, float xs, float ys, float zs) {
 		if(WorldTypeSkyblock.isWorldSkyblock(world)) {
 			ItemStack stack = player.getCurrentEquippedItem();
-			if(stack != null && stack.getItem() == Item.getItemFromBlock(Blocks.sapling) && !player.inventory.hasItem(ModItems.lexicon)) {
+			if(stack != null && stack.getItem() == Items.getItemFromBlock(Block.sapling) && !player.inventory.hasItem(ModItems.lexicon.itemID)) {
 				if(!world.isRemote)
 					stack.stackSize--;
 				if(!player.inventory.addItemStackToInventory(new ItemStack(ModItems.lexicon)))
@@ -102,7 +93,7 @@ public class BlockManaFlame extends BlockModContainer implements ILexiconable {
 
 	@Override
 	public Icon getIcon(int side, int meta) {
-		return Blocks.fire.getIcon(side, meta);
+		return Block.fire.getIcon(side, meta);
 	}
 
 	@Override

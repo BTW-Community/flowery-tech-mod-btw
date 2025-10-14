@@ -10,16 +10,8 @@
  */
 package vazkii.botania.common.item.equipment.tool.manasteel;
 
+import net.minecraft.src.*;
 import net.minecraft.src.Block;
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Block;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemSpade;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.World;
 import net.minecraftforge.common.MinecraftForge;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.item.ISortableTool;
@@ -40,19 +32,19 @@ public class ItemManasteelShovel extends ItemSpade implements IManaUsingItem, IS
 
 	private static final int MANA_PER_DAMAGE = 60;
 
-	public ItemManasteelShovel() {
-		this(BotaniaAPI.manasteelToolMaterial, LibItemNames.MANASTEEL_SHOVEL);
+	public ItemManasteelShovel(int id) {
+		this(id, BotaniaAPI.manasteelToolMaterial, LibItemNames.MANASTEEL_SHOVEL);
 	}
 
-	public ItemManasteelShovel(ToolMaterial mat, String name) {
-		super(mat);
+	public ItemManasteelShovel(int id, EnumToolMaterial mat, String name) {
+		super(id, mat);
 		setCreativeTab(CreativeTabs.tabMisc);
 		setUnlocalizedName(name);
 	}
 
 	@Override
 	public Item setUnlocalizedName(String par1Str) {
-		GameRegistry.registerItem(this, par1Str);
+//		GameRegistry.registerItem(this, par1Str);
 		return super.setUnlocalizedName(par1Str);
 	}
 
@@ -74,8 +66,8 @@ public class ItemManasteelShovel extends ItemSpade implements IManaUsingItem, IS
 	}
 
 	@Override
-	public boolean onBlockDestroyed(ItemStack stack, World world, Block block, int x, int y, int z, EntityLivingBase entity) {
-		if (block.getBlockHardness(world, x, y, z) != 0F)
+	public boolean onBlockDestroyed(ItemStack stack, World world, int block, int x, int y, int z, EntityLivingBase entity) {
+		if (Block.blocksList[block].getBlockHardness(world, x, y, z) != 0F)
 			ToolCommons.damageItem(stack, 1, entity, MANA_PER_DAMAGE);
 
 		return true;
@@ -98,9 +90,9 @@ public class ItemManasteelShovel extends ItemSpade implements IManaUsingItem, IS
 
 			Block block = p_77648_3_.getBlock(p_77648_4_, p_77648_5_, p_77648_6_);
 
-			if(p_77648_7_ != 0 && p_77648_3_.getBlock(p_77648_4_, p_77648_5_ + 1, p_77648_6_).isAir(p_77648_3_, p_77648_4_, p_77648_5_ + 1, p_77648_6_) && (block == Blocks.grass || block == Blocks.dirt)) {
-				Block block1 = Blocks.farmland;
-				p_77648_3_.playSoundEffect(p_77648_4_ + 0.5F, p_77648_5_ + 0.5F, p_77648_6_ + 0.5F, block1.stepSound.getStepResourcePath(), (block1.stepSound.getVolume() + 1.0F) / 2.0F, block1.stepSound.getPitch() * 0.8F);
+			if(p_77648_7_ != 0 && p_77648_3_.getBlock(p_77648_4_, p_77648_5_ + 1, p_77648_6_).isAir(p_77648_3_, p_77648_4_, p_77648_5_ + 1, p_77648_6_) && (block == Block.grass || block == Block.dirt)) {
+				Block block1 = Block.tilledField;
+				p_77648_3_.playSoundEffect(p_77648_4_ + 0.5F, p_77648_5_ + 0.5F, p_77648_6_ + 0.5F, block1.stepSound.getStepSound(), (block1.stepSound.getVolume() + 1.0F) / 2.0F, block1.stepSound.getPitch() * 0.8F);
 
 				if (p_77648_3_.isRemote)
 					return true;
@@ -116,8 +108,8 @@ public class ItemManasteelShovel extends ItemSpade implements IManaUsingItem, IS
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World world, Entity player, int par4, boolean par5) {
-		if(!world.isRemote && player instanceof EntityPlayer && stack.getItemDamage() > 0 && ManaItemHandler.requestManaExactForTool(stack, (EntityPlayer) player, MANA_PER_DAMAGE * 2, true))
+	public void onUpdate(ItemStack stack, World world, EntityPlayer player, int par4, boolean par5) {
+		if(!world.isRemote && stack.getItemDamage() > 0 && ManaItemHandler.requestManaExactForTool(stack, player, MANA_PER_DAMAGE * 2, true))
 			stack.setItemDamage(stack.getItemDamage() - 1);
 	}
 

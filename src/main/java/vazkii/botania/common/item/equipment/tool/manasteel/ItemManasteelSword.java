@@ -10,16 +10,7 @@
  */
 package vazkii.botania.common.item.equipment.tool.manasteel;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.ItemSword;
-import net.minecraft.src.Icon;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.mana.IManaUsingItem;
 import vazkii.botania.api.mana.ManaItemHandler;
@@ -39,19 +30,19 @@ public class ItemManasteelSword extends ItemSword implements IManaUsingItem {
 
 	public static Icon elucidatorIcon;
 
-	public ItemManasteelSword() {
-		this(BotaniaAPI.manasteelToolMaterial, LibItemNames.MANASTEEL_SWORD);
+	public ItemManasteelSword(int id) {
+		this(id, BotaniaAPI.manasteelToolMaterial, LibItemNames.MANASTEEL_SWORD);
 	}
 
-	public ItemManasteelSword(ToolMaterial mat, String name) {
-		super(mat);
+	public ItemManasteelSword(int id, EnumToolMaterial mat, String name) {
+		super(id, mat);
 		setCreativeTab(CreativeTabs.tabMisc);
 		setUnlocalizedName(name);
 	}
 
 	@Override
 	public Item setUnlocalizedName(String par1Str) {
-		GameRegistry.registerItem(this, par1Str);
+//		GameRegistry.registerItem(this, par1Str);
 		return super.setUnlocalizedName(par1Str);
 	}
 
@@ -86,16 +77,16 @@ public class ItemManasteelSword extends ItemSword implements IManaUsingItem {
 	}
 
 	@Override
-	public boolean onBlockDestroyed(ItemStack stack, World world, Block block, int x, int y, int z, EntityLivingBase entity) {
-		if(usesMana(stack) && block.getBlockHardness(world, x, y, z) != 0F)
+	public boolean onBlockDestroyed(ItemStack stack, World world, int block, int x, int y, int z, EntityLivingBase entity) {
+		if(usesMana(stack) && Block.blocksList[block].getBlockHardness(world, x, y, z) != 0F)
 			ToolCommons.damageItem(stack, 1, entity, getManaPerDamage());
 
 		return true;
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World world, Entity player, int par4, boolean par5) {
-		if(!world.isRemote && player instanceof EntityPlayer && stack.getItemDamage() > 0 && ManaItemHandler.requestManaExactForTool(stack, (EntityPlayer) player, getManaPerDamage() * 2, true))
+	public void onUpdate(ItemStack stack, World world, EntityPlayer player, int par4, boolean par5) {
+		if(!world.isRemote && stack.getItemDamage() > 0 && ManaItemHandler.requestManaExactForTool(stack, player, getManaPerDamage() * 2, true))
 			stack.setItemDamage(stack.getItemDamage() - 1);
 	}
 

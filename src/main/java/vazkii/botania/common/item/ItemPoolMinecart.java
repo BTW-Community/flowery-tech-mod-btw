@@ -10,7 +10,6 @@
  */
 package vazkii.botania.common.item;
 
-import mods.railcraft.api.core.items.IMinecartItem;
 import net.minecraft.src.BlockRailBase;
 import net.minecraft.src.EntityMinecart;
 import net.minecraft.src.EntityPlayer;
@@ -23,31 +22,28 @@ import vazkii.botania.common.achievement.ModAchievements;
 import vazkii.botania.common.entity.EntityPoolMinecart;
 import vazkii.botania.common.lib.LibItemNames;
 
-import com.mojang.authlib.GameProfile;
 
-import cpw.mods.fml.common.Optional;
+public class ItemPoolMinecart extends ItemMod implements ICraftAchievement {
 
-@Optional.Interface(modid = "Railcraft", iface = "mods.railcraft.api.core.items.IMinecartItem", striprefs = true)
-public class ItemPoolMinecart extends ItemMod implements ICraftAchievement, IMinecartItem {
-
-	public ItemPoolMinecart() {
-		setMaxStackSize(1);
+	public ItemPoolMinecart(int id) {
+        super(id);
+        setMaxStackSize(1);
 		setUnlocalizedName(LibItemNames.POOL_MINECART);
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack p_77648_1_, EntityPlayer p_77648_2_, World p_77648_3_, int p_77648_4_, int p_77648_5_, int p_77648_6_, int p_77648_7_, float p_77648_8_, float p_77648_9_, float p_77648_10_) {
-		if(BlockRailBase.func_150051_a(p_77648_3_.getBlock(p_77648_4_, p_77648_5_, p_77648_6_))) {
-			if(!p_77648_3_.isRemote) {
-				EntityMinecart entityminecart = new EntityPoolMinecart(p_77648_3_, p_77648_4_ + 0.5, p_77648_5_ + 0.5, p_77648_6_ + 0.5);
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int facing, float pX, float pY, float pZ) {
+		if(BlockRailBase.isRailBlock(world.getBlockId(x, y, z))) {
+			if(!world.isRemote) {
+				EntityMinecart entityminecart = new EntityPoolMinecart(world, x + 0.5, y + 0.5, z + 0.5);
 
-				if(p_77648_1_.hasDisplayName())
-					entityminecart.setMinecartName(p_77648_1_.getDisplayName());
+				if(stack.hasDisplayName())
+					entityminecart.setMinecartName(stack.getDisplayName());
 
-				p_77648_3_.spawnEntityInWorld(entityminecart);
+				world.spawnEntityInWorld(entityminecart);
 			}
 
-			--p_77648_1_.stackSize;
+			--stack.stackSize;
 			return true;
 		}
 
@@ -58,26 +54,26 @@ public class ItemPoolMinecart extends ItemMod implements ICraftAchievement, IMin
 	public Achievement getAchievementOnCraft(ItemStack stack, EntityPlayer player, IInventory matrix) {
 		return ModAchievements.manaCartCraft;
 	}
-
-	@Override
-	public boolean canBePlacedByNonPlayer(ItemStack cart) {
-		return true;
-	}
-
-	@Override
-	public EntityMinecart placeCart(GameProfile owner, ItemStack cart, World world, int i, int j, int k) {
-		if(BlockRailBase.func_150051_a(world.getBlock(i, j, k))) {
-			if(!world.isRemote) {
-				EntityMinecart entityminecart = new EntityPoolMinecart(world, i + 0.5,j + 0.5, k + 0.5);
-
-				if(cart.hasDisplayName())
-					entityminecart.setMinecartName(cart.getDisplayName());
-
-				if(world.spawnEntityInWorld(entityminecart))
-					return entityminecart;
-			}
-		}
-		return null;
-	}
+//
+//	@Override
+//	public boolean canBePlacedByNonPlayer(ItemStack cart) {
+//		return true;
+//	}
+//
+//	@Override
+//	public EntityMinecart placeCart(GameProfile owner, ItemStack cart, World world, int i, int j, int k) {
+//		if(BlockRailBase.func_150051_a(world.getBlock(i, j, k))) {
+//			if(!world.isRemote) {
+//				EntityMinecart entityminecart = new EntityPoolMinecart(world, i + 0.5,j + 0.5, k + 0.5);
+//
+//				if(cart.hasDisplayName())
+//					entityminecart.setMinecartName(cart.getDisplayName());
+//
+//				if(world.spawnEntityInWorld(entityminecart))
+//					return entityminecart;
+//			}
+//		}
+//		return null;
+//	}
 
 }

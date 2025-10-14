@@ -13,18 +13,13 @@ package vazkii.botania.common.item;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.src.EntityItem;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.NBTTagCompound;
+import dev.bagel.util.Persisted;
+import net.minecraft.src.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerDropsEvent;
-import net.minecraftforge.oredict.RecipeSorter;
-import net.minecraftforge.oredict.RecipeSorter.Category;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.crafting.recipe.KeepIvyRecipe;
 import vazkii.botania.common.lib.LibItemNames;
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent;
 
@@ -37,12 +32,13 @@ public class ItemKeepIvy extends ItemMod {
 	private static final String TAG_DROP_COUNT = "dropCount";
 	private static final String TAG_DROP_PREFIX = "dropPrefix";
 
-	public ItemKeepIvy() {
-		setUnlocalizedName(LibItemNames.KEEP_IVY);
+	public ItemKeepIvy(int id) {
+        super(id);
+        setUnlocalizedName(LibItemNames.KEEP_IVY);
 		CraftingManager.getInstance().getRecipeList().add(new KeepIvyRecipe());
-		RecipeSorter.register("botania:keepIvy", KeepIvyRecipe.class, Category.SHAPELESS, "");
+//		RecipeSorter.register("botania:keepIvy", KeepIvyRecipe.class, Category.SHAPELESS, "");
 		MinecraftForge.EVENT_BUS.register(this);
-		FMLCommonHandler.instance().bus().register(this);
+//		FMLCommonHandler.instance().bus().register(this);
 	}
 
 	@SubscribeEvent
@@ -71,10 +67,10 @@ public class ItemKeepIvy extends ItemMod {
 			}
 
 			NBTTagCompound data = event.entityPlayer.getEntityData();
-			if(!data.hasKey(EntityPlayer.PERSISTED_NBT_TAG))
-				data.setTag(EntityPlayer.PERSISTED_NBT_TAG, new NBTTagCompound());
+			if(!data.hasKey(Persisted.PERSISTED_NBT_TAG))
+				data.setTag(Persisted.PERSISTED_NBT_TAG, new NBTTagCompound());
 
-			NBTTagCompound persist = data.getCompoundTag(EntityPlayer.PERSISTED_NBT_TAG);
+			NBTTagCompound persist = data.getCompoundTag(Persisted.PERSISTED_NBT_TAG);
 			persist.setTag(TAG_PLAYER_KEPT_DROPS, cmp);
 		}
 	}
@@ -82,8 +78,8 @@ public class ItemKeepIvy extends ItemMod {
 	@SubscribeEvent
 	public void onPlayerRespawn(PlayerRespawnEvent event) {
 		NBTTagCompound data = event.player.getEntityData();
-		if(data.hasKey(EntityPlayer.PERSISTED_NBT_TAG)) {
-			NBTTagCompound cmp = data.getCompoundTag(EntityPlayer.PERSISTED_NBT_TAG);
+		if(data.hasKey(Persisted.PERSISTED_NBT_TAG)) {
+			NBTTagCompound cmp = data.getCompoundTag(Persisted.PERSISTED_NBT_TAG);
 			NBTTagCompound cmp1 = cmp.getCompoundTag(TAG_PLAYER_KEPT_DROPS);
 
 			int count = cmp1.getInteger(TAG_DROP_COUNT);

@@ -10,8 +10,8 @@
  */
 package vazkii.botania.common.entity;
 
+import dev.bagel.shim.BlockBush;
 import net.minecraft.src.Block;
-import net.minecraft.src.BlockBush;
 import net.minecraft.src.BlockLeaves;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityItem;

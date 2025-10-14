@@ -16,7 +16,10 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 
+import baubles.api.BaubleType;
+import baubles.common.lib.PlayerHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.Gui;
 import net.minecraft.src.ScaledResolution;
@@ -39,6 +42,7 @@ import net.minecraft.src.StatCollector;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.MinecraftForge;
 
+import net.minecraftforge.event.entity.living.LivingEvent;
 import org.lwjgl.opengl.GL11;
 
 import vazkii.botania.api.BotaniaAPI;
@@ -80,10 +84,10 @@ public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaub
 	private static final int SUBTYPES = 8;
 	private static final int WING_TYPES = 9;
 
-	public ItemFlightTiara() {
-		super(LibItemNames.FLIGHT_TIARA);
+	public ItemFlightTiara(int id) {
+		super(id, LibItemNames.FLIGHT_TIARA);
 		MinecraftForge.EVENT_BUS.register(this);
-		FMLCommonHandler.instance().bus().register(this);
+//		FMLCommonHandler.instance().bus().register(this);
 		setHasSubtypes(true);
 	}
 
@@ -102,7 +106,7 @@ public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaub
 	}
 
 	@Override
-	public void getSubItems(Item item, CreativeTabs tab, List list) {
+	public void getSubItems(int item, CreativeTabs tab, List list) {
 		for(int i = 0; i < SUBTYPES + 1; i++)
 			list.add(new ItemStack(item, 1, i));
 	}
@@ -212,10 +216,9 @@ public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaub
 	}
 
 	@SubscribeEvent
-	public void updatePlayerFlyStatus(LivingUpdateEvent event) {
-		if(event.entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) event.entityLiving;
-			ItemStack tiara = PlayerHandler.getPlayerBaubles(player).getStackInSlot(0);
+	public void updatePlayerFlyStatus(LivingEvent.LivingUpdateEvent event) {
+		if(event.entityLiving instanceof EntityPlayer player) {
+            ItemStack tiara = PlayerHandler.getPlayerBaubles(player).getStackInSlot(0);
 			int left = ItemNBTHelper.getInt(tiara, TAG_TIME_LEFT, MAX_FLY_TIME);
 
 			if(playersWithFlight.contains(playerStr(player))) {
@@ -229,7 +232,7 @@ public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaub
 							double y = event.entityLiving.posY - 1.7;
 							double z = event.entityLiving.posZ - 0.5;
 
-							player.getGameProfile().getName();
+//							player.getGameProfile().getName();
 							float r = 1F;
 							float g = 1F;
 							float b = 1F;

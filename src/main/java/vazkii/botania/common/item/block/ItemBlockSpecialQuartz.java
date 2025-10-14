@@ -11,18 +11,18 @@
 package vazkii.botania.common.item.block;
 
 import net.minecraft.src.Block;
-import net.minecraft.src.ItemMultiTexture;
+import net.minecraft.src.ItemMultiTextureTile;
 import net.minecraft.src.ItemStack;
 import vazkii.botania.common.block.decor.quartz.BlockSpecialQuartz;
 
-public class ItemBlockSpecialQuartz extends ItemMultiTexture {
+public class ItemBlockSpecialQuartz extends ItemMultiTextureTile {
 
 	public ItemBlockSpecialQuartz(Block par1) {
-		super(par1, par1, new String[]{ "" });
+		super(par1.blockID, par1, new String[]{ "" });
 	}
 
 	@Override
 	public String getUnlocalizedName(ItemStack par1ItemStack) {
-		return par1ItemStack.getItemDamage() >= 3 ? "" : ((BlockSpecialQuartz) field_150939_a).getNames()[par1ItemStack.getItemDamage()];
+		return par1ItemStack.getItemDamage() >= 3 ? "" : ((BlockSpecialQuartz) Block.blocksList[blockID]).getNames()[par1ItemStack.getItemDamage()];
 	}
 }

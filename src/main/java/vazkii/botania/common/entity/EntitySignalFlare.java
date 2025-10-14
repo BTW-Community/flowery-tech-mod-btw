@@ -10,13 +10,11 @@
  */
 package vazkii.botania.common.entity;
 
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntitySheep;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.World;
+import btw.entity.EntityWithCustomPacket;
+import net.minecraft.src.*;
 import vazkii.botania.common.Botania;
 
-public class EntitySignalFlare extends Entity {
+public class EntitySignalFlare extends Entity implements EntityWithCustomPacket {
 
 	private static final String COLOR_TAG = "color";
 
@@ -75,4 +73,28 @@ public class EntitySignalFlare extends Entity {
 		return dataWatcher.getWatchableObjectInt(30);
 	}
 
+	@Override
+	public Packet getSpawnPacketForThisEntity() {
+		return null;
+	}
+
+	@Override
+	public int getTrackerViewDistance() {
+		return 2048;
+	}
+
+	@Override
+	public int getTrackerUpdateFrequency() {
+		return 10;
+	}
+
+	@Override
+	public boolean getTrackMotion() {
+		return false;
+	}
+
+	@Override
+	public boolean shouldServerTreatAsOversized() {
+		return false;
+	}
 }

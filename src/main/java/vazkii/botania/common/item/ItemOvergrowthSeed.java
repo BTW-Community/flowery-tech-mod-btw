@@ -10,35 +10,43 @@
  */
 package vazkii.botania.common.item;
 
+import dev.bagel.interfaces.BlockExtensions;
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
-import net.minecraftforge.oredict.OreDictionary;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.lib.LibItemNames;
 
 public class ItemOvergrowthSeed extends ItemMod {
 
-	public ItemOvergrowthSeed() {
-		setUnlocalizedName(LibItemNames.OVERGROWTH_SEED);
+	public ItemOvergrowthSeed(int id) {
+        super(id);
+        setUnlocalizedName(LibItemNames.OVERGROWTH_SEED);
 	}
 
 	@Override
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int s, float xs, float ys, float zs) {
 		Block block = world.getBlock(x, y, z);
 		ItemStack blockStack = new ItemStack(block);
-		int[] ids = OreDictionary.getOreIDs(blockStack);
-		for(int i : ids) {
-			String name = OreDictionary.getOreName(i);
-			if(name.equals("grass")) {
-				world.playAuxSFX(2001, x, y, z, Block.getIdFromBlock(block));
-				world.setBlock(x, y, z, ModBlocks.enchantedSoil);
-				stack.stackSize--;
+		if (block.blockMaterial == Block.grass.blockMaterial) {
+			world.playAuxSFX(2001, x, y, z, BlockExtensions.getIdFromBlock(block));
+			world.setBlock(x, y, z, ModBlocks.enchantedSoil);
+			stack.stackSize--;
 
-				return true;
-			}
+			return true;
 		}
+//		int[] ids = OreDictionary.getOreIDs(blockStack);
+//		for(int i : ids) {
+//			String name = OreDictionary.getOreName(i);
+//			if(name.equals("grass")) {
+//				world.playAuxSFX(2001, x, y, z, BlockExtensions.getIdFromBlock(block));
+//				world.setBlock(x, y, z, ModBlocks.enchantedSoil);
+//				stack.stackSize--;
+//
+//				return true;
+//			}
+//		}
 		return false;
 	}
 

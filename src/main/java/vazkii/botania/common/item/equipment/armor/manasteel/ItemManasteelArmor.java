@@ -12,21 +12,8 @@ package vazkii.botania.common.item.equipment.armor.manasteel;
 
 import java.util.List;
 
-import net.minecraft.src.GuiScreen;
-import net.minecraft.src.ModelBiped;
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemArmor;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.DamageSource;
-import net.minecraft.src.EnumChatFormatting;
-import net.minecraft.src.StatCollector;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import net.minecraftforge.common.ISpecialArmor;
-import thaumcraft.api.IRunicArmor;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.item.IPhantomInkable;
 import vazkii.botania.api.mana.IManaUsingItem;
@@ -39,13 +26,11 @@ import vazkii.botania.common.core.handler.ConfigHandler;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.equipment.tool.ToolCommons;
-import cpw.mods.fml.common.Optional;
 
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
-@Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.IRunicArmor")
-public class ItemManasteelArmor extends ItemArmor implements ISpecialArmor, IManaUsingItem, IPhantomInkable, IRunicArmor {
+public class ItemManasteelArmor extends ItemArmor implements ISpecialArmor, IManaUsingItem, IPhantomInkable{
 
 	private static final int MANA_PER_DAMAGE = 70;
 
@@ -54,12 +39,12 @@ public class ItemManasteelArmor extends ItemArmor implements ISpecialArmor, IMan
 	protected ModelBiped[] models = null;
 	public int type;
 
-	public ItemManasteelArmor(int type, String name) {
+	public ItemManasteelArmor(int id, int type, String name) {
 		this(type, name, BotaniaAPI.manasteelArmorMaterial);
 	}
 
-	public ItemManasteelArmor(int type, String name, ArmorMaterial mat) {
-		super(mat, 0, type);
+	public ItemManasteelArmor(int id, int type, String name, EnumArmorMaterial mat) {
+		super(id, mat, 0, type);
 		this.type = type;
 		setCreativeTab(CreativeTabs.tabMisc);
 		setUnlocalizedName(name);
@@ -67,7 +52,7 @@ public class ItemManasteelArmor extends ItemArmor implements ISpecialArmor, IMan
 
 	@Override
 	public Item setUnlocalizedName(String par1Str) {
-		GameRegistry.registerItem(this, par1Str);
+//		GameRegistry.registerItem(this, par1Str);
 		return super.setUnlocalizedName(par1Str);
 	}
 
@@ -94,10 +79,10 @@ public class ItemManasteelArmor extends ItemArmor implements ISpecialArmor, IMan
 		return damageReduceAmount;
 	}
 
+
 	@Override
-	public void onUpdate(ItemStack stack, World world, Entity player, int par4, boolean par5) {
-		if(player instanceof EntityPlayer)
-			onArmorTick(world, (EntityPlayer) player, stack);
+	public void onUpdate(ItemStack stack, World world, EntityPlayer player, int par4, boolean par5) {
+		onArmorTick(world, player, stack);
 	}
 
 	@Override

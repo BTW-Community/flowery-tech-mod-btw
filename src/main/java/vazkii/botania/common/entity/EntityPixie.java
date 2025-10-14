@@ -10,15 +10,11 @@
  */
 package vazkii.botania.common.entity;
 
-import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.SharedMonsterAttributes;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.PotionEffect;
-import net.minecraft.src.DamageSource;
-import net.minecraft.src.World;
+import btw.entity.EntityWithCustomPacket;
+import net.minecraft.src.*;
 import vazkii.botania.common.Botania;
 
-public class EntityPixie extends EntityFlyingCreature {
+public class EntityPixie extends EntityFlyingCreature implements EntityWithCustomPacket {
 
 	EntityLivingBase summoner = null;
 	float damage = 0;
@@ -38,7 +34,7 @@ public class EntityPixie extends EntityFlyingCreature {
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(2.0);
+		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(2.0);
 	}
 
 	public void setType(int type) {
@@ -127,4 +123,28 @@ public class EntityPixie extends EntityFlyingCreature {
 		return false;
 	}
 
+	@Override
+	public Packet getSpawnPacketForThisEntity() {
+		return null;
+	}
+
+	@Override
+	public int getTrackerViewDistance() {
+		return 16;
+	}
+
+	@Override
+	public int getTrackerUpdateFrequency() {
+		return 3;
+	}
+
+	@Override
+	public boolean getTrackMotion() {
+		return true;
+	}
+
+	@Override
+	public boolean shouldServerTreatAsOversized() {
+		return false;
+	}
 }

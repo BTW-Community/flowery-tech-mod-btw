@@ -16,22 +16,9 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
+import btw.entity.EntityWithCustomPacket;
+import net.minecraft.src.*;
 import net.minecraft.src.Block;
-import net.minecraft.src.BlockLeaves;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EntityThrowable;
-import net.minecraft.src.Block;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.ChunkCoordinates;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.MovingObjectPosition;
-import net.minecraft.src.Vec3;
-import net.minecraft.src.World;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.internal.IManaBurst;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
@@ -51,7 +38,7 @@ import vazkii.botania.common.item.equipment.bauble.ItemTinyPlanet;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
-public class EntityManaBurst extends EntityThrowable implements IManaBurst {
+public class EntityManaBurst extends EntityThrowable implements IManaBurst, EntityWithCustomPacket {
 
 	private static final String TAG_TICKS_EXISTED = "ticksExisted";
 	private static final String TAG_COLOR = "color";
@@ -856,6 +843,31 @@ public class EntityManaBurst extends EntityThrowable implements IManaBurst {
 		TileEntity tile = worldObj.getTileEntity(coords.posX, coords.posY, coords.posZ);
 		if(tile != null && tile instanceof IManaSpreader)
 			((IManaSpreader) tile).setLastBurstDeathTick(getTicksExisted());
+	}
+
+	@Override
+	public Packet getSpawnPacketForThisEntity() {
+		return new Packet250CustomPayload();
+	}
+
+	@Override
+	public int getTrackerViewDistance() {
+		return 64;
+	}
+
+	@Override
+	public int getTrackerUpdateFrequency() {
+		return 10;
+	}
+
+	@Override
+	public boolean getTrackMotion() {
+		return true;
+	}
+
+	@Override
+	public boolean shouldServerTreatAsOversized() {
+		return false;
 	}
 
 	public static class PositionProperties {

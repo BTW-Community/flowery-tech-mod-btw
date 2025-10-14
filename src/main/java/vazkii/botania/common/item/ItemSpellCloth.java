@@ -12,9 +12,8 @@ package vazkii.botania.common.item;
 
 import java.awt.Color;
 
+import net.minecraft.src.CraftingManager;
 import net.minecraft.src.ItemStack;
-import net.minecraftforge.oredict.RecipeSorter;
-import net.minecraftforge.oredict.RecipeSorter.Category;
 import vazkii.botania.common.crafting.recipe.SpellClothRecipe;
 import vazkii.botania.common.lib.LibItemNames;
 
@@ -23,14 +22,15 @@ import net.fabricmc.api.EnvType;
 
 public class ItemSpellCloth extends ItemMod {
 
-	public ItemSpellCloth() {
-		setMaxDamage(35);
+	public ItemSpellCloth(int id) {
+        super(id);
+        setMaxDamage(35);
 		setMaxStackSize(1);
-		setNoRepair();
+//		setNoRepair();
 		setUnlocalizedName(LibItemNames.SPELL_CLOTH);
 
 		CraftingManager.getInstance().getRecipeList().add(new SpellClothRecipe());
-		RecipeSorter.register("botania:spellCloth", SpellClothRecipe.class, Category.SHAPELESS, "");
+//		RecipeSorter.register("botania:spellCloth", SpellClothRecipe.class, Category.SHAPELESS, "");
 	}
 
 	@Override

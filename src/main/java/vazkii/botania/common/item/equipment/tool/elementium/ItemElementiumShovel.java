@@ -1,7 +1,7 @@
 package vazkii.botania.common.item.equipment.tool.elementium;
 
+import btw.block.blocks.FallingBlock;
 import net.minecraft.src.Block;
-import net.minecraft.src.BlockFalling;
 import net.minecraft.src.Material;
 import net.minecraft.src.EnchantmentHelper;
 import net.minecraft.src.EntityPlayer;
@@ -38,7 +38,7 @@ public class ItemElementiumShovel extends ItemManasteelShovel {
 		boolean silk = EnchantmentHelper.getSilkTouchModifier(player);
 
 		Block blk = world.getBlock(x, y, z);
-		if(blk instanceof BlockFalling)
+		if(blk instanceof FallingBlock || blk.isFallingBlock())
 			ToolCommons.removeBlocksInIteration(player, stack, world, x, y, z, 0, -12, 0, 1, 12, 1, blk, materialsShovel, silk, fortune, false);
 
 		return false;

@@ -13,17 +13,13 @@ package vazkii.botania.common.entity;
 
 import java.util.List;
 
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.DamageSource;
-import net.minecraft.src.World;
+import btw.entity.EntityWithCustomPacket;
+import net.minecraft.src.*;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.core.helper.MathHelper;
 
 
-public class EntityFlameRing extends Entity {
+public class EntityFlameRing extends Entity implements EntityWithCustomPacket {
 
 	public EntityFlameRing(World world) {
 		super(world);
@@ -103,5 +99,30 @@ public class EntityFlameRing extends Entity {
 	@Override
 	protected void writeEntityToNBT(NBTTagCompound var1) {
 		// NO-OP
+	}
+
+	@Override
+	public Packet getSpawnPacketForThisEntity() {
+		return null;
+	}
+
+	@Override
+	public int getTrackerViewDistance() {
+		return 32;
+	}
+
+	@Override
+	public int getTrackerUpdateFrequency() {
+		return 40;
+	}
+
+	@Override
+	public boolean getTrackMotion() {
+		return false;
+	}
+
+	@Override
+	public boolean shouldServerTreatAsOversized() {
+		return false;
 	}
 }

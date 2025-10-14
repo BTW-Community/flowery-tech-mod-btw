@@ -12,19 +12,8 @@ package vazkii.botania.common.entity;
 
 import java.util.List;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.BlockBush;
-import net.minecraft.src.BlockLeaves;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.IMob;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EntityThrowable;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.DamageSource;
-import net.minecraft.src.MovingObjectPosition;
-import net.minecraft.src.World;
+import dev.bagel.shim.BlockBush;
+import net.minecraft.src.*;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.core.helper.Vector3;
 import vazkii.botania.common.lib.LibObfuscation;
@@ -43,7 +32,8 @@ public class EntityMagicMissile extends EntityThrowable {
 
 	public EntityMagicMissile(EntityLivingBase thrower, boolean evil) {
 		this(thrower.worldObj);
-		ReflectionHelper.setPrivateValue(EntityThrowable.class, this, thrower, LibObfuscation.THROWER);
+		this.setThrower((EntityLiving) thrower);
+//		ReflectionHelper.setPrivateValue(EntityThrowable.class, this, thrower, LibObfuscation.THROWER);
 		setEvil(evil);
 	}
 
@@ -62,7 +52,7 @@ public class EntityMagicMissile extends EntityThrowable {
 	}
 
 	public void setTarget(EntityLivingBase e) {
-		dataWatcher.updateObject(26, e == null ? -1 : e.getEntityId());
+		dataWatcher.updateObject(26, e == null ? -1 : e.entityId);
 	}
 
 	public EntityLivingBase getTargetEntity() {

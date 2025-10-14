@@ -12,6 +12,7 @@ package vazkii.botania.common.block.subtile.generating;
 
 import java.util.List;
 
+import dev.bagel.util.Items;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemFood;
@@ -52,7 +53,7 @@ public class SubTileGourmaryllis extends SubTileGenerating {
 			if(stack != null && stack.getItem() instanceof ItemFood && !item.isDead && item.age >= slowdown) {
 				if(cooldown == 0) {
 					if(!remote) {
-						int val = ((ItemFood) stack.getItem()).func_150905_g(stack);
+						int val = ((ItemFood) stack.getItem()).getHealAmount();
 						storedMana = val * val * 64;
 						cooldown = val * 10;
 						supertile.getWorldObj().playSoundEffect(supertile.xCoord, supertile.yCoord, supertile.zCoord, "random.eat", 0.2F, 0.5F + (float) Math.random() * 0.5F);
@@ -63,7 +64,7 @@ public class SubTileGourmaryllis extends SubTileGenerating {
 							float mx = (float) (Math.random() - 0.5) * m;
 							float my = (float) (Math.random() - 0.5) * m;
 							float mz = (float) (Math.random() - 0.5) * m;
-							supertile.getWorldObj().spawnParticle("iconcrack_" + Item.getIdFromItem(stack.getItem()), item.posX, item.posY, item.posZ, mx, my, mz);
+							supertile.getWorldObj().spawnParticle("iconcrack_" + Items.getIdFromItem(stack.getItem()), item.posX, item.posY, item.posZ, mx, my, mz);
 						}
 							
 				}

@@ -21,3 +21,4 @@ accessible field net/minecraft/src/WorldGenDungeons field_111189_a [Lnet/minecra
 accessible field net/minecraft/src/EntityAITasks taskEntries Ljava/util/List;
 accessible field net/minecraft/src/EntityLiving tasks Lnet/minecraft/src/EntityAITasks;
 accessible field net/minecraft/src/EntityAINearestAttackableTarget targetEntity Lnet/minecraft/src/EntityLivingBase;
+accessible field net/minecraft/src/EntityHorse horseChest Lnet/minecraft/src/AnimalChest;

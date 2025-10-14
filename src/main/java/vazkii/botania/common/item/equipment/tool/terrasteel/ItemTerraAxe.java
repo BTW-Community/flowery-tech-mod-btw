@@ -37,7 +37,6 @@ import vazkii.botania.common.item.equipment.tool.ToolCommons;
 import vazkii.botania.common.item.equipment.tool.manasteel.ItemManasteelAxe;
 import vazkii.botania.common.item.relic.ItemLokiRing;
 import vazkii.botania.common.lib.LibItemNames;
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
@@ -78,9 +77,9 @@ public class ItemTerraAxe extends ItemManasteelAxe implements ISequentialBreaker
 
 	Icon iconOn, iconOff;
 
-	public ItemTerraAxe() {
-		super(BotaniaAPI.terrasteelToolMaterial, LibItemNames.TERRA_AXE);
-		FMLCommonHandler.instance().bus().register(this);
+	public ItemTerraAxe(int id) {
+		super(id, BotaniaAPI.terrasteelToolMaterial, LibItemNames.TERRA_AXE);
+//		FMLCommonHandler.instance().bus().register(this);
 	}
 
 	@Override
@@ -326,8 +325,8 @@ public class ItemTerraAxe extends ItemManasteelAxe implements ISequentialBreaker
 				for(ChunkCoordinates adj : adjacent(cand.coordinates)) {
 					Block block = world.getBlock(adj.posX, adj.posY, adj.posZ);
 					
-					boolean isWood = block.isWood(world, adj.posX, adj.posY, adj.posZ);
-					boolean isLeaf = block.isLeaves(world, adj.posX, adj.posY, adj.posZ);
+					boolean isWood = block.blockMaterial == Block.wood.blockMaterial/* .isWood(world, adj.posX, adj.posY, adj.posZ)*/;
+					boolean isLeaf = block.blockMaterial == Block.leaves.blockMaterial/* .isLeaves(world, adj.posX, adj.posY, adj.posZ)*/;
 					
 					// If it's not wood or a leaf, we aren't interested.
 					if(!isWood && !isLeaf)

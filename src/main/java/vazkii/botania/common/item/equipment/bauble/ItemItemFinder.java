@@ -32,7 +32,7 @@ import net.minecraft.src.TileEntity;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.Icon;
 import net.minecraft.src.MathHelper;
-import net.minecraft.village.MerchantRecipe;
+import net.minecraft.src.MerchantRecipe;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 
 import org.lwjgl.opengl.GL11;
@@ -56,8 +56,8 @@ public class ItemItemFinder extends ItemBauble implements IBaubleRender {
 	Icon gemIcon;
 	private static final String TAG_POSITIONS = "highlightPositions";
 
-	public ItemItemFinder() {
-		super(LibItemNames.ITEM_FINDER);
+	public ItemItemFinder(int id) {
+		super(id, LibItemNames.ITEM_FINDER);
 	}
 
 	@Override
@@ -126,39 +126,40 @@ public class ItemItemFinder extends ItemBauble implements IBaubleRender {
 					EntityItem item = (EntityItem) e;
 					ItemStack istack = item.getEntityItem();
 					if(player.isSneaking() || istack.isItemEqual(pstack) && ItemStack.areItemStackTagsEqual(istack, pstack))
-						positionsBuilder.append(item.getEntityId()).append(";");
+						positionsBuilder.append(item.entityId).append(";");
 
 				} else if(e instanceof IInventory) {
 					IInventory inv = (IInventory) e;
 					if(scanInventory(inv, pstack))
-						positionsBuilder.append(e.getEntityId()).append(";");
+						positionsBuilder.append(e.entityId).append(";");
 
 				} else if(e instanceof EntityHorse) {
 					EntityHorse horse = (EntityHorse) e;
-					AnimalChest chest = ReflectionHelper.getPrivateValue(EntityHorse.class, horse, LibObfuscation.HORSE_CHEST);
+
+					AnimalChest chest = horse.horseChest;
 					if(scanInventory(chest, pstack))
-						positionsBuilder.append(horse.getEntityId()).append(";");
+						positionsBuilder.append(horse.entityId).append(";");
 
 				} else if(e instanceof EntityPlayer) {
 					EntityPlayer player_ = (EntityPlayer) e;
 					InventoryPlayer inv = player_.inventory;
 					InventoryBaubles binv = PlayerHandler.getPlayerBaubles(player_);
 					if(scanInventory(inv, pstack) || scanInventory(binv, pstack))
-						positionsBuilder.append(player_.getEntityId()).append(";");
+						positionsBuilder.append(player_.entityId).append(";");
 
 				} else if(e instanceof EntityVillager) {
 					EntityVillager villager = (EntityVillager) e;
 					ArrayList<MerchantRecipe> recipes = villager.getRecipes(player);
 					if(pstack != null && recipes != null)
 						for(MerchantRecipe recipe : recipes)
-							if(recipe != null && !recipe.isRecipeDisabled() && (equalStacks(pstack, recipe.getItemToBuy()) || equalStacks(pstack, recipe.getItemToSell())))
-								positionsBuilder.append(villager.getEntityId()).append(";");
+							if(recipe != null && !recipe.func_82784_g()/*isRecipeDisabled*/ && (equalStacks(pstack, recipe.getItemToBuy()) || equalStacks(pstack, recipe.getItemToSell())))
+								positionsBuilder.append(villager.entityId).append(";");
 
 				} else if(e instanceof EntityLivingBase) {
 					EntityLivingBase living = (EntityLivingBase) e;
-					ItemStack estack = living.getEquipmentInSlot(0);
+					ItemStack estack = living.getCurrentItemOrArmor(0);
 					if(pstack != null && estack != null && equalStacks(estack, pstack))
-						positionsBuilder.append(living.getEntityId()).append(";");
+						positionsBuilder.append(living.entityId).append(";");
 				}
 			}
 

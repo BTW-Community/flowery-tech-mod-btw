@@ -51,10 +51,10 @@ public final class SkyblockWorldEvents {
 		if(event.entityLiving instanceof EntityPlayer && !event.entity.worldObj.isRemote) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
 			NBTTagCompound data = player.getEntityData();
-			if(!data.hasKey(EntityPlayer.PERSISTED_NBT_TAG))
-				data.setTag(EntityPlayer.PERSISTED_NBT_TAG, new NBTTagCompound());
+			if(!data.hasKey(Persisted.PERSISTED_NBT_TAG))
+				data.setTag(Persisted.PERSISTED_NBT_TAG, new NBTTagCompound());
 
-			NBTTagCompound persist = data.getCompoundTag(EntityPlayer.PERSISTED_NBT_TAG);
+			NBTTagCompound persist = data.getCompoundTag(Persisted.PERSISTED_NBT_TAG);
 			if(player.ticksExisted > 3 && !persist.getBoolean(TAG_MADE_ISLAND)) {
 				World world = player.worldObj;
 				if(WorldTypeSkyblock.isWorldSkyblock(world)) {
@@ -125,9 +125,9 @@ public final class SkyblockWorldEvents {
 	
 	public static void spawnPlayer(EntityPlayer player, int x, int y, int z, boolean fabricated) {
 		NBTTagCompound data = player.getEntityData();
-		if(!data.hasKey(EntityPlayer.PERSISTED_NBT_TAG))
-			data.setTag(EntityPlayer.PERSISTED_NBT_TAG, new NBTTagCompound());
-		NBTTagCompound persist = data.getCompoundTag(EntityPlayer.PERSISTED_NBT_TAG);
+		if(!data.hasKey(Persisted.PERSISTED_NBT_TAG))
+			data.setTag(Persisted.PERSISTED_NBT_TAG, new NBTTagCompound());
+		NBTTagCompound persist = data.getCompoundTag(Persisted.PERSISTED_NBT_TAG);
 
 		final boolean test = false;
 

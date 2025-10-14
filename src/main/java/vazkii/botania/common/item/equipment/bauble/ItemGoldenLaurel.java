@@ -10,15 +10,7 @@
  */
 package vazkii.botania.common.item.equipment.bauble;
 
-import net.minecraft.src.Minecraft;
-import net.minecraft.src.ItemRenderer;
-import net.minecraft.src.Tessellator;
-import net.minecraft.src.TextureMap;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.Potion;
-import net.minecraft.src.PotionEffect;
-import net.minecraft.src.ChatComponentTranslation;
+import net.minecraft.src.*;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -36,8 +28,8 @@ import net.fabricmc.api.EnvType;
 
 public class ItemGoldenLaurel extends ItemBauble implements IBaubleRender {
 
-	public ItemGoldenLaurel() {
-		super(LibItemNames.GOLDEN_LAUREL);
+	public ItemGoldenLaurel(int id) {
+		super(id, LibItemNames.GOLDEN_LAUREL);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 

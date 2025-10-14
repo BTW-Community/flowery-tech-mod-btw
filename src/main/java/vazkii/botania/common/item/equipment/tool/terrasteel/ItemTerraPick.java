@@ -13,23 +13,8 @@ package vazkii.botania.common.item.equipment.tool.terrasteel;
 import java.awt.Color;
 import java.util.List;
 
-import net.minecraft.src.Material;
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.EnchantmentHelper;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.EnumChatFormatting;
-import net.minecraft.src.Icon;
-import net.minecraft.src.MovingObjectPosition;
-import net.minecraft.src.StatCollector;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.oredict.RecipeSorter;
-import net.minecraftforge.oredict.RecipeSorter.Category;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.item.ISequentialBreaker;
 import vazkii.botania.api.mana.IManaGivingItem;
@@ -73,16 +58,16 @@ public class ItemTerraPick extends ItemManasteelPick implements IManaItem, ISequ
 
 	Icon iconTool, iconOverlay, iconTipped;
 
-	public ItemTerraPick() {
-		super(BotaniaAPI.terrasteelToolMaterial, LibItemNames.TERRA_PICK);
+	public ItemTerraPick(int id) {
+		super(id, BotaniaAPI.terrasteelToolMaterial, LibItemNames.TERRA_PICK);
 		CraftingManager.getInstance().getRecipeList().add(new TerraPickTippingRecipe());
-		RecipeSorter.register("botania:terraPickTipping", TerraPickTippingRecipe.class, Category.SHAPELESS, "");
+//		RecipeSorter.register("botania:terraPickTipping", TerraPickTippingRecipe.class, Category.SHAPELESS, "");
 	}
 
 	@Override
-	public void getSubItems(Item item, CreativeTabs tab, List list) {
+	public void getSubItems(int item, CreativeTabs tab, List list) {
 		for(int mana : CREATIVE_MANA) {
-			ItemStack stack = new ItemStack(item);
+			ItemStack stack = new ItemStack(item, 1, 0);
 			setMana(stack, mana);
 			list.add(stack);
 		}
@@ -183,10 +168,11 @@ public class ItemTerraPick extends ItemManasteelPick implements IManaItem, ISequ
 			player.addStat(ModAchievements.rankSSPick, 1);
 	}
 
-	@Override
-	public int getEntityLifespan(ItemStack itemStack, World world) {
-		return Integer.MAX_VALUE;
-	}
+	//todofix item entity lifespan
+//	@Override
+//	public int getEntityLifespan(ItemStack itemStack, World world) {
+//		return Integer.MAX_VALUE;
+//	}
 
 	@Override
 	public void registerIcons(IconRegister par1IconRegister) {

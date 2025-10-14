@@ -13,19 +13,7 @@ package vazkii.botania.common.item.equipment.tool.manasteel;
 import java.util.ArrayList;
 import java.util.Random;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.Enchantment;
-import net.minecraft.src.EnchantmentHelper;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.EntityItem;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemShears;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.StatList;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import net.minecraftforge.common.IShearable;
 import vazkii.botania.api.mana.IManaUsingItem;
 import vazkii.botania.api.mana.ManaItemHandler;
@@ -43,18 +31,19 @@ public class ItemManasteelShears extends ItemShears implements IManaUsingItem {
 
 	public static final int MANA_PER_DAMAGE = 30;
 
-	public ItemManasteelShears() {
-		this(LibItemNames.MANASTEEL_SHEARS);
+	public ItemManasteelShears(int id) {
+		this(id, LibItemNames.MANASTEEL_SHEARS);
 	}
 
-	public ItemManasteelShears(String name) {
-		setCreativeTab(CreativeTabs.tabMisc);
+	public ItemManasteelShears(int id, String name) {
+        super(id);
+        setCreativeTab(CreativeTabs.tabMisc);
 		setUnlocalizedName(name);
 	}
 
 	@Override
 	public Item setUnlocalizedName(String par1Str) {
-		GameRegistry.registerItem(this, par1Str);
+//		GameRegistry.registerItem(this, par1Str);
 		return super.setUnlocalizedName(par1Str);
 	}
 
@@ -69,29 +58,30 @@ public class ItemManasteelShears extends ItemShears implements IManaUsingItem {
 		itemIcon = IconHelper.forItem(par1IconRegister, this);
 	}
 
+	//todofix manasteel shears
 	@Override
 	public boolean itemInteractionForEntity(ItemStack itemstack, EntityPlayer player, EntityLivingBase entity) {
 		if(entity.worldObj.isRemote)
 			return false;
 
-		if(entity instanceof IShearable) {
-			IShearable target = (IShearable)entity;
-			if(target.isShearable(itemstack, entity.worldObj, (int) entity.posX, (int) entity.posY, (int) entity.posZ)) {
-				ArrayList<ItemStack> drops = target.onSheared(itemstack, entity.worldObj, (int) entity.posX, (int) entity.posY, (int) entity.posZ, EnchantmentHelper.getEnchantmentLevel(Enchantment.fortune.effectId, itemstack));
-
-				Random rand = new Random();
-				for(ItemStack stack : drops) {
-					EntityItem ent = entity.entityDropItem(stack, 1.0F);
-					ent.motionY += rand.nextFloat() * 0.05F;
-					ent.motionX += (rand.nextFloat() - rand.nextFloat()) * 0.1F;
-					ent.motionZ += (rand.nextFloat() - rand.nextFloat()) * 0.1F;
-				}
-
-				ToolCommons.damageItem(itemstack, 1, player, MANA_PER_DAMAGE);
-			}
-
-			return true;
-		}
+//		if(entity instanceof IShearable) {
+//			IShearable target = (IShearable)entity;
+//			if(target.isShearable(itemstack, entity.worldObj, (int) entity.posX, (int) entity.posY, (int) entity.posZ)) {
+//				ArrayList<ItemStack> drops = target.onSheared(itemstack, entity.worldObj, (int) entity.posX, (int) entity.posY, (int) entity.posZ, EnchantmentHelper.getEnchantmentLevel(Enchantment.fortune.effectId, itemstack));
+//
+//				Random rand = new Random();
+//				for(ItemStack stack : drops) {
+//					EntityItem ent = entity.entityDropItem(stack, 1.0F);
+//					ent.motionY += rand.nextFloat() * 0.05F;
+//					ent.motionX += (rand.nextFloat() - rand.nextFloat()) * 0.1F;
+//					ent.motionZ += (rand.nextFloat() - rand.nextFloat()) * 0.1F;
+//				}
+//
+//				ToolCommons.damageItem(itemstack, 1, player, MANA_PER_DAMAGE);
+//			}
+//
+//			return true;
+//		}
 
 		return false;
 	}
@@ -128,8 +118,8 @@ public class ItemManasteelShears extends ItemShears implements IManaUsingItem {
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World world, Entity player, int par4, boolean par5) {
-		if(!world.isRemote && player instanceof EntityPlayer && stack.getItemDamage() > 0 && ManaItemHandler.requestManaExactForTool(stack, (EntityPlayer) player, MANA_PER_DAMAGE * 2, true))
+	public void onUpdate(ItemStack stack, World world, EntityPlayer player, int par4, boolean par5) {
+		if(!world.isRemote && stack.getItemDamage() > 0 && ManaItemHandler.requestManaExactForTool(stack, player, MANA_PER_DAMAGE * 2, true))
 			stack.setItemDamage(stack.getItemDamage() - 1);
 	}
 

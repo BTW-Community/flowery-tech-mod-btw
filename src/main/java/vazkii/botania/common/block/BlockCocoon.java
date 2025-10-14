@@ -32,7 +32,7 @@ public class BlockCocoon extends BlockModContainer implements ILexiconable {
 		super(Material.cloth);
 		setHardness(3.0F);
 		setResistance(50.0F);
-		setStepSound(soundTypeCloth);
+		setStepSound(soundClothFootstep);
 		setBlockName(LibBlockNames.COCOON);
 		float f = 3F / 16F;
 		float f1 = 14F / 16F;

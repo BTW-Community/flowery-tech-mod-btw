@@ -17,43 +17,12 @@ import java.util.Collection;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.Minecraft;
-import net.minecraft.src.ScaledResolution;
-import net.minecraft.src.RenderItem;
-import net.minecraft.src.TextureMap;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityCreature;
-import net.minecraft.src.EntityLiving;
-import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.SharedMonsterAttributes;
-import net.minecraft.src.EntityAISwimming;
-import net.minecraft.src.EntityAIWatchClosest;
-import net.minecraft.src.EntityItem;
-import net.minecraft.src.EntitySkeleton;
-import net.minecraft.src.EntityWitch;
-import net.minecraft.src.EntityZombie;
-import net.minecraft.src.EntityPlayer;
+import btw.entity.EntityWithCustomPacket;
+import dev.bagel.client.RenderInstances;
+import dev.bagel.interfaces.BlockExtensions;
+import net.minecraft.src.*;
 import net.minecraft.src.Block;
 import net.minecraft.src.Item;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemRecord;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.Potion;
-import net.minecraft.src.PotionEffect;
-import net.minecraft.src.TileEntityBeacon;
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.ChatComponentTranslation;
-import net.minecraft.src.ChatStyle;
-import net.minecraft.src.ChunkCoordinates;
-import net.minecraft.src.DamageSource;
-import net.minecraft.src.EnumChatFormatting;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.ResourceLocation;
-import net.minecraft.src.EnumDifficulty;
-import net.minecraft.src.World;
-import net.minecraftforge.common.util.FakePlayer;
 
 import org.lwjgl.opengl.ARBShaderObjects;
 import org.lwjgl.opengl.GL11;
@@ -77,7 +46,7 @@ import vazkii.botania.common.lib.LibObfuscation;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
-public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWithShader {
+public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWithShader, EntityWithCustomPacket {
 
 	public static final int SPAWN_TICKS = 160;
 	private static final float RANGE = 12F;
@@ -147,11 +116,11 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 
 	public static boolean spawn(EntityPlayer player, ItemStack par1ItemStack, World par3World, int par4, int par5, int par6, boolean hard) {
 		if(par3World.getTileEntity(par4, par5, par6) instanceof TileEntityBeacon && isTruePlayer(player)) {
-			if(par3World.difficultySetting == EnumDifficulty.PEACEFUL) {
-				if(!par3World.isRemote)
-					player.addChatMessage(new ChatComponentTranslation("botaniamisc.peacefulNoob").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.RED)));
-				return false;
-			}
+//			if(par3World.difficultySetting == EnumDifficulty.PEACEFUL) {
+//				if(!par3World.isRemote)
+//					player.addChatMessage(new ChatComponentTranslation("botaniamisc.peacefulNoob").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.RED)));
+//				return false;
+//			}
 
 			for(int[] coords : PYLON_LOCATIONS) {
 				int x = par4 + coords[0];
@@ -162,7 +131,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 				int meta = par3World.getBlockMetadata(x, y, z);
 				if(blockat != ModBlocks.pylon || meta != 2) {
 					if(!par3World.isRemote)
-						player.addChatMessage(new ChatComponentTranslation("botaniamisc.needsCatalysts").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.RED)));
+						player.addChatMessage(ChatMessageComponent.createFromTranslationKey("botaniamisc.needsCatalysts").setColor(EnumChatFormatting.RED).toString());
 					return false;
 				}
 			}
@@ -181,7 +150,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 				}
 
 				if(!par3World.isRemote)
-					player.addChatMessage(new ChatComponentTranslation("botaniamisc.badArena").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.RED)));
+					player.addChatMessage(ChatMessageComponent.createFromTranslationKey("botaniamisc.badArena").setColor(EnumChatFormatting.RED).toString());
 				return false;
 			}
 
@@ -205,7 +174,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 					playerCount++;
 
 			e.setPlayerCount(playerCount);
-			e.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.maxHealth).setBaseValue(MAX_HP * playerCount);
+			e.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.maxHealth).setAttribute(MAX_HP * playerCount);
 
 			par3World.playSoundAtEntity(e, "mob.enderdragon.growl", 10F, 0.1F);
 			par3World.spawnEntityInWorld(e);
@@ -393,7 +362,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 		EntityPlayer player = (EntityPlayer) e;
 
 		String name = player.getCommandSenderName();
-		return !(player instanceof FakePlayer || FAKE_PLAYER_PATTERN.matcher(name).matches());
+		return !(/*player instanceof FakePlayer ||*/ FAKE_PLAYER_PATTERN.matcher(name).matches());
 	}
 
 	@Override
@@ -435,9 +404,9 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.4);
-		getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(MAX_HP);
-		getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setBaseValue(1.0);
+		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.4);
+		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(MAX_HP);
+		getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setAttribute(1.0);
 	}
 
 	@Override
@@ -482,10 +451,10 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 					if(Math.random() < 0.2)
 						entityDropItem(new ItemStack(ModItems.pinkinator), 1F);
 					if(Math.random() < 0.3) {
-						int i = Item.getIdFromItem(Items.record_13);
-						int j = Item.getIdFromItem(Items.record_wait);
+						int i = dev.bagel.util.Items.getIdFromItem(Item.record13);
+						int j = dev.bagel.util.Items.getIdFromItem(Item.recordWait);
 						int k = i + rand.nextInt(j - i + 1);
-						entityDropItem(new ItemStack(Item.getItemById(k)), 1F);
+						entityDropItem(new ItemStack(Item.itemsList[k]), 1F);
 						droppedRecord = true;
 					}
 				}
@@ -521,9 +490,9 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 			ridingEntity = null;
 		}
 
-		boolean peaceful = worldObj.difficultySetting == EnumDifficulty.PEACEFUL;
-		if(!worldObj.isRemote && peaceful)
-			setDead();
+//		boolean peaceful = worldObj.difficultySetting == EnumDifficulty.PEACEFUL;
+//		if(!worldObj.isRemote && peaceful)
+//			setDead();
 
 		if(!worldObj.isRemote) {
 			int radius = 1;
@@ -541,7 +510,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 							List<ItemStack> items = block.getDrops(worldObj, xp, yp, zp, 0, 0);
 							for(ItemStack stack : items) {
 								if(ConfigHandler.blockBreakParticles)
-									worldObj.playAuxSFX(2001, xp, yp, zp, Block.getIdFromBlock(block) + (worldObj.getBlockMetadata(xp, yp, zp) << 12));
+									worldObj.playAuxSFX(2001, xp, yp, zp, BlockExtensions.getIdFromBlock(block) + (worldObj.getBlockMetadata(xp, yp, zp) << 12));
 								worldObj.spawnEntityInWorld(new EntityItem(worldObj, xp + 0.5, yp + 0.5, zp + 0.5, stack));
 							}
 							worldObj.setBlockToAir(xp, yp, zp);
@@ -586,7 +555,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 				List<PotionEffect> remove = new ArrayList<>();
 				Collection<PotionEffect> active = player.getActivePotionEffects();
 				for(PotionEffect effect : active)
-					if(effect.getDuration() < 200 && effect.getIsAmbient() && !ReflectionHelper.<Boolean, Potion>getPrivateValue(Potion.class, Potion.potionTypes[effect.getPotionID()], LibObfuscation.IS_BAD_EFFECT))
+					if(effect.getDuration() < 200 && effect.getIsAmbient() && !Potion.potionTypes[effect.getPotionID()].isBadEffect())
 						remove.add(effect);
 
 				active.removeAll(remove);
@@ -680,10 +649,10 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 								}
 								case 1 : {
 									entity = new EntitySkeleton(worldObj);
-									((EntitySkeleton) entity).setCurrentItemOrArmor(0, new ItemStack(Items.bow));
+									((EntitySkeleton) entity).setCurrentItemOrArmor(0, new ItemStack(Item.bow));
 									if(worldObj.rand.nextInt(8) == 0) {
 										((EntitySkeleton) entity).setSkeletonType(1);
-										((EntitySkeleton) entity).setCurrentItemOrArmor(0, new ItemStack(hard ? ModItems.elementiumSword : Items.stone_sword));
+										((EntitySkeleton) entity).setCurrentItemOrArmor(0, new ItemStack(hard ? ModItems.elementiumSword : Item.swordStone));
 									}
 									break;
 								}
@@ -780,7 +749,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 
 	public static boolean isCheatyBlock(World world, int x, int y, int z) {
 		Block block = world.getBlock(x, y, z);
-		String name = Block.blockRegistry.getNameForObject(block);
+		String name = block.getUnlocalizedName();
 		return CHEATY_BLOCKS.contains(name);
 	}
 
@@ -890,7 +859,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 		int py = y + 12;
 
 		Minecraft mc = Minecraft.getMinecraft();
-		ItemStack stack = new ItemStack(Items.skull, 1, 3);
+		ItemStack stack = new ItemStack(Item.skull, 1, 3);
 		mc.renderEngine.bindTexture(TextureMap.locationItemsTexture);
 		net.minecraft.src.RenderHelper.enableGUIStandardItemLighting();
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
@@ -936,10 +905,35 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 		return background ? null : shaderCallback;
 	}
 
+	@Override
+	public Packet getSpawnPacketForThisEntity() {
+		return null;
+	}
+
+	@Override
+	public int getTrackerViewDistance() {
+		return 128;
+	}
+
+	@Override
+	public int getTrackerUpdateFrequency() {
+		return 3;
+	}
+
+	@Override
+	public boolean getTrackMotion() {
+		return true;
+	}
+
+	@Override
+	public boolean shouldServerTreatAsOversized() {
+		return false;
+	}
+
 	public static class BeaconComponent extends MultiblockComponent {
 
 		public BeaconComponent(ChunkCoordinates relPos) {
-			super(relPos, Blocks.iron_block, 0);
+			super(relPos, Block.blockIron, 0);
 		}
 
 		@Override
@@ -952,7 +946,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 	public static class BeaconBeamComponent extends MultiblockComponent {
 
 		public BeaconBeamComponent(ChunkCoordinates relPos) {
-			super(relPos, Blocks.beacon, 0);
+			super(relPos, Block.beacon, 0);
 		}
 
 		@Override

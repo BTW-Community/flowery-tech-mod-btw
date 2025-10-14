@@ -20,7 +20,6 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.StatCollector;
 import net.minecraft.src.World;
-import thaumcraft.api.IRunicArmor;
 import vazkii.botania.api.item.ICosmeticAttachable;
 import vazkii.botania.api.item.IPhantomInkable;
 import vazkii.botania.common.achievement.ModAchievements;
@@ -31,12 +30,10 @@ import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import baubles.common.container.InventoryBaubles;
 import baubles.common.lib.PlayerHandler;
-import cpw.mods.fml.common.Optional;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
-@Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.IRunicArmor")
-public abstract class ItemBauble extends ItemMod implements IBauble, ICosmeticAttachable, IPhantomInkable, IRunicArmor {
+public abstract class ItemBauble extends ItemMod implements IBauble, ICosmeticAttachable, IPhantomInkable {
 
 	private static final String TAG_HASHCODE = "playerHashcode";
 	private static final String TAG_BAUBLE_UUID_MOST = "baubleUUIDMost";
@@ -44,8 +41,8 @@ public abstract class ItemBauble extends ItemMod implements IBauble, ICosmeticAt
 	private static final String TAG_COSMETIC_ITEM = "cosmeticItem";
 	private static final String TAG_PHANTOM_INK = "phantomInk";
 
-	public ItemBauble(String name) {
-		super();
+	public ItemBauble(int id, String name) {
+		super(id);
 		setMaxStackSize(1);
 		setUnlocalizedName(name);
 	}
@@ -210,11 +207,5 @@ public abstract class ItemBauble extends ItemMod implements IBauble, ICosmeticAt
 	@Override
 	public void setPhantomInk(ItemStack stack, boolean ink) {
 		ItemNBTHelper.setBoolean(stack, TAG_PHANTOM_INK, ink);
-	}
-
-	@Override
-	@Optional.Method(modid = "Thaumcraft")
-	public int getRunicCharge(ItemStack itemstack) {
-		return 0;
 	}
 }

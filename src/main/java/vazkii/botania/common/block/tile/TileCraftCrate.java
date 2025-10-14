@@ -134,7 +134,7 @@ public class TileCraftCrate extends TileOpenCrate {
 					if(stack == null)
 						continue;
 
-					ItemStack container = new ItemStack(stack.getItem().getContainerItem(/*stack*/));
+					ItemStack container = new ItemStack(stack.getItem().getContainerItem(stack));
 					setInventorySlotContents(i, container);
 				}
 				return true;
