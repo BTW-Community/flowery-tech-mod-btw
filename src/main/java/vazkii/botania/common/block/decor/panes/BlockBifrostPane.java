@@ -22,8 +22,8 @@ import net.fabricmc.api.EnvType;
 
 public class BlockBifrostPane extends BlockModPane {
 
-	public BlockBifrostPane() {
-		super(ModBlocks.bifrostPerm);
+	public BlockBifrostPane(int id) {
+		super(id, ModBlocks.bifrostPerm);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
@@ -32,7 +32,7 @@ public class BlockBifrostPane extends BlockModPane {
 	public void loadTextures(TextureStitchEvent.Pre event) {
 		if(event.map.getTextureType() == 0) {
 			TextureAtlasSprite icon = new InterpolatedIcon("botania:bifrostPermPane");
-			if(event.map.setTextureEntry("botania:bifrostPermPane", icon))
+			if(event.map.registerIcon("botania:bifrostPermPane", icon) != null)
 				iconTop = icon;
 		}
 	}

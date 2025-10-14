@@ -14,8 +14,8 @@ import vazkii.botania.common.block.ModBlocks;
 
 public class BlockManaglassPane extends BlockModPane {
 
-	public BlockManaglassPane() {
-		super(ModBlocks.manaGlass);
+	public BlockManaglassPane(int id) {
+		super(id, ModBlocks.manaGlass);
 	}
 
 }

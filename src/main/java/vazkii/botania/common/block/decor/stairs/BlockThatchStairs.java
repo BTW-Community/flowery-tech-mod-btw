@@ -19,8 +19,8 @@ import vazkii.botania.common.lexicon.LexiconData;
 
 public class BlockThatchStairs extends BlockLivingStairs {
 
-	public BlockThatchStairs() {
-		super(ModBlocks.thatch, 0);
+	public BlockThatchStairs(int id) {
+		super(id, ModBlocks.thatch, 0);
 	}
 
 	@Override

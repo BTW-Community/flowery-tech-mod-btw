@@ -21,19 +21,19 @@ import vazkii.botania.common.lexicon.LexiconData;
 
 public class BlockDirtPathSlab extends BlockLivingSlab {
 
-	public BlockDirtPathSlab(boolean full) {
-		super(full, ModBlock.dirtPath, 0);
+	public BlockDirtPathSlab(int id, boolean full) {
+		super(id, full, ModBlocks.dirtPath, 0);
 		setHardness(0.6F);
 	}
 
 	@Override
 	public BlockHalfSlab getFullBlock() {
-		return (BlockHalfSlab) ModFluffBlock.dirtPathSlabFull;
+		return (BlockHalfSlab) ModFluffBlocks.dirtPathSlabFull;
 	}
 
 	@Override
 	public BlockHalfSlab getSingleBlock() {
-		return (BlockHalfSlab) ModFluffBlock.dirtPathSlab;
+		return (BlockHalfSlab) ModFluffBlocks.dirtPathSlab;
 	}
 
 	@Override

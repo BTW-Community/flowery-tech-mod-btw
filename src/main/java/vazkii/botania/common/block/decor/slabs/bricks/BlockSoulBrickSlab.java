@@ -15,8 +15,8 @@ import vazkii.botania.common.block.ModFluffBlocks;
 
 public class BlockSoulBrickSlab extends BlockCustomBrickSlab {
 
-	public BlockSoulBrickSlab(boolean full) {
-		super(full, 1);
+	public BlockSoulBrickSlab(int id, boolean full) {
+		super(id, full, 1);
 	}
 
 	@Override

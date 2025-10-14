@@ -22,12 +22,12 @@ import vazkii.botania.common.lexicon.LexiconData;
 
 public class BlockCustomBrickSlab extends BlockLivingSlab {
 
-	public BlockCustomBrickSlab(boolean full) {
-		this(full, 0);
+	public BlockCustomBrickSlab(int id, boolean full) {
+		this(id, full, 0);
 	}
 
-	public BlockCustomBrickSlab(boolean full, int meta) {
-		super(full, ModBlocks.customBrick, meta);
+	public BlockCustomBrickSlab(int id, boolean full, int meta) {
+		super(id, full, ModBlocks.customBrick, meta);
 		setHardness(2.0F);
 		setResistance(5.0F);
 		setStepSound(soundStoneFootstep);

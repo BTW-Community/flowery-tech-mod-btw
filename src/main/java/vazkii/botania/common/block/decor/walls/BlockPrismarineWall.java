@@ -19,8 +19,8 @@ import vazkii.botania.common.lexicon.LexiconData;
 
 public class BlockPrismarineWall extends BlockModWall {
 
-	public BlockPrismarineWall() {
-		super(ModBlocks.prismarine, 0);
+	public BlockPrismarineWall(int id) {
+		super(id, ModBlocks.prismarine, 0);
 		setHardness(2.0F);
 		setResistance(10.0F);
 		setStepSound(soundStoneFootstep);

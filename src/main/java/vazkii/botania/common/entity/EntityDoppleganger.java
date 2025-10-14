@@ -17,6 +17,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import btw.block.tileentity.beacon.BeaconEffectHandler;
 import btw.entity.EntityWithCustomPacket;
 import dev.bagel.client.RenderInstances;
 import dev.bagel.interfaces.BlockExtensions;
@@ -938,7 +939,8 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 
 		@Override
 		public boolean matches(World world, int x, int y, int z) {
-			return world.getBlock(x, y, z).isBeaconBase(world, x, y, z, x - relPos.posX, y - relPos.posY, z - relPos.posZ);
+			return BeaconEffectHandler.getEffectDescriptor(world.getBlockId(x, y, z), world.getBlockMetadata(x, y, z)) != null;
+//			return world.getBlock(x, y, z).isBeaconBase(world, x, y, z, x - relPos.posX, y - relPos.posY, z - relPos.posZ);
 		};
 
 	}

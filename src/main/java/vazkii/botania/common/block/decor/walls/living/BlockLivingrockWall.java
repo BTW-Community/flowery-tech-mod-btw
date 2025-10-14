@@ -15,8 +15,8 @@ import vazkii.botania.common.block.decor.walls.BlockModWall;
 
 public class BlockLivingrockWall extends BlockModWall {
 
-	public BlockLivingrockWall() {
-		super(ModBlocks.livingrock, 0);
+	public BlockLivingrockWall(int id) {
+		super(id, ModBlocks.livingrock, 0);
 		setHardness(2.0F);
 		setResistance(10.0F);
 		setStepSound(soundStoneFootstep);

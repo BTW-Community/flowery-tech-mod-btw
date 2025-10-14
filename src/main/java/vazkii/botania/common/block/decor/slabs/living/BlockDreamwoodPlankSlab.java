@@ -7,8 +7,8 @@ import vazkii.botania.common.block.decor.slabs.BlockLivingSlab;
 
 public class BlockDreamwoodPlankSlab extends BlockLivingSlab {
 
-	public BlockDreamwoodPlankSlab(boolean full) {
-		super(full, ModBlocks.dreamwood, 1);
+	public BlockDreamwoodPlankSlab(int id, boolean full) {
+		super(id, full, ModBlocks.dreamwood, 1);
 		setHardness(2.0F);
 	}
 

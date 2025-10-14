@@ -19,8 +19,8 @@ import vazkii.botania.common.lexicon.LexiconData;
 
 public class BlockEndStoneStairs extends BlockLivingStairs {
 
-	public BlockEndStoneStairs() {
-		super(ModBlocks.endStoneBrick, 0);
+	public BlockEndStoneStairs(int id) {
+		super(id, ModBlocks.endStoneBrick, 0);
 	}
 
 	@Override

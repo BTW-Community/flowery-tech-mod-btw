@@ -88,7 +88,7 @@ public final class SkyblockWorldEvents {
 				MovingObjectPosition movingobjectposition = ToolCommons.raytraceFromEntity(event.world, event.entityPlayer, true, 4.5F);
 
 				if(movingobjectposition != null) {
-					if (movingobjectposition.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK && !event.world.isRemote) {
+					if (movingobjectposition.typeOfHit == EnumMovingObjectType.TILE && !event.world.isRemote) {
 						int i = movingobjectposition.blockX;
 						int j = movingobjectposition.blockY;
 						int k = movingobjectposition.blockZ;

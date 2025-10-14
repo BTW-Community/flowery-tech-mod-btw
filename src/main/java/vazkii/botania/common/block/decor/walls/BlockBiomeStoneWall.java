@@ -19,8 +19,8 @@ import vazkii.botania.common.lexicon.LexiconData;
 
 public class BlockBiomeStoneWall extends BlockVariantWall {
 
-	public BlockBiomeStoneWall() {
-		super(ModFluffBlocks.biomeStoneA, 8, 8);
+	public BlockBiomeStoneWall(int id) {
+		super(id, ModFluffBlocks.biomeStoneA, 8, 8);
 		setHardness(1.5F);
 		setResistance(10F);
 	}

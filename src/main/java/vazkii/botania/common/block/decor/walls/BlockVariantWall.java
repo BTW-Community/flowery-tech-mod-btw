@@ -25,14 +25,14 @@ public class BlockVariantWall extends BlockModWall {
 	int metaStates;
 	int metaShift;
 
-	public BlockVariantWall(Block block, int metaStates, int metaShift) {
-		super(block, 0);
+	public BlockVariantWall(int id, Block block, int metaStates, int metaShift) {
+		super(id, block, 0);
 		this.metaStates = metaStates;
 		this.metaShift = metaShift;
 	}
 
-	public BlockVariantWall(Block block, int metaStates) {
-		this(block, metaStates, 0);
+	public BlockVariantWall(int id, Block block, int metaStates) {
+		this(id, block, metaStates, 0);
 	}
 
 	@Override

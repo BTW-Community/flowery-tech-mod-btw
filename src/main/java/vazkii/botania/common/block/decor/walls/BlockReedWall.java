@@ -14,8 +14,8 @@ import vazkii.botania.common.block.ModBlocks;
 
 public class BlockReedWall extends BlockModWall {
 
-	public BlockReedWall() {
-		super(ModBlocks.reedBlock, 0);
+	public BlockReedWall(int id) {
+		super(id, ModBlocks.reedBlock, 0);
 		setHardness(1.0F);
 		setStepSound(soundWoodFootstep);
 	}

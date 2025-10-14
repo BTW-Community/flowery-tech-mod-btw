@@ -12,8 +12,8 @@ package vazkii.botania.common.block.decor.stairs.bricks;
 
 public class BlockSnowBrickStairs extends BlockCustomBrickStairs {
 
-	public BlockSnowBrickStairs() {
-		super(2);
+	public BlockSnowBrickStairs(int id) {
+		super(id, 2);
 	}
 
 }

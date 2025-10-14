@@ -12,12 +12,12 @@ import vazkii.botania.common.lexicon.LexiconData;
 
 public class BlockPrismarineSlab extends BlockLivingSlab {
 
-	public BlockPrismarineSlab(boolean full) {
-		this(full, 0);
+	public BlockPrismarineSlab(int id, boolean full) {
+		this(id, full, 0);
 	}
 
-	public BlockPrismarineSlab(boolean full, int meta) {
-		super(full, ModBlocks.prismarine, meta);
+	public BlockPrismarineSlab(int id, boolean full, int meta) {
+		super(id, full, ModBlocks.prismarine, meta);
 		setHardness(2.0F);
 		setResistance(10.0F);
 		setStepSound(soundStoneFootstep);

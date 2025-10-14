@@ -12,18 +12,9 @@ package vazkii.botania.common.entity;
 
 import java.util.List;
 
+import dev.bagel.interfaces.BlockExtensions;
+import net.minecraft.src.*;
 import net.minecraft.src.Block;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.IProjectile;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Block;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.MovingObjectPosition;
-import net.minecraft.src.Vec3;
-import net.minecraft.src.World;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
@@ -189,7 +180,7 @@ public abstract class EntityThrowableCopy extends Entity implements IProjectile 
 
 		Vec3 vec3 = Vec3.createVectorHelper(posX, posY, posZ);
 		Vec3 vec31 = Vec3.createVectorHelper(posX + motionX, posY + motionY, posZ + motionZ);
-		MovingObjectPosition movingobjectposition = worldObj.rayTraceBlocks(vec3, vec31);
+		MovingObjectPosition movingobjectposition = worldObj.mouseOverRayTrace(vec3, vec31);
 		vec3 = Vec3.createVectorHelper(posX, posY, posZ);
 		vec31 = Vec3.createVectorHelper(posX + motionX, posY + motionY, posZ + motionZ);
 
@@ -236,7 +227,7 @@ public abstract class EntityThrowableCopy extends Entity implements IProjectile 
 
 		if (movingobjectposition != null)
 		{
-			if (movingobjectposition.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK && worldObj.getBlock(movingobjectposition.blockX, movingobjectposition.blockY, movingobjectposition.blockZ) == Blocks.portal)
+			if (movingobjectposition.typeOfHit == EnumMovingObjectType.TILE && worldObj.getBlock(movingobjectposition.blockX, movingobjectposition.blockY, movingobjectposition.blockZ) == Block.portal)
 			{
 				setInPortal();
 			}
@@ -317,13 +308,13 @@ public abstract class EntityThrowableCopy extends Entity implements IProjectile 
 		p_70014_1_.setShort("xTile", (short)field_145788_c);
 		p_70014_1_.setShort("yTile", (short)field_145786_d);
 		p_70014_1_.setShort("zTile", (short)field_145787_e);
-		p_70014_1_.setByte("inTile", (byte)BlockExtensions.getIdFromBlock(field_145785_f));
+		p_70014_1_.setByte("inTile", (byte) BlockExtensions.getIdFromBlock(field_145785_f));
 		p_70014_1_.setByte("shake", (byte)throwableShake);
 		p_70014_1_.setByte("inGround", (byte)(inGround ? 1 : 0));
 
 		if ((throwerName == null || throwerName.length() == 0) && thrower != null && thrower instanceof EntityPlayer)
 		{
-			throwerName = thrower.getCommandSenderName();
+			throwerName = ((EntityPlayer) thrower).getCommandSenderName();
 		}
 
 		p_70014_1_.setString("ownerName", throwerName == null ? "" : throwerName);
@@ -338,7 +329,7 @@ public abstract class EntityThrowableCopy extends Entity implements IProjectile 
 		field_145788_c = p_70037_1_.getShort("xTile");
 		field_145786_d = p_70037_1_.getShort("yTile");
 		field_145787_e = p_70037_1_.getShort("zTile");
-		field_145785_f = Block.getBlockById(p_70037_1_.getByte("inTile") & 255);
+		field_145785_f = Block.blocksList[p_70037_1_.getByte("inTile") & 255];
 		throwableShake = p_70037_1_.getByte("shake") & 255;
 		inGround = p_70037_1_.getByte("inGround") == 1;
 		throwerName = p_70037_1_.getString("ownerName");

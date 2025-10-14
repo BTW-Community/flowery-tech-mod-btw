@@ -28,7 +28,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
-public class BlockShimmerwoodPlanks  extends BlockMod implements ILexiconable {
+public class BlockShimmerwoodPlanks extends BlockMod implements ILexiconable {
 
 	public BlockShimmerwoodPlanks(int id) {
 		super(id, Material.wood);
@@ -43,7 +43,7 @@ public class BlockShimmerwoodPlanks  extends BlockMod implements ILexiconable {
 	public void loadTextures(TextureStitchEvent.Pre event) {
 		if(event.map.getTextureType() == 0) {
 			TextureAtlasSprite icon = new InterpolatedIcon("botania:shimmerwoodPlanks");
-			if(event.map.setTextureEntry("botania:shimmerwoodPlanks", icon))
+			if(event.map.registerIcon("botania:shimmerwoodPlanks", icon) != null)
 				blockIcon = icon;
 		}
 	}

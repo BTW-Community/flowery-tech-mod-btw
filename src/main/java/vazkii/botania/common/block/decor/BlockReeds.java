@@ -59,7 +59,7 @@ public class BlockReeds extends BlockRotatedPillar implements ILexiconable {
 	}
 
 	@Override
-	protected Icon getTopIcon(int p_150161_1_) {
+	protected Icon getEndIcon(int meta) {
 		return topIcon;
 	}
 

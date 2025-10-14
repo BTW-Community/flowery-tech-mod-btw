@@ -38,6 +38,7 @@ public class EntityPoolMinecart extends EntityMinecart {
 
 	public EntityPoolMinecart(World p_i1715_1_, double p_i1715_2_, double p_i1715_4_, double p_i1715_6_) {
 		super(p_i1715_1_, p_i1715_2_, p_i1715_4_, p_i1715_6_);
+		this.minecartItemToDrop = new ItemStack(ModBlocks.pool).getItem();
 	}
 
 	@Override
@@ -47,14 +48,14 @@ public class EntityPoolMinecart extends EntityMinecart {
 	}
 
 	@Override
-	public Block func_145817_o() {
+	public Block getDefaultDisplayTile() {
 		return ModBlocks.pool;
 	}
 
-	@Override
-	public ItemStack getCartItem() {
-		return new ItemStack(ModItems.poolMinecart);
-	}
+//	@Override
+//	public ItemStack getCartItem() {
+//		return new ItemStack(ModItems.poolMinecart);
+//	}
 
 	@Override
 	public int getMinecartType() {
@@ -64,17 +65,18 @@ public class EntityPoolMinecart extends EntityMinecart {
 	@Override
 	public void killMinecart(DamageSource p_94095_1_) {
 		super.killMinecart(p_94095_1_);
-		func_145778_a(Items.getItemFromBlock(ModBlocks.pool), 1, 0.0F);
+		entityDropItem(new ItemStack(ModBlocks.pool), 0.0F);
+//		func_145778_a(Items.getItemFromBlock(ModBlocks.pool), 1, 0.0F);
 	}
 
 	@Override
 	public int getDefaultDisplayTileOffset() {
 		return 8;
 	}
-
-	@Override
+	//todofix minecart handling, line 417-435 of EntityMinecart before, inject after moveEntity call
+//	@Override
 	public void moveMinecartOnRail(int x, int y, int z, double par4) {
-		super.moveMinecartOnRail(x, y, z, par4);
+//		super.moveMinecartOnRail(x, y, z, par4);
 
 		for(ForgeDirection dir : LibMisc.CARDINAL_DIRECTIONS) {
 			int xp = x + dir.offsetX;

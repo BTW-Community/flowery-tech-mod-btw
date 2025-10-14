@@ -19,8 +19,8 @@ import vazkii.botania.common.lexicon.LexiconData;
 
 public class BlockPavementStairs extends BlockLivingStairs {
 
-	public BlockPavementStairs(int meta) {
-		super(ModFluffBlocks.pavement, meta);
+	public BlockPavementStairs(int id, int meta) {
+		super(id, ModFluffBlocks.pavement, meta);
 	}
 
 	@Override

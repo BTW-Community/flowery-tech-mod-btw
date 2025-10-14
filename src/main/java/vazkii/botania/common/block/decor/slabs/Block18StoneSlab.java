@@ -22,8 +22,8 @@ public class Block18StoneSlab extends BlockLivingSlab {
 
 	int index;
 
-	public Block18StoneSlab(boolean full, int meta, int index) {
-		super(full, ModFluffBlocks.stone, meta);
+	public Block18StoneSlab(int id, boolean full, int meta, int index) {
+		super(id, full, ModFluffBlocks.stone, meta);
 		this.index = index;
 		setHardness(1.5F);
 		setResistance(10F);

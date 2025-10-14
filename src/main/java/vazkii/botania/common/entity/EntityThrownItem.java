@@ -12,15 +12,7 @@ package vazkii.botania.common.entity;
 
 import java.util.List;
 
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityItem;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Block;
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.DamageSource;
-import net.minecraft.src.MovingObjectPosition;
-import net.minecraft.src.Vec3;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import vazkii.botania.common.core.helper.Vector3;
 
 public class EntityThrownItem extends EntityItem {
@@ -50,7 +42,7 @@ public class EntityThrownItem extends EntityItem {
 		Vec3 vec3 = Vec3.createVectorHelper(posX, posY, posZ);
 		Vec3 vec31 = Vec3.createVectorHelper(posX + motionX, posY + motionY, posZ + motionZ);
 
-		MovingObjectPosition movingobjectposition = worldObj.rayTraceBlocks(vec3, vec31);
+		MovingObjectPosition movingobjectposition = worldObj.mouseOverRayTrace(vec3, vec31);
 
 
 		if (!worldObj.isRemote)
@@ -90,7 +82,7 @@ public class EntityThrownItem extends EntityItem {
 
 		if (movingobjectposition != null)
 		{
-			if (movingobjectposition.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK && worldObj.getBlock(movingobjectposition.blockX, movingobjectposition.blockY, movingobjectposition.blockZ) == Blocks.portal)
+			if (movingobjectposition.typeOfHit == EnumMovingObjectType.TILE && worldObj.getBlock(movingobjectposition.blockX, movingobjectposition.blockY, movingobjectposition.blockZ) == Block.portal)
 			{
 				setInPortal();
 			}
@@ -99,7 +91,8 @@ public class EntityThrownItem extends EntityItem {
 				if (movingobjectposition.entityHit != null) {
 					movingobjectposition.entityHit.attackEntityFrom(DamageSource.magic, 2.0F);
 					if (!worldObj.isRemote) {
-						Entity item = getEntityItem().getItem().createEntity(worldObj, this, getEntityItem());
+						//todoforge create entity for item, not used by botania
+						Entity item = null/*getEntityItem().getItem().createEntity(worldObj, this, getEntityItem())*/;
 						if (item == null) {
 							item = new EntityItem(worldObj, posX, posY, posZ, getEntityItem());
 							worldObj.spawnEntityInWorld(item);
@@ -124,7 +117,8 @@ public class EntityThrownItem extends EntityItem {
 		Vector3 vec3m = new Vector3(motionX, motionY, motionZ);
 		if (vec3m.mag() < 1.0F) {
 			if (!worldObj.isRemote) {
-				Entity item = getEntityItem().getItem().createEntity(worldObj, this, getEntityItem());
+				//todoforge create entity for item, not used by botania
+				Entity item = null/*getEntityItem().getItem().createEntity(worldObj, this, getEntityItem())*/;
 				if (item == null) {
 					item = new EntityItem(worldObj, posX, posY, posZ, getEntityItem());
 					worldObj.spawnEntityInWorld(item);

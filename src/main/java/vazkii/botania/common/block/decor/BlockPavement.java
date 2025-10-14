@@ -34,8 +34,8 @@ public class BlockPavement extends BlockMod {
 	public static final int TYPES = 6;
 	Icon[] icons;
 
-	public BlockPavement() {
-		super(Material.rock);
+	public BlockPavement(int id) {
+		super(id, Material.rock);
 		setHardness(2.0F);
 		setResistance(10.0F);
 		setStepSound(soundStoneFootstep);

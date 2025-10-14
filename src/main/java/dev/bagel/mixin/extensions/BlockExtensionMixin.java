@@ -23,6 +23,8 @@ public abstract class BlockExtensionMixin implements BlockExtensions {
 
     @Shadow public abstract int damageDropped(int par1);
 
+    @Shadow public abstract Icon getIcon(int par1, int par2);
+
     @Override
     public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
         return new ItemStack(Item.itemsList[idPicked(world, x, y, z)]);
@@ -51,5 +53,10 @@ public abstract class BlockExtensionMixin implements BlockExtensions {
         }
 
         return ret;
+    }
+
+    @Override
+    public Icon getIcon(IBlockAccess worldIn, int x, int y, int z, int side) {
+        return this.getIcon(side, worldIn.getBlockMetadata(x, y, z));
     }
 }

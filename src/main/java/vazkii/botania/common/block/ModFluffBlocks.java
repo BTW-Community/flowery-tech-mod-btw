@@ -203,140 +203,140 @@ public final class ModFluffBlocks {
 	public static Block bifrostPane;
 
 	public static void init() {
-		livingwoodStairs = new BlockLivingwoodStairs();
-		livingwoodSlab = new BlockLivingwoodSlab(false);
-		livingwoodSlabFull = new BlockLivingwoodSlab(true);
-		livingwoodWall = new BlockLivingwoodWall();
-		livingwoodPlankStairs = new BlockLivingwoodPlankStairs();
-		livingwoodPlankSlab = new BlockLivingwoodPlankSlab(false);
-		livingwoodPlankSlabFull = new BlockLivingwoodPlankSlab(true);
-		livingrockStairs = new BlockLivingrockStairs();
-		livingrockSlab = new BlockLivingrockSlab(false);
-		livingrockSlabFull = new BlockLivingrockSlab(true);
-		livingrockWall = new BlockLivingrockWall();
-		livingrockBrickStairs = new BlockLivingrockBrickStairs();
-		livingrockBrickSlab = new BlockLivingrockBrickSlab(false);
-		livingrockBrickSlabFull = new BlockLivingrockBrickSlab(true);
-		dreamwoodStairs = new BlockDreamwoodStairs();
-		dreamwoodSlab = new BlockDreamwoodSlab(false);
-		dreamwoodSlabFull = new BlockDreamwoodSlab(true);
-		dreamwoodWall = new BlockDreamwoodWall();
-		dreamwoodPlankStairs = new BlockDreamwoodPlankStairs();
-		dreamwoodPlankSlab = new BlockDreamwoodPlankSlab(false);
-		dreamwoodPlankSlabFull = new BlockDreamwoodPlankSlab(true);
+		livingwoodStairs = new BlockLivingwoodStairs(509);
+		livingwoodSlab = new BlockLivingwoodSlab(510, false);
+		livingwoodSlabFull = new BlockLivingwoodSlab(511, true);
+		livingwoodWall = new BlockLivingwoodWall(512);
+		livingwoodPlankStairs = new BlockLivingwoodPlankStairs(513);
+		livingwoodPlankSlab = new BlockLivingwoodPlankSlab(514, false);
+		livingwoodPlankSlabFull = new BlockLivingwoodPlankSlab(515, true);
+		livingrockStairs = new BlockLivingrockStairs(516);
+		livingrockSlab = new BlockLivingrockSlab(517, false);
+		livingrockSlabFull = new BlockLivingrockSlab(518, true);
+		livingrockWall = new BlockLivingrockWall(519);
+		livingrockBrickStairs = new BlockLivingrockBrickStairs(520);
+		livingrockBrickSlab = new BlockLivingrockBrickSlab(521, false);
+		livingrockBrickSlabFull = new BlockLivingrockBrickSlab(522, true);
+		dreamwoodStairs = new BlockDreamwoodStairs(523);
+		dreamwoodSlab = new BlockDreamwoodSlab(524, false);
+		dreamwoodSlabFull = new BlockDreamwoodSlab(525, true);
+		dreamwoodWall = new BlockDreamwoodWall(526);
+		dreamwoodPlankStairs = new BlockDreamwoodPlankStairs(527);
+		dreamwoodPlankSlab = new BlockDreamwoodPlankSlab(528, false);
+		dreamwoodPlankSlabFull = new BlockDreamwoodPlankSlab(529, true);
 
-		prismarineStairs = new BlockPrismarineStairs();
-		prismarineSlab = new BlockPrismarineSlab(false);
-		prismarineSlabFull = new BlockPrismarineSlab(true);
-		prismarineWall = new BlockPrismarineWall();
-		prismarineBrickStairs = new BlockPrismarineBrickStairs();
-		prismarineBrickSlab = new BlockPrismarineBrickSlab(false);
-		prismarineBrickSlabFull = new BlockPrismarineBrickSlab(true);
-		darkPrismarineStairs = new BlockDarkPrismarineStairs();
-		darkPrismarineSlab = new BlockDarkPrismarineSlab(false);
-		darkPrismarineSlabFull = new BlockDarkPrismarineSlab(true);
+		prismarineStairs = new BlockPrismarineStairs(530);
+		prismarineSlab = new BlockPrismarineSlab(531, false);
+		prismarineSlabFull = new BlockPrismarineSlab(532, true);
+		prismarineWall = new BlockPrismarineWall(533);
+		prismarineBrickStairs = new BlockPrismarineBrickStairs(534);
+		prismarineBrickSlab = new BlockPrismarineBrickSlab(535, false);
+		prismarineBrickSlabFull = new BlockPrismarineBrickSlab(536, true);
+		darkPrismarineStairs = new BlockDarkPrismarineStairs(537);
+		darkPrismarineSlab = new BlockDarkPrismarineSlab(538, false);
+		darkPrismarineSlabFull = new BlockDarkPrismarineSlab(539, true);
 
-		reedStairs = new BlockReedStairs();
-		reedSlab = new BlockReedSlab(false);
-		reedSlabFull = new BlockReedSlab(true);
-		reedWall = new BlockReedWall();
-		thatchStairs = new BlockThatchStairs();
-		thatchSlab = new BlockThatchSlab(false);
-		thatchSlabFull = new BlockThatchSlab(true);
+		reedStairs = new BlockReedStairs(540);
+		reedSlab = new BlockReedSlab(541, false);
+		reedSlabFull = new BlockReedSlab(542, true);
+		reedWall = new BlockReedWall(543);
+		thatchStairs = new BlockThatchStairs(544);
+		thatchSlab = new BlockThatchSlab(545, false);
+		thatchSlabFull = new BlockThatchSlab(546, true);
 
-		netherBrickStairs = new BlockCustomBrickStairs();
-		netherBrickSlab = new BlockCustomBrickSlab(false);
-		netherBrickSlabFull = new BlockCustomBrickSlab(true);
-		soulBrickStairs = new BlockSoulBrickStairs();
-		soulBrickSlab = new BlockSoulBrickSlab(false);
-		soulBrickSlabFull = new BlockSoulBrickSlab(true);
-		snowBrickStairs = new BlockSnowBrickStairs();
-		snowBrickSlab = new BlockSnowBrickSlab(false);
-		snowBrickSlabFull = new BlockSnowBrickSlab(true);
-		tileStairs = new BlockTileStairs();
-		tileSlab = new BlockTileSlab(false);
-		tileSlabFull = new BlockTileSlab(true);
+		netherBrickStairs = new BlockCustomBrickStairs(547);
+		netherBrickSlab = new BlockCustomBrickSlab(548, false);
+		netherBrickSlabFull = new BlockCustomBrickSlab(549, true);
+		soulBrickStairs = new BlockSoulBrickStairs(550);
+		soulBrickSlab = new BlockSoulBrickSlab(551, false);
+		soulBrickSlabFull = new BlockSoulBrickSlab(552, true);
+		snowBrickStairs = new BlockSnowBrickStairs(553);
+		snowBrickSlab = new BlockSnowBrickSlab(554, false);
+		snowBrickSlabFull = new BlockSnowBrickSlab(555, true);
+		tileStairs = new BlockTileStairs(556);
+		tileSlab = new BlockTileSlab(557, false);
+		tileSlabFull = new BlockTileSlab(558, true);
 
-		biomeStoneA = new BlockBiomeStoneA();
-		biomeStoneB = new BlockBiomeStoneB();
-		stone = new Block18Stone();
-		pavement = new BlockPavement();
+		biomeStoneA = new BlockBiomeStoneA(559);
+		biomeStoneB = new BlockBiomeStoneB(560);
+		stone = new Block18Stone(561);
+		pavement = new BlockPavement(562);
 
 		if(ConfigHandler.darkQuartzEnabled) {
-			darkQuartz = new BlockSpecialQuartz(LibBlockNames.QUARTZ_DARK);
-			darkQuartzSlab = new BlockSpecialQuartzSlab(darkQuartz, false);
-			darkQuartzSlabFull = new BlockSpecialQuartzSlab(darkQuartz, true);
-			darkQuartzStairs = new BlockSpecialQuartzStairs(darkQuartz);
+			darkQuartz = new BlockSpecialQuartz(563, LibBlockNames.QUARTZ_DARK);
+			darkQuartzSlab = new BlockSpecialQuartzSlab(564, darkQuartz, false);
+			darkQuartzSlabFull = new BlockSpecialQuartzSlab(565, darkQuartz, true);
+			darkQuartzStairs = new BlockSpecialQuartzStairs(566, darkQuartz);
 		}
 
-		manaQuartz = new BlockSpecialQuartz(LibBlockNames.QUARTZ_MANA);
-		manaQuartzSlab = new BlockSpecialQuartzSlab(manaQuartz, false);
-		manaQuartzSlabFull = new BlockSpecialQuartzSlab(manaQuartz, true);
-		manaQuartzStairs = new BlockSpecialQuartzStairs(manaQuartz);
-		blazeQuartz = new BlockSpecialQuartz(LibBlockNames.QUARTZ_BLAZE);
-		blazeQuartzSlab = new BlockSpecialQuartzSlab(blazeQuartz, false);
-		blazeQuartzSlabFull = new BlockSpecialQuartzSlab(blazeQuartz, true);
-		blazeQuartzStairs = new BlockSpecialQuartzStairs(blazeQuartz);
-		lavenderQuartz = new BlockSpecialQuartz(LibBlockNames.QUARTZ_LAVENDER);
-		lavenderQuartzSlab = new BlockSpecialQuartzSlab(lavenderQuartz, false);
-		lavenderQuartzSlabFull = new BlockSpecialQuartzSlab(lavenderQuartz, true);
-		lavenderQuartzStairs = new BlockSpecialQuartzStairs(lavenderQuartz);
-		redQuartz = new BlockSpecialQuartz(LibBlockNames.QUARTZ_RED);
-		redQuartzSlab = new BlockSpecialQuartzSlab(redQuartz, false);
-		redQuartzSlabFull = new BlockSpecialQuartzSlab(redQuartz, true);
-		redQuartzStairs = new BlockSpecialQuartzStairs(redQuartz);
-		elfQuartz = new BlockSpecialQuartz(LibBlockNames.QUARTZ_ELF);
-		elfQuartzSlab = new BlockSpecialQuartzSlab(elfQuartz, false);
-		elfQuartzSlabFull = new BlockSpecialQuartzSlab(elfQuartz, true);
-		elfQuartzStairs = new BlockSpecialQuartzStairs(elfQuartz);
-		sunnyQuartz = new BlockSpecialQuartz(LibBlockNames.QUARTZ_SUNNY);
-		sunnyQuartzSlab = new BlockSpecialQuartzSlab(sunnyQuartz, false);
-		sunnyQuartzSlabFull = new BlockSpecialQuartzSlab(sunnyQuartz, true);
-		sunnyQuartzStairs = new BlockSpecialQuartzStairs(sunnyQuartz);
+		manaQuartz = new BlockSpecialQuartz(567, LibBlockNames.QUARTZ_MANA);
+		manaQuartzSlab = new BlockSpecialQuartzSlab(568, manaQuartz, false);
+		manaQuartzSlabFull = new BlockSpecialQuartzSlab(569, manaQuartz, true);
+		manaQuartzStairs = new BlockSpecialQuartzStairs(570, manaQuartz);
+		blazeQuartz = new BlockSpecialQuartz(571, LibBlockNames.QUARTZ_BLAZE);
+		blazeQuartzSlab = new BlockSpecialQuartzSlab(572, blazeQuartz, false);
+		blazeQuartzSlabFull = new BlockSpecialQuartzSlab(573, blazeQuartz, true);
+		blazeQuartzStairs = new BlockSpecialQuartzStairs(574, blazeQuartz);
+		lavenderQuartz = new BlockSpecialQuartz(575, LibBlockNames.QUARTZ_LAVENDER);
+		lavenderQuartzSlab = new BlockSpecialQuartzSlab(576, lavenderQuartz, false);
+		lavenderQuartzSlabFull = new BlockSpecialQuartzSlab(577, lavenderQuartz, true);
+		lavenderQuartzStairs = new BlockSpecialQuartzStairs(578, lavenderQuartz);
+		redQuartz = new BlockSpecialQuartz(579, LibBlockNames.QUARTZ_RED);
+		redQuartzSlab = new BlockSpecialQuartzSlab(580, redQuartz, false);
+		redQuartzSlabFull = new BlockSpecialQuartzSlab(581, redQuartz, true);
+		redQuartzStairs = new BlockSpecialQuartzStairs(582, redQuartz);
+		elfQuartz = new BlockSpecialQuartz(583, LibBlockNames.QUARTZ_ELF);
+		elfQuartzSlab = new BlockSpecialQuartzSlab(584, elfQuartz, false);
+		elfQuartzSlabFull = new BlockSpecialQuartzSlab(585, elfQuartz, true);
+		elfQuartzStairs = new BlockSpecialQuartzStairs(586, elfQuartz);
+		sunnyQuartz = new BlockSpecialQuartz(587, LibBlockNames.QUARTZ_SUNNY);
+		sunnyQuartzSlab = new BlockSpecialQuartzSlab(588, sunnyQuartz, false);
+		sunnyQuartzSlabFull = new BlockSpecialQuartzSlab(589, sunnyQuartz, true);
+		sunnyQuartzStairs = new BlockSpecialQuartzStairs(590, sunnyQuartz);
 
-		dirtPathSlab = new BlockDirtPathSlab(false);
-		dirtPathSlabFull = new BlockDirtPathSlab(true);
-
+		dirtPathSlab = new BlockDirtPathSlab(591, false);
+		dirtPathSlabFull = new BlockDirtPathSlab(592, true);
+		int id = 593;
 		for(int i = 0; i < 24; i++) {
 			int meta = i % 16;
 			Block block = i < 16 ? biomeStoneA : biomeStoneB;
-			biomeStoneStairs[i] = new BlockBiomeStoneStairs(block, meta);
-			biomeStoneSlabs[i] = new BlockBiomeStoneSlab(false, block, meta, i);
-			biomeStoneFullSlabs[i] = new BlockBiomeStoneSlab(true, block, meta, i);
+			biomeStoneStairs[i] = new BlockBiomeStoneStairs(id++, block, meta);
+			biomeStoneSlabs[i] = new BlockBiomeStoneSlab(id++, false, block, meta, i);
+			biomeStoneFullSlabs[i] = new BlockBiomeStoneSlab(id++, true, block, meta, i);
 		}
-		biomeStoneWall = new BlockBiomeStoneWall();
+		biomeStoneWall = new BlockBiomeStoneWall(id++);
 
 		for(int i = 0; i < 8; i++) {
 			int meta = i > 3 ? i + 4 : i;
-			stoneStairs[i] = new Block18StoneStairs(meta);
-			stoneSlabs[i] = new Block18StoneSlab(false, meta, i);
-			stoneFullSlabs[i] = new Block18StoneSlab(true, meta, i);
+			stoneStairs[i] = new Block18StoneStairs(id++, meta);
+			stoneSlabs[i] = new Block18StoneSlab(id++, false, meta, i);
+			stoneFullSlabs[i] = new Block18StoneSlab(id++, true, meta, i);
 		}
-		stoneWall = new Block18StoneWall();
+		stoneWall = new Block18StoneWall(id++);
 
 		for(int i = 0; i < pavementStairs.length; i++) {
-			pavementStairs[i] = new BlockPavementStairs(i);
-			pavementSlabs[i] = new BlockPavementSlab(false, i, i);
-			pavementFullSlabs[i] = new BlockPavementSlab(true, i, i);
+			pavementStairs[i] = new BlockPavementStairs(id++, i);
+			pavementSlabs[i] = new BlockPavementSlab(id++, false, i, i);
+			pavementFullSlabs[i] = new BlockPavementSlab(id++, true, i, i);
 		}
 
-		endStoneSlab = new BlockEndStoneSlab(false);
-		endStoneSlabFull = new BlockEndStoneSlab(true);
-		endStoneStairs = new BlockEndStoneStairs();
-		enderBrickSlab = new BlockEnderBrickSlab(false);
-		enderBrickSlabFull = new BlockEnderBrickSlab(true);
-		enderBrickStairs = new BlockEnderBrickStairs();
+		endStoneSlab = new BlockEndStoneSlab(id++, false);
+		endStoneSlabFull = new BlockEndStoneSlab(id++, true);
+		endStoneStairs = new BlockEndStoneStairs(id++);
+		enderBrickSlab = new BlockEnderBrickSlab(id++, false);
+		enderBrickSlabFull = new BlockEnderBrickSlab(id++, true);
+		enderBrickStairs = new BlockEnderBrickStairs(id++);
 
-		shimmerrockSlab = new BlockShimmerrockSlab(false);
-		shimmerrockSlabFull = new BlockShimmerrockSlab(true);
-		shimmerrockStairs = new BlockShimmerrockStairs();
-		shimmerwoodPlankSlab = new BlockShimmerwoodPlankSlab(false);
-		shimmerwoodPlankSlabFull = new BlockShimmerwoodPlankSlab(true);
-		shimmerwoodPlankStairs = new BlockShimmerwoodPlankStairs();
+		shimmerrockSlab = new BlockShimmerrockSlab(id++, false);
+		shimmerrockSlabFull = new BlockShimmerrockSlab(id++, true);
+		shimmerrockStairs = new BlockShimmerrockStairs(id++);
+		shimmerwoodPlankSlab = new BlockShimmerwoodPlankSlab(id++, false);
+		shimmerwoodPlankSlabFull = new BlockShimmerwoodPlankSlab(id++, true);
+		shimmerwoodPlankStairs = new BlockShimmerwoodPlankStairs(id++);
 
-		managlassPane = new BlockManaglassPane();
-		alfglassPane = new BlockAlfglassPane();
-		bifrostPane = new BlockBifrostPane();
+		managlassPane = new BlockManaglassPane(id++);
+		alfglassPane = new BlockAlfglassPane(id++);
+		bifrostPane = new BlockBifrostPane(id++);
 
 		if(ConfigHandler.darkQuartzEnabled) {
 			((BlockModSlab) darkQuartzSlab).register();

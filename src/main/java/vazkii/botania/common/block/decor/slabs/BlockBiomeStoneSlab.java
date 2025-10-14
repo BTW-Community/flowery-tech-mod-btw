@@ -23,8 +23,8 @@ public class BlockBiomeStoneSlab extends BlockLivingSlab {
 
 	int index;
 
-	public BlockBiomeStoneSlab(boolean full, Block source, int meta, int index) {
-		super(full, source, meta);
+	public BlockBiomeStoneSlab(int id, boolean full, Block source, int meta, int index) {
+		super(id, full, source, meta);
 		this.index = index;
 		setHardness(1.5F);
 		setResistance(10F);

@@ -4,8 +4,8 @@ import net.minecraft.src.Block;
 
 public class BlockLivingStairs extends BlockModStairs {
 
-	public BlockLivingStairs(Block source, int meta) {
-		super(source, meta, source.getUnlocalizedName().replaceAll("tile.", "") + meta + "Stairs");
+	public BlockLivingStairs(int id, Block source, int meta) {
+		super(id, source, meta, source.getUnlocalizedName().replaceAll("tile.", "") + meta + "Stairs");
 	}
 
 }

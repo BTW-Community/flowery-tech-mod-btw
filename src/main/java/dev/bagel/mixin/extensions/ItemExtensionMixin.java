@@ -1,10 +1,7 @@
 package dev.bagel.mixin.extensions;
 
 import dev.bagel.interfaces.ItemExtensions;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Icon;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
+import net.minecraft.src.*;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
@@ -55,5 +52,22 @@ public abstract class ItemExtensionMixin implements ItemExtensions {
     @Override
     public int getRenderPasses(int metadata) {
         return requiresMultipleRenderPasses() ? 2 : 1;
+    }
+
+    //Armor stuff
+
+    @Override
+    public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
+
+    }
+
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
+        return null;
+    }
+
+    @Override
+    public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot) {
+        return null;
     }
 }

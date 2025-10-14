@@ -22,8 +22,8 @@ public class BlockPavementSlab extends BlockLivingSlab {
 
 	int index;
 
-	public BlockPavementSlab(boolean full, int meta, int index) {
-		super(full, ModFluffBlocks.pavement, meta);
+	public BlockPavementSlab(int id, boolean full, int meta, int index) {
+		super(id, full, ModFluffBlocks.pavement, meta);
 		this.index = index;
 		setHardness(2F);
 		setResistance(10F);

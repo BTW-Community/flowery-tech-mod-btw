@@ -1,9 +1,6 @@
 package dev.bagel.interfaces;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.MovingObjectPosition;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import net.minecraftforge.common.util.ForgeDirection;
 
 import java.util.ArrayList;
@@ -31,5 +28,10 @@ public interface BlockExtensions {
     //todofix implement getBlockDropped
     default ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
         return new ArrayList<>();
+    }
+
+    public default Icon getIcon(IBlockAccess worldIn, int x, int y, int z, int side)
+    {
+        return null;
     }
 }

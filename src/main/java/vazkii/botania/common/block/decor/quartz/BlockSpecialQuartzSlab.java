@@ -12,6 +12,7 @@ package vazkii.botania.common.block.decor.quartz;
 
 import java.util.Random;
 
+import dev.bagel.util.Items;
 import net.minecraft.src.Block;
 import net.minecraft.src.BlockHalfSlab;
 import net.minecraft.src.Material;
@@ -33,8 +34,8 @@ public class BlockSpecialQuartzSlab extends BlockModSlab {
 
 	Block source;
 
-	public BlockSpecialQuartzSlab(Block source, boolean par2) {
-		super(par2, Material.rock, "quartzSlab" + ((BlockSpecialQuartz) source).type + (par2 ? "Full" : "Half"));
+	public BlockSpecialQuartzSlab(int id, Block source, boolean par2) {
+		super(id, par2, Material.rock, "quartzSlab" + ((BlockSpecialQuartz) source).type + (par2 ? "Full" : "Half"));
 		setHardness(0.8F);
 		setResistance(10F);
 		this.source = source;
@@ -92,8 +93,8 @@ public class BlockSpecialQuartzSlab extends BlockModSlab {
 	}
 
 	@Override
-	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
-		return Items.getItemFromBlock(getSingleBlock());
+	public int idDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
+		return Items.getItemFromBlock(getSingleBlock()).itemID;
 	}
 
 	@Override
@@ -112,4 +113,8 @@ public class BlockSpecialQuartzSlab extends BlockModSlab {
 		return this == ModFluffBlocks.elfQuartzSlab ? LexiconData.elvenResources : LexiconData.decorativeBlocks;
 	}
 
+	@Override
+	public String getFullSlabName(int var1) {
+		return source.getUnlocalizedName();
+	}
 }

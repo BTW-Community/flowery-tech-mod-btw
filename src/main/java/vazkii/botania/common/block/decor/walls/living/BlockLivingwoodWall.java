@@ -15,8 +15,8 @@ import vazkii.botania.common.block.decor.walls.BlockModWall;
 
 public class BlockLivingwoodWall extends BlockModWall {
 
-	public BlockLivingwoodWall() {
-		super(ModBlocks.livingwood, 0);
+	public BlockLivingwoodWall(int id) {
+		super(id, ModBlocks.livingwood, 0);
 		setHardness(2.0F);
 		setStepSound(soundWoodFootstep);
 	}

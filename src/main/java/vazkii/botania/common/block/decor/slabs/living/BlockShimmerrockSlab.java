@@ -17,8 +17,8 @@ import vazkii.botania.common.block.decor.slabs.BlockLivingSlab;
 
 public class BlockShimmerrockSlab extends BlockLivingSlab {
 
-	public BlockShimmerrockSlab(boolean full) {
-		super(full, ModBlocks.shimmerrock, 0);
+	public BlockShimmerrockSlab(int id, boolean full) {
+		super(id, full, ModBlocks.shimmerrock, 0);
 		setHardness(2.0F);
 		setResistance(10.0F);
 		setStepSound(soundStoneFootstep);

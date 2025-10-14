@@ -514,12 +514,12 @@ public final class ModBlocks {
 	}
 
 	public static void registerMultiparts() {
-		if(Loader.isModLoaded("ForgeMultipart")) {
-			try {
-				Class clazz = Class.forName("vazkii.botania.common.integration.multipart.MultipartHandler");
-				clazz.newInstance();
-			} catch(Throwable e) {}
-		}
+//		if(Loader.isModLoaded("ForgeMultipart")) {
+//			try {
+//				Class clazz = Class.forName("vazkii.botania.common.integration.multipart.MultipartHandler");
+//				clazz.newInstance();
+//			} catch(Throwable e) {}
+//		}
 	}
 
 	private static void registerSubTileWithMini(String key, Class<? extends SubTileEntity> clazz) {
@@ -536,7 +536,8 @@ public final class ModBlocks {
 	}
 
 	private static void registerTile(Class<? extends TileEntity> clazz, String key) {
-		GameRegistry.registerTileEntity(clazz, LibResources.PREFIX_MOD + key);
+		TileEntity.addMapping(clazz, LibResources.PREFIX_MOD + key);
+//		GameRegistry.registerTileEntity(clazz, LibResources.PREFIX_MOD + key);
 	}
 
 }

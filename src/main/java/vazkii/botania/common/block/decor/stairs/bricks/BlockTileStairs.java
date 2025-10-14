@@ -12,8 +12,8 @@ package vazkii.botania.common.block.decor.stairs.bricks;
 
 public class BlockTileStairs extends BlockCustomBrickStairs {
 
-	public BlockTileStairs() {
-		super(3);
+	public BlockTileStairs(int id) {
+		super(id, 3);
 	}
 
 }

@@ -12,6 +12,7 @@ package vazkii.botania.common.entity;
 
 import java.util.List;
 
+import dev.bagel.interfaces.BlockExtensions;
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;

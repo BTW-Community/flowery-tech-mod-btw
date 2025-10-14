@@ -7,8 +7,8 @@ import vazkii.botania.common.block.decor.slabs.BlockLivingSlab;
 
 public class BlockLivingrockBrickSlab extends BlockLivingSlab {
 
-	public BlockLivingrockBrickSlab(boolean full) {
-		super(full, ModBlocks.livingrock, 1);
+	public BlockLivingrockBrickSlab(int id, boolean full) {
+		super(id, full, ModBlocks.livingrock, 1);
 		setHardness(2.0F);
 		setResistance(10.0F);
 		setStepSound(soundStoneFootstep);

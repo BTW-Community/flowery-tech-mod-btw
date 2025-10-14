@@ -14,8 +14,8 @@ import vazkii.botania.common.block.ModBlocks;
 
 public class BlockAlfglassPane extends BlockModPane {
 
-	public BlockAlfglassPane() {
-		super(ModBlocks.elfGlass);
+	public BlockAlfglassPane(int id) {
+		super(id, ModBlocks.elfGlass);
 	}
 
 }

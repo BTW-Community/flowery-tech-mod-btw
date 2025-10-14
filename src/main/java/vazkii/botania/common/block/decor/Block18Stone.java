@@ -35,8 +35,8 @@ public class Block18Stone extends BlockMod implements ILexiconable {
 
 	private static Icon[] icons = new Icon[16];
 
-	public Block18Stone() {
-		super(Material.rock);
+	public Block18Stone(int id) {
+		super(id, Material.rock);
 		setHardness(1.5F);
 		setResistance(10F);
 		setStepSound(soundStoneFootstep);

@@ -32,4 +32,9 @@ accessible field net/minecraft/src/MobSpawnerBaseLogic maxNearbyEntities I
 accessible field net/minecraft/src/MobSpawnerBaseLogic maxSpawnDelay I
 accessible field net/minecraft/src/MobSpawnerBaseLogic minSpawnDelay I
 accessible field net/minecraft/src/MobSpawnerBaseLogic minecartToSpawn Ljava/util/List;
+extendable method net/minecraft/src/BlockPane canThisPaneConnectToThisBlockID (I)Z
+
+
+
+
 

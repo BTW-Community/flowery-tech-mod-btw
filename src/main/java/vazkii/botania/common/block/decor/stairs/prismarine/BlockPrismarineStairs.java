@@ -10,12 +10,12 @@ import vazkii.botania.common.lexicon.LexiconData;
 
 public class BlockPrismarineStairs extends BlockLivingStairs {
 
-	public BlockPrismarineStairs() {
-		this(0);
+	public BlockPrismarineStairs(int id) {
+		this(id, 0);
 	}
 
-	public BlockPrismarineStairs(int meta) {
-		super(ModBlocks.prismarine, meta);
+	public BlockPrismarineStairs(int id, int meta) {
+		super(id, ModBlocks.prismarine, meta);
 	}
 
 	@Override

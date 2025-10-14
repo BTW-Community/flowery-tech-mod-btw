@@ -1,8 +1,8 @@
 package dev.bagel.interfaces;
 
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Icon;
-import net.minecraft.src.ItemStack;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.minecraft.src.*;
 
 public interface ItemExtensions {
     public default ItemStack getContainerItem(ItemStack itemStack) {
@@ -69,5 +69,52 @@ public interface ItemExtensions {
     default public int getRenderPasses(int metadata)
     {
         return 1;
+    }
+
+    //Armor stuff
+
+    /**
+     * Called to tick armor in the armor slot. Override to do something
+     *
+     * @param world
+     * @param player
+     * @param itemStack
+     */
+    public default void onArmorTick(World world, EntityPlayer player, ItemStack itemStack)
+    {
+
+    }
+
+    /**
+     * Called by RenderBiped and RenderPlayer to determine the armor texture that
+     * should be use for the currently equiped item.
+     * This will only be called on instances of ItemArmor.
+     *
+     * Returning null from this function will use the default value.
+     *
+     * @param stack ItemStack for the equpt armor
+     * @param entity The entity wearing the armor
+     * @param slot The slot the armor is in
+     * @param type The subtype, can be null or "overlay"
+     * @return Path of texture to bind, or null to use default
+     */
+    public default String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        return null;
+    }
+
+    /**
+     * Override this method to have an item handle its own armor rendering.
+     *
+     * @param  entityLiving  The entity wearing the armor
+     * @param  itemStack  The itemStack to render the model of
+     * @param  armorSlot  0=head, 1=torso, 2=legs, 3=feet
+     *
+     * @return  A ModelBiped to render instead of the default
+     */
+    @Environment(EnvType.CLIENT)
+    public default ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot)
+    {
+        return null;
     }
 }

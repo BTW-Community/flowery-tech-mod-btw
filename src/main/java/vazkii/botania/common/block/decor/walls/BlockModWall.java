@@ -32,17 +32,18 @@ public class BlockModWall extends BlockWall implements ILexiconable {
 	Block block;
 	int meta;
 
-	public BlockModWall(Block block, int meta) {
-		super(block);
+	public BlockModWall(int id, Block block, int meta) {
+		super(id, block);
 		this.block = block;
 		this.meta = meta;
 		setUnlocalizedName(block.getUnlocalizedName().replaceAll("tile.", "") + meta + "Wall");
 	}
 
-	@Override
-	public boolean canPlaceTorchOnTop(World world, int x, int y, int z) {
-		return true;
-	}
+	// Should already be covered by hasCenterHardPointToFacing
+//	@Override
+//	public boolean canPlaceTorchOnTop(World world, int x, int y, int z) {
+//		return true;
+//	}
 
 	@Override
 	public Block setUnlocalizedName(String par1Str) {
@@ -51,12 +52,13 @@ public class BlockModWall extends BlockWall implements ILexiconable {
 	}
 
 	public void register(String name) {
-		GameRegistry.registerBlock(this, ItemBlockMod.class, name);
+		var item = new ItemBlockMod(this);
+//		GameRegistry.registerBlock(this, ItemBlockMod.class, name);
 	}
 
 	@Override
 	public void getSubBlocks(int item, CreativeTabs tabs, List list) {
-		list.add(new ItemStack(item));
+		list.add(new ItemStack(Item.itemsList[item]));
 	}
 
 	@Override

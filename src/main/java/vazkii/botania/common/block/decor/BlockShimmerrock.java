@@ -30,8 +30,8 @@ import net.fabricmc.api.EnvType;
 
 public class BlockShimmerrock extends BlockMod implements ILexiconable {
 
-	public BlockShimmerrock() {
-		super(Material.rock);
+	public BlockShimmerrock(int id) {
+		super(id, Material.rock);
 		setHardness(2.0F);
 		setResistance(10.0F);
 		setStepSound(soundStoneFootstep);
@@ -44,7 +44,7 @@ public class BlockShimmerrock extends BlockMod implements ILexiconable {
 	public void loadTextures(TextureStitchEvent.Pre event) {
 		if(event.map.getTextureType() == 0) {
 			TextureAtlasSprite icon = new InterpolatedIcon("botania:shimmerrock");
-			if(event.map.setTextureEntry("botania:shimmerrock", icon))
+			if(event.map.registerIcon("botania:shimmerrock", icon) != null)
 				blockIcon = icon;
 		}
 	}

@@ -13,6 +13,7 @@ package vazkii.botania.common.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import dev.bagel.interfaces.BlockExtensions;
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityThrowable;
@@ -38,9 +39,9 @@ public class EntityEnderAirBottle extends EntityThrowable {
 			worldObj.playAuxSFX(2002, (int)Math.round(posX), (int)Math.round(posY), (int)Math.round(posZ), 8);
 
 			for(ChunkCoordinates coords : coordsList) {
-				worldObj.setBlock(coords.posX, coords.posY, coords.posZ, Blocks.end_stone);
+				worldObj.setBlock(coords.posX, coords.posY, coords.posZ, Block.whiteStone);
 				if(Math.random() < 0.1)
-					worldObj.playAuxSFX(2001, coords.posX, coords.posY, coords.posZ, BlockExtensions.getIdFromBlock(Blocks.end_stone));
+					worldObj.playAuxSFX(2001, coords.posX, coords.posY, coords.posZ, BlockExtensions.getIdFromBlock(Block.whiteStone));
 			}
 			setDead();
 		}

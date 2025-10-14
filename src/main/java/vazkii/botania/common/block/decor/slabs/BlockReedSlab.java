@@ -21,8 +21,8 @@ import vazkii.botania.common.lexicon.LexiconData;
 
 public class BlockReedSlab extends BlockLivingSlab {
 
-	public BlockReedSlab(boolean full) {
-		super(full, ModBlocks.reedBlock, 0);
+	public BlockReedSlab(int id, boolean full) {
+		super(id, full, ModBlocks.reedBlock, 0);
 		setHardness(1.0F);
 		setStepSound(soundWoodFootstep);
 	}
@@ -41,6 +41,5 @@ public class BlockReedSlab extends BlockLivingSlab {
 	public LexiconEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon) {
 		return LexiconData.decorativeBlocks;
 	}
-
 
 }

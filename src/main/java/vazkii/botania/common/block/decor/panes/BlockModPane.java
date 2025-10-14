@@ -10,12 +10,7 @@
  */
 package vazkii.botania.common.block.decor.panes;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.BlockPane;
-import net.minecraft.src.Material;
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.Icon;
-import net.minecraft.src.IBlockAccess;
+import net.minecraft.src.*;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.block.ModBlocks;
@@ -30,20 +25,21 @@ public class BlockModPane extends BlockPane {
 	Block source;
 	public Icon iconTop;
 
-	public BlockModPane(Block source) {
-		super("", "", Material.glass, false);
+	public BlockModPane(int id, Block source) {
+		super(id, "", "", Material.glass, false);
 		this.source = source;
 		setUnlocalizedName(source.getUnlocalizedName().replaceAll("tile.", "") + "Pane");
 		setCreativeTab(CreativeTabs.tabMisc);
 		setHardness(0.3F);
 		setStepSound(soundGlassFootstep);
 		setLightValue(1.0F);
-		useNeighborBrightness = true;
+		useNeighborBrightness[0] = true;
 	}
 
 	@Override
 	public Block setUnlocalizedName(String par1Str) {
-		GameRegistry.registerBlock(this, ItemBlockMod.class, par1Str);
+		var item = new ItemBlockMod(this);
+//		GameRegistry.registerBlock(this, ItemBlockMod.class, par1Str);
 		return super.setUnlocalizedName(par1Str);
 	}
 
@@ -70,7 +66,7 @@ public class BlockModPane extends BlockPane {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public Icon func_150097_e() {
+	public Icon getSideTextureIndex() {
 		return source.getIcon(0, 0);
 	}
 
@@ -81,9 +77,14 @@ public class BlockModPane extends BlockPane {
 	}
 
 	@Override
-	public boolean canPaneConnectTo(IBlockAccess world, int x, int y, int z, ForgeDirection dir) {
-		Block block = world.getBlock(x, y, z);
-		return block == ModBlocks.elfGlass || block == ModBlocks.manaGlass || block == ModBlocks.bifrostPerm || super.canPaneConnectTo(world, x, y, z, dir);
+	public boolean canThisPaneConnectToThisBlockID(int id) {
+		Block block = Block.blocksList[id];
+		return block == ModBlocks.elfGlass || block == ModBlocks.manaGlass || block == ModBlocks.bifrostPerm || super.canThisPaneConnectToThisBlockID(id);
 	}
+//	@Override
+//	public boolean canPaneConnectTo(IBlockAccess world, int x, int y, int z, ForgeDirection dir) {
+//		Block block = world.getBlock(x, y, z);
+//		return block == ModBlocks.elfGlass || block == ModBlocks.manaGlass || block == ModBlocks.bifrostPerm || super.canPaneConnectTo(world, x, y, z, dir);
+//	}
 
 }
