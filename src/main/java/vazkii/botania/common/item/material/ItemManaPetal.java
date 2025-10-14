@@ -18,8 +18,8 @@ import vazkii.botania.common.lib.LibItemNames;
 
 public class ItemManaPetal extends Item16Colors implements IFlowerComponent {
 
-	public ItemManaPetal() {
-		super(LibItemNames.MANA_PETAL);
+	public ItemManaPetal(int id) {
+		super(id, LibItemNames.MANA_PETAL);
 	}
 
 	@Override

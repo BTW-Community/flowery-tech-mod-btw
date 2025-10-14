@@ -24,8 +24,8 @@ import vazkii.botania.common.lib.LibItemNames;
 
 public class ItemSkyDirtRod extends ItemDirtRod {
 
-	public ItemSkyDirtRod() {
-		super(LibItemNames.SKY_DIRT_ROD);
+	public ItemSkyDirtRod(int id) {
+		super(id, LibItemNames.SKY_DIRT_ROD);
 	}
 
 	@Override

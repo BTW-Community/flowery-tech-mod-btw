@@ -15,8 +15,8 @@ public class ItemWaterRod extends ItemMod implements IManaUsingItem {
 
 	public static final int COST = 75;
 
-	public ItemWaterRod() {
-		super();
+	public ItemWaterRod(int id) {
+		super(id);
 		setMaxStackSize(1);
 		setUnlocalizedName(LibItemNames.WATER_ROD);
 	}
@@ -26,7 +26,7 @@ public class ItemWaterRod extends ItemMod implements IManaUsingItem {
 		if(ManaItemHandler.requestManaExactForTool(par1ItemStack, par2EntityPlayer, COST, false) && !par3World.provider.isHellWorld) {
 			ForgeDirection dir = ForgeDirection.getOrientation(par7);
 
-			ItemStack stackToPlace = new ItemStack(Blocks.flowing_water);
+			ItemStack stackToPlace = new ItemStack(Block.waterMoving);
 			stackToPlace.tryPlaceItemIntoWorld(par2EntityPlayer, par3World, par4, par5, par6, par7, par8, par9, par10);
 
 			if(stackToPlace.stackSize == 0) {

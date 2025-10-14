@@ -40,7 +40,8 @@ public class ItemIncenseStick extends ItemMod implements IBrewItem, IBrewContain
 
 	Icon[] icons;
 
-	public ItemIncenseStick() {
+	public ItemIncenseStick(int id) {
+		super(id);
 		setUnlocalizedName(LibItemNames.INCENSE_STICK);
 		setMaxStackSize(1);
 	}

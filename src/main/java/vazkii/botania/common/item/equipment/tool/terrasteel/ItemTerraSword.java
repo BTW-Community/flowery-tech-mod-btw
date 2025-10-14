@@ -45,12 +45,12 @@ public class ItemTerraSword extends ItemManasteelSword implements ILensEffect, I
 
 	private static final int MANA_PER_DAMAGE = 100;
 
-	public ItemTerraSword() {
-		super(BotaniaAPI.terrasteelToolMaterial, LibItemNames.TERRA_SWORD);
+	public ItemTerraSword(int id) {
+		super(id, BotaniaAPI.terrasteelToolMaterial, LibItemNames.TERRA_SWORD);
 	}
 
 	@Override
-	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
+	public void onUpdate(ItemStack par1ItemStack, World par2World, EntityPlayer par3Entity, int par4, boolean par5) {
 		super.onUpdate(par1ItemStack, par2World, par3Entity, par4, par5);
 		if(par3Entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) par3Entity;

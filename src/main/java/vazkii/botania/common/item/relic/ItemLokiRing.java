@@ -59,8 +59,8 @@ public class ItemLokiRing extends ItemRelicBauble implements IExtendedWireframeC
 	private static final String TAG_Y_ORIGIN = "yOrigin";
 	private static final String TAG_Z_ORIGIN = "zOrigin";
 
-	public ItemLokiRing() {
-		super(LibItemNames.LOKI_RING);
+	public ItemLokiRing(int id) {
+		super(id, LibItemNames.LOKI_RING);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 

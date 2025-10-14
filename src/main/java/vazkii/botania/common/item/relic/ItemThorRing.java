@@ -20,8 +20,8 @@ import baubles.common.lib.PlayerHandler;
 
 public class ItemThorRing extends ItemRelicBauble {
 
-	public ItemThorRing() {
-		super(LibItemNames.THOR_RING);
+	public ItemThorRing(int id) {
+		super(id, LibItemNames.THOR_RING);
 	}
 
 	@Override

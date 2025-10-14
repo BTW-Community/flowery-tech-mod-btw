@@ -12,18 +12,13 @@ package vazkii.botania.common.entity;
 
 import java.util.List;
 
+import btw.entity.EntityWithCustomPacket;
 import dev.bagel.interfaces.BlockExtensions;
-import net.minecraft.src.Block;
-import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.DamageSource;
-import net.minecraft.src.MovingObjectPosition;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.core.handler.ConfigHandler;
 
-public class EntityFallingStar extends EntityThrowableCopy {
+public class EntityFallingStar extends EntityThrowableCopy implements EntityWithCustomPacket {
 
 	public EntityFallingStar(World world) {
 		super(world);
@@ -82,5 +77,29 @@ public class EntityFallingStar extends EntityThrowableCopy {
 		setDead();
 	}
 
+	@Override
+	public Packet getSpawnPacketForThisEntity() {
+		return null;
+	}
+
+	@Override
+	public int getTrackerViewDistance() {
+		return 64;
+	}
+
+	@Override
+	public int getTrackerUpdateFrequency() {
+		return 10;
+	}
+
+	@Override
+	public boolean getTrackMotion() {
+		return true;
+	}
+
+	@Override
+	public boolean shouldServerTreatAsOversized() {
+		return false;
+	}
 }
 

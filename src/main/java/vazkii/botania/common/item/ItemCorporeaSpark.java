@@ -30,7 +30,8 @@ public class ItemCorporeaSpark extends ItemMod {
 
 	public static Icon invIcon, worldIcon, invIconMaster, worldIconMaster, iconColorStar;
 
-	public ItemCorporeaSpark() {
+	public ItemCorporeaSpark(int id) {
+		super(id);
 		setUnlocalizedName(LibItemNames.CORPOREA_SPARK);
 		setHasSubtypes(true);
 	}

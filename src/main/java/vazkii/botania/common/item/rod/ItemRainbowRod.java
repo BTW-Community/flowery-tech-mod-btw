@@ -43,7 +43,8 @@ public class ItemRainbowRod extends ItemMod implements IManaUsingItem, IAvatarWi
 	private static final int MANA_COST_AVATAR = 10;
 	private static final int TIME = 600;
 
-	public ItemRainbowRod() {
+	public ItemRainbowRod(int id) {
+		super(id);
 		setMaxDamage(TIME);
 		setUnlocalizedName(LibItemNames.RAINBOW_ROD);
 		setMaxStackSize(1);
@@ -120,7 +121,7 @@ public class ItemRainbowRod extends ItemMod implements IManaUsingItem, IAvatarWi
 	}
 
 	@Override
-	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
+	public void onUpdate(ItemStack par1ItemStack, World par2World, EntityPlayer par3Entity, int par4, boolean par5) {
 		if(par1ItemStack.isItemDamaged())
 			par1ItemStack.setItemDamage(par1ItemStack.getItemDamage() - 1);
 	}

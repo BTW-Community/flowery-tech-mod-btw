@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import btw.item.tag.Tag;
 import dev.bagel.interfaces.BlockExtensions;
 import dev.bagel.util.Blocks;
 import net.minecraft.src.*;
@@ -62,7 +63,7 @@ public class SubTileOrechid extends SubTileFunctional {
 			}
 		}
 	}
-
+//todofix translate to tag system
 	public ItemStack getOreToPut() {
 		Collection<WeightedRandomItem> values = new ArrayList<>();
 		Map<String, Integer> map = getOreMap();
@@ -71,7 +72,8 @@ public class SubTileOrechid extends SubTileFunctional {
 
 		String ore = ((StringRandomItem) WeightedRandom.getRandomItem(supertile.getWorldObj().rand, values)).s;
 
-		List<ItemStack> ores = OreDictionary.getOres(ore);
+//		List<ItemStack> ores = OreDictionary.getOres(ore);
+		List<ItemStack> ores = Tag.getFromId(ore).getItems();
 
 		for(ItemStack stack : ores) {
 			Item item = stack.getItem();

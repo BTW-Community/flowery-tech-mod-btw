@@ -14,8 +14,8 @@ import vazkii.botania.common.lib.LibItemNames;
 
 public class ItemTerrasteelChest extends ItemTerrasteelArmor {
 
-	public ItemTerrasteelChest() {
-		super(1, LibItemNames.TERRASTEEL_CHEST);
+	public ItemTerrasteelChest(int id) {
+		super(id, 1, LibItemNames.TERRASTEEL_CHEST);
 	}
 
 }

@@ -37,8 +37,8 @@ public class ItemThunderSword extends ItemManasteelSword implements ICraftAchiev
 
 	private static final String TAG_LIGHTNING_SEED = "lightningSeed";
 
-	public ItemThunderSword() {
-		super(BotaniaAPI.terrasteelToolMaterial, LibItemNames.THUNDER_SWORD);
+	public ItemThunderSword(int id) {
+		super(id, BotaniaAPI.terrasteelToolMaterial, LibItemNames.THUNDER_SWORD);
 	}
 
 	@Override

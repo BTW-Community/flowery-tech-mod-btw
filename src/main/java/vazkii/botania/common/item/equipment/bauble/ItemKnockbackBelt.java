@@ -35,8 +35,8 @@ public class ItemKnockbackBelt extends ItemBaubleModifier implements IBaubleRend
 	private static final ResourceLocation texture = new ResourceLocation(LibResources.MODEL_KNOCKBACK_BELT);
 	private static ModelBiped model;
 
-	public ItemKnockbackBelt() {
-		super(LibItemNames.KNOCKBACK_BELT);
+	public ItemKnockbackBelt(int id) {
+		super(id, LibItemNames.KNOCKBACK_BELT);
 	}
 
 	@Override

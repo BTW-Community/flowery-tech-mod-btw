@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.item.equipment.bauble;
 
+import dev.bagel.client.RenderInstances;
 import net.minecraft.src.Block;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ScaledResolution;
@@ -39,8 +40,8 @@ import net.fabricmc.api.EnvType;
 
 public class ItemMonocle extends ItemBauble implements IBurstViewerBauble, ICosmeticBauble {
 
-	public ItemMonocle() {
-		super(LibItemNames.MONOCLE);
+	public ItemMonocle(int id) {
+		super(id, LibItemNames.MONOCLE);
 	}
 
 	@Override
@@ -79,14 +80,14 @@ public class ItemMonocle extends ItemBauble implements IBurstViewerBauble, ICosm
 		ItemStack dispStack = null;
 		String text = "";
 
-		if(block == Blocks.redstone_wire) {
-			dispStack = new ItemStack(Items.redstone);
+		if(block == Block.redstoneWire) {
+			dispStack = new ItemStack(Item.redstone);
 			text = EnumChatFormatting.RED + "" + meta;
-		} else if(block == Blocks.unpowered_repeater || block == Blocks.powered_repeater) {
-			dispStack = new ItemStack(Items.repeater);
+		} else if(block == Block.redstoneRepeaterIdle || block == Block.redstoneRepeaterActive) {
+			dispStack = new ItemStack(Item.redstoneRepeater);
 			text = "" + (((meta & 12) >> 2) + 1);
-		} else if(block == Blocks.unpowered_comparator || block == Blocks.powered_comparator) {
-			dispStack = new ItemStack(Items.comparator);
+		} else if(block == Block.redstoneComparatorActive || block == Block.redstoneComparatorIdle) {
+			dispStack = new ItemStack(Item.comparator);
 			text = (meta & 4) == 4 ? "-" : "+";
 		}
 

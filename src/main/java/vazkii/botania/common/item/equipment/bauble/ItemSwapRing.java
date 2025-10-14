@@ -24,8 +24,8 @@ import baubles.api.BaubleType;
 
 public class ItemSwapRing extends ItemBauble {
 
-	public ItemSwapRing() {
-		super(LibItemNames.SWAP_RING);
+	public ItemSwapRing(int id) {
+		super(id, LibItemNames.SWAP_RING);
 	}
 
 	@Override

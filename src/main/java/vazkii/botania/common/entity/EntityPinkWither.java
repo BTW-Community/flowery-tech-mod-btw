@@ -10,14 +10,10 @@
  */
 package vazkii.botania.common.entity;
 
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.EntityWither;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.World;
+import btw.entity.EntityWithCustomPacket;
+import net.minecraft.src.*;
 
-public class EntityPinkWither extends EntityWither {
+public class EntityPinkWither extends EntityWither implements EntityWithCustomPacket {
 
 	public EntityPinkWither(World p_i1701_1_) {
 		super(p_i1701_1_);
@@ -103,5 +99,30 @@ public class EntityPinkWither extends EntityWither {
 			float f1 = MathHelper.sin(f);
 			return posZ + f1 * 1.3D;
 		}
+	}
+
+	@Override
+	public Packet getSpawnPacketForThisEntity() {
+		return null;
+	}
+
+	@Override
+	public int getTrackerViewDistance() {
+		return 80;
+	}
+
+	@Override
+	public int getTrackerUpdateFrequency() {
+		return 3;
+	}
+
+	@Override
+	public boolean getTrackMotion() {
+		return false;
+	}
+
+	@Override
+	public boolean shouldServerTreatAsOversized() {
+		return false;
 	}
 }

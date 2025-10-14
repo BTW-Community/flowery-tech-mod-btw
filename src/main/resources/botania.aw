@@ -33,8 +33,9 @@ accessible field net/minecraft/src/MobSpawnerBaseLogic maxSpawnDelay I
 accessible field net/minecraft/src/MobSpawnerBaseLogic minSpawnDelay I
 accessible field net/minecraft/src/MobSpawnerBaseLogic minecartToSpawn Ljava/util/List;
 extendable method net/minecraft/src/BlockPane canThisPaneConnectToThisBlockID (I)Z
-
-
+accessible field net/minecraft/src/Entity isImmuneToFire Z
+accessible method net/minecraft/src/EntityLiving getLivingSound ()Ljava/lang/String;
+accessible method net/minecraft/src/ItemDye applyBoneMeal (Lnet/minecraft/src/World;III)Z
 
 
 

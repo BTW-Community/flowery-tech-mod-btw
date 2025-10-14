@@ -10,17 +10,14 @@
  */
 package vazkii.botania.common.item;
 
-import net.minecraft.src.Material;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.MovingObjectPosition;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import vazkii.botania.common.block.subtile.functional.SubTileSpectranthemum;
 import vazkii.botania.common.lib.LibItemNames;
 
 public class ItemOpenBucket extends ItemMod {
 
-	public ItemOpenBucket() {
+	public ItemOpenBucket(int id) {
+		super(id);
 		setMaxStackSize(1);
 		setUnlocalizedName(LibItemNames.OPEN_BUCKET);
 	}
@@ -32,7 +29,7 @@ public class ItemOpenBucket extends ItemMod {
 		if(movingobjectposition == null)
 			return par1ItemStack;
 		else {
-			if(movingobjectposition.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK) {
+			if(movingobjectposition.typeOfHit == EnumMovingObjectType.TILE) {
 				int i = movingobjectposition.blockX;
 				int j = movingobjectposition.blockY;
 				int k = movingobjectposition.blockZ;

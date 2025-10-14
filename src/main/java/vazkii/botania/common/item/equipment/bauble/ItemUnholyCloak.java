@@ -28,8 +28,8 @@ public class ItemUnholyCloak extends ItemHolyCloak {
 
 	private static final ResourceLocation texture = new ResourceLocation(LibResources.MODEL_UNHOLY_CLOAK);
 
-	public ItemUnholyCloak() {
-		super(LibItemNames.UNHOLY_CLOAK);
+	public ItemUnholyCloak(int id) {
+		super(id, LibItemNames.UNHOLY_CLOAK);
 	}
 
 	@Override

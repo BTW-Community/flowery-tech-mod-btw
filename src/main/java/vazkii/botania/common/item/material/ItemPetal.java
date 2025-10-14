@@ -21,8 +21,8 @@ import vazkii.botania.common.lib.LibItemNames;
 
 public class ItemPetal extends Item16Colors implements IFlowerComponent {
 
-	public ItemPetal() {
-		super(LibItemNames.PETAL);
+	public ItemPetal(int id) {
+		super(id, LibItemNames.PETAL);
 	}
 
 	@Override

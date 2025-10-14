@@ -20,7 +20,8 @@ import vazkii.botania.common.lib.LibItemNames;
 
 public class ItemWorldSeed extends ItemMod {
 
-	public ItemWorldSeed() {
+	public ItemWorldSeed(int id) {
+		super(id);
 		setUnlocalizedName(LibItemNames.WORLD_SEED);
 	}
 

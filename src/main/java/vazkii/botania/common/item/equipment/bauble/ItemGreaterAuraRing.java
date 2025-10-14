@@ -14,8 +14,8 @@ import vazkii.botania.common.lib.LibItemNames;
 
 public class ItemGreaterAuraRing extends ItemAuraRing {
 
-	public ItemGreaterAuraRing() {
-		super(LibItemNames.AURA_RING_GREATER);
+	public ItemGreaterAuraRing(int id) {
+		super(id, LibItemNames.AURA_RING_GREATER);
 	}
 
 	@Override

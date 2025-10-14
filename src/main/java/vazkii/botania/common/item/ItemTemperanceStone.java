@@ -28,7 +28,8 @@ public class ItemTemperanceStone extends ItemMod {
 
 	Icon enabledIcon;
 
-	public ItemTemperanceStone() {
+	public ItemTemperanceStone(int id) {
+		super(id);
 		setUnlocalizedName(LibItemNames.TEMPERANCE_STONE);
 		setMaxStackSize(1);
 		setHasSubtypes(true);

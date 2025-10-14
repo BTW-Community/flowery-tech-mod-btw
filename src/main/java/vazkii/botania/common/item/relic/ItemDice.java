@@ -26,8 +26,8 @@ public class ItemDice extends ItemRelic {
 
 	public static ItemStack[] relicStacks;
 
-	public ItemDice() {
-		super(LibItemNames.DICE);
+	public ItemDice(int id) {
+		super(id, LibItemNames.DICE);
 
 		relicStacks = new ItemStack[] {
 				new ItemStack(ModItems.infiniteFruit),

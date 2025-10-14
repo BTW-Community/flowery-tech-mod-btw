@@ -27,7 +27,8 @@ public class ItemSparkUpgrade extends ItemMod {
 	public static Icon[] worldIcons;
 	Icon[] invIcons;
 
-	public ItemSparkUpgrade() {
+	public ItemSparkUpgrade(int id) {
+		super(id);
 		setUnlocalizedName(LibItemNames.SPARK_UPGRADE);
 		setHasSubtypes(true);
 	}

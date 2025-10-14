@@ -67,7 +67,7 @@ public class BlockModDoubleFlower extends BlockDoublePlant implements ILexiconab
 //	@Override
 /*	public Block setUnlocalizedName(String par1Str) {
 		if(!par1Str.equals("doublePlant"))
-			var item = new ItemBlockWithMetadataAndName(this.blockID, this);
+			var item = new ItemBlockWithMetadataAndName(this);
 //GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
 		return super.setUnlocalizedName(par1Str);
 	}*/

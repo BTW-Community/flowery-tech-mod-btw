@@ -43,13 +43,13 @@ public class ItemHolyCloak extends ItemBauble implements IBaubleRender {
 	private static final String TAG_COOLDOWN = "cooldown";
 	private static final String TAG_IN_EFFECT = "inEffect";
 
-	public ItemHolyCloak() {
-		this(LibItemNames.HOLY_CLOAK);
+	public ItemHolyCloak(int id) {
+		this(id, LibItemNames.HOLY_CLOAK);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
-	public ItemHolyCloak(String name) {
-		super(name);
+	public ItemHolyCloak(int id, String name) {
+		super(id, name);
 	}
 
 	@SubscribeEvent

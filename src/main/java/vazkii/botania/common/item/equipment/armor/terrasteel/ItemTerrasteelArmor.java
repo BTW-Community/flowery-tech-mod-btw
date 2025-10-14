@@ -34,8 +34,8 @@ import net.fabricmc.api.EnvType;
 
 public class ItemTerrasteelArmor extends ItemManasteelArmor {
 
-	public ItemTerrasteelArmor(int type, String name) {
-		super(type, name, BotaniaAPI.terrasteelArmorMaterial);
+	public ItemTerrasteelArmor(int id, int type, String name) {
+		super(id, type, name, BotaniaAPI.terrasteelArmorMaterial);
 	}
 
 	@Override

@@ -12,17 +12,11 @@ package vazkii.botania.common.entity;
 
 import java.util.List;
 
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.Potion;
-import net.minecraft.src.PotionEffect;
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.DamageSource;
-import net.minecraft.src.World;
+import btw.entity.EntityWithCustomPacket;
+import net.minecraft.src.*;
 import vazkii.botania.common.Botania;
 
-public class EntityMagicLandmine extends Entity {
+public class EntityMagicLandmine extends Entity implements EntityWithCustomPacket {
 
 	public EntityDoppleganger summoner;
 
@@ -84,4 +78,28 @@ public class EntityMagicLandmine extends Entity {
 	protected void writeEntityToNBT(NBTTagCompound var1) {
 	}
 
+	@Override
+	public Packet getSpawnPacketForThisEntity() {
+		return null;
+	}
+
+	@Override
+	public int getTrackerViewDistance() {
+		return 128;
+	}
+
+	@Override
+	public int getTrackerUpdateFrequency() {
+		return 40;
+	}
+
+	@Override
+	public boolean getTrackMotion() {
+		return false;
+	}
+
+	@Override
+	public boolean shouldServerTreatAsOversized() {
+		return false;
+	}
 }

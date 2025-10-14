@@ -13,6 +13,7 @@ package vazkii.botania.common.item.lens;
 import java.util.ArrayList;
 import java.util.List;
 
+import dev.bagel.interfaces.BlockExtensions;
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityThrowable;
@@ -41,7 +42,7 @@ public class LensMine extends Lens {
 		ItemStack composite = ((ItemLens) ModItems.lens).getCompositeLens(stack);
 		boolean warp = composite != null && composite.getItem() == ModItems.lens && composite.getItemDamage() == ItemLens.WARP;
 		
-		if(warp && (block == ModBlocks.pistonRelay || block == Blocks.piston || block == Blocks.piston_extension || block == Blocks.piston_head))
+		if(warp && (block == ModBlocks.pistonRelay || block == Block.pistonBase || block == Block.pistonExtension || block == Block.pistonMoving))
 			return false;
 
 		int harvestLevel = ConfigHandler.harvestLevelBore;
@@ -49,7 +50,7 @@ public class LensMine extends Lens {
 		TileEntity tile = world.getTileEntity(x, y, z);
 
 		float hardness = block.getBlockHardness(world, x, y, z);
-		int neededHarvestLevel = block.getHarvestLevel(meta);
+		int neededHarvestLevel = block.getHarvestToolLevel(world, x, y, z);
 		int mana = burst.getMana();
 
 		ChunkCoordinates coords = burst.getBurstSourceChunkCoordinates();

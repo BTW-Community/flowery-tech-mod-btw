@@ -54,7 +54,7 @@ public class BlockLightRelay extends BlockModContainer implements IWandable, ILe
 
 	void register(String name) {
 		new ItemBlockWithMetadataAndName(this.blockID, this);
-//		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
+//		var item = new ItemBlockWithMetadataAndName(this);
 //GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, name);
 	}
 

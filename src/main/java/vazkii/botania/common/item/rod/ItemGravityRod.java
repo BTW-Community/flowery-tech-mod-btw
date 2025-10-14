@@ -44,13 +44,14 @@ public class ItemGravityRod extends ItemMod implements IManaUsingItem {
 	private static final String TAG_TARGET = "target";
 	private static final String TAG_DIST = "dist";
 
-	public ItemGravityRod() {
+	public ItemGravityRod(int id) {
+		super(id);
 		setMaxStackSize(1);
 		setUnlocalizedName(LibItemNames.GRAVITY_ROD);
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World world, Entity par3Entity, int p_77663_4_, boolean p_77663_5_) {
+	public void onUpdate(ItemStack stack, World world, EntityPlayer par3Entity, int p_77663_4_, boolean p_77663_5_) {
 		if(!(par3Entity instanceof EntityPlayer))
 			return;
 
@@ -159,7 +160,7 @@ public class ItemGravityRod extends ItemMod implements IManaUsingItem {
 					
 					setEntityMotionFromVector(item, target3, 0.3333333F);
 
-					ItemNBTHelper.setInt(stack, TAG_TARGET, item.getEntityId());
+					ItemNBTHelper.setInt(stack, TAG_TARGET, item.entityId);
 					ItemNBTHelper.setDouble(stack, TAG_DIST, length);
 				}
 			}

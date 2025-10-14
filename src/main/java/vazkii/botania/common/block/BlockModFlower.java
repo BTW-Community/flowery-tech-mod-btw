@@ -76,7 +76,7 @@ public class BlockModFlower extends BlockFlower implements ILexiconable, IPickup
 
 //	@Override
 	public Block setUnlocalizedName(String par1Str) {
-		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
+		var item = new ItemBlockWithMetadataAndName(this);
 //GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
 		return this/*super.setUnlocalizedName(par1Str)*/;
 	}

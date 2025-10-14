@@ -27,8 +27,8 @@ import vazkii.botania.common.lib.LibItemNames;
 
 public class ItemFlugelEye extends ItemRelic implements ICoordBoundItem, IManaUsingItem {
 
-	public ItemFlugelEye() {
-		super(LibItemNames.FLUGEL_EYE);
+	public ItemFlugelEye(int id) {
+		super(id, LibItemNames.FLUGEL_EYE);
 	}
 
 	private static final String TAG_X = "x";
@@ -190,7 +190,7 @@ public class ItemFlugelEye extends ItemRelic implements ICoordBoundItem, IManaUs
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World world, Entity entity, int pos, boolean equipped) {
+	public void onUpdate(ItemStack stack, World world, EntityPlayer entity, int pos, boolean equipped) {
 		super.onUpdate(stack, world, entity, pos, equipped);
 		boolean eqLastTick = wasEquipped(stack);
 		boolean firstTick = isFirstTick(stack);

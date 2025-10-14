@@ -20,7 +20,7 @@ import net.minecraft.src.StatCollector;
 public class ItemBlockPool extends ItemBlockWithMetadataAndName {
 
 	public ItemBlockPool(Block par2Block) {
-		super(par2Block.blockID, par2Block);
+		super(par2Block);
 	}
 
 	@Override

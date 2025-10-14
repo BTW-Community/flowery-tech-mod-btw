@@ -39,7 +39,8 @@ public class ItemCacophonium extends ItemMod implements ICraftAchievement {
 	private static final String TAG_SOUND_NAME = "soundName";
 	private static final String TAG_HAS_SOUND = "hasSound";
 
-	public ItemCacophonium() {
+	public ItemCacophonium(int id) {
+		super(id);
 		setMaxStackSize(1);
 		setUnlocalizedName(LibItemNames.CACOPHONIUM);
 	}
@@ -54,7 +55,8 @@ public class ItemCacophonium extends ItemMod implements ICraftAchievement {
 					sound = "creeper.primed";
 				else if(living instanceof EntitySlime)
 					sound = "mob.slime." + (((EntitySlime) living).getSlimeSize() > 1 ? "big" : "small");
-				else sound = (String) ReflectionHelper.findMethod(EntityLiving.class, living, LibObfuscation.GET_LIVING_SOUND).invoke(living);
+
+				else sound = living.getLivingSound();
 
 				if(sound != null) {
 					String s = EntityList.getEntityString(entity);
@@ -91,7 +93,7 @@ public class ItemCacophonium extends ItemMod implements ICraftAchievement {
 
 		if(can) {
 			Block block = world.getBlock(x, y, z);
-			if(block == Blocks.noteblock) {
+			if(block == Block.music) {
 				world.setBlock(x, y, z, ModBlocks.cacophonium);
 				((TileCacophonium) world.getTileEntity(x, y, z)).stack = stack.copy();
 				stack.stackSize--;

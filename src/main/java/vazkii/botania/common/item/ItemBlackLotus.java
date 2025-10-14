@@ -30,7 +30,8 @@ public class ItemBlackLotus extends ItemMod implements IManaDissolvable {
 	private static final int MANA_PER = 8000;
 	private static final int MANA_PER_T2 = 100000;
 
-	public ItemBlackLotus() {
+	public ItemBlackLotus(int id) {
+		super(id);
 		setUnlocalizedName(LibItemNames.BLACK_LOTUS);
 		setHasSubtypes(true);
 	}
@@ -42,9 +43,14 @@ public class ItemBlackLotus extends ItemMod implements IManaDissolvable {
 	}
 
 	@Override
-	public boolean hasEffect(ItemStack par1ItemStack, int pass) {
+	public boolean hasEffect(ItemStack par1ItemStack) {
 		return par1ItemStack.getItemDamage() > 0;
 	}
+
+//	@Override
+//	public boolean hasEffect(ItemStack par1ItemStack, int pass) {
+//		return par1ItemStack.getItemDamage() > 0;
+//	}
 
 	@Override
 	public String getUnlocalizedName(ItemStack par1ItemStack) {

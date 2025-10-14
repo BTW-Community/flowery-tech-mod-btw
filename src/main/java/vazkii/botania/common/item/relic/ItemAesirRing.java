@@ -34,8 +34,8 @@ public class ItemAesirRing extends ItemRelicBauble implements IExtendedWireframe
 
 	Multimap<String, AttributeModifier> attributes = HashMultimap.create();
 
-	public ItemAesirRing() {
-		super(LibItemNames.AESIR_RING);
+	public ItemAesirRing(int id) {
+		super(id, LibItemNames.AESIR_RING);
 		CraftingManager.getInstance().getRecipeList().add(new AesirRingRecipe());
 //		RecipeSorter.register("botania:aesirRing", AesirRingRecipe.class, Category.SHAPELESS, "");
 		MinecraftForge.EVENT_BUS.register(this);

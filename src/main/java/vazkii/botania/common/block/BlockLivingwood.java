@@ -64,7 +64,7 @@ public class BlockLivingwood extends BlockMod implements ILexiconable {
 	}
 
 	void register(String name) {
-		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
+		var item = new ItemBlockWithMetadataAndName(this);
 //GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, name);
 	}
 

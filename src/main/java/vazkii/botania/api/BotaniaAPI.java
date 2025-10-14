@@ -91,20 +91,32 @@ public final class BotaniaAPI {
 	public static Set<Class<? extends Entity>> gravityRodBlacklist = new LinkedHashSet<Class<? extends Entity>>();
 
 
-/* //todo enumhelper
-	public static ArmorMaterial manasteelArmorMaterial = EnumHelper.addArmorMaterial("MANASTEEL", 16, new int[] { 2, 6, 5, 2 }, 18);
-	public static ToolMaterial manasteelToolMaterial = EnumHelper.addToolMaterial("MANASTEEL", 3, 300, 6.2F, 2F, 20);
+ //todo enumhelper
+ public static EnumArmorMaterial manasteelArmorMaterial = EnumArmorMaterial.IRON;
+	public static EnumToolMaterial manasteelToolMaterial = EnumToolMaterial.IRON;
 
-	public static ArmorMaterial elementiumArmorMaterial = EnumHelper.addArmorMaterial("B_ELEMENTIUM", 18, new int[] { 2, 6, 5, 2 }, 18);
-	public static ToolMaterial elementiumToolMaterial = EnumHelper.addToolMaterial("B_ELEMENTIUM", 3, 720, 6.2F, 2F, 20);
+	public static EnumArmorMaterial elementiumArmorMaterial = EnumArmorMaterial.IRON;
+	public static EnumToolMaterial elementiumToolMaterial = EnumToolMaterial.IRON;
 
-	public static ArmorMaterial terrasteelArmorMaterial = EnumHelper.addArmorMaterial("TERRASTEEL", 34, new int[] {3, 8, 6, 3}, 26);
-	public static ToolMaterial terrasteelToolMaterial = EnumHelper.addToolMaterial("TERRASTEEL", 4, 2300, 9F, 3F, 26);
+	public static EnumArmorMaterial terrasteelArmorMaterial = EnumArmorMaterial.IRON;
+	public static EnumToolMaterial terrasteelToolMaterial = EnumToolMaterial.IRON;
 
-	public static ArmorMaterial manaweaveArmorMaterial = EnumHelper.addArmorMaterial("MANAWEAVE", 5, new int[] { 1, 2, 2, 1 }, 18);
+	public static EnumArmorMaterial manaweaveArmorMaterial = EnumArmorMaterial.IRON;
 
-	public static EnumRarity rarityRelic = EnumHelper.addRarity("RELIC", EnumChatFormatting.GOLD, "Relic");
-*/
+	public static EnumRarity rarityRelic = EnumRarity.epic;
+
+//	public static EnumArmorMaterial manasteelArmorMaterial = EnumHelper.addArmorMaterial("MANASTEEL", 16, new int[] { 2, 6, 5, 2 }, 18);
+//	public static EnumToolMaterial manasteelToolMaterial = EnumHelper.addToolMaterial("MANASTEEL", 3, 300, 6.2F, 2F, 20);
+//
+//	public static EnumArmorMaterial elementiumArmorMaterial = EnumHelper.addArmorMaterial("B_ELEMENTIUM", 18, new int[] { 2, 6, 5, 2 }, 18);
+//	public static EnumToolMaterial elementiumToolMaterial = EnumHelper.addToolMaterial("B_ELEMENTIUM", 3, 720, 6.2F, 2F, 20);
+//
+//	public static EnumArmorMaterial terrasteelArmorMaterial = EnumHelper.addArmorMaterial("TERRASTEEL", 34, new int[] {3, 8, 6, 3}, 26);
+//	public static EnumToolMaterial terrasteelToolMaterial = EnumHelper.addToolMaterial("TERRASTEEL", 4, 2300, 9F, 3F, 26);
+//
+//	public static EnumArmorMaterial manaweaveArmorMaterial = EnumHelper.addArmorMaterial("MANAWEAVE", 5, new int[] { 1, 2, 2, 1 }, 18);
+//
+//	public static EnumRarity rarityRelic = EnumHelper.addRarity("RELIC", EnumChatFormatting.GOLD, "Relic");
 
 	public static KnowledgeType basicKnowledge;
 	public static KnowledgeType elvenKnowledge;

@@ -59,7 +59,7 @@ public class ItemExcaliber extends ItemManasteelSword implements IRelic, ILensEf
 	}
 
 	@Override
-	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
+	public void onUpdate(ItemStack par1ItemStack, World par2World, EntityPlayer par3Entity, int par4, boolean par5) {
 		if(par3Entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) par3Entity;
 			ItemRelic.updateRelic(par1ItemStack, player);

@@ -20,12 +20,12 @@ import baubles.api.BaubleType;
 
 public class ItemAuraRing extends ItemBauble implements IManaGivingItem {
 
-	public ItemAuraRing(String name) {
-		super(name);
+	public ItemAuraRing(int id, String name) {
+		super(id, name);
 	}
 
-	public ItemAuraRing() {
-		this(LibItemNames.AURA_RING);
+	public ItemAuraRing(int id) {
+		this(id, LibItemNames.AURA_RING);
 	}
 
 	@Override

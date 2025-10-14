@@ -23,8 +23,8 @@ public class ItemCrystalBow extends ItemLivingwoodBow {
 
 	private final int ARROW_COST = 200;
 
-	public ItemCrystalBow() {
-		super(LibItemNames.CRYSTAL_BOW);
+	public ItemCrystalBow(int id) {
+		super(id, LibItemNames.CRYSTAL_BOW);
 	}
 
 	@Override

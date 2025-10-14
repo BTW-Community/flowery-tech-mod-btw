@@ -24,8 +24,8 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class ItemElementiumAxe extends ItemManasteelAxe {
 
-	public ItemElementiumAxe() {
-		super(BotaniaAPI.elementiumToolMaterial, LibItemNames.ELEMENTIUM_AXE);
+	public ItemElementiumAxe(int id) {
+		super(id, BotaniaAPI.elementiumToolMaterial, LibItemNames.ELEMENTIUM_AXE);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
@@ -41,13 +41,13 @@ public class ItemElementiumAxe extends ItemManasteelAxe {
 				int looting = EnchantmentHelper.getEnchantmentLevel(Enchantment.fortune.effectId, weapon);
 
 				if(event.entityLiving instanceof EntitySkeleton && rand.nextInt(26) <= 3 + looting)
-					addDrop(event, new ItemStack(Items.skull, 1, ((EntitySkeleton)event.entityLiving).getSkeletonType()));
+					addDrop(event, new ItemStack(Item.skull, 1, ((EntitySkeleton)event.entityLiving).getSkeletonType()));
 				else if(event.entityLiving instanceof EntityZombie && !(event.entityLiving instanceof EntityPigZombie) && rand.nextInt(26) <= 2 + 2 * looting)
-					addDrop(event, new ItemStack(Items.skull, 1, 2));
+					addDrop(event, new ItemStack(Item.skull, 1, 2));
 				else if(event.entityLiving instanceof EntityCreeper && rand.nextInt(26) <= 2 + 2 * looting)
-					addDrop(event, new ItemStack(Items.skull, 1, 4));
+					addDrop(event, new ItemStack(Item.skull, 1, 4));
 				else if(event.entityLiving instanceof EntityPlayer && rand.nextInt(11) <= 1 + looting) {
-					ItemStack stack = new ItemStack(Items.skull, 1, 3);
+					ItemStack stack = new ItemStack(Item.skull, 1, 3);
 					ItemNBTHelper.setString(stack, "SkullOwner", ((EntityPlayer)event.entityLiving).getCommandSenderName());
 					addDrop(event, stack);
 				} else if(event.entityLiving instanceof EntityDoppleganger && rand.nextInt(13) < 1 + looting)

@@ -10,12 +10,7 @@
  */
 package vazkii.botania.common.item;
 
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.Entity;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.Icon;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.block.subtile.generating.SubTileNarslimmus;
 import vazkii.botania.common.lib.LibItemNames;
@@ -24,8 +19,9 @@ public class ItemSlimeBottle extends ItemMod {
 
 	Icon activeIcon;
 
-	public ItemSlimeBottle() {
-		setUnlocalizedName(LibItemNames.SLIME_BOTTLE);
+	public ItemSlimeBottle(int id) {
+        super(id);
+        setUnlocalizedName(LibItemNames.SLIME_BOTTLE);
 		setMaxStackSize(1);
 		setHasSubtypes(true);
 	}
@@ -42,7 +38,7 @@ public class ItemSlimeBottle extends ItemMod {
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World world, Entity entity, int something, boolean somethingelse) {
+	public void onUpdate(ItemStack stack, World world, EntityPlayer entity, int something, boolean somethingelse) {
 		if(!world.isRemote) {
 			int x = MathHelper.floor_double(entity.posX);
 			int z = MathHelper.floor_double(entity.posZ);

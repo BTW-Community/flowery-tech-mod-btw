@@ -18,8 +18,8 @@ public class ItemSuperTravelBelt extends ItemTravelBelt {
 
 	private static final ResourceLocation texture = new ResourceLocation(LibResources.MODEL_SUPER_TRAVEL_BELT);
 
-	public ItemSuperTravelBelt() {
-		super(LibItemNames.SUPER_TRAVEL_BELT, 0.085F, 0.3F, 4F);
+	public ItemSuperTravelBelt(int id) {
+		super(id, LibItemNames.SUPER_TRAVEL_BELT, 0.085F, 0.3F, 4F);
 	}
 
 	@Override

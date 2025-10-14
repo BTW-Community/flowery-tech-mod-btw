@@ -27,8 +27,8 @@ public class ItemElementiumShears extends ItemManasteelShears {
 
 	Icon dammitReddit;
 
-	public ItemElementiumShears() {
-		super(LibItemNames.ELEMENTIUM_SHEARS);
+	public ItemElementiumShears(int id) {
+		super(id, LibItemNames.ELEMENTIUM_SHEARS);
 	}
 
 	@Override

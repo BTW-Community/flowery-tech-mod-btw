@@ -40,10 +40,10 @@ public class ItemSignalFlare extends ItemMod {
 
 	private static final String TAG_COLOR = "color";
 
-	public ItemSignalFlare() {
-		super();
+	public ItemSignalFlare(int id) {
+		super(id);
 		setMaxStackSize(1);
-		setNoRepair();
+//		setNoRepair();
 		setMaxDamage(200);
 		setUnlocalizedName(LibItemNames.SIGNAL_FLARE);
 	}
@@ -85,7 +85,7 @@ public class ItemSignalFlare extends ItemMod {
 	}
 
 	@Override
-	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
+	public void onUpdate(ItemStack par1ItemStack, World par2World, EntityPlayer par3Entity, int par4, boolean par5) {
 		if(par1ItemStack.isItemDamaged())
 			par1ItemStack.setItemDamage(par1ItemStack.getItemDamage() - 1);
 	}

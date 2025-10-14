@@ -40,7 +40,7 @@ public class ItemManasteelArmor extends ItemArmor implements ISpecialArmor, IMan
 	public int type;
 
 	public ItemManasteelArmor(int id, int type, String name) {
-		this(type, name, BotaniaAPI.manasteelArmorMaterial);
+		this(id, type, name, BotaniaAPI.manasteelArmorMaterial);
 	}
 
 	public ItemManasteelArmor(int id, int type, String name, EnumArmorMaterial mat) {

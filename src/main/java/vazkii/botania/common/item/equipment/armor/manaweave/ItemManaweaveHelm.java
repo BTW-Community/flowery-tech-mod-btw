@@ -25,8 +25,8 @@ public class ItemManaweaveHelm extends ItemManaweaveArmor implements IManaDiscou
 
 	private static final int MANA_PER_DAMAGE = 30;
 
-	public ItemManaweaveHelm() {
-		super(0, LibItemNames.MANAWEAVE_HELM);
+	public ItemManaweaveHelm(int id) {
+		super(id, 0, LibItemNames.MANAWEAVE_HELM);
 	}
 
 	@Override

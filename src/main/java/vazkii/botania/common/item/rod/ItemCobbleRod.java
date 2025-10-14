@@ -25,14 +25,15 @@ public class ItemCobbleRod extends ItemMod implements IManaUsingItem, IBlockProv
 
 	static final int COST = 150;
 
-	public ItemCobbleRod() {
+	public ItemCobbleRod(int id) {
+		super(id);
 		setMaxStackSize(1);
 		setUnlocalizedName(LibItemNames.COBBLE_ROD);
 	}
 
 	@Override
 	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
-		return ItemDirtRod.place(par1ItemStack, par2EntityPlayer, par3World, par4, par5, par6, par7, par8, par9, par10, Blocks.cobblestone, COST, 0.3F, 0.3F, 0.3F);
+		return ItemDirtRod.place(par1ItemStack, par2EntityPlayer, par3World, par4, par5, par6, par7, par8, par9, par10, Block.cobblestone, COST, 0.3F, 0.3F, 0.3F);
 	}
 
 	@Override
@@ -47,14 +48,14 @@ public class ItemCobbleRod extends ItemMod implements IManaUsingItem, IBlockProv
 
 	@Override
 	public boolean provideBlock(EntityPlayer player, ItemStack requestor, ItemStack stack, Block block, int meta, boolean doit) {
-		if(block == Blocks.cobblestone && meta == 0)
+		if(block == Block.cobblestone && meta == 0)
 			return !doit || ManaItemHandler.requestManaExactForTool(requestor, player, COST, true);
 		return false;
 	}
 
 	@Override
 	public int getBlockCount(EntityPlayer player, ItemStack requestor, ItemStack stack, Block block, int meta) {
-		if(block == Blocks.cobblestone && meta == 0)
+		if(block == Block.cobblestone && meta == 0)
 			return -1;
 		return 0;
 	}

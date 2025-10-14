@@ -25,7 +25,8 @@ public class ItemBaubleBox extends ItemMod {
 	private static final String TAG_ITEMS = "InvItems";
 	private static final String TAG_SLOT = "Slot";
 
-	public ItemBaubleBox() {
+	public ItemBaubleBox(int id) {
+		super(id);
 		setUnlocalizedName(LibItemNames.BAUBLE_BOX);
 		setMaxStackSize(1);
 	}

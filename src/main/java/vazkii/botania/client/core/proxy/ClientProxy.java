@@ -187,7 +187,8 @@ public class ClientProxy extends CommonProxy {
 
 		ModChallenges.init();
 
-		FMLCommonHandler.instance().bus().register(new ClientTickHandler());
+		//todofix client tick handler
+//		FMLCommonHandler.instance().bus().register(new ClientTickHandler());
 		MinecraftForge.EVENT_BUS.register(new HUDHandler());
 		MinecraftForge.EVENT_BUS.register(new LightningHandler());
 		if(ConfigHandler.boundBlockWireframe)
@@ -198,7 +199,8 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForge.EVENT_BUS.register(new SubTileRadiusRenderHandler());
 		MinecraftForge.EVENT_BUS.register(new MultiblockRenderHandler());
 		MinecraftForge.EVENT_BUS.register(new SkyblockRenderEvents());
-		FMLCommonHandler.instance().bus().register(new CorporeaAutoCompleteHandler());
+		//todofix CorporeaAutoCompleteHandler
+//		FMLCommonHandler.instance().bus().register(new CorporeaAutoCompleteHandler());
 
 		if(ConfigHandler.enableSeasonalFeatures) {
 			Calendar calendar = Calendar.getInstance();

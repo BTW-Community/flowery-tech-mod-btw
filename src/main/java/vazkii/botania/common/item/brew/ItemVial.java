@@ -28,12 +28,13 @@ public class ItemVial extends ItemMod implements IBrewContainer {
 
 	public static Icon flaskIcon, vialIcon;
 
-	public ItemVial() {
-		this(LibItemNames.VIAL);
+	public ItemVial(int id) {
+		this(id, LibItemNames.VIAL);
 	}
 
-	public ItemVial(String name) {
-		setHasSubtypes(true);
+	public ItemVial(int id, String name) {
+        super(id);
+        setHasSubtypes(true);
 		setUnlocalizedName(name);
 	}
 

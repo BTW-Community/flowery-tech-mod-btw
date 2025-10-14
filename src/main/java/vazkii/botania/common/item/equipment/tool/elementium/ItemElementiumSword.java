@@ -8,8 +8,8 @@ import vazkii.botania.common.lib.LibItemNames;
 
 public class ItemElementiumSword extends ItemManasteelSword implements IPixieSpawner {
 
-	public ItemElementiumSword() {
-		super(BotaniaAPI.elementiumToolMaterial, LibItemNames.ELEMENTIUM_SWORD);
+	public ItemElementiumSword(int id) {
+		super(id, BotaniaAPI.elementiumToolMaterial, LibItemNames.ELEMENTIUM_SWORD);
 	}
 
 	@Override

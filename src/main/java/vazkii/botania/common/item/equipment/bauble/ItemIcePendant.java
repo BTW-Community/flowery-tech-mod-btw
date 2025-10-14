@@ -43,8 +43,8 @@ public class ItemIcePendant extends ItemBauble implements IBaubleRender {
 	Icon gemIcon;
 	public static Map<String, List<IceRemover>> playerIceBlocks = new HashMap<>();
 
-	public ItemIcePendant() {
-		super(LibItemNames.ICE_PENDANT);
+	public ItemIcePendant(int id) {
+		super(id, LibItemNames.ICE_PENDANT);
 	}
 
 	@Override
@@ -91,8 +91,8 @@ public class ItemIcePendant extends ItemBauble implements IBaubleRender {
 			playerIceBlocks.put(user, new ArrayList<>());
 
 		List<IceRemover> ice = playerIceBlocks.get(user);
-		if(player.worldObj.getBlock(coords.posX, coords.posY, coords.posZ) == Blocks.water && player.worldObj.getBlockMetadata(coords.posX, coords.posY, coords.posZ) == 0) {
-			player.worldObj.setBlock(coords.posX, coords.posY, coords.posZ, Blocks.ice);
+		if(player.worldObj.getBlock(coords.posX, coords.posY, coords.posZ) == Block.waterStill && player.worldObj.getBlockMetadata(coords.posX, coords.posY, coords.posZ) == 0) {
+			player.worldObj.setBlock(coords.posX, coords.posY, coords.posZ, Block.ice);
 
 			if(!player.worldObj.isRemote)
 				ice.add(new IceRemover(coords));
@@ -138,9 +138,9 @@ public class ItemIcePendant extends ItemBauble implements IBaubleRender {
 		}
 
 		public void tick(World world, List<IceRemover> list) {
-			if(world.getBlock(coords.posX, coords.posY, coords.posZ) == Blocks.ice) {
+			if(world.getBlock(coords.posX, coords.posY, coords.posZ) == Block.ice) {
 				if(time-- == 0)
-					world.setBlock(coords.posX, coords.posY, coords.posZ, Blocks.water, 0, 1 | 2);
+					world.setBlock(coords.posX, coords.posY, coords.posZ, Block.waterMoving, 0, 1 | 2);
 				else return;
 				list.remove(this);
 			}

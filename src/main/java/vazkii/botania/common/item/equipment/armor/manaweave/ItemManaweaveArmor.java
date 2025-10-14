@@ -37,8 +37,8 @@ public class ItemManaweaveArmor extends ItemManasteelArmor implements ICraftAchi
 
 	Icon iconChristmas;
 	
-	public ItemManaweaveArmor(int type, String name) {
-		super(type, name, BotaniaAPI.manaweaveArmorMaterial);
+	public ItemManaweaveArmor(int id, int type, String name) {
+		super(id, type, name, BotaniaAPI.manaweaveArmorMaterial);
 	}
 
 	@Override

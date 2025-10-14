@@ -10,11 +10,7 @@
  */
 package vazkii.botania.common.item.record;
 
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemRecord;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.ResourceLocation;
+import net.minecraft.src.*;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.client.lib.LibResources;
 import vazkii.botania.common.core.BotaniaCreativeTab;
@@ -26,16 +22,17 @@ public class ItemModRecord extends ItemRecord {
 
 	private final String file;
 
-	public ItemModRecord(String record, String name) {
-		super("botania:" + record);
+	public ItemModRecord(int id, String record, String name) {
+		super(id, "botania:" + record);
 		setCreativeTab(CreativeTabs.tabMisc);
 		setUnlocalizedName(name);
 		file = "botania:music." + record;
+//		recordName = file;
 	}
 
 	@Override
 	public Item setUnlocalizedName(String par1Str) {
-		GameRegistry.registerItem(this, par1Str);
+//		GameRegistry.registerItem(this, par1Str);
 		return super.setUnlocalizedName(par1Str);
 	}
 
@@ -50,7 +47,8 @@ public class ItemModRecord extends ItemRecord {
 		itemIcon = IconHelper.forItem(par1IconRegister, this);
 	}
 
-	@Override
+	//todofix custom jukebox music?
+//	@Override
 	public ResourceLocation getRecordResource(String name) {
 		return new ResourceLocation(file);
 	}

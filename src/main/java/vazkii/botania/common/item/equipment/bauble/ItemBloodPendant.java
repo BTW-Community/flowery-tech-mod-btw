@@ -52,8 +52,8 @@ public class ItemBloodPendant extends ItemBauble implements IBrewContainer, IBre
 
 	Icon[] icons;
 
-	public ItemBloodPendant() {
-		super(LibItemNames.BLOOD_PENDANT);
+	public ItemBloodPendant(int id) {
+		super(id, LibItemNames.BLOOD_PENDANT);
 		setMaxStackSize(1);
 	}
 

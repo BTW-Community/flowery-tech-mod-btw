@@ -31,8 +31,8 @@ public class ItemLavaPendant extends ItemBauble implements IBaubleRender {
 
 	Icon gemIcon;
 
-	public ItemLavaPendant() {
-		super(LibItemNames.LAVA_PENDANT);
+	public ItemLavaPendant(int id) {
+		super(id, LibItemNames.LAVA_PENDANT);
 	}
 
 	@Override

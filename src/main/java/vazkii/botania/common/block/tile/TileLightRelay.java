@@ -14,18 +14,8 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityEnderPearl;
-import net.minecraft.src.EntityItem;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.ChunkCoordinates;
-import net.minecraft.src.DamageSource;
-import net.minecraft.src.World;
+import btw.entity.EntityWithCustomPacket;
+import net.minecraft.src.*;
 import vazkii.botania.api.wand.IWandBindable;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.achievement.ModAchievements;
@@ -169,7 +159,7 @@ public class TileLightRelay extends TileMod implements IWandBindable {
 		cmp.setInteger(TAG_BIND_Z, bindZ);
 	}
 
-	public static class EntityPlayerMover extends Entity {
+	public static class EntityPlayerMover extends Entity implements EntityWithCustomPacket {
 
 		private static final String TAG_EXIT_X = "exitX";
 		private static final String TAG_EXIT_Y = "exitY";
@@ -300,6 +290,30 @@ public class TileLightRelay extends TileMod implements IWandBindable {
 			dataWatcher.updateObject(22, z);
 		}
 
+		@Override
+		public Packet getSpawnPacketForThisEntity() {
+			return null;
+		}
+
+		@Override
+		public int getTrackerViewDistance() {
+			return 40;
+		}
+
+		@Override
+		public int getTrackerUpdateFrequency() {
+			return 3;
+		}
+
+		@Override
+		public boolean getTrackMotion() {
+			return true;
+		}
+
+		@Override
+		public boolean shouldServerTreatAsOversized() {
+			return false;
+		}
 	}
 
 }

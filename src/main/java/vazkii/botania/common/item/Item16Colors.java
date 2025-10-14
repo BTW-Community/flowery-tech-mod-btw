@@ -20,7 +20,7 @@ import net.minecraft.src.ItemStack;
 
 public class Item16Colors extends ItemMod {
 
-	public Item16Colors(String name, int id) {
+	public Item16Colors(int id, String name) {
 		super(id);
 		setHasSubtypes(true);
 		setUnlocalizedName(name);

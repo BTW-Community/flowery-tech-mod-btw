@@ -33,7 +33,8 @@ public class ItemFireRod extends ItemMod implements IManaUsingItem, IAvatarWield
 	private static final int COST = 900;
 	private static final int COOLDOWN = 1200;
 
-	public ItemFireRod() {
+	public ItemFireRod(int id) {
+		super(id);
 		setUnlocalizedName(LibItemNames.FIRE_ROD);
 		setMaxStackSize(1);
 		setMaxDamage(COOLDOWN);
@@ -55,7 +56,7 @@ public class ItemFireRod extends ItemMod implements IManaUsingItem, IAvatarWield
 	}
 
 	@Override
-	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
+	public void onUpdate(ItemStack par1ItemStack, World par2World, EntityPlayer par3Entity, int par4, boolean par5) {
 		if(par1ItemStack.isItemDamaged() && par3Entity instanceof EntityPlayer)
 			par1ItemStack.setItemDamage(par1ItemStack.getItemDamage() - (IManaProficiencyArmor.Helper.hasProficiency((EntityPlayer) par3Entity) ? 2 : 1));
 	}

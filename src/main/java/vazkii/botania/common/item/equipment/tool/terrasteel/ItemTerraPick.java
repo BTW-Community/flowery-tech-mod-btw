@@ -168,11 +168,10 @@ public class ItemTerraPick extends ItemManasteelPick implements IManaItem, ISequ
 			player.addStat(ModAchievements.rankSSPick, 1);
 	}
 
-	//todofix item entity lifespan
-//	@Override
-//	public int getEntityLifespan(ItemStack itemStack, World world) {
-//		return Integer.MAX_VALUE;
-//	}
+	@Override
+	public int getEntityLifespan(ItemStack itemStack, World world) {
+		return Integer.MAX_VALUE;
+	}
 
 	@Override
 	public void registerIcons(IconRegister par1IconRegister) {

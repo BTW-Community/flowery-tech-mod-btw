@@ -17,12 +17,12 @@ import vazkii.botania.common.lib.LibItemNames;
 
 public class ItemManasteelHelm extends ItemManasteelArmor implements IManaDiscountArmor {
 
-	public ItemManasteelHelm() {
-		this(LibItemNames.MANASTEEL_HELM);
+	public ItemManasteelHelm(int id) {
+		this(id, LibItemNames.MANASTEEL_HELM);
 	}
 
-	public ItemManasteelHelm(String name) {
-		super(0, name);
+	public ItemManasteelHelm(int id, String name) {
+		super(id, 0, name);
 	}
 
 	@Override

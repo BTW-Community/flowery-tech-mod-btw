@@ -57,8 +57,8 @@ public class ItemTwigWand extends Item16Colors implements ICoordBoundItem {
 	private static final String TAG_BOUND_TILE_Z = "boundTileZ";
 	private static final String TAG_BIND_MODE = "bindMode";
 
-	public ItemTwigWand() {
-		super(LibItemNames.TWIG_WAND);
+	public ItemTwigWand(int id) {
+		super(id, LibItemNames.TWIG_WAND);
 		setMaxStackSize(1);
 	}
 
@@ -174,7 +174,7 @@ public class ItemTwigWand extends Item16Colors implements ICoordBoundItem {
 	}
 
 	@Override
-	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
+	public void onUpdate(ItemStack par1ItemStack, World par2World, EntityPlayer par3Entity, int par4, boolean par5) {
 		ChunkCoordinates coords = getBoundTile(par1ItemStack);
 		TileEntity tile = par2World.getTileEntity(coords.posX, coords.posY, coords.posZ);
 		if(tile == null || !(tile instanceof IWandBindable))

@@ -22,8 +22,8 @@ import baubles.api.BaubleType;
 
 public class ItemMiningRing extends ItemBauble implements IManaUsingItem {
 
-	public ItemMiningRing() {
-		super(LibItemNames.MINING_RING);
+	public ItemMiningRing(int id) {
+		super(id, LibItemNames.MINING_RING);
 	}
 
 	@Override

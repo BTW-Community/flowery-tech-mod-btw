@@ -69,7 +69,7 @@ public class BlockManaBeacon extends BlockModContainer implements ILexiconable {
 
 	@Override
 	public Block setUnlocalizedName(String par1Str) {
-		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
+		var item = new ItemBlockWithMetadataAndName(this);
 //GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
 		return super.setUnlocalizedName(par1Str);
 	}

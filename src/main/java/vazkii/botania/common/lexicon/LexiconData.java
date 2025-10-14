@@ -1457,7 +1457,7 @@ public final class LexiconData {
 
 		if (Botania.bcTriggersLoaded) {
 			bcIntegration = new CLexiconEntry(LibLexicon.MISC_BC_INTEGRATION, categoryMisc, "BuildCraft");
-			bcIntegration.setLexiconPages(new PageText("0")).setIcon(new ItemStack(Items.redstone));
+			bcIntegration.setLexiconPages(new PageText("0")).setIcon(new ItemStack(Item.redstone));
 		}
 	}
 

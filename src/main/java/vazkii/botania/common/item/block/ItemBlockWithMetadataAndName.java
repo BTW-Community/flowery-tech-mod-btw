@@ -23,8 +23,8 @@ import vazkii.botania.common.achievement.IPickupAchievement;
 
 public class ItemBlockWithMetadataAndName extends ItemBlockWithMetadata implements IPickupAchievement, ICraftAchievement {
 
-	public ItemBlockWithMetadataAndName(int id, Block par2Block) {
-		super(id, par2Block);
+	public ItemBlockWithMetadataAndName(Block par2Block) {
+		super(par2Block.blockID, par2Block);
 	}
 
 	@Override

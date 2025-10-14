@@ -51,13 +51,12 @@ public class ItemBlockSpecialFlower extends ItemBlockMod implements IRecipeKeyPr
 	}
 
 	@Override
-	public boolean placeBlockAt(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ, int metadata) {
-		boolean placed = super.placeBlockAt(stack, player, world, x, y, z, side, hitX, hitY, hitZ, metadata);
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int iFacing, float fClickX, float fClickY, float fClickZ) {
+		boolean placed =  super.onItemUse(stack, player, world, x, y, z, iFacing, fClickX, fClickY, fClickZ);
 		if(placed) {
 			String type = getType(stack);
 			TileEntity te = world.getTileEntity(x, y, z);
-			if(te instanceof TileSpecialFlower) {
-				TileSpecialFlower tile = (TileSpecialFlower) te;
+			if(te instanceof TileSpecialFlower tile) {
 				tile.setSubTile(type);
 				tile.onBlockAdded(world, x, y, z);
 				tile.onBlockPlacedBy(world, x, y, z, player, stack);
@@ -68,6 +67,24 @@ public class ItemBlockSpecialFlower extends ItemBlockMod implements IRecipeKeyPr
 
 		return placed;
 	}
+
+//	@Override
+//	public boolean placeBlockAt(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ, int metadata) {
+//		boolean placed = super.placeBlockAt(stack, player, world, x, y, z, side, hitX, hitY, hitZ, metadata);
+//		if(placed) {
+//			String type = getType(stack);
+//			TileEntity te = world.getTileEntity(x, y, z);
+//			if(te instanceof TileSpecialFlower tile) {
+//                tile.setSubTile(type);
+//				tile.onBlockAdded(world, x, y, z);
+//				tile.onBlockPlacedBy(world, x, y, z, player, stack);
+//				if(!world.isRemote)
+//					world.markBlockForUpdate(x, y, z);
+//			}
+//		}
+//
+//		return placed;
+//	}
 
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {

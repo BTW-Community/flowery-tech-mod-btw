@@ -17,8 +17,8 @@ import baubles.api.BaubleType;
 
 public class ItemPixieRing extends ItemBauble implements IPixieSpawner {
 
-	public ItemPixieRing() {
-		super(LibItemNames.PIXIE_RING);
+	public ItemPixieRing(int id) {
+		super(id, LibItemNames.PIXIE_RING);
 	}
 
 	@Override

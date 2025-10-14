@@ -296,6 +296,7 @@ public class InventoryBaubles implements IInventory {
 		try {
 			EntityPlayer entityPlayer = player.get();
 			if (entityPlayer != null && !entityPlayer.worldObj.isRemote) {
+
 				PacketHandler.INSTANCE.sendToAll(new PacketSyncBauble(player.get(), slot));
 			}
 		} catch (Exception e) {

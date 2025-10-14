@@ -21,7 +21,8 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 public class ItemGlassPick extends ItemManasteelPick {
 
 	private static final int MANA_PER_DAMAGE = 160;
-	private static final EnumToolMaterial MATERIAL = EnumHelper.addToolMaterial("MANASTEEL_GLASS", 0, 125, 4.8F, 1F, 10);
+	//todofix Another enum tool material thing
+	private static final EnumToolMaterial MATERIAL = EnumToolMaterial.EMERALD /*EnumHelper.addToolMaterial("MANASTEEL_GLASS", 0, 125, 4.8F, 1F, 10)*/;
 
 	public ItemGlassPick(int id) {
 		super(id, MATERIAL, LibItemNames.GLASS_PICK);

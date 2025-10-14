@@ -44,12 +44,12 @@ public class ItemManaInkwell extends ItemMod implements IManaItem {
 		list.add(new ItemStack(Item.itemsList[item]));
 	}
 
-//	@Override
-//	public int getDamage(ItemStack stack) {
-//		float mana = getMana(stack);
-//		return USES - (int) (mana / getMaxMana(stack) * USES);
-//	}
-//
+	@Override
+	public int getDamage(ItemStack stack) {
+		float mana = getMana(stack);
+		return USES - (int) (mana / getMaxMana(stack) * USES);
+	}
+
 //	@Override
 //	public void setDamage(ItemStack stack, int damage) {
 //		int currentDamage = stack.getItemDamage();
@@ -64,15 +64,15 @@ public class ItemManaInkwell extends ItemMod implements IManaItem {
 //		super.setDamage(stack, damage);
 //	}
 
-//	@Override
-//	public int getDisplayDamage(ItemStack stack) {
-//		return getDamage(stack);
-//	}
-//
-//	@Override
-//	public int getEntityLifespan(ItemStack itemStack, World world) {
-//		return Integer.MAX_VALUE;
-//	}
+	@Override
+	public int getDisplayDamage(ItemStack stack) {
+		return getDamage(stack);
+	}
+
+	@Override
+	public int getEntityLifespan(ItemStack itemStack, World world) {
+		return Integer.MAX_VALUE;
+	}
 
 	public static void setMana(ItemStack stack, int mana) {
 		ItemNBTHelper.setInt(stack, TAG_MANA, mana);

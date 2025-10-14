@@ -14,7 +14,8 @@ import vazkii.botania.common.lib.LibItemNames;
 
 public class ItemWaterBowl extends ItemMod {
 
-	public ItemWaterBowl() {
+	public ItemWaterBowl(int id) {
+		super(id);
 		setMaxStackSize(1);
 		setUnlocalizedName(LibItemNames.WATER_BOWL);
 	}

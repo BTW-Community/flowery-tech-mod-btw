@@ -21,8 +21,8 @@ public abstract class ItemBaubleModifier extends ItemBauble {
 
 	Multimap<String, AttributeModifier> attributes = HashMultimap.create();
 
-	public ItemBaubleModifier(String name) {
-		super(name);
+	public ItemBaubleModifier(int id, String name) {
+		super(id, name);
 	}
 
 	@Override

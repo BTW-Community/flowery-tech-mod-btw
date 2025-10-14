@@ -36,13 +36,13 @@ public class LensFire extends Lens {
 			Block blockAt = entity.worldObj.getBlock(pos.blockX, pos.blockY, pos.blockZ);
 			Block blockAt_ = entity.worldObj.getBlock(x, y, z);
 
-			if(blockAt == Blocks.portal)
-				entity.worldObj.setBlock(pos.blockX, pos.blockY, pos.blockZ, Blocks.air);
+			if(blockAt == Block.portal)
+				entity.worldObj.setBlock(pos.blockX, pos.blockY, pos.blockZ, null);
 			else if(blockAt == ModBlocks.incensePlate) {
 				TileIncensePlate plate = (TileIncensePlate) entity.worldObj.getTileEntity(pos.blockX, pos.blockY, pos.blockZ);
 				plate.ignite();
 			} else if(blockAt_.isAir(entity.worldObj, x, y, z))
-				entity.worldObj.setBlock(x, y, z, Blocks.fire);
+				entity.worldObj.setBlock(x, y, z, Block.fire);
 		}
 
 		return dead;

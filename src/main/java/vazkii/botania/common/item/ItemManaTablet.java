@@ -39,26 +39,26 @@ public class ItemManaTablet extends ItemMod implements IManaItem, ICreativeManaP
 	private static final String TAG_CREATIVE = "creative";
 	private static final String TAG_ONE_USE = "oneUse";
 
-	public ItemManaTablet() {
-		super();
+	public ItemManaTablet(int id) {
+		super(id);
 		setMaxStackSize(1);
 		setMaxDamage(1000);
 		setUnlocalizedName(LibItemNames.MANA_TABLET);
-		setNoRepair();
+//		setNoRepair();
 	}
 
 	@Override
 	public void getSubItems(int par1,  CreativeTabs par2CreativeTabs, List par3List) {
 		// Empty tablet
-		par3List.add(new ItemStack(par1, 1));
+		par3List.add(new ItemStack(par1, 1, 0));
 
 		// Full tablet
-		ItemStack fullPower = new ItemStack(par1, 1);
+		ItemStack fullPower = new ItemStack(par1, 1, 0);
 		setMana(fullPower, MAX_MANA);
 		par3List.add(fullPower);
 
 		// Creative Tablet
-		ItemStack creative = new ItemStack(par1, 1);
+		ItemStack creative = new ItemStack(par1, 1, 0);
 		setMana(creative, MAX_MANA);
 		setStackCreative(creative);
 		par3List.add(creative);
@@ -74,8 +74,8 @@ public class ItemManaTablet extends ItemMod implements IManaItem, ICreativeManaP
 	public int getDamage(ItemStack stack) {
 		// Compatibility shim, so tablets from previous versions of botania
 		// stack right in barrels and so forth
-		if(super.getDamage(stack) != 0)
-			super.setDamage(stack, 0);
+//		if(super.getDamage(stack) != 0)
+//			super.setDamage(stack, 0);
 
 		return 0;
 	}

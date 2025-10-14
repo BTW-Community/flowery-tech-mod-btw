@@ -30,7 +30,8 @@ public class ItemThornChakram extends ItemMod implements ICraftAchievement {
 
 	Icon iconFire;
 
-	public ItemThornChakram() {
+	public ItemThornChakram(int id) {
+		super(id);
 		setUnlocalizedName(LibItemNames.THORN_CHAKRAM);
 		setMaxStackSize(6);
 		setHasSubtypes(true);

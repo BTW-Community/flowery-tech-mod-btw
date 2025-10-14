@@ -12,13 +12,14 @@ package vazkii.botania.common.entity;
 
 import java.util.List;
 
+import btw.entity.EntityWithCustomPacket;
 import dev.bagel.shim.BlockBush;
 import net.minecraft.src.*;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.core.helper.Vector3;
 import vazkii.botania.common.lib.LibObfuscation;
 
-public class EntityMagicMissile extends EntityThrowable {
+public class EntityMagicMissile extends EntityThrowable implements EntityWithCustomPacket {
 
 	private static final String TAG_TIME = "time";
 
@@ -175,4 +176,28 @@ public class EntityMagicMissile extends EntityThrowable {
 			setDead();
 	}
 
+	@Override
+	public Packet getSpawnPacketForThisEntity() {
+		return null;
+	}
+
+	@Override
+	public int getTrackerViewDistance() {
+		return 64;
+	}
+
+	@Override
+	public int getTrackerUpdateFrequency() {
+		return 2;
+	}
+
+	@Override
+	public boolean getTrackMotion() {
+		return true;
+	}
+
+	@Override
+	public boolean shouldServerTreatAsOversized() {
+		return false;
+	}
 }

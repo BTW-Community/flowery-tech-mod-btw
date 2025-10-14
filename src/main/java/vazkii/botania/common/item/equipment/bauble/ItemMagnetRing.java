@@ -52,13 +52,13 @@ public class ItemMagnetRing extends ItemBauble {
 
 	int range;
 
-	public ItemMagnetRing() {
-		this(LibItemNames.MAGNET_RING, 6);
+	public ItemMagnetRing(int id) {
+		this(id, LibItemNames.MAGNET_RING, 6);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
-	public ItemMagnetRing(String name, int range) {
-		super(name);
+	public ItemMagnetRing(int id, String name, int range) {
+		super(id, name);
 		this.range = range;
 	}
 
@@ -128,7 +128,7 @@ public class ItemMagnetRing extends ItemBauble {
 			return false;
 
 		ItemStack stack = item.getEntityItem();
-		if(stack == null || stack.getItem() instanceof IManaItem || stack.getItem() instanceof IRelic || BLACKLIST.contains(itemRegistry.getNameForObject(stack.getItem())) || BotaniaAPI.isItemBlacklistedFromMagnet(stack))
+		if(stack == null || stack.getItem() instanceof IManaItem || stack.getItem() instanceof IRelic || BLACKLIST.contains(stack.getItem().getUnlocalizedName()) || BotaniaAPI.isItemBlacklistedFromMagnet(stack))
 			return false;
 
 		int x = net.minecraft.src.MathHelper.floor_double(item.posX);

@@ -13,6 +13,9 @@ package vazkii.botania.common.item.rod;
 import java.util.ArrayList;
 import java.util.List;
 
+import dev.bagel.interfaces.BlockExtensions;
+import dev.bagel.util.Blocks;
+import dev.bagel.util.Items;
 import net.minecraft.src.Block;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.Entity;
@@ -61,7 +64,8 @@ public class ItemExchangeRod extends ItemMod implements IManaUsingItem, IWirefra
 	private static final String TAG_SELECT_Z = "selectZ";
 	private static final String TAG_EXTRA_RANGE = "extraRange";
 
-	public ItemExchangeRod() {
+	public ItemExchangeRod(int id) {
+		super(id);
 		setMaxStackSize(1);
 		setUnlocalizedName(LibItemNames.EXCHANGE_ROD);
 		MinecraftForge.EVENT_BUS.register(this);
@@ -117,7 +121,7 @@ public class ItemExchangeRod extends ItemMod implements IManaUsingItem, IWirefra
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World world, Entity entity, int something, boolean somethingelse) {
+	public void onUpdate(ItemStack stack, World world, EntityPlayer entity, int something, boolean somethingelse) {
 		if(!canExchange(stack) || !(entity instanceof EntityPlayer))
 			return;
 
@@ -242,7 +246,7 @@ public class ItemExchangeRod extends ItemMod implements IManaUsingItem, IWirefra
 
 	public boolean canExchange(ItemStack stack) {
 		Block block = getBlock(stack);
-		return block != null && block != Blocks.air;
+		return block != null && block != null;
 	}
 
 	public static ItemStack removeFromInventory(EntityPlayer player, IInventory inv, ItemStack stack, Block block, int meta, boolean doit) {
@@ -344,7 +348,7 @@ public class ItemExchangeRod extends ItemMod implements IManaUsingItem, IWirefra
 	}
 
 	private boolean setBlock(ItemStack stack, Block block, int meta) {
-		ItemNBTHelper.setString(stack, TAG_BLOCK_NAME, Block.blockRegistry.getNameForObject(block));
+		ItemNBTHelper.setString(stack, TAG_BLOCK_NAME, block.getUnlocalizedName());
 		ItemNBTHelper.setInt(stack, TAG_BLOCK_META, meta);
 		return true;
 	}
@@ -361,7 +365,7 @@ public class ItemExchangeRod extends ItemMod implements IManaUsingItem, IWirefra
 	}
 
 	public static Block getBlock(ItemStack stack) {
-		Block block = Block.getBlockFromName(getBlockName(stack));
+		Block block = Blocks.getBlockFromName(getBlockName(stack));
 		return block;
 	}
 
@@ -370,7 +374,7 @@ public class ItemExchangeRod extends ItemMod implements IManaUsingItem, IWirefra
 	}
 
 	private boolean setTargetBlock(ItemStack stack, Block block, int meta) {
-		ItemNBTHelper.setString(stack, TAG_TARGET_BLOCK_NAME, Block.blockRegistry.getNameForObject(block));
+		ItemNBTHelper.setString(stack, TAG_TARGET_BLOCK_NAME, block.getUnlocalizedName());
 		ItemNBTHelper.setInt(stack, TAG_TARGET_BLOCK_META, meta);
 		return true;
 	}

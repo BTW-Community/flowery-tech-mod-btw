@@ -29,14 +29,14 @@ public class ItemManaRing extends ItemBauble implements IManaItem, IManaTooltipD
 
 	private static final String TAG_MANA = "mana";
 
-	public ItemManaRing() {
-		this(LibItemNames.MANA_RING);
+	public ItemManaRing(int id) {
+		this(id, LibItemNames.MANA_RING);
 		setMaxDamage(1000);
-		setNoRepair();
+//		setNoRepair();
 	}
 
-	public ItemManaRing(String name) {
-		super(name);
+	public ItemManaRing(int id, String name) {
+		super(id, name);
 		setMaxDamage(1000);
 	}
 

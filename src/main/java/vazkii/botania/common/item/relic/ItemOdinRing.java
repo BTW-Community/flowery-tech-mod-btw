@@ -39,8 +39,8 @@ public class ItemOdinRing extends ItemRelicBauble {
 
 	Multimap<String, AttributeModifier> attributes = HashMultimap.create();
 
-	public ItemOdinRing() {
-		super(LibItemNames.ODIN_RING);
+	public ItemOdinRing(int id) {
+		super(id, LibItemNames.ODIN_RING);
 		MinecraftForge.EVENT_BUS.register(this);
 
 		damageNegations.add(DamageSource.drown.damageType);

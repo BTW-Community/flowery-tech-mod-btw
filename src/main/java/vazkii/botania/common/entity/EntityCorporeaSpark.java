@@ -13,20 +13,13 @@ package vazkii.botania.common.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Block;
-import net.minecraft.src.IInventory;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.World;
+import btw.entity.EntityWithCustomPacket;
+import net.minecraft.src.*;
 import vazkii.botania.api.corporea.ICorporeaSpark;
 import vazkii.botania.common.core.helper.InventoryHelper;
 import vazkii.botania.common.item.ModItems;
 
-public class EntityCorporeaSpark extends Entity implements ICorporeaSpark {
+public class EntityCorporeaSpark extends Entity implements ICorporeaSpark, EntityWithCustomPacket {
 
 	private static final int SCAN_RANGE = 8;
 
@@ -309,4 +302,28 @@ public class EntityCorporeaSpark extends Entity implements ICorporeaSpark {
 		cmp.setInteger(TAG_INVIS, dataWatcher.getWatchableObjectInt(EntitySpark.INVISIBILITY_DATA_WATCHER_KEY));
 	}
 
+	@Override
+	public Packet getSpawnPacketForThisEntity() {
+		return null;
+	}
+
+	@Override
+	public int getTrackerViewDistance() {
+		return 64;
+	}
+
+	@Override
+	public int getTrackerUpdateFrequency() {
+		return 10;
+	}
+
+	@Override
+	public boolean getTrackMotion() {
+		return false;
+	}
+
+	@Override
+	public boolean shouldServerTreatAsOversized() {
+		return false;
+	}
 }

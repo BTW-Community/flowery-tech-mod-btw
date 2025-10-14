@@ -18,8 +18,8 @@ public class ItemElementiumShovel extends ItemManasteelShovel {
 
 	public static Material[] materialsShovel = new Material[]{ Material.grass, Material.ground, Material.sand, Material.snow, Material.craftedSnow, Material.clay };
 
-	public ItemElementiumShovel() {
-		super(BotaniaAPI.elementiumToolMaterial, LibItemNames.ELEMENTIUM_SHOVEL);
+	public ItemElementiumShovel(int id) {
+		super(id, BotaniaAPI.elementiumToolMaterial, LibItemNames.ELEMENTIUM_SHOVEL);
 	}
 
 	@Override

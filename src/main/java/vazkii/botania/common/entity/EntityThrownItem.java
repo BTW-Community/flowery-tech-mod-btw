@@ -12,10 +12,11 @@ package vazkii.botania.common.entity;
 
 import java.util.List;
 
+import btw.entity.EntityWithCustomPacket;
 import net.minecraft.src.*;
 import vazkii.botania.common.core.helper.Vector3;
 
-public class EntityThrownItem extends EntityItem {
+public class EntityThrownItem extends EntityItem implements EntityWithCustomPacket {
 
 	public EntityThrownItem(World par1World) {
 		super(par1World);
@@ -135,5 +136,30 @@ public class EntityThrownItem extends EntityItem {
 			}
 			setDead();
 		}
+	}
+
+	@Override
+	public Packet getSpawnPacketForThisEntity() {
+		return null;
+	}
+
+	@Override
+	public int getTrackerViewDistance() {
+		return 64;
+	}
+
+	@Override
+	public int getTrackerUpdateFrequency() {
+		return 20;
+	}
+
+	@Override
+	public boolean getTrackMotion() {
+		return true;
+	}
+
+	@Override
+	public boolean shouldServerTreatAsOversized() {
+		return false;
 	}
 }

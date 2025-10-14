@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.item;
 
+import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
@@ -22,7 +23,7 @@ public class ItemMod extends Item {
 
 	public ItemMod(int id) {
 		super(id);
-//		setCreativeTab(CreativeTabs.tabMisc);
+		setCreativeTab(CreativeTabs.tabMisc);
 	}
 
 	@Override

@@ -31,10 +31,10 @@ public class ItemEnderDagger extends ItemManasteelSword {
 
 	Icon iconFront, iconOverlay;
 
-	public ItemEnderDagger() {
-		super(BotaniaAPI.manasteelToolMaterial, LibItemNames.ENDER_DAGGER);
+	public ItemEnderDagger(int id) {
+		super(id, BotaniaAPI.manasteelToolMaterial, LibItemNames.ENDER_DAGGER);
 		setMaxDamage(69); // What you looking at?
-		setNoRepair();
+//		setNoRepair();
 	}
 
 	@Override
@@ -75,7 +75,7 @@ public class ItemEnderDagger extends ItemManasteelSword {
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World world, Entity player, int par4, boolean par5) {
+	public void onUpdate(ItemStack stack, World world, EntityPlayer player, int par4, boolean par5) {
 		// NO-OP
 	}
 

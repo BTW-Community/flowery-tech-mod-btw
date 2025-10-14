@@ -33,8 +33,8 @@ public class ItemSuperLavaPendant extends ItemBauble implements IBaubleRender {
 
 	Icon gemIcon;
 
-	public ItemSuperLavaPendant() {
-		super(LibItemNames.SUPER_LAVA_PENDANT);
+	public ItemSuperLavaPendant(int id) {
+		super(id, LibItemNames.SUPER_LAVA_PENDANT);
 	}
 
 	@Override
@@ -48,7 +48,8 @@ public class ItemSuperLavaPendant extends ItemBauble implements IBaubleRender {
 	}
 
 	private void setImmunity(Entity entity, boolean immune) {
-		ReflectionHelper.setPrivateValue(Entity.class, entity, immune, LibObfuscation.IS_IMMUNE_TO_FIRE);
+		entity.isImmuneToFire = immune;
+//		ReflectionHelper.setPrivateValue(Entity.class, entity, immune, LibObfuscation.IS_IMMUNE_TO_FIRE);
 	}
 
 	@Override

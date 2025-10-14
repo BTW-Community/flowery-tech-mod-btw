@@ -12,21 +12,15 @@ package vazkii.botania.common.entity;
 
 import java.util.List;
 
-import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.DamageSource;
-import net.minecraft.src.MovingObjectPosition;
-import net.minecraft.src.World;
+import btw.entity.EntityWithCustomPacket;
+import net.minecraft.src.*;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.core.helper.Vector3;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.equipment.tool.ToolCommons;
 import vazkii.botania.common.item.relic.ItemKingKey;
 
-public class EntityBabylonWeapon extends EntityThrowableCopy {
+public class EntityBabylonWeapon extends EntityThrowableCopy implements EntityWithCustomPacket {
 
 	private static final String TAG_CHARGING = "charging";
 	private static final String TAG_VARIETY = "variety";
@@ -230,4 +224,28 @@ public class EntityBabylonWeapon extends EntityThrowableCopy {
 		dataWatcher.updateObject(25, rot);
 	}
 
+	@Override
+	public Packet getSpawnPacketForThisEntity() {
+		return null;
+	}
+
+	@Override
+	public int getTrackerViewDistance() {
+		return 64;
+	}
+
+	@Override
+	public int getTrackerUpdateFrequency() {
+		return 10;
+	}
+
+	@Override
+	public boolean getTrackMotion() {
+		return true;
+	}
+
+	@Override
+	public boolean shouldServerTreatAsOversized() {
+		return false;
+	}
 }

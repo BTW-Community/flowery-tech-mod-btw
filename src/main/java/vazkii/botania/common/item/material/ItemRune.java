@@ -32,8 +32,8 @@ public class ItemRune extends ItemMod implements IFlowerComponent, IPickupAchiev
 
 	Icon[] icons;
 
-	public ItemRune() {
-		super();
+	public ItemRune(int id) {
+		super(id);
 		setHasSubtypes(true);
 		setUnlocalizedName(LibItemNames.RUNE);
 	}

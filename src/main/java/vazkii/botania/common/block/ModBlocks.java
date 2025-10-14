@@ -391,7 +391,7 @@ public final class ModBlocks {
 		OreDictionary.registerOre("podzol", new ItemStack(Block.dirt, 1, 2));
 		OreDictionary.registerOre("netherrack", Blocks.netherrack);
 		OreDictionary.registerOre("soulSand", Block.slowSand);
-		OreDictionary.registerOre("ice", Blocks.ice);
+		OreDictionary.registerOre("ice", Block.ice);
 		OreDictionary.registerOre("slabCobblestone", new ItemStack(Blocks.stone_slab, 1, 3));
 		OreDictionary.registerOre("chestWood", Blocks.chest);
 		OreDictionary.registerOre("craftingTableWood", Blocks.crafting_table);

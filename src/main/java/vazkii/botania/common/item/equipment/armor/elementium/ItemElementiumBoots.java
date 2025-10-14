@@ -5,8 +5,8 @@ import vazkii.botania.common.lib.LibItemNames;
 
 public class ItemElementiumBoots extends ItemElementiumArmor {
 
-	public ItemElementiumBoots() {
-		super(3, LibItemNames.ELEMENTIUM_BOOTS);
+	public ItemElementiumBoots(int id) {
+		super(id, 3, LibItemNames.ELEMENTIUM_BOOTS);
 	}
 
 	@Override

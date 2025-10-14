@@ -13,23 +13,8 @@ package vazkii.botania.common.item;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EntityPlayerMP;
-import net.minecraft.src.EnumAction;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.Potion;
-import net.minecraft.src.PotionEffect;
+import net.minecraft.src.*;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.DamageSource;
-import net.minecraft.src.Icon;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.StatCollector;
-import net.minecraft.src.World;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.entity.EntityPixie;
@@ -41,7 +26,8 @@ public class ItemBottledMana extends ItemMod {
 	Icon[] icons;
 	private static final String TAG_SEED = "randomSeed";
 
-	public ItemBottledMana() {
+	public ItemBottledMana(int id) {
+		super(id);
 		setUnlocalizedName(LibItemNames.MANA_BOTTLE);
 		setMaxStackSize(1);
 		setMaxDamage(6);
@@ -56,7 +42,7 @@ public class ItemBottledMana extends ItemMod {
 		}
 		case 1 : { // Water
 			if(!player.worldObj.isRemote && !player.worldObj.provider.isHellWorld)
-				player.worldObj.setBlock(MathHelper.floor_double(player.posX), MathHelper.floor_double(player.posY), MathHelper.floor_double(player.posZ), Blocks.flowing_water);
+				player.worldObj.setBlock(MathHelper.floor_double(player.posX), MathHelper.floor_double(player.posY), MathHelper.floor_double(player.posZ), Block.waterMoving);
 			break;
 		}
 		case 2 : { // Set on Fire
@@ -170,7 +156,7 @@ public class ItemBottledMana extends ItemMod {
 		case 15 : { // Drop own Head
 			if(!player.worldObj.isRemote) {
 				player.attackEntityFrom(DamageSource.magic, player.getHealth() - 1);
-				ItemStack stack = new ItemStack(Items.skull, 1, 3);
+				ItemStack stack = new ItemStack(Item.skull, 1, 3);
 				ItemNBTHelper.setString(stack, "SkullOwner", player.getCommandSenderName());
 				player.dropPlayerItemWithRandomChoice(stack, true);
 			}
@@ -180,7 +166,7 @@ public class ItemBottledMana extends ItemMod {
 	}
 
 	@Override
-	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
+	public void onUpdate(ItemStack par1ItemStack, World par2World, EntityPlayer par3Entity, int par4, boolean par5) {
 		getSeed(par1ItemStack);
 	}
 
@@ -231,7 +217,7 @@ public class ItemBottledMana extends ItemMod {
 		randomSeed(par1ItemStack);
 
 		if(par1ItemStack.getItemDamage() == 6)
-			return new ItemStack(Items.glass_bottle);
+			return new ItemStack(Item.glassBottle);
 		return par1ItemStack;
 	}
 

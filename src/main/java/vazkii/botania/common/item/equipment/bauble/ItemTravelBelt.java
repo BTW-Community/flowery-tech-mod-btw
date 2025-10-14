@@ -53,13 +53,13 @@ public class ItemTravelBelt extends ItemBauble implements IBaubleRender, IManaUs
 	final float jump;
 	final float fallBuffer;
 
-	public ItemTravelBelt() {
-		this(LibItemNames.TRAVEL_BELT, 0.035F, 0.2F, 2F);
+	public ItemTravelBelt(int id) {
+		this(id, LibItemNames.TRAVEL_BELT, 0.035F, 0.2F, 2F);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
-	public ItemTravelBelt(String name, float speed, float jump, float fallBuffer) {
-		super(name);
+	public ItemTravelBelt(int id, String name, float speed, float jump, float fallBuffer) {
+		super(id, name);
 		this.speed = speed;
 		this.jump = jump;
 		this.fallBuffer = fallBuffer;
@@ -137,13 +137,13 @@ public class ItemTravelBelt extends ItemBauble implements IBaubleRender, IManaUs
 
 	@SubscribeEvent
 	public void playerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event) {
-		String username = event.player.getGameProfile().getName();
+		String username = event.player.username;
 		playersWithStepup.remove(username + ":false");
 		playersWithStepup.remove(username + ":true");
 	}
 
 	public static String playerStr(EntityPlayer player) {
-		return player.getGameProfile().getName() + ":" + player.worldObj.isRemote;
+		return player.username + ":" + player.worldObj.isRemote;
 	}
 
 	@Environment(EnvType.CLIENT)

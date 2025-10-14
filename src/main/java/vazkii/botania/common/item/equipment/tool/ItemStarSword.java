@@ -32,19 +32,18 @@ public class ItemStarSword extends ItemManasteelSword implements ICraftAchieveme
 
 	private static final int MANA_PER_DAMAGE = 120;
 
-	public ItemStarSword() {
-		super(BotaniaAPI.terrasteelToolMaterial, LibItemNames.STAR_SWORD);
+	public ItemStarSword(int id) {
+		super(id, BotaniaAPI.terrasteelToolMaterial, LibItemNames.STAR_SWORD);
 	}
 
 	@Override
-	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
+	public void onUpdate(ItemStack par1ItemStack, World par2World, EntityPlayer par3Entity, int par4, boolean par5) {
 		super.onUpdate(par1ItemStack, par2World, par3Entity, par4, par5);
 		if(par3Entity instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) par3Entity;
-			PotionEffect haste = player.getActivePotionEffect(Potion.digSpeed);
+            PotionEffect haste = par3Entity.getActivePotionEffect(Potion.digSpeed);
 			float check = haste == null ? 0.16666667F : haste.getAmplifier() == 1 ? 0.5F : 0.4F;
 
-			if(player.getCurrentEquippedItem() == par1ItemStack && player.swingProgress == check && !par2World.isRemote && par2World.rand.nextInt(2) == 0) {
+			if(par3Entity.getCurrentEquippedItem() == par1ItemStack && par3Entity.swingProgress == check && !par2World.isRemote && par2World.rand.nextInt(2) == 0) {
 				MovingObjectPosition pos = ToolCommons.raytraceFromEntity(par2World, par3Entity, true, 48);
 				if(pos != null) {
 					Vector3 posVec = new Vector3(pos.blockX, pos.blockY, pos.blockZ);
@@ -52,15 +51,15 @@ public class ItemStarSword extends ItemManasteelSword implements ICraftAchieveme
 					posVec.add(motVec);
 					motVec.normalize().negate().multiply(1.5);
 
-					EntityFallingStar star = new EntityFallingStar(par2World, player);
+					EntityFallingStar star = new EntityFallingStar(par2World, par3Entity);
 					star.setPosition(posVec.x, posVec.y, posVec.z);
 					star.motionX = motVec.x;
 					star.motionY = motVec.y;
 					star.motionZ = motVec.z;
 					par2World.spawnEntityInWorld(star);
 
-					ToolCommons.damageItem(par1ItemStack, 1, player, MANA_PER_DAMAGE);
-					par2World.playSoundAtEntity(player, "botania:starcaller", 0.4F, 1.4F);
+					ToolCommons.damageItem(par1ItemStack, 1, par3Entity, MANA_PER_DAMAGE);
+					par2World.playSoundAtEntity(par3Entity, "botania:starcaller", 0.4F, 1.4F);
 				}
 			}
 		}

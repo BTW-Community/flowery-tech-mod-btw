@@ -33,12 +33,12 @@ public class ItemDirtRod extends ItemMod implements IManaUsingItem, ICraftAchiev
 
 	static final int COST = 75;
 
-	public ItemDirtRod() {
-		this(LibItemNames.DIRT_ROD);
+	public ItemDirtRod(int id) {
+		this(id, LibItemNames.DIRT_ROD);
 	}
 
-	public ItemDirtRod(String name) {
-		super();
+	public ItemDirtRod(int id, String name) {
+		super(id);
 		setMaxStackSize(1);
 		setUnlocalizedName(name);
 	}

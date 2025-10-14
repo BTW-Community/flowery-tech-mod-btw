@@ -19,25 +19,26 @@ public final class ModEntities {
 
 	public static void init() {
 		int id = 0;
+		//todofix HIGH PRIO: Entity have null packets on spawn
 		EntityList.addMapping(EntityManaBurst.class, LibEntityNames.MANA_BURST, id++);
 		EntityList.addMapping(EntitySignalFlare.class, LibEntityNames.SIGNAL_FLARE, id++);
 		EntityList.addMapping(EntityPixie.class, LibEntityNames.PIXIE, id++);
 		EntityList.addMapping(EntityFlameRing.class, LibEntityNames.FLAME_RING, id++);
-		EntityList.addMapping(EntityVineBall.class, LibEntityNames.VINE_BALL, id++);//todofix HIGH PRIO: Entity ids
-		EntityList.addMapping(EntityDoppleganger.class, LibEntityNames.DOPPLEGANGER, id++, 128, 3, true);
-		EntityList.addMapping(EntityMagicLandmine.class, LibEntityNames.MAGIC_LANDMINE, id++, 128, 40, false);
-		EntityList.addMapping(EntitySpark.class, LibEntityNames.SPARK, id++, 64, 10, false);
-		EntityList.addMapping(EntityThrownItem.class, LibEntityNames.THROWN_ITEM, id++, 64, 20, true);
-		EntityList.addMapping(EntityMagicMissile.class, LibEntityNames.MAGIC_MISSILE, id++, 64, 2, true);
-		EntityList.addMapping(EntityThornChakram.class, LibEntityNames.THORN_CHAKRAM, id++, 64, 10, true);
-		EntityList.addMapping(EntityCorporeaSpark.class, LibEntityNames.CORPOREA_SPARK, id++, 64, 10, false);
-		EntityList.addMapping(EntityEnderAirBottle.class, LibEntityNames.ENDER_AIR_BOTTLE, id++, 64, 10, true);
-		EntityList.addMapping(EntityPoolMinecart.class, LibEntityNames.POOL_MINECART, id++, 80, 3, true);
-		EntityList.addMapping(EntityPinkWither.class, LibEntityNames.PINK_WITHER, id++, 80, 3, false);
-		EntityList.addMapping(EntityPlayerMover.class, LibEntityNames.PLAYER_MOVER, id++, 40, 3, true);
-		EntityList.addMapping(EntityManaStorm.class, LibEntityNames.MANA_STORM, id++, 64, 10, false);
-		EntityList.addMapping(EntityBabylonWeapon.class, LibEntityNames.BABYLON_WEAPON, id++, 64, 10, true);
-		EntityList.addMapping(EntityFallingStar.class, LibEntityNames.FALLING_STAR, id++, 64, 10, true);
+		EntityList.addMapping(EntityVineBall.class, LibEntityNames.VINE_BALL, id++);
+		EntityList.addMapping(EntityDoppleganger.class, LibEntityNames.DOPPLEGANGER, id++);
+		EntityList.addMapping(EntityMagicLandmine.class, LibEntityNames.MAGIC_LANDMINE, id++);
+		EntityList.addMapping(EntitySpark.class, LibEntityNames.SPARK, id++);
+		EntityList.addMapping(EntityThrownItem.class, LibEntityNames.THROWN_ITEM, id++);
+		EntityList.addMapping(EntityMagicMissile.class, LibEntityNames.MAGIC_MISSILE, id++);
+		EntityList.addMapping(EntityThornChakram.class, LibEntityNames.THORN_CHAKRAM, id++);
+		EntityList.addMapping(EntityCorporeaSpark.class, LibEntityNames.CORPOREA_SPARK, id++);
+		EntityList.addMapping(EntityEnderAirBottle.class, LibEntityNames.ENDER_AIR_BOTTLE, id++);
+		EntityList.addMapping(EntityPoolMinecart.class, LibEntityNames.POOL_MINECART, id++);
+		EntityList.addMapping(EntityPinkWither.class, LibEntityNames.PINK_WITHER, id++);
+		EntityList.addMapping(EntityPlayerMover.class, LibEntityNames.PLAYER_MOVER, id++);
+		EntityList.addMapping(EntityManaStorm.class, LibEntityNames.MANA_STORM, id++);
+		EntityList.addMapping(EntityBabylonWeapon.class, LibEntityNames.BABYLON_WEAPON, id++);
+		EntityList.addMapping(EntityFallingStar.class, LibEntityNames.FALLING_STAR, id++);
 
 		//		EntityRegistry.registerModEntity(EntityManaBurst.class, LibEntityNames.MANA_BURST, id++, 64, 10, true);
 		/*EntityRegistry.registerModEntity(EntitySignalFlare.class, LibEntityNames.SIGNAL_FLARE, id++, 2048, 10, false);

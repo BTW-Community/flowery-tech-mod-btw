@@ -49,14 +49,15 @@ public class ItemTornadoRod extends ItemMod implements IManaUsingItem, IAvatarWi
 
 	Icon iconIdle, iconFlying;
 
-	public ItemTornadoRod() {
+	public ItemTornadoRod(int id) {
+		super(id);
 		setMaxDamage(MAX_DAMAGE);
 		setUnlocalizedName(LibItemNames.TORNADO_ROD);
 		setMaxStackSize(1);
 	}
 
 	@Override
-	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean holding) {
+	public void onUpdate(ItemStack par1ItemStack, World par2World, EntityPlayer par3Entity, int par4, boolean holding) {
 		if(par3Entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) par3Entity;
 			player.getCurrentEquippedItem();

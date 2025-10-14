@@ -10,25 +10,15 @@
  */
 package vazkii.botania.common.entity;
 
+import btw.entity.EntityWithCustomPacket;
 import dev.bagel.shim.BlockBush;
-import net.minecraft.src.Block;
-import net.minecraft.src.BlockLeaves;
-import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.EntityItem;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EntityThrowable;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.Potion;
-import net.minecraft.src.PotionEffect;
-import net.minecraft.src.DamageSource;
-import net.minecraft.src.MovingObjectPosition;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.common.core.helper.MathHelper;
 import vazkii.botania.common.core.helper.Vector3;
 import vazkii.botania.common.item.ModItems;
 
-public class EntityThornChakram extends EntityThrowable {
+public class EntityThornChakram extends EntityThrowable implements EntityWithCustomPacket {
 
 	private static final int MAX_BOUNCES = 16;
 	boolean bounced = false;
@@ -160,4 +150,28 @@ public class EntityThornChakram extends EntityThrowable {
 		dataWatcher.updateObject(31, (byte) (fire ? 1 : 0));
 	}
 
+	@Override
+	public Packet getSpawnPacketForThisEntity() {
+		return null;
+	}
+
+	@Override
+	public int getTrackerViewDistance() {
+		return 64;
+	}
+
+	@Override
+	public int getTrackerUpdateFrequency() {
+		return 10;
+	}
+
+	@Override
+	public boolean getTrackMotion() {
+		return true;
+	}
+
+	@Override
+	public boolean shouldServerTreatAsOversized() {
+		return false;
+	}
 }

@@ -18,8 +18,8 @@ import net.fabricmc.api.EnvType;
 
 public abstract class ItemElementiumArmor extends ItemManasteelArmor implements IPixieSpawner {
 
-	public ItemElementiumArmor(int type, String name) {
-		super(type, name, BotaniaAPI.elementiumArmorMaterial);
+	public ItemElementiumArmor(int id, int type, String name) {
+		super(id, type, name, BotaniaAPI.elementiumArmorMaterial);
 	}
 
 	@Override

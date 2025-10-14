@@ -18,7 +18,8 @@ import vazkii.botania.common.lib.LibItemNames;
 
 public class ItemVineBall extends ItemMod {
 
-	public ItemVineBall() {
+	public ItemVineBall(int id) {
+		super(id);
 		setUnlocalizedName(LibItemNames.VINE_BALL);
 	}
 

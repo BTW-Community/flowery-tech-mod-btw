@@ -28,8 +28,8 @@ public class ItemInfiniteFruit extends ItemRelic implements IManaUsingItem {
 
 	public static Icon dasBootIcon;
 
-	public ItemInfiniteFruit() {
-		super(LibItemNames.INFINITE_FRUIT);
+	public ItemInfiniteFruit(int id) {
+		super(id, LibItemNames.INFINITE_FRUIT);
 	}
 
 	@Override
@@ -58,8 +58,10 @@ public class ItemInfiniteFruit extends ItemRelic implements IManaUsingItem {
 				player.getFoodStats().addStats(1, 1F);
 
 			if(count == 5)
-				if(player.canEat(false))
-					ReflectionHelper.setPrivateValue(EntityPlayer.class, player, 20, LibObfuscation.ITEM_IN_USE_COUNT);
+				if(player.canEat(false)) {
+					player.setItemInUseCount(20);
+//					ReflectionHelper.setPrivateValue(EntityPlayer.class, player, 20, LibObfuscation.ITEM_IN_USE_COUNT);
+				}
 		}
 	}
 

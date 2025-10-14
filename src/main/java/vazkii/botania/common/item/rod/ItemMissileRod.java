@@ -35,8 +35,8 @@ public class ItemMissileRod extends ItemMod implements IManaUsingItem, IAvatarWi
 	private static final int COST_PER = 120;
 	private static final int COST_AVATAR = 40;
 
-	public ItemMissileRod() {
-		super();
+	public ItemMissileRod(int id) {
+		super(id);
 		setMaxStackSize(1);
 		setUnlocalizedName(LibItemNames.MISSILE_ROD);
 	}

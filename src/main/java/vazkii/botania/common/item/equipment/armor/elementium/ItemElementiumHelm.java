@@ -7,12 +7,12 @@ import vazkii.botania.common.lib.LibItemNames;
 
 public class ItemElementiumHelm extends ItemElementiumArmor implements IManaDiscountArmor {
 
-	public ItemElementiumHelm() {
-		this(LibItemNames.ELEMENTIUM_HELM);
+	public ItemElementiumHelm(int id) {
+		this(id, LibItemNames.ELEMENTIUM_HELM);
 	}
 
-	public ItemElementiumHelm(String name) {
-		super(0, name);
+	public ItemElementiumHelm(int id, String name) {
+		super(id, 0, name);
 	}
 
 	@Override

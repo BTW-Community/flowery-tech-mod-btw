@@ -70,4 +70,30 @@ public abstract class ItemExtensionMixin implements ItemExtensions {
     public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot) {
         return null;
     }
+
+    //damage
+    @Override
+    public int getDamage(ItemStack stack) {
+        return stack.getItemDamage();
+    }
+
+    @Override
+    public int getDisplayDamage(ItemStack stack) {
+        return getDamage(stack);
+    }
+
+    @Override
+    public int getEntityLifespan(ItemStack itemStack, World world) {
+        return 6000;
+    }
+
+    @Override
+    public boolean showDurabilityBar(ItemStack stack) {
+        return stack.isItemDamaged();
+    }
+
+    @Override
+    public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
+        return false;
+    }
 }

@@ -13,6 +13,7 @@ package vazkii.botania.common.item.equipment.tool.manasteel;
 import java.util.ArrayList;
 import java.util.Random;
 
+import dev.bagel.interfaces.BlockExtensions;
 import net.minecraft.src.*;
 import net.minecraftforge.common.IShearable;
 import vazkii.botania.api.mana.IManaUsingItem;

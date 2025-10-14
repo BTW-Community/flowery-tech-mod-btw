@@ -70,7 +70,7 @@ public class BlockFloatingFlower extends BlockModContainer implements ILexiconab
 	}
 
 	protected void register(String name) {
-		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
+		var item = new ItemBlockWithMetadataAndName(this);
 //GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, name);
 	}
 

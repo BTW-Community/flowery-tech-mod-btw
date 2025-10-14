@@ -48,13 +48,13 @@ public class ItemTerrasteelHelm extends ItemTerrasteelArmor implements IManaDisc
 	private static final String TAG_ANCIENT_WILL = "AncientWill";
 	static Icon willIcon;
 
-	public ItemTerrasteelHelm() {
-		this(LibItemNames.TERRASTEEL_HELM);
+	public ItemTerrasteelHelm(int id) {
+		this(id, LibItemNames.TERRASTEEL_HELM);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
-	public ItemTerrasteelHelm(String name) {
-		super(0, name);
+	public ItemTerrasteelHelm(int id, String name) {
+		super(id, 0, name);
 	}
 
 	@Override

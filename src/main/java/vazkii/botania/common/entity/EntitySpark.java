@@ -22,13 +22,8 @@ import java.util.Set;
 import java.util.WeakHashMap;
 
 import baubles.common.lib.PlayerHandler;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.World;
+import btw.entity.EntityWithCustomPacket;
+import net.minecraft.src.*;
 import vazkii.botania.api.mana.IManaItem;
 import vazkii.botania.api.mana.IManaPool;
 import vazkii.botania.api.mana.spark.ISparkAttachable;
@@ -39,7 +34,7 @@ import vazkii.botania.common.core.helper.Vector3;
 import vazkii.botania.common.item.ModItems;
 //import baubles.common.lib.PlayerHandler;
 
-public class EntitySpark extends Entity implements ISparkEntity {
+public class EntitySpark extends Entity implements ISparkEntity, EntityWithCustomPacket {
 
 	private static final int TRANSFER_RATE = 1000;
 	private static final String TAG_UPGRADE = "upgrade";
@@ -381,4 +376,28 @@ public class EntitySpark extends Entity implements ISparkEntity {
 			return tile != null && tile.areIncomingTranfersDone();
 	}
 
+	@Override
+	public Packet getSpawnPacketForThisEntity() {
+		return null;
+	}
+
+	@Override
+	public int getTrackerViewDistance() {
+		return  64;
+	}
+
+	@Override
+	public int getTrackerUpdateFrequency() {
+		return 10;
+	}
+
+	@Override
+	public boolean getTrackMotion() {
+		return false;
+	}
+
+	@Override
+	public boolean shouldServerTreatAsOversized() {
+		return false;
+	}
 }

@@ -164,7 +164,7 @@ public final class SkyblockWorldEvents {
 			for(int j = 0; j < 4; j++)
 				for(int k = 0; k < 3; k++)
 					world.setBlock(x - 1 + i, y - 1 - j, z - 1 + k, j == 0 ? Blocks.grass : Block.dirt);
-		world.setBlock(x - 1, y - 2, z, Blocks.flowing_water);
+		world.setBlock(x - 1, y - 2, z, Block.waterMoving);
 		world.setBlock(x + 1, y + 2, z + 1, ModBlocks.manaFlame);
 		((TileManaFlame) world.getTileEntity(x + 1, y + 2, z + 1)).setColor(new Color(70 + world.rand.nextInt(185), 70 + world.rand.nextInt(185), 70 + world.rand.nextInt(185)).getRGB());
 

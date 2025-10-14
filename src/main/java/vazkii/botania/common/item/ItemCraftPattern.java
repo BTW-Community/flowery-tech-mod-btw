@@ -28,7 +28,8 @@ public class ItemCraftPattern extends ItemMod {
 
 	Icon[] icons;
 
-	public ItemCraftPattern() {
+	public ItemCraftPattern(int id) {
+		super(id);
 		setHasSubtypes(true);
 		setUnlocalizedName(LibItemNames.CRAFT_PATTERN);
 		setMaxStackSize(1);

@@ -35,8 +35,8 @@ public class ItemKingKey extends ItemRelic implements IManaUsingItem {
 	private static final int WEAPON_TYPES = 12;
 	public static Icon[] weaponIcons;
 
-	public ItemKingKey() {
-		super(LibItemNames.KING_KEY);
+	public ItemKingKey(int id) {
+		super(id, LibItemNames.KING_KEY);
 	}
 
 	@Override

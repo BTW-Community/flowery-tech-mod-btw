@@ -14,8 +14,8 @@ import vazkii.botania.common.lib.LibItemNames;
 
 public class ItemRecordGaia1 extends ItemModRecord {
 
-	public ItemRecordGaia1() {
-		super("gaia1", LibItemNames.RECORD_GAIA1);
+	public ItemRecordGaia1(int id) {
+		super(id, "gaia1", LibItemNames.RECORD_GAIA1);
 	}
 
 }

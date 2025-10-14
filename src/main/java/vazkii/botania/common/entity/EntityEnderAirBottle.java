@@ -13,16 +13,12 @@ package vazkii.botania.common.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import btw.entity.EntityWithCustomPacket;
 import dev.bagel.interfaces.BlockExtensions;
+import net.minecraft.src.*;
 import net.minecraft.src.Block;
-import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.EntityThrowable;
-import net.minecraft.src.Block;
-import net.minecraft.src.ChunkCoordinates;
-import net.minecraft.src.MovingObjectPosition;
-import net.minecraft.src.World;
 
-public class EntityEnderAirBottle extends EntityThrowable {
+public class EntityEnderAirBottle extends EntityThrowable implements EntityWithCustomPacket {
 
 	public EntityEnderAirBottle(World world) {
 		super(world);
@@ -74,4 +70,28 @@ public class EntityEnderAirBottle extends EntityThrowable {
 		return selectedCoords;
 	}
 
+	@Override
+	public Packet getSpawnPacketForThisEntity() {
+		return null;
+	}
+
+	@Override
+	public int getTrackerViewDistance() {
+		return 64;
+	}
+
+	@Override
+	public int getTrackerUpdateFrequency() {
+		return 10;
+	}
+
+	@Override
+	public boolean getTrackMotion() {
+		return true;
+	}
+
+	@Override
+	public boolean shouldServerTreatAsOversized() {
+		return false;
+	}
 }

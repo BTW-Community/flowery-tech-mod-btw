@@ -121,9 +121,10 @@ public class CommonProxy {
 	}
 	@SubscribeEvent
 	public void init() {
-		NetworkRegistry.INSTANCE.registerGuiHandler(Botania.instance, new GuiHandler());
+		//todofix gui handler, terrain bus
+//		NetworkRegistry.INSTANCE.registerGuiHandler(Botania.instance, new GuiHandler());
 
-		MinecraftForge.TERRAIN_GEN_BUS.register(new BiomeDecorationHandler());
+//		MinecraftForge.TERRAIN_GEN_BUS.register(new BiomeDecorationHandler());
 		MinecraftForge.EVENT_BUS.register(ManaNetworkHandler.instance);
 		MinecraftForge.EVENT_BUS.register(new PixieHandler());
 		MinecraftForge.EVENT_BUS.register(new SheddingHandler());
@@ -134,9 +135,7 @@ public class CommonProxy {
 		if(Botania.gardenOfGlassLoaded)
 			MinecraftForge.EVENT_BUS.register(new SkyblockWorldEvents());
 
-		FMLCommonHandler.instance().bus().register(new CommonTickHandler());
-
-		FMLInterModComms.sendMessage("ProjectE", "interdictionblacklist", EntityManaBurst.class.getCanonicalName());
+//		FMLCommonHandler.instance().bus().register(new CommonTickHandler());
 
 //		if(Botania.bcTriggersLoaded)
 //			new StatementAPIPlugin();

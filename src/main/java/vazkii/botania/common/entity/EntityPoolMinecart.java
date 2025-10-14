@@ -10,14 +10,8 @@
  */
 package vazkii.botania.common.entity;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.EntityMinecart;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.DamageSource;
-import net.minecraft.src.World;
+import btw.entity.EntityWithCustomPacket;
+import net.minecraft.src.*;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
 import vazkii.botania.api.mana.IManaPool;
@@ -27,7 +21,7 @@ import vazkii.botania.common.block.tile.mana.TilePump;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.lib.LibMisc;
 
-public class EntityPoolMinecart extends EntityMinecart {
+public class EntityPoolMinecart extends EntityMinecart implements EntityWithCustomPacket {
 
 	private static final int TRANSFER_RATE = 10000;
 	private static final String TAG_MANA = "mana";
@@ -157,4 +151,28 @@ public class EntityPoolMinecart extends EntityMinecart {
 		dataWatcher.updateObject(16, mana);
 	}
 
+	@Override
+	public Packet getSpawnPacketForThisEntity() {
+		return null;
+	}
+
+	@Override
+	public int getTrackerViewDistance() {
+		return 80;
+	}
+
+	@Override
+	public int getTrackerUpdateFrequency() {
+		return 30;
+	}
+
+	@Override
+	public boolean getTrackMotion() {
+		return true;
+	}
+
+	@Override
+	public boolean shouldServerTreatAsOversized() {
+		return false;
+	}
 }

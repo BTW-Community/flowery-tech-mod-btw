@@ -114,7 +114,7 @@ public class ItemCraftingHalo extends ItemMod implements ICraftAchievement {
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World world, Entity entity, int pos, boolean equipped) {
+	public void onUpdate(ItemStack stack, World world, EntityPlayer entity, int pos, boolean equipped) {
 		boolean eqLastTick = wasEquipped(stack);
 		if(eqLastTick != equipped)
 			setEquipped(stack, equipped);
@@ -200,7 +200,7 @@ public class ItemCraftingHalo extends ItemMod implements ICraftAchievement {
 			if(stackAt != null && stack.isItemEqual(stackAt) && ItemStack.areItemStackTagsEqual(stack, stackAt)) {
 				boolean consume = true;
 
-				ItemStack container = new ItemStack(stackAt.getItem().getContainerItem(stackAt));
+				ItemStack container = stackAt.getItem().getContainerItem(stackAt);
 				if(container != null) {
 					if(container == stackAt)
 						consume = false;

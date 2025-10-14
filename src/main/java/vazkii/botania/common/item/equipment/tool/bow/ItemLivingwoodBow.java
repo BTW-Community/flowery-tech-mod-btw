@@ -10,18 +10,8 @@
  */
 package vazkii.botania.common.item.equipment.tool.bow;
 
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.Enchantment;
-import net.minecraft.src.EnchantmentHelper;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EntityArrow;
+import net.minecraft.src.*;
 import net.minecraft.src.Item;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemBow;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.Icon;
-import net.minecraft.src.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
@@ -42,12 +32,12 @@ public class ItemLivingwoodBow extends ItemBow implements IManaUsingItem {
 	public static final int MANA_PER_DAMAGE = 40;
 	Icon[] pullIcons = new Icon[3];
 
-	public ItemLivingwoodBow() {
-		this(LibItemNames.LIVINGWOOD_BOW);
+	public ItemLivingwoodBow(int id) {
+		this(id, LibItemNames.LIVINGWOOD_BOW);
 	}
 
-	public ItemLivingwoodBow(String name) {
-		super();
+	public ItemLivingwoodBow(int id, String name) {
+		super(id);
 		setCreativeTab(CreativeTabs.tabMisc);
 		setUnlocalizedName(name);
 		setMaxDamage(500);
@@ -56,7 +46,7 @@ public class ItemLivingwoodBow extends ItemBow implements IManaUsingItem {
 
 	@Override
 	public Item setUnlocalizedName(String par1Str) {
-		GameRegistry.registerItem(this, par1Str);
+//		GameRegistry.registerItem(this, par1Str);
 		return super.setUnlocalizedName(par1Str);
 	}
 
@@ -142,13 +132,13 @@ public class ItemLivingwoodBow extends ItemBow implements IManaUsingItem {
 	}
 
 	boolean canFire(ItemStack p_77615_1_, World p_77615_2_, EntityPlayer p_77615_3_, int p_77615_4_) {
-		return p_77615_3_.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, p_77615_1_) > 0 || p_77615_3_.inventory.hasItem(Items.arrow);
+		return p_77615_3_.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, p_77615_1_) > 0 || p_77615_3_.inventory.hasItem(Item.arrow.itemID);
 	}
 
 	void onFire(ItemStack p_77615_1_, World p_77615_2_, EntityPlayer p_77615_3_, int p_77615_4_, boolean infinity, EntityArrow arrow) {
 		if(infinity)
 			arrow.canBePickedUp = 2;
-		else p_77615_3_.inventory.consumeInventoryItem(Items.arrow);
+		else p_77615_3_.inventory.consumeInventoryItem(Item.arrow.itemID);
 	}
 
 	@Override
@@ -160,8 +150,8 @@ public class ItemLivingwoodBow extends ItemBow implements IManaUsingItem {
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World world, Entity player, int par4, boolean par5) {
-		if(!world.isRemote && player instanceof EntityPlayer && stack.getItemDamage() > 0 && ManaItemHandler.requestManaExactForTool(stack, (EntityPlayer) player, MANA_PER_DAMAGE * 2, true))
+	public void onUpdate(ItemStack stack, World world, EntityPlayer player, int par4, boolean par5) {
+		if(!world.isRemote && stack.getItemDamage() > 0 && ManaItemHandler.requestManaExactForTool(stack, player, MANA_PER_DAMAGE * 2, true))
 			stack.setItemDamage(stack.getItemDamage() - 1);
 	}
 

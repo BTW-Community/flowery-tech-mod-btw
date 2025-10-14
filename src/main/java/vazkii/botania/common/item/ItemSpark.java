@@ -31,7 +31,8 @@ public class ItemSpark extends ItemMod implements ICraftAchievement, IManaGiving
 
 	public static Icon invIcon, worldIcon;
 
-	public ItemSpark() {
+	public ItemSpark(int id) {
+		super(id);
 		setUnlocalizedName(LibItemNames.SPARK);
 	}
 

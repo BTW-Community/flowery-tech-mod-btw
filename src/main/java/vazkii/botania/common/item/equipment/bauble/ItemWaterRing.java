@@ -23,8 +23,8 @@ import baubles.api.BaubleType;
 
 public class ItemWaterRing extends ItemBauble implements IManaUsingItem {
 
-	public ItemWaterRing() {
-		super(LibItemNames.WATER_RING);
+	public ItemWaterRing(int id) {
+		super(id, LibItemNames.WATER_RING);
 	}
 
 	@Override

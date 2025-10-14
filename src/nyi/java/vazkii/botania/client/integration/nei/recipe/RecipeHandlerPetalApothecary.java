@@ -111,7 +111,7 @@ public class RecipeHandlerPetalApothecary extends TemplateRecipeHandler {
 	public void loadCraftingRecipes(String outputId, Object... results) {
 		if(outputId.equals(getRecipeID())) {
 			for(RecipePetals recipe : getRecipes())
-				if(recipe.getOutput().getItem() != Items.skull)
+				if(recipe.getOutput().getItem() != Item.skull)
 					arecipes.add(getCachedRecipe(recipe));
 		} else super.loadCraftingRecipes(outputId, results);
 	}
@@ -122,7 +122,7 @@ public class RecipeHandlerPetalApothecary extends TemplateRecipeHandler {
 			if(recipe == null)
 				continue;
 
-			if(recipe.getOutput().stackTagCompound != null && ItemNBTHelper.areStacksSameTypeWithNBT(recipe.getOutput(), result) || recipe.getOutput().stackTagCompound == null && NEIServerUtils.areStacksSameTypeCrafting(recipe.getOutput(), result) && recipe.getOutput().getItem() != Items.skull)
+			if(recipe.getOutput().stackTagCompound != null && ItemNBTHelper.areStacksSameTypeWithNBT(recipe.getOutput(), result) || recipe.getOutput().stackTagCompound == null && NEIServerUtils.areStacksSameTypeCrafting(recipe.getOutput(), result) && recipe.getOutput().getItem() != Item.skull)
 				arecipes.add(getCachedRecipe(recipe));
 		}
 	}
@@ -134,7 +134,7 @@ public class RecipeHandlerPetalApothecary extends TemplateRecipeHandler {
 				continue;
 
 			CachedPetalApothecaryRecipe crecipe = getCachedRecipe(recipe);
-			if(ItemNBTHelper.cachedRecipeContainsWithNBT(crecipe.inputs, ingredient) && recipe.getOutput().getItem() != Items.skull)
+			if(ItemNBTHelper.cachedRecipeContainsWithNBT(crecipe.inputs, ingredient) && recipe.getOutput().getItem() != Item.skull)
 				arecipes.add(crecipe);
 		}
 	}

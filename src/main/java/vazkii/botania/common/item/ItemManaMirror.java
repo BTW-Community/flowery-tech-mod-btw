@@ -44,12 +44,12 @@ public class ItemManaMirror extends ItemMod implements IManaItem, ICoordBoundIte
 
 	private static final DummyPool fallbackPool = new DummyPool();
 
-	public ItemManaMirror() {
-		super();
+	public ItemManaMirror(int id) {
+		super(id);
 		setMaxStackSize(1);
 		setMaxDamage(1000);
 		setUnlocalizedName(LibItemNames.MANA_MIRROR);
-		setNoRepair();
+//		setNoRepair();
 	}
 
 	@Override
@@ -87,7 +87,7 @@ public class ItemManaMirror extends ItemMod implements IManaItem, ICoordBoundIte
 	}
 
 	@Override
-	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
+	public void onUpdate(ItemStack par1ItemStack, World par2World, EntityPlayer par3Entity, int par4, boolean par5) {
 		if(par2World.isRemote)
 			return;
 

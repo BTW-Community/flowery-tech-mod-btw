@@ -81,7 +81,7 @@ public final class ModManaAlchemyRecipes {
 		quartzRecipes.add(BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(ModItems.quartz, 4, 5), new ItemStack(ModFluffBlocks.elfQuartz, 1, Short.MAX_VALUE), 25));
 
 		chiseledBrickRecipe = BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(Blocks.stonebrick, 1, 3), new ItemStack(Blocks.stonebrick), 150);
-		iceRecipe = BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(Blocks.ice), new ItemStack(Blocks.snow), 2250);
+		iceRecipe = BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(Block.ice), new ItemStack(Blocks.snow), 2250);
 
 		swampFolliageRecipes = new ArrayList<>();
 		swampFolliageRecipes.add(BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(Blocks.waterlily), new ItemStack(Blocks.vine), 320));
@@ -119,10 +119,10 @@ public final class ModManaAlchemyRecipes {
 		enderPearlRecipe = BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(Items.ender_pearl), new ItemStack(Items.ghast_tear), 28000);
 
 		redstoneToGlowstoneRecipes = new ArrayList<>();
-		redstoneToGlowstoneRecipes.add(BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(Items.redstone), new ItemStack(Items.glowstone_dust), 300));
-		redstoneToGlowstoneRecipes.add(BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(Items.glowstone_dust), new ItemStack(Items.redstone), 300));
+		redstoneToGlowstoneRecipes.add(BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(Item.redstone), new ItemStack(Items.glowstone_dust), 300));
+		redstoneToGlowstoneRecipes.add(BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(Items.glowstone_dust), new ItemStack(Item.redstone), 300));
 
-		sandRecipe = BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(Block.getBlockFromName("sand")), new ItemStack(Blocks.cobblestone), 50);
+		sandRecipe = BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(Block.getBlockFromName("sand")), new ItemStack(Block.cobblestone), 50);
 		redSandRecipe = BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(Block.getBlockFromName("sand"), 1, 1), new ItemStack(Blocks.hardened_clay), 50);
 
 		clayBreakdownRecipes = new ArrayList<>();

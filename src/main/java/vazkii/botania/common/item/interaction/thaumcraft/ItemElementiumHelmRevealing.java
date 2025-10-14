@@ -19,8 +19,8 @@ import vazkii.botania.common.lib.LibItemNames;
 
 public class ItemElementiumHelmRevealing extends ItemElementiumHelm {
 
-	public ItemElementiumHelmRevealing() {
-		super(LibItemNames.ELEMENTIUM_HELM_R);
+	public ItemElementiumHelmRevealing(int id) {
+		super(id, LibItemNames.ELEMENTIUM_HELM_R);
 	}
 
 	@Override

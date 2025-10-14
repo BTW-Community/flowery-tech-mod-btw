@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.item.lens;
 
+import dev.bagel.interfaces.BlockExtensions;
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityThrowable;
 import net.minecraft.src.Block;

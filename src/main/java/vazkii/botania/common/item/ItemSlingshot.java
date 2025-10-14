@@ -19,7 +19,8 @@ import vazkii.botania.common.lib.LibItemNames;
 
 public class ItemSlingshot extends ItemMod {
 
-	public ItemSlingshot() {
+	public ItemSlingshot(int id) {
+		super(id);
 		setMaxStackSize(1);
 		setUnlocalizedName(LibItemNames.SLINGSHOT);
 	}
@@ -28,7 +29,7 @@ public class ItemSlingshot extends ItemMod {
 	public void onPlayerStoppedUsing(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer, int par4) {
 		int j = getMaxItemUseDuration(par1ItemStack) - par4;
 
-		if(par3EntityPlayer.capabilities.isCreativeMode || par3EntityPlayer.inventory.hasItem(ModItems.vineBall)) {
+		if(par3EntityPlayer.capabilities.isCreativeMode || par3EntityPlayer.inventory.hasItem(ModItems.vineBall.itemID)) {
 			float f = j / 20.0F;
 			f = (f * f + f * 2.0F) / 3.0F;
 
@@ -36,7 +37,7 @@ public class ItemSlingshot extends ItemMod {
 				return;
 
 			if(!par3EntityPlayer.capabilities.isCreativeMode)
-				par3EntityPlayer.inventory.consumeInventoryItem(ModItems.vineBall);
+				par3EntityPlayer.inventory.consumeInventoryItem(ModItems.vineBall.itemID);
 
 			if(!par2World.isRemote) {
 				EntityVineBall ball = new EntityVineBall(par3EntityPlayer, false);
@@ -65,7 +66,7 @@ public class ItemSlingshot extends ItemMod {
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		if(par3EntityPlayer.capabilities.isCreativeMode || par3EntityPlayer.inventory.hasItem(ModItems.vineBall))
+		if(par3EntityPlayer.capabilities.isCreativeMode || par3EntityPlayer.inventory.hasItem(ModItems.vineBall.itemID))
 			par3EntityPlayer.setItemInUse(par1ItemStack, getMaxItemUseDuration(par1ItemStack));
 
 		return par1ItemStack;

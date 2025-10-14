@@ -37,7 +37,7 @@ public class ModManaConjurationRecipes {
 	public static void init() {
 		if (!ConfigHandler.enableDefaultRecipes) return;
 
-		redstoneRecipe = BotaniaAPI.registerManaConjurationRecipe(new ItemStack(Items.redstone, 2), new ItemStack(Items.redstone), 5000);
+		redstoneRecipe = BotaniaAPI.registerManaConjurationRecipe(new ItemStack(Item.redstone, 2), new ItemStack(Item.redstone), 5000);
 		glowstoneRecipe = BotaniaAPI.registerManaConjurationRecipe(new ItemStack(Items.glowstone_dust, 2), new ItemStack(Items.glowstone_dust), 5000);
 		quartzRecipe = BotaniaAPI.registerManaConjurationRecipe(new ItemStack(Items.quartz, 2), new ItemStack(Items.quartz), 2500);
 		coalRecipe = BotaniaAPI.registerManaConjurationRecipe(new ItemStack(Items.coal, 2), new ItemStack(Items.coal), 2100);

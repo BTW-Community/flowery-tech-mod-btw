@@ -43,8 +43,8 @@ import net.fabricmc.api.EnvType;
 
 public class ItemDivaCharm extends ItemBauble implements IManaUsingItem, IBaubleRender {
 
-	public ItemDivaCharm() {
-		super(LibItemNames.DIVA_CHARM);
+	public ItemDivaCharm(int id) {
+		super(id, LibItemNames.DIVA_CHARM);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
@@ -61,8 +61,10 @@ public class ItemDivaCharm extends ItemBauble implements IManaUsingItem, IBauble
 					List<IMob> mobs = player.worldObj.getEntitiesWithinAABB(IMob.class, AxisAlignedBB.getBoundingBox(event.entity.posX - range, event.entity.posY - range, event.entity.posZ - range, event.entity.posX + range, event.entity.posY + range, event.entity.posZ + range));
 					if(mobs.size() > 1) {
 						if(SubTileHeiseiDream.brainwashEntity((EntityLiving) event.entityLiving, mobs)) {
-							if(event.entityLiving instanceof EntityCreeper)
-								ReflectionHelper.setPrivateValue(EntityCreeper.class, (EntityCreeper) event.entityLiving, 2, LibObfuscation.TIME_SINCE_IGNITED);
+							if(event.entityLiving instanceof EntityCreeper ec) {
+								ec.setTimeSinceIgnited(2);
+//								ReflectionHelper.setPrivateValue(EntityCreeper.class, (EntityCreeper) event.entityLiving, 2, LibObfuscation.TIME_SINCE_IGNITED);
+							}
 							event.entityLiving.heal(event.entityLiving.getMaxHealth());
 							if(event.entityLiving.isDead)
 								event.entityLiving.isDead = false;

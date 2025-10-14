@@ -18,8 +18,8 @@ import baubles.api.BaubleType;
 
 public class ItemReachRing extends ItemBauble {
 
-	public ItemReachRing() {
-		super(LibItemNames.REACH_RING);
+	public ItemReachRing(int id) {
+		super(id, LibItemNames.REACH_RING);
 	}
 
 	@Override

@@ -38,8 +38,8 @@ public class ItemTinyPlanet extends ItemBauble implements IBaubleRender {
 
 	public static final String TAG_ORBIT = "orbit";
 
-	public ItemTinyPlanet() {
-		super(LibItemNames.TINY_PLANET);
+	public ItemTinyPlanet(int id) {
+		super(id, LibItemNames.TINY_PLANET);
 	}
 
 	@Override

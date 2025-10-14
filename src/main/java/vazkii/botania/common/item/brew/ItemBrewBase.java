@@ -50,8 +50,9 @@ public abstract class ItemBrewBase extends ItemMod implements IBrewItem, IPickup
 
 	Icon[] icons;
 
-	public ItemBrewBase(String name, String texName, int swigs, int drinkSpeed, ItemStack baseItem) {
-		this.name = name;
+	public ItemBrewBase(int id, String name, String texName, int swigs, int drinkSpeed, ItemStack baseItem) {
+        super(id);
+        this.name = name;
 		this.texName = texName;
 		this.swigs = swigs;
 		this.drinkSpeed = drinkSpeed;
@@ -59,7 +60,7 @@ public abstract class ItemBrewBase extends ItemMod implements IBrewItem, IPickup
 		setMaxStackSize(1);
 		setMaxDamage(swigs);
 		setUnlocalizedName(name);
-		setNoRepair();
+//		setNoRepair();
 	}
 
 	@Override
@@ -112,7 +113,7 @@ public abstract class ItemBrewBase extends ItemMod implements IBrewItem, IPickup
 	@Override
 	public void getSubItems(int item, CreativeTabs tab, List list) {
 		for(String s : BotaniaAPI.brewMap.keySet()) {
-			ItemStack stack = new ItemStack(item);
+			ItemStack stack = new ItemStack(Item.itemsList[item]);
 			setBrew(stack, s);
 			list.add(stack);
 		}
