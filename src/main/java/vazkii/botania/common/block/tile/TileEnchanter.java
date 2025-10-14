@@ -85,7 +85,7 @@ public class TileEnchanter extends TileMod implements ISparkAttachable {
 		Multiblock mb = new Multiblock();
 
 		for(int[] o : OBSIDIAN_LOCATIONS)
-			mb.addComponent(o[0], o[1] + 1, o[2], Blocks.obsidian, 0);
+			mb.addComponent(o[0], o[1] + 1, o[2], Block.obsidian, 0);
 		for(int[] p : PYLON_LOCATIONS[0]) {
 			mb.addComponent(p[0], p[1] + 1, p[2], ModBlocks.pylon, 0);
 			mb.addComponent(new FlowerComponent(new ChunkCoordinates(p[0], p[1], p[2]), ModBlocks.flower));
@@ -93,7 +93,7 @@ public class TileEnchanter extends TileMod implements ISparkAttachable {
 		for(int[] f : FLOWER_LOCATIONS)
 			mb.addComponent(new FlowerComponent(new ChunkCoordinates(f[0], f[1] + 1, f[2]), ModBlocks.flower));
 
-		mb.addComponent(0, 1, 0, Blocks.lapis_block, 0);
+		mb.addComponent(0, 1, 0, Block.blockLapis, 0);
 
 		return mb.makeSet();
 	}
@@ -108,8 +108,8 @@ public class TileEnchanter extends TileMod implements ISparkAttachable {
 		if(count > 0 && !worldObj.isRemote) {
 			for(EntityItem entity : items) {
 				ItemStack item = entity.getEntityItem();
-				if(item.getItem() == Items.enchanted_book) {
-					NBTTagList enchants = Items.enchanted_book.func_92110_g(item);
+				if(item.getItem() == Item.enchantedBook) {
+					NBTTagList enchants = Item.enchantedBook.func_92110_g(item);
 					if(enchants != null && enchants.tagCount() > 0) {
 						NBTTagCompound enchant = enchants.getCompoundTagAt(0);
 						short id = enchant.getShort("id");
@@ -134,7 +134,7 @@ public class TileEnchanter extends TileMod implements ISparkAttachable {
 
 		if(!canEnchanterExist(worldObj, xCoord, yCoord, zCoord, getBlockMetadata())) {
 
-			worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.lapis_block, 0, 1 | 2);
+			worldObj.setBlock(xCoord, yCoord, zCoord, Block.blockLapis, 0, 1 | 2);
 			for(int i = 0; i < 50; i++) {
 				float red = (float) Math.random();
 				float green = (float) Math.random();
@@ -154,8 +154,8 @@ public class TileEnchanter extends TileMod implements ISparkAttachable {
 				if(count > 0 && !worldObj.isRemote) {
 					for(EntityItem entity : items) {
 						ItemStack item = entity.getEntityItem();
-						if(item.getItem() == Items.enchanted_book) {
-							NBTTagList enchants = Items.enchanted_book.func_92110_g(item);
+						if(item.getItem() == Item.enchantedBook) {
+							NBTTagList enchants = Item.enchantedBook.func_92110_g(item);
 							if(enchants != null && enchants.tagCount() > 0) {
 								NBTTagCompound enchant = enchants.getCompoundTagAt(0);
 								short enchantId = enchant.getShort("id");
@@ -269,10 +269,10 @@ public class TileEnchanter extends TileMod implements ISparkAttachable {
 		}
 	}
 
-	@Override
-	public AxisAlignedBB getRenderBoundingBox() {
-		return INFINITE_EXTENT_AABB;
-	}
+//	@Override
+//	public AxisAlignedBB getRenderBoundingBox() {
+//		return INFINITE_EXTENT_AABB;
+//	}
 
 	@Override
 	public int getCurrentMana() {
@@ -365,7 +365,7 @@ public class TileEnchanter extends TileMod implements ISparkAttachable {
 
 	public static boolean canEnchanterExist(World world, int x, int y, int z, int meta) {
 		for(int[] obsidian : OBSIDIAN_LOCATIONS)
-			if(world.getBlock(obsidian[0] + x, obsidian[1] + y, obsidian[2] + z) != Blocks.obsidian)
+			if(world.getBlock(obsidian[0] + x, obsidian[1] + y, obsidian[2] + z) != Block.obsidian)
 				return false;
 
 		for(int[] pylon : PYLON_LOCATIONS[meta])

@@ -10,14 +10,7 @@
  */
 package vazkii.botania.common.item;
 
-import net.minecraft.src.Minecraft;
-import net.minecraft.src.FontRenderer;
-import net.minecraft.src.ScaledResolution;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EnumAction;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.MovingObjectPosition;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 
 import org.lwjgl.opengl.GL11;
 
@@ -86,7 +79,7 @@ public class ItemSextant extends ItemMod {
 			int y = ItemNBTHelper.getInt(stack, TAG_SOURCE_Y, -1);
 			int z = ItemNBTHelper.getInt(stack, TAG_SOURCE_Z, 0);
 			if(y != -1)
-				Botania.proxy.setMultiblock(world, x, y, z, radius, Blocks.cobblestone);
+				Botania.proxy.setMultiblock(world, x, y, z, radius, Block.cobblestone);
 		}
 	}
 
@@ -124,8 +117,8 @@ public class ItemSextant extends ItemMod {
 		double mul = diffVec.y / lookVec.y;
 		lookVec.multiply(mul).add(centerVec);
 
-		lookVec.x = net.minecraft.util.MathHelper.floor_double(lookVec.x);
-		lookVec.z = net.minecraft.util.MathHelper.floor_double(lookVec.z);
+		lookVec.x = net.minecraft.src.MathHelper.floor_double(lookVec.x);
+		lookVec.z = net.minecraft.src.MathHelper.floor_double(lookVec.z);
 
 		return MathHelper.pointDistancePlane(source.x, source.z, lookVec.x, lookVec.z);
 	}

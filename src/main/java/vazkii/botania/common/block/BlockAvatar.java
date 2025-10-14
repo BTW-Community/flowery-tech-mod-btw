@@ -46,7 +46,7 @@ public class BlockAvatar extends BlockModContainer implements ILexiconable {
 		super(id, Material.wood);
 		setHardness(2.0F);
 		setStepSound(soundWoodFootstep);
-		setBlockName(LibBlockNames.AVATAR);
+		setUnlocalizedName(LibBlockNames.AVATAR);
 		setBlockBounds(true);
 
 		random = new Random();

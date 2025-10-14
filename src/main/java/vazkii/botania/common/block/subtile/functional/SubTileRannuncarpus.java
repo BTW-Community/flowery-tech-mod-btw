@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import btw.item.items.PlaceAsBlockItem;
+import dev.bagel.client.RenderInstances;
 import dev.bagel.interfaces.BlockExtensions;
 import dev.bagel.util.Items;
 import net.minecraft.src.Block;

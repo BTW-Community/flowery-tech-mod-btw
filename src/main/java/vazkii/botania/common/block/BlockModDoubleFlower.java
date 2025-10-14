@@ -57,7 +57,7 @@ public class BlockModDoubleFlower extends BlockDoublePlant implements ILexiconab
 	public BlockModDoubleFlower(int id, boolean second) {
         super(id);
         offset = second ? 8 : 0;
-//		setBlockName(LibBlockNames.DOUBLE_FLOWER + (second ? 2 : 1));
+//		setUnlocalizedName(LibBlockNames.DOUBLE_FLOWER + (second ? 2 : 1));
 		setHardness(0F);
 		setStepSound(soundGrassFootstep);
 		setTickRandomly(false);
@@ -65,11 +65,11 @@ public class BlockModDoubleFlower extends BlockDoublePlant implements ILexiconab
 	}
 
 //	@Override
-/*	public Block setBlockName(String par1Str) {
+/*	public Block setUnlocalizedName(String par1Str) {
 		if(!par1Str.equals("doublePlant"))
 			var item = new ItemBlockWithMetadataAndName(this.blockID, this);
 //GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
-		return super.setBlockName(par1Str);
+		return super.setUnlocalizedName(par1Str);
 	}*/
 
 	@Override

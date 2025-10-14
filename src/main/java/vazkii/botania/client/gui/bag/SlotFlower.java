@@ -10,6 +10,7 @@
  */
 package vazkii.botania.client.gui.bag;
 
+import dev.bagel.util.Items;
 import net.minecraft.src.Slot;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
@@ -33,7 +34,7 @@ public class SlotFlower extends Slot {
 
 	@Override
 	public boolean isItemValid(ItemStack stack) {
-		return stack.getItem() == Item.getItemFromBlock(ModBlocks.flower) && stack.getItemDamage() == color;
+		return stack.getItem() == Items.getItemFromBlock(ModBlocks.flower) && stack.getItemDamage() == color;
 	}
 
 }

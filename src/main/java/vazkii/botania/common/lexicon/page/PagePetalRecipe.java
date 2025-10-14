@@ -21,7 +21,6 @@ import net.minecraft.src.TextureManager;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.ResourceLocation;
 import net.minecraft.src.StatCollector;
-import net.minecraftforge.oredict.OreDictionary;
 
 import org.lwjgl.opengl.GL11;
 
@@ -79,8 +78,9 @@ public class PagePetalRecipe<T extends RecipePetals> extends PageRecipe {
 		for(Object obj : inputs) {
 			Object input = obj;
 			if(input instanceof String) {
-				List<ItemStack> ores = OreDictionary.getOres((String) input);
-				input = ores.get(oredictCounter % ores.size());
+				//todofix ore dict tag stuff
+//				List<ItemStack> ores = OreDictionary.getOres((String) input);
+//				input = ores.get(oredictCounter % ores.size());
 			}
 
 			renderItemAtAngle(gui, currentDegree, (ItemStack) input);

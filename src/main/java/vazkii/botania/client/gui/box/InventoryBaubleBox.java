@@ -133,17 +133,17 @@ public class InventoryBaubleBox implements IInventory {
 	}
 
 	@Override
-	public boolean hasCustomInventoryName() {
+	public boolean isInvNameLocalized() {
 		return false;
 	}
 
 	@Override
-	public void openInventory() {
+	public void openChest() {
 		// NO-OP
 	}
 
 	@Override
-	public void closeInventory() {
+	public void closeChest() {
 		// NO-OP
 	}
 
@@ -153,7 +153,7 @@ public class InventoryBaubleBox implements IInventory {
 	}
 
 	@Override
-	public void markDirty() {
+	public void onInventoryChanged() {
 		// NO-OP
 	}
 

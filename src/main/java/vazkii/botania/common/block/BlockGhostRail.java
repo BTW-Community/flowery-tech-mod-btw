@@ -10,13 +10,7 @@
  */
 package vazkii.botania.common.block;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.BlockRailBase;
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.minecart.MinecartUpdateEvent;
 import vazkii.botania.api.lexicon.ILexiconable;
@@ -35,17 +29,18 @@ public class BlockGhostRail extends BlockRailBase implements ILexiconable {
 
 	private static final String TAG_FLOAT_TICKS = "Botania_FloatTicks";
 
-	public BlockGhostRail() {
-		super(true);
+	public BlockGhostRail(int id) {
+		super(id, true);
 		setCreativeTab(CreativeTabs.tabMisc);
 		MinecraftForge.EVENT_BUS.register(this);
-		setBlockName(LibBlockNames.GHOST_RAIL);
+		setUnlocalizedName(LibBlockNames.GHOST_RAIL);
 	}
 
 	@Override
-	public Block setBlockName(String par1Str) {
-		GameRegistry.registerBlock(this, ItemBlockMod.class, par1Str);
-		return super.setBlockName(par1Str);
+	public Block setUnlocalizedName(String par1Str) {
+		var item = new ItemBlockMod(this);
+//		GameRegistry.registerBlock(this, ItemBlockMod.class, par1Str);
+		return super.setUnlocalizedName(par1Str);
 	}
 
 	@Override

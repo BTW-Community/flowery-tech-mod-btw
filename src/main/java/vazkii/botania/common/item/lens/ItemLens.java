@@ -13,19 +13,7 @@ package vazkii.botania.common.item.lens;
 import java.awt.Color;
 import java.util.List;
 
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.EntitySheep;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EntityThrowable;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.Icon;
-import net.minecraft.src.MovingObjectPosition;
-import net.minecraft.src.StatCollector;
-import net.minecraftforge.oredict.RecipeSorter;
-import net.minecraftforge.oredict.RecipeSorter.Category;
+import net.minecraft.src.*;
 import vazkii.botania.api.internal.IManaBurst;
 import vazkii.botania.api.mana.BurstProperties;
 import vazkii.botania.api.mana.ICompositableLens;
@@ -139,16 +127,16 @@ public class ItemLens extends ItemMod implements ILensControl, ICompositableLens
 
 	Icon[] ringIcons;
 
-	public ItemLens() {
-		super();
+	public ItemLens(int id) {
+		super(id);
 		setUnlocalizedName(LibItemNames.LENS);
 		setMaxStackSize(1);
 		setHasSubtypes(true);
 
 		CraftingManager.getInstance().getRecipeList().add(new CompositeLensRecipe());
 		CraftingManager.getInstance().getRecipeList().add(new LensDyeingRecipe());
-		RecipeSorter.register("botania:compositeLens", CompositeLensRecipe.class, Category.SHAPELESS, "");
-		RecipeSorter.register("botania:lensDying", LensDyeingRecipe.class, Category.SHAPELESS, "");
+//		RecipeSorter.register("botania:compositeLens", CompositeLensRecipe.class, Category.SHAPELESS, "");
+//		RecipeSorter.register("botania:lensDying", LensDyeingRecipe.class, Category.SHAPELESS, "");
 	}
 
 	@Override
@@ -161,7 +149,7 @@ public class ItemLens extends ItemMod implements ILensControl, ICompositableLens
 	}
 
 	@Override
-	public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
+	public void getSubItems(int par1,  CreativeTabs par2CreativeTabs, List par3List) {
 		for(int i = 0; i < SUBTYPES; i++)
 			par3List.add(new ItemStack(par1, 1, i));
 	}

@@ -36,7 +36,7 @@ public class ItemDye extends Item16Colors {
 	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
 		Block block = par3World.getBlock(par4, par5, par6);
 		int meta = par1ItemStack.getItemDamage();
-		if(meta != par3World.getBlockMetadata(par4, par5, par6) && (block == Blocks.wool || block == Blocks.carpet)) {
+		if(meta != par3World.getBlockMetadata(par4, par5, par6) && (block == Block.cloth || block == Blocks.carpet)) {
 			par3World.setBlockMetadataWithNotify(par4, par5, par6, meta, 1 | 2);
 			par1ItemStack.stackSize--;
 			return true;

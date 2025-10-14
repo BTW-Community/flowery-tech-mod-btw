@@ -38,7 +38,7 @@ public abstract class BlockRedString extends BlockModContainer<TileRedString> im
 		setHardness(2.0F);
 		setResistance(10.0F);
 		setStepSound(soundStoneFootstep);
-		setBlockName(name);
+		setUnlocalizedName(name);
 	}
 
 	@Override

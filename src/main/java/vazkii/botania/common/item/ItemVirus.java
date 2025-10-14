@@ -12,20 +12,7 @@ package vazkii.botania.common.item;
 
 import java.util.List;
 
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.SharedMonsterAttributes;
-import net.minecraft.src.AttributeModifier;
-import net.minecraft.src.BaseAttributeMap;
-import net.minecraft.src.IAttribute;
-import net.minecraft.src.IAttributeInstance;
-import net.minecraft.src.EntityHorse;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.DamageSource;
-import net.minecraft.src.Icon;
+import net.minecraft.src.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import vazkii.botania.client.core.helper.IconHelper;
@@ -41,8 +28,9 @@ public class ItemVirus extends ItemMod {
 
 	private static final int SUBTYPES = 2;
 
-	public ItemVirus() {
-		setUnlocalizedName(LibItemNames.VIRUS);
+	public ItemVirus(int id) {
+        super(id);
+        setUnlocalizedName(LibItemNames.VIRUS);
 		setHasSubtypes(true);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
@@ -54,11 +42,11 @@ public class ItemVirus extends ItemMod {
 			if(horse.getHorseType() != 3 && horse.getHorseType() != 4 && horse.isTame()) {
 				horse.setHorseType(3 + par1ItemStack.getItemDamage());
 				BaseAttributeMap attributes = horse.getAttributeMap();
-				IAttributeInstance movementSpeed = attributes.getAttributeInstance(SharedMonsterAttributes.movementSpeed);
-				IAttributeInstance health = attributes.getAttributeInstance(SharedMonsterAttributes.maxHealth);
+				AttributeInstance movementSpeed = attributes.getAttributeInstance(SharedMonsterAttributes.movementSpeed);
+				AttributeInstance health = attributes.getAttributeInstance(SharedMonsterAttributes.maxHealth);
 				health.applyModifier(new AttributeModifier("Ermergerd Virus D:", health.getBaseValue(), 0));
 				movementSpeed.applyModifier(new AttributeModifier("Ermergerd Virus D:", movementSpeed.getBaseValue(), 0));
-				IAttributeInstance jumpHeight = attributes.getAttributeInstance(ReflectionHelper.<IAttribute, EntityHorse>getPrivateValue(EntityHorse.class, null, LibObfuscation.HORSE_JUMP_STRENGTH));
+				AttributeInstance jumpHeight = attributes.getAttributeInstance(EntityHorse.horseJumpStrength);
 				jumpHeight.applyModifier(new AttributeModifier("Ermergerd Virus D:", jumpHeight.getBaseValue() * 0.5, 0));
 				par2EntityPlayer.worldObj.playSound(par3EntityLivingBase.posX + 0.5D, par3EntityLivingBase.posY + 0.5D, par3EntityLivingBase.posZ + 0.5D, "mob.zombie.remedy", 1.0F + par3EntityLivingBase.worldObj.rand.nextFloat(), par3EntityLivingBase.worldObj.rand.nextFloat() * 0.7F + 1.3F, false);
 
@@ -84,7 +72,7 @@ public class ItemVirus extends ItemMod {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void getSubItems(Item item, CreativeTabs tab, List list) {
+	public void getSubItems(int item, CreativeTabs tab, List list) {
 		for(int i = 0; i < SUBTYPES; i++)
 			list.add(new ItemStack(item, 1, i));
 	}

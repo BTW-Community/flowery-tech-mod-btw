@@ -65,4 +65,9 @@ public interface ItemExtensions {
     {
         return null;
     }
+
+    default public int getRenderPasses(int metadata)
+    {
+        return 1;
+    }
 }

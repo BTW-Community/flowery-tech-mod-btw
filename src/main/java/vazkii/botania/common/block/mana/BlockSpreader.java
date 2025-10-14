@@ -53,7 +53,7 @@ public class BlockSpreader extends BlockModContainer implements IWandable, IWand
 		super(id, Material.wood);
 		setHardness(2.0F);
 		setStepSound(soundWoodFootstep);
-		setBlockName(LibBlockNames.SPREADER);
+		setUnlocalizedName(LibBlockNames.SPREADER);
 
 		random = new Random();
 	}
@@ -64,10 +64,10 @@ public class BlockSpreader extends BlockModContainer implements IWandable, IWand
 	}
 
 	@Override
-	public Block setBlockName(String par1Str) {
+	public Block setUnlocalizedName(String par1Str) {
 		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
 //GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
-		return super.setBlockName(par1Str);
+		return super.setUnlocalizedName(par1Str);
 	}
 
 	@Override
@@ -153,13 +153,13 @@ public class BlockSpreader extends BlockModContainer implements IWandable, IWand
 				par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, null);
 
 			spreader.setInventorySlotContents(0, heldItem.copy());
-			spreader.markDirty();
+			spreader.onInventoryChanged();
 		} else if(lens != null && !wool) {
 			ItemStack add = lens.copy();
 			if(!par5EntityPlayer.inventory.addItemStackToInventory(add))
 				par5EntityPlayer.dropPlayerItemWithRandomChoice(add, false);
 			spreader.setInventorySlotContents(0, null);
-			spreader.markDirty();
+			spreader.onInventoryChanged();
 		}
 
 		if(wool && spreader.paddingColor == -1) {
@@ -172,7 +172,7 @@ public class BlockSpreader extends BlockModContainer implements IWandable, IWand
 			if(!par5EntityPlayer.inventory.addItemStackToInventory(pad))
 				par5EntityPlayer.dropPlayerItemWithRandomChoice(pad, false);
 			spreader.paddingColor = -1;
-			spreader.markDirty();
+			spreader.onInventoryChanged();
 		}
 
 		return true;

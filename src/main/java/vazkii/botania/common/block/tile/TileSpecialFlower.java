@@ -140,7 +140,7 @@ public class TileSpecialFlower extends TileMod implements IWandBindable, ISubTil
 	}
 
 	public Icon getIcon() {
-		return subTile == null ? Blocks.red_flower.getIcon(0, 0) : subTile.getIcon();
+		return subTile == null ? Block.plantRed.getIcon(0, 0) : subTile.getIcon();
 	}
 
 	public LexiconEntry getEntry() {
@@ -224,10 +224,10 @@ public class TileSpecialFlower extends TileMod implements IWandBindable, ISubTil
 	@Override
 	public int getSlowdownFactor() {
 		Block below = worldObj.getBlock(xCoord, yCoord - 1, zCoord);
-		if(below == Blocks.mycelium)
+		if(below == Block.mycelium)
 			return SLOWDOWN_FACTOR_MYCEL;
 		
-		if(below == Blocks.dirt) {
+		if(below == Block.dirt) {
 			int meta = worldObj.getBlockMetadata(xCoord, yCoord - 1, zCoord);
 			if(meta == 2)
 				return SLOWDOWN_FACTOR_PODZOL;

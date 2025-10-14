@@ -62,7 +62,7 @@ public class LensMine extends Lens {
 				if(!burst.isFake() && !entity.worldObj.isRemote) {
 					world.setBlockToAir(x, y, z);
 					if(ConfigHandler.blockBreakParticles)
-						entity.worldObj.playAuxSFX(2001, x, y, z, Block.getIdFromBlock(block) + (meta << 12));
+						entity.worldObj.playAuxSFX(2001, x, y, z, BlockExtensions.getIdFromBlock(block) + (meta << 12));
 
 					boolean offBounds = coords.posY < 0;
 					boolean doWarp = warp && !offBounds;

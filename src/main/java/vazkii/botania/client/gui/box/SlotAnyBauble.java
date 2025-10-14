@@ -10,6 +10,7 @@
  */
 package vazkii.botania.client.gui.box;
 
+import baubles.api.IBauble;
 import net.minecraft.src.Slot;
 import net.minecraft.src.ItemStack;
 import vazkii.botania.api.mana.IManaItem;

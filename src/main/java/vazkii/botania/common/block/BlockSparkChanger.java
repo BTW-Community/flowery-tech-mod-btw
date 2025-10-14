@@ -37,13 +37,13 @@ public class BlockSparkChanger extends BlockModContainer implements ILexiconable
 	Icon[] icons;
 	Random random;
 
-	public BlockSparkChanger() {
-		super(Material.rock);
+	public BlockSparkChanger(int id) {
+		super(id, Material.rock);
 		setBlockBounds(0F, 0F, 0F, 1F, 3F / 16F, 1F);
 		setHardness(2.0F);
 		setResistance(10.0F);
 		setStepSound(soundStoneFootstep);
-		setBlockName(LibBlockNames.SPARK_CHANGER);
+		setUnlocalizedName(LibBlockNames.SPARK_CHANGER);
 
 		random = new Random();
 	}
@@ -76,7 +76,7 @@ public class BlockSparkChanger extends BlockModContainer implements ILexiconable
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
+	public void onNeighborBlockChange(World world, int x, int y, int z, int block) {
 		boolean power = world.isBlockIndirectlyGettingPowered(x, y, z) || world.isBlockIndirectlyGettingPowered(x, y + 1, z);
 		int meta = world.getBlockMetadata(x, y, z);
 		boolean powered = (meta & 8) != 0;
@@ -95,15 +95,15 @@ public class BlockSparkChanger extends BlockModContainer implements ILexiconable
 		ItemStack pstack = player.getCurrentEquippedItem();
 		if(cstack != null) {
 			changer.setInventorySlotContents(0, null);
-			world.func_96440_m(x, y, z, this);
-			changer.markDirty();
+			world.func_96440_m(x, y, z, this.blockID);
+			changer.onInventoryChanged();
 			if(!player.inventory.addItemStackToInventory(cstack))
 				player.dropPlayerItemWithRandomChoice(cstack, false);
 			return true;
 		} else if(pstack != null && pstack.getItem() == ModItems.sparkUpgrade) {
 			changer.setInventorySlotContents(0, pstack.copy().splitStack(1));
-			world.func_96440_m(x, y, z, this);
-			changer.markDirty();
+			world.func_96440_m(x, y, z, this.blockID);
+			changer.onInventoryChanged();
 
 			pstack.stackSize--;
 			if(pstack.stackSize == 0)
@@ -116,7 +116,7 @@ public class BlockSparkChanger extends BlockModContainer implements ILexiconable
 	}
 
 	@Override
-	public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6) {
+	public void breakBlock(World par1World, int par2, int par3, int par4, int block, int par6) {
 		TileSimpleInventory inv = (TileSimpleInventory) par1World.getTileEntity(par2, par3, par4);
 
 		if (inv != null) {
@@ -147,10 +147,10 @@ public class BlockSparkChanger extends BlockModContainer implements ILexiconable
 				}
 			}
 
-			par1World.func_96440_m(par2, par3, par4, par5);
+			par1World.func_96440_m(par2, par3, par4, block);
 		}
 
-		super.breakBlock(par1World, par2, par3, par4, par5, par6);
+		super.breakBlock(par1World, par2, par3, par4, block, par6);
 	}
 
 	@Override

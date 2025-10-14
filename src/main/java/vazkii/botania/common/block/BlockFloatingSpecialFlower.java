@@ -33,8 +33,8 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockFloatingSpecialFlower extends BlockFloatingFlower implements ISpecialFlower, IWandable, ILexiconable, IWandHUD {
 
-	public BlockFloatingSpecialFlower() {
-		super(LibBlockNames.FLOATING_SPECIAL_FLOWER);
+	public BlockFloatingSpecialFlower(int id) {
+		super(id, LibBlockNames.FLOATING_SPECIAL_FLOWER);
 
 		CraftingManager.getInstance().getRecipeList().add(new SpecialFloatingFlowerRecipe());
 //		RecipeSorter.register("botania:floatingSpecialFlower", SpecialFloatingFlowerRecipe.class, Category.SHAPELESS, "");

@@ -10,6 +10,7 @@
  */
 package vazkii.botania.client.gui.lexicon.button;
 
+import dev.bagel.client.RenderInstances;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.RenderHelper;
 import net.minecraft.src.RenderItem;
@@ -65,8 +66,8 @@ public class GuiButtonInvisible extends GuiButtonLexicon {
 			GL11.glTranslated(-dogPos, 0, 0);
 		}
 		
-		field_146123_n = par2 >= xPosition && par3 >= yPosition && par2 < xPosition + width && par3 < yPosition + height;
-		int k = getHoverState(field_146123_n);
+		field_82253_i = par2 >= xPosition && par3 >= yPosition && par2 < xPosition + width && par3 < yPosition + height;
+		int k = getHoverState(field_82253_i);
 		boolean showStack = displayStack != null && !displayString.isEmpty();
 
 		if(!displayString.isEmpty() && k == 2) {
@@ -87,7 +88,7 @@ public class GuiButtonInvisible extends GuiButtonLexicon {
 				key = format.charAt(1);
 
 			for(EnumChatFormatting ecf : EnumChatFormatting.class.getEnumConstants())
-				if(ecf.getFormattingCode() == key) {
+				if(ecf.func_96298_a() == key) {
 					if(ecf.ordinal() > 15)
 						ecf = EnumChatFormatting.BLACK;
 					color = LibMisc.CONTROL_CODE_COLORS[ecf.ordinal()];

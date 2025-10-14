@@ -32,11 +32,11 @@ public class GuiButtonUpdateWarning extends GuiButtonLexicon {
 
 	@Override
 	public void drawButton(Minecraft par1Minecraft, int par2, int par3) {
-		if(!visible || !enabled)
+		if(!drawButton || !enabled)
 			return;
 
-		field_146123_n = par2 >= xPosition && par3 >= yPosition && par2 < xPosition + width && par3 < yPosition + height;
-		int k = getHoverState(field_146123_n);
+		field_82253_i = par2 >= xPosition && par3 >= yPosition && par2 < xPosition + width && par3 < yPosition + height;
+		int k = getHoverState(field_82253_i);
 
 		boolean red = k == 2 || ClientTickHandler.ticksInGame % 10 < 5;
 

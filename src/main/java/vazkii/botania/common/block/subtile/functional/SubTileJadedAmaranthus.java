@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.block.subtile.functional;
 
+import dev.bagel.interfaces.BlockExtensions;
 import net.minecraft.src.Block;
 import net.minecraft.src.Material;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -38,11 +39,11 @@ public class SubTileJadedAmaranthus extends SubTileFunctional {
 
 			for(int i = 0; i < RANGE * 2; i++) {
 				Block blockAbove = supertile.getWorldObj().getBlock(x, y + 1, z);
-				if((supertile.getWorldObj().isAirBlock(x, y + 1, z) || blockAbove.isReplaceable(supertile.getWorldObj(), x, y + 1, z)) && blockAbove.blockMaterial != Material.water && ModBlocks.flower.canPlaceBlockAt(supertile.getWorldObj(), x, y + 1, z)) {
+				if((supertile.getWorldObj().isAirBlock(x, y + 1, z) || blockAbove.isReplaceableVegetation(supertile.getWorldObj(), x, y + 1, z)) && blockAbove.blockMaterial != Material.water && ModBlocks.flower.canPlaceBlockAt(supertile.getWorldObj(), x, y + 1, z)) {
 					int color = supertile.getWorldObj().rand.nextInt(16);
 					if(ModBlocks.flower.canBlockStay(supertile.getWorldObj(), x, y + 1, z)) {
 						if(ConfigHandler.blockBreakParticles)
-							supertile.getWorldObj().playAuxSFX(2001, x, y + 1, z, Block.getIdFromBlock(ModBlocks.flower) + (color << 12));
+							supertile.getWorldObj().playAuxSFX(2001, x, y + 1, z, BlockExtensions.getIdFromBlock(ModBlocks.flower) + (color << 12));
 						supertile.getWorldObj().setBlock(x, y + 1, z, ModBlocks.flower, color, 1 | 2);
 					}
 

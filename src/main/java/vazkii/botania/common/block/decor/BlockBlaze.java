@@ -33,7 +33,7 @@ public class BlockBlaze extends BlockMod implements ILexiconable/*, IFuelHandler
 		setResistance(10F);
 		setStepSound(soundMetalFootstep);
 		setLightValue(1F);
-		setBlockName(LibBlockNames.BLAZE_BLOCK);
+		setUnlocalizedName(LibBlockNames.BLAZE_BLOCK);
 //		GameRegistry.registerFuelHandler(this);
 	}
 

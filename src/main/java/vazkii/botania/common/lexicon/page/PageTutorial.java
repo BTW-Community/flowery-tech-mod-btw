@@ -13,12 +13,7 @@ package vazkii.botania.common.lexicon.page;
 import java.awt.Desktop;
 import java.net.URI;
 
-import net.minecraft.src.Minecraft;
-import net.minecraft.src.GuiButton;
-import net.minecraft.src.ChatComponentTranslation;
-import net.minecraft.src.ChatStyle;
-import net.minecraft.src.EnumChatFormatting;
-import net.minecraft.src.StatCollector;
+import net.minecraft.src.*;
 import vazkii.botania.api.internal.IGuiLexiconEntry;
 import vazkii.botania.client.gui.lexicon.GuiLexicon;
 import net.fabricmc.api.Environment;
@@ -67,7 +62,7 @@ public class PageTutorial extends PageText {
 		if(button == buttonText) {
 			GuiLexicon.startTutorial();
 			Minecraft.getMinecraft().displayGuiScreen(new GuiLexicon());
-			Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentTranslation("botaniamisc.tutorialStarted").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.GREEN)));
+			Minecraft.getMinecraft().thePlayer.addChatMessage(ChatMessageComponent.createFromTranslationKey("botaniamisc.tutorialStarted").setColor(EnumChatFormatting.GREEN).toString());
 		} else if(button == buttonVideo && Desktop.isDesktopSupported()) {
 			try {
 				Desktop.getDesktop().browse(new URI("https://www.youtube.com/watch?v=rx0xyejC6fI"));

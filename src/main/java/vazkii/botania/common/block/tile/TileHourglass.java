@@ -10,6 +10,8 @@
  */
 package vazkii.botania.common.block.tile;
 
+import dev.bagel.client.RenderInstances;
+import dev.bagel.util.Items;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ScaledResolution;
 import net.minecraft.src.RenderHelper;
@@ -56,7 +58,7 @@ public class TileHourglass extends TileSimpleInventory {
 				flip = !flip;
 				flipTicks = 4;
 				worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 1, 1 | 2);
-				worldObj.scheduleBlockUpdate(xCoord, yCoord, zCoord, getBlockType(), getBlockType().tickRate(worldObj));
+				worldObj.scheduleBlockUpdate(xCoord, yCoord, zCoord, getBlockType().blockID, getBlockType().tickRate(worldObj));
 			}
 			timeFraction = (float) time / (float) totalTime;
 		} else {
@@ -79,9 +81,9 @@ public class TileHourglass extends TileSimpleInventory {
 	public static int getStackItemTime(ItemStack stack) {
 		if(stack == null)
 			return 0;
-		if(stack.getItem() == Item.getItemFromBlock(Blocks.sand))
+		if(stack.getItem() == Items.getItemFromBlock(Block.sand))
 			return stack.getItemDamage() == 1 ? 200 : 20;
-		if(stack.getItem() == Item.getItemFromBlock(Blocks.soul_sand))
+		if(stack.getItem() == Items.getItemFromBlock(Block.slowSand))
 			return 1200;
 		return 0;
 	}
@@ -90,9 +92,9 @@ public class TileHourglass extends TileSimpleInventory {
 		ItemStack stack = getStackInSlot(0);
 		if(stack == null)
 			return 0;
-		if(stack.getItem() == Item.getItemFromBlock(Blocks.sand))
+		if(stack.getItem() == Items.getItemFromBlock(Block.sand))
 			return stack.getItemDamage() == 1 ? 0xE95800 : 0xFFEC49;
-		if(stack.getItem() == Item.getItemFromBlock(Blocks.soul_sand))
+		if(stack.getItem() == Items.getItemFromBlock(Block.slowSand))
 			return 0x5A412f;
 		return 0;
 	}
@@ -102,7 +104,7 @@ public class TileHourglass extends TileSimpleInventory {
 		if(itemstack == null)
 			return false;
 		Item item = itemstack.getItem();
-		return item == Item.getItemFromBlock(Blocks.sand) || item == Item.getItemFromBlock(Blocks.soul_sand);
+		return item == Items.getItemFromBlock(Block.sand) || item == Items.getItemFromBlock(Block.slowSand);
 	}
 
 	@Override
@@ -133,8 +135,8 @@ public class TileHourglass extends TileSimpleInventory {
 	}
 
 	@Override
-	public void markDirty() {
-		super.markDirty();
+	public void onInventoryChanged() {
+		super.onInventoryChanged();
 		time = 0;
 		timeFraction = 0F;
 		VanillaPacketDispatcher.dispatchTEToNearbyPlayers(this);

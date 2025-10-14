@@ -29,8 +29,8 @@ public class BlockCorporeaFunnel extends BlockCorporeaBase implements ILexiconab
 
 	Icon[] icons;
 
-	public BlockCorporeaFunnel() {
-		super(Material.iron, LibBlockNames.CORPOREA_FUNNEL);
+	public BlockCorporeaFunnel(int id) {
+		super(id, Material.iron, LibBlockNames.CORPOREA_FUNNEL);
 		setHardness(5.5F);
 		setStepSound(soundMetalFootstep);
 	}
@@ -43,7 +43,7 @@ public class BlockCorporeaFunnel extends BlockCorporeaBase implements ILexiconab
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
+	public void onNeighborBlockChange(World world, int x, int y, int z, int block) {
 		boolean power = world.isBlockIndirectlyGettingPowered(x, y, z) || world.isBlockIndirectlyGettingPowered(x, y + 1, z);
 		int meta = world.getBlockMetadata(x, y, z);
 		boolean powered = (meta & 8) != 0;

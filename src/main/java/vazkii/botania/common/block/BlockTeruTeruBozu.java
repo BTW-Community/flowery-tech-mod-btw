@@ -10,16 +10,8 @@
  */
 package vazkii.botania.common.block;
 
-import net.minecraft.src.Material;
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityItem;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.Icon;
-import net.minecraft.src.World;
+import dev.bagel.util.Items;
+import net.minecraft.src.*;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.client.lib.LibRenderIDs;
@@ -29,9 +21,9 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockTeruTeruBozu extends BlockModContainer implements ILexiconable {
 
-	public BlockTeruTeruBozu() {
-		super(Material.cloth);
-		setBlockName(LibBlockNames.TERU_TERU_BOZU);
+	public BlockTeruTeruBozu(int id) {
+		super(id, Material.cloth);
+		setUnlocalizedName(LibBlockNames.TERU_TERU_BOZU);
 		float f = 0.25F;
 		setBlockBounds(f, 0.01F, f, 1F - f, 0.99F, 1F - f);
 	}
@@ -59,13 +51,15 @@ public class BlockTeruTeruBozu extends BlockModContainer implements ILexiconable
 		}
 		return false;
 	}
-
+//todofix blue orchid and sunflower check in teru teru bozu
 	public boolean isSunflower(ItemStack stack) {
-		return stack.getItem() == Item.getItemFromBlock(Blocks.double_plant) && stack.getItemDamage() == 0;
+		return false;
+//		return stack.getItem() == Items.getItemFromBlock(Block.double_plant) && stack.getItemDamage() == 0;
 	}
 
 	public boolean isBlueOrchid(ItemStack stack) {
-		return stack.getItem() == Item.getItemFromBlock(Blocks.red_flower) && stack.getItemDamage() == 1;
+		return false;
+//		return stack.getItem() == Items.getItemFromBlock(Block.red_flower) && stack.getItemDamage() == 1;
 	}
 
 	public boolean removeRain(World world) {
@@ -102,7 +96,7 @@ public class BlockTeruTeruBozu extends BlockModContainer implements ILexiconable
 
 	@Override
 	public Icon getIcon(int side, int meta) {
-		return Blocks.wool.getIcon(0, 0);
+		return Block.cloth.getIcon(0, 0);
 	}
 
 	@Override

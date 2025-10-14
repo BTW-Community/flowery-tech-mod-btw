@@ -359,7 +359,7 @@ public final class ModBlocks {
 		altGrass = new BlockAltGrass(508);
 
 		//todo fluff blocks
-//		ModFluffBlocks.init();
+		ModFluffBlocks.init();
 /*
 
 		for(int i = 0; i < 16; i++)
@@ -374,23 +374,23 @@ public final class ModBlocks {
 			OreDictionary.registerOre(LibOreDict.DOUBLE_FLOWER[i + 8], new ItemStack(doubleFlower2, 1, i));
 		}
 
-		OreDictionary.registerOre(LibOreDict.PRISMARINE_BLOCK, new ItemStack(prismarine, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre(LibOreDict.PRISMARINE_BLOCK, new ItemStack(prismarine, 1, InventoryUtils.IGNORE_METADATA));
 		OreDictionary.registerOre(LibOreDict.BLAZE_BLOCK, blazeBlock);
 
 		for(int i = 0; i < 16; i++)
 			OreDictionary.registerOre(LibOreDict.STONE_18_VARIANTS[i], new ItemStack(ModFluffBlocks.stone, 1, i));
 
 		// Vanilla OreDict entries
-		OreDictionary.registerOre("dirt", Blocks.dirt);
+		OreDictionary.registerOre("dirt", Block.dirt);
 		OreDictionary.registerOre("grass", Blocks.grass);
 		OreDictionary.registerOre("sand", Block.getBlockFromName("sand"));
 		OreDictionary.registerOre("gravel", Block.getBlockFromName("gravel"));
-		OreDictionary.registerOre("hardenedClay", new ItemStack(Blocks.hardened_clay, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("hardenedClay", new ItemStack(Blocks.hardened_clay, 1, InventoryUtils.IGNORE_METADATA));
 		OreDictionary.registerOre("snowLayer", Blocks.snow_layer);
 		OreDictionary.registerOre("mycelium", Blocks.mycelium);
-		OreDictionary.registerOre("podzol", new ItemStack(Blocks.dirt, 1, 2));
+		OreDictionary.registerOre("podzol", new ItemStack(Block.dirt, 1, 2));
 		OreDictionary.registerOre("netherrack", Blocks.netherrack);
-		OreDictionary.registerOre("soulSand", Blocks.soul_sand);
+		OreDictionary.registerOre("soulSand", Block.slowSand);
 		OreDictionary.registerOre("ice", Blocks.ice);
 		OreDictionary.registerOre("slabCobblestone", new ItemStack(Blocks.stone_slab, 1, 3));
 		OreDictionary.registerOre("chestWood", Blocks.chest);

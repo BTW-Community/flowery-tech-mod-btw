@@ -27,8 +27,8 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockCorporeaCrystalCube extends BlockCorporeaBase implements ILexiconable {
 
-	public BlockCorporeaCrystalCube() {
-		super(Material.iron, LibBlockNames.CORPOREA_CRYSTAL_CUBE);
+	public BlockCorporeaCrystalCube(int id) {
+		super(id, Material.iron, LibBlockNames.CORPOREA_CRYSTAL_CUBE);
 		setHardness(5.5F);
 		setStepSound(soundMetalFootstep);
 		float f = (1F - 10F / 16F) / 2F;

@@ -12,20 +12,9 @@ package vazkii.botania.common.item.relic;
 
 import java.util.List;
 
-import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.SharedMonsterAttributes;
-import net.minecraft.src.AttributeModifier;
-import net.minecraft.src.EntityItem;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.IInventory;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.Achievement;
-import net.minecraft.src.ChunkCoordinates;
+import net.minecraft.src.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
-import net.minecraftforge.oredict.RecipeSorter;
-import net.minecraftforge.oredict.RecipeSorter.Category;
 import vazkii.botania.api.item.IExtendedWireframeCoordinateListProvider;
 import vazkii.botania.api.item.IWireframeCoordinateListProvider;
 import vazkii.botania.common.achievement.ICraftAchievement;
@@ -48,7 +37,7 @@ public class ItemAesirRing extends ItemRelicBauble implements IExtendedWireframe
 	public ItemAesirRing() {
 		super(LibItemNames.AESIR_RING);
 		CraftingManager.getInstance().getRecipeList().add(new AesirRingRecipe());
-		RecipeSorter.register("botania:aesirRing", AesirRingRecipe.class, Category.SHAPELESS, "");
+//		RecipeSorter.register("botania:aesirRing", AesirRingRecipe.class, Category.SHAPELESS, "");
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 

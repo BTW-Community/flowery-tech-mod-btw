@@ -17,15 +17,12 @@ import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
-import thaumcraft.api.IScribeTools;
 import vazkii.botania.api.mana.IManaItem;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.item.ItemMod;
 import vazkii.botania.common.lib.LibItemNames;
-import cpw.mods.fml.common.Optional;
 
-@Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.IScribeTools")
-public class ItemManaInkwell extends ItemMod implements IManaItem, IScribeTools {
+public class ItemManaInkwell extends ItemMod implements IManaItem {
 
 	private static final int COST_PER_USE = 50;
 	private static final int USES = 150;
@@ -33,48 +30,49 @@ public class ItemManaInkwell extends ItemMod implements IManaItem, IScribeTools 
 
 	private static final String TAG_MANA = "mana";
 
-	public ItemManaInkwell() {
-		setUnlocalizedName(LibItemNames.MANA_INKWELL);
+	public ItemManaInkwell(int id) {
+        super(id);
+        setUnlocalizedName(LibItemNames.MANA_INKWELL);
 		setMaxDamage(USES);
 		setMaxStackSize(1);
-		setNoRepair();
+//		setNoRepair();
 	}
 
 	@Override
-	public void getSubItems(Item item, CreativeTabs tab, List list) {
+	public void getSubItems(int item, CreativeTabs tab, List list) {
 		list.add(new ItemStack(item, 1, USES));
-		list.add(new ItemStack(item));
+		list.add(new ItemStack(Item.itemsList[item]));
 	}
 
-	@Override
-	public int getDamage(ItemStack stack) {
-		float mana = getMana(stack);
-		return USES - (int) (mana / getMaxMana(stack) * USES);
-	}
+//	@Override
+//	public int getDamage(ItemStack stack) {
+//		float mana = getMana(stack);
+//		return USES - (int) (mana / getMaxMana(stack) * USES);
+//	}
+//
+//	@Override
+//	public void setDamage(ItemStack stack, int damage) {
+//		int currentDamage = stack.getItemDamage();
+//		if(damage > currentDamage) {
+//			int cost = (damage - currentDamage) * COST_PER_USE;
+//			int mana = getMana(stack);
+//			if(mana >= cost) {
+//				addMana(stack, -cost);
+//				return;
+//			}
+//		}
+//		super.setDamage(stack, damage);
+//	}
 
-	@Override
-	public void setDamage(ItemStack stack, int damage) {
-		int currentDamage = stack.getItemDamage();
-		if(damage > currentDamage) {
-			int cost = (damage - currentDamage) * COST_PER_USE;
-			int mana = getMana(stack);
-			if(mana >= cost) {
-				addMana(stack, -cost);
-				return;
-			}
-		}
-		super.setDamage(stack, damage);
-	}
-
-	@Override
-	public int getDisplayDamage(ItemStack stack) {
-		return getDamage(stack);
-	}
-
-	@Override
-	public int getEntityLifespan(ItemStack itemStack, World world) {
-		return Integer.MAX_VALUE;
-	}
+//	@Override
+//	public int getDisplayDamage(ItemStack stack) {
+//		return getDamage(stack);
+//	}
+//
+//	@Override
+//	public int getEntityLifespan(ItemStack itemStack, World world) {
+//		return Integer.MAX_VALUE;
+//	}
 
 	public static void setMana(ItemStack stack, int mana) {
 		ItemNBTHelper.setInt(stack, TAG_MANA, mana);
@@ -93,7 +91,7 @@ public class ItemManaInkwell extends ItemMod implements IManaItem, IScribeTools 
 	@Override
 	public void addMana(ItemStack stack, int mana) {
 		setMana(stack, Math.min(getMana(stack) + mana, getMaxMana(stack)));
-		stack.setItemDamage(getDamage(stack));
+//		stack.setItemDamage(getDamage(stack));
 	}
 
 	@Override

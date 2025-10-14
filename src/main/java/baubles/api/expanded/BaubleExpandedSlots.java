@@ -45,10 +45,10 @@ public class BaubleExpandedSlots {
 			if(isTypeRegistered(type)) {
 				return true;
 			} else {
-				if(Loader.instance().getLoaderState() == LoaderState.PREINITIALIZATION) {
+//				if(Loader.instance().getLoaderState() == LoaderState.PREINITIALIZATION) {
 					registeredTypes.add(type);
 					return true;
-				}
+//				}
 			}
 		}
 		return false;
@@ -64,7 +64,9 @@ public class BaubleExpandedSlots {
 	 * @return If the total assigned slots of the specified type equals or is more than the minimum.
 	 */
 	public static boolean tryAssignSlotsUpToMinimum(String type, int minimumOfType) {
-		if(minimumOfType >= 1 && isTypeRegistered(type) && !type.equals(unknownType) && Loader.instance().getLoaderState() == LoaderState.PREINITIALIZATION) {
+		if(minimumOfType >= 1 && isTypeRegistered(type) && !type.equals(unknownType)
+//				&& Loader.instance().getLoaderState() == LoaderState.PREINITIALIZATION
+		) {
 			int total = 0;
 			for(int slotToCheck = 0; slotToCheck < slotLimit; slotToCheck++) {
 				if(assignedSlots[slotToCheck].equals(type)) {
@@ -99,7 +101,9 @@ public class BaubleExpandedSlots {
 	 */
 	public static boolean tryUnassignSlotsDownToMaximum(String type, int maximumOfType) {
 		if(maximumOfType < 0) maximumOfType = 0;
-		if(isTypeRegistered(type) && !type.equals(unknownType) && Loader.instance().getLoaderState() == LoaderState.PREINITIALIZATION) {
+		if(isTypeRegistered(type) && !type.equals(unknownType)
+//				&& Loader.instance().getLoaderState() == LoaderState.PREINITIALIZATION
+		) {
 			int total = 0;
 			for(int slotToCheck = 0; slotToCheck < slotLimit; slotToCheck++) {
 				if(assignedSlots[slotToCheck].equals(type)) {
@@ -136,7 +140,9 @@ public class BaubleExpandedSlots {
 	 * @return If assigning a type to a slot was successful or not.
 	 */
 	public static boolean tryAssignSlotOfType(String type) {
-		if(newSlotsRemaining >= 1 && isTypeRegistered(type) && !type.equals(unknownType) && Loader.instance().getLoaderState() == LoaderState.PREINITIALIZATION) {
+		if(newSlotsRemaining >= 1 && isTypeRegistered(type) && !type.equals(unknownType)
+//				&& Loader.instance().getLoaderState() == LoaderState.PREINITIALIZATION
+				) {
 			assignedSlots[slotLimit - newSlotsRemaining] = type;
 			newSlotsRemaining--;
 			return true;
@@ -154,7 +160,9 @@ public class BaubleExpandedSlots {
 	* @return If unassigning a slot was successful or not.
 	*/
 	public static boolean tryUnassignSlotOfType(String type) {
-		if(newSlotsRemaining < slotLimit && type != null && !type.equals(unknownType) && Loader.instance().getLoaderState() == LoaderState.PREINITIALIZATION) {
+		if(newSlotsRemaining < slotLimit && type != null && !type.equals(unknownType)
+//				&& Loader.instance().getLoaderState() == LoaderState.PREINITIALIZATION
+		) {
 			for(int slotToCheck = slotsCurrentlyUsed(); slotToCheck >= 0; slotToCheck--) {
 				if(assignedSlots[slotToCheck].equals(type)) {
 					for(int slotToMove = slotToCheck + 1; slotToMove < slotLimit; slotToMove++) {
@@ -313,7 +321,7 @@ public class BaubleExpandedSlots {
 	 * @param overrideSlots The array to override assigned slots with.
 	 */
 	public static void overrideSlots(String[] overrideSlots) {
-		if(Loader.instance().getLoaderState() == LoaderState.INITIALIZATION) {
+//		if(Loader.instance().getLoaderState() == LoaderState.INITIALIZATION) {
 			newSlotsRemaining = 0;
 			for(int slot = 0; slot < slotLimit; slot++) {
 				if(slot < overrideSlots.length && isTypeRegistered(overrideSlots[slot]) && !overrideSlots[slot].equals(unknownType)) {
@@ -323,7 +331,7 @@ public class BaubleExpandedSlots {
 					newSlotsRemaining++;
 				}
 			}
-		}
+//		}
 	}
 
 	private static int newSlotsRemaining;

@@ -11,19 +11,7 @@
 package vazkii.botania.client.core.handler;
 
 import dev.bagel.client.RenderInstances;
-import net.minecraft.src.Block;
-import net.minecraft.src.Minecraft;
-import net.minecraft.src.RenderBlocks;
-import net.minecraft.src.Tessellator;
-import net.minecraft.src.RenderManager;
-import net.minecraft.src.TextureMap;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.ChunkCoordinates;
-import net.minecraft.src.EnumChatFormatting;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.MovingObjectPosition;
-import net.minecraft.src.IBlockAccess;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
@@ -102,7 +90,7 @@ public final class MultiblockRenderHandler {
 			
 			if(!didAny) {
 				setMultiblock(null);
-				player.addChatComponentMessage(new ChatComponentTranslation("botaniamisc.structureComplete").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.GREEN)));
+				player.addChatMessage(ChatMessageComponent.createFromTranslationKey("botaniamisc.structureComplete").setColor(EnumChatFormatting.GREEN).toString());
 			}
 		}
 	}
@@ -160,7 +148,7 @@ public final class MultiblockRenderHandler {
 				IBlockAccess oldBlockAccess = blockRender.blockAccess;
 				blockRender.blockAccess = blockAccess;
 				Tessellator tessellator = Tessellator.instance;
-				blockRender.renderAllFaces = true;
+				blockRender.setRenderAllFaces(true);
 				tessellator.startDrawingQuads();
 				tessellator.disableColor();
 				try {
@@ -170,7 +158,7 @@ public final class MultiblockRenderHandler {
 					comp.doFancyRender = false;
 				}
 				tessellator.draw();
-				blockRender.renderAllFaces = false;
+				blockRender.setRenderAllFaces(false);
 				blockRender.blockAccess = oldBlockAccess;
 			}
 			else {

@@ -4,6 +4,8 @@ import baubles.api.IBauble;
 import baubles.common.Baubles;
 import baubles.common.container.InventoryBaubles;
 import baubles.common.lib.PlayerHandler;
+import btw.client.mojapi.ProfileUtils;
+import btw.client.mojapi.UserProfile;
 import com.google.common.io.Files;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.src.EntityPlayer;
@@ -12,6 +14,7 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Optional;
 
 public class EventHandlerEntity {
 
@@ -67,15 +70,18 @@ public class EventHandlerEntity {
 
 		// look for uuid files when normal file missing
 		if (!mainFile.exists()) {
-			File filep = getPlayerFile(fileExtension, directory, player.getGameProfile().getId().toString());
-			if (filep.exists()) {
-				try {
-					Files.copy(filep, mainFile);
-					Baubles.log.info("Using and converting UUID Baubles savefile for " + player.getCommandSenderName());
-					filep.delete();
-					File fb = getPlayerFile(fileExtensionBackup, directory, player.getGameProfile().getId().toString());
-					if (fb.exists()) fb.delete();
-				} catch (IOException e) {}
+			UserProfile profile = ProfileUtils.getUserProfile(player.username, true).orElse(null);
+			if (profile != null) {
+				File filep = getPlayerFile(fileExtension, directory, profile.getUuid().toString());
+				if (filep.exists()) {
+					try {
+						Files.copy(filep, mainFile);
+						Baubles.log.info("Using and converting UUID Baubles savefile for " + player.getCommandSenderName());
+						filep.delete();
+						File fb = getPlayerFile(fileExtensionBackup, directory, profile.getUuid().toString());
+						if (fb.exists()) fb.delete();
+					} catch (IOException e) {}
+				}
 			}
 		}
 

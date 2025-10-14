@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.block;
 
+import dev.bagel.interfaces.BlockExtensions;
 import net.minecraft.src.Material;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IInventory;
@@ -28,17 +29,17 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockManaBomb extends BlockMod implements IManaTrigger, ILexiconable, ICraftAchievement {
 
-	public BlockManaBomb() {
-		super(Material.wood);
+	public BlockManaBomb(int id) {
+		super(id, Material.wood);
 		setHardness(12.0F);
 		setStepSound(soundWoodFootstep);
-		setBlockName(LibBlockNames.MANA_BOMB);
+		setUnlocalizedName(LibBlockNames.MANA_BOMB);
 	}
 
 	@Override
 	public void onBurstCollision(IManaBurst burst, World world, int x, int y, int z) {
 		if(!burst.isFake() && !world.isRemote) {
-			world.playAuxSFX(2001, x, y, z, getIdFromBlock(this));
+			world.playAuxSFX(2001, x, y, z, BlockExtensions.getIdFromBlock(this));
 			world.setBlockToAir(x, y, z);
 			EntityManaStorm storm = new EntityManaStorm(world);
 			storm.setPosition(x + 0.5, y + 0.5, z + 0.5);

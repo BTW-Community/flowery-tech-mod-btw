@@ -25,7 +25,7 @@ public class BlockSolidVines extends BlockVine implements ILexiconable {
 
 	public BlockSolidVines(int id) {
 		super(id);
-		setBlockName(LibBlockNames.SOLID_VINE);
+		setUnlocalizedName(LibBlockNames.SOLID_VINE);
 		setHardness(0.5F);
 		setStepSound(soundGrassFootstep);
 		setTextureName("vine");
@@ -44,7 +44,7 @@ public class BlockSolidVines extends BlockVine implements ILexiconable {
 	}
 
 //	@Override
-	public Block setBlockName(String par1Str) {
+	public Block setUnlocalizedName(String par1Str) {
 		var item = new ItemBlockMod(this);
 //		GameRegistry.registerBlock(this, ItemBlockMod.class, par1Str);
 		return this;

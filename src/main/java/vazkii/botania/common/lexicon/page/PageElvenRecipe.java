@@ -13,7 +13,6 @@ import net.minecraft.src.TextureMap;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Icon;
 import net.minecraft.src.ResourceLocation;
-import net.minecraftforge.oredict.OreDictionary;
 
 import org.lwjgl.opengl.GL11;
 
@@ -70,8 +69,10 @@ public class PageElvenRecipe extends PageRecipe {
 		int i = 0;
 		for(Object obj : inputs) {
 			Object input = obj;
-			if(input instanceof String)
-				input = OreDictionary.getOres((String) input).get(0);
+			if(input instanceof String) {
+				//todofix elven recipe use tags
+//				input = OreDictionary.getOres((String) input).get(0);
+			}
 
 			renderItemAtInputPos(gui, i, (ItemStack) input);
 			i++;

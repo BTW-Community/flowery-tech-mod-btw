@@ -92,7 +92,7 @@ public class TileCorporeaCrystalCube extends TileCorporeaBase implements ICorpor
 
 	private void onUpdateCount() {
 		compValue = getComparatorValue();
-		worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
+		worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord).blockID);
 	}
 
 	@Override

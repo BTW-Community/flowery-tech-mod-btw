@@ -36,7 +36,7 @@ public class BlockModWall extends BlockWall implements ILexiconable {
 		super(block);
 		this.block = block;
 		this.meta = meta;
-		setBlockName(block.getUnlocalizedName().replaceAll("tile.", "") + meta + "Wall");
+		setUnlocalizedName(block.getUnlocalizedName().replaceAll("tile.", "") + meta + "Wall");
 	}
 
 	@Override
@@ -45,9 +45,9 @@ public class BlockModWall extends BlockWall implements ILexiconable {
 	}
 
 	@Override
-	public Block setBlockName(String par1Str) {
+	public Block setUnlocalizedName(String par1Str) {
 		register(par1Str);
-		return super.setBlockName(par1Str);
+		return super.setUnlocalizedName(par1Str);
 	}
 
 	public void register(String name) {

@@ -97,7 +97,7 @@ public final class ToolCommons {
 			} else world.setBlockToAir(x, y, z);
 
 			if(particles && !world.isRemote && ConfigHandler.blockBreakParticles && ConfigHandler.blockBreakParticlesTool)
-				world.playAuxSFX(2001, x, y, z, Block.getIdFromBlock(blk) + (meta << 12));
+				world.playAuxSFX(2001, x, y, z, BlockExtensions.getIdFromBlock(blk) + (meta << 12));
 		}
 	}
 

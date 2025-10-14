@@ -85,7 +85,7 @@ public class TileIncensePlate extends TileSimpleInventory implements ISidedInven
 			newComparator = 2;
 		if(comparatorOutput != newComparator) {
 			comparatorOutput = newComparator;
-			worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
+			worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlockId(xCoord, yCoord, zCoord));
 		}
 	}
 
@@ -144,8 +144,8 @@ public class TileIncensePlate extends TileSimpleInventory implements ISidedInven
 	}
 
 	@Override
-	public void markDirty() {
-		super.markDirty();
+	public void onInventoryChanged() {
+		super.onInventoryChanged();
 		if(!worldObj.isRemote)
 			VanillaPacketDispatcher.dispatchTEToNearbyPlayers(this);
 	}

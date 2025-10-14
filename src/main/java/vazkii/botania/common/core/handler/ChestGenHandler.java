@@ -12,11 +12,10 @@ package vazkii.botania.common.core.handler;
 
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.WeightedRandomChestContent;
-import net.minecraftforge.common.ChestGenHooks;
 import vazkii.botania.common.item.ModItems;
 
 public final class ChestGenHandler {
-
+//todofix chest gen hooks
 	public static void init() {
 		String c = ChestGenHooks.BONUS_CHEST;
 		ChestGenHooks.addItem(c, new WeightedRandomChestContent(new ItemStack(ModItems.lexicon), 1, 1, 7));

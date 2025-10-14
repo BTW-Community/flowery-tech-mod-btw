@@ -12,6 +12,7 @@ package vazkii.botania.client.core.handler;
 
 import java.util.regex.Pattern;
 
+import dev.bagel.client.RenderInstances;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ScaledResolution;
 import net.minecraft.src.RenderHelper;

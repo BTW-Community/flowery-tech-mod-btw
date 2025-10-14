@@ -17,8 +17,8 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockRedStringContainer extends BlockRedString {
 
-	public BlockRedStringContainer() {
-		super(LibBlockNames.RED_STRING_CONTAINER);
+	public BlockRedStringContainer(int id) {
+		super(id, LibBlockNames.RED_STRING_CONTAINER);
 	}
 
 	@Override

@@ -364,10 +364,10 @@ public class GuiLexicon extends GuiScreen {
 			ClientTickHandler.notifyPageChange();
 		} else switch(par1GuiButton.id) {
 		case -1 :
-			mc.displayGuiScreen(new GuiBotaniaConfig(this));
+//			mc.displayGuiScreen(new GuiBotaniaConfig(this));
 			break;
 		case -2 :
-			mc.displayGuiScreen(new GuiAchievementsHacky( mc.thePlayer.getStatFileWriter()));
+//			mc.displayGuiScreen(new GuiAchievementsHacky( mc.thePlayer.getStatFileWriter()));
 			break;
 		case -3 :
 			mc.displayGuiScreen(new GuiLexiconChallengesList());

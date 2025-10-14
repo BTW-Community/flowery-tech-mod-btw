@@ -44,7 +44,7 @@ public class BlockAltGrass extends BlockMod implements ILexiconable {
 		super(id, Material.grass);
 		setHardness(0.6F);
 		setStepSound(soundGrassFootstep);
-		setBlockName(LibBlockNames.ALT_GRASS);
+		setUnlocalizedName(LibBlockNames.ALT_GRASS);
 		setTickRandomly(true);
 	}
 
@@ -59,10 +59,10 @@ public class BlockAltGrass extends BlockMod implements ILexiconable {
 	}
 
 	@Override
-	public Block setBlockName(String par1Str) {
+	public Block setUnlocalizedName(String par1Str) {
 		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
 //GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
-		return super.setBlockName(par1Str);
+		return super.setUnlocalizedName(par1Str);
 	}
 
 	@Override
@@ -99,7 +99,7 @@ public class BlockAltGrass extends BlockMod implements ILexiconable {
 
 				world.getBlock(i1, j1 + 1, k1);
 
-				if(world.getBlock(i1, j1, k1) == Block.dirt && world.getBlockMetadata(i1, j1, k1) == 0 && world.getBlockLightValue(i1, j1 + 1, k1) >= 4 && world.getBlockLightOpacity(i1, j1 + 1, k1) <= 2)
+				if(world.getBlock(i1, j1, k1) == Block.dirt && world.getBlockMetadata(i1, j1, k1) == 0 && world.getBlockLightValue(i1, j1 + 1, k1) >= 4 && world.getBlockLightValue(i1, j1 + 1, k1) <= 2)
 					world.setBlock(i1, j1, k1, this, meta, 1 | 2);
 			}
 		}

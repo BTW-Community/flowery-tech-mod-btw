@@ -131,9 +131,9 @@ public class ItemMagnetRing extends ItemBauble {
 		if(stack == null || stack.getItem() instanceof IManaItem || stack.getItem() instanceof IRelic || BLACKLIST.contains(itemRegistry.getNameForObject(stack.getItem())) || BotaniaAPI.isItemBlacklistedFromMagnet(stack))
 			return false;
 
-		int x = net.minecraft.util.MathHelper.floor_double(item.posX);
+		int x = net.minecraft.src.MathHelper.floor_double(item.posX);
 		int y = (int) Math.floor(item.posY);
-		int z = net.minecraft.util.MathHelper.floor_double(item.posZ);
+		int z = net.minecraft.src.MathHelper.floor_double(item.posZ);
 		Block block = item.worldObj.getBlock(x, y, z);
 		int meta = item.worldObj.getBlockMetadata(x, y, z);
 

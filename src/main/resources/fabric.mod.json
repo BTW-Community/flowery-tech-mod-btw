@@ -36,7 +36,9 @@
       "net/minecraft/class_197": ["dev/bagel/interfaces/BlockExtensions"],
       "net/minecraft/class_474": ["dev/bagel/interfaces/NBTTagListExtensions"],
       "net/minecraft/class_864": ["dev/bagel/interfaces/EntityExtensions"],
-      "net/minecraft/class_1069": ["dev/bagel/interfaces/ItemExtensions"]
+      "net/minecraft/class_1069": ["dev/bagel/interfaces/ItemExtensions"],
+      "net/minecraft/class_988": ["dev/bagel/interfaces/EntityPlayerExtensions"],
+      "net/minecraft/class_226": ["dev/bagel/interfaces/TileEntityExtensions"]
     }
   }
 }

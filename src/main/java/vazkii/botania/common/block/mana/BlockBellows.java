@@ -33,11 +33,11 @@ public class BlockBellows extends BlockModContainer implements ILexiconable {
 
 	private static final int[] META_ROTATIONS = new int[] { 3, 4, 2, 5 };
 
-	public BlockBellows() {
-		super(Material.wood);
+	public BlockBellows(int id) {
+		super(id, Material.wood);
 		setHardness(2.0F);
 		setStepSound(soundWoodFootstep);
-		setBlockName(LibBlockNames.BELLOWS);
+		setUnlocalizedName(LibBlockNames.BELLOWS);
 
 		float f = (1F - 10 / 16F) / 2F;
 		setBlockBounds(f, 0F, f, 1F - f, 10F / 16F, 1F - f);

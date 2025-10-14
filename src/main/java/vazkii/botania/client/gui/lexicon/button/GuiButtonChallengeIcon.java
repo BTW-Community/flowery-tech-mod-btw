@@ -13,6 +13,7 @@ package vazkii.botania.client.gui.lexicon.button;
 import java.util.ArrayList;
 import java.util.List;
 
+import dev.bagel.client.RenderInstances;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.RenderHelper;
 import net.minecraft.src.RenderItem;
@@ -35,8 +36,8 @@ public class GuiButtonChallengeIcon extends GuiButtonLexicon {
 
 	@Override
 	public void drawButton(Minecraft par1Minecraft, int par2, int par3) {
-		field_146123_n = par2 >= xPosition && par3 >= yPosition && par2 < xPosition + width && par3 < yPosition + height;
-		int k = getHoverState(field_146123_n);
+		field_82253_i = par2 >= xPosition && par3 >= yPosition && par2 < xPosition + width && par3 < yPosition + height;
+		int k = getHoverState(field_82253_i);
 
 		RenderHelper.enableGUIStandardItemLighting();
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL);

@@ -35,12 +35,12 @@ public class BlockEndStoneBrick extends BlockMod implements ILexiconable {
 
 	private static Icon[] icons = new Icon[5];
 
-	public BlockEndStoneBrick() {
-		super(Material.rock);
+	public BlockEndStoneBrick(int id) {
+		super(id, Material.rock);
 		setHardness(1.5F);
 		setResistance(10F);
 		setStepSound(soundStoneFootstep);
-		setBlockName(LibBlockNames.END_STONE_BRICK);
+		setUnlocalizedName(LibBlockNames.END_STONE_BRICK);
 	}
 
 	@Override
@@ -72,10 +72,10 @@ public class BlockEndStoneBrick extends BlockMod implements ILexiconable {
 	}
 
 	@Override
-	public Block setBlockName(String par1Str) {
+	public Block setUnlocalizedName(String par1Str) {
 		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
 //GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
-		return super.setBlockName(par1Str);
+		return super.setUnlocalizedName(par1Str);
 	}
 
 	@Override

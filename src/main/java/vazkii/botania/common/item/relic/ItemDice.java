@@ -13,15 +13,7 @@ package vazkii.botania.common.item.relic;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EntityPlayerMP;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.Achievement;
-import net.minecraft.src.ChatComponentTranslation;
-import net.minecraft.src.ChatStyle;
-import net.minecraft.src.EnumChatFormatting;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import vazkii.botania.api.item.IRelic;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.lib.LibItemNames;
@@ -69,12 +61,12 @@ public class ItemDice extends ItemRelic {
 			world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (world.rand.nextFloat() * 0.4F + 0.8F));
 
 			if(hasRelicAlready(player, relic)) {
-				player.addChatMessage(new ChatComponentTranslation("botaniamisc.dudDiceRoll", relic + 1).setChatStyle(new ChatStyle().setColor(EnumChatFormatting.DARK_GREEN)));
+				player.addChatMessage(ChatMessageComponent.createFromTranslationWithSubstitutions("botaniamisc.dudDiceRoll", relic + 1).setColor(EnumChatFormatting.DARK_GREEN).toString());
 				stack.stackSize--;
 				return stack;
 			}
 
-			player.addChatMessage(new ChatComponentTranslation("botaniamisc.diceRoll", relic + 1).setChatStyle(new ChatStyle().setColor(EnumChatFormatting.DARK_GREEN)));
+			player.addChatMessage(ChatMessageComponent.createFromTranslationWithSubstitutions("botaniamisc.diceRoll", relic + 1).setColor((EnumChatFormatting.DARK_GREEN)).toString());
 			return relicStacks[relic].copy();
 		}
 

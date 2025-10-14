@@ -27,8 +27,8 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockCorporeaIndex extends BlockCorporeaBase implements ILexiconable {
 
-	public BlockCorporeaIndex() {
-		super(Material.iron, LibBlockNames.CORPOREA_INDEX);
+	public BlockCorporeaIndex(int id) {
+		super(id, Material.iron, LibBlockNames.CORPOREA_INDEX);
 		setHardness(5.5F);
 		setStepSound(soundMetalFootstep);
 	}

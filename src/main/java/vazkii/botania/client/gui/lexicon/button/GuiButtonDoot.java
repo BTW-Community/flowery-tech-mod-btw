@@ -13,6 +13,7 @@ package vazkii.botania.client.gui.lexicon.button;
 import java.util.ArrayList;
 import java.util.List;
 
+import dev.bagel.client.RenderInstances;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.RenderItem;
 import net.minecraft.src.TextureMap;
@@ -35,13 +36,13 @@ public class GuiButtonDoot extends GuiButtonLexicon {
 
 	@Override
 	public void drawButton(Minecraft par1Minecraft, int par2, int par3) {
-		field_146123_n = par2 >= xPosition && par3 >= yPosition && par2 < xPosition + width && par3 < yPosition + height;
-		int k = getHoverState(field_146123_n);
+		field_82253_i = par2 >= xPosition && par3 >= yPosition && par2 < xPosition + width && par3 < yPosition + height;
+		int k = getHoverState(field_82253_i);
 
 		par1Minecraft.renderEngine.bindTexture(TextureMap.locationItemsTexture);
 		GL11.glColor4f(1F, 1F, 1F, 1F);
 		RenderInstances.getItemInstance().renderItemIntoGUI(par1Minecraft.fontRenderer, par1Minecraft.renderEngine, new ItemStack(ModItems.cacophonium), xPosition, yPosition);
-		RenderInstances.getItemInstance().renderItemIntoGUI(par1Minecraft.fontRenderer, par1Minecraft.renderEngine, new ItemStack(Items.fireworks), xPosition + 8, yPosition + 2);
+		RenderInstances.getItemInstance().renderItemIntoGUI(par1Minecraft.fontRenderer, par1Minecraft.renderEngine, new ItemStack(Item.firework), xPosition + 8, yPosition + 2);
 
 		GL11.glDisable(GL11.GL_LIGHTING);
 

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import dev.bagel.util.Items;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.FontRenderer;
 import net.minecraft.src.GuiScreen;
@@ -23,7 +24,6 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.src.ResourceLocation;
 import net.minecraft.src.StatCollector;
-import net.minecraftforge.oredict.OreDictionary;
 
 import org.lwjgl.opengl.GL11;
 
@@ -74,13 +74,15 @@ public class PageManaInfusionRecipe extends PageRecipe {
 		FontRenderer font = Minecraft.getMinecraft().fontRenderer;
 
 		Object input = recipe.getInput();
-		if(input instanceof String)
-			input = OreDictionary.getOres((String) input).get(0);
+		if(input instanceof String) {
+			//todofix elven recipe use tags
+//			input = OreDictionary.getOres((String) input).get(0);
+		}
 
 		renderItemAtGridPos(gui, 1, 1, (ItemStack) input, false);
 
 		RenderTilePool.forceMana = true;
-		renderItemAtGridPos(gui, 2, 1, new ItemStack(ModBlocks.pool, 1, recipe.getOutput().getItem() == Item.getItemFromBlock(ModBlocks.pool) ? 2 : 0), false);
+		renderItemAtGridPos(gui, 2, 1, new ItemStack(ModBlocks.pool, 1, recipe.getOutput().getItem() == Items.getItemFromBlock(ModBlocks.pool) ? 2 : 0), false);
 
 		renderItemAtGridPos(gui, 3, 1, recipe.getOutput(), false);
 

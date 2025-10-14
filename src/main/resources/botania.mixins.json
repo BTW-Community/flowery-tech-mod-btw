@@ -6,9 +6,10 @@
   "mixins": [
     "extensions.BlockExtensionMixin",
     "extensions.EntityExtensionMixin",
-    "extensions.EntityPlayerExtensions",
+    "extensions.EntityPlayerExtensionsMixin",
     "extensions.ItemExtensionMixin",
     "extensions.NBTTagListExtensionMixin",
+    "extensions.TileEntityExtensionsMixin",
     "extensions.WorldExtensionMixin"
   ],
   "client": [

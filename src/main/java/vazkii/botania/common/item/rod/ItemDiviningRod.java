@@ -19,7 +19,6 @@ import net.minecraft.src.TileEntity;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.ResourceLocation;
 import net.minecraft.src.World;
-import net.minecraftforge.oredict.OreDictionary;
 import vazkii.botania.api.item.IAvatarTile;
 import vazkii.botania.api.item.IAvatarWieldable;
 import vazkii.botania.api.item.IManaProficiencyArmor;
@@ -36,8 +35,9 @@ public class ItemDiviningRod extends ItemMod implements IManaUsingItem, IAvatarW
 
 	static final int COST = 3000;
 
-	public ItemDiviningRod() {
-		setMaxStackSize(1);
+	public ItemDiviningRod(int id) {
+        super(id);
+        setMaxStackSize(1);
 		setUnlocalizedName(LibItemNames.DIVINING_ROD);
 	}
 
@@ -69,14 +69,15 @@ public class ItemDiviningRod extends ItemMod implements IManaUsingItem, IAvatarW
 					Block block = world.getBlock(xp, yp, zp);
 					int meta = world.getBlockMetadata(xp, yp, zp);
 					ItemStack orestack = new ItemStack(block, 1, meta);
-					for(int id : OreDictionary.getOreIDs(orestack)) {
-						String s = OreDictionary.getOreName(id);
-						if(s.matches("^ore[A-Z].+")) {
-							Random rand = new Random(s.hashCode() ^ seedxor);
-							Botania.proxy.wispFX(world, xp + world.rand.nextFloat(), yp + world.rand.nextFloat(), zp + world.rand.nextFloat(), rand.nextFloat(), rand.nextFloat(), rand.nextFloat(), 0.25F, 0F, 8);
-							break;
-						}
-					}
+					//todofix divining rod fully useless
+//					for(int id : OreDictionary.getOreIDs(orestack)) {
+//						String s = OreDictionary.getOreName(id);
+//						if(s.matches("^ore[A-Z].+")) {
+//							Random rand = new Random(s.hashCode() ^ seedxor);
+//							Botania.proxy.wispFX(world, xp + world.rand.nextFloat(), yp + world.rand.nextFloat(), zp + world.rand.nextFloat(), rand.nextFloat(), rand.nextFloat(), rand.nextFloat(), 0.25F, 0F, 8);
+//							break;
+//						}
+//					}
 				}
 		Botania.proxy.setWispFXDepthTest(true);
 	}

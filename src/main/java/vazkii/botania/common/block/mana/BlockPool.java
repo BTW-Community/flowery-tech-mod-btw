@@ -46,6 +46,7 @@ import vazkii.botania.common.block.BlockModContainer;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.block.tile.mana.TilePool;
 import vazkii.botania.common.item.block.ItemBlockPool;
+import vazkii.botania.common.item.block.ItemBlockWithMetadataAndName;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
@@ -60,7 +61,7 @@ public class BlockPool extends BlockModContainer implements IWandHUD, IWandable,
 		setHardness(2.0F);
 		setResistance(10.0F);
 		setStepSound(soundStoneFootstep);
-		setBlockName(LibBlockNames.POOL);
+		setUnlocalizedName(LibBlockNames.POOL);
 		setBlockBounds(0F, 0F, 0F, 1F, 0.5F, 1F);
 
 		BotaniaAPI.blacklistBlockFromMagnet(this, Short.MAX_VALUE);
@@ -72,9 +73,10 @@ public class BlockPool extends BlockModContainer implements IWandHUD, IWandable,
 	}
 
 	@Override
-	public Block setBlockName(String par1Str) {
-		GameRegistry.registerBlock(this, ItemBlockPool.class, par1Str);
-		return super.setBlockName(par1Str);
+	public Block setUnlocalizedName(String par1Str) {
+		var item = new ItemBlockPool(this);
+//		GameRegistry.registerBlock(this, ItemBlockPool.class, par1Str);
+		return super.setUnlocalizedName(par1Str);
 	}
 
 	@Override

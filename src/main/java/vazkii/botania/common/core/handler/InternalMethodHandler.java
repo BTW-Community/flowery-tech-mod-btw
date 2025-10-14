@@ -51,9 +51,7 @@ import vazkii.botania.common.block.BlockModFlower;
 import vazkii.botania.common.block.BlockSpecialFlower;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.block.subtile.functional.SubTileSolegnolia;
-import vazkii.botania.common.integration.corporea.WrappedDeepStorage;
 import vazkii.botania.common.integration.corporea.WrappedIInventory;
-import vazkii.botania.common.integration.corporea.WrappedStorageDrawers;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.block.ItemBlockSpecialFlower;
 import vazkii.botania.common.item.relic.ItemLokiRing;
@@ -70,8 +68,6 @@ import vazkii.botania.common.lexicon.page.PageText;
 import baubles.common.lib.PlayerHandler;
 import baubles.common.network.PacketHandler;
 import baubles.common.network.PacketSyncBauble;
-import buildcraft.api.transport.IPipeTile;
-import cpw.mods.fml.common.Optional;
 
 public class InternalMethodHandler extends DummyMethodHandler {
 
@@ -103,7 +99,7 @@ public class InternalMethodHandler extends DummyMethodHandler {
 	@Override
 	public Icon getSubTileIconForName(String name) {
 		Icon icon = (ConfigHandler.altFlowerTextures ? BlockSpecialFlower.iconsAlt : BlockSpecialFlower.icons).get(name);
-		return icon == null ? Blocks.red_flower.getIcon(0, 0) : icon;
+		return icon == null ? Block.plantRed.getIcon(0, 0) : icon;
 	}
 
 	@Override
@@ -235,9 +231,9 @@ public class InternalMethodHandler extends DummyMethodHandler {
 	}
 
 	@Override
-	@Optional.Method(modid = "BuildCraft|Transport")
+//	@Optional.Method(modid = "BuildCraft|Transport")
 	public boolean isBuildcraftPipe(TileEntity tile) {
-		return tile instanceof IPipeTile;
+		return false/*tile instanceof IPipeTile*/;
 	}
 
 	@Override
@@ -274,14 +270,6 @@ public class InternalMethodHandler extends DummyMethodHandler {
 		for(IInventory inv : inventories) {
 			ICorporeaSpark spark = CorporeaHelper.getSparkForInventory(inv);
 			IWrappedInventory wrapped = null;
-			// try StorageDrawers integration
-			if(Botania.storageDrawersLoaded) {
-				wrapped = WrappedStorageDrawers.wrap(inv, spark);
-			}
-			// try DeepStorageUnit
-			if(wrapped == null) {
-				wrapped = WrappedDeepStorage.wrap(inv, spark);
-			}
 			// last chance - this will always work
 			if(wrapped == null) {
 				wrapped = WrappedIInventory.wrap(inv, spark);

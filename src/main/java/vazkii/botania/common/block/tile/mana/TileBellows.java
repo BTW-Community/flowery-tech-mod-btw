@@ -62,7 +62,7 @@ public class TileBellows extends TileMod {
 					furnace.furnaceBurnTime = Math.max(0, furnace.furnaceBurnTime - 10);
 				}
 
-				if(furnace.getBlockType() == Blocks.lit_furnace) {
+				if(furnace.getBlockType() == Block.furnaceBurning) {
 					// Copypasta from BlockFurnace
 					int x = furnace.xCoord;
 					int y = furnace.yCoord;

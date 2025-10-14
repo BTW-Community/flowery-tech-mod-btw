@@ -50,7 +50,7 @@ public class TileTerraPlate extends TileMod implements ISparkAttachable {
 		Multiblock mb = new Multiblock();
 
 		for(int[] l : LAPIS_BLOCKS)
-			mb.addComponent(l[0], 0, l[1], Blocks.lapis_block, 0);
+			mb.addComponent(l[0], 0, l[1], Block.blockLapis, 0);
 		for(int[] l : LIVINGROCK_BLOCKS)
 			mb.addComponent(l[0], 0, l[1], ModBlocks.livingrock, 0);
 
@@ -90,7 +90,7 @@ public class TileTerraPlate extends TileMod implements ISparkAttachable {
 						else item.setEntityItemStack(new ItemStack(ModItems.manaResource, 1, 4));
 					item.worldObj.playSoundAtEntity(item, "botania:terrasteelCraft", 1F, 1F);
 					mana = 0;
-					worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
+					worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlockId(xCoord, yCoord, zCoord));
 					VanillaPacketDispatcher.dispatchTEToNearbyPlayers(worldObj, xCoord, yCoord, zCoord);
 				}
 			}
@@ -162,7 +162,7 @@ public class TileTerraPlate extends TileMod implements ISparkAttachable {
 	}
 
 	boolean hasValidPlatform() {
-		return checkAll(LAPIS_BLOCKS, Blocks.lapis_block) && checkAll(LIVINGROCK_BLOCKS, ModBlocks.livingrock);
+		return checkAll(LAPIS_BLOCKS, Block.blockLapis) && checkAll(LIVINGROCK_BLOCKS, ModBlocks.livingrock);
 	}
 
 	boolean checkAll(int[][] positions, Block block) {
@@ -202,7 +202,7 @@ public class TileTerraPlate extends TileMod implements ISparkAttachable {
 	@Override
 	public void recieveMana(int mana) {
 		this.mana = Math.max(0, Math.min(MAX_MANA, this.mana + mana));
-		worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
+		worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlockId(xCoord, yCoord, zCoord));
 	}
 
 	@Override

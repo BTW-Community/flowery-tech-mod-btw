@@ -48,7 +48,7 @@ public class ItemManaTablet extends ItemMod implements IManaItem, ICreativeManaP
 	}
 
 	@Override
-	public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
+	public void getSubItems(int par1,  CreativeTabs par2CreativeTabs, List par3List) {
 		// Empty tablet
 		par3List.add(new ItemStack(par1, 1));
 

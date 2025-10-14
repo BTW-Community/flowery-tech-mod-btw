@@ -59,7 +59,7 @@ public class RecipeHandlerFloatingFlowers extends TemplateRecipeHandler {
 	@Override
 	public void loadCraftingRecipes(ItemStack result) {
 		if(Block.getBlockFromItem(result.getItem()) instanceof BlockFloatingSpecialFlower) {
-			ItemStack floatingFlower = new ItemStack(ModBlocks.floatingFlower, 1, OreDictionary.WILDCARD_VALUE);
+			ItemStack floatingFlower = new ItemStack(ModBlocks.floatingFlower, 1, InventoryUtils.IGNORE_METADATA);
 			ItemStack specialFlower = new ItemStack(ModBlocks.specialFlower);
 			specialFlower.setTagCompound((NBTTagCompound) result.getTagCompound().copy());
 
@@ -70,7 +70,7 @@ public class RecipeHandlerFloatingFlowers extends TemplateRecipeHandler {
 	@Override
 	public void loadUsageRecipes(ItemStack ingredient) {
 		if(Block.getBlockFromItem(ingredient.getItem()) instanceof BlockSpecialFlower) {
-			ItemStack floatingFlower = new ItemStack(ModBlocks.floatingFlower, 1, OreDictionary.WILDCARD_VALUE);
+			ItemStack floatingFlower = new ItemStack(ModBlocks.floatingFlower, 1, InventoryUtils.IGNORE_METADATA);
 			ItemStack result = new ItemStack(ModBlocks.floatingSpecialFlower);
 			result.setTagCompound((NBTTagCompound) ingredient.getTagCompound().copy());
 

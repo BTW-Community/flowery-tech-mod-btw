@@ -27,13 +27,13 @@ public class TileRedStringComparator extends TileRedString {
 		Block block = getBlockAtBinding();
 		int origVal = comparatorValue;
 
-		if(block.hasComparatorInputOverride()) {
+		if(block != null && block.hasComparatorInputOverride()) {
 			int val = block.getComparatorInputOverride(worldObj, binding.posX, binding.posY, binding.posZ, dir.getOpposite().ordinal());
 			comparatorValue = val;
 		} else comparatorValue = 0;
 
 		if(origVal != comparatorValue)
-			worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
+			worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlockId(xCoord, yCoord, zCoord));
 	}
 
 	public int getComparatorValue() {

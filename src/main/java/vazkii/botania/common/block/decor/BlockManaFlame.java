@@ -27,7 +27,7 @@ public class BlockManaFlame extends BlockModContainer implements ILexiconable {
 
 	public BlockManaFlame(int id) {
 		super(id, Material.cloth);
-		setBlockName(LibBlockNames.MANA_FLAME);
+		setUnlocalizedName(LibBlockNames.MANA_FLAME);
 		float f = 0.25F;
 		setStepSound(soundClothFootstep);
 		setBlockBounds(f, f, f, 1F - f, 1F - f, 1F - f);

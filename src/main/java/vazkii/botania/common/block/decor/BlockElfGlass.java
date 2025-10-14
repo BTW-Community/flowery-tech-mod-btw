@@ -30,8 +30,8 @@ public class BlockElfGlass extends BlockManaGlass implements IElvenItem, ILexico
 	private static final int ICON_COUNT = 4;
 	Icon[] icons;
 
-	public BlockElfGlass() {
-		super(LibBlockNames.ELF_GLASS);
+	public BlockElfGlass(int id) {
+		super(id, LibBlockNames.ELF_GLASS);
 	}
 
 	@Override

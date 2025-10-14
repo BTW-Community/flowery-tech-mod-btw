@@ -13,21 +13,7 @@ package vazkii.botania.common.item;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.GuiScreen;
-import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EnumRarity;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.ChatComponentTranslation;
-import net.minecraft.src.ChatStyle;
-import net.minecraft.src.EnumChatFormatting;
-import net.minecraft.src.MovingObjectPosition;
-import net.minecraft.src.StatCollector;
-import net.minecraft.src.Vec3;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.lexicon.ILexicon;
 import vazkii.botania.api.lexicon.ILexiconable;
@@ -49,8 +35,8 @@ public class ItemLexicon extends ItemMod implements ILexicon, IElvenItem {
 	private static final String TAG_QUEUE_TICKS = "queueTicks";
 	boolean skipSound = false;
 
-	public ItemLexicon() {
-		super();
+	public ItemLexicon(int id) {
+		super(id);
 		setMaxStackSize(1);
 		setUnlocalizedName(LibItemNames.LEXICON);
 	}
@@ -81,9 +67,9 @@ public class ItemLexicon extends ItemMod implements ILexicon, IElvenItem {
 	}
 
 	@Override
-	public void getSubItems(Item item, CreativeTabs tab, List list) {
-		list.add(new ItemStack(item));
-		ItemStack creative = new ItemStack(item);
+	public void getSubItems(int item, CreativeTabs tab, List list) {
+		list.add(new ItemStack(Item.itemsList[item]));
+		ItemStack creative = new ItemStack(Item.itemsList[item]);
 		for(String s : BotaniaAPI.knowledgeTypes.keySet()) {
 			KnowledgeType type = BotaniaAPI.knowledgeTypes.get(s);
 			unlockKnowledge(creative, type);
@@ -129,7 +115,7 @@ public class ItemLexicon extends ItemMod implements ILexicon, IElvenItem {
 			LexiconEntry entry = getEntryFromForce(par1ItemStack);
 			if(entry != null)
 				Botania.proxy.setEntryToOpen(entry);
-			else par3EntityPlayer.addChatMessage(new ChatComponentTranslation("botaniamisc.cantOpen").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.RED)));
+			else par3EntityPlayer.addChatMessage(ChatMessageComponent.createFromTranslationKey("botaniamisc.cantOpen").setColor(EnumChatFormatting.RED).toString());
 			setForcedPage(par1ItemStack, "");
 		}
 
@@ -147,7 +133,7 @@ public class ItemLexicon extends ItemMod implements ILexicon, IElvenItem {
 		if(!l.isKnowledgeUnlocked(stack, BotaniaAPI.relicKnowledge) && l.isKnowledgeUnlocked(stack, BotaniaAPI.elvenKnowledge))
 			for(ItemStack rstack : ItemDice.relicStacks) {
 				Item item = rstack.getItem();
-				if(player.inventory.hasItem(item)) {
+				if(player.inventory.hasItem(item.itemID)) {
 					l.unlockKnowledge(stack, BotaniaAPI.relicKnowledge);
 					break;
 				}
@@ -161,7 +147,7 @@ public class ItemLexicon extends ItemMod implements ILexicon, IElvenItem {
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World world, Entity entity, int idk, boolean something) {
+	public void onUpdate(ItemStack stack, World world, EntityPlayer entity, int idk, boolean something) {
 		int ticks = getQueueTicks(stack);
 		if(ticks > 0 && entity instanceof EntityPlayer) {
 			skipSound = ticks < 5;

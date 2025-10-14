@@ -12,6 +12,7 @@ package vazkii.botania.common.block.tile;
 
 import java.util.List;
 
+import dev.bagel.util.Items;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Block;
 import net.minecraft.src.Item;
@@ -31,7 +32,7 @@ public class TileEnderEye extends TileMod {
 		boolean looking = false;
 		for(EntityPlayer player : players) {
 			ItemStack helm = player.getCurrentArmor(3);
-			if(helm != null && helm.getItem() == Item.getItemFromBlock(Blocks.pumpkin))
+			if(helm != null && helm.getItem() == Items.getItemFromBlock(Block.pumpkin))
 				continue;
 
 			MovingObjectPosition pos = ToolCommons.raytraceFromEntity(worldObj, player, true, 64);

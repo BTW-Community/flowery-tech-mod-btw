@@ -40,7 +40,7 @@ public class EntityEnderAirBottle extends EntityThrowable {
 			for(ChunkCoordinates coords : coordsList) {
 				worldObj.setBlock(coords.posX, coords.posY, coords.posZ, Blocks.end_stone);
 				if(Math.random() < 0.1)
-					worldObj.playAuxSFX(2001, coords.posX, coords.posY, coords.posZ, Block.getIdFromBlock(Blocks.end_stone));
+					worldObj.playAuxSFX(2001, coords.posX, coords.posY, coords.posZ, BlockExtensions.getIdFromBlock(Blocks.end_stone));
 			}
 			setDead();
 		}
@@ -59,7 +59,7 @@ public class EntityEnderAirBottle extends EntityThrowable {
 					int y = yCoord + j;
 					int z = zCoord + k;
 					Block block = worldObj.getBlock(x, y, z);
-					if(block != null && block.isReplaceableOreGen(worldObj, x, y, z, Blocks.stone))
+					if(block != null && block == Block.stone /* block.isReplaceableOreGen(worldObj, x, y, z, Blocks.stone)*/)
 						possibleCoords.add(new ChunkCoordinates(x, y, z));
 				}
 

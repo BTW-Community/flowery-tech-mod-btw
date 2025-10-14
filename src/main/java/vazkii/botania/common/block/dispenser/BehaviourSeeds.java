@@ -28,7 +28,7 @@ public class BehaviourSeeds extends BehaviorDefaultDispenseItem {
 
 	@Override
 	public ItemStack dispenseStack(IBlockSource par1IBlockSource, ItemStack par2ItemStack) {
-		EnumFacing facing = BlockDispenser.func_149937_b(par1IBlockSource.getBlockMetadata());
+		EnumFacing facing = BlockDispenser.getDispenserFacing(par1IBlockSource.getBlockMetadata());
 		int x = par1IBlockSource.getXInt() + facing.getFrontOffsetX();
 		int y = par1IBlockSource.getYInt() + facing.getFrontOffsetY();
 		int z = par1IBlockSource.getZInt() + facing.getFrontOffsetZ();

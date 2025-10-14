@@ -13,21 +13,7 @@ package vazkii.botania.common.item;
 import java.awt.Color;
 import java.util.List;
 
-import net.minecraft.src.Minecraft;
-import net.minecraft.src.GuiScreen;
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.Potion;
-import net.minecraft.src.PotionEffect;
-import net.minecraft.src.EnumChatFormatting;
-import net.minecraft.src.Icon;
-import net.minecraft.src.StatCollector;
-import net.minecraft.src.World;
-import net.minecraftforge.oredict.RecipeSorter;
-import net.minecraftforge.oredict.RecipeSorter.Category;
+import net.minecraft.src.*;
 import vazkii.botania.api.mana.BurstProperties;
 import vazkii.botania.api.mana.ILens;
 import vazkii.botania.api.mana.IManaUsingItem;
@@ -57,19 +43,19 @@ public class ItemManaGun extends ItemMod implements IManaUsingItem {
 
 	Icon[] icons;
 
-	public ItemManaGun() {
-		super();
+	public ItemManaGun(int id) {
+		super(id);
 		setMaxDamage(COOLDOWN);
 		setMaxStackSize(1);
-		setNoRepair();
+//		setNoRepair();
 		setUnlocalizedName(LibItemNames.MANA_GUN);
 
 		CraftingManager.getInstance().getRecipeList().add(new ManaGunLensRecipe());
 		CraftingManager.getInstance().getRecipeList().add(new ManaGunRemoveLensRecipe());
 		CraftingManager.getInstance().getRecipeList().add(new ManaGunClipRecipe());
-		RecipeSorter.register("botania:manaGunLens", ManaGunLensRecipe.class, Category.SHAPELESS, "");
-		RecipeSorter.register("botania:manaGunRemoveLens", ManaGunRemoveLensRecipe.class, Category.SHAPELESS, "");
-		RecipeSorter.register("botania:manaGunClip", ManaGunClipRecipe.class, Category.SHAPELESS, "");
+//		RecipeSorter.register("botania:manaGunLens", ManaGunLensRecipe.class, Category.SHAPELESS, "");
+//		RecipeSorter.register("botania:manaGunRemoveLens", ManaGunRemoveLensRecipe.class, Category.SHAPELESS, "");
+//		RecipeSorter.register("botania:manaGunClip", ManaGunClipRecipe.class, Category.SHAPELESS, "");
 	}
 
 	@Override
@@ -335,7 +321,7 @@ public class ItemManaGun extends ItemMod implements IManaUsingItem {
 	}
 
 	@Override
-	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
+	public void onUpdate(ItemStack par1ItemStack, World par2World, EntityPlayer par3Entity, int par4, boolean par5) {
 		if(par1ItemStack.isItemDamaged())
 			par1ItemStack.setItemDamage(par1ItemStack.getItemDamage() - 1);
 	}

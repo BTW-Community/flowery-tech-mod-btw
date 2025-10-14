@@ -22,3 +22,14 @@ accessible field net/minecraft/src/EntityAITasks taskEntries Ljava/util/List;
 accessible field net/minecraft/src/EntityLiving tasks Lnet/minecraft/src/EntityAITasks;
 accessible field net/minecraft/src/EntityAINearestAttackableTarget targetEntity Lnet/minecraft/src/EntityLivingBase;
 accessible field net/minecraft/src/EntityHorse horseChest Lnet/minecraft/src/AnimalChest;
+accessible field net/minecraft/src/EntityList classToStringMapping Ljava/util/Map;
+accessible method net/minecraft/src/WorldType <init> (ILjava/lang/String;)V
+accessible field net/minecraft/src/TextureAtlasSprite animationMetadata Lnet/minecraft/src/AnimationMetadataSection;
+accessible field net/minecraft/src/PlayerControllerMP currentGameType Lnet/minecraft/src/EnumGameType;
+accessible field net/minecraft/src/MobSpawnerBaseLogic spawnCount I
+accessible field net/minecraft/src/MobSpawnerBaseLogic spawnRange I
+accessible field net/minecraft/src/MobSpawnerBaseLogic maxNearbyEntities I
+accessible field net/minecraft/src/MobSpawnerBaseLogic maxSpawnDelay I
+accessible field net/minecraft/src/MobSpawnerBaseLogic minSpawnDelay I
+accessible field net/minecraft/src/MobSpawnerBaseLogic minecartToSpawn Ljava/util/List;
+

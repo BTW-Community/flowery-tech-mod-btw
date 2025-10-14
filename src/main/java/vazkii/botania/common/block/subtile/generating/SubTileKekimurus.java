@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.block.subtile.generating;
 
+import dev.bagel.interfaces.BlockExtensions;
 import net.minecraft.src.Block;
 import net.minecraft.src.BlockCake;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -41,7 +42,7 @@ public class SubTileKekimurus extends SubTileGenerating {
 								supertile.getWorldObj().setBlockToAir(x, y, z);
 							else supertile.getWorldObj().setBlockMetadataWithNotify(x, y, z, meta, 1 | 2);
 
-							supertile.getWorldObj().playAuxSFX(2001, x, y, z, Block.getIdFromBlock(block) + (meta << 12));
+							supertile.getWorldObj().playAuxSFX(2001, x, y, z, BlockExtensions.getIdFromBlock(block) + (meta << 12));
 							supertile.getWorldObj().playSoundEffect(supertile.xCoord, supertile.yCoord, supertile.zCoord, "random.eat", 1F, 0.5F + (float) Math.random() * 0.5F);
 							this.mana += mana;
 							sync();

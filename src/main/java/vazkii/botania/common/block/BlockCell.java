@@ -25,9 +25,9 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockCell extends BlockModContainer implements ILexiconable {
 
-	public BlockCell() {
-		super(Material.gourd);
-		setBlockName(LibBlockNames.CELL_BLOCK);
+	public BlockCell(int id) {
+		super(id, Material.pumpkin);
+		setUnlocalizedName(LibBlockNames.CELL_BLOCK);
 		setStepSound(soundClothFootstep);
 	}
 

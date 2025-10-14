@@ -49,7 +49,7 @@ public class BlockFloatingFlower extends BlockModContainer implements ILexiconab
 
 	public BlockFloatingFlower(int id, String name) {
 		super(id, Material.ground);
-		setBlockName(name);
+		setUnlocalizedName(name);
 		setHardness(0.5F);
 		setStepSound(soundGravelFootstep);
 		setLightValue(1F);
@@ -64,9 +64,9 @@ public class BlockFloatingFlower extends BlockModContainer implements ILexiconab
 	}
 
 	@Override
-	public Block setBlockName(String par1Str) {
+	public Block setUnlocalizedName(String par1Str) {
 		register(par1Str);
-		return super.setBlockName(par1Str);
+		return super.setUnlocalizedName(par1Str);
 	}
 
 	protected void register(String name) {

@@ -31,8 +31,8 @@ public class GuiButtonHistory extends GuiButtonLexicon {
 	@Override
 	public void drawButton(Minecraft mc, int par2, int par3) {
 		gui.drawBookmark(xPosition, yPosition, displayString, false);
-		field_146123_n = par2 >= xPosition && par3 >= yPosition && par2 < xPosition + width && par3 < yPosition + height;
-		int k = getHoverState(field_146123_n);
+		field_82253_i = par2 >= xPosition && par3 >= yPosition && par2 < xPosition + width && par3 < yPosition + height;
+		int k = getHoverState(field_82253_i);
 
 		List<String> tooltip = new ArrayList<>();
 		tooltip.add(StatCollector.translateToLocal("botaniamisc.historyLong"));

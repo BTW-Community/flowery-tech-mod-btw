@@ -55,7 +55,7 @@ public class BlockPistonRelay extends BlockMod implements IWandable, ILexiconabl
 
 	public BlockPistonRelay(int id) {
 		super(id, Material.pumpkin);
-		setBlockName(LibBlockNames.PISTON_RELAY);
+		setUnlocalizedName(LibBlockNames.PISTON_RELAY);
 		setHardness(2F);
 		setResistance(10F);
 		setStepSound(soundMetalFootstep);

@@ -13,10 +13,10 @@ package vazkii.botania.common.item;
 import java.util.Arrays;
 import java.util.List;
 
+import dev.bagel.util.Blocks;
+import dev.bagel.util.Items;
 import net.minecraft.src.*;
 import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.oredict.RecipeSorter;
-import net.minecraftforge.oredict.RecipeSorter.Category;
 import vazkii.botania.api.item.IBlockProvider;
 import vazkii.botania.client.core.handler.ItemsRemainingRenderHandler;
 import vazkii.botania.client.core.helper.IconHelper;
@@ -80,16 +80,16 @@ public class ItemBlackHoleTalisman extends ItemMod implements IBlockProvider {
 						if(stack.stackSize != 0) {
 							if(inv.isItemValidForSlot(slot, stack) && (!(inv instanceof ISidedInventory) || ((ISidedInventory) inv).canInsertItem(slot, stack, par7))) {
 								inv.setInventorySlotContents(slot, stack);
-								inv.markDirty();
+								inv.onInventoryChanged();
 								set = true;
 							}
 						}
-					} else if(stackInSlot.getItem() == Item.getItemFromBlock(bBlock) && stackInSlot.getItemDamage() == bmeta) {
+					} else if(stackInSlot.getItem() == Items.getItemFromBlock(bBlock) && stackInSlot.getItemDamage() == bmeta) {
 						int maxSize = stackInSlot.getMaxStackSize();
 						int missing = maxSize - stackInSlot.stackSize;
 						if(inv.isItemValidForSlot(slot, stackInSlot) && (!(inv instanceof ISidedInventory) || ((ISidedInventory) inv).canInsertItem(slot, stackInSlot, par7))) {
 							stackInSlot.stackSize += remove(par1ItemStack, missing);
-							inv.markDirty();
+							inv.onInventoryChanged();
 							set = true;
 						}
 					}
@@ -104,7 +104,7 @@ public class ItemBlackHoleTalisman extends ItemMod implements IBlockProvider {
 						ItemStack stack = new ItemStack(bBlock, 1, bmeta);
 						ItemsRemainingRenderHandler.set(stack, getBlockCount(par1ItemStack));
 
-						Item.getItemFromBlock(bBlock).onItemUse(stack, par2EntityPlayer, par3World, par4, par5, par6, par7, par8, par9, par10);
+						Items.getItemFromBlock(bBlock).onItemUse(stack, par2EntityPlayer, par3World, par4, par5, par6, par7, par8, par9, par10);
 						set = true;
 					}
 				}
@@ -116,11 +116,10 @@ public class ItemBlackHoleTalisman extends ItemMod implements IBlockProvider {
 	}
 
 	@Override
-	public void onUpdate(ItemStack itemstack, World p_77663_2_, Entity entity, int p_77663_4_, boolean p_77663_5_) {
+	public void onUpdate(ItemStack itemstack, World p_77663_2_, EntityPlayer player, int p_77663_4_, boolean p_77663_5_) {
 		Block block = getBlock(itemstack);
-		if(!entity.worldObj.isRemote && itemstack.getItemDamage() == 1 && block != Blocks.air && entity instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) entity;
-			int meta = getBlockMeta(itemstack);
+		if(!player.worldObj.isRemote && itemstack.getItemDamage() == 1 && block != null && player instanceof EntityPlayer) {
+            int meta = getBlockMeta(itemstack);
 
 			int highest = -1;
 			int[] counts = new int[player.inventory.getSizeInventory() - player.inventory.armorInventory.length];
@@ -132,7 +131,7 @@ public class ItemBlackHoleTalisman extends ItemMod implements IBlockProvider {
 					continue;
 				}
 
-				if(Item.getItemFromBlock(block) == stack.getItem() && stack.getItemDamage() == meta) {
+				if(Items.getItemFromBlock(block) == stack.getItem() && stack.getItemDamage() == meta) {
 					counts[i] = stack.stackSize;
 					if(highest == -1)
 						highest = i;
@@ -142,7 +141,7 @@ public class ItemBlackHoleTalisman extends ItemMod implements IBlockProvider {
 
 			if(highest == -1) {
 				/*ItemStack heldItem = player.inventory.getItemStack();
-				if(hasFreeSlot && (heldItem == null || Item.getItemFromBlock(block) == heldItem.getItem() || heldItem.getItemDamage() != meta)) {
+				if(hasFreeSlot && (heldItem == null || Items.getItemFromBlock(block) == heldItem.getItem() || heldItem.getItemDamage() != meta)) {
 					ItemStack stack = new ItemStack(block, remove(itemstack, 64), meta);
 					if(stack.stackSize != 0)
 						player.inventory.addItemStackToInventory(stack);
@@ -157,7 +156,7 @@ public class ItemBlackHoleTalisman extends ItemMod implements IBlockProvider {
 						continue;
 
 					add(itemstack, count);
-					player.inventory.setInventorySlotContents(i, null);
+					((EntityPlayer) player).inventory.setInventorySlotContents(i, null);
 				}
 
 				/*int countInHighest = counts[highest];
@@ -209,8 +208,8 @@ public class ItemBlackHoleTalisman extends ItemMod implements IBlockProvider {
 	}
 
 	private boolean setBlock(ItemStack stack, Block block, int meta) {
-		if(getBlock(stack) == Blocks.air || getBlockCount(stack) == 0) {
-			ItemNBTHelper.setString(stack, TAG_BLOCK_NAME, Block.blockRegistry.getNameForObject(block));
+		if(getBlock(stack) == null || getBlockCount(stack) == 0) {
+			ItemNBTHelper.setString(stack, TAG_BLOCK_NAME, block.getUnlocalizedName());
 			ItemNBTHelper.setInt(stack, TAG_BLOCK_META, meta);
 			return true;
 		}
@@ -269,7 +268,7 @@ public class ItemBlackHoleTalisman extends ItemMod implements IBlockProvider {
 	}
 
 	public static Block getBlock(ItemStack stack) {
-		Block block = Block.getBlockFromName(getBlockName(stack));
+		Block block = Blocks.getBlockFromName(getBlockName(stack));
 		return block;
 	}
 

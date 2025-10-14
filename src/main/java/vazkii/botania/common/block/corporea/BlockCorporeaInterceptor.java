@@ -31,8 +31,8 @@ public class BlockCorporeaInterceptor extends BlockCorporeaBase implements ILexi
 
 	Icon[] icons;
 
-	public BlockCorporeaInterceptor() {
-		super(Material.iron, LibBlockNames.CORPOREA_INTERCEPTOR);
+	public BlockCorporeaInterceptor(int id) {
+		super(id, Material.iron, LibBlockNames.CORPOREA_INTERCEPTOR);
 		setHardness(5.5F);
 		setStepSound(soundMetalFootstep);
 	}

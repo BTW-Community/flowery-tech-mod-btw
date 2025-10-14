@@ -4,17 +4,37 @@ import net.minecraft.src.Minecraft;
 import net.minecraft.src.FontRenderer;
 import net.minecraft.src.GuiButton;
 import net.minecraft.src.OpenGlHelper;
-import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.*;
 
 import static baubles.common.BaublesConfig.useOldGuiButton;
 
 public class GuiBaublesButton extends GuiButton {
+    private static boolean openGL14 = false;
+    private static boolean otherBlend = false;
+
+    static {
+        final ContextCapabilities cap = GLContext.getCapabilities();
+        openGL14 = cap.OpenGL14 || cap.GL_EXT_blend_func_separate;
+        otherBlend = cap.GL_EXT_blend_func_separate && !cap.OpenGL14;
+    }
+
+    public static void glBlendFunc(int p_148821_0_, int p_148821_1_, int p_148821_2_, int p_148821_3_) {
+        if (openGL14) {
+            if (otherBlend) {
+                EXTBlendFuncSeparate.glBlendFuncSeparateEXT(p_148821_0_, p_148821_1_, p_148821_2_, p_148821_3_);
+            } else {
+                GL14.glBlendFuncSeparate(p_148821_0_, p_148821_1_, p_148821_2_, p_148821_3_);
+            }
+        } else {
+            GL11.glBlendFunc(p_148821_0_, p_148821_1_);
+        }
+    }
 
     public GuiBaublesButton(int buttonId, int xIn, int yIn, int widthIn, int heightIn, String resource) {
         super(buttonId, xIn, yIn, widthIn, heightIn, resource);
     }
 
-	public void drawButton(Minecraft mc, int xx, int yy) {
+    public void drawButton(Minecraft mc, int xx, int yy) {
         if (!this.drawButton) {
             return;
         }
@@ -26,10 +46,10 @@ public class GuiBaublesButton extends GuiButton {
             mc.getTextureManager().bindTexture(GuiPlayerExpanded.gui_background);
         }
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        this.field_146123_n = xx >= this.xPosition && yy >= this.yPosition && xx < this.xPosition + this.width && yy < this.yPosition + this.height;
-        int hover = this.getHoverState(this.field_146123_n);
+        this.field_82253_i = xx >= this.xPosition && yy >= this.yPosition && xx < this.xPosition + this.width && yy < this.yPosition + this.height;
+        int hover = this.getHoverState(this.field_82253_i);
         GL11.glEnable(GL11.GL_BLEND);
-        OpenGlHelper.glBlendFunc(770, 771, 1, 0);
+        glBlendFunc(770, 771, 1, 0);
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 
         if (hover == 1) {
@@ -44,7 +64,7 @@ public class GuiBaublesButton extends GuiButton {
         if (useOldGuiButton) {
             this.drawTexturedModalRect(this.xPosition, this.yPosition, 210, 48, 10, 10);
             this.drawCenteredString(fontrenderer, this.displayString,
-                this.xPosition + 5, this.yPosition + this.height, 0xffffff);
+                    this.xPosition + 5, this.yPosition + this.height, 0xffffff);
         } else {
             this.drawTexturedModalRect(this.xPosition, this.yPosition, 50, 14, 14, 14);
 
@@ -54,7 +74,7 @@ public class GuiBaublesButton extends GuiButton {
             int labelY = this.yPosition - this.height;
             int labelHeight = 8;
 
-            int borderColorDark  = 0xF0100010;
+            int borderColorDark = 0xF0100010;
             int borderColorLight = 0x505000FF;
             int borderColorLightFaded = (borderColorLight & 0xFEFEFE) >> 1 | borderColorLight & 0xFF000000;
 

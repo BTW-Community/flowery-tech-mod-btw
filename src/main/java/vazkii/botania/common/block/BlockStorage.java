@@ -43,7 +43,7 @@ public class BlockStorage extends BlockMod implements ILexiconable {
 		setHardness(3F);
 		setResistance(10F);
 		setStepSound(soundMetalFootstep);
-		setBlockName(LibBlockNames.STORAGE);
+		setUnlocalizedName(LibBlockNames.STORAGE);
 	}
 
 	@Override
@@ -53,10 +53,10 @@ public class BlockStorage extends BlockMod implements ILexiconable {
 	}
 
 	@Override
-	public Block setBlockName(String par1Str) {
+	public Block setUnlocalizedName(String par1Str) {
 		var item = new ItemBlockStorage(this);
 //		GameRegistry.registerBlock(this, ItemBlockStorage.class, par1Str);
-		return super.setBlockName(par1Str);
+		return super.setUnlocalizedName(par1Str);
 	}
 
 	@Override

@@ -44,7 +44,7 @@ public class BlockLivingwood extends BlockMod implements ILexiconable {
 		super(id, Material.wood);
 		setHardness(2.0F);
 		setStepSound(soundWoodFootstep);
-		setBlockName(name);
+		setUnlocalizedName(name);
 	}
 
 	@Override
@@ -58,9 +58,9 @@ public class BlockLivingwood extends BlockMod implements ILexiconable {
 	}
 
 	@Override
-	public Block setBlockName(String par1Str) {
+	public Block setUnlocalizedName(String par1Str) {
 		register(par1Str);
-		return super.setBlockName(par1Str);
+		return super.setUnlocalizedName(par1Str);
 	}
 
 	void register(String name) {

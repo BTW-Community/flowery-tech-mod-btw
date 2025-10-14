@@ -35,12 +35,12 @@ public class BlockBiomeStone extends BlockMod implements ILexiconable {
 	private static Icon[] icons = new Icon[32];
 	int iconOffset;
 
-	public BlockBiomeStone(int iconOffset, String name) {
-		super(Material.rock);
+	public BlockBiomeStone(int id, int iconOffset, String name) {
+		super(id, Material.rock);
 		setHardness(1.5F);
 		setResistance(10F);
 		setStepSound(soundStoneFootstep);
-		setBlockName(name);
+		setUnlocalizedName(name);
 		this.iconOffset = iconOffset;
 	}
 
@@ -74,10 +74,10 @@ public class BlockBiomeStone extends BlockMod implements ILexiconable {
 	}
 
 	@Override
-	public Block setBlockName(String par1Str) {
+	public Block setUnlocalizedName(String par1Str) {
 		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
 //GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
-		return super.setBlockName(par1Str);
+		return super.setUnlocalizedName(par1Str);
 	}
 
 	@Override

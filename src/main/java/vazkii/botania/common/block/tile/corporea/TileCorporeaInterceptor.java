@@ -58,7 +58,7 @@ public class TileCorporeaInterceptor extends TileCorporeaBase implements ICorpor
 
 				if(missing > 0 && getBlockMetadata() == 0) {
 					worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 1, 1 | 2);
-					worldObj.scheduleBlockUpdate(xCoord, yCoord, zCoord, getBlockType(), 2);
+					worldObj.scheduleBlockUpdate(xCoord, yCoord, zCoord, getBlockType().blockID, 2);
 
 					TileEntity requestor = (TileEntity) source.getInventory();
 					for(ForgeDirection dir : LibMisc.CARDINAL_DIRECTIONS) {

@@ -42,7 +42,7 @@ public final class RedStringRenderer {
 			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 			GL11.glColor4f(1F, 0F, 0F, sizeAlpha);
 
-			Tessellator.renderingWorldRenderer = false;
+//			Tessellator.renderingWorldRenderer = false;
 			TileRedString tile;
 			while((tile = redStringTiles.poll()) != null)
 				renderTile(tile);

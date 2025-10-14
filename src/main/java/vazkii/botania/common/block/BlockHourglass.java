@@ -33,7 +33,7 @@ public class BlockHourglass extends BlockModContainer implements IManaTrigger, I
 
 	protected BlockHourglass(int id) {
 		super(id, Material.iron);
-		setBlockName(LibBlockNames.HOURGLASS);
+		setUnlocalizedName(LibBlockNames.HOURGLASS);
 		setHardness(2.0F);
 		setStepSound(soundMetalFootstep);
 
@@ -61,7 +61,7 @@ public class BlockHourglass extends BlockModContainer implements IManaTrigger, I
 
 		if(hgStack == null && TileHourglass.getStackItemTime(stack) > 0) {
 			hourglass.setInventorySlotContents(0, stack.copy());
-			hourglass.markDirty();
+			hourglass.onInventoryChanged();
 			stack.stackSize = 0;
 			return true;
 		} else if(hgStack != null) {
@@ -69,7 +69,7 @@ public class BlockHourglass extends BlockModContainer implements IManaTrigger, I
 			if(!player.inventory.addItemStackToInventory(copy))
 				player.dropPlayerItemWithRandomChoice(copy, false);
 			hourglass.setInventorySlotContents(0, null);
-			hourglass.markDirty();
+			hourglass.onInventoryChanged();
 			return true;
 		}
 

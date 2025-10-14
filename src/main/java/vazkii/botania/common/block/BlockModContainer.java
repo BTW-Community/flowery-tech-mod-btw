@@ -26,13 +26,13 @@ public abstract class BlockModContainer<T extends TileEntity> extends BlockConta
 			setCreativeTab(CreativeTabs.tabMisc/*.INSTANCE*/);
 	}
 
-//	@Override
-	public Block setBlockName(String par1Str) {
+	@Override
+	public Block setUnlocalizedName(String par1Str) {
 		if(shouldRegisterInNameSet()) {
 			Item registered = new ItemBlockMod(this);
 		}
 //			GameRegistry.registerBlock(this, ItemBlockMod.class, par1Str);
-		return this/*super.setBlockName(par1Str)*/;
+		return this/*super.setUnlocalizedName(par1Str)*/;
 	}
 
 	protected boolean shouldRegisterInNameSet() {

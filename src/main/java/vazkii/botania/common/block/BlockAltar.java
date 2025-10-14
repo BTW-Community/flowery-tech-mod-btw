@@ -49,7 +49,7 @@ public class BlockAltar extends BlockModContainer implements ILexiconable {
 		super(id, Material.rock);
 		setHardness(3.5F);
 		setStepSound(soundStoneFootstep);
-		setBlockName(LibBlockNames.ALTAR);
+		setUnlocalizedName(LibBlockNames.ALTAR);
 
 		float f = 1F / 16F * 2F;
 		setBlockBounds(f, f, f, 1F - f, 1F / 16F * 20F, 1F - f);
@@ -68,10 +68,10 @@ public class BlockAltar extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public Block setBlockName(String par1Str) {
+	public Block setUnlocalizedName(String par1Str) {
 		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
 //GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
-		return super.setBlockName(par1Str);
+		return super.setUnlocalizedName(par1Str);
 	}
 
 	@Override

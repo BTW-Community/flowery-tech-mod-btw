@@ -34,7 +34,7 @@ public class BlockForestEye extends BlockModContainer implements ILexiconable {
 		setResistance(10.0F);
 		setStepSound(soundMetalFootstep);
 		setBlockBounds(0.25F, 0.25F, 0.25F, 0.75F, 0.75F, 0.75F);
-		setBlockName(LibBlockNames.FOREST_EYE);
+		setUnlocalizedName(LibBlockNames.FOREST_EYE);
 	}
 
 	@Override

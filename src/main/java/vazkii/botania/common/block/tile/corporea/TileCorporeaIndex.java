@@ -185,12 +185,11 @@ public class TileCorporeaIndex extends TileCorporeaBase implements ICorporeaRequ
 		indexes.remove(this);
 	}
 
-	//todofix onChunkUnload
-//	@Override
-//	public void onChunkUnload() {
-//		super.onChunkUnload();
-//		indexes.remove(this);
-//	}
+	@Override
+	public void onChunkUnload() {
+		super.onChunkUnload();
+		indexes.remove(this);
+	}
 
 	@Override
 	public int getSizeInventory() {

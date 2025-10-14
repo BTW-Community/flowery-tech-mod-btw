@@ -10,6 +10,8 @@
  */
 package vazkii.botania.client.core.handler;
 
+import dev.bagel.util.Items;
+import net.minecraft.src.Block;
 import net.minecraft.src.Item;
 import net.minecraft.src.StatCollector;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
@@ -23,10 +25,10 @@ public final class TooltipHandler {
 
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void onTooltipEvent(ItemTooltipEvent event) {
-		if(event.itemStack.getItem() == Item.getItemFromBlock(Blocks.dirt) && event.itemStack.getItemDamage() == 1) {
+		if(event.itemStack.getItem() == Items.getItemFromBlock(Block.dirt) && event.itemStack.getItemDamage() == 1) {
 			event.toolTip.add(StatCollector.translateToLocal("botaniamisc.coarseDirt0"));
 			event.toolTip.add(StatCollector.translateToLocal("botaniamisc.coarseDirt1"));
-		} else if(event.itemStack.getItem() == Item.getItemFromBlock(Blocks.mob_spawner) && event.entityPlayer.capabilities.isCreativeMode)
+		} else if(event.itemStack.getItem() == Items.getItemFromBlock(Block.mobSpawner) && event.entityPlayer.capabilities.isCreativeMode)
 			event.toolTip.add(StatCollector.translateToLocal("botaniamisc.spawnerTip"));
 
 		if(ItemNBTHelper.detectNBT(event.itemStack) && ItemNBTHelper.getBoolean(event.itemStack, ItemRegenIvy.TAG_REGEN, false))

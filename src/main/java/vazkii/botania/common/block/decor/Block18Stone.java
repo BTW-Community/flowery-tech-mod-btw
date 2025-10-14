@@ -40,7 +40,7 @@ public class Block18Stone extends BlockMod implements ILexiconable {
 		setHardness(1.5F);
 		setResistance(10F);
 		setStepSound(soundStoneFootstep);
-		setBlockName(LibBlockNames.STONE);
+		setUnlocalizedName(LibBlockNames.STONE);
 	}
 
 	@Override
@@ -71,10 +71,10 @@ public class Block18Stone extends BlockMod implements ILexiconable {
 	}
 
 	@Override
-	public Block setBlockName(String par1Str) {
+	public Block setUnlocalizedName(String par1Str) {
 		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
 //GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
-		return super.setBlockName(par1Str);
+		return super.setUnlocalizedName(par1Str);
 	}
 
 	@Override

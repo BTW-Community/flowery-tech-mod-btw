@@ -23,7 +23,7 @@ public class BehaviourWand extends BehaviorDefaultDispenseItem {
 
 	@Override
 	protected ItemStack dispenseStack(IBlockSource par1IBlockSource, ItemStack par2ItemStack) {
-		ForgeDirection facing = ForgeDirection.getOrientation(BlockDispenser.func_149937_b(par1IBlockSource.getBlockMetadata()).ordinal());
+		ForgeDirection facing = ForgeDirection.getOrientation(BlockDispenser.getDispenserFacing(par1IBlockSource.getBlockMetadata()).ordinal());
 		int x = par1IBlockSource.getXInt() + facing.offsetX;
 		int y = par1IBlockSource.getYInt() + facing.offsetY;
 		int z = par1IBlockSource.getZInt() + facing.offsetZ;

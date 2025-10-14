@@ -38,7 +38,7 @@ public class BlockPylon extends BlockModContainer implements ILexiconable {
 		super(id, Material.iron);
 		setHardness(5.5F);
 		setStepSound(soundMetalFootstep);
-		setBlockName(LibBlockNames.PYLON);
+		setUnlocalizedName(LibBlockNames.PYLON);
 		setLightValue(0.5F);
 
 		float f = 1F / 16F * 2F;
@@ -50,10 +50,10 @@ public class BlockPylon extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public Block setBlockName(String par1Str) {
+	public Block setUnlocalizedName(String par1Str) {
 		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
 //GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
-		return super.setBlockName(par1Str);
+		return super.setUnlocalizedName(par1Str);
 	}
 
 	@Override

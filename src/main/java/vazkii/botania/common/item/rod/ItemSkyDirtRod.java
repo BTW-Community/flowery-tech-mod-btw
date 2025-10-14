@@ -42,7 +42,7 @@ public class ItemSkyDirtRod extends ItemDirtRod {
 			int entities = world.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(x, y, z, x + 1, y + 1, z + 1)).size();
 
 			if(entities == 0) {
-				ItemStack stackToPlace = new ItemStack(Blocks.dirt);
+				ItemStack stackToPlace = new ItemStack(Block.dirt);
 				stackToPlace.tryPlaceItemIntoWorld(player, world, x, y, z, 0, 0F, 0F, 0F);
 
 				if(stackToPlace.stackSize == 0) {

@@ -3,6 +3,7 @@ package baubles.common;
 import baubles.common.event.EventHandlerEntity;
 import baubles.common.event.EventHandlerNetwork;
 import baubles.common.network.PacketHandler;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.src.Item;
 import net.minecraftforge.common.MinecraftForge;
 import org.apache.logging.log4j.LogManager;
@@ -29,6 +30,7 @@ public class Baubles {
     public static final Item itemDebugger = new ItemDebugger(1000).setUnlocalizedName("baubleSlotDebugTool");
 
 //    FMLPreInitializationEvent event
+    @SubscribeEvent
     public void preInit() {
 
         PacketHandler.init();
@@ -37,16 +39,15 @@ public class Baubles {
         entityEventNetwork = new EventHandlerNetwork();
 
         MinecraftForge.EVENT_BUS.register(entityEventHandler);
-        FMLCommonHandler.instance().bus().register(entityEventNetwork);
+//        FMLCommonHandler.instance().bus().register(entityEventNetwork);
         proxy.registerHandlers();
     }
-
 
     public void init() {
         //This config is intentionally loaded later than normal.
 //        BaublesConfig.loadConfig(new Configuration(new File(Launch.minecraftHome, "config" + File.separator + "Baubles.cfg")));
 
-        NetworkRegistry.INSTANCE.registerGuiHandler(instance, proxy);
+//        NetworkRegistry.INSTANCE.registerGuiHandler(instance, proxy);
           proxy.registerKeyBindings();
 //          GameRegistry.registerItem(itemDebugger, "bauble_slot_debug_tool", Baubles.MODID);
     }

@@ -271,8 +271,8 @@ public class ClientProxy extends CommonProxy {
 			MinecraftForgeClient.registerItemRenderer(ModItems.lexicon, new RenderLexicon());
 		MinecraftForgeClient.registerItemRenderer(ModItems.glassPick, renderTransparentItem);
 		MinecraftForgeClient.registerItemRenderer(ModItems.spark, renderTransparentItem);
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.floatingFlower), renderFloatingFlower);
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.floatingSpecialFlower), renderFloatingFlower);
+		MinecraftForgeClient.registerItemRenderer(Items.getItemFromBlock(ModBlocks.floatingFlower), renderFloatingFlower);
+		MinecraftForgeClient.registerItemRenderer(Items.getItemFromBlock(ModBlocks.floatingSpecialFlower), renderFloatingFlower);
 		MinecraftForgeClient.registerItemRenderer(ModItems.livingwoodBow, renderBow);
 		MinecraftForgeClient.registerItemRenderer(ModItems.crystalBow, renderBow);
 

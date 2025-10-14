@@ -33,7 +33,6 @@ import vazkii.botania.common.Botania;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.block.decor.IFloatingFlower.IslandType;
 import vazkii.botania.common.lib.LibItemNames;
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
@@ -57,15 +56,15 @@ public class ItemGrassSeeds extends ItemMod implements IFloatingFlowerVariant {
 	private static final int SUBTYPES = 9;
 	Icon[] icons;
 
-	public ItemGrassSeeds() {
-		super();
+	public ItemGrassSeeds(int id) {
+		super(id);
 		setUnlocalizedName(LibItemNames.GRASS_SEEDS);
 		setHasSubtypes(true);
-		FMLCommonHandler.instance().bus().register(this);
+//		FMLCommonHandler.instance().bus().register(this);
 	}
 
 	@Override
-	public void getSubItems(Item par1, CreativeTabs par2, List par3) {
+	public void getSubItems(int par1,  CreativeTabs par2, List par3) {
 		for(int i = 0; i < SUBTYPES; i++)
 			par3.add(new ItemStack(par1, 1, i));
 	}
@@ -94,7 +93,7 @@ public class ItemGrassSeeds extends ItemMod implements IFloatingFlowerVariant {
 		Block block = par3World.getBlock(par4, par5, par6);
 		int bmeta = par3World.getBlockMetadata(par4, par5, par6);
 
-		if((block == Blocks.dirt || block == Blocks.grass && par1ItemStack.getItemDamage() != 0) && bmeta == 0) {
+		if((block == Block.dirt || block == Block.grass && par1ItemStack.getItemDamage() != 0) && bmeta == 0) {
 			int meta = par1ItemStack.getItemDamage();
 
 			BlockSwapper swapper = addBlockSwapper(par3World, par4, par5, par6, meta);
@@ -226,15 +225,15 @@ public class ItemGrassSeeds extends ItemMod implements IFloatingFlowerVariant {
 
 	private static BlockSwapper swapperFromMeta(World world, int x, int y, int z, int meta) {
 		switch(meta) {
-		case 1 : return new BlockSwapper(world, new ChunkCoordinates(x, y, z),  Blocks.dirt, 2);
-		case 2 : return new BlockSwapper(world, new ChunkCoordinates(x, y, z),  Blocks.mycelium, 0);
+		case 1 : return new BlockSwapper(world, new ChunkCoordinates(x, y, z),  Block.dirt, 2);
+		case 2 : return new BlockSwapper(world, new ChunkCoordinates(x, y, z),  Block.mycelium, 0);
 		case 3 : return new BlockSwapper(world, new ChunkCoordinates(x, y, z),  ModBlocks.altGrass, 0);
 		case 4 : return new BlockSwapper(world, new ChunkCoordinates(x, y, z),  ModBlocks.altGrass, 1);
 		case 5 : return new BlockSwapper(world, new ChunkCoordinates(x, y, z),  ModBlocks.altGrass, 2);
 		case 6 : return new BlockSwapper(world, new ChunkCoordinates(x, y, z),  ModBlocks.altGrass, 3);
 		case 7 : return new BlockSwapper(world, new ChunkCoordinates(x, y, z),  ModBlocks.altGrass, 4);
 		case 8 : return new BlockSwapper(world, new ChunkCoordinates(x, y, z),  ModBlocks.altGrass, 5);
-		default : return new BlockSwapper(world, new ChunkCoordinates(x, y, z),  Blocks.grass, 0);
+		default : return new BlockSwapper(world, new ChunkCoordinates(x, y, z),  Block.grass, 0);
 		}
 	}
 
@@ -363,9 +362,9 @@ public class ItemGrassSeeds extends ItemMod implements IFloatingFlowerVariant {
 			// The major rule is that a block which reduces light
 			// levels by 2 or more blocks grass growth.
 
-			return (block == Blocks.dirt || block == Blocks.grass)
+			return (block == Block.dirt || block == Block.grass)
 				&& (meta == 0)
-				&& (aboveBlock.getLightOpacity(world, x, y, z) <= 1);
+				&& (aboveBlock.getLightValue(world, x, y, z) <= 1);
 		}
 	}
 

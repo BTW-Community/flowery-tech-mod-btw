@@ -353,7 +353,7 @@ public final class ModItems {
 		diviningRod = new ItemDiviningRod();
 		gravityRod = new ItemGravityRod();
 		regenIvy = new ItemRegenIvy();
-		manaInkwell = new ItemManaInkwell();
+//		manaInkwell = new ItemManaInkwell();
 		vial = new ItemVial();
 		brewVial = new ItemBrewVial();
 		brewFlask = new ItemBrewFlask();

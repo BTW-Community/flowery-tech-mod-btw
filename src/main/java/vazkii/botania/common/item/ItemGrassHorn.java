@@ -15,8 +15,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import dev.bagel.interfaces.BlockExtensions;
+import dev.bagel.shim.BlockBush;
 import net.minecraft.src.Block;
-import net.minecraft.src.BlockBush;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EntityItem;
@@ -41,15 +42,15 @@ public class ItemGrassHorn extends ItemMod {
 	Icon[] icons;
 	Icon vuvuzelaIcon;
 
-	public ItemGrassHorn() {
-		super();
+	public ItemGrassHorn(int id) {
+		super(id);
 		setMaxStackSize(1);
 		setUnlocalizedName(LibItemNames.GRASS_HORN);
 		setHasSubtypes(true);
 	}
 
 	@Override
-	public void getSubItems(Item item, CreativeTabs tab, List list) {
+	public void getSubItems(int item, CreativeTabs tab, List list) {
 		for(int i = 0; i < SUBTYPES; i++)
 			list.add(new ItemStack(item, 1, i));
 	}
@@ -126,7 +127,7 @@ public class ItemGrassHorn extends ItemMod {
 					int z = srcz + j;
 
 					Block block = world.getBlock(x, y, z);
-					if(block instanceof IHornHarvestable ? ((IHornHarvestable) block).canHornHarvest(world, x, y, z, stack, type) : stackDmg == 0 && block instanceof BlockBush && !(block instanceof ISpecialFlower) && (!(block instanceof IGrassHornExcempt) || ((IGrassHornExcempt) block).canUproot(world, x, y, z)) || stackDmg == 1 && block.isLeaves(world, x, y, z) || stackDmg == 2 && block == Blocks.snow_layer)
+					if(block instanceof IHornHarvestable ? ((IHornHarvestable) block).canHornHarvest(world, x, y, z, stack, type) : stackDmg == 0 && block instanceof BlockBush && !(block instanceof ISpecialFlower) && (!(block instanceof IGrassHornExcempt) || ((IGrassHornExcempt) block).canUproot(world, x, y, z)) || stackDmg == 1 && block.blockMaterial == Block.leaves.blockMaterial || stackDmg == 2 && block == Block.snow)
 						coords.add(new ChunkCoordinates(x, y, z));
 				}
 
@@ -145,7 +146,7 @@ public class ItemGrassHorn extends ItemMod {
 			else if(!world.isRemote) {
 				world.setBlockToAir(currCoords.posX, currCoords.posY, currCoords.posZ);
 				if(ConfigHandler.blockBreakParticles)
-					world.playAuxSFX(2001, currCoords.posX, currCoords.posY, currCoords.posZ, Block.getIdFromBlock(block) + (meta << 12));
+					world.playAuxSFX(2001, currCoords.posX, currCoords.posY, currCoords.posZ, BlockExtensions.getIdFromBlock(block) + (meta << 12));
 
 				for(ItemStack stack_ : items)
 					world.spawnEntityInWorld(new EntityItem(world, currCoords.posX + 0.5, currCoords.posY + 0.5, currCoords.posZ + 0.5, stack_));

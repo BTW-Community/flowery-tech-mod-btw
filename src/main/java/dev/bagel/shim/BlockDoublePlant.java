@@ -1,14 +1,17 @@
 package dev.bagel.shim;
 
+import dev.bagel.interfaces.BlockExtensions;
+import dev.bagel.util.Items;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.src.*;
+import net.minecraftforge.common.IShearable;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class BlockDoublePlant extends BlockBush/* implements IGrowable, IShearable*/
+public class BlockDoublePlant extends BlockBush implements/*  IGrowable,*/ IShearable
 {
     public static final String[] field_149892_a = new String[] {"sunflower", "syringa", "grass", "fern", "rose", "paeonia"};
     @Environment(EnvType.CLIENT)
@@ -24,7 +27,7 @@ public class BlockDoublePlant extends BlockBush/* implements IGrowable, IShearab
         super(id, Material.plants);
         this.setHardness(0.0F);
         this.setStepSound(soundGrassFootstep);
-        this.setBlockName("doublePlant");
+        this.setUnlocalizedName("doublePlant");
     }
 
     /**
@@ -99,7 +102,7 @@ public class BlockDoublePlant extends BlockBush/* implements IGrowable, IShearab
         else
         {
             int k = func_149890_d(meta);
-            return k != 3 && k != 2 ? Item.getItemFromBlock(this) : null;
+            return k != 3 && k != 2 ? Items.getItemFromBlock(this) : null;
         }
     }
 
@@ -168,7 +171,7 @@ public class BlockDoublePlant extends BlockBush/* implements IGrowable, IShearab
      */
     public void harvestBlock(World worldIn, EntityPlayer player, int x, int y, int z, int meta)
     {
-        if (worldIn.isRemote || player.getCurrentEquippedItem() == null || player.getCurrentEquippedItem().getItem() != Items.shears || func_149887_c(meta) || !this.func_149886_b(worldIn, x, y, z, meta, player))
+        if (worldIn.isRemote || player.getCurrentEquippedItem() == null || player.getCurrentEquippedItem().getItem() != Item.shears || func_149887_c(meta) || !this.func_149886_b(worldIn, x, y, z, meta, player))
         {
             super.harvestBlock(worldIn, player, x, y, z, meta);
         }
@@ -190,11 +193,11 @@ public class BlockDoublePlant extends BlockBush/* implements IGrowable, IShearab
 
                     if (j1 != 3 && j1 != 2)
                     {
-                        worldIn.func_147480_a(x, y - 1, z, true);
+                        worldIn.destroyBlock(x, y - 1, z, true);
                     }
                     else
                     {
-                        if (!worldIn.isRemote && player.getCurrentEquippedItem() != null && player.getCurrentEquippedItem().getItem() == Items.shears)
+                        if (!worldIn.isRemote && player.getCurrentEquippedItem() != null && player.getCurrentEquippedItem().getItem() == Item.shears)
                         {
                             this.func_149886_b(worldIn, x, y, z, i1, player);
                         }
@@ -210,13 +213,13 @@ public class BlockDoublePlant extends BlockBush/* implements IGrowable, IShearab
         }
         else if (player.capabilities.isCreativeMode && worldIn.getBlock(x, y + 1, z) == this)
         {
-            worldIn.setBlock(x, y + 1, z, Blocks.air, 0, 2);
+            worldIn.setBlock(x, y + 1, z, 0, 0, 2);
         }
 
         super.onBlockHarvested(worldIn, x, y, z, meta, player);
     }
 
-    private boolean func_149886_b(World p_149886_1_, int p_149886_2_, int p_149886_3_, int p_149886_4_, int p_149886_5_, EntityPlayer p_149886_6_)
+    private boolean func_149886_b(World world, int p_149886_2_, int p_149886_3_, int p_149886_4_, int p_149886_5_, EntityPlayer p_149886_6_)
     {
         int i1 = func_149890_d(p_149886_5_);
 
@@ -226,7 +229,7 @@ public class BlockDoublePlant extends BlockBush/* implements IGrowable, IShearab
         }
         else
         {
-            p_149886_6_.addStat(StatList.mineBlockStatArray[Block.getIdFromBlock(this)], 1);
+            p_149886_6_.addStat(StatList.mineBlockStatArray[BlockExtensions.getIdFromBlock(this)], 1);
             byte b0 = 1;
 
             if (i1 == 3)
@@ -234,7 +237,7 @@ public class BlockDoublePlant extends BlockBush/* implements IGrowable, IShearab
                 b0 = 2;
             }
 
-            this.dropBlockAsItem(p_149886_1_, p_149886_2_, p_149886_3_, p_149886_4_, new ItemStack(Blocks.tallgrass, 2, b0));
+            this.dropBlockAsItem(world, p_149886_2_, p_149886_3_, p_149886_4_, new ItemStack(Block.tallGrass, 2, b0).itemID, b0);
             return true;
         }
     }
@@ -251,7 +254,7 @@ public class BlockDoublePlant extends BlockBush/* implements IGrowable, IShearab
             this.doublePlantTopIcons[i] = reg.registerIcon("double_plant_" + field_149892_a[i] + "_top");
         }
 
-        this.sunflowerIcons = new IIcon[2];
+        this.sunflowerIcons = new Icon[2];
         this.sunflowerIcons[0] = reg.registerIcon("double_plant_sunflower_front");
         this.sunflowerIcons[1] = reg.registerIcon("double_plant_sunflower_back");
     }
@@ -290,7 +293,7 @@ public class BlockDoublePlant extends BlockBush/* implements IGrowable, IShearab
     public void func_149853_b(World worldIn, Random random, int x, int y, int z)
     {
         int l = this.func_149885_e(worldIn, x, y, z);
-        this.dropBlockAsItem(worldIn, x, y, z, new ItemStack(this, 1, l));
+        this.dropBlockAsItem(worldIn, x, y, z, new ItemStack(this, 1, l).itemID, l);
     }
 
     @Override

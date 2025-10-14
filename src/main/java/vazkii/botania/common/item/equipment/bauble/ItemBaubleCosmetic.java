@@ -48,7 +48,7 @@ public class ItemBaubleCosmetic extends ItemBauble implements ICosmeticBauble {
 	}
 
 	@Override
-	public void getSubItems(Item item, CreativeTabs tab, List list) {
+	public void getSubItems(int item, CreativeTabs tab, List list) {
 		for(int i = 0; i < SUBTYPES; i++)
 			list.add(new ItemStack(item, 1, i));
 	}

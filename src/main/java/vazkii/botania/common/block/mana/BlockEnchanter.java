@@ -35,7 +35,7 @@ public class BlockEnchanter extends BlockModContainer implements IWandable, ILex
 		setResistance(5.0F);
 		setLightValue(1.0F);
 		setStepSound(soundStoneFootstep);
-		setBlockName(LibBlockNames.ENCHANTER);
+		setUnlocalizedName(LibBlockNames.ENCHANTER);
 
 		random = new Random();
 	}
@@ -63,7 +63,7 @@ public class BlockEnchanter extends BlockModContainer implements IWandable, ILex
 
 //	@Override
 //	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
-//		return Item.getItemFromBlock(Blocks.lapis_block);
+//		return Items.getItemFromBlock(Block.blockLapis);
 //	}
 
 	@Override

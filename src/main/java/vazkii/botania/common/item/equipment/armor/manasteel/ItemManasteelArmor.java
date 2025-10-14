@@ -228,10 +228,4 @@ public class ItemManasteelArmor extends ItemArmor implements ISpecialArmor, IMan
 	public void setPhantomInk(ItemStack stack, boolean ink) {
 		ItemNBTHelper.setBoolean(stack, TAG_PHANTOM_INK, ink);
 	}
-
-	@Override
-	@Optional.Method(modid = "Thaumcraft")
-	public int getRunicCharge(ItemStack itemstack) {
-		return 0;
-	}
 }

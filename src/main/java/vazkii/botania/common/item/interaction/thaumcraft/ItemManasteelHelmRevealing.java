@@ -10,40 +10,32 @@
  */
 package vazkii.botania.common.item.interaction.thaumcraft;
 
+import net.minecraft.src.CraftingManager;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.ItemStack;
-import net.minecraftforge.oredict.RecipeSorter;
-import net.minecraftforge.oredict.RecipeSorter.Category;
-import thaumcraft.api.IGoggles;
-import thaumcraft.api.nodes.IRevealer;
 import vazkii.botania.client.lib.LibResources;
 import vazkii.botania.common.core.handler.ConfigHandler;
 import vazkii.botania.common.crafting.recipe.HelmRevealingRecipe;
 import vazkii.botania.common.item.equipment.armor.manasteel.ItemManasteelHelm;
 import vazkii.botania.common.lib.LibItemNames;
-import cpw.mods.fml.common.Optional;
 
-
-@Optional.InterfaceList({
-	@Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.IGoggles", striprefs = true),
-	@Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.nodes.IRevealer", striprefs = true)})
-public class ItemManasteelHelmRevealing extends ItemManasteelHelm implements IGoggles, IRevealer {
+public class ItemManasteelHelmRevealing extends ItemManasteelHelm {
 
 	public ItemManasteelHelmRevealing() {
 		super(LibItemNames.MANASTEEL_HELM_R);
 		CraftingManager.getInstance().getRecipeList().add(new HelmRevealingRecipe()); //Manasteel is the base so it gets the recipe added in its constructor so that ModItems can call it
-		RecipeSorter.register("botania:helmRevealing", HelmRevealingRecipe.class, Category.SHAPELESS, "");
+//		RecipeSorter.register("botania:helmRevealing", HelmRevealingRecipe.class, Category.SHAPELESS, "");
 	}
 
-	@Override
-	public boolean showNodes(ItemStack itemstack, EntityLivingBase player) {
-		return true;
-	}
-
-	@Override
-	public boolean showIngamePopups(ItemStack itemstack, EntityLivingBase player) {
-		return true;
-	}
+//	@Override
+//	public boolean showNodes(ItemStack itemstack, EntityLivingBase player) {
+//		return true;
+//	}
+//
+//	@Override
+//	public boolean showIngamePopups(ItemStack itemstack, EntityLivingBase player) {
+//		return true;
+//	}
 
 	@Override
 	public String getArmorTextureAfterInk(ItemStack stack, int slot) {

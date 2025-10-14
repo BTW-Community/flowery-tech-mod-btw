@@ -10,14 +10,12 @@
  */
 package vazkii.botania.common.item;
 
+import net.minecraft.src.CraftingManager;
 import net.minecraft.src.ItemStack;
-import net.minecraftforge.oredict.RecipeSorter;
-import net.minecraftforge.oredict.RecipeSorter.Category;
 import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.crafting.recipe.RegenIvyRecipe;
 import vazkii.botania.common.lib.LibItemNames;
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
@@ -29,11 +27,12 @@ public class ItemRegenIvy extends ItemMod {
 	public static final String TAG_REGEN = "Botania_regenIvy";
 	private static final int MANA_PER_DAMAGE = 200;
 
-	public ItemRegenIvy() {
-		setUnlocalizedName(LibItemNames.REGEN_IVY);
+	public ItemRegenIvy(int id) {
+        super(id);
+        setUnlocalizedName(LibItemNames.REGEN_IVY);
 		CraftingManager.getInstance().getRecipeList().add(new RegenIvyRecipe());
-		RecipeSorter.register("botania:regenIvy", RegenIvyRecipe.class, Category.SHAPELESS, "");
-		FMLCommonHandler.instance().bus().register(this);
+//		RecipeSorter.register("botania:regenIvy", RegenIvyRecipe.class, Category.SHAPELESS, "");
+//		FMLCommonHandler.instance().bus().register(this);
 	}
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)

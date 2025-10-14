@@ -35,12 +35,12 @@ public final class ModChallenges {
 		addChallenge(EnumChallengeLevel.EASY, "flowerFarm", new ItemStack(ModBlocks.flower, 1, 6));
 		addChallenge(EnumChallengeLevel.EASY, "recordFarm", new ItemStack(Item.record13));
 		addChallenge(EnumChallengeLevel.EASY, "reedFarm", new ItemStack(Item.reed));
-		addChallenge(EnumChallengeLevel.EASY, "cobbleGen", new ItemStack(Blocks.cobblestone));
+		addChallenge(EnumChallengeLevel.EASY, "cobbleGen", new ItemStack(Block.cobblestone));
 		addChallenge(EnumChallengeLevel.EASY, "pureDaisy", ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_PUREDAISY));
 		addChallenge(EnumChallengeLevel.EASY, "battery", new ItemStack(ModBlocks.pool));
 
 		addChallenge(EnumChallengeLevel.NORMAL, "apothecaryRefill", new ItemStack(ModBlocks.altar));
-		addChallenge(EnumChallengeLevel.NORMAL, "treeFarm", new ItemStack(Blocks.sapling));
+		addChallenge(EnumChallengeLevel.NORMAL, "treeFarm", new ItemStack(Block.sapling));
 		addChallenge(EnumChallengeLevel.NORMAL, "fullCropFarm", new ItemStack(Item.seeds));
 		addChallenge(EnumChallengeLevel.NORMAL, "animalFarm", new ItemStack(Item.leather));
 		addChallenge(EnumChallengeLevel.NORMAL, "boneMealFarm", new ItemStack(Item.dyePowder, 1, 15));

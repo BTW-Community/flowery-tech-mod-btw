@@ -39,7 +39,7 @@ public class BlockPavement extends BlockMod {
 		setHardness(2.0F);
 		setResistance(10.0F);
 		setStepSound(soundStoneFootstep);
-		setBlockName(LibBlockNames.PAVEMENT);
+		setUnlocalizedName(LibBlockNames.PAVEMENT);
 	}
 
 	@Override
@@ -53,10 +53,10 @@ public class BlockPavement extends BlockMod {
 	}
 
 	@Override
-	public Block setBlockName(String par1Str) {
+	public Block setUnlocalizedName(String par1Str) {
 		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
 //GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
-		return super.setBlockName(par1Str);
+		return super.setUnlocalizedName(par1Str);
 	}
 
 	@Override

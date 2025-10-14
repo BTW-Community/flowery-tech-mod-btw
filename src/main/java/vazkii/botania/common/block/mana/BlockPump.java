@@ -39,7 +39,7 @@ public class BlockPump extends BlockModContainer implements ILexiconable {
 		setHardness(2.0F);
 		setResistance(10.0F);
 		setStepSound(soundStoneFootstep);
-		setBlockName(LibBlockNames.PUMP);
+		setUnlocalizedName(LibBlockNames.PUMP);
 		setBlockBounds(true);
 	}
 

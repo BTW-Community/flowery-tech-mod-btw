@@ -117,7 +117,7 @@ public class GuiPlayerExpanded extends GuiContainer {
         }
 
         // Player model
-        func_147046_a(guiLeft + 51, guiTop + 75, 30, (float) (guiLeft + 51) - xSizeFloat, (float) (guiTop + 25) - ySizeFloat, mc.thePlayer);
+        GuiInventory.func_110423_a(guiLeft + 51, guiTop + 75, 30, (float) (guiLeft + 51) - xSizeFloat, (float) (guiTop + 25) - ySizeFloat, mc.thePlayer);
     }
 
     private void drawBaubleSlots() {

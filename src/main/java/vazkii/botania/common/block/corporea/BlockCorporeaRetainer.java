@@ -29,15 +29,15 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockCorporeaRetainer extends BlockModContainer implements ILexiconable, ICraftAchievement {
 
-	public BlockCorporeaRetainer() {
-		super(Material.iron);
+	public BlockCorporeaRetainer(int id) {
+		super(id, Material.iron);
 		setHardness(5.5F);
 		setStepSound(soundMetalFootstep);
-		setBlockName(LibBlockNames.CORPOREA_RETAINER);
+		setUnlocalizedName(LibBlockNames.CORPOREA_RETAINER);
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
+	public void onNeighborBlockChange(World world, int x, int y, int z, int block) {
 		boolean power = world.isBlockIndirectlyGettingPowered(x, y, z) || world.isBlockIndirectlyGettingPowered(x, y + 1, z);
 		int meta = world.getBlockMetadata(x, y, z);
 		boolean powered = (meta & 8) != 0;

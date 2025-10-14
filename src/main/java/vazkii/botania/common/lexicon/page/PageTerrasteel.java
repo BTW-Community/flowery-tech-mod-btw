@@ -43,7 +43,7 @@ public class PageTerrasteel extends PageRecipe {
 	@Environment(EnvType.CLIENT)
 	public void renderRecipe(IGuiLexiconEntry gui, int mx, int my) {
 		Block block1 = ModBlocks.livingrock;
-		Block block2 = Blocks.lapis_block;
+		Block block2 = Block.blockLapis;
 		Block block3 = ModBlocks.terraPlate;
 
 		GL11.glTranslatef(0F, 0F, -10F);

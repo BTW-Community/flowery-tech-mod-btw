@@ -29,12 +29,12 @@ public class BlockStarfield extends BlockModContainer implements ILexiconable {
 
 	Icon[] icons;
 
-	public BlockStarfield() {
-		super(Material.iron);
+	public BlockStarfield(int id) {
+		super(id, Material.iron);
 		setHardness(5F);
 		setResistance(2000F);
 		setStepSound(soundMetalFootstep);
-		setBlockName(LibBlockNames.STARFIELD);
+		setUnlocalizedName(LibBlockNames.STARFIELD);
 
 		setBlockBounds(0F, 0F, 0F, 1F, 0.25F, 1F);
 	}

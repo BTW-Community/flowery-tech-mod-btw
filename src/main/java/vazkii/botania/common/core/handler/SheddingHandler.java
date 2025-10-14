@@ -26,8 +26,6 @@ import net.minecraft.src.EntitySquid;
 import net.minecraft.src.EntityVillager;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.common.config.Property;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lexicon.page.PageShedding;
@@ -74,57 +72,57 @@ public final class SheddingHandler {
 		}
 	}
 
-	public static void loadFromConfig(Configuration config) {
-		defaultPatterns.add(new ShedPattern(EntityChicken.class, new ItemStack(Items.feather), 26000, 20));
-		defaultPatterns.add(new ShedPattern(EntitySquid.class, new ItemStack(Items.dye), 18000, 20));
-		defaultPatterns.add(new ShedPattern(EntityVillager.class, new ItemStack(Items.emerald), 226000, 40));
-		defaultPatterns.add(new ShedPattern(EntitySpider.class, new ItemStack(Items.string), 12000, 40));
-		defaultPatterns.add(new ShedPattern(EntityBlaze.class, new ItemStack(Items.blaze_powder), 8000, 40));
-		defaultPatterns.add(new ShedPattern(EntityGhast.class, new ItemStack(Items.ghast_tear), 9001, 30));
-		defaultPatterns.add(new ShedPattern(EntitySkeleton.class, new ItemStack(Items.bone), 36000, 40));
-		defaultPatterns.add(new ShedPattern(EntitySlime.class, new ItemStack(Items.slime_ball), 21000, 40));
-
-		ArrayList<String> defaultNames = new ArrayList<String>();
-
-		for(ShedPattern pattern : defaultPatterns) {
-			loadFromConfig(config, pattern.getEntityString(), pattern);
-			defaultNames.add(pattern.getEntityString());
-		}
-
-		for(Object o : EntityList.stringToClassMapping.entrySet()) {
-			Entry<String, Class> entry = (Entry<String, Class>) o;
-
-			if(EntityLiving.class.isAssignableFrom(entry.getValue())) {
-				String name = entry.getKey();
-				if(!defaultNames.contains(name))
-					loadFromConfig(config, name, null);
-			}
-		}
-	}
-
-	public static void loadFromConfig(Configuration config, String key, ShedPattern defaultPattern) {
-		String itemName = "";
-		int metadata = 0;
-		int rate = -1;
-		int lexiconSize = 40;
-
-		if(defaultPattern != null) {
-			itemName = Item.itemRegistry.getNameForObject(defaultPattern.getItemStack().getItem());
-			metadata = defaultPattern.getItemStack().getItemDamage();
-			rate = defaultPattern.rate;
-			lexiconSize = defaultPattern.lexiconSize;
-		}
-
-		Property prop = config.get("Shedding", key + ".item", itemName);
-		prop.comment = "Configuration of Shedding for "+key;
-		itemName = prop.getString();
-		rate = config.get("Shedding", key + ".rate", rate).getInt();
-		metadata = config.get("Shedding", key + ".metadata", metadata).getInt();
-		lexiconSize = config.get("Shedding", key + ".lexiconDisplaySize", lexiconSize).getInt();
-
-		if(itemName != null && !itemName.isEmpty() && rate != -1)
-			patterns.add(new ShedPattern((Class<?>) EntityList.stringToClassMapping.get(key), new ItemStack((Item) Item.itemRegistry.getObject(itemName), 1, metadata), rate, lexiconSize));
-	}
+//	public static void loadFromConfig(Configuration config) {
+//		defaultPatterns.add(new ShedPattern(EntityChicken.class, new ItemStack(Item.feather), 26000, 20));
+//		defaultPatterns.add(new ShedPattern(EntitySquid.class, new ItemStack(Item.dyePowder), 18000, 20));
+//		defaultPatterns.add(new ShedPattern(EntityVillager.class, new ItemStack(Item.emerald), 226000, 40));
+//		defaultPatterns.add(new ShedPattern(EntitySpider.class, new ItemStack(Item.silk), 12000, 40));
+//		defaultPatterns.add(new ShedPattern(EntityBlaze.class, new ItemStack(Item.blazePowder), 8000, 40));
+//		defaultPatterns.add(new ShedPattern(EntityGhast.class, new ItemStack(Item.ghastTear), 9001, 30));
+//		defaultPatterns.add(new ShedPattern(EntitySkeleton.class, new ItemStack(Item.bone), 36000, 40));
+//		defaultPatterns.add(new ShedPattern(EntitySlime.class, new ItemStack(Item.slimeBall), 21000, 40));
+//
+//		ArrayList<String> defaultNames = new ArrayList<String>();
+//
+//		for(ShedPattern pattern : defaultPatterns) {
+//			loadFromConfig(config, pattern.getEntityString(), pattern);
+//			defaultNames.add(pattern.getEntityString());
+//		}
+//
+//		for(Object o : EntityList.stringToClassMapping.entrySet()) {
+//			Entry<String, Class> entry = (Entry<String, Class>) o;
+//
+//			if(EntityLiving.class.isAssignableFrom(entry.getValue())) {
+//				String name = entry.getKey();
+//				if(!defaultNames.contains(name))
+//					loadFromConfig(config, name, null);
+//			}
+//		}
+//	}
+//
+//	public static void loadFromConfig(Configuration config, String key, ShedPattern defaultPattern) {
+//		String itemName = "";
+//		int metadata = 0;
+//		int rate = -1;
+//		int lexiconSize = 40;
+//
+//		if(defaultPattern != null) {
+//			itemName = Item.itemRegistry.getNameForObject(defaultPattern.getItemStack().getItem());
+//			metadata = defaultPattern.getItemStack().getItemDamage();
+//			rate = defaultPattern.rate;
+//			lexiconSize = defaultPattern.lexiconSize;
+//		}
+//
+//		Property prop = config.get("Shedding", key + ".item", itemName);
+//		prop.comment = "Configuration of Shedding for "+key;
+//		itemName = prop.getString();
+//		rate = config.get("Shedding", key + ".rate", rate).getInt();
+//		metadata = config.get("Shedding", key + ".metadata", metadata).getInt();
+//		lexiconSize = config.get("Shedding", key + ".lexiconDisplaySize", lexiconSize).getInt();
+//
+//		if(itemName != null && !itemName.isEmpty() && rate != -1)
+//			patterns.add(new ShedPattern((Class<?>) EntityList.stringToClassMapping.get(key), new ItemStack((Item) Item.itemRegistry.getObject(itemName), 1, metadata), rate, lexiconSize));
+//	}
 
 	public static class ShedPattern {
 

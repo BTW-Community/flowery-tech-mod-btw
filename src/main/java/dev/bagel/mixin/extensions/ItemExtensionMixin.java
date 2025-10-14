@@ -20,6 +20,8 @@ public abstract class ItemExtensionMixin implements ItemExtensions {
     @Shadow
     public abstract Icon getIconFromDamageForRenderPass(int par1, int par2);
 
+    @Shadow public abstract boolean requiresMultipleRenderPasses();
+
     @Override
     public ItemStack getContainerItem(ItemStack itemStack) {
         if (!hasContainerItem()) {
@@ -48,5 +50,10 @@ public abstract class ItemExtensionMixin implements ItemExtensions {
 
     public Icon getIcon(ItemStack stack, int pass) {
         return getIconFromDamageForRenderPass(stack.getItemDamage(), pass);
+    }
+
+    @Override
+    public int getRenderPasses(int metadata) {
+        return requiresMultipleRenderPasses() ? 2 : 1;
     }
 }

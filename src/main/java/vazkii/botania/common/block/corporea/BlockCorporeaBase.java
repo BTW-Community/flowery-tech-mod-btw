@@ -31,15 +31,15 @@ public abstract class BlockCorporeaBase extends BlockModContainer<TileCorporeaBa
 
 	Random random;
 
-	public BlockCorporeaBase(Material material, String name) {
-		super(material);
-		setBlockName(name);
+	public BlockCorporeaBase(int id, Material material, String name) {
+		super(id, material);
+		setUnlocalizedName(name);
 
 		random = new Random();
 	}
 
 	@Override
-	public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6) {
+	public void breakBlock(World par1World, int par2, int par3, int par4, int block, int par6) {
 		TileSimpleInventory inv = (TileSimpleInventory) par1World.getTileEntity(par2, par3, par4);
 
 		if (inv != null) {
@@ -70,10 +70,10 @@ public abstract class BlockCorporeaBase extends BlockModContainer<TileCorporeaBa
 				}
 			}
 
-			par1World.func_96440_m(par2, par3, par4, par5);
+			par1World.func_96440_m(par2, par3, par4, block);
 		}
 
-		super.breakBlock(par1World, par2, par3, par4, par5, par6);
+		super.breakBlock(par1World, par2, par3, par4, block, par6);
 	}
 
 	@Override

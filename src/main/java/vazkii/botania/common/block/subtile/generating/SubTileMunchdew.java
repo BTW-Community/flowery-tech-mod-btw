@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import dev.bagel.interfaces.BlockExtensions;
 import net.minecraft.src.Block;
 import net.minecraft.src.Material;
 import net.minecraft.src.EntityLivingBase;
@@ -90,7 +91,7 @@ public class SubTileMunchdew extends SubTileGenerating {
 				ticksWithoutEating = 0;
 				ateOnce = true;
 				if(ConfigHandler.blockBreakParticles)
-					supertile.getWorldObj().playAuxSFX(2001, breakCoords.posX, breakCoords.posY, breakCoords.posZ, Block.getIdFromBlock(block) + (meta << 12));
+					supertile.getWorldObj().playAuxSFX(2001, breakCoords.posX, breakCoords.posY, breakCoords.posZ, BlockExtensions.getIdFromBlock(block) + (meta << 12));
 				mana += manaPerLeaf;
 			}
 		}

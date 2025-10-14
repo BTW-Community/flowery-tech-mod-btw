@@ -23,8 +23,6 @@ import net.minecraft.src.ShapedRecipes;
 import net.minecraft.src.ShapelessRecipes;
 import net.minecraft.src.ResourceLocation;
 import net.minecraft.src.StatCollector;
-import net.minecraftforge.oredict.ShapedOreRecipe;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 import org.lwjgl.opengl.GL11;
 
@@ -127,9 +125,9 @@ public class PageCraftingRecipe extends PageRecipe {
 		if(recipe instanceof ShapedRecipes) {
 			ShapedRecipes shaped = (ShapedRecipes)recipe;
 
-			for(int y = 0; y < shaped.recipeHeight; y++)
-				for(int x = 0; x < shaped.recipeWidth; x++)
-					renderItemAtGridPos(gui, 1 + x, 1 + y, shaped.recipeItems[y * shaped.recipeWidth + x], true);
+			for(int y = 0; y < shaped.getRecipeHeight(); y++)
+				for(int x = 0; x < shaped.getRecipeWidth(); x++)
+					renderItemAtGridPos(gui, 1 + x, 1 + y, shaped.getRecipeItems()[y * shaped.getRecipeWidth() + x], true);
 		} else if(recipe instanceof ShapedOreRecipe) {
 			ShapedOreRecipe shaped = (ShapedOreRecipe) recipe;
 			int width = (Integer) ReflectionHelper.getPrivateValue(ShapedOreRecipe.class, shaped, 4);

@@ -145,7 +145,7 @@ public class TileBrewery extends TileSimpleInventory implements ISidedInventory,
 
 		if(newSignal != signal) {
 			signal = newSignal;
-			worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
+			worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord).blockID);
 		}
 
 		manaLastTick = mana;
@@ -191,10 +191,10 @@ public class TileBrewery extends TileSimpleInventory implements ISidedInventory,
 		return 7;
 	}
 
-	@Override
-	public AxisAlignedBB getRenderBoundingBox() {
-		return INFINITE_EXTENT_AABB;
-	}
+//	@Override
+//	public AxisAlignedBB getRenderBoundingBox() {
+//		return INFINITE_EXTENT_AABB;
+//	}
 
 	@Override
 	public String getInvName() {

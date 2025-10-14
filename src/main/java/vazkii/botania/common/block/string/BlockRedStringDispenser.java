@@ -18,12 +18,12 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockRedStringDispenser extends BlockRedString {
 
-	public BlockRedStringDispenser() {
-		super(LibBlockNames.RED_STRING_DISPENSER);
+	public BlockRedStringDispenser(int id) {
+		super(id, LibBlockNames.RED_STRING_DISPENSER);
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
+	public void onNeighborBlockChange(World world, int x, int y, int z, int block) {
 		boolean power = world.isBlockIndirectlyGettingPowered(x, y, z) || world.isBlockIndirectlyGettingPowered(x, y + 1, z);
 		int meta = world.getBlockMetadata(x, y, z);
 		boolean powered = (meta & 8) != 0;

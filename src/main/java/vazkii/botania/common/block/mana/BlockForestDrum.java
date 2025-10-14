@@ -40,7 +40,7 @@ public class BlockForestDrum extends BlockMod implements IManaTrigger, ILexicona
 
 		setHardness(2.0F);
 		setStepSound(soundWoodFootstep);
-		setBlockName(LibBlockNames.FOREST_DRUM);
+		setUnlocalizedName(LibBlockNames.FOREST_DRUM);
 	}
 
 	@Override
@@ -49,10 +49,10 @@ public class BlockForestDrum extends BlockMod implements IManaTrigger, ILexicona
 	}
 
 	@Override
-	public Block setBlockName(String par1Str) {
+	public Block setUnlocalizedName(String par1Str) {
 		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
 //GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
-		return super.setBlockName(par1Str);
+		return super.setUnlocalizedName(par1Str);
 	}
 
 	@Override

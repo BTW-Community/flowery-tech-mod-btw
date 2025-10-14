@@ -19,19 +19,7 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.Minecraft;
-import net.minecraft.src.ActiveRenderInfo;
-import net.minecraft.src.Tessellator;
-import net.minecraft.src.TextureManager;
-import net.minecraft.src.Entity;
-import net.minecraft.src.Profiler;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.ChunkCoordinates;
-import net.minecraft.src.MovingObjectPosition;
-import net.minecraft.src.ResourceLocation;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 
 import org.lwjgl.opengl.GL11;
@@ -412,12 +400,13 @@ public class LightningHandler {
 		}
 
 		private float rayTraceResistance(Vector3 start, Vector3 end, float prevresistance) {
-			MovingObjectPosition mop = world.rayTraceBlocks(start.toVec3D(), end.toVec3D());
+			//todofix added these 2 booleans, not sure if correct
+			MovingObjectPosition mop = world.rayTraceBlocks_do_do(start.toVec3D(), end.toVec3D(), false, true);
 
 			if(mop == null)
 				return prevresistance;
 
-			if(mop.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK) {
+			if(mop.typeOfHit == EnumMovingObjectType.TILE) {
 				Block block = world.getBlock(mop.blockX, mop.blockY, mop.blockZ);
 
 				if(world.isAirBlock(mop.blockX, mop.blockY, mop.blockZ))

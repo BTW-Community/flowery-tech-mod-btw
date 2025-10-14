@@ -48,7 +48,7 @@ public class TileCorporeaRetainer extends TileMod {
 		this.request = request;
 		this.requestCount = requestCount;
 		pendingRequest = true;
-		worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
+		worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlockId(xCoord, yCoord, zCoord));
 	}
 
 	public boolean hasPendingRequest() {
@@ -66,7 +66,7 @@ public class TileCorporeaRetainer extends TileMod {
 				ICorporeaRequestor requestor = (ICorporeaRequestor) inv;
 				requestor.doCorporeaRequest(request, requestCount, spark);
 				pendingRequest = false;
-				worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
+				worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlockId(xCoord, yCoord, zCoord));
 			}
 		}
 	}

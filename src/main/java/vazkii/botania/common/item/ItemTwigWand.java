@@ -231,7 +231,7 @@ public class ItemTwigWand extends Item16Colors implements ICoordBoundItem {
 	}
 
 	@Override
-	public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
+	public void getSubItems(int par1,  CreativeTabs par2CreativeTabs, List par3List) {
 		for(int i = 0; i < 16; i++)
 			par3List.add(forColors(i, i));
 	}

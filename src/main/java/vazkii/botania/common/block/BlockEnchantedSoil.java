@@ -42,7 +42,7 @@ public class BlockEnchantedSoil extends BlockMod implements ILexiconable {
 		super(id, Material.grass);
 		setHardness(0.6F);
 		setStepSound(soundGrassFootstep);
-		setBlockName(LibBlockNames.ENCHANTED_SOIL);
+		setUnlocalizedName(LibBlockNames.ENCHANTED_SOIL);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
@@ -84,7 +84,7 @@ public class BlockEnchantedSoil extends BlockMod implements ILexiconable {
 
 //	@Override
 //	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
-//		return Blocks.dirt.getItemDropped(0, p_149650_2_, p_149650_3_);
+//		return Block.dirt.getItemDropped(0, p_149650_2_, p_149650_3_);
 //	}
 
 	//todofix canSustain plant

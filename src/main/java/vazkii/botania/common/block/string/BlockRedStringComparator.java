@@ -17,8 +17,8 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockRedStringComparator extends BlockRedString {
 
-	public BlockRedStringComparator() {
-		super(LibBlockNames.RED_STRING_COMPARATOR);
+	public BlockRedStringComparator(int id) {
+		super(id, LibBlockNames.RED_STRING_COMPARATOR);
 	}
 
 	@Override

@@ -25,7 +25,6 @@ import net.minecraft.src.Achievement;
 import net.minecraft.src.ChunkCoordinates;
 import net.minecraft.src.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.oredict.OreDictionary;
 import vazkii.botania.api.item.IBlockProvider;
 import vazkii.botania.api.item.IManaProficiencyArmor;
 import vazkii.botania.api.mana.IManaUsingItem;
@@ -67,8 +66,8 @@ public class ItemTerraformRod extends ItemMod implements IManaUsingItem, IBlockP
 			"blockLimestone"
 	});
 
-	public ItemTerraformRod() {
-		super();
+	public ItemTerraformRod(int id) {
+		super(id);
 		setMaxStackSize(1);
 		setUnlocalizedName(LibItemNames.TERRAFORM_ROD);
 	}
@@ -94,7 +93,7 @@ public class ItemTerraformRod extends ItemMod implements IManaUsingItem, IBlockP
 		par3EntityPlayer.setItemInUse(par1ItemStack, getMaxItemUseDuration(par1ItemStack));
 		return par1ItemStack;
 	}
-
+	//todofix terraform rod fully non-functional
 	public void terraform(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
 		int range = IManaProficiencyArmor.Helper.hasProficiency(par3EntityPlayer) ? 22 : 16;
 
@@ -123,34 +122,34 @@ public class ItemTerraformRod extends ItemMod implements IManaUsingItem, IBlockP
 					Block block = par2World.getBlock(x, y, z);
 					int meta = par2World.getBlockMetadata(x, y, z);
 
-					int[] ids = OreDictionary.getOreIDs(new ItemStack(block, 1, meta));
-					for(int id : ids)
-						if(validBlocks.contains(OreDictionary.getOreName(id))) {
-							boolean hasAir = false;
-							List<ChunkCoordinates> airBlocks = new ArrayList<>();
-
-							for(ForgeDirection dir : LibMisc.CARDINAL_DIRECTIONS) {
-								int x_ = x + dir.offsetX;
-								int y_ = y + dir.offsetY;
-								int z_ = z + dir.offsetZ;
-
-								Block block_ = par2World.getBlock(x_, y_, z_);
-								if(block_.isAir(par2World, x_, y_, z_) || block_.isReplaceable(par2World, x_, y_, z_) || block_ instanceof BlockFlower && !(block_ instanceof ISpecialFlower) || block_ == Blocks.double_plant) {
-									airBlocks.add(new ChunkCoordinates(x_, y_, z_));
-									hasAir = true;
-								}
-							}
-
-							if(hasAir) {
-								if(y > yCenter)
-									blocks.add(new CoordsWithBlock(x, y, z, Blocks.air));
-								else for(ChunkCoordinates coords : airBlocks) {
-									if(par2World.getBlock(coords.posX, coords.posY - 1, coords.posZ) != Blocks.air)
-										blocks.add(new CoordsWithBlock(coords.posX, coords.posY, coords.posZ, Blocks.dirt));
-								}
-							}
-							break;
-						}
+//					int[] ids = OreDictionary.getOreIDs(new ItemStack(block, 1, meta));
+//					for(int id : ids)
+//						if(validBlocks.contains(OreDictionary.getOreName(id))) {
+//							boolean hasAir = false;
+//							List<ChunkCoordinates> airBlocks = new ArrayList<>();
+//
+//							for(ForgeDirection dir : LibMisc.CARDINAL_DIRECTIONS) {
+//								int x_ = x + dir.offsetX;
+//								int y_ = y + dir.offsetY;
+//								int z_ = z + dir.offsetZ;
+//
+//								Block block_ = par2World.getBlock(x_, y_, z_);
+//								if(block_.isAir(par2World, x_, y_, z_) || block_.isReplaceable(par2World, x_, y_, z_) || block_ instanceof BlockFlower && !(block_ instanceof ISpecialFlower) || block_ == Blocks.double_plant) {
+//									airBlocks.add(new ChunkCoordinates(x_, y_, z_));
+//									hasAir = true;
+//								}
+//							}
+//
+//							if(hasAir) {
+//								if(y > yCenter)
+//									blocks.add(new CoordsWithBlock(x, y, z, Blocks.air));
+//								else for(ChunkCoordinates coords : airBlocks) {
+//									if(par2World.getBlock(coords.posX, coords.posY - 1, coords.posZ) != Blocks.air)
+//										blocks.add(new CoordsWithBlock(coords.posX, coords.posY, coords.posZ, Block.dirt));
+//								}
+//							}
+//							break;
+//						}
 					--k;
 				}
 			}
@@ -194,14 +193,14 @@ public class ItemTerraformRod extends ItemMod implements IManaUsingItem, IBlockP
 
 	@Override
 	public boolean provideBlock(EntityPlayer player, ItemStack requestor, ItemStack stack, Block block, int meta, boolean doit) {
-		if(block == Blocks.dirt && meta == 0)
+		if(block == Block.dirt && meta == 0)
 			return !doit || ManaItemHandler.requestManaExactForTool(requestor, player, ItemDirtRod.COST, true);
 		return false;
 	}
 
 	@Override
 	public int getBlockCount(EntityPlayer player, ItemStack requestor, ItemStack stack, Block block, int meta) {
-		if(block == Blocks.dirt && meta == 0)
+		if(block == Block.dirt && meta == 0)
 			return -1;
 		return 0;
 	}

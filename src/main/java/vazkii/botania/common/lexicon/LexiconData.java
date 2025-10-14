@@ -540,7 +540,7 @@ public final class LexiconData {
 
 		flowerSpeed = new BLexiconEntry(LibLexicon.FFLOWER_SPEED, categoryFunctionalFlowers);
 		flowerSpeed.setPriority().setLexiconPages(new PageText("0"), new PageText("1"));
-		flowerSpeed.setIcon(new ItemStack(Blocks.dirt, 1, 2));
+		flowerSpeed.setIcon(new ItemStack(Block.dirt, 1, 2));
 
 		jadedAmaranthus = new BLexiconEntry(LibLexicon.FFLOWER_JADED_AMARANTHUS, categoryFunctionalFlowers);
 		jadedAmaranthus.setLexiconPages(new PageText("0"),
@@ -1439,7 +1439,7 @@ public final class LexiconData {
 
 		blazeBlock = new BLexiconEntry(LibLexicon.MISC_BLAZE_BLOCK, categoryMisc);
 		blazeBlock.setLexiconPages(new PageText("0"), new PageCraftingRecipe("1", ModCraftingRecipes.recipeBlazeBlock));
-		LexiconRecipeMappings.map(new ItemStack(Blocks.obsidian), blazeBlock, 0);
+		LexiconRecipeMappings.map(new ItemStack(Block.obsidian), blazeBlock, 0);
 
 		challenges = new BLexiconEntry(LibLexicon.MISC_CHALLENGES, categoryMisc);
 		challenges.setLexiconPages(new PageText("0"), new PageText("1"), new PageText("2")).setPriority()

@@ -25,17 +25,17 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockRoot extends BlockMod implements ILexiconable {
 
-	public BlockRoot() {
-		super(Material.plants);
+	public BlockRoot(int id) {
+		super(id, Material.plants);
 		setHardness(1.2F);
 		setStepSound(soundWoodFootstep);
-		setBlockName(LibBlockNames.ROOT);
+		setUnlocalizedName(LibBlockNames.ROOT);
 	}
 
 
 	@Override
-	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
-		return ModItems.manaResource;
+	public int idDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
+		return ModItems.manaResource.itemID;
 	}
 
 	@Override

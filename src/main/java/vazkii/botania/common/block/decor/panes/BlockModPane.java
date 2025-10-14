@@ -33,7 +33,7 @@ public class BlockModPane extends BlockPane {
 	public BlockModPane(Block source) {
 		super("", "", Material.glass, false);
 		this.source = source;
-		setBlockName(source.getUnlocalizedName().replaceAll("tile.", "") + "Pane");
+		setUnlocalizedName(source.getUnlocalizedName().replaceAll("tile.", "") + "Pane");
 		setCreativeTab(CreativeTabs.tabMisc);
 		setHardness(0.3F);
 		setStepSound(soundGlassFootstep);
@@ -42,9 +42,9 @@ public class BlockModPane extends BlockPane {
 	}
 
 	@Override
-	public Block setBlockName(String par1Str) {
+	public Block setUnlocalizedName(String par1Str) {
 		GameRegistry.registerBlock(this, ItemBlockMod.class, par1Str);
-		return super.setBlockName(par1Str);
+		return super.setUnlocalizedName(par1Str);
 	}
 
 	@Override

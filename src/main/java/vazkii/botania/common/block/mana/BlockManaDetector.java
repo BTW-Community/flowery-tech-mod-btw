@@ -41,7 +41,7 @@ public class BlockManaDetector extends BlockModContainer implements ILexiconable
 		setHardness(2.0F);
 		setResistance(10.0F);
 		setStepSound(Block.soundStoneFootstep);
-		setBlockName(LibBlockNames.MANA_DETECTOR);
+		setUnlocalizedName(LibBlockNames.MANA_DETECTOR);
 	}
 
 	@Override

@@ -38,7 +38,7 @@ public class BlockAlchemyCatalyst extends BlockMod implements ILexiconable, IPoo
 		setHardness(2.0F);
 		setResistance(10.0F);
 		setStepSound(Block.soundStoneFootstep);
-		setBlockName(name);
+		setUnlocalizedName(name);
 	}
 
 	@Override

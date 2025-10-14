@@ -215,16 +215,16 @@ public class TileLightRelay extends TileMod implements IWandBindable {
 			int exitY = getExitY();
 			int exitZ = getExitZ();
 
-			int x = net.minecraft.util.MathHelper.floor_double(posX);
-			int y = net.minecraft.util.MathHelper.floor_double(posY);
-			int z = net.minecraft.util.MathHelper.floor_double(posZ);
+			int x = net.minecraft.src.MathHelper.floor_double(posX);
+			int y = net.minecraft.src.MathHelper.floor_double(posY);
+			int z = net.minecraft.src.MathHelper.floor_double(posZ);
 			if(x == exitX && y == exitY && z == exitZ) {
 				TileEntity tile = worldObj.getTileEntity(x, y, z);
 				if(tile != null && tile instanceof TileLightRelay) {
 					int meta = worldObj.getBlockMetadata(x, y, z);
 					if(meta > 0) {
 						worldObj.setBlockMetadataWithNotify(x, y, z, meta | 8, 1 | 2);
-						worldObj.scheduleBlockUpdate(x, y, z, tile.getBlockType(), tile.getBlockType().tickRate(worldObj));
+						worldObj.scheduleBlockUpdate(x, y, z, tile.getBlockType().blockID, tile.getBlockType().tickRate(worldObj));
 					}
 
 					TileLightRelay relay = (TileLightRelay) tile;
@@ -260,10 +260,10 @@ public class TileLightRelay extends TileMod implements IWandBindable {
 			}
 		}
 
-		@Override
-		public boolean shouldRiderSit() {
-			return false;
-		}
+//		@Override
+//		public boolean shouldRiderSit() {
+//			return false;
+//		}
 
 		@Override
 		public boolean attackEntityFrom(DamageSource p_70097_1_, float p_70097_2_) {

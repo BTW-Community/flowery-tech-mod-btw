@@ -21,9 +21,6 @@ import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.CraftingManager;
 import net.minecraft.src.IRecipe;
-import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapedOreRecipe;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 import org.apache.logging.log4j.Level;
 
@@ -325,7 +322,7 @@ public final class ModCraftingRecipes {
 		int recipeListSize = CraftingManager.getInstance().getRecipeList().size();
 
 		// Lexicon Recipe
-		addShapelessOreDictRecipe(new ItemStack(ModItems.lexicon), "treeSapling", Items.book);
+		addShapelessOreDictRecipe(new ItemStack(ModItems.lexicon), "treeSapling", Item.book);
 		recipeLexicon = BotaniaAPI.getLatestAddedRecipe();
 
 		// Petal/Dye Recipes
@@ -349,7 +346,7 @@ public final class ModCraftingRecipes {
 				" S", "W ", "B ",
 				'S', "stickWood",
 				'W', "plankWood",
-				'B', Items.bowl);
+				'B', Item.bowlEmpty);
 		recipePestleAndMortar = BotaniaAPI.getLatestAddedRecipe();
 
 		// Wand of the Forest Recipes
@@ -940,7 +937,7 @@ public final class ModCraftingRecipes {
 		recipeRedQuartz = addQuartzRecipes(4, Items.redstone, ModFluffBlocks.redQuartz, ModFluffBlocks.redQuartzStairs, ModFluffBlocks.redQuartzSlab);
 		addQuartzRecipes(5, null, ModFluffBlocks.elfQuartz, ModFluffBlocks.elfQuartzStairs, ModFluffBlocks.elfQuartzSlab);
 
-		recipeSunnyQuartz = addQuartzRecipes(6, Item.getItemFromBlock(Block.double_plant), ModFluffBlocks.sunnyQuartz, ModFluffBlocks.sunnyQuartzStairs, ModFluffBlocks.sunnyQuartzSlab);
+		recipeSunnyQuartz = addQuartzRecipes(6, Items.getItemFromBlock(Block.double_plant), ModFluffBlocks.sunnyQuartz, ModFluffBlocks.sunnyQuartzStairs, ModFluffBlocks.sunnyQuartzSlab);
 
 		// Alfheim Portal Recipe
 		addOreDictRecipe(new ItemStack(ModBlocks.alfPortal),
@@ -1571,7 +1568,7 @@ public final class ModCraftingRecipes {
 		recipePrism = BotaniaAPI.getLatestAddedRecipe();
 
 		// Trodden Dirt Recipe
-		CraftingManager.getInstance().getRecipeList().add(new ShapelessOreRecipe(new ItemStack(ModBlocks.dirtPath, 4), new ItemStack(Block.dirt, 1, 1), new ItemStack(Block.dirt, 1, 1), new ItemStack(Block.dirt, 1, 1), "sand"));
+		CraftingManager.getInstance().getRecipeList().add(new ShapelessOreRecipe(new ItemStack(ModBlock.dirtPath, 4), new ItemStack(Block.dirt, 1, 1), new ItemStack(Block.dirt, 1, 1), new ItemStack(Block.dirt, 1, 1), "sand"));
 		recipeDirtPath = BotaniaAPI.getLatestAddedRecipe();
 
 		// Dreamwood Twig Recipe
@@ -1634,9 +1631,9 @@ public final class ModCraftingRecipes {
 		recipeThornChakram = BotaniaAPI.getLatestAddedRecipe();
 
 		// Trodden Dirt Slab
-		CraftingManager.getInstance().getRecipeList().add(new ItemStack(ModFluffBlocks.dirtPathSlab, 6),
+		CraftingManager.getInstance().getRecipeList().add(new ItemStack(ModFluffBlock.dirtPathSlab, 6),
 				"DDD",
-				'D', new ItemStack(ModBlocks.dirtPath));
+				'D', new ItemStack(ModBlock.dirtPath));
 		recipeDirtPathSlab = BotaniaAPI.getLatestAddedRecipe();
 
 		// Pattern Recipes

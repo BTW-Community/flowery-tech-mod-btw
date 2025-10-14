@@ -110,7 +110,7 @@ public class ItemManasteelShears extends ItemShears implements IManaUsingItem {
 				}
 
 				ToolCommons.damageItem(itemstack, 1, player, MANA_PER_DAMAGE);
-				player.addStat(StatList.mineBlockStatArray[Block.getIdFromBlock(block)], 1);
+				player.addStat(StatList.mineBlockStatArray[BlockExtensions.getIdFromBlock(block)], 1);
 			}
 		}
 

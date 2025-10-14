@@ -34,11 +34,11 @@ import vazkii.botania.common.lib.LibMisc;
 
 public class BlockLightLauncher extends BlockMod implements ILexiconable {
 
-	public BlockLightLauncher() {
-		super(Material.wood);
+	public BlockLightLauncher(int id) {
+		super(id, Material.wood);
 		setHardness(2.0F);
 		setStepSound(soundWoodFootstep);
-		setBlockName(LibBlockNames.LIGHT_LAUNCHER);
+		setUnlocalizedName(LibBlockNames.LIGHT_LAUNCHER);
 		setBlockBounds(0F, 0F, 0F, 1F, 0.25F, 1F);
 	}
 
@@ -58,7 +58,7 @@ public class BlockLightLauncher extends BlockMod implements ILexiconable {
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
+	public void onNeighborBlockChange(World world, int x, int y, int z, int block) {
 		boolean power = world.isBlockIndirectlyGettingPowered(x, y, z) || world.isBlockIndirectlyGettingPowered(x, y + 1, z);
 		int meta = world.getBlockMetadata(x, y, z);
 		boolean powered = (meta & 8) != 0;

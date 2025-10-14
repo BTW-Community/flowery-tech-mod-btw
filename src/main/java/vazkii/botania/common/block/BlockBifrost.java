@@ -39,7 +39,7 @@ public class BlockBifrost extends BlockModContainer implements ILexiconable {
 
 	public BlockBifrost(int id) {
 		super(id, Material.glass);
-		setBlockName(LibBlockNames.BIFROST);
+		setUnlocalizedName(LibBlockNames.BIFROST);
 		setLightOpacity(0);
 		setLightValue(1F);
 		setBlockUnbreakable();

@@ -24,10 +24,10 @@ public class SpecialFloatingFlowerRecipe implements IRecipe {
 		for(int i = 0; i < var1.getSizeInventory(); i++) {
 			ItemStack stack = var1.getStackInSlot(i);
 			if(stack != null) {
-				if(stack.getItem() == Item.getItemFromBlock(ModBlocks.floatingFlower))
+				if(stack.getItem() == Items.getItemFromBlock(ModBlocks.floatingFlower))
 					foundFloatingFlower = true;
 
-				else if(stack.getItem() == Item.getItemFromBlock(ModBlocks.specialFlower))
+				else if(stack.getItem() == Items.getItemFromBlock(ModBlocks.specialFlower))
 					foundSpecialFlower = true;
 
 				else return false; // Found an invalid item, breaking the recipe
@@ -43,7 +43,7 @@ public class SpecialFloatingFlowerRecipe implements IRecipe {
 
 		for(int i = 0; i < var1.getSizeInventory(); i++) {
 			ItemStack stack = var1.getStackInSlot(i);
-			if(stack != null && stack.getItem() == Item.getItemFromBlock(ModBlocks.specialFlower))
+			if(stack != null && stack.getItem() == Items.getItemFromBlock(ModBlocks.specialFlower))
 				specialFlower = stack;
 		}
 

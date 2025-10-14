@@ -104,7 +104,7 @@ public class SubTileOrechid extends SubTileFunctional {
 					int y = supertile.yCoord + j;
 					int z = supertile.zCoord + k;
 					Block block = supertile.getWorldObj().getBlock(x, y, z);
-					if(block != null && block.isReplaceableOreGen(supertile.getWorldObj(), x, y, z, source))
+					if(block != null && block == source /*block.isReplaceableOreGen(supertile.getWorldObj(), x, y, z, source)*/)
 						possibleCoords.add(new ChunkCoordinates(x, y, z));
 				}
 

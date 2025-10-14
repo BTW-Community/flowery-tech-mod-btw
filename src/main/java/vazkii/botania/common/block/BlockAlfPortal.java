@@ -36,7 +36,7 @@ public class BlockAlfPortal extends BlockModContainer implements IWandable, ILex
 		super(id, Material.wood);
 		setHardness(10F);
 		setStepSound(soundWoodFootstep);
-		setBlockName(LibBlockNames.ALF_PORTAL);
+		setUnlocalizedName(LibBlockNames.ALF_PORTAL);
 	}
 
 	@Override

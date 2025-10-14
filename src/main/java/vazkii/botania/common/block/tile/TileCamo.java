@@ -24,10 +24,10 @@ public class TileCamo extends TileMod implements TileEntityDataPacketHandler {
 	public Block camo;
 	public int camoMeta;
 
-//	@Override
-//	public boolean canUpdate() {
-//		return false;
-//	}
+	@Override
+	public boolean canUpdate() {
+		return false;
+	}
 
 	@Override
 	public void writeCustomNBT(NBTTagCompound cmp) {

@@ -12,13 +12,13 @@ public class BlockModStairs extends BlockStairs implements ILexiconable {
 
 	public BlockModStairs(int id, Block source, int meta, String name) {
 		super(id, source, meta);
-		setBlockName(name);
+		setUnlocalizedName(name);
 		setCreativeTab(CreativeTabs.tabMisc);
 		useNeighborBrightness[0] = true;
 	}
 
 //	@Override
-	public Block setBlockName(String par1Str) {
+	public Block setUnlocalizedName(String par1Str) {
 		var item = new ItemBlockMod(this);
 //		GameRegistry.registerBlock(this, ItemBlockMod.class, par1Str);
 		return this;

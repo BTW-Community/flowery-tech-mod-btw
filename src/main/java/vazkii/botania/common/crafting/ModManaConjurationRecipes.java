@@ -43,7 +43,7 @@ public class ModManaConjurationRecipes {
 		coalRecipe = BotaniaAPI.registerManaConjurationRecipe(new ItemStack(Items.coal, 2), new ItemStack(Items.coal), 2100);
 		snowballRecipe = BotaniaAPI.registerManaConjurationRecipe(new ItemStack(Items.snowball, 2), new ItemStack(Items.snowball), 200);
 		netherrackRecipe = BotaniaAPI.registerManaConjurationRecipe(new ItemStack(Blocks.netherrack, 2), new ItemStack(Blocks.netherrack), 200);
-		soulSandRecipe = BotaniaAPI.registerManaConjurationRecipe(new ItemStack(Blocks.soul_sand, 2), new ItemStack(Blocks.soul_sand), 1500);
+		soulSandRecipe = BotaniaAPI.registerManaConjurationRecipe(new ItemStack(Block.slowSand, 2), new ItemStack(Block.slowSand), 1500);
 		gravelRecipe = BotaniaAPI.registerManaConjurationRecipe(new ItemStack(Block.getBlockFromName("gravel"), 2), new ItemStack(Block.getBlockFromName("gravel")), 720);
 
 		leavesRecipes = new ArrayList<>();

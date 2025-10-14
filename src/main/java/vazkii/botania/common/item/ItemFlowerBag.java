@@ -45,7 +45,7 @@ public class ItemFlowerBag extends ItemMod {
 	@SubscribeEvent
 	public void onPickupItem(EntityItemPickupEvent event) {
 		ItemStack stack = event.item.getEntityItem();
-		if(stack.getItem() == Item.getItemFromBlock(ModBlocks.flower) && stack.stackSize > 0) {
+		if(stack.getItem() == Items.getItemFromBlock(ModBlocks.flower) && stack.stackSize > 0) {
 			int color = stack.getItemDamage();
 			if(color > 15)
 				return;

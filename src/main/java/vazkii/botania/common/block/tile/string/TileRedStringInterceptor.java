@@ -59,7 +59,7 @@ public class TileRedStringInterceptor extends TileRedString {
 						Block block = inter.getBlockType();
 						int meta = inter.getBlockMetadata();
 						world.setBlockMetadataWithNotify(inter.xCoord, inter.yCoord, inter.zCoord, meta | 8, 1 | 2);
-						world.scheduleBlockUpdate(inter.xCoord, inter.yCoord, inter.zCoord, block, block.tickRate(world));
+						world.scheduleBlockUpdate(inter.xCoord, inter.yCoord, inter.zCoord, block.blockID, block.tickRate(world));
 					}
 
 					did = true;

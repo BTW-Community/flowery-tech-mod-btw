@@ -116,12 +116,11 @@ public class TilePool extends TileMod implements IManaPool, IDyablePool, IKeyLoc
 		ManaNetworkEvent.removePool(this);
 	}
 
-	//todofix onChunkUnload
-/*	@Override
+	@Override
 	public void onChunkUnload() {
 		super.onChunkUnload();
 		invalidate();
-	}*/
+	}
 
 	public boolean collideEntityItem(EntityItem item) {
 		if(item.isDead)

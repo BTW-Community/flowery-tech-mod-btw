@@ -13,12 +13,12 @@
  */
 package vazkii.botania.common.core.helper;
 
+import btw.inventory.util.InventoryUtils;
 import codechicken.nei.PositionedStack;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTBase;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.NBTTagList;
-import net.minecraftforge.oredict.OreDictionary;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
@@ -140,7 +140,7 @@ public final class ItemNBTHelper {
 	}
 
 	public static NBTTagList getList(ItemStack stack, String tag, int objtype, boolean nullifyOnFail) {
-		return verifyExistance(stack, tag) ? getNBT(stack).getTagList(tag, objtype) : nullifyOnFail ? null : new NBTTagList();
+		return verifyExistance(stack, tag) ? getNBT(stack).getTagList(tag/*, objtype*/) : nullifyOnFail ? null : new NBTTagList();
 	}
 
 	// Utils ///////////////////////////////////////////////////////////////////
@@ -169,8 +169,8 @@ public final class ItemNBTHelper {
 				stack1.getItem() == stack2.getItem() &&
 				(
 						stack1.getItemDamage() == stack2.getItemDamage() ||
-								stack1.getItemDamage() == OreDictionary.WILDCARD_VALUE ||
-								stack2.getItemDamage() == OreDictionary.WILDCARD_VALUE ||
+								stack1.getItemDamage() == InventoryUtils.IGNORE_METADATA ||
+								stack2.getItemDamage() == InventoryUtils.IGNORE_METADATA ||
 								stack1.getItem().isDamageable()
 				) &&
 				matchTag(stack1.getTagCompound(), stack2.getTagCompound());

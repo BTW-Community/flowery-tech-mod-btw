@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.block.subtile;
 
+import dev.bagel.interfaces.BlockExtensions;
 import net.minecraft.src.Block;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.ChunkCoordinates;
@@ -84,7 +85,7 @@ public class SubTilePureDaisy extends SubTileEntity {
 							Botania.proxy.wispFX(supertile.getWorldObj(), x, y, z, 1F, 1F, 1F, (float) Math.random() / 2F);
 						}
 						if(ConfigHandler.blockBreakParticles)
-							supertile.getWorldObj().playAuxSFX(2001, coords.posX, coords.posY, coords.posZ, Block.getIdFromBlock(recipe.getOutput()) + (recipe.getOutputMeta() << 12));
+							supertile.getWorldObj().playAuxSFX(2001, coords.posX, coords.posY, coords.posZ, BlockExtensions.getIdFromBlock(recipe.getOutput()) + (recipe.getOutputMeta() << 12));
 					}
 				}
 			} else ticksRemaining[positionAt] = TIME_PER;

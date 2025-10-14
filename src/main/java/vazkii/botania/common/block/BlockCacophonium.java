@@ -28,9 +28,9 @@ public class BlockCacophonium extends BlockModContainer {
 
 	Icon top;
 
-	protected BlockCacophonium() {
-		super(Material.wood);
-		setBlockName(LibBlockNames.CACOPHONIUM);
+	protected BlockCacophonium(int id) {
+		super(id, Material.wood);
+		setUnlocalizedName(LibBlockNames.CACOPHONIUM);
 		setHardness(0.8F);
 	}
 
@@ -56,7 +56,7 @@ public class BlockCacophonium extends BlockModContainer {
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
+	public void onNeighborBlockChange(World world, int x, int y, int z, int block) {
 		boolean power = world.isBlockIndirectlyGettingPowered(x, y, z) || world.isBlockIndirectlyGettingPowered(x, y + 1, z);
 		int meta = world.getBlockMetadata(x, y, z);
 		boolean powered = (meta & 8) != 0;
@@ -82,7 +82,7 @@ public class BlockCacophonium extends BlockModContainer {
 
 		TileEntity tile = world.getTileEntity(x, y, z);
 		if(tile != null && tile instanceof TileCacophonium) {
-			stacks.add(new ItemStack(Blocks.noteblock));
+			stacks.add(new ItemStack(Block.music));
 			ItemStack thingy = ((TileCacophonium) tile).stack;
 			if(thingy != null)
 				stacks.add(thingy.copy());

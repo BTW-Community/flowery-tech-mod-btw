@@ -10,16 +10,7 @@
  */
 package vazkii.botania.common.block;
 
-import net.minecraft.src.Material;
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.Icon;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.IBlockAccess;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
 import vazkii.botania.api.lexicon.ILexiconable;
@@ -35,7 +26,7 @@ public class BlockIncensePlate extends BlockModContainer implements ILexiconable
 
 	protected BlockIncensePlate(int id) {
 		super(id, Material.wood);
-		setBlockName(LibBlockNames.INCENSE_PLATE);
+		setUnlocalizedName(LibBlockNames.INCENSE_PLATE);
 		setHardness(2.0F);
 		setStepSound(soundWoodFootstep);
 		setBlockBounds(true);
@@ -56,7 +47,7 @@ public class BlockIncensePlate extends BlockModContainer implements ILexiconable
 			stack.stackSize--;
 			did = true;
 		} else if(plateStack != null && !plate.burning) {
-			if(stack != null && stack.getItem() == Items.flint_and_steel) {
+			if(stack != null && stack.getItem() == Item.flintAndSteel) {
 				plate.ignite();
 				stack.damageItem(1, player);
 				did = true;

@@ -13,47 +13,47 @@ package vazkii.botania.common.world;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldType;
 import net.minecraft.src.IChunkProvider;
-import net.minecraft.src.gen.ChunkProviderFlat;
+import net.minecraft.src.ChunkProviderFlat;
 import net.minecraftforge.common.MinecraftForge;
 
 public class WorldTypeSkyblock extends WorldType {
 
 	public WorldTypeSkyblock() {
-		super("botania-skyblock");
+		super(1, "botania-skyblock");
 	}
 
 	public static boolean isWorldSkyblock(World world) {
 		return world.getWorldInfo().getTerrainType() instanceof WorldTypeSkyblock;
 	}
 
-	@Override
-	public boolean showWorldInfoNotice() {
-		return true;
-	}
-
-	@Override
-	public boolean hasVoidParticles(boolean flag) {
-		return false;
-	}
-
-	@Override
-	public int getMinimumSpawnHeight(World world) {
-		return 86;
-	}
-
-	@Override
-	public int getSpawnFuzz() {
-		return 1;
-	}
-
-	@Override
-	public float getCloudHeight() {
-		return 260f;
-	}
-	
-	@Override
-	public IChunkProvider getChunkGenerator(World world, String generatorOptions) {
-		return new ChunkProviderFlat(world, world.getSeed(), false, "2;1x0;");
-	}
+//	@Override
+//	public boolean showWorldInfoNotice() {
+//		return true;
+//	}
+//
+//	@Override
+//	public boolean hasVoidParticles(boolean flag) {
+//		return false;
+//	}
+//
+//	@Override
+//	public int getMinimumSpawnHeight(World world) {
+//		return 86;
+//	}
+//
+//	@Override
+//	public int getSpawnFuzz() {
+//		return 1;
+//	}
+//
+//	@Override
+//	public float getCloudHeight() {
+//		return 260f;
+//	}
+//
+//	@Override
+//	public IChunkProvider getChunkGenerator(World world, String generatorOptions) {
+//		return new ChunkProviderFlat(world, world.getSeed(), false, "2;1x0;");
+//	}
 	
 }

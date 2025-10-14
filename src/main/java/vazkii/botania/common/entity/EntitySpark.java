@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.WeakHashMap;
 
+import baubles.common.lib.PlayerHandler;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;

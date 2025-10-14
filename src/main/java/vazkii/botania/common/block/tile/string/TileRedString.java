@@ -63,10 +63,10 @@ public abstract class TileRedString extends TileMod implements ITileBound {
 		// NO-OP
 	}
 
-	@Override
-	public AxisAlignedBB getRenderBoundingBox() {
-		return INFINITE_EXTENT_AABB;
-	}
+//	@Override
+//	public AxisAlignedBB getRenderBoundingBox() {
+//		return INFINITE_EXTENT_AABB;
+//	}
 
 	@Override
 	public ChunkCoordinates getBinding() {
@@ -88,7 +88,7 @@ public abstract class TileRedString extends TileMod implements ITileBound {
 
 	public Block getBlockAtBinding() {
 		ChunkCoordinates binding = getBinding();
-		return binding == null ? Blocks.air : worldObj.getBlock(binding.posX, binding.posY, binding.posZ);
+		return binding == null ? null : worldObj.getBlock(binding.posX, binding.posY, binding.posZ);
 	}
 
 }

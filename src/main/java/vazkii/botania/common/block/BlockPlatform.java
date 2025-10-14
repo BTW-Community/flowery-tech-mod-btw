@@ -44,7 +44,7 @@ public class BlockPlatform extends BlockCamo implements ILexiconable, IWandable 
 		setHardness(2.0F);
 		setResistance(5.0F);
 		setStepSound(Block.soundWoodFootstep);
-		setBlockName(LibBlockNames.PLATFORM);
+		setUnlocalizedName(LibBlockNames.PLATFORM);
 	}
 
 	@Override
@@ -58,10 +58,10 @@ public class BlockPlatform extends BlockCamo implements ILexiconable, IWandable 
 	}
 
 	@Override
-	public Block setBlockName(String par1Str) {
+	public Block setUnlocalizedName(String par1Str) {
 		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
 //GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
-		return super.setBlockName(par1Str);
+		return super.setUnlocalizedName(par1Str);
 	}
 
 	@Override

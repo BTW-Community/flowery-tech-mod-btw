@@ -134,7 +134,7 @@ public class TileCraftCrate extends TileOpenCrate {
 					if(stack == null)
 						continue;
 
-					ItemStack container = new ItemStack(stack.getItem().getContainerItem(stack));
+					ItemStack container = stack.getItem().getContainerItem(stack)/*new ItemStack()*/;
 					setInventorySlotContents(i, container);
 				}
 				return true;
@@ -186,11 +186,11 @@ public class TileCraftCrate extends TileOpenCrate {
 		VanillaPacketDispatcher.dispatchTEToNearbyPlayers(this);
 	}
 
-/*	@Override
-	public void markDirty() {
-		super.markDirty();
-		VanillaPacketDispatcher.dispatchTEToNearbyPlayers(this);
-	}*/
+//	@Override
+//	public void markDirty() {
+//		super.markDirty();
+//		VanillaPacketDispatcher.dispatchTEToNearbyPlayers(this);
+//	}
 
 	@Override
 	public int getSignal() {

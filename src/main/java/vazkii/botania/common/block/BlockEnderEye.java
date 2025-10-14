@@ -29,12 +29,12 @@ public class BlockEnderEye extends BlockModContainer implements ILexiconable {
 
 	Icon iconOff, iconOn;
 
-	protected BlockEnderEye() {
-		super(Material.iron);
+	protected BlockEnderEye(int id) {
+		super(id, Material.iron);
 		setHardness(3F);
 		setResistance(10F);
 		setStepSound(soundMetalFootstep);
-		setBlockName(LibBlockNames.ENDER_EYE_BLOCK);
+		setUnlocalizedName(LibBlockNames.ENDER_EYE_BLOCK);
 	}
 
 	@Override

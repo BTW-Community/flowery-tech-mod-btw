@@ -99,7 +99,7 @@ public class SubTileMarimorphosis extends SubTileFunctional {
 					int y = supertile.yCoord + j;
 					int z = supertile.zCoord + k;
 					Block block = supertile.getWorldObj().getBlock(x, y, z);
-					if(block != null && block instanceof BlockStone /*.isReplaceableOreGen(supertile.getWorldObj(), x, y, z, Block.stone)*/)
+					if(block != null && block == Block.stone /*.isReplaceableOreGen(supertile.getWorldObj(), x, y, z, Block.stone)*/)
 						possibleCoords.add(new ChunkCoordinates(x, y, z));
 				}
 

@@ -27,17 +27,17 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockFakeAir extends BlockModContainer {
 
-	public BlockFakeAir() {
-		super(Material.air);
-		setBlockName(LibBlockNames.FAKE_AIR);
+	public BlockFakeAir(int id) {
+		super(id, Material.air);
+		setUnlocalizedName(LibBlockNames.FAKE_AIR);
 		setBlockBounds(0, 0, 0, 0, 0, 0);
 		setTickRandomly(true);
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
+	public void onNeighborBlockChange(World world, int x, int y, int z, int block) {
 		if(shouldRemove(world, x, y, z))
-			world.scheduleBlockUpdate(x, y, z, this, tickRate(world));
+			world.scheduleBlockUpdate(x, y, z, this.blockID, tickRate(world));
 	}
 
 	private boolean shouldRemove(World world, int x, int y, int z) {
@@ -47,7 +47,7 @@ public class BlockFakeAir extends BlockModContainer {
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random rand) {
 		if(shouldRemove(world, x, y, z))
-			world.setBlock(x, y, z, Blocks.water);
+			world.setBlock(x, y, z, Block.waterMoving);
 	}
 
 	@Override
@@ -61,9 +61,14 @@ public class BlockFakeAir extends BlockModContainer {
 	}
 
 	@Override
-	public boolean isBlockNormalCube() {
+	public boolean isNormalCube(IBlockAccess blockAccess, int i, int j, int k) {
 		return false;
 	}
+
+//	@Override
+//	public boolean isBlockNormalCube() {
+//		return false;
+//	}
 
 	@Override
 	public boolean isOpaqueCube() {
@@ -71,9 +76,15 @@ public class BlockFakeAir extends BlockModContainer {
 	}
 
 	@Override
-	public boolean canEntityDestroy(IBlockAccess world, int x, int y, int z, Entity e) {
+	public boolean canWitherDestroyBlock() {
 		return false;
 	}
+
+
+//	@Override
+//	public boolean canEntityDestroy(IBlockAccess world, int x, int y, int z, Entity e) {
+//		return false;
+//	}
 
 	@Override
 	public boolean canCollideCheck(int par1, boolean par2) {
@@ -81,9 +92,14 @@ public class BlockFakeAir extends BlockModContainer {
 	}
 
 	@Override
-	public boolean canBeReplacedByLeaves(IBlockAccess world, int x, int y, int z) {
+	public boolean isReplaceableVegetation(World world, int i, int j, int k) {
 		return true;
 	}
+
+	//	@Override
+//	public boolean canBeReplacedByLeaves(IBlockAccess world, int x, int y, int z) {
+//		return true;
+//	}
 
 	@Override
 	public boolean canDropFromExplosion(Explosion par1Explosion) {
@@ -101,9 +117,14 @@ public class BlockFakeAir extends BlockModContainer {
 	}
 
 	@Override
-	public boolean isAir(IBlockAccess world, int x, int y, int z) {
+	public boolean isAirBlock() {
 		return true;
 	}
+//
+//	@Override
+//	public boolean isAir(IBlockAccess world, int x, int y, int z) {
+//		return true;
+//	}
 
 	@Override
 	public TileEntity createNewTileEntityT(World world, int meta) {

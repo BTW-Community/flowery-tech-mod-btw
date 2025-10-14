@@ -107,7 +107,7 @@ public class BlockSpecialFlower extends BlockFlower implements ITileEntityProvid
 
 	protected BlockSpecialFlower(int id) {
 		super(id);
-		setBlockName(LibBlockNames.SPECIAL_FLOWER);
+		setUnlocalizedName(LibBlockNames.SPECIAL_FLOWER);
 		setHardness(0.1F);
 		setStepSound(soundGrassFootstep);
 		setTickRandomly(false);
@@ -154,10 +154,10 @@ public class BlockSpecialFlower extends BlockFlower implements ITileEntityProvid
 	}
 
 //	@Override
-	public Block setBlockName(String par1Str) {
+	public Block setUnlocalizedName(String par1Str) {
 		var item = new ItemBlockSpecialFlower(this);
 //		GameRegistry.registerBlock(this, ItemBlockSpecialFlower.class, par1Str);
-		return this/*super.setBlockName(par1Str)*/;
+		return this/*super.setUnlocalizedName(par1Str)*/;
 	}
 
 	@Override

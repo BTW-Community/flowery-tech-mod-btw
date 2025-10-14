@@ -38,11 +38,11 @@ public class BlockBrewery extends BlockModContainer implements ILexiconable, IWa
 
 	Random random;
 
-	public BlockBrewery() {
-		super(Material.rock);
+	public BlockBrewery(int id) {
+		super(id, Material.rock);
 		float f = 6F / 16F;
 		setBlockBounds(f, 0.05F, f, 1F - f, 0.95F, 1F - f);
-		setBlockName(LibBlockNames.BREWERY);
+		setUnlocalizedName(LibBlockNames.BREWERY);
 		setHardness(2.0F);
 		setResistance(10.0F);
 		setStepSound(soundStoneFootstep);
@@ -52,7 +52,7 @@ public class BlockBrewery extends BlockModContainer implements ILexiconable, IWa
 
 	@Override
 	public Icon getIcon(int side, int meta) {
-		return Blocks.cobblestone.getIcon(side, meta);
+		return Block.cobblestone.getIcon(side, meta);
 	}
 
 	@Override
@@ -68,7 +68,7 @@ public class BlockBrewery extends BlockModContainer implements ILexiconable, IWa
 						if(!par5EntityPlayer.inventory.addItemStackToInventory(copy))
 							par5EntityPlayer.dropPlayerItemWithRandomChoice(copy, false);
 						brew.setInventorySlotContents(i, null);
-						par1World.func_96440_m(par2, par3, par4, this);
+						par1World.func_96440_m(par2, par3, par4, this.blockID);
 						break;
 					}
 				}
@@ -81,7 +81,7 @@ public class BlockBrewery extends BlockModContainer implements ILexiconable, IWa
 	}
 
 	@Override
-	public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6) {
+	public void breakBlock(World par1World, int par2, int par3, int par4, int block, int par6) {
 		TileSimpleInventory inv = (TileSimpleInventory) par1World.getTileEntity(par2, par3, par4);
 
 		if (inv != null) {
@@ -112,10 +112,10 @@ public class BlockBrewery extends BlockModContainer implements ILexiconable, IWa
 				}
 			}
 
-			par1World.func_96440_m(par2, par3, par4, par5);
+			par1World.func_96440_m(par2, par3, par4, block);
 		}
 
-		super.breakBlock(par1World, par2, par3, par4, par5, par6);
+		super.breakBlock(par1World, par2, par3, par4, block, par6);
 	}
 
 	@Override

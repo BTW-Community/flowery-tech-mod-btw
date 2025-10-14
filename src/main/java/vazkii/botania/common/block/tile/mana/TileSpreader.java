@@ -13,6 +13,7 @@ package vazkii.botania.common.block.tile.mana;
 import java.util.List;
 import java.util.UUID;
 
+import dev.bagel.client.RenderInstances;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ScaledResolution;
 import net.minecraft.src.RenderHelper;
@@ -532,8 +533,8 @@ public class TileSpreader extends TileSimpleInventory implements IManaCollector,
 		float f7 = f4 * f5;
 		float f8 = f3 * f5;
 		double d3 = range;
-		if (player instanceof EntityPlayerMP)
-			d3 = ((EntityPlayerMP) player).theItemInWorldManager.getBlockReachDistance();
+		if (player instanceof EntityPlayerMP pmp)
+			d3 = pmp.theItemInWorldManager.getBlockReachDistance();
 		Vec3 vec31 = vec3.addVector(f7 * d3, f6 * d3, f8 * d3);
 		return world.func_147447_a(vec3, vec31, par3, !par3, par3);
 	}
@@ -618,7 +619,7 @@ public class TileSpreader extends TileSimpleInventory implements IManaCollector,
 	}
 
 	@Override
-	public void markDirty() {
+	public void onInventoryChanged() {
 		checkForReceiver();
 		VanillaPacketDispatcher.dispatchTEToNearbyPlayers(worldObj, xCoord, yCoord, zCoord);
 	}

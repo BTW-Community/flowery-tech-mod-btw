@@ -12,18 +12,9 @@ package vazkii.botania.common.item;
 
 import java.util.List;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.BlockFalling;
-import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EntityThrowable;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.MovingObjectPosition;
-import net.minecraft.src.StatCollector;
-import net.minecraft.src.World;
+import btw.block.blocks.FallingBlock;
+import dev.bagel.interfaces.BlockExtensions;
+import net.minecraft.src.*;
 import vazkii.botania.api.internal.IManaBurst;
 import vazkii.botania.api.mana.BurstProperties;
 import vazkii.botania.api.mana.ILaputaImmobile;
@@ -53,13 +44,14 @@ public class ItemLaputaShard extends ItemMod implements ILensEffect, ITinyPlanet
 	private static final int BASE_RANGE = 14;
 	private static final int BASE_OFFSET = 42;
 
-	public ItemLaputaShard() {
-		setUnlocalizedName(LibItemNames.LAPUTA_SHARD);
+	public ItemLaputaShard(int id) {
+        super(id);
+        setUnlocalizedName(LibItemNames.LAPUTA_SHARD);
 		setHasSubtypes(true);
 	}
 
 	@Override
-	public void getSubItems(Item item, CreativeTabs tab, List list) {
+	public void getSubItems(int item, CreativeTabs tab, List list) {
 		super.getSubItems(item, tab, list);
 		for(int i = 0; i < 4; i++)
 			list.add(new ItemStack(item, 1, (i + 1) * 5 - 1));
@@ -119,14 +111,14 @@ public class ItemLaputaShard extends ItemMod implements ILensEffect, ITinyPlanet
 
 						if(inRange(x, y, z, srcx, srcy, srcz, range, heightscale, pointy)) {
 							Block block = world.getBlock(x, y, z);
-							if(!block.isAir(world, x, y, z) && !block.isReplaceable(world, x, y, z) && !(block instanceof BlockFalling) && (!(block instanceof ILaputaImmobile) || ((ILaputaImmobile) block).canMove(world, x, y, z)) && block.getBlockHardness(world, x, y, z) != -1) {
-								int id = Block.getIdFromBlock(block);
+							if(!block.isAir(world, x, y, z) && !block.isReplaceableVegetation(world, x, y, z) && !(block instanceof FallingBlock) && (!(block instanceof ILaputaImmobile) || ((ILaputaImmobile) block).canMove(world, x, y, z)) && block.getBlockHardness(world, x, y, z) != -1) {
+								int id = BlockExtensions.getIdFromBlock(block);
 								int meta = world.getBlockMetadata(x, y, z);
 								TileEntity tile = world.getTileEntity(x, y, z);
 
-								if(tile != null) {
-									TileEntity newTile = block.createTileEntity(world, meta);
-									world.setTileEntity(x, y, z, newTile);
+								if(tile != null && block instanceof ITileEntityProvider pr) {
+									TileEntity newTile = pr.createNewTileEntity(world/*, meta*/);
+									world.setBlockTileEntity(x, y, z, newTile);
 								}
 								world.setBlockToAir(x, y, z);
 								world.playAuxSFX(2001, x, y, z, id + (meta << 12));
@@ -208,7 +200,7 @@ public class ItemLaputaShard extends ItemMod implements ILensEffect, ITinyPlanet
 			entity.motionZ = 0;
 
 			final int spawnTicks = 2;
-			final int placeTicks = net.minecraft.util.MathHelper.floor_double(targetDistance / speed);
+			final int placeTicks = net.minecraft.src.MathHelper.floor_double(targetDistance / speed);
 
 			ItemStack lens = burst.getSourceLens();
 
@@ -220,13 +212,13 @@ public class ItemLaputaShard extends ItemMod implements ILensEffect, ITinyPlanet
 				if(y != -1)
 					spawnBurst(entity.worldObj, x, y, z, lens);
 			} else if(burst.getTicksExisted() == placeTicks) {
-				int x = net.minecraft.util.MathHelper.floor_double(entity.posX);
+				int x = net.minecraft.src.MathHelper.floor_double(entity.posX);
 				int y = ItemNBTHelper.getInt(lens, TAG_Y_START, -1) + targetDistance;
-				int z = net.minecraft.util.MathHelper.floor_double(entity.posZ);
+				int z = net.minecraft.src.MathHelper.floor_double(entity.posZ);
 
 				if(entity.worldObj.isAirBlock(x, y, z)) {
 					int id = ItemNBTHelper.getInt(lens, TAG_BLOCK, 0);
-					Block block = Block.getBlockById(id);
+					Block block = Block.blocksList[id];
 					int meta = ItemNBTHelper.getInt(lens, TAG_META, 0);
 
 					TileEntity tile = null;
@@ -240,7 +232,7 @@ public class ItemLaputaShard extends ItemMod implements ILensEffect, ITinyPlanet
 						tile.xCoord = x;
 						tile.yCoord = y;
 						tile.zCoord = z;
-						entity.worldObj.setTileEntity(x, y, z, tile);
+						entity.worldObj.setBlockTileEntity(x, y, z, tile);
 					}
 				}
 
@@ -254,7 +246,7 @@ public class ItemLaputaShard extends ItemMod implements ILensEffect, ITinyPlanet
 		EntityThrowable entity = (EntityThrowable) burst;
 		ItemStack lens = burst.getSourceLens();
 		int id = ItemNBTHelper.getInt(lens, TAG_BLOCK, 0);
-		Block.getBlockById(id);
+//		Block.getBlockById(id);
 		int meta = ItemNBTHelper.getInt(lens, TAG_META, 0);
 		entity.worldObj.spawnParticle("blockcrack_" + id + "_" + meta, entity.posX, entity.posY, entity.posZ, entity.motionX, entity.motionY, entity.motionZ);
 

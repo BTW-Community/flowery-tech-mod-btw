@@ -37,7 +37,7 @@ public class BlockTurntable extends BlockModContainer implements IWandable, IWan
 		super(id, Material.wood);
 		setHardness(2.0F);
 		setStepSound(soundWoodFootstep);
-		setBlockName(LibBlockNames.TURNTABLE);
+		setUnlocalizedName(LibBlockNames.TURNTABLE);
 	}
 
 	@Override

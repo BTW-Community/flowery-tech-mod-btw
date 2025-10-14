@@ -12,13 +12,7 @@ package vazkii.botania.common.block;
 
 import java.util.ArrayList;
 
-import net.minecraft.src.Material;
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.Icon;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.client.lib.LibRenderIDs;
@@ -28,12 +22,12 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockCocoon extends BlockModContainer implements ILexiconable {
 
-	protected BlockCocoon() {
-		super(Material.cloth);
+	protected BlockCocoon(int id) {
+		super(id, Material.cloth);
 		setHardness(3.0F);
 		setResistance(50.0F);
 		setStepSound(soundClothFootstep);
-		setBlockName(LibBlockNames.COCOON);
+		setUnlocalizedName(LibBlockNames.COCOON);
 		float f = 3F / 16F;
 		float f1 = 14F / 16F;
 		setBlockBounds(f, 0F, f, 1F - f, f1, 1F - f);
@@ -46,7 +40,7 @@ public class BlockCocoon extends BlockModContainer implements ILexiconable {
 
 	@Override
 	public Icon getIcon(int p_149691_1_, int p_149691_2_) {
-		return Blocks.web.getBlockTextureFromSide(0);
+		return Block.web.getBlockTextureFromSide(0);
 	}
 
 	@Override
@@ -68,7 +62,7 @@ public class BlockCocoon extends BlockModContainer implements ILexiconable {
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int s, float xs, float ys, float zs) {
 		TileCocoon cocoon = (TileCocoon) world.getTileEntity(x, y, z);
 		ItemStack item = player.getCurrentEquippedItem();
-		if(cocoon.emeraldsGiven < TileCocoon.MAX_EMERALDS && item != null && item.getItem() == Items.emerald) {
+		if(cocoon.emeraldsGiven < TileCocoon.MAX_EMERALDS && item != null && item.getItem() == Item.emerald) {
 			if(!player.capabilities.isCreativeMode)
 				item.stackSize--;
 			cocoon.emeraldsGiven++;

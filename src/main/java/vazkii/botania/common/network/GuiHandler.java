@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.network;
 
+import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.World;
 import vazkii.botania.client.gui.bag.ContainerFlowerBag;

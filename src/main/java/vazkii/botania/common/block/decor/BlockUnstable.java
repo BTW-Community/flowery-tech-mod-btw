@@ -41,7 +41,7 @@ public class BlockUnstable extends BlockMod implements ILexiconable {
 		setResistance(10.0F);
 		setStepSound(soundMetalFootstep);
 		setBlockBounds(0.25F, 0.25F, 0.25F, 0.75F, 0.75F, 0.75F);
-		setBlockName(LibBlockNames.UNSTABLE_BLOCK);
+		setUnlocalizedName(LibBlockNames.UNSTABLE_BLOCK);
 	}
 
 	@Override
@@ -51,10 +51,10 @@ public class BlockUnstable extends BlockMod implements ILexiconable {
 	}
 
 	@Override
-	public Block setBlockName(String par1Str) {
+	public Block setUnlocalizedName(String par1Str) {
 		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
 //GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
-		return super.setBlockName(par1Str);
+		return super.setUnlocalizedName(par1Str);
 	}
 
 	@Override

@@ -24,12 +24,9 @@ import net.fabricmc.api.EnvType;
 public class InterpolatedIcon extends TextureAtlasSprite {
 
 	protected int[][] interpolatedFrameData;
-	private Field fanimationMetadata;
 
 	public InterpolatedIcon(String name) {
 		super(name);
-		fanimationMetadata = ReflectionHelper.findField(TextureAtlasSprite.class, LibObfuscation.ANIMATION_METADATA);
-		fanimationMetadata.setAccessible(true);
 	}
 
 	@Override
@@ -43,7 +40,7 @@ public class InterpolatedIcon extends TextureAtlasSprite {
 	}
 
 	private void updateAnimationInterpolated() throws IllegalArgumentException, IllegalAccessException {
-		AnimationMetadataSection animationMetadata = (AnimationMetadataSection) fanimationMetadata.get(this);
+		AnimationMetadataSection animationMetadata = this.getAnimationMetadata();
 
 		double d0 = 1.0D - tickCounter / (double) animationMetadata.getFrameTimeSingle(frameCounter);
 		int i = animationMetadata.getFrameIndex(frameCounter);
@@ -72,7 +69,16 @@ public class InterpolatedIcon extends TextureAtlasSprite {
 					}
 			}
 
-			TextureUtil.uploadTextureMipmap(interpolatedFrameData, width, height, originX, originY, false, false);
+			uploadTextureMipmap(interpolatedFrameData, width, height, originX, originY);
+		}
+	}
+	//todofix all of this
+	public static void uploadTextureMipmap(int[][] p_147955_0_, int p_147955_1_, int p_147955_2_, int p_147955_3_, int p_147955_4_)
+	{
+		for (int i1 = 0; i1 < p_147955_0_.length; ++i1)
+		{
+			int[] aint1 = p_147955_0_[i1];
+			TextureUtil.uploadTextureSub(aint1, i1, p_147955_1_ >> i1, p_147955_2_ >> i1, p_147955_3_ >> i1, false/* ????? p_147955_4_ >> i1*/, p_147955_0_.length > 1);
 		}
 	}
 }

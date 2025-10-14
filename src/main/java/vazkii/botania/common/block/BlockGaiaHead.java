@@ -35,21 +35,23 @@ public class BlockGaiaHead extends BlockSkull {
 
 	public BlockGaiaHead(int id) {
 		super(id);
-		setBlockName(LibBlockNames.GAIA_HEAD);
+		setUnlocalizedName(LibBlockNames.GAIA_HEAD);
 		setHardness(1.0F);
 	}
 
 	@Override
-	public Block setBlockName(String par1Str) {
-		GameRegistry.registerBlock(this, ItemBlockMod.class, par1Str);
-		return super.setBlockName(par1Str);
+	public Block setUnlocalizedName(String par1Str) {
+		var item = new ItemBlockMod(this);
+//		GameRegistry.registerBlock(this, ItemBlockMod.class, par1Str);
+		return super.setUnlocalizedName(par1Str);
 	}
 
-	@Override
-	@Environment(EnvType.CLIENT)
-	public Item getItem(World p_149694_1_, int p_149694_2_, int p_149694_3_, int p_149694_4_) {
-		return ModItems.gaiaHead;
-	}
+	//todofix getItem
+//	@Override
+//	@Environment(EnvType.CLIENT)
+//	public Item getItem(World p_149694_1_, int p_149694_2_, int p_149694_3_, int p_149694_4_) {
+//		return ModItems.gaiaHead;
+//	}
 
 	@Override
 	public void registerIcons(IconRegister p_149651_1_) {

@@ -30,7 +30,7 @@ public class BlockRFGenerator/* extends BlockModContainer implements ILexiconabl
 //		setHardness(2.0F);
 //		setResistance(10.0F);
 //		setStepSound(soundStoneFootstep);
-//		setBlockName(LibBlockNames.RF_GENERATOR);
+//		setUnlocalizedName(LibBlockNames.RF_GENERATOR);
 	}
 /*
 	@Override

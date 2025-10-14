@@ -13,6 +13,8 @@ package vazkii.botania.common.block.tile;
 import java.util.ArrayList;
 import java.util.List;
 
+import dev.bagel.client.RenderInstances;
+import dev.bagel.util.Items;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ScaledResolution;
 import net.minecraft.src.RenderItem;
@@ -59,7 +61,7 @@ public class TileRuneAltar extends TileSimpleInventory implements ISidedInventor
 		if(cooldown > 0 || stack.getItem() == ModItems.twigWand || stack.getItem() == ModItems.lexicon)
 			return false;
 
-		if(stack.getItem() == Item.getItemFromBlock(ModBlocks.livingrock) && stack.getItemDamage() == 0) {
+		if(stack.getItem() == Items.getItemFromBlock(ModBlocks.livingrock) && stack.getItemDamage() == 0) {
 			if(player == null || !player.capabilities.isCreativeMode) {
 				stack.stackSize--;
 				if(stack.stackSize == 0 && player != null)
@@ -112,7 +114,7 @@ public class TileRuneAltar extends TileSimpleInventory implements ISidedInventor
 		if(!worldObj.isRemote && manaToGet == 0) {
 			List<EntityItem> items = worldObj.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(xCoord, yCoord, zCoord, xCoord + 1, yCoord + 1, zCoord + 1));
 			for(EntityItem item : items)
-				if(!item.isDead && item.getEntityItem() != null && item.getEntityItem().getItem() != Item.getItemFromBlock(ModBlocks.livingrock)) {
+				if(!item.isDead && item.getEntityItem() != null && item.getEntityItem().getItem() != Items.getItemFromBlock(ModBlocks.livingrock)) {
 					ItemStack stack = item.getEntityItem();
 					if(addItem(null, stack) && stack.stackSize == 0)
 						item.setDead();
@@ -142,7 +144,7 @@ public class TileRuneAltar extends TileSimpleInventory implements ISidedInventor
 
 		if(newSignal != signal) {
 			signal = newSignal;
-			worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
+			worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlockId(xCoord, yCoord, zCoord));
 		}
 
 		if(recipeKeepTicks > 0)
@@ -215,7 +217,7 @@ public class TileRuneAltar extends TileSimpleInventory implements ISidedInventor
 			List<EntityItem> items = worldObj.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(xCoord, yCoord, zCoord, xCoord + 1, yCoord + 1, zCoord + 1));
 			EntityItem livingrock = null;
 			for(EntityItem item : items)
-				if(!item.isDead && item.getEntityItem() != null && item.getEntityItem().getItem() == Item.getItemFromBlock(ModBlocks.livingrock)) {
+				if(!item.isDead && item.getEntityItem() != null && item.getEntityItem().getItem() == Items.getItemFromBlock(ModBlocks.livingrock)) {
 					livingrock = item;
 					break;
 				}
@@ -295,10 +297,11 @@ public class TileRuneAltar extends TileSimpleInventory implements ISidedInventor
 		return 16;
 	}
 
-	@Override
-	public AxisAlignedBB getRenderBoundingBox() {
-		return INFINITE_EXTENT_AABB;
-	}
+	//todofix low priority, render bounding box
+//	@Override
+//	public AxisAlignedBB getRenderBoundingBox() {
+//		return INFINITE_EXTENT_AABB;
+//	}
 
 	@Override
 	public String getInvName() {

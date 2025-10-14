@@ -69,7 +69,7 @@ public final class ModRuneRecipes {
 
 		recipesWinterRune = new ArrayList<>();
 		for(int i = 0; i < 16; i++)
-			recipesWinterRune.add(BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 1, 7), costTier2, LibOreDict.RUNE[0], LibOreDict.RUNE[2], new ItemStack(Blocks.snow), new ItemStack(Blocks.snow), new ItemStack(Blocks.wool, 1, i), new ItemStack(Items.cake)));
+			recipesWinterRune.add(BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 1, 7), costTier2, LibOreDict.RUNE[0], LibOreDict.RUNE[2], new ItemStack(Blocks.snow), new ItemStack(Blocks.snow), new ItemStack(Block.cloth, 1, i), new ItemStack(Items.cake)));
 
 		recipeManaRune = BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 1, 8), costTier2, LibOreDict.MANA_STEEL, LibOreDict.MANA_STEEL, LibOreDict.MANA_STEEL, LibOreDict.MANA_STEEL, LibOreDict.MANA_STEEL, LibOreDict.MANA_PEARL);
 

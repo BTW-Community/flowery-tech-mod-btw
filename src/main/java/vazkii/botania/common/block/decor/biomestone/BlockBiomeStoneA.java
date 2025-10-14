@@ -14,8 +14,8 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockBiomeStoneA extends BlockBiomeStone {
 
-	public BlockBiomeStoneA() {
-		super(0, LibBlockNames.BIOME_STONE_A);
+	public BlockBiomeStoneA(int id) {
+		super(id, 0, LibBlockNames.BIOME_STONE_A);
 	}
 
 	@Override

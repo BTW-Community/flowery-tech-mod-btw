@@ -68,7 +68,7 @@ public class InventoryBaubles implements IInventory {
 	 * Returns if the inventory is named
 	 */
 	@Override
-	public boolean hasCustomInventoryName() {
+	public boolean isInvNameLocalized() {
 		return false;
 	}
 
@@ -160,9 +160,9 @@ public class InventoryBaubles implements IInventory {
 	 * to disk later - the game won't think it hasn't changed and skip it.
 	 */
 	@Override
-	public void markDirty() {
+	public void onInventoryChanged() {
 		try {
-			player.get().inventory.markDirty();
+			player.get().inventory.onInventoryChanged();
 		} catch (Exception ignored) {
 		}
 	}
@@ -177,11 +177,11 @@ public class InventoryBaubles implements IInventory {
 	}
 
 	@Override
-	public void openInventory() {
+	public void openChest() {
 	}
 
 	@Override
-	public void closeInventory() {
+	public void closeChest() {
 	}
 
 	/**
@@ -242,7 +242,7 @@ public class InventoryBaubles implements IInventory {
 	}
 
 	public void readNBT(NBTTagCompound tags) {
-		NBTTagList tagList = tags.getTagList("Baubles.Inventory", 10);
+		NBTTagList tagList = tags.getTagList("Baubles.Inventory"/*, 10*/);
 		for (int i = 0; i < tagList.tagCount(); ++i) {
 			NBTTagCompound nbttagcompound = (NBTTagCompound) tagList.getCompoundTagAt(i);
 			int slot = nbttagcompound.getByte("Slot") & 255;
@@ -258,7 +258,7 @@ public class InventoryBaubles implements IInventory {
 			if (stackList[slot] != null) {
 				EntityItem item = new EntityItem(player.get().worldObj,
 						player.get().posX,
-						player.get().posY + player.get().eyeHeight, player.get().posZ,
+						player.get().posY + player.get().getEyeHeight(), player.get().posZ,
 						stackList[slot].copy());
 				item.delayBeforeCanPickup = 40;
 				float f1 = player.get().worldObj.rand.nextFloat() * 0.5F;

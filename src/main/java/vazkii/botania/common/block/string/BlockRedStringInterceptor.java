@@ -24,8 +24,8 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class BlockRedStringInterceptor extends BlockRedString {
 
-	public BlockRedStringInterceptor() {
-		super(LibBlockNames.RED_STRING_INTERCEPTOR);
+	public BlockRedStringInterceptor(int id) {
+		super(id, LibBlockNames.RED_STRING_INTERCEPTOR);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 

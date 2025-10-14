@@ -47,13 +47,13 @@ public class BlockSpecialQuartz extends BlockMod implements ILexiconable {
 		iconNames = new String[]{ "block" + type + "Quartz0", "chiseled" + type + "Quartz0", "pillar" + type + "Quartz0", null, null };
 		setHardness(0.8F);
 		setResistance(10F);
-		setBlockName("quartzType" + type);
+		setUnlocalizedName("quartzType" + type);
 	}
 
 	@Override
-	public Block setBlockName(String par1Str) {
+	public Block setUnlocalizedName(String par1Str) {
 		GameRegistry.registerBlock(this, ItemBlockSpecialQuartz.class, par1Str);
-		return super.setBlockName(par1Str);
+		return super.setUnlocalizedName(par1Str);
 	}
 
 	@Override

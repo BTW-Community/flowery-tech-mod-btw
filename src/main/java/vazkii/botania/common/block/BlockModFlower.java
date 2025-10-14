@@ -56,7 +56,7 @@ public class BlockModFlower extends BlockFlower implements ILexiconable, IPickup
 
 	protected BlockModFlower(int id, String name) {
 		super(id);
-		setBlockName(name);
+		setUnlocalizedName(name);
 		setHardness(0F);
 		setStepSound(soundGrassFootstep);
 		setBlockBounds(0.3F, 0.0F, 0.3F, 0.8F, 1, 0.8F);
@@ -75,10 +75,10 @@ public class BlockModFlower extends BlockFlower implements ILexiconable, IPickup
 	}
 
 //	@Override
-	public Block setBlockName(String par1Str) {
+	public Block setUnlocalizedName(String par1Str) {
 		var item = new ItemBlockWithMetadataAndName(this.blockID, this);
 //GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
-		return this/*super.setBlockName(par1Str)*/;
+		return this/*super.setUnlocalizedName(par1Str)*/;
 	}
 
 	@Override

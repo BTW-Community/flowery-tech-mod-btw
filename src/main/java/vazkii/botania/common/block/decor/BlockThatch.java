@@ -22,11 +22,11 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockThatch extends BlockMod implements ILexiconable {
 
-	public BlockThatch() {
-		super(Material.grass);
+	public BlockThatch(int id) {
+		super(id, Material.grass);
 		setHardness(1.0F);
 		setStepSound(soundGrassFootstep);
-		setBlockName(LibBlockNames.THATCH);
+		setUnlocalizedName(LibBlockNames.THATCH);
 	}
 
 	@Override

@@ -75,7 +75,7 @@ public final class SkyblockWorldEvents {
 			ItemStack equipped = event.entityPlayer.getCurrentEquippedItem();
 			if(event.action == Action.RIGHT_CLICK_BLOCK && equipped == null && event.entityPlayer.isSneaking()) {
 				Block block = event.world.getBlock(event.x, event.y, event.z);
-				if(block == Blocks.grass || block == Blocks.dirt) {
+				if(block == Blocks.grass || block == Block.dirt) {
 					if(event.world.isRemote)
 						event.entityPlayer.swingItem();
 					else {
@@ -163,7 +163,7 @@ public final class SkyblockWorldEvents {
 		for(int i = 0; i < 3; i++)
 			for(int j = 0; j < 4; j++)
 				for(int k = 0; k < 3; k++)
-					world.setBlock(x - 1 + i, y - 1 - j, z - 1 + k, j == 0 ? Blocks.grass : Blocks.dirt);
+					world.setBlock(x - 1 + i, y - 1 - j, z - 1 + k, j == 0 ? Blocks.grass : Block.dirt);
 		world.setBlock(x - 1, y - 2, z, Blocks.flowing_water);
 		world.setBlock(x + 1, y + 2, z + 1, ModBlocks.manaFlame);
 		((TileManaFlame) world.getTileEntity(x + 1, y + 2, z + 1)).setColor(new Color(70 + world.rand.nextInt(185), 70 + world.rand.nextInt(185), 70 + world.rand.nextInt(185)).getRGB());

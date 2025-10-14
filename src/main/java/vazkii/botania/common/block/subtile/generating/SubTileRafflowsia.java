@@ -12,6 +12,7 @@ package vazkii.botania.common.block.subtile.generating;
 
 import java.util.List;
 
+import dev.bagel.interfaces.BlockExtensions;
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.ItemStack;
@@ -69,7 +70,7 @@ public class SubTileRafflowsia extends SubTileGenerating {
 								int meta = supertile.getWorldObj().getBlockMetadata(x, y, z) + 1;
 								supertile.getWorldObj().setBlockToAir(x, y, z);
 
-								supertile.getWorldObj().playAuxSFX(2001, x, y, z, Block.getIdFromBlock(block) + (meta << 12));
+								supertile.getWorldObj().playAuxSFX(2001, x, y, z, BlockExtensions.getIdFromBlock(block) + (meta << 12));
 								this.mana += mana * mod;
 								sync();
 								return;

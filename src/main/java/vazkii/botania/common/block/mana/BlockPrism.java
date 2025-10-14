@@ -40,12 +40,12 @@ public class BlockPrism extends BlockModContainer implements IManaTrigger, ILexi
 	Random random;
 	Icon[] icons;
 
-	public BlockPrism() {
-		super(Material.glass);
+	public BlockPrism(int id) {
+		super(id, Material.glass);
 		setHardness(0.3F);
 		setStepSound(soundGlassFootstep);
 		setLightValue(1.0F);
-		setBlockName(LibBlockNames.PRISM);
+		setUnlocalizedName(LibBlockNames.PRISM);
 		float f = 0.25F;
 		setBlockBounds(f, 0F, f, 1F - f, 1F, 1F - f);
 
@@ -101,14 +101,14 @@ public class BlockPrism extends BlockModContainer implements IManaTrigger, ILexi
 				par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, null);
 
 			prism.setInventorySlotContents(0, heldItem.copy());
-			prism.markDirty();
+			prism.onInventoryChanged();
 			par1World.setBlockMetadataWithNotify(par2, par3, par4, meta | 1, 1 | 2);
 		} else if(lens != null) {
 			ItemStack add = lens.copy();
 			if(!par5EntityPlayer.inventory.addItemStackToInventory(add))
 				par5EntityPlayer.dropPlayerItemWithRandomChoice(add, false);
 			prism.setInventorySlotContents(0, null);
-			prism.markDirty();
+			prism.onInventoryChanged();
 			par1World.setBlockMetadataWithNotify(par2, par3, par4, meta & 14, 1 | 2);
 		}
 
@@ -116,7 +116,7 @@ public class BlockPrism extends BlockModContainer implements IManaTrigger, ILexi
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
+	public void onNeighborBlockChange(World world, int x, int y, int z, int block) {
 		boolean power = world.isBlockIndirectlyGettingPowered(x, y, z) || world.isBlockIndirectlyGettingPowered(x, y + 1, z);
 		int meta = world.getBlockMetadata(x, y, z);
 		boolean powered = (meta & 8) != 0;
@@ -130,7 +130,7 @@ public class BlockPrism extends BlockModContainer implements IManaTrigger, ILexi
 	}
 
 	@Override
-	public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6) {
+	public void breakBlock(World par1World, int par2, int par3, int par4, int block, int par6) {
 		TileEntity tile = par1World.getTileEntity(par2, par3, par4);
 		if(!(tile instanceof TileSimpleInventory))
 			return;
@@ -165,10 +165,10 @@ public class BlockPrism extends BlockModContainer implements IManaTrigger, ILexi
 				}
 			}
 
-			par1World.func_96440_m(par2, par3, par4, par5);
+			par1World.func_96440_m(par2, par3, par4, block);
 		}
 
-		super.breakBlock(par1World, par2, par3, par4, par5, par6);
+		super.breakBlock(par1World, par2, par3, par4, block, par6);
 	}
 
 	@Override

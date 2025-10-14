@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import btw.item.tag.TagInstance;
+import btw.item.tag.TagOrStack;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.GuiScreen;
 import net.minecraft.src.RenderHelper;
@@ -116,22 +118,27 @@ public class PageRecipe extends LexiconPage {
 		renderItem(gui, xPos, yPos, workStack, false);
 	}
 
+	//todofix this is jank
 	@Environment(EnvType.CLIENT)
-	public void renderItemAtGridPos(IGuiLexiconEntry gui, int x, int y, ItemStack stack, boolean accountForContainer) {
-		if(stack == null || stack.getItem() == null)
+	public void renderItemAtGridPos(IGuiLexiconEntry gui, int x, int y, TagOrStack stack, boolean accountForContainer) {
+		if(stack == null )
 			return;
 		stack = stack.copy();
 
-		if(stack.getItemDamage() == Short.MAX_VALUE)
-			stack.setItemDamage(0);
+		if(stack instanceof ItemStack st && st.getItemDamage() == Short.MAX_VALUE)
+			st.setItemDamage(0);
 
 		int xPos = gui.getLeft() + x * 29 + 7 + (y == 0  && x == 3 ? 10 : 0);
 		int yPos = gui.getTop() + y * 29 + 24 - (y == 0 ? 7 : 0);
-		ItemStack stack1 = stack.copy();
-		if(stack1.getItemDamage() == -1)
-			stack1.setItemDamage(0);
-
-		renderItem(gui, xPos, yPos, stack1, accountForContainer);
+		TagOrStack stack1 = stack.copy();
+//		if(stack1.getItemDamage() == -1)
+//			stack1.setItemDamage(0);
+		ItemStack stackk;
+		if (stack1 instanceof ItemStack is) {
+			stackk = is;
+		}
+		else stackk = ((TagInstance) stack1).tag().getItems().getFirst();
+		renderItem(gui, xPos, yPos, stackk, accountForContainer);
 	}
 
 	@Environment(EnvType.CLIENT)

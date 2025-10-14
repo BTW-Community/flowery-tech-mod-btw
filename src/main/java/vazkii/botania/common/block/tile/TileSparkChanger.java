@@ -57,8 +57,8 @@ public class TileSparkChanger extends TileSimpleInventory {
 			if(transfers != null)
 				transfers.clear();
 			setInventorySlotContents(0, sparkStack);
-			worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlock(xCoord, yCoord, zCoord));
-			markDirty();
+			worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlockId(xCoord, yCoord, zCoord));
+			onInventoryChanged();
 		}
 	}
 
@@ -78,8 +78,8 @@ public class TileSparkChanger extends TileSimpleInventory {
 	}
 
 	@Override
-	public void markDirty() {
-		super.markDirty();
+	public void onInventoryChanged() {
+		super.onInventoryChanged();
 		VanillaPacketDispatcher.dispatchTEToNearbyPlayers(this);
 	}
 

@@ -110,7 +110,7 @@ public abstract class ItemBrewBase extends ItemMod implements IBrewItem, IPickup
 	}
 
 	@Override
-	public void getSubItems(Item item, CreativeTabs tab, List list) {
+	public void getSubItems(int item, CreativeTabs tab, List list) {
 		for(String s : BotaniaAPI.brewMap.keySet()) {
 			ItemStack stack = new ItemStack(item);
 			setBrew(stack, s);

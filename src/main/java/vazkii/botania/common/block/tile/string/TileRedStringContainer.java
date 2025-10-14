@@ -73,13 +73,13 @@ public class TileRedStringContainer extends TileRedString implements ISidedInven
 	@Override
 	public String getInvName() {
 		IInventory inv = getInventory();
-		return inv != null ? inv.getInventoryName() : LibBlockNames.RED_STRING_CONTAINER;
+		return inv != null ? inv.getInvName() : LibBlockNames.RED_STRING_CONTAINER;
 	}
 
 	@Override
-	public boolean hasCustomInventoryName() {
+	public boolean isInvNameLocalized() {
 		IInventory inv = getInventory();
-		return inv != null ? inv.hasCustomInventoryName() : false;
+		return inv != null ? inv.isInvNameLocalized() : false;
 	}
 
 	@Override
@@ -95,17 +95,17 @@ public class TileRedStringContainer extends TileRedString implements ISidedInven
 	}
 
 	@Override
-	public void openInventory() {
+	public void openChest() {
 		IInventory inv = getInventory();
 		if(inv != null)
-			inv.openInventory();
+			inv.openChest();
 	}
 
 	@Override
-	public void closeInventory() {
+	public void closeChest() {
 		IInventory inv = getInventory();
 		if(inv != null)
-			inv.closeInventory();
+			inv.closeChest();
 	}
 
 	@Override
@@ -133,11 +133,11 @@ public class TileRedStringContainer extends TileRedString implements ISidedInven
 	}
 
 	@Override
-	public void markDirty() {
-		super.markDirty();
+	public void onInventoryChanged() {
+		super.onInventoryChanged();
 		TileEntity tile = getTileAtBinding();
 		if(tile != null)
-			tile.markDirty();
+			tile.onInventoryChanged();
 	}
 
 	IInventory getInventory() {

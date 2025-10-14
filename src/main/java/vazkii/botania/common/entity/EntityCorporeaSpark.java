@@ -53,7 +53,7 @@ public class EntityCorporeaSpark extends Entity implements ICorporeaSpark {
 		dataWatcher.addObject(28, 0);
 		dataWatcher.addObject(29, 0);
 		dataWatcher.addObject(30, 0);
-		dataWatcher.addObject(31, new ItemStack(Blocks.stone, 0, 0));
+		dataWatcher.addObject(31, new ItemStack(Block.stone, 0, 0));
 
 		dataWatcher.setObjectWatched(EntitySpark.INVISIBILITY_DATA_WATCHER_KEY);
 		dataWatcher.setObjectWatched(28);

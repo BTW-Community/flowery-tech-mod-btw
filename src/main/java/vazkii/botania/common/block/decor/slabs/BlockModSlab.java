@@ -20,7 +20,7 @@ public abstract class BlockModSlab extends BlockHalfSlab implements ILexiconable
 	public BlockModSlab(int id, boolean full, Material mat, String name) {
 		super(id, full, mat);
 		this.name = name;
-//		setBlockName(name);
+//		setUnlocalizedName(name);
 		if(!full) {
 			setCreativeTab(CreativeTabs.tabMisc);
 			useNeighborBrightness[0] = true;

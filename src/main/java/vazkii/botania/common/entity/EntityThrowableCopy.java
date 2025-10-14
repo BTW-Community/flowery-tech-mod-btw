@@ -317,7 +317,7 @@ public abstract class EntityThrowableCopy extends Entity implements IProjectile 
 		p_70014_1_.setShort("xTile", (short)field_145788_c);
 		p_70014_1_.setShort("yTile", (short)field_145786_d);
 		p_70014_1_.setShort("zTile", (short)field_145787_e);
-		p_70014_1_.setByte("inTile", (byte)Block.getIdFromBlock(field_145785_f));
+		p_70014_1_.setByte("inTile", (byte)BlockExtensions.getIdFromBlock(field_145785_f));
 		p_70014_1_.setByte("shake", (byte)throwableShake);
 		p_70014_1_.setByte("inGround", (byte)(inGround ? 1 : 0));
 

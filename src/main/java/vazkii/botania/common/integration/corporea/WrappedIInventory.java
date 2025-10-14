@@ -79,7 +79,7 @@ public class WrappedIInventory extends WrappedInventoryBase{
 		}
 
 		if(removedAny) {
-			inv.markDirty();
+			inv.onInventoryChanged();
 		}
 
 		return stacks;

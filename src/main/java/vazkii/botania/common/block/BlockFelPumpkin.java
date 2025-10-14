@@ -39,9 +39,9 @@ public class BlockFelPumpkin extends BlockMod implements ILexiconable {
 
 	Icon top, face;
 
-	public BlockFelPumpkin() {
-		super(Material.gourd);
-		setBlockName(LibBlockNames.FEL_PUMPKIN);
+	public BlockFelPumpkin(int id) {
+		super(id, Material.pumpkin);
+		setUnlocalizedName(LibBlockNames.FEL_PUMPKIN);
 		setHardness(1F);
 		setStepSound(soundWoodFootstep);
 		MinecraftForge.EVENT_BUS.register(this);
@@ -57,17 +57,17 @@ public class BlockFelPumpkin extends BlockMod implements ILexiconable {
 	public void onBlockAdded(World p_149726_1_, int p_149726_2_, int p_149726_3_, int p_149726_4_) {
 		super.onBlockAdded(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_);
 
-		if(!p_149726_1_.isRemote && p_149726_1_.getBlock(p_149726_2_, p_149726_3_ - 1, p_149726_4_) == Blocks.iron_bars && p_149726_1_.getBlock(p_149726_2_, p_149726_3_ - 2, p_149726_4_) == Blocks.iron_bars) {
-			p_149726_1_.setBlock(p_149726_2_, p_149726_3_, p_149726_4_, getBlockById(0), 0, 2);
-			p_149726_1_.setBlock(p_149726_2_, p_149726_3_ - 1, p_149726_4_, getBlockById(0), 0, 2);
-			p_149726_1_.setBlock(p_149726_2_, p_149726_3_ - 2, p_149726_4_, getBlockById(0), 0, 2);
+		if(!p_149726_1_.isRemote && p_149726_1_.getBlock(p_149726_2_, p_149726_3_ - 1, p_149726_4_) == Block.fenceIron && p_149726_1_.getBlock(p_149726_2_, p_149726_3_ - 2, p_149726_4_) == Block.fenceIron) {
+			p_149726_1_.setBlock(p_149726_2_, p_149726_3_, p_149726_4_, 0, 0, 2);
+			p_149726_1_.setBlock(p_149726_2_, p_149726_3_ - 1, p_149726_4_, 0, 0, 2);
+			p_149726_1_.setBlock(p_149726_2_, p_149726_3_ - 2, p_149726_4_, 0, 0, 2);
 			EntityBlaze blaze = new EntityBlaze(p_149726_1_);
 			blaze.setLocationAndAngles(p_149726_2_ + 0.5D, p_149726_3_ - 1.95D, p_149726_4_ + 0.5D, 0.0F, 0.0F);
 			blaze.getEntityData().setBoolean(TAG_FEL_SPAWNED, true);
 			p_149726_1_.spawnEntityInWorld(blaze);
-			p_149726_1_.notifyBlockChange(p_149726_2_, p_149726_3_, p_149726_4_, getBlockById(0));
-			p_149726_1_.notifyBlockChange(p_149726_2_, p_149726_3_ - 1, p_149726_4_, getBlockById(0));
-			p_149726_1_.notifyBlockChange(p_149726_2_, p_149726_3_ - 2, p_149726_4_, getBlockById(0));
+			p_149726_1_.notifyBlockChange(p_149726_2_, p_149726_3_, p_149726_4_, 0);
+			p_149726_1_.notifyBlockChange(p_149726_2_, p_149726_3_ - 1, p_149726_4_, 0);
+			p_149726_1_.notifyBlockChange(p_149726_2_, p_149726_3_ - 2, p_149726_4_, 0);
 		}
 	}
 
@@ -81,19 +81,19 @@ public class BlockFelPumpkin extends BlockMod implements ILexiconable {
 	@Environment(EnvType.CLIENT)
 	public void registerIcons(IconRegister p_149651_1_)  {
 		face = IconHelper.forBlock(p_149651_1_, this);
-		top = Blocks.pumpkin.getIcon(0, 0);
-		blockIcon = Blocks.pumpkin.getIcon(2, 0);
+		top = Block.pumpkin.getIcon(0, 0);
+		blockIcon = Block.pumpkin.getIcon(2, 0);
 	}
 
 	@SubscribeEvent
 	public void onDrops(LivingDropsEvent event) {
 		if(event.entity instanceof EntityBlaze && event.entity.getEntityData().getBoolean(TAG_FEL_SPAWNED))
 			if(event.drops.isEmpty())
-				event.drops.add(new EntityItem(event.entity.worldObj, event.entity.posX, event.entity.posY, event.entity.posZ, new ItemStack(Items.blaze_powder, 6)));
+				event.drops.add(new EntityItem(event.entity.worldObj, event.entity.posX, event.entity.posY, event.entity.posZ, new ItemStack(Item.blazePowder, 6)));
 			else for(EntityItem item : event.drops) {
 				ItemStack stack = item.getEntityItem();
-				if(stack.getItem() == Items.blaze_rod)
-					item.setEntityItemStack(new ItemStack(Items.blaze_powder, stack.stackSize * 10));
+				if(stack.getItem() == Item.blazeRod)
+					item.setEntityItemStack(new ItemStack(Item.blazePowder, stack.stackSize * 10));
 			}
 	}
 

@@ -12,6 +12,7 @@ package vazkii.botania.client.core.handler;
 
 import java.util.*;
 
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.GuiChat;
 import net.minecraft.src.GuiScreen;

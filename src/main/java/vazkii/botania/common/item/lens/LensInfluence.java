@@ -13,7 +13,7 @@ package vazkii.botania.common.item.lens;
 import java.util.List;
 
 import net.minecraft.src.Entity;
-import net.minecraft.src.EntityFallingBlock;
+import net.minecraft.src.EntityFallingSand;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityXPOrb;
 import net.minecraft.src.EntityArrow;
@@ -32,7 +32,7 @@ public class LensInfluence extends Lens {
 			List<Entity> movables = entity.worldObj.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(entity.posX - range, entity.posY - range, entity.posZ - range, entity.posX + range, entity.posY + range, entity.posZ + range));
 			movables.addAll(entity.worldObj.getEntitiesWithinAABB(EntityXPOrb.class, AxisAlignedBB.getBoundingBox(entity.posX - range, entity.posY - range, entity.posZ - range, entity.posX + range, entity.posY + range, entity.posZ + range)));
 			movables.addAll(entity.worldObj.getEntitiesWithinAABB(EntityArrow.class, AxisAlignedBB.getBoundingBox(entity.posX - range, entity.posY - range, entity.posZ - range, entity.posX + range, entity.posY + range, entity.posZ + range)));
-			movables.addAll(entity.worldObj.getEntitiesWithinAABB(EntityFallingBlock.class, AxisAlignedBB.getBoundingBox(entity.posX - range, entity.posY - range, entity.posZ - range, entity.posX + range, entity.posY + range, entity.posZ + range)));
+			movables.addAll(entity.worldObj.getEntitiesWithinAABB(EntityFallingSand.class, AxisAlignedBB.getBoundingBox(entity.posX - range, entity.posY - range, entity.posZ - range, entity.posX + range, entity.posY + range, entity.posZ + range)));
 			movables.addAll(entity.worldObj.getEntitiesWithinAABB(IManaBurst.class, AxisAlignedBB.getBoundingBox(entity.posX - range, entity.posY - range, entity.posZ - range, entity.posX + range, entity.posY + range, entity.posZ + range)));
 
 			for(Entity movable : movables) {

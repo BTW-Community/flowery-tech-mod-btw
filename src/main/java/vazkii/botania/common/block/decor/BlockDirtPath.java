@@ -33,7 +33,7 @@ public class BlockDirtPath extends BlockMod implements ILexiconable {
 		setLightOpacity(255);
 		setHardness(0.6F);
 		setStepSound(soundGravelFootstep);
-		setBlockName(LibBlockNames.DIRT_PATH);
+		setUnlocalizedName(LibBlockNames.DIRT_PATH);
 		useNeighborBrightness[0] = true;
 	}
 

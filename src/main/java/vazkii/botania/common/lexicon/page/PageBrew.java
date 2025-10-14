@@ -13,12 +13,13 @@ package vazkii.botania.common.lexicon.page;
 import java.util.ArrayList;
 import java.util.List;
 
+import btw.item.tag.Tag;
+import btw.item.tag.TagInstance;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.FontRenderer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.src.StatCollector;
-import net.minecraftforge.oredict.OreDictionary;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.brew.Brew;
 import vazkii.botania.api.internal.IGuiLexiconEntry;
@@ -68,8 +69,10 @@ public class PageBrew extends PageRecipe implements ITwoNamedPage {
 
 		int offset = gui.getWidth() / 2 - inputs.size() * 9;
 		for(Object input : inputs) {
-			if(input instanceof String)
-				input = OreDictionary.getOres((String) input).get(0);
+			if(input instanceof TagInstance ti)
+				input = ti.tag().getItems().get(0);
+			if(input instanceof Tag tag)
+				input = tag.getItems().get(0);
 
 			renderItemAtLinePos(gui, offset, i, y, (ItemStack) input);
 			i++;

@@ -24,16 +24,16 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockManaGlass extends BlockMod implements ILexiconable {
 
-	public BlockManaGlass() {
-		this(LibBlockNames.MANA_GLASS);
+	public BlockManaGlass(int id) {
+		this(id, LibBlockNames.MANA_GLASS);
 	}
 
-	public BlockManaGlass(String name) {
-		super(Material.glass);
+	public BlockManaGlass(int id, String name) {
+		super(id, Material.glass);
 		setHardness(0.3F);
 		setStepSound(soundGlassFootstep);
 		setLightValue(1.0F);
-		setBlockName(name);
+		setUnlocalizedName(name);
 	}
 
 	@Override
@@ -41,10 +41,10 @@ public class BlockManaGlass extends BlockMod implements ILexiconable {
 		return false;
 	}
 
-	public boolean shouldSideBeRendered1(IBlockAccess p_149646_1_, int p_149646_2_, int p_149646_3_, int p_149646_4_, int p_149646_5_) {
-		Block block = p_149646_1_.getBlock(p_149646_2_, p_149646_3_, p_149646_4_);
+	public boolean shouldSideBeRendered1(IBlockAccess world, int p_149646_2_, int p_149646_3_, int p_149646_4_, int p_149646_5_) {
+		Block block = ((World) world).getBlock(p_149646_2_, p_149646_3_, p_149646_4_);
 
-		return block == this ? false : super.shouldSideBeRendered(p_149646_1_, p_149646_2_, p_149646_3_, p_149646_4_, p_149646_5_);
+		return block == this ? false : super.shouldSideBeRendered(world, p_149646_2_, p_149646_3_, p_149646_4_, p_149646_5_);
 	}
 
 	@Override

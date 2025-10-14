@@ -17,8 +17,8 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockRedStringRelay extends BlockRedString {
 
-	public BlockRedStringRelay() {
-		super(LibBlockNames.RED_STRING_RELAY);
+	public BlockRedStringRelay(int id) {
+		super(id, LibBlockNames.RED_STRING_RELAY);
 	}
 
 	@Override

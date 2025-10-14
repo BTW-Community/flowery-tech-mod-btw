@@ -30,11 +30,11 @@ import net.fabricmc.api.EnvType;
 
 public class BlockShimmerwoodPlanks  extends BlockMod implements ILexiconable {
 
-	public BlockShimmerwoodPlanks() {
-		super(Material.wood);
+	public BlockShimmerwoodPlanks(int id) {
+		super(id, Material.wood);
 		setHardness(2.0F);
 		setStepSound(soundWoodFootstep);
-		setBlockName(LibBlockNames.SHIMMERWOOD_PLANKS);
+		setUnlocalizedName(LibBlockNames.SHIMMERWOOD_PLANKS);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 

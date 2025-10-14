@@ -12,6 +12,7 @@ package vazkii.botania.common.block.subtile.generating;
 
 import java.util.List;
 
+import dev.bagel.util.Items;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
@@ -32,7 +33,7 @@ public class SubTileEndoflame extends SubTileGenerating {
 	private static final int RANGE = 3;
 
 	int burnTime = 0;
-
+	private static final TileEntityFurnace furnace = new TileEntityFurnace();
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
@@ -51,7 +52,7 @@ public class SubTileEndoflame extends SubTileGenerating {
 							if(stack.getItem().hasContainerItem())
 								continue;
 
-							int burnTime = stack == null || stack.getItem() == Item.getItemFromBlock(ModBlocks.spreader) ? 0 : TileEntityFurnace.getItemBurnTime(stack);
+							int burnTime = stack == null || stack.getItem() == Items.getItemFromBlock(ModBlocks.spreader) ? 0 : furnace.getItemBurnTime(stack);
 							if(burnTime > 0 && stack.stackSize > 0) {
 								this.burnTime = Math.min(FUEL_CAP, burnTime) / 2;
 

@@ -76,7 +76,7 @@ public class ItemExchangeRod extends ItemMod implements IManaUsingItem, IWirefra
 			TileEntity tile = par3World.getTileEntity(par4, par5, par6);
 			if(tile == null) {
 				if(BlockCamo.isValidBlock(wblock)) {
-					Item item = Item.getItemFromBlock(wblock);
+					Item item = Items.getItemFromBlock(wblock);
 					if(!item.getHasSubtypes())
 						wmeta = 0;
 
@@ -228,7 +228,7 @@ public class ItemExchangeRod extends ItemMod implements IManaUsingItem, IWirefra
 							world.spawnEntityInWorld(new EntityItem(world, x + 0.5, y + 0.5, z + 0.5, drop));
 						removeFromInventory(player, stack, blockToSet, metaToSet, true);
 					}
-					world.playAuxSFX(2001, x, y, z, Block.getIdFromBlock(blockAt) + (meta << 12));
+					world.playAuxSFX(2001, x, y, z, BlockExtensions.getIdFromBlock(blockAt) + (meta << 12));
 					world.setBlock(x, y, z, blockToSet, metaToSet, 1 | 2);
 					blockToSet.onBlockPlacedBy(world, x, y, z, player, placeStack);
 				}
@@ -253,7 +253,7 @@ public class ItemExchangeRod extends ItemMod implements IManaUsingItem, IWirefra
 				continue;
 
 			Item item = invStack.getItem();
-			if(item == Item.getItemFromBlock(block) && invStack.getItemDamage() == meta) {
+			if(item == Items.getItemFromBlock(block) && invStack.getItemDamage() == meta) {
 				ItemStack retStack = invStack.copy();
 				if(doit) {
 					invStack.stackSize--;
@@ -310,7 +310,7 @@ public class ItemExchangeRod extends ItemMod implements IManaUsingItem, IWirefra
 				continue;
 
 			Item item = invStack.getItem();
-			if(item == Item.getItemFromBlock(block) && invStack.getItemDamage() == meta)
+			if(item == Items.getItemFromBlock(block) && invStack.getItemDamage() == meta)
 				count += invStack.stackSize;
 
 			if(item instanceof IBlockProvider) {

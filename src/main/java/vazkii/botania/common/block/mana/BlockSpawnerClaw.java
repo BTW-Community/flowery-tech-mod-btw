@@ -12,14 +12,7 @@ package vazkii.botania.common.block.mana;
 
 import java.util.List;
 
-import net.minecraft.src.Material;
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.client.lib.LibRenderIDs;
@@ -30,10 +23,10 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockSpawnerClaw extends BlockModContainer implements ILexiconable {
 
-	public BlockSpawnerClaw() {
-		super(Material.iron);
+	public BlockSpawnerClaw(int id) {
+		super(id, Material.iron);
 		setHardness(3.0F);
-		setBlockName(LibBlockNames.SPAWNER_CLAW);
+		setUnlocalizedName(LibBlockNames.SPAWNER_CLAW);
 
 		float f = 1F / 8F;
 		float f1 = 1F / 16F;
@@ -42,8 +35,8 @@ public class BlockSpawnerClaw extends BlockModContainer implements ILexiconable 
 
 	@Override
 	public void getSubBlocks(int item, CreativeTabs tab, List list) {
-		list.add(new ItemStack(item));
-		list.add(new ItemStack(Blocks.mob_spawner));
+		list.add(new ItemStack(Item.itemsList[item]));
+		list.add(new ItemStack(Block.mobSpawner));
 	}
 
 	@Override
