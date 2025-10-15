@@ -364,7 +364,7 @@ public class ItemGrassSeeds extends ItemMod implements IFloatingFlowerVariant {
 
 			return (block == Block.dirt || block == Block.grass)
 				&& (meta == 0)
-				&& (aboveBlock.getLightValue(world, x, y, z) <= 1);
+				&& (aboveBlock == null || aboveBlock.getLightValue(world, x, y, z) <= 1);
 		}
 	}
 

@@ -34,8 +34,7 @@ public class RenderDoubleFlower implements ISimpleBlockRenderingHandler {
 		boolean flag1 = BlockDoublePlant.func_149887_c(i1);
 		if (flag1)
 		{
-			//todofix this cast may be unsafe
-			if (((World) world).getBlock(p_147774_2_, p_147774_3_ - 1, p_147774_4_) != p_147774_1_)
+			if (world.getBlock(p_147774_2_, p_147774_3_ - 1, p_147774_4_) != p_147774_1_)
 			{
 				return false;
 			}

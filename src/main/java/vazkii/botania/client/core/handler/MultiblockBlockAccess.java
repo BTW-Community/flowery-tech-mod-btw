@@ -10,8 +10,8 @@
  */
 package vazkii.botania.client.core.handler;
 
+import dev.bagel.interfaces.IBlockAccessExtensions;
 import net.minecraft.src.*;
-import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.lexicon.multiblock.Multiblock;
 import vazkii.botania.api.lexicon.multiblock.component.MultiblockComponent;
 
@@ -19,14 +19,14 @@ import vazkii.botania.api.lexicon.multiblock.component.MultiblockComponent;
  * This class acts as a wrapper around a block access to
  * replace blocks with the blocks involved in the multiblock specified
  */
-public class MultiblockBlockAccess implements IBlockAccess {
+public class MultiblockBlockAccess implements IBlockAccess, IBlockAccessExtensions {
 
     protected IBlockAccess originalBlockAccess;
     protected boolean hasBlockAccess = false;
     protected Multiblock multiblock;
     protected int anchorX, anchorY, anchorZ;
 
-    //	@Override
+    @Override
     public Block getBlock(int x, int y, int z) {
         MultiblockComponent comp = getComponent(x, y, z);
         if (comp != null)

@@ -37,6 +37,10 @@ public class TileSpecialFlower extends TileMod implements IWandBindable, ISubTil
 	private static final String TAG_SUBTILE_NAME = "subTileName";
 	private static final String TAG_SUBTILE_CMP = "subTileCmp";
 
+	public TileSpecialFlower() {
+
+	}
+
 	public String subTileName = "";
 	SubTileEntity subTile;
 
@@ -61,7 +65,7 @@ public class TileSpecialFlower extends TileMod implements IWandBindable, ISubTil
 
 		Class<? extends SubTileEntity> tileClass = BotaniaAPI.getSubTileMapping(name);
 		try {
-			SubTileEntity tile = tileClass.newInstance();
+			SubTileEntity tile = tileClass.getDeclaredConstructor().newInstance();
 			setSubTile(tile);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -137,6 +141,7 @@ public class TileSpecialFlower extends TileMod implements IWandBindable, ISubTil
 
 		if(subTile != null)
 			subTile.readFromPacketNBTInternal(subCmp);
+		System.out.println("tags: "+ cmp.getTags());
 	}
 
 	public Icon getIcon() {

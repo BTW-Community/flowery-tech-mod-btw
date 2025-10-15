@@ -57,6 +57,6 @@ public abstract class BlockExtensionMixin implements BlockExtensions {
 
     @Override
     public Icon getIcon(IBlockAccess worldIn, int x, int y, int z, int side) {
-        return this.getIcon(side, worldIn.getBlockMetadata(x, y, z));
+        return null;
     }
 }

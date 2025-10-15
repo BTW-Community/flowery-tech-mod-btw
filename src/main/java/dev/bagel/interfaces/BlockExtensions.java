@@ -25,13 +25,13 @@ public interface BlockExtensions {
     default boolean isAir(World world, int x, int y, int z) {
         return false;
     }
+
     //todofix implement getBlockDropped
     default ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
         return new ArrayList<>();
     }
 
-    public default Icon getIcon(IBlockAccess worldIn, int x, int y, int z, int side)
-    {
+    public default Icon getIcon(IBlockAccess worldIn, int x, int y, int z, int side) {
         return null;
     }
 }

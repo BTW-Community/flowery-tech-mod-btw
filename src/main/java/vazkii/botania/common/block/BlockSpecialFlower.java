@@ -108,11 +108,12 @@ public class BlockSpecialFlower extends BlockFlower implements ITileEntityProvid
 	protected BlockSpecialFlower(int id) {
 		super(id);
 		setUnlocalizedName(LibBlockNames.SPECIAL_FLOWER);
+		this.isBlockContainer = true;
 		setHardness(0.1F);
 		setStepSound(soundGrassFootstep);
 		setTickRandomly(false);
 		setCreativeTab(CreativeTabs.tabMisc);
-		setBlockBounds(0.3F, 0.0F, 0.3F, 0.8F, 1, 0.8F);
+		initBlockBounds(0.3F, 0.0F, 0.3F, 0.8F, 1, 0.8F);
 	}
 
 	@Override
@@ -192,11 +193,24 @@ public class BlockSpecialFlower extends BlockFlower implements ITileEntityProvid
 		return ItemBlockSpecialFlower.ofType(name);
 	}
 
-	//todofix canPlaceBlockOn
-/*	@Override
-	protected boolean canPlaceBlockOn(Block block) {
-		return super.canPlaceBlockOn(block) || block == ModBlocks.redStringRelay || block == Block.mycelium;
-	}*/
+	@Override
+	public boolean canPlaceBlockAt(World world, int i, int j, int k) {
+		Block below = world.getBlock(i, j - 1, k);
+		return super.canPlaceBlockAt(world, i, j, k) || below == ModBlocks.redStringRelay || below == Block.mycelium;
+//		return super.canPlaceBlockAt(world, i, j, k);
+	}
+
+	@Override
+	public void breakBlock(World world, int i, int j, int k, int l, int m) {
+		super.breakBlock(world, i, j, k, l, m);
+		world.removeBlockTileEntity(i, j, k);
+	}
+
+//	@Override
+//	protected boolean canPlaceBlockOn(Block block) {
+//
+//		return super.canPlaceBlockOn(block) || block == ModBlocks.redStringRelay || block == Block.mycelium;
+//	}
 
 	@Override
 	public void onBlockHarvested(World par1World, int par2, int par3, int par4, int par5, EntityPlayer par6EntityPlayer) {

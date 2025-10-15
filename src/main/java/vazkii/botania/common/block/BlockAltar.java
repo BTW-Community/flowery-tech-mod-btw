@@ -52,7 +52,7 @@ public class BlockAltar extends BlockModContainer implements ILexiconable {
 		setUnlocalizedName(LibBlockNames.ALTAR);
 
 		float f = 1F / 16F * 2F;
-		setBlockBounds(f, f, f, 1F - f, 1F / 16F * 20F, 1F - f);
+		initBlockBounds(f, f, f, 1F - f, 1F / 16F * 20F, 1F - f);
 
 		random = new Random();
 	}
