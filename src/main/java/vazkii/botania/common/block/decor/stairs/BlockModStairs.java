@@ -15,7 +15,7 @@ public class BlockModStairs extends BlockStairs implements ILexiconable {
 
 		setCreativeTab(CreativeTabs.tabMisc);
 		useNeighborBrightness[0] = true;
-//		setUnlocalizedName(name);
+		setUnlocalizedName(name);
 	}
 
 //	@Override

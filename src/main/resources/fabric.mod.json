@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "id": "flower-tech-mod",
+  "id": "botania",
   "version": "${version}",
-  "name": "flowery tech mod",
+  "name": "Botania",
   "description": "Flower based tech mod!",
   "authors": [
     "Vazkii (Original)",

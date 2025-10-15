@@ -16,7 +16,7 @@ public class ItemDebugger extends BaubleItemBase {
 		super(id);
 		this.setHasSubtypes(true);
         if (BaublesConfig.hideDebugItem){
-		    setCreativeTab(null);
+		    setCreativeTab(CreativeTabs.tabMisc);
         }
 	}
 

@@ -6,10 +6,18 @@ import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Blocks {
-    private static Map<String, Block> blocks;
+    private static Map<String, Block> blocks = new HashMap<>();
+    static {
+        for (Block block : Block.blocksList) {
+            if (block != null) {
+                blocks.put(block.getUnlocalizedName(), block);
+            }
+        }
+    }
     public static @Nullable Block getBlockFromItem(Item item) {
         if (item instanceof PlaceAsBlockItem pibi) {
             return Block.blocksList[pibi.getBlockID()];

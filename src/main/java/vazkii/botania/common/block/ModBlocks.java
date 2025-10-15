@@ -268,7 +268,7 @@ public final class ModBlocks {
 	public static Block altGrass;
 
 	public static void init() {
-		int id = 2000;
+		int id = 2001;
 		flower = new BlockModFlower(id++);
 		altar = new BlockAltar(id++);
 		livingrock = new BlockLivingrock(id++);

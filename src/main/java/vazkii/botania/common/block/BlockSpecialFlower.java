@@ -249,7 +249,10 @@ public class BlockSpecialFlower extends BlockFlower implements ITileEntityProvid
 
 	@Override
 	public void onBlockAdded(World world, int x, int y, int z) {
-		((TileSpecialFlower) world.getTileEntity(x, y, z)).onBlockAdded(world, x, y, z);
+		if (world.getTileEntity(x, y, z) instanceof TileSpecialFlower tsf) {
+			tsf.onBlockAdded(world, x, y, z);
+		}
+//		((TileSpecialFlower) world.getTileEntity(x, y, z)).onBlockAdded(world, x, y, z);
 	}
 
 	@Override

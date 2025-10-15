@@ -61,7 +61,7 @@ public class BlockModFlower extends BlockFlower implements ILexiconable, IPickup
 		setStepSound(soundGrassFootstep);
 		setBlockBounds(0.3F, 0.0F, 0.3F, 0.8F, 1, 0.8F);
 		setTickRandomly(false);
-		setCreativeTab(registerInCreative() ? CreativeTabs.tabMisc/*BotaniaCreativeTab.INSTANCE*/ : null);
+		setCreativeTab(registerInCreative() ? CreativeTabs.tabMisc/*BotaniaCreativeTab.INSTANCE*/ : CreativeTabs.tabMisc);
 	}
 
 	public boolean registerInCreative() {
