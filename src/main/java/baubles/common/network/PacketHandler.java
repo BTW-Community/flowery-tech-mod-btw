@@ -24,4 +24,8 @@ public class PacketHandler {
     public void sendTo(IMessage message, EntityPlayerMP player) {
 
     }
+
+    public void sendToServer(IMessage message) {
+
+    }
 }

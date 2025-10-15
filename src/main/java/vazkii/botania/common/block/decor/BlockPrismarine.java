@@ -83,7 +83,6 @@ public class BlockPrismarine extends BlockMod implements ILexiconable {
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
 	}
 
-	@SubscribeEvent
 	@Environment(EnvType.CLIENT)
 	public void loadTextures(TextureStitchEvent.Pre event) {
 		if(event.map.getTextureType() == 0) {

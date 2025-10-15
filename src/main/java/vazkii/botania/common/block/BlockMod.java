@@ -28,12 +28,13 @@ public class BlockMod extends Block {
 			setCreativeTab(CreativeTabs.tabMisc /*BotaniaCreativeTab.INSTANCE*/);
 	}
 
-//	@Override
+	@Override
 	public Block setUnlocalizedName(String par1Str) {
 		if(shouldRegisterInNameSet()) {
 			Item registered = this instanceof IElvenItem ? new ItemBlockElven(this) : new ItemBlockMod(this);
 //			GameRegistry.registerBlock(this, this instanceof IElvenItem ? ItemBlockElven.class : ItemBlockMod.class, par1Str);
-		}return this /*super.setUnlocalizedName(par1Str)*/;
+		}
+		return super.setUnlocalizedName(par1Str);
 	}
 
 	protected boolean shouldRegisterInNameSet() {

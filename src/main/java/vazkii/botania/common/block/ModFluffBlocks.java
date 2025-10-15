@@ -200,7 +200,7 @@ public final class ModFluffBlocks {
 
 	public static Block managlassPane;
 	public static Block alfglassPane;
-	public static Block bifrostPane;
+	public static BlockBifrostPane bifrostPane;
 
 	public static void init() {
 		int id = 2200;

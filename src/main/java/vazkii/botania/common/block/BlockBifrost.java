@@ -83,13 +83,14 @@ public class BlockBifrost extends BlockModContainer implements ILexiconable {
 		return 0;
 	}
 
-	@SubscribeEvent
 	@Environment(EnvType.CLIENT)
 	public void loadTextures(TextureStitchEvent.Pre event) {
 		if(event.map.getTextureType() == 0) {
 			TextureAtlasSprite icon = new InterpolatedIcon("botania:bifrost");
-			if(event.map.registerIcon("botania:bifrost", icon) != null)
+			if(event.map.registerIcon("botania:bifrost", icon) != null) {
+				System.err.println("LOADING success...");
 				blockIcon = icon;
+			}
 		}
 	}
 

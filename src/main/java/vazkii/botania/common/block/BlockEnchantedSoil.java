@@ -57,7 +57,6 @@ public class BlockEnchantedSoil extends BlockMod implements ILexiconable {
 		// NO-OP
 	}
 
-	@SubscribeEvent
 	@Environment(EnvType.CLIENT)
 	public void loadTextures(TextureStitchEvent.Pre event) {
 		if(event.map.getTextureType() == 0) {

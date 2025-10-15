@@ -49,7 +49,7 @@ public class GuiEvents {
 	@SubscribeEvent
 	public void guiPostAction(GuiScreenEvent.ActionPerformedEvent.Post event) {
 		//todobaubles open gui packet
-		/*if (event.gui instanceof GuiInventory) {
+		if (event.gui instanceof GuiInventory) {
 			if (event.button.id == 55) {
 				PacketHandler.INSTANCE.sendToServer(new PacketOpenBaublesInventory(event.gui.mc.thePlayer));
 			}
@@ -60,7 +60,7 @@ public class GuiEvents {
 				event.gui.mc.displayGuiScreen(new GuiInventory(event.gui.mc.thePlayer));
 				PacketHandler.INSTANCE.sendToServer(new PacketOpenNormalInventory(event.gui.mc.thePlayer));
 			}
-		}*/
+		}
 	}
 
 	static Method isNEIHidden;

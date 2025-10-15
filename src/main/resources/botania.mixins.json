@@ -14,6 +14,7 @@
     "extensions.WorldExtensionMixin"
   ],
   "client": [
+    "event.TextureMapMixin"
   ],
   "injectors": {
     "defaultRequire": 1

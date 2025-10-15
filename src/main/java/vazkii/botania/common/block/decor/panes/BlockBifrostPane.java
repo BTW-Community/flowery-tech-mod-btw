@@ -27,7 +27,6 @@ public class BlockBifrostPane extends BlockModPane {
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
-	@SubscribeEvent
 	@Environment(EnvType.CLIENT)
 	public void loadTextures(TextureStitchEvent.Pre event) {
 		if(event.map.getTextureType() == 0) {

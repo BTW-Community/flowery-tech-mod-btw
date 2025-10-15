@@ -204,10 +204,10 @@ public final class ModBlocks {
 	public static Block alfPortal;
 	public static Block dreamwood;
 	public static Block conjurationCatalyst;
-	public static Block bifrost;
+	public static BlockBifrost bifrost;
 	public static Block solidVines;
 	public static Block buriedPetals;
-	public static Block prismarine;
+	public static BlockPrismarine prismarine;
 	public static Block seaLamp;
 	public static Block floatingFlower;
 	public static Block tinyPotato;
@@ -231,7 +231,7 @@ public final class ModBlocks {
 	public static Block manaFlame;
 	public static Block prism;
 	public static Block dirtPath;
-	public static Block enchantedSoil;
+	public static BlockEnchantedSoil enchantedSoil;
 	public static Block petalBlock;
 	public static Block corporeaIndex;
 	public static Block corporeaFunnel;
@@ -262,8 +262,8 @@ public final class ModBlocks {
 	public static Block gaiaHead;
 	public static Block corporeaRetainer;
 	public static Block teruTeruBozu;
-	public static Block shimmerrock;
-	public static Block shimmerwoodPlanks;
+	public static BlockShimmerrock shimmerrock;
+	public static BlockShimmerwoodPlanks shimmerwoodPlanks;
 	public static Block avatar;
 	public static Block altGrass;
 
