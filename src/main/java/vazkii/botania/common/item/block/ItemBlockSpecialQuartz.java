@@ -18,7 +18,7 @@ import vazkii.botania.common.block.decor.quartz.BlockSpecialQuartz;
 public class ItemBlockSpecialQuartz extends ItemMultiTextureTile {
 
 	public ItemBlockSpecialQuartz(Block par1) {
-		super(par1.blockID, par1, new String[]{ "" });
+		super(par1.blockID - 256, par1, new String[]{ "" });
 	}
 
 	@Override

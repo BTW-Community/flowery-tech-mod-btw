@@ -4,7 +4,6 @@
   "package": "dev.bagel.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "ItemBlockMixin",
     "RenderItemMixin",
     "extensions.BlockExtensionMixin",
     "extensions.EntityExtensionMixin",

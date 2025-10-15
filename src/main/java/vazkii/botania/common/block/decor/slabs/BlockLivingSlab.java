@@ -22,9 +22,9 @@ public abstract class BlockLivingSlab extends BlockModSlab {
 	public Icon getIcon(int par1, int par2) {
 		return source.getIcon(par1, meta);
 	}
-
-	@Override
-	public String getFullSlabName(int var1) {
-		return source.getUnlocalizedName();
-	}
+//
+//	@Override
+//	public String getFullSlabName(int var1) {
+//		return source.getUnlocalizedName();
+//	}
 }

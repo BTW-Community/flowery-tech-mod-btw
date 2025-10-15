@@ -42,9 +42,4 @@ public class BlockEndStoneSlab extends BlockLivingSlab {
 	public LexiconEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon) {
 		return LexiconData.endStoneDecor;
 	}
-
-	@Override
-	public String getFullSlabName(int i) {
-		return "todo.endstone";
-	}
 }

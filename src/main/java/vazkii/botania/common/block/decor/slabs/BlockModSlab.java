@@ -32,6 +32,11 @@ public abstract class BlockModSlab extends BlockHalfSlab implements ILexiconable
 	public abstract BlockHalfSlab getSingleBlock();
 
 	@Override
+	public String getFullSlabName(int var1) {
+		return name;
+	}
+
+	@Override
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		return new ItemStack(getSingleBlock());
 	}

@@ -18,7 +18,7 @@ import vazkii.botania.common.block.decor.slabs.BlockModSlab;
 public class ItemBlockModSlab extends ItemSlab {
 
 	public ItemBlockModSlab(Block par1) {
-		super(par1.blockID, ((BlockModSlab)par1).getSingleBlock(), ((BlockModSlab)par1).getFullBlock(), false);
+		super(par1.blockID - 256, ((BlockModSlab)par1).getSingleBlock(), ((BlockModSlab)par1).getFullBlock(), false);
 	}
 
 	@Override

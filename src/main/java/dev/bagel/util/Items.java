@@ -8,7 +8,7 @@ public class Items {
     public static Item getItemFromBlock(Block block)
     {
         if (block == null) return null;
-        return Item.itemsList[BlockExtensions.getIdFromBlock(block) - 256];
+        return Item.itemsList[BlockExtensions.getIdFromBlock(block)];
     }
 
     public static Item getItemFromBlock(int blockId)

@@ -113,8 +113,8 @@ public class BlockSpecialQuartzSlab extends BlockModSlab {
 		return this == ModFluffBlocks.elfQuartzSlab ? LexiconData.elvenResources : LexiconData.decorativeBlocks;
 	}
 
-	@Override
-	public String getFullSlabName(int var1) {
-		return source.getUnlocalizedName();
-	}
+//	@Override
+//	public String getFullSlabName(int var1) {
+//		return source.getUnlocalizedName();
+//	}
 }
