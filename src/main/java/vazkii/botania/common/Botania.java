@@ -65,7 +65,7 @@ public class Botania extends BTWAddon {
 
 	//FMLServerAboutToStartEvent
 	public void serverAboutToStart() {
-		proxy.serverAboutToStart();
+//		proxy.serverAboutToStart();
 	}
 
 	//FMLServerStartingEvent

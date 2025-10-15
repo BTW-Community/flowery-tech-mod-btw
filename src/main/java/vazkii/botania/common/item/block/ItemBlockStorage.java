@@ -17,7 +17,7 @@ import vazkii.botania.api.recipe.IElvenItem;
 public class ItemBlockStorage extends ItemBlockWithMetadataAndName implements IElvenItem {
 
 	public ItemBlockStorage(Block block) {
-		super(block.blockID, block);
+		super(block);
 	}
 
 	@Override

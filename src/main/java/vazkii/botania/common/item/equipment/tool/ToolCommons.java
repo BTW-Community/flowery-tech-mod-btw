@@ -100,17 +100,17 @@ public final class ToolCommons {
 
 		if(block != null && blk != block)
 			return;
-
+		//todofix improve block harvesting checks
 		Material mat = world.getBlock(x, y, z).blockMaterial;
 		if(!world.isRemote && blk != null && !blk.isAir(world, x, y, z) && blk.getPlayerRelativeBlockHardness(player, world, x, y, z) > 0) {
-			if(!blk.canHarvestBlock(player, meta) || !isRightMaterial(mat, materialsListing))
+			if(/*!blk.canHarvestBlock(player, meta) ||*/ !isRightMaterial(mat, materialsListing))
 				return;
 
 			if(!player.capabilities.isCreativeMode) {
 				int localMeta = world.getBlockMetadata(x, y, z);
 				blk.onBlockHarvested(world, x, y, z, localMeta, player);
 
-				if(blk.removedByPlayer(world, player, x, y, z, true)) {
+				if(world.setBlockToAir(x, y, z)/*blk.removedByPlayer(world, player, x, y, z, true)*/) {
 					blk.onBlockDestroyedByPlayer(world, x, y, z, localMeta);
 
 					if(!dispose || !ItemElementiumPick.isDisposable(blk))

@@ -24,7 +24,7 @@ import vazkii.botania.common.achievement.IPickupAchievement;
 public class ItemBlockMod extends ItemBlock implements IPickupAchievement, ICraftAchievement {
 
 	public ItemBlockMod(Block block) {
-		super(block.blockID - 256);
+		super(block.blockID);
 	}
 
 	@Override

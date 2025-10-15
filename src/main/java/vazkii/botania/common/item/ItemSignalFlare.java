@@ -43,7 +43,7 @@ public class ItemSignalFlare extends ItemMod {
 	public ItemSignalFlare(int id) {
 		super(id);
 		setMaxStackSize(1);
-//		setNoRepair();
+		setNoRepair();
 		setMaxDamage(200);
 		setUnlocalizedName(LibItemNames.SIGNAL_FLARE);
 	}

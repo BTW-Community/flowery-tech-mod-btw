@@ -47,7 +47,7 @@ public class ItemManaGun extends ItemMod implements IManaUsingItem {
 		super(id);
 		setMaxDamage(COOLDOWN);
 		setMaxStackSize(1);
-//		setNoRepair();
+		setNoRepair();
 		setUnlocalizedName(LibItemNames.MANA_GUN);
 
 		CraftingManager.getInstance().getRecipeList().add(new ManaGunLensRecipe());

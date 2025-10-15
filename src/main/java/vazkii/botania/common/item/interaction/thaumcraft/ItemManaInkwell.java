@@ -35,7 +35,7 @@ public class ItemManaInkwell extends ItemMod implements IManaItem {
         setUnlocalizedName(LibItemNames.MANA_INKWELL);
 		setMaxDamage(USES);
 		setMaxStackSize(1);
-//		setNoRepair();
+		setNoRepair();
 	}
 
 	@Override

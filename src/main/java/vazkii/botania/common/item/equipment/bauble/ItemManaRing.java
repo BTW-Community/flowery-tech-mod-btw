@@ -32,7 +32,7 @@ public class ItemManaRing extends ItemBauble implements IManaItem, IManaTooltipD
 	public ItemManaRing(int id) {
 		this(id, LibItemNames.MANA_RING);
 		setMaxDamage(1000);
-//		setNoRepair();
+		setNoRepair();
 	}
 
 	public ItemManaRing(int id, String name) {

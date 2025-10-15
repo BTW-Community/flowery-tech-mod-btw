@@ -26,7 +26,7 @@ public class ItemSpellCloth extends ItemMod {
         super(id);
         setMaxDamage(35);
 		setMaxStackSize(1);
-//		setNoRepair();
+		setNoRepair();
 		setUnlocalizedName(LibItemNames.SPELL_CLOTH);
 
 		CraftingManager.getInstance().getRecipeList().add(new SpellClothRecipe());

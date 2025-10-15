@@ -637,7 +637,7 @@ public final class LexiconData {
 
 		passiveGen = new BLexiconEntry(LibLexicon.GFLOWER_PASSIVE_GENERATION, categoryGenerationFlowers);
 		passiveGen.setPriority().setLexiconPages(new PageText("0"), new PageText("1"))
-				.setIcon(new ItemStack(Blocks.deadbush));
+				.setIcon(new ItemStack(Block.deadBush));
 
 		primusLoci = new BLexiconEntry(LibLexicon.GFLOWER_PRIMUS_LOCI, categoryGenerationFlowers);
 		primusLoci.setPriority().setLexiconPages(new PageText("0"), new PageText("1"));
@@ -1272,7 +1272,7 @@ public final class LexiconData {
 				.setLexiconPages(new PageImage("0", LibResources.ENTRY_ELVEN_GARDE), new PageLoreText("1"),
 						new PageLoreText("2"), new PageLoreText("3"), new PageLoreText("4"), new PageLoreText("5"),
 						new PageLoreText("6"))
-				.setIcon(new ItemStack(Items.writable_book));
+				.setIcon(new ItemStack(Item.writableBook));
 
 		elvenResources = new ALexiconEntry(LibLexicon.ALF_RESOURCES, categoryAlfhomancy);
 		elvenResources.setPriority()
@@ -1301,7 +1301,7 @@ public final class LexiconData {
 		elvenLore
 				.setLexiconPages(new PageText("0"), new PageLoreText("1"), new PageLoreText("2"), new PageLoreText("3"),
 						new PageLoreText("4"), new PageLoreText("5"), new PageLoreText("6"), new PageLoreText("7"))
-				.setIcon(new ItemStack(Items.writable_book));
+				.setIcon(new ItemStack(Item.writableBook));
 
 		if (ConfigHandler.relicsEnabled) {
 			relics = new ALexiconEntry(LibLexicon.ALF_RELICS, categoryAlfhomancy);
@@ -1387,7 +1387,7 @@ public final class LexiconData {
 					new PageCraftingRecipe("22", ModCraftingRecipes.recipeSnowBrick));
 
 		dispenserTweaks = new BLexiconEntry(LibLexicon.MISC_DISPENSER_TWEAKS, categoryMisc);
-		dispenserTweaks.setLexiconPages(new PageText("0")).setPriority().setIcon(new ItemStack(Blocks.dispenser));
+		dispenserTweaks.setLexiconPages(new PageText("0")).setPriority().setIcon(new ItemStack(Block.dispenser));
 
 		shinyFlowers = new BLexiconEntry(LibLexicon.MISC_SHINY_FLOWERS, categoryMisc);
 		shinyFlowers.setLexiconPages(new PageText("0"), new PageText("3"),
@@ -1453,7 +1453,7 @@ public final class LexiconData {
 		pavement.setLexiconPages(new PageText("0"), new PageCraftingRecipe("1", ModCraftingRecipes.recipesPavement));
 
 		preventingDecay = new DLexiconEntry(LibLexicon.MISC_PRENTING_DECAY, categoryMisc);
-		preventingDecay.setLexiconPages(new PageText("0")).setIcon(new ItemStack(Blocks.deadbush));
+		preventingDecay.setLexiconPages(new PageText("0")).setIcon(new ItemStack(Block.deadBush));
 
 		if (Botania.bcTriggersLoaded) {
 			bcIntegration = new CLexiconEntry(LibLexicon.MISC_BC_INTEGRATION, categoryMisc, "BuildCraft");
@@ -1464,7 +1464,7 @@ public final class LexiconData {
 	public static void postInit() {
 		if (SheddingHandler.hasShedding()) {
 			shedding = new BLexiconEntry(LibLexicon.MISC_SHEDDING, BotaniaAPI.categoryMisc);
-			shedding.setLexiconPages(new PageText("0")).setPriority().setIcon(new ItemStack(Items.feather));
+			shedding.setLexiconPages(new PageText("0")).setPriority().setIcon(new ItemStack(Item.feather));
 			SheddingHandler.addToLexicon();
 		}
 

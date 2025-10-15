@@ -10,11 +10,7 @@
  */
 package vazkii.botania.common.crafting.recipe;
 
-import net.minecraft.src.InventoryCrafting;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.IRecipe;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import vazkii.botania.common.item.ModItems;
 
 public class SpellClothRecipe implements IRecipe {
@@ -68,6 +64,21 @@ public class SpellClothRecipe implements IRecipe {
 
 	@Override
 	public ItemStack getRecipeOutput() {
+		return null;
+	}
+
+	@Override
+	public boolean matches(IRecipe var1) {
+		return false;
+	}
+
+	@Override
+	public boolean hasSecondaryOutput() {
+		return false;
+	}
+
+	@Override
+	public ItemStack[] getSecondaryOutput(IInventory var1) {
 		return null;
 	}
 

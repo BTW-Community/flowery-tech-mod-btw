@@ -13,6 +13,7 @@ package vazkii.botania.common.lexicon.page;
 import java.util.ArrayList;
 import java.util.List;
 
+import dev.bagel.client.RenderInstances;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.FontRenderer;
 import net.minecraft.src.GuiButton;
@@ -96,7 +97,7 @@ public class PageMultiblock extends LexiconPage {
 		RenderHelper.enableGUIStandardItemLighting();
 		int x = gui.getLeft() + 15;
 		int y = gui.getTop() + 25;
-		RenderInstances.getItemInstance().renderItemIntoGUI(font, render, new ItemStack(Blocks.stonebrick), x, y);
+		RenderInstances.getItemInstance().renderItemIntoGUI(font, render, new ItemStack(Block.stoneBrick), x, y);
 		RenderHelper.disableStandardItemLighting();
 		GL11.glDisable(GL12.GL_RESCALE_NORMAL);
 

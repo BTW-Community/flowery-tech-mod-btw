@@ -96,12 +96,12 @@ public final class ConfigHandler {
 	private static boolean verifiedPotionArray = false;
 	private static int potionArrayLimit = 0;
 
-	public static int potionIDSoulCross = 91;
-	public static int potionIDFeatherfeet = 92;
-	public static int potionIDEmptiness = 93;
-	public static int potionIDBloodthirst = 94;
-	public static int potionIDAllure = 95;
-	public static int potionIDClear = 96;
+	public static int potionIDSoulCross = 24;
+	public static int potionIDFeatherfeet = 25;
+	public static int potionIDEmptiness = 26;
+	public static int potionIDBloodthirst = 27;
+	public static int potionIDAllure = 28;
+	public static int potionIDClear = 29;
 
 	public static void loadConfig(File configFile) {
 /*		config = new Configuration(configFile);

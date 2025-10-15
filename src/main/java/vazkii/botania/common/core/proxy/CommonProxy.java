@@ -91,6 +91,20 @@ public class CommonProxy {
 
 //		ConfigHandler.loadConfig(event.getSuggestedConfigurationFile());
 
+
+
+//		if(Botania.etFuturumLoaded)
+//			ModBanners.init();
+
+		ChestGenHandler.init();
+
+		if(Botania.gardenOfGlassLoaded)
+			new WorldTypeSkyblock();
+
+		LexiconData.preInit();
+	}
+	@SubscribeEvent
+	public void init() {
 		ModBlocks.init();
 		ModItems.init();
 		ModEntities.init();
@@ -108,19 +122,6 @@ public class CommonProxy {
 		ModBrewRecipes.init();
 		ModAchievements.init();
 		ModMultiblocks.init();
-
-//		if(Botania.etFuturumLoaded)
-//			ModBanners.init();
-
-		ChestGenHandler.init();
-
-		if(Botania.gardenOfGlassLoaded)
-			new WorldTypeSkyblock();
-
-		LexiconData.preInit();
-	}
-	@SubscribeEvent
-	public void init() {
 		//todofix gui handler, terrain bus
 //		NetworkRegistry.INSTANCE.registerGuiHandler(Botania.instance, new GuiHandler());
 

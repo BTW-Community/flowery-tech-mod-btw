@@ -21,7 +21,7 @@ import vazkii.botania.common.lib.LibMisc;
 
 public final class ModAchievements {
 	
-	public static final AchievementTab botaniaPage = new AchievementTab("botania").setIcon(BTWItems.firePlough);
+	public static final AchievementTab botaniaPage = new AchievementTab("botania")/*.setIcon(BTWItems.firePlough)*/;
 	public static int pageIndex;
 
 	public static Achievement flowerPickup;

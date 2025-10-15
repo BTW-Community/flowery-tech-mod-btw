@@ -83,12 +83,13 @@ public class LensDyeingRecipe implements IRecipe {
 	}
 
 	int getStackColor(ItemStack stack) {
-		int[] ids = OreDictionary.getOreIDs(stack);
-		for(int i : ids) {
-			int index = DYES.indexOf(OreDictionary.getOreName(i));
-			if(index >= 0)
-				return index;
-		}
+		//todofix i dont know what this does and i just want it to compile lmao
+//		int[] ids = OreDictionary.getOreIDs(stack);
+//		for(int i : ids) {
+//			int index = DYES.indexOf(OreDictionary.getOreName(i));
+//			if(index >= 0)
+//				return index;
+//		}
 
 		return -1;
 	}

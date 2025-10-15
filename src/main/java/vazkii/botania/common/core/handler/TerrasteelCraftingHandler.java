@@ -12,12 +12,7 @@ package vazkii.botania.common.core.handler;
 
 import java.util.List;
 
-import net.minecraft.src.EntityItem;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.TileEntityBeacon;
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.MathHelper;
+import net.minecraft.src.*;
 import vazkii.botania.api.mana.IManaPool;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.block.tile.mana.TilePool;
@@ -78,7 +73,7 @@ public final class TerrasteelCraftingHandler {
 		int y = MathHelper.floor_double(item.posY);
 		int z = MathHelper.floor_double(item.posZ);
 
-		if(item.worldObj.getBlock(x, y - 1, z) != Blocks.beacon)
+		if(item.worldObj.getBlock(x, y - 1, z) != Block.beacon)
 			return -1;
 
 		TileEntityBeacon beacon = (TileEntityBeacon) item.worldObj.getTileEntity(x, y - 1, z);

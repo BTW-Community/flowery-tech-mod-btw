@@ -40,7 +40,7 @@ public class BlockBiomeStone extends BlockMod implements ILexiconable {
 		setHardness(1.5F);
 		setResistance(10F);
 		setStepSound(soundStoneFootstep);
-		setUnlocalizedName(name);
+//		setUnlocalizedName(name);
 		this.iconOffset = iconOffset;
 	}
 

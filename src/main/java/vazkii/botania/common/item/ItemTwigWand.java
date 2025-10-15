@@ -82,7 +82,8 @@ public class ItemTwigWand extends Item16Colors implements ICoordBoundItem {
 				return true;
 			} else setBoundTile(par1ItemStack, 0, -1, 0);
 		} else if(par2EntityPlayer.isSneaking()) {
-			block.rotateBlock(par3World, par4, par5, par6, ForgeDirection.getOrientation(par7));
+			//todofix rotate block
+//			block.rotateBlock(par3World, par4, par5, par6, ForgeDirection.getOrientation(par7));
 			if(par3World.isRemote)
 				par2EntityPlayer.swingItem();
 		}

@@ -17,6 +17,6 @@ import vazkii.botania.common.lib.LibObfuscation;
 public class ObfuscationHelper {
 
 	public static ResourceLocation getParticleTexture() {
-		return ReflectionHelper.getPrivateValue(EffectRenderer.class, null, LibObfuscation.PARTICLE_TEXTURES);
+		return EffectRenderer.particleTextures;
 	}
 }

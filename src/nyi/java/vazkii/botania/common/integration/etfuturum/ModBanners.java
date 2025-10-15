@@ -32,7 +32,7 @@ public final class ModBanners {
 			addPattern(clazz, "spark_recessive", "src", new ItemStack(ModItems.sparkUpgrade, 1, 2));
 			addPattern(clazz, "spark_isolated", "sis", new ItemStack(ModItems.sparkUpgrade, 1, 3));
 
-			addPattern(clazz, "fish", "fis", new ItemStack(Items.fish));
+			addPattern(clazz, "fish", "fis", new ItemStack(Item.fishRaw));
 			addPattern(clazz, "axe", "axe", new ItemStack(Items.iron_axe));
 			addPattern(clazz, "hoe", "hoe", new ItemStack(Items.iron_hoe));
 			addPattern(clazz, "pickaxe", "pik", new ItemStack(Items.iron_pickaxe));

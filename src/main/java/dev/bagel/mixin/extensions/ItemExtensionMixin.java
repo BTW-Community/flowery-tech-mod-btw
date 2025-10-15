@@ -4,6 +4,8 @@ import dev.bagel.interfaces.ItemExtensions;
 import net.minecraft.src.*;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(Item.class)
 public abstract class ItemExtensionMixin implements ItemExtensions {
@@ -18,6 +20,8 @@ public abstract class ItemExtensionMixin implements ItemExtensions {
     public abstract Icon getIconFromDamageForRenderPass(int par1, int par2);
 
     @Shadow public abstract boolean requiresMultipleRenderPasses();
+
+    @Shadow public abstract boolean isDamageable();
 
     @Override
     public ItemStack getContainerItem(ItemStack itemStack) {
@@ -83,6 +87,11 @@ public abstract class ItemExtensionMixin implements ItemExtensions {
     }
 
     @Override
+    public double getDurabilityForDisplay(ItemStack stack) {
+        return (double) stack.getItemDamageForDisplay() / (double)stack.getMaxDamage();
+    }
+
+    @Override
     public int getEntityLifespan(ItemStack itemStack, World world) {
         return 6000;
     }
@@ -96,4 +105,46 @@ public abstract class ItemExtensionMixin implements ItemExtensions {
     public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
         return false;
     }
+
+    protected boolean canRepair = true;
+    /**
+     * Called by CraftingManager to determine if an item is reparable.
+     * @return True if reparable
+     */
+    public boolean isRepairable()
+    {
+        return canRepair && isDamageable();
+    }
+
+    /**
+     * Call to disable repair recipes.
+     * @return The current Item instance
+     */
+    public Item setNoRepair()
+    {
+        canRepair = false;
+        return (Item) (Object) this;
+    }
+
+    @Redirect(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/Item;getUnlocalizedName()Ljava/lang/String;"))
+    private String testit(Item instance) {
+        //dont do nothin
+        if (instance == null)
+            return "unknown";
+        try {
+            return instance.getUnlocalizedName();
+        }
+        catch (Throwable e) {
+            return "instance is null";
+        }
+
+    }
+
+//    @Redirect(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/Item;getUnlocalizedName()Ljava/lang/String;"))
+//    private String testbl(Item instance) {
+//        //dont do nothin
+//        if (instance == null)
+//            return "unknown";
+//        else return instance.getUnlocalizedName();
+//    }
 }

@@ -36,6 +36,7 @@ extendable method net/minecraft/src/BlockPane canThisPaneConnectToThisBlockID (I
 accessible field net/minecraft/src/Entity isImmuneToFire Z
 accessible method net/minecraft/src/EntityLiving getLivingSound ()Ljava/lang/String;
 accessible method net/minecraft/src/ItemDye applyBoneMeal (Lnet/minecraft/src/World;III)Z
-
-
-
+accessible method net/minecraft/src/DamageSource <init> (Ljava/lang/String;)V
+accessible field net/minecraft/src/EffectRenderer particleTextures Lnet/minecraft/src/ResourceLocation;
+accessible field net/minecraft/src/EntityList stringToClassMapping Ljava/util/Map;
+accessible field net/minecraft/src/EntityHorse horseJumpStrength Lnet/minecraft/src/Attribute;

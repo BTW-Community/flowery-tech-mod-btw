@@ -26,9 +26,10 @@ public final class ModPureDaisyRecipes {
 
 		BotaniaAPI.registerPureDaisyRecipe("netherrack", Block.cobblestone, 0);
 		BotaniaAPI.registerPureDaisyRecipe("soulSand", Block.sand, 0);
-		BotaniaAPI.registerPureDaisyRecipe("ice", Blocks.packed_ice, 0);
+		BotaniaAPI.registerPureDaisyRecipe("ice", Block.ice, 0);
 		BotaniaAPI.registerPureDaisyRecipe(LibOreDict.BLAZE_BLOCK, Block.obsidian, 0);
-		BotaniaAPI.registerPureDaisyRecipe(Blocks.water, Blocks.snow, 0);
+		BotaniaAPI.registerPureDaisyRecipe(Block.waterMoving, Block.snow, 0);
+		BotaniaAPI.registerPureDaisyRecipe(Block.waterStill, Block.snow, 0);
 	}
 
 }

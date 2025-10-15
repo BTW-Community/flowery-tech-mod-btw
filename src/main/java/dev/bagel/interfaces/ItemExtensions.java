@@ -133,6 +133,16 @@ public interface ItemExtensions {
     }
 
     /**
+     * Queries the percentage of the 'Durability' bar that should be drawn.
+     *
+     * @param stack The current ItemStack
+     * @return 1.0 for 100% 0 for 0%
+     */
+    public default double getDurabilityForDisplay(ItemStack stack) {
+        return (double) stack.getItemDamageForDisplay() / (double) stack.getMaxDamage();
+    }
+
+    /**
      * Retrieves the normal 'lifespan' of this item when it is dropped on the ground as a EntityItem.
      * This is in ticks, standard result is 6000, or 5 mins.
      *
@@ -161,11 +171,24 @@ public interface ItemExtensions {
      * Called when a entity tries to play the 'swing' animation.
      *
      * @param entityLiving The entity swinging the item.
-     * @param stack The Item stack
+     * @param stack        The Item stack
      * @return True to cancel any further processing by EntityLiving
      */
-    public default boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack)
-    {
+    public default boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
         return false;
+    }
+    /**
+     * Called by CraftingManager to determine if an item is reparable.
+     * @return True if reparable
+     */
+    public default boolean isRepairable() {
+        return true;
+    }
+    /**
+     * Call to disable repair recipes.
+     * @return The current Item instance
+     */
+    public default Item setNoRepair() {
+        return null;
     }
 }

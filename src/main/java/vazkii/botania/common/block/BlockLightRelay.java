@@ -43,17 +43,17 @@ public class BlockLightRelay extends BlockModContainer implements IWandable, ILe
 		super(id, Material.glass);
 		float f = 5F / 16F;
 		setBlockBounds(f, f, f, 1F - f, 1F - f, 1F - f);
-//		setUnlocalizedName(LibBlockNames.LIGHT_RELAY);
+		setUnlocalizedName(LibBlockNames.LIGHT_RELAY);
 	}
 
-/*	@Override
+	@Override
 	public Block setUnlocalizedName(String par1Str) {
 		register(par1Str);
 		return super.setUnlocalizedName(par1Str);
-	}*/
+	}
 
 	void register(String name) {
-		new ItemBlockWithMetadataAndName(this.blockID, this);
+		new ItemBlockWithMetadataAndName(this);
 //		var item = new ItemBlockWithMetadataAndName(this);
 //GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, name);
 	}

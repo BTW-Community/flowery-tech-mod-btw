@@ -36,14 +36,14 @@ public class ModElvenTradeRecipes {
 		dragonstoneRecipes.add(BotaniaAPI.registerElvenTradeRecipe(new ItemStack(ModItems.manaResource, 1, 9), LibOreDict.MANA_DIAMOND));
 		dragonstoneRecipes.add(BotaniaAPI.registerElvenTradeRecipe(new ItemStack(ModBlocks.storage, 1, 4), new ItemStack(ModBlocks.storage, 1, 3)));
 
-		elvenQuartzRecipe = BotaniaAPI.registerElvenTradeRecipe(new ItemStack(ModItems.quartz, 1, 5), new ItemStack(Items.quartz));
+		elvenQuartzRecipe = BotaniaAPI.registerElvenTradeRecipe(new ItemStack(ModItems.quartz, 1, 5), new ItemStack(Item.netherQuartz));
 		alfglassRecipe = BotaniaAPI.registerElvenTradeRecipe(new ItemStack(ModBlocks.elfGlass), new ItemStack(ModBlocks.manaGlass));
 
-		BotaniaAPI.registerElvenTradeRecipe(new ItemStack(Items.iron_ingot), new ItemStack(Items.iron_ingot));
-		BotaniaAPI.registerElvenTradeRecipe(new ItemStack(Blocks.iron_block), new ItemStack(Blocks.iron_block));
-		BotaniaAPI.registerElvenTradeRecipe(new ItemStack(Items.ender_pearl), new ItemStack(Items.ender_pearl));
-		BotaniaAPI.registerElvenTradeRecipe(new ItemStack(Items.diamond), new ItemStack(Items.diamond));
-		BotaniaAPI.registerElvenTradeRecipe(new ItemStack(Blocks.diamond_block), new ItemStack(Blocks.diamond_block));
+		BotaniaAPI.registerElvenTradeRecipe(new ItemStack(Item.ingotIron), new ItemStack(Item.ingotIron));
+		BotaniaAPI.registerElvenTradeRecipe(new ItemStack(Block.blockIron), new ItemStack(Block.blockIron));
+		BotaniaAPI.registerElvenTradeRecipe(new ItemStack(Item.enderPearl), new ItemStack(Item.enderPearl));
+		BotaniaAPI.registerElvenTradeRecipe(new ItemStack(Item.diamond), new ItemStack(Item.diamond));
+		BotaniaAPI.registerElvenTradeRecipe(new ItemStack(Block.blockDiamond), new ItemStack(Block.blockDiamond));
 	}
 
 }

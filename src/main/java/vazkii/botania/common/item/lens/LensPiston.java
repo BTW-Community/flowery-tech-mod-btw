@@ -32,7 +32,7 @@ public class LensPiston extends Lens {
 			int y = pos.blockY + dir.offsetY;
 			int z = pos.blockZ + dir.offsetZ;
 
-			if(entity.worldObj.isAirBlock(x, y, z) || entity.worldObj.getBlock(x, y, z).isReplaceable(entity.worldObj, x, y, z)) {
+			if(entity.worldObj.isAirBlock(x, y, z) || entity.worldObj.getBlock(x, y, z).isReplaceableVegetation(entity.worldObj, x, y, z)) {
 				Block block = entity.worldObj.getBlock(pos.blockX, pos.blockY, pos.blockZ);
 				int meta = entity.worldObj.getBlockMetadata(pos.blockX, pos.blockY, pos.blockZ);
 				TileEntity tile = entity.worldObj.getTileEntity(pos.blockX, pos.blockY, pos.blockZ);

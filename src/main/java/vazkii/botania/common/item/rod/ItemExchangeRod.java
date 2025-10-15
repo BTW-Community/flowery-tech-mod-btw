@@ -384,7 +384,7 @@ public class ItemExchangeRod extends ItemMod implements IManaUsingItem, IWirefra
 	}
 
 	public static Block getTargetBlock(ItemStack stack) {
-		Block block = Block.getBlockFromName(getTargetBlockName(stack));
+		Block block = Blocks.getBlockFromName(getTargetBlockName(stack));
 		return block;
 	}
 

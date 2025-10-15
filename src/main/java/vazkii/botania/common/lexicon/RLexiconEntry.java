@@ -34,7 +34,8 @@ public class RLexiconEntry  extends BLexiconEntry {
 	@Environment(EnvType.CLIENT)
 	public boolean isVisible() {
 		EntityClientPlayerMP player = Minecraft.getMinecraft().thePlayer;
-		return a == null || player.capabilities.isCreativeMode || player.getStatFileWriter().hasAchievementUnlocked(a);
+		//todofix lexicon achievement
+		return a == null || player.capabilities.isCreativeMode/* || player.getStatFileWriter().hasAchievementUnlocked(a)*/;
 	}
 
 }

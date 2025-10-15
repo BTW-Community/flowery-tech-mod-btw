@@ -20,7 +20,7 @@ public abstract class BlockModSlab extends BlockHalfSlab implements ILexiconable
 	public BlockModSlab(int id, boolean full, Material mat, String name) {
 		super(id, full, mat);
 		this.name = name;
-//		setUnlocalizedName(name);
+		setUnlocalizedName(name);
 		if(!full) {
 			setCreativeTab(CreativeTabs.tabMisc);
 			useNeighborBrightness[0] = true;
@@ -58,7 +58,7 @@ public abstract class BlockModSlab extends BlockHalfSlab implements ILexiconable
 	}
 
 	public void register() {
-		var item = new ItemBlockModSlab(0, this);
+		var item = new ItemBlockModSlab(this);
 //		GameRegistry.registerBlock(this, ItemBlockModSlab.class, name);
 	}
 

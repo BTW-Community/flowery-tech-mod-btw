@@ -60,7 +60,7 @@ public abstract class ItemBrewBase extends ItemMod implements IBrewItem, IPickup
 		setMaxStackSize(1);
 		setMaxDamage(swigs);
 		setUnlocalizedName(name);
-//		setNoRepair();
+		setNoRepair();
 	}
 
 	@Override

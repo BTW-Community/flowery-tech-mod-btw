@@ -49,7 +49,7 @@ public class ItemManaMirror extends ItemMod implements IManaItem, ICoordBoundIte
 		setMaxStackSize(1);
 		setMaxDamage(1000);
 		setUnlocalizedName(LibItemNames.MANA_MIRROR);
-//		setNoRepair();
+		setNoRepair();
 	}
 
 	@Override

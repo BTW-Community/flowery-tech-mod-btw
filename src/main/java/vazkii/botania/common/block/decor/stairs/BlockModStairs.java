@@ -12,9 +12,10 @@ public class BlockModStairs extends BlockStairs implements ILexiconable {
 
 	public BlockModStairs(int id, Block source, int meta, String name) {
 		super(id, source, meta);
-		setUnlocalizedName(name);
+
 		setCreativeTab(CreativeTabs.tabMisc);
 		useNeighborBrightness[0] = true;
+//		setUnlocalizedName(name);
 	}
 
 //	@Override

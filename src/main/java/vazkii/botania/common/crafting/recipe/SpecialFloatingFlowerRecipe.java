@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.crafting.recipe;
 
+import dev.bagel.util.Items;
 import net.minecraft.src.*;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.item.block.ItemBlockSpecialFlower;

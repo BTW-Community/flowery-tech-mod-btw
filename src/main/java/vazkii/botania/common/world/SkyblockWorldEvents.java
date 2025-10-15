@@ -12,18 +12,9 @@ package vazkii.botania.common.world;
 
 import java.awt.Color;
 
+import dev.bagel.util.Persisted;
+import net.minecraft.src.*;
 import net.minecraft.src.Block;
-import net.minecraft.src.Material;
-import net.minecraft.src.Minecraft;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EntityPlayerMP;
-import net.minecraft.src.Block;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.ChunkCoordinates;
-import net.minecraft.src.MovingObjectPosition;
-import net.minecraft.src.World;
 import net.minecraftforge.client.event.RenderWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -59,7 +50,7 @@ public final class SkyblockWorldEvents {
 				World world = player.worldObj;
 				if(WorldTypeSkyblock.isWorldSkyblock(world)) {
 					ChunkCoordinates coords = world.getSpawnPoint();
-					if(world.getBlock(coords.posX, coords.posY - 4, coords.posZ) != Blocks.bedrock && world.provider.dimensionId == 0)
+					if(world.getBlock(coords.posX, coords.posY - 4, coords.posZ) != Block.bedrock && world.provider.dimensionId == 0)
 						spawnPlayer(player, coords.posX, coords.posY, coords.posZ, false);
 				}
 
@@ -75,7 +66,7 @@ public final class SkyblockWorldEvents {
 			ItemStack equipped = event.entityPlayer.getCurrentEquippedItem();
 			if(event.action == Action.RIGHT_CLICK_BLOCK && equipped == null && event.entityPlayer.isSneaking()) {
 				Block block = event.world.getBlock(event.x, event.y, event.z);
-				if(block == Blocks.grass || block == Block.dirt) {
+				if(block == Block.grass || block == Block.dirt) {
 					if(event.world.isRemote)
 						event.entityPlayer.swingItem();
 					else {
@@ -84,7 +75,7 @@ public final class SkyblockWorldEvents {
 							event.entityPlayer.dropPlayerItemWithRandomChoice(new ItemStack(ModItems.manaResource, 1, 21), false);
 					}
 				}
-			} else if(equipped != null && equipped.getItem() == Items.bowl && event.action == Action.RIGHT_CLICK_BLOCK && !event.world.isRemote) {
+			} else if(equipped != null && equipped.getItem() == Item.bowlEmpty && event.action == Action.RIGHT_CLICK_BLOCK && !event.world.isRemote) {
 				MovingObjectPosition movingobjectposition = ToolCommons.raytraceFromEntity(event.world, event.entityPlayer, true, 4.5F);
 
 				if(movingobjectposition != null) {
@@ -163,7 +154,7 @@ public final class SkyblockWorldEvents {
 		for(int i = 0; i < 3; i++)
 			for(int j = 0; j < 4; j++)
 				for(int k = 0; k < 3; k++)
-					world.setBlock(x - 1 + i, y - 1 - j, z - 1 + k, j == 0 ? Blocks.grass : Block.dirt);
+					world.setBlock(x - 1 + i, y - 1 - j, z - 1 + k, j == 0 ? Block.grass : Block.dirt);
 		world.setBlock(x - 1, y - 2, z, Block.waterMoving);
 		world.setBlock(x + 1, y + 2, z + 1, ModBlocks.manaFlame);
 		((TileManaFlame) world.getTileEntity(x + 1, y + 2, z + 1)).setColor(new Color(70 + world.rand.nextInt(185), 70 + world.rand.nextInt(185), 70 + world.rand.nextInt(185)).getRGB());
@@ -184,7 +175,7 @@ public final class SkyblockWorldEvents {
 		for(int[] root : rootPositions)
 			world.setBlock(x + root[0], y + root[1], z + root[2], ModBlocks.root);
 
-		world.setBlock(x, y - 4, z, Blocks.bedrock);
+		world.setBlock(x, y - 4, z, Block.bedrock);
 	}
 
 }

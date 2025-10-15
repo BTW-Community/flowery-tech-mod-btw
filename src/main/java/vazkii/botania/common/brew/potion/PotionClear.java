@@ -29,7 +29,8 @@ public class PotionClear extends PotionMod {
 
 	@Override
 	public void affectEntity(EntityLivingBase e, EntityLivingBase e1, int t, double d) {
-		e1.curePotionEffects(new ItemStack(Items.milk_bucket));
+		e1.clearActivePotions();
+//		e1.curePotionEffects(new ItemStack(Item.bucketMilk));
 	}
 
 }

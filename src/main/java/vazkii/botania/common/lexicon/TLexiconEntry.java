@@ -21,7 +21,7 @@ public class TLexiconEntry extends BLexiconEntry {
 	public TLexiconEntry() {
 		super(LibLexicon.BASICS_TUTORIAL, BotaniaAPI.categoryBasics);
 		setPriority();
-		setIcon(new ItemStack(Items.book));
+		setIcon(new ItemStack(Item.book));
 		setLexiconPages(new PageTutorial("0"));
 	}
 
