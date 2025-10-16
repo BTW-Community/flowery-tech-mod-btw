@@ -13,6 +13,7 @@ package vazkii.botania.common.block;
 import java.util.List;
 import java.util.Random;
 
+import dev.bagel.IGrowable;
 import net.minecraft.src.Block;
 import net.minecraft.src.BlockFlower;
 import net.minecraft.src.IconRegister;
@@ -41,7 +42,7 @@ import vazkii.botania.common.lib.LibBlockNames;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
-public class BlockModFlower extends BlockFlower implements ILexiconable, IPickupAchievement {
+public class BlockModFlower extends BlockFlower implements ILexiconable, IPickupAchievement, IGrowable {
 
 	public static Icon[] icons;
 	public static Icon[] iconsAlt;
@@ -59,7 +60,7 @@ public class BlockModFlower extends BlockFlower implements ILexiconable, IPickup
 		setUnlocalizedName(name);
 		setHardness(0F);
 		setStepSound(soundGrassFootstep);
-		setBlockBounds(0.3F, 0.0F, 0.3F, 0.8F, 1, 0.8F);
+		initBlockBounds(0.3F, 0.0F, 0.3F, 0.8F, 1, 0.8F);
 		setTickRandomly(false);
 		setCreativeTab(registerInCreative() ? CreativeTabs.tabMisc/*BotaniaCreativeTab.INSTANCE*/ : CreativeTabs.tabMisc);
 	}
@@ -132,8 +133,8 @@ public class BlockModFlower extends BlockFlower implements ILexiconable, IPickup
 	public Achievement getAchievementOnPickup(ItemStack stack, EntityPlayer player, EntityItem item) {
 		return ModAchievements.flowerPickup;
 	}
-	//todofix bonemeal support for flower
-/*	@Override
+
+	@Override
 	public boolean func_149851_a(World world, int x, int y, int z, boolean fuckifiknow) {
 		return world.isAirBlock(x, y + 1, z);
 	}
@@ -144,10 +145,20 @@ public class BlockModFlower extends BlockFlower implements ILexiconable, IPickup
 	}
 
 	@Override
+	public boolean attemptToApplyFertilizerTo(World world, int x, int y, int z) {
+		int meta = world.getBlockMetadata(x, y, z);
+		if (world.isAirBlock(x, y + 1, z) || world.getBlock(x, y + 1, z).isReplaceableVegetation(world, x, y+1, z)) {
+			placeDoubleFlower(world, x, y, z, meta, 1 | 2);
+			return true;
+		}
+		return false;
+	}
+
+	@Override
 	public void func_149853_b(World world, Random rand, int x, int y, int z) {
 		int meta = world.getBlockMetadata(x, y, z);
 		placeDoubleFlower(world, x, y, z, meta, 1 | 2);
-	}*/
+	}
 
 	public static void placeDoubleFlower(World world, int x, int y, int z, int meta, int flags) {
 		Block flower = meta >= 8 ? ModBlocks.doubleFlower2 : ModBlocks.doubleFlower1;

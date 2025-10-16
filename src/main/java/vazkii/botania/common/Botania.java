@@ -11,14 +11,21 @@
 package vazkii.botania.common;
 
 import btw.BTWAddon;
+import btw.world.biome.BiomeDecoratorBase;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.ServerListenThread;
 import net.minecraft.src.ThreadMinecraftServer;
+import net.minecraft.src.World;
+import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import vazkii.botania.client.core.proxy.ClientProxy;
+import vazkii.botania.common.core.handler.BiomeDecorationHandler;
 import vazkii.botania.common.core.proxy.CommonProxy;
 import vazkii.botania.common.integration.coloredlights.ILightHelper;
 import vazkii.botania.common.integration.coloredlights.LightHelperVanilla;
+
+import java.util.Random;
 
 //@Mod(modid = LibMisc.MOD_ID, name = LibMisc.MOD_NAME, version = LibMisc.VERSION, dependencies = LibMisc.DEPENDENCIES, guiFactory = LibMisc.GUI_FACTORY)
 public class Botania extends BTWAddon {
@@ -41,7 +48,12 @@ public class Botania extends BTWAddon {
 		return !(thr instanceof ThreadMinecraftServer) && !(thr instanceof ServerListenThread) ? EnvType.CLIENT : EnvType.SERVER;
 	}
 
-//	@SidedProxy(serverSide = LibMisc.PROXY_COMMON, clientSide = LibMisc.PROXY_CLIENT)
+	@Override
+	public void postSetup() {
+		super.postSetup();
+	}
+
+	//	@SidedProxy(serverSide = LibMisc.PROXY_COMMON, clientSide = LibMisc.PROXY_CLIENT)
 	//ADDED interface
 	public static CommonProxy proxy = new CommonProxy();
 
@@ -79,6 +91,12 @@ public class Botania extends BTWAddon {
 	@Override
 	public void postInitialize() {
 		getProxy().postInit();
+	}
+
+	@Override
+	public void decorateWorld(BiomeDecoratorBase decorator, World world, Random rand, int x, int y, BiomeGenBase biome) {
+		new BiomeDecorationHandler().decorate(world, rand, x, y);
+		BiomeDecorationHandler.onWorldDecoration(new DecorateBiomeEvent.Decorate(world, rand, x, y, DecorateBiomeEvent.Decorate.EventType.FLOWERS));
 	}
 
 	//FMLServerAboutToStartEvent

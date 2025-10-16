@@ -61,15 +61,10 @@ public class BlockShinyFlower extends BlockModFlower implements IHornHarvestable
 		return LexiconData.shinyFlowers;
 	}
 
-//	@Override
-//	public boolean func_149851_a(World world, int x, int y, int z, boolean fuckifiknow) {
-//		return false;
-//	}
-//
-//	@Override
-//	public boolean canStabaliseInfusion(World world, int x, int y, int z) {
-//		return ConfigHandler.enableThaumcraftStablizers;
-//	}
+	@Override
+	public boolean func_149851_a(World world, int x, int y, int z, boolean fuckifiknow) {
+		return false;
+	}
 
 	@Override
 	public boolean canHornHarvest(World world, int x, int y, int z, ItemStack stack, EnumHornType hornType) {

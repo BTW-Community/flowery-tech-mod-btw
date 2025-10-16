@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class RenderingRegistry {
     private static final RenderingRegistry INSTANCE = new RenderingRegistry();
-    private int nextRenderId = 40;
+    private int nextRenderId = 45;
     public Map<Integer, ISimpleBlockRenderingHandler> blockRenderers = Maps.newHashMap();
 
     public static void registerEntityRenderingHandler(Class<? extends Entity> entityClass, Render renderer) {

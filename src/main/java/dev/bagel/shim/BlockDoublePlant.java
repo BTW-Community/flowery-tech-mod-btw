@@ -93,18 +93,31 @@ public class BlockDoublePlant extends BlockBush implements/*  IGrowable,*/ IShea
         return func_149887_c(l) ? worldIn.getBlock(x, y - 1, z) == this : worldIn.getBlock(x, y + 1, z) == this && super.canBlockStay(worldIn, x, y, z);
     }
 
-    public Item getItemDropped(int meta, Random random, int fortune)
-    {
+    @Override
+    public int idDropped(int meta, Random par2Random, int fortune)     {
         if (func_149887_c(meta))
         {
-            return null;
+            return 0;
         }
         else
         {
             int k = func_149890_d(meta);
-            return k != 3 && k != 2 ? Items.getItemFromBlock(this) : null;
+            return k != 3 && k != 2 ? Items.getItemFromBlock(this).itemID : 0;
         }
     }
+
+//    public Item getItemDropped(int meta, Random random, int fortune)
+//    {
+//        if (func_149887_c(meta))
+//        {
+//            return null;
+//        }
+//        else
+//        {
+//            int k = func_149890_d(meta);
+//            return k != 3 && k != 2 ? Items.getItemFromBlock(this) : null;
+//        }
+//    }
 
     /**
      * Determines the damage on the item the block drops. Used in cloth and wood.
@@ -114,6 +127,7 @@ public class BlockDoublePlant extends BlockBush implements/*  IGrowable,*/ IShea
         return func_149887_c(meta) ? 0 : meta & 7;
     }
 
+    //returns true if its the bottom block
     public static boolean func_149887_c(int p_149887_0_)
     {
         return (p_149887_0_ & 8) != 0;
@@ -219,9 +233,9 @@ public class BlockDoublePlant extends BlockBush implements/*  IGrowable,*/ IShea
         super.onBlockHarvested(worldIn, x, y, z, meta, player);
     }
 
-    private boolean func_149886_b(World world, int p_149886_2_, int p_149886_3_, int p_149886_4_, int p_149886_5_, EntityPlayer p_149886_6_)
+    protected boolean func_149886_b(World world, int x, int y, int z, int meta, EntityPlayer player)
     {
-        int i1 = func_149890_d(p_149886_5_);
+        int i1 = func_149890_d(meta);
 
         if (i1 != 3 && i1 != 2)
         {
@@ -229,7 +243,7 @@ public class BlockDoublePlant extends BlockBush implements/*  IGrowable,*/ IShea
         }
         else
         {
-            p_149886_6_.addStat(StatList.mineBlockStatArray[BlockExtensions.getIdFromBlock(this)], 1);
+            player.addStat(StatList.mineBlockStatArray[BlockExtensions.getIdFromBlock(this)], 1);
             byte b0 = 1;
 
             if (i1 == 3)
@@ -237,7 +251,7 @@ public class BlockDoublePlant extends BlockBush implements/*  IGrowable,*/ IShea
                 b0 = 2;
             }
 
-            this.dropBlockAsItem(world, p_149886_2_, p_149886_3_, p_149886_4_, new ItemStack(Block.tallGrass, 2, b0).itemID, b0);
+            this.dropBlockAsItem(world, x, y, z, new ItemStack(Block.tallGrass, 2, b0).itemID, b0);
             return true;
         }
     }
