@@ -30,7 +30,7 @@ public abstract class RenderItemMixin extends Render {
     @Inject(method = "doRenderItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/ItemStack;getItemSpriteNumber()I"),
             locals = LocalCapture.CAPTURE_FAILHARD, cancellable = true)
     private void btb$renderCustomItemEntity(EntityItem par1EntityItem, double par2, double par4, double par6, float par8, float par9, CallbackInfo ci, ItemStack stack, float bobbing, float rotation) {
-        if (ForgeHooksClient.renderEntityItem(par1EntityItem, stack, bobbing, rotation, this.random, this.renderManager.renderEngine, this.renderBlocks, 1)) {
+        if (ForgeHooksClient.renderEntityItem(par1EntityItem, stack, bobbing, rotation, this.random, this.renderManager.renderEngine, this.renderBlocks)) {
             //these are called normally afterwards
             GL11.glDisable(32826);
             GL11.glPopMatrix();

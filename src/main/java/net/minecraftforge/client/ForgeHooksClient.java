@@ -13,7 +13,13 @@ public class ForgeHooksClient {
     static int renderPass = -1;
     static int stencilBits = 0;
 
-    public static boolean renderEntityItem(EntityItem entity, ItemStack item, float bobing, float rotation, Random random, TextureManager engine, RenderBlocks renderBlocks, int count) {
+    public static String getArmorTexture(Entity entity, ItemStack armor, String _default, int slot, String type)
+    {
+        String result = armor.getItem().getArmorTexture(armor, entity, slot, type);
+        return result != null ? result : _default;
+    }
+
+    public static boolean renderEntityItem(EntityItem entity, ItemStack item, float bobing, float rotation, Random random, TextureManager engine, RenderBlocks renderBlocks) {
         IItemRenderer customRenderer = MinecraftForgeClient.getItemRenderer(item, ENTITY);
         if (customRenderer == null) {
             return false;
@@ -41,8 +47,8 @@ public class ForgeHooksClient {
 
             GL11.glScalef(scale, scale, scale);
 
-//            int size = item.stackSize;
-//            int count = (size > 40 ? 5 : (size > 20 ? 4 : (size > 5 ? 3 : (size > 1 ? 2 : 1))));
+            int size = item.stackSize;
+            int count = (size > 40 ? 5 : (size > 20 ? 4 : (size > 5 ? 3 : (size > 1 ? 2 : 1))));
 
             for (int j = 0; j < count; j++) {
                 GL11.glPushMatrix();
@@ -110,6 +116,11 @@ public class ForgeHooksClient {
         }
 
         return true;
+    }
+
+    public static ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int slotID, ModelBiped _default) {
+        ModelBiped modelbiped = itemStack.getItem().getArmorModel(entityLiving, itemStack, slotID);
+        return modelbiped == null ? _default : modelbiped;
     }
 
     public static void renderEquippedItem(IItemRenderer.ItemRenderType type, IItemRenderer customRenderer, RenderBlocks renderBlocks, EntityLivingBase entity, ItemStack item) {

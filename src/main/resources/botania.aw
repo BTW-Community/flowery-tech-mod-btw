@@ -40,3 +40,4 @@ accessible method net/minecraft/src/DamageSource <init> (Ljava/lang/String;)V
 accessible field net/minecraft/src/EffectRenderer particleTextures Lnet/minecraft/src/ResourceLocation;
 accessible field net/minecraft/src/EntityList stringToClassMapping Ljava/util/Map;
 accessible field net/minecraft/src/EntityHorse horseJumpStrength Lnet/minecraft/src/Attribute;
+accessible field net/minecraft/src/RenderBiped field_110859_k Ljava/util/Map;

@@ -24,7 +24,6 @@ public abstract interface IBlockAccessExtensionMixin extends IBlockAccessExtensi
 
     @Override
     public default TileEntity getTileEntity(int x, int y, int z) {
-        System.out.println("geting tile entity at " + x + "," + y + "," + z);
         return getBlockTileEntity(x, y, z);
     }
 }

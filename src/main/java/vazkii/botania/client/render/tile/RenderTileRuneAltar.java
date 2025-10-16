@@ -74,7 +74,7 @@ public class RenderTileRuneAltar extends TileEntitySpecialRenderer {
 				mc.renderEngine.bindTexture(stack.getItem() instanceof ItemBlock ? TextureMap.locationBlocksTexture : TextureMap.locationItemsTexture);
 
 				GL11.glScalef(2F, 2F, 2F);
-				if(!ForgeHooksClient.renderEntityItem(new EntityItem(altar.getWorldObj(), altar.xCoord, altar.yCoord, altar.zCoord, stack), stack, 0F, 0F, altar.getWorldObj().rand, mc.renderEngine, renderBlocks, 1)) {
+				if(!ForgeHooksClient.renderEntityItem(new EntityItem(altar.getWorldObj(), altar.xCoord, altar.yCoord, altar.zCoord, stack), stack, 0F, 0F, altar.getWorldObj().rand, mc.renderEngine, renderBlocks)) {
 					GL11.glScalef(0.5F, 0.5F, 0.5F);
 					if(stack.getItem() instanceof ItemBlock ib && RenderBlocks.doesRenderIDRenderItemIn3D(Block.blocksList[ib.getBlockID()].getRenderType())) {
 						GL11.glScalef(0.5F, 0.5F, 0.5F);
