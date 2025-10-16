@@ -40,7 +40,7 @@ public class BlockUnstable extends BlockMod implements ILexiconable {
 		setHardness(5.0F);
 		setResistance(10.0F);
 		setStepSound(soundMetalFootstep);
-		setBlockBounds(0.25F, 0.25F, 0.25F, 0.75F, 0.75F, 0.75F);
+		initBlockBounds(0.25F, 0.25F, 0.25F, 0.75F, 0.75F, 0.75F);
 		setUnlocalizedName(LibBlockNames.UNSTABLE_BLOCK);
 	}
 
