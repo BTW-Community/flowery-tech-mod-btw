@@ -53,7 +53,6 @@ public abstract class RenderBipedMixin extends RenderLiving {
 
     @ModifyArgs(method = "func_130006_a", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/RenderBiped;setRenderPassModel(Lnet/minecraft/src/ModelBase;)V"))
     private void getForgeArmorModel(Args args, @Local(argsOnly = true) EntityLiving living, @Local ItemStack stack, @Local(argsOnly = true) int slot) {
-        System.out.println("rendering armor");
         args.set(0, ForgeHooksClient.getArmorModel(living, stack, slot, args.get(0)));
     }
 

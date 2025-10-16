@@ -12,16 +12,7 @@ package vazkii.botania.common.block;
 
 import java.util.List;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.Material;
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.Icon;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.client.lib.LibRenderIDs;
@@ -61,6 +52,8 @@ public class BlockPylon extends BlockModContainer implements ILexiconable {
 		// NO-OP
 	}
 
+
+
 	@Override
 	public int damageDropped(int par1) {
 		return par1;
@@ -84,6 +77,11 @@ public class BlockPylon extends BlockModContainer implements ILexiconable {
 
 	@Override
 	public boolean renderAsNormalBlock() {
+		return false;
+	}
+
+	@Override
+	public boolean renderBlock(RenderBlocks renderer, int i, int j, int k) {
 		return false;
 	}
 

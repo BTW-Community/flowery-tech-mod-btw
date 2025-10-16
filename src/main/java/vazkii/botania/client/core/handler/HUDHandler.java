@@ -56,8 +56,8 @@ public final class HUDHandler {
 
 	public static final ResourceLocation manaBar = new ResourceLocation(LibResources.GUI_MANA_HUD);
 
-	@SubscribeEvent(priority = EventPriority.HIGHEST)
-	public void onDrawScreenPre(RenderGameOverlayEvent.Pre event) {
+//	@SubscribeEvent(priority = EventPriority.HIGHEST)
+	public static void onDrawScreenPre(RenderGameOverlayEvent.Pre event) {
 		Minecraft mc = Minecraft.getMinecraft();
 		Profiler profiler = mc.mcProfiler;
 
@@ -73,8 +73,8 @@ public final class HUDHandler {
 		}
 	}
 
-	@SubscribeEvent
-	public void onDrawScreenPost(RenderGameOverlayEvent.Post event) {
+//	@SubscribeEvent
+	public static void onDrawScreenPost(RenderGameOverlayEvent.Post event) {
 		Minecraft mc = Minecraft.getMinecraft();
 		Profiler profiler = mc.mcProfiler;
 		ItemStack equippedStack = mc.thePlayer.getCurrentEquippedItem();
@@ -198,7 +198,7 @@ public final class HUDHandler {
 		}
 	}
 
-	private void renderWandModeDisplay(ScaledResolution res) {
+	private static void renderWandModeDisplay(ScaledResolution res) {
 		Minecraft mc = Minecraft.getMinecraft();
 		Profiler profiler = mc.mcProfiler;
 
@@ -221,7 +221,7 @@ public final class HUDHandler {
 		profiler.endSection();
 	}
 
-	private void renderManaInvBar(ScaledResolution res, boolean hasCreative, int totalMana, int totalMaxMana) {
+	private static void renderManaInvBar(ScaledResolution res, boolean hasCreative, int totalMana, int totalMaxMana) {
 		Minecraft mc = Minecraft.getMinecraft();
 		int width = 182;
 		int x = res.getScaledWidth() / 2 - width / 2;
@@ -249,7 +249,7 @@ public final class HUDHandler {
 		GL11.glDisable(GL11.GL_BLEND);
 	}
 
-	private void renderPoolRecipeHUD(ScaledResolution res, TilePool tile, ItemStack stack) {
+	private static void renderPoolRecipeHUD(ScaledResolution res, TilePool tile, ItemStack stack) {
 		Minecraft mc = Minecraft.getMinecraft();
 		Profiler profiler = mc.mcProfiler;
 
@@ -286,7 +286,7 @@ public final class HUDHandler {
 		profiler.endSection();
 	}
 
-	private void renderCrystalCubeHUD(ScaledResolution res, TileCorporeaCrystalCube tile) {
+	private static void renderCrystalCubeHUD(ScaledResolution res, TileCorporeaCrystalCube tile) {
 		Minecraft mc = Minecraft.getMinecraft();
 		Profiler profiler = mc.mcProfiler;
 
@@ -312,7 +312,7 @@ public final class HUDHandler {
 		profiler.endSection();
 	}
 
-	private void drawLexiconHUD(ItemStack stack, Block block, MovingObjectPosition pos, ScaledResolution res) {
+	private static void drawLexiconHUD(ItemStack stack, Block block, MovingObjectPosition pos, ScaledResolution res) {
 		Minecraft mc = Minecraft.getMinecraft();
 		Profiler profiler = mc.mcProfiler;
 
@@ -378,7 +378,7 @@ public final class HUDHandler {
 		profiler.endSection();
 	}
 
-	private void renderNearIndexDisplay(ScaledResolution res) {
+	private static void renderNearIndexDisplay(ScaledResolution res) {
 		Minecraft mc = Minecraft.getMinecraft();
 		String txt0 = StatCollector.translateToLocal("botaniamisc.nearIndex0");
 		String txt1 = EnumChatFormatting.GRAY + StatCollector.translateToLocal("botaniamisc.nearIndex1");

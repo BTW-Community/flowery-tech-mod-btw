@@ -13,24 +13,7 @@ package vazkii.botania.common.block.mana;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.Material;
-import net.minecraft.src.Minecraft;
-import net.minecraft.src.ScaledResolution;
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityItem;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.IInventory;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.Achievement;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.Icon;
-import net.minecraft.src.IBlockAccess;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
@@ -126,6 +109,11 @@ public class BlockPool extends BlockModContainer implements IWandHUD, IWandable,
 			if(tile.collideEntityItem((EntityItem) par5Entity))
 				VanillaPacketDispatcher.dispatchTEToNearbyPlayers(par1World, par2, par3, par4);
 		}
+	}
+
+	@Override
+	public boolean renderBlock(RenderBlocks renderer, int i, int j, int k) {
+		return false;
 	}
 
 	@Override

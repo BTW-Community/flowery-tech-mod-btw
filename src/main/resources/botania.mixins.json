@@ -19,7 +19,9 @@
     "extensions.WorldExtensionsMixin"
   ],
   "client": [
-    "event.TextureMapMixin"
+    "event.TextureMapMixin",
+    "event.client.ClientTickEventMixin",
+    "event.client.GuiIngameMixin"
   ],
   "injectors": {
     "defaultRequire": 1

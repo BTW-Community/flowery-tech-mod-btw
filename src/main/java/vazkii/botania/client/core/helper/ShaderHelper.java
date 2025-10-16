@@ -15,6 +15,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import cpw.mods.fml.common.FMLLog;
+import dev.bagel.client.OpenGlHelper2;
 import net.minecraft.src.OpenGlHelper;
 
 import org.apache.logging.log4j.Level;
@@ -83,9 +84,8 @@ public final class ShaderHelper {
 		useShader(0);
 	}
 
-	//todo shaders supported...?
 	public static boolean useShaders() {
-		return ConfigHandler.useShaders /*&& OpenGlHelper.shadersSupported*/;
+		return ConfigHandler.useShaders && OpenGlHelper2.shadersSupported;
 	}
 
 	// Most of the code taken from the LWJGL wiki

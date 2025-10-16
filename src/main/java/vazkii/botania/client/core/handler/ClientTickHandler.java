@@ -25,6 +25,11 @@ import vazkii.botania.api.mana.TileSignature;
 import cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
 import cpw.mods.fml.common.gameevent.TickEvent.RenderTickEvent;
+import vazkii.botania.client.gui.lexicon.GuiLexicon;
+import vazkii.botania.common.block.subtile.functional.SubTileVinculotus;
+import vazkii.botania.common.block.tile.corporea.TileCorporeaIndex;
+import vazkii.botania.common.core.handler.ManaNetworkHandler;
+import vazkii.botania.common.item.ItemTwigWand;
 
 public class ClientTickHandler {
 
@@ -35,7 +40,7 @@ public class ClientTickHandler {
 	public static float delta = 0;
 	public static float total = 0;
 
-	private void calcDelta() {
+	private static void calcDelta() {
 		float oldTotal = total;
 		total = ticksInGame + partialTicks;
 		delta = total - oldTotal;
@@ -43,29 +48,29 @@ public class ClientTickHandler {
 	//todo implement tick handler
 	// *all comments are to do
 	@SubscribeEvent
-	public void renderTick(RenderTickEvent event) {
+	public static void renderTick(RenderTickEvent event) {
 		if(event.phase == Phase.START)
 			partialTicks = event.renderTickTime;
 		else {
-			/*TooltipAdditionDisplayHandler.render();*/
+			TooltipAdditionDisplayHandler.render();
 			calcDelta();
 		}
 	}
 
 	@SubscribeEvent
-	public void clientTickEnd(ClientTickEvent event) {
+	public static void clientTickEnd(ClientTickEvent event) {
 		if(event.phase == Phase.END) {
-			/*LightningBolt.update();
+			LightningHandler.LightningBolt.update();
 			RedStringRenderer.tick();
-			ItemsRemainingRenderHandler.tick();*/
+			ItemsRemainingRenderHandler.tick();
 
 			if(Minecraft.getMinecraft().theWorld == null) {
-/*				ManaNetworkHandler.instance.clear();
+				ManaNetworkHandler.instance.clear();
 				TileCorporeaIndex.indexes.clear();
-				SubTileVinculotus.existingFlowers.clear();*/
+				SubTileVinculotus.existingFlowers.clear();
 			}
 
-/*
+
 			GuiScreen gui = Minecraft.getMinecraft().currentScreen;
 			if(gui == null || !gui.doesGuiPauseGame()) {
 				ticksInGame++;
@@ -104,7 +109,6 @@ public class ClientTickHandler {
 					ticksWithLexicaOpen--;
 				}
 			}
-*/
 
 			calcDelta();
 		}

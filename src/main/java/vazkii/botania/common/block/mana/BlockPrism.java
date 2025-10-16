@@ -12,17 +12,7 @@ package vazkii.botania.common.block.mana;
 
 import java.util.Random;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.Material;
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.EntityItem;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.Icon;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import vazkii.botania.api.internal.IManaBurst;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -47,7 +37,7 @@ public class BlockPrism extends BlockModContainer implements IManaTrigger, ILexi
 		setLightValue(1.0F);
 		setUnlocalizedName(LibBlockNames.PRISM);
 		float f = 0.25F;
-		setBlockBounds(f, 0F, f, 1F - f, 1F, 1F - f);
+		initBlockBounds(f, 0F, f, 1F - f, 1F, 1F - f);
 
 		random = new Random();
 	}
@@ -76,6 +66,11 @@ public class BlockPrism extends BlockModContainer implements IManaTrigger, ILexi
 
 	@Override
 	public boolean isOpaqueCube() {
+		return false;
+	}
+
+	@Override
+	public boolean renderBlock(RenderBlocks renderer, int i, int j, int k) {
 		return false;
 	}
 
