@@ -12,16 +12,7 @@ package vazkii.botania.common.block.decor;
 
 import java.util.ArrayList;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.Material;
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.Icon;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.client.lib.LibRenderIDs;
@@ -40,7 +31,7 @@ public class BlockTinyPotato extends BlockModContainer implements ILexiconable {
 		setHardness(0.25F);
 		setUnlocalizedName(LibBlockNames.TINY_POTATO);
 		float f = 1F / 16F * 6F;
-		setBlockBounds(f, 0, f, 1F - f, f, 1F - f);
+		initBlockBounds(f, 0, f, 1F - f, f, 1F - f);
 	}
 
 	@Override
@@ -63,6 +54,11 @@ public class BlockTinyPotato extends BlockModContainer implements ILexiconable {
 	@Override
 	public Icon getIcon(int side, int meta) {
 		return Block.hardenedClay.getIcon(0, 0);
+	}
+
+	@Override
+	public boolean renderBlock(RenderBlocks renderer, int i, int j, int k) {
+		return false;
 	}
 
 	@Override
