@@ -21,7 +21,7 @@ public class GuiIngameMixin {
 
     @Inject(method = "renderGameOverlay", at = @At("TAIL"))
     private void forge$postAll(float par1, boolean par2, int mouseX, int mouseY, CallbackInfo ci, @Local ScaledResolution res) {
-        HUDHandler.onDrawScreenPost(new RenderGameOverlayEvent.Post(forge$eventParent, RenderGameOverlayEvent.ElementType.HEALTH));
+        HUDHandler.onDrawScreenPost(new RenderGameOverlayEvent.Post(forge$eventParent, RenderGameOverlayEvent.ElementType.ALL));
     }
 
     @Inject(method = "func_110327_a", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/Profiler;endStartSection(Ljava/lang/String;)V"))

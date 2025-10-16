@@ -30,10 +30,14 @@ public final class ManaNetworkHandler implements IManaNetwork {
 
 	public static final ManaNetworkHandler instance = new ManaNetworkHandler();
 
+	static {
+		ManaNetworkEvent.EVENT.register(instance::onNetworkEvent);
+	}
+
 	public WeakHashMap<World, List<TileSignature>> manaPools = new WeakHashMap<>();
 	public WeakHashMap<World, List<TileSignature>> manaCollectors = new WeakHashMap<>();
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onNetworkEvent(ManaNetworkEvent event) {
 		Map<World, List<TileSignature>> map = event.type == ManaBlockType.COLLECTOR ? manaCollectors : manaPools;
 		if(event.action == Action.ADD)

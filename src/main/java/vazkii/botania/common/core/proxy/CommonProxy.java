@@ -114,7 +114,7 @@ public class CommonProxy {
 //		NetworkRegistry.INSTANCE.registerGuiHandler(Botania.instance, new GuiHandler());
 
 //		MinecraftForge.TERRAIN_GEN_BUS.register(new BiomeDecorationHandler());
-		MinecraftForge.EVENT_BUS.register(ManaNetworkHandler.instance);
+		/*MinecraftForge.EVENT_BUS.register(ManaNetworkHandler.instance); DONE*/
 		MinecraftForge.EVENT_BUS.register(new PixieHandler());
 		MinecraftForge.EVENT_BUS.register(new SheddingHandler());
 		MinecraftForge.EVENT_BUS.register(new SpawnerChangingHandler());
@@ -178,6 +178,8 @@ public class CommonProxy {
 		BotaniaAPI.blacklistEntityFromGravityRod(EntitySignalFlare.class);
 		BotaniaAPI.blacklistEntityFromGravityRod(EntitySpark.class);
 		BotaniaAPI.blacklistEntityFromGravityRod(EntityPlayerMover.class);
+
+		// BTW todo gravity rod blacklist for BTW
 	}
 
 /*

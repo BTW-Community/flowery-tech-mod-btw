@@ -2,6 +2,7 @@ package cpw.mods.fml.common.gameevent;
 
 import cpw.mods.fml.common.eventhandler.Event;
 import net.fabricmc.api.EnvType;
+import net.legacyfabric.fabric.api.event.EventFactory;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EntityPlayerMP;
 import net.minecraft.src.World;
@@ -34,6 +35,17 @@ public class TickEvent extends Event {
     public static class ClientTickEvent extends TickEvent {
         public ClientTickEvent(Phase phase) {
             super(Type.CLIENT, EnvType.CLIENT, phase);
+        }
+
+        public static net.legacyfabric.fabric.api.event.Event<ClientTickEventCallback> EVENT = EventFactory.createArrayBacked(ClientTickEventCallback.class, callbacks -> (event) -> {
+            for (ClientTickEventCallback callback : callbacks) {
+                callback.onTick(event);
+            }
+        });
+
+        @FunctionalInterface
+        public static interface ClientTickEventCallback {
+            void onTick(ClientTickEvent event);
         }
     }
 

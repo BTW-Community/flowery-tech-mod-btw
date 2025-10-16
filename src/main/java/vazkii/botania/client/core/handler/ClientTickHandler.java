@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.TickEvent;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.GuiScreen;
 import net.minecraft.src.EntityPlayer;
@@ -45,9 +46,12 @@ public class ClientTickHandler {
 		total = ticksInGame + partialTicks;
 		delta = total - oldTotal;
 	}
-	//todo implement tick handler
-	// *all comments are to do
-	@SubscribeEvent
+
+	static {
+		TickEvent.ClientTickEvent.EVENT.register(ClientTickHandler::clientTickEnd);
+	}
+
+//	@SubscribeEvent
 	public static void renderTick(RenderTickEvent event) {
 		if(event.phase == Phase.START)
 			partialTicks = event.renderTickTime;
@@ -57,7 +61,7 @@ public class ClientTickHandler {
 		}
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public static void clientTickEnd(ClientTickEvent event) {
 		if(event.phase == Phase.END) {
 			LightningHandler.LightningBolt.update();

@@ -10,11 +10,18 @@
  */
 package vazkii.botania.api.mana;
 
+import net.legacyfabric.fabric.api.event.EventFactory;
 import net.minecraft.src.TileEntity;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.eventhandler.Event;
 
 public class ManaNetworkEvent extends Event {
+
+	public static final net.legacyfabric.fabric.api.event.Event<ManaNetworkEventCallback> EVENT = EventFactory.createArrayBacked(ManaNetworkEventCallback.class, (listeners) -> (event) -> {
+		for (ManaNetworkEventCallback callback : listeners) {
+			callback.onManaNetworkEvent(event);
+		}
+	});
 
 	public final TileEntity tile;
 	public final ManaBlockType type;
@@ -28,22 +35,22 @@ public class ManaNetworkEvent extends Event {
 
 	public static void addCollector(TileEntity tile) {
 		ManaNetworkEvent event = new ManaNetworkEvent(tile, ManaBlockType.COLLECTOR, Action.ADD);
-		MinecraftForge.EVENT_BUS.post(event);
+		EVENT.invoker().onManaNetworkEvent(event);
 	}
 
 	public static void removeCollector(TileEntity tile) {
 		ManaNetworkEvent event = new ManaNetworkEvent(tile, ManaBlockType.COLLECTOR, Action.REMOVE);
-		MinecraftForge.EVENT_BUS.post(event);
+		EVENT.invoker().onManaNetworkEvent(event);
 	}
 
 	public static void addPool(TileEntity tile) {
 		ManaNetworkEvent event = new ManaNetworkEvent(tile, ManaBlockType.POOL, Action.ADD);
-		MinecraftForge.EVENT_BUS.post(event);
+		EVENT.invoker().onManaNetworkEvent(event);
 	}
 
 	public static void removePool(TileEntity tile) {
 		ManaNetworkEvent event = new ManaNetworkEvent(tile, ManaBlockType.POOL, Action.REMOVE);
-		MinecraftForge.EVENT_BUS.post(event);
+		EVENT.invoker().onManaNetworkEvent(event);
 	}
 
 	public enum ManaBlockType {
@@ -52,5 +59,10 @@ public class ManaNetworkEvent extends Event {
 
 	public enum Action {
 		REMOVE, ADD
+	}
+
+	@FunctionalInterface
+	public interface ManaNetworkEventCallback {
+		public void onManaNetworkEvent(ManaNetworkEvent event);
 	}
 }

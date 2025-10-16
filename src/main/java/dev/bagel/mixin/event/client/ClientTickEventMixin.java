@@ -1,6 +1,7 @@
 package dev.bagel.mixin.event.client;
 
 import cpw.mods.fml.common.gameevent.TickEvent;
+import net.legacyfabric.fabric.api.event.EventFactory;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.Timer;
 import org.spongepowered.asm.mixin.Mixin;
@@ -18,7 +19,8 @@ public class ClientTickEventMixin {
     //ClientTickEvent.END
     @Inject(method = "runTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/Profiler;endSection()V", ordinal = 0))
     private void forge$clientTickEventEnd(CallbackInfo ci) {
-        ClientTickHandler.clientTickEnd(new TickEvent.ClientTickEvent(TickEvent.Phase.END));
+        var event = new TickEvent.ClientTickEvent(TickEvent.Phase.END);
+        TickEvent.ClientTickEvent.EVENT.invoker().onTick(event);
     }
 
     @Inject(method = "runGameLoop", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/EntityRenderer;updateCameraAndRender(F)V"))

@@ -13,6 +13,7 @@ package vazkii.botania.client.core.handler;
 import java.util.*;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.TickEvent;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.GuiChat;
 import net.minecraft.src.GuiScreen;
@@ -28,7 +29,13 @@ import vazkii.botania.common.lib.LibObfuscation;
 import cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
 
-public class CorporeaAutoCompleteHandler {
+public abstract class CorporeaAutoCompleteHandler {
+
+	public static final CorporeaAutoCompleteHandler INSTANCE = new CorporeaAutoCompleteHandler() {};
+
+	static {
+		TickEvent.ClientTickEvent.EVENT.register(INSTANCE::onTick);
+	}
 
 	boolean isAutoCompleted = false;
 	String originalString = "";
@@ -59,7 +66,7 @@ public class CorporeaAutoCompleteHandler {
 		}
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onTick(ClientTickEvent event) {
 		if(event.phase != Phase.END)
 			return;
