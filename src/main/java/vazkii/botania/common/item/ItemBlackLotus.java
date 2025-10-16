@@ -82,7 +82,7 @@ public class ItemBlackLotus extends ItemMod implements IManaDissolvable {
 			float my = (float) Math.random() * m;
 			float mz = ((float) Math.random() - 0.5F) * m;
 
-			Botania.proxy.wispFX(item.worldObj, item.posX, tile.yCoord + 0.5F, item.posZ, r, g, b, s, mx, my, mz);
+			Botania.getProxy().wispFX(item.worldObj, item.posX, tile.yCoord + 0.5F, item.posZ, r, g, b, s, mx, my, mz);
 		}
 		item.worldObj.playSoundAtEntity(item, "botania:blackLotus", 0.5F, t2 ? 0.1F : 1F);
 	}

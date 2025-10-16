@@ -78,7 +78,7 @@ public class LensPaint extends Lens {
 							float g = color[1];
 							float b = color[2];
 							for(int i = 0; i < 4; i++)
-								Botania.proxy.sparkleFX(entity.worldObj, coords.posX + (float) Math.random(), coords.posY + (float) Math.random(), coords.posZ + (float) Math.random(), r, g, b, 0.6F + (float) Math.random() * 0.3F, 5);
+								Botania.getProxy().sparkleFX(entity.worldObj, coords.posX + (float) Math.random(), coords.posY + (float) Math.random(), coords.posZ + (float) Math.random(), r, g, b, 0.6F + (float) Math.random() * 0.3F, 5);
 
 						}
 					}

@@ -144,8 +144,8 @@ public final class TooltipAdditionDisplayHandler {
 
 								if(lexiconLookupTime >= time) {
 									mc.thePlayer.inventory.currentItem = lexSlot;
-									Botania.proxy.setEntryToOpen(data.entry);
-									Botania.proxy.setLexiconStack(lexiconStack);
+									Botania.getProxy().setEntryToOpen(data.entry);
+									Botania.getProxy().setLexiconStack(lexiconStack);
 									mc.thePlayer.closeScreen();
 									ItemLexicon.openBook(mc.thePlayer, lexiconStack, mc.theWorld, false);
 

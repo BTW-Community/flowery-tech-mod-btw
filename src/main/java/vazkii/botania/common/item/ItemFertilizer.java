@@ -60,7 +60,7 @@ public class ItemFertilizer extends ItemMod {
 				float red = (float) Math.random();
 				float green = (float) Math.random();
 				float blue = (float) Math.random();
-				Botania.proxy.wispFX(par3World, x, y, z, red, green, blue, 0.15F + (float) Math.random() * 0.25F, -(float) Math.random() * 0.1F - 0.05F);
+				Botania.getProxy().wispFX(par3World, x, y, z, red, green, blue, 0.15F + (float) Math.random() * 0.25F, -(float) Math.random() * 0.1F - 0.05F);
 			}
 		}
 

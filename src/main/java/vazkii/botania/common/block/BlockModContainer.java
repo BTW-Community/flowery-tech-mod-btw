@@ -32,7 +32,7 @@ public abstract class BlockModContainer<T extends TileEntity> extends BlockConta
 			Item registered = new ItemBlockMod(this);
 		}
 //			GameRegistry.registerBlock(this, ItemBlockMod.class, par1Str);
-		return this/*super.setUnlocalizedName(par1Str)*/;
+		return super.setUnlocalizedName(par1Str);
 	}
 
 	protected boolean shouldRegisterInNameSet() {

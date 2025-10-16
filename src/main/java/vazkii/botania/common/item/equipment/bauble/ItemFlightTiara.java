@@ -286,7 +286,7 @@ public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaub
 							}
 
 							for(int i = 0; i < 2; i++)
-								Botania.proxy.sparkleFX(event.entityLiving.worldObj, x + Math.random() * event.entityLiving.width, y + Math.random() * 0.4, z + Math.random() * event.entityLiving.width, r, g, b, 2F * (float) Math.random(), 20);
+								Botania.getProxy().sparkleFX(event.entityLiving.worldObj, x + Math.random() * event.entityLiving.width, y + Math.random() * 0.4, z + Math.random() * event.entityLiving.width, r, g, b, 2F * (float) Math.random(), 20);
 						}
 					}
 				} else {
@@ -477,7 +477,7 @@ public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaub
 		GL11.glTranslatef(-0.1F, -0.5F, -0.1F);
 		if(player != null)
 			GL11.glRotatef(player.ticksExisted + partialTicks, 0, 1, 0);
-		else GL11.glRotatef(Botania.proxy.getWorldElapsedTicks(), 0, 1, 0);
+		else GL11.glRotatef(Botania.getProxy().getWorldElapsedTicks(), 0, 1, 0);
 
 		Tessellator tes = Tessellator.instance;
 		ShaderHelper.useShader(ShaderHelper.halo);

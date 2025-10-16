@@ -57,7 +57,7 @@ public class ItemMissileRod extends ItemMod implements IManaUsingItem, IAvatarWi
 			if(spawnMissile(player.worldObj, player, player.posX + (Math.random() - 0.5 * 0.1), player.posY + 2.4 + (Math.random() - 0.5 * 0.1), player.posZ + (Math.random() - 0.5 * 0.1)))
 				ManaItemHandler.requestManaExactForTool(stack, player, COST_PER, true);
 
-			Botania.proxy.sparkleFX(player.worldObj, player.posX, player.posY + 2.4, player.posZ, 1F, 0.4F, 1F, 6F, 6);
+			Botania.getProxy().sparkleFX(player.worldObj, player.posX, player.posY + 2.4, player.posZ, 1F, 0.4F, 1F, 6F, 6);
 		}
 	}
 
@@ -103,7 +103,7 @@ public class ItemMissileRod extends ItemMod implements IManaUsingItem, IAvatarWi
 			if(spawnMissile(world, null, te.xCoord + 0.5 + (Math.random() - 0.5 * 0.1), te.yCoord + 2.5 + (Math.random() - 0.5 * 0.1), te.zCoord + (Math.random() - 0.5 * 0.1))) {
 				if(!world.isRemote)
 					tile.recieveMana(-COST_AVATAR);
-				Botania.proxy.sparkleFX(world, te.xCoord + 0.5, te.yCoord + 2.5, te.zCoord + 0.5, 1F, 0.4F, 1F, 6F, 6);
+				Botania.getProxy().sparkleFX(world, te.xCoord + 0.5, te.yCoord + 2.5, te.zCoord + 0.5, 1F, 0.4F, 1F, 6F, 6);
 			}
 	}
 

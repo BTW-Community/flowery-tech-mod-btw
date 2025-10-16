@@ -122,7 +122,7 @@ public class BlockModMushroom extends BlockMushroom implements IHornHarvestable,
 		float[] color = EntitySheep.fleeceColorTable[meta];
 
 		if(par5Random.nextDouble() < ConfigHandler.flowerParticleFrequency * 0.25F)
-			Botania.proxy.sparkleFX(par1World, par2 + 0.3 + par5Random.nextFloat() * 0.5, par3 + 0.5 + par5Random.nextFloat() * 0.5, par4 + 0.3 + par5Random.nextFloat() * 0.5, color[0], color[1], color[2], par5Random.nextFloat(), 5);
+			Botania.getProxy().sparkleFX(par1World, par2 + 0.3 + par5Random.nextFloat() * 0.5, par3 + 0.5 + par5Random.nextFloat() * 0.5, par4 + 0.3 + par5Random.nextFloat() * 0.5, color[0], color[1], color[2], par5Random.nextFloat(), 5);
 	}
 
 	@Override

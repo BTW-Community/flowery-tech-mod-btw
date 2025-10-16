@@ -38,7 +38,7 @@ public class SubTileDaffomill extends SubTileFunctional {
 
 		ForgeDirection dir = ForgeDirection.getOrientation(orientation + 2);
 		if(supertile.getWorldObj().rand.nextInt(4) == 0)
-			Botania.proxy.wispFX(supertile.getWorldObj(), supertile.xCoord + Math.random(), supertile.yCoord + Math.random(), supertile.zCoord + Math.random(), 0.05F, 0.05F, 0.05F, 0.25F + (float) Math.random() * 0.15F, dir.offsetX * 0.1F, dir.offsetY * 0.1F, dir.offsetZ * 0.1F);
+			Botania.getProxy().wispFX(supertile.getWorldObj(), supertile.xCoord + Math.random(), supertile.yCoord + Math.random(), supertile.zCoord + Math.random(), 0.05F, 0.05F, 0.05F, 0.25F + (float) Math.random() * 0.15F, dir.offsetX * 0.1F, dir.offsetY * 0.1F, dir.offsetZ * 0.1F);
 
 		if(windTicks == 0 && mana > 0) {
 			windTicks = 20;

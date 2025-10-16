@@ -12,6 +12,8 @@ package vazkii.botania.client.render.item;
 
 import java.awt.Color;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ItemRenderer;
 import net.minecraft.src.Tessellator;
@@ -27,8 +29,9 @@ import vazkii.botania.common.item.lens.ItemLens;
 
 public class RenderLens implements IItemRenderer {
 
-	static RenderItem render = new RenderItem();
-	ItemRenderer renderer  = new ItemRenderer(Minecraft.getMinecraft());
+//	static RenderItem render = new RenderItem();
+//	@Environment(EnvType.CLIENT)
+//	ItemRenderer renderer = new ItemRenderer(Minecraft.getMinecraft());
 
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type) {

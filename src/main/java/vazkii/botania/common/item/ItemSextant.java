@@ -66,7 +66,7 @@ public class ItemSextant extends ItemMod {
 					float radian = (float) (i * Math.PI / 180);
 					double xp = x + Math.cos(radian) * radius;
 					double zp = z + Math.sin(radian) * radius;
-					Botania.proxy.wispFX(world, xp + 0.5, source.y + 1, zp + 0.5, 0F, 1F, 1F, 0.3F, -0.01F);
+					Botania.getProxy().wispFX(world, xp + 0.5, source.y + 1, zp + 0.5, 0F, 1F, 1F, 0.3F, -0.01F);
 				}
 		}
 	}
@@ -79,13 +79,13 @@ public class ItemSextant extends ItemMod {
 			int y = ItemNBTHelper.getInt(stack, TAG_SOURCE_Y, -1);
 			int z = ItemNBTHelper.getInt(stack, TAG_SOURCE_Z, 0);
 			if(y != -1)
-				Botania.proxy.setMultiblock(world, x, y, z, radius, Block.cobblestone);
+				Botania.getProxy().setMultiblock(world, x, y, z, radius, Block.cobblestone);
 		}
 	}
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		Botania.proxy.removeSextantMultiblock();
+		Botania.getProxy().removeSextantMultiblock();
 
 		if(!par3EntityPlayer.isSneaking()) {
 			MovingObjectPosition pos = ToolCommons.raytraceFromEntity(par2World, par3EntityPlayer, false, 128);
@@ -109,7 +109,7 @@ public class ItemSextant extends ItemMod {
 		int z = ItemNBTHelper.getInt(stack, TAG_SOURCE_Z, 0);
 		World world = player.worldObj;
 		Vector3 source = new Vector3(x, y, z);
-		Botania.proxy.wispFX(world, source.x + 0.5, source.y + 1, source.z + 0.5, 1F, 0F, 0F, 0.2F, -0.1F);
+		Botania.getProxy().wispFX(world, source.x + 0.5, source.y + 1, source.z + 0.5, 1F, 0F, 0F, 0.2F, -0.1F);
 
 		Vector3 centerVec = Vector3.fromEntityCenter(player);
 		Vector3 diffVec = source.copy().subtract(centerVec);

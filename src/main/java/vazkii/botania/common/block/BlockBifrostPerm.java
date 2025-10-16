@@ -67,7 +67,7 @@ public class BlockBifrostPerm extends BlockMod implements ILexiconable {
 	@Override
 	public void randomDisplayTick(World world, int x, int y, int z, Random rand) {
 		if(rand.nextBoolean())
-			Botania.proxy.sparkleFX(world, x + Math.random(), y + Math.random(), z + Math.random(), (float) Math.random(), (float) Math.random(), (float) Math.random(), 0.45F + 0.2F * (float) Math.random(), 6);
+			Botania.getProxy().sparkleFX(world, x + Math.random(), y + Math.random(), z + Math.random(), (float) Math.random(), (float) Math.random(), (float) Math.random(), 0.45F + 0.2F * (float) Math.random(), 6);
 	}
 
 	@Override

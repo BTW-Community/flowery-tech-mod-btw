@@ -147,12 +147,12 @@ public final class TerrasteelCraftingHandler {
 				float[] colorsfx = new float[] {
 						0F, (float) ticks / (float) TIME, 1F - (float) ticks / (float) TIME
 				};
-				Botania.proxy.wispFX(item.worldObj, x, y, z, colorsfx[0], colorsfx[1], colorsfx[2], 0.85F, (float)g * 0.05F, 0.25F);
-				Botania.proxy.wispFX(item.worldObj, x, y, z, colorsfx[0], colorsfx[1], colorsfx[2], (float) Math.random() * 0.1F + 0.1F, (float) (Math.random() - 0.5) * 0.05F, (float) (Math.random() - 0.5) * 0.05F, (float) (Math.random() - 0.5) * 0.05F, 0.9F);
+				Botania.getProxy().wispFX(item.worldObj, x, y, z, colorsfx[0], colorsfx[1], colorsfx[2], 0.85F, (float)g * 0.05F, 0.25F);
+				Botania.getProxy().wispFX(item.worldObj, x, y, z, colorsfx[0], colorsfx[1], colorsfx[2], (float) Math.random() * 0.1F + 0.1F, (float) (Math.random() - 0.5) * 0.05F, (float) (Math.random() - 0.5) * 0.05F, (float) (Math.random() - 0.5) * 0.05F, 0.9F);
 
 				if(ticks == TIME)
 					for(int j = 0; j < 15; j++)
-						Botania.proxy.wispFX(item.worldObj, item.posX, item.posY, item.posZ, colorsfx[0], colorsfx[1], colorsfx[2], (float) Math.random() * 0.15F + 0.15F, (float) (Math.random() - 0.5F) * 0.125F, (float) (Math.random() - 0.5F) * 0.125F, (float) (Math.random() - 0.5F) * 0.125F);
+						Botania.getProxy().wispFX(item.worldObj, item.posX, item.posY, item.posZ, colorsfx[0], colorsfx[1], colorsfx[2], (float) Math.random() * 0.15F + 0.15F, (float) (Math.random() - 0.5F) * 0.125F, (float) (Math.random() - 0.5F) * 0.125F, (float) (Math.random() - 0.5F) * 0.125F);
 			}
 		}
 	}

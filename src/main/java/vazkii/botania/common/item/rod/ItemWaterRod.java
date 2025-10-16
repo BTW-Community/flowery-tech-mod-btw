@@ -32,7 +32,7 @@ public class ItemWaterRod extends ItemMod implements IManaUsingItem {
 			if(stackToPlace.stackSize == 0) {
 				ManaItemHandler.requestManaExactForTool(par1ItemStack, par2EntityPlayer, COST, true);
 				for(int i = 0; i < 6; i++)
-					Botania.proxy.sparkleFX(par3World, par4 + dir.offsetX + Math.random(), par5 + dir.offsetY + Math.random(), par6 + dir.offsetZ + Math.random(), 0.2F, 0.2F, 1F, 1F, 5);
+					Botania.getProxy().sparkleFX(par3World, par4 + dir.offsetX + Math.random(), par5 + dir.offsetY + Math.random(), par6 + dir.offsetZ + Math.random(), 0.2F, 0.2F, 1F, 1F, 5);
 			}
 		}
 		return true;

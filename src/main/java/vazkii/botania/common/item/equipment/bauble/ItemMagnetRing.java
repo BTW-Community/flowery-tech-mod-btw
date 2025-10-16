@@ -115,7 +115,7 @@ public class ItemMagnetRing extends ItemBauble {
 						MathHelper.setEntityMotionFromVector(item, new Vector3(x, y, z), 0.45F);
 						if(player.worldObj.isRemote) {
 							boolean red = player.worldObj.rand.nextBoolean();
-							Botania.proxy.sparkleFX(player.worldObj, item.posX, item.posY, item.posZ, red ? 1F : 0F, 0F, red ? 0F : 1F, 1F, 3);
+							Botania.getProxy().sparkleFX(player.worldObj, item.posX, item.posY, item.posZ, red ? 1F : 0F, 0F, red ? 0F : 1F, 1F, 3);
 						}
 						pulled++;
 					}

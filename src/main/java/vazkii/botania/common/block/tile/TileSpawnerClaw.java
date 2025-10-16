@@ -39,7 +39,7 @@ public class TileSpawnerClaw extends TileMod implements IManaReceiver {
 						--logic.spawnDelay;
 
 					if(Math.random() > 0.5)
-						Botania.proxy.wispFX(worldObj, xCoord + 0.3 + Math.random() * 0.5, yCoord - 0.3 + Math.random() * 0.25, zCoord + Math.random(), 0.6F - (float) Math.random() * 0.3F, 0.1F, 0.6F - (float) Math.random() * 0.3F, (float) Math.random() / 3F, -0.025F - 0.005F * (float) Math.random(), 2F);
+						Botania.getProxy().wispFX(worldObj, xCoord + 0.3 + Math.random() * 0.5, yCoord - 0.3 + Math.random() * 0.25, zCoord + Math.random(), 0.6F - (float) Math.random() * 0.3F, 0.1F, 0.6F - (float) Math.random() * 0.3F, (float) Math.random() / 3F, -0.025F - 0.005F * (float) Math.random(), 2F);
 
 					logic.field_98284_d = logic.field_98287_c;
 					logic.field_98287_c = (logic.field_98287_c + 1000.0F / (logic.spawnDelay + 200.0F)) % 360.0D;

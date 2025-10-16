@@ -42,7 +42,7 @@ public class RenderTileTeruTeruBozu extends TileEntitySpecialRenderer {
 		GL11.glTranslated(d0, d1, d2);
 		Minecraft.getMinecraft().renderEngine.bindTexture(ClientProxy.dootDoot ? textureHalloween : texture);
 		GL11.glRotatef(180F, 1F, 0F, 0F);
-		double time = Botania.proxy.getWorldElapsedTicks() + f;
+		double time = Botania.getProxy().getWorldElapsedTicks() + f;
 		boolean hasWorld = tileentity.getWorldObj() != null;
 		if(hasWorld)
 			time += new Random(tileentity.xCoord ^ tileentity.yCoord ^ tileentity.zCoord).nextInt(1000);

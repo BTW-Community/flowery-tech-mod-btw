@@ -119,7 +119,7 @@ public class ItemSpawnerMover extends ItemMod {
 					float red = (float) Math.random();
 					float green = (float) Math.random();
 					float blue = (float) Math.random();
-					Botania.proxy.wispFX(world, x + 0.5, y + 0.5, z + 0.5, red, green, blue, (float) Math.random() * 0.1F + 0.05F, (float) (Math.random() - 0.5F) * 0.15F, (float) (Math.random() - 0.5F) * 0.15F, (float) (Math.random() - 0.5F) * 0.15F);
+					Botania.getProxy().wispFX(world, x + 0.5, y + 0.5, z + 0.5, red, green, blue, (float) Math.random() * 0.1F + 0.05F, (float) (Math.random() - 0.5F) * 0.15F, (float) (Math.random() - 0.5F) * 0.15F, (float) (Math.random() - 0.5F) * 0.15F);
 				}
 				return true;
 			} else return false;
@@ -172,7 +172,7 @@ public class ItemSpawnerMover extends ItemMod {
 				player.renderBrokenItemStack(itemstack);
 				player.addStat(ModAchievements.spawnerMoverUse, 1);
 				for(int i = 0; i < 100; i++)
-					Botania.proxy.sparkleFX(world, x + Math.random(), y + Math.random(), z + Math.random(), (float) Math.random(), (float) Math.random(), (float) Math.random(), 0.45F + 0.2F * (float) Math.random(), 6);
+					Botania.getProxy().sparkleFX(world, x + Math.random(), y + Math.random(), z + Math.random(), (float) Math.random(), (float) Math.random(), (float) Math.random(), 0.45F + 0.2F * (float) Math.random(), 6);
 
 				--itemstack.stackSize;
 			}

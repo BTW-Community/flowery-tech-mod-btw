@@ -45,7 +45,7 @@ public class ItemFlugelEye extends ItemRelic implements ICoordBoundItem, IManaUs
 					float x1 = (float) (x + Math.random());
 					float y1 = y + 1;
 					float z1 = (float) (z + Math.random());
-					Botania.proxy.wispFX(player.worldObj, x1, y1, z1, (float) Math.random(), (float) Math.random(), (float) Math.random(), (float) Math.random() * 0.5F, -0.05F + (float) Math.random() * 0.05F);
+					Botania.getProxy().wispFX(player.worldObj, x1, y1, z1, (float) Math.random(), (float) Math.random(), (float) Math.random(), (float) Math.random() * 0.5F, -0.05F + (float) Math.random() * 0.05F);
 				}
 			} else {
 				ItemNBTHelper.setInt(stack, TAG_X, x);
@@ -64,7 +64,7 @@ public class ItemFlugelEye extends ItemRelic implements ICoordBoundItem, IManaUs
 		float x = (float) (player.posX - Math.random() * player.width);
 		float y = (float) (player.posY - 1.6 + Math.random());
 		float z = (float) (player.posZ - Math.random() * player.width);
-		Botania.proxy.wispFX(player.worldObj, x, y, z, (float) Math.random(), (float) Math.random(), (float) Math.random(), (float) Math.random() * 0.7F, -0.05F - (float) Math.random() * 0.05F);
+		Botania.getProxy().wispFX(player.worldObj, x, y, z, (float) Math.random(), (float) Math.random(), (float) Math.random(), (float) Math.random() * 0.7F, -0.05F - (float) Math.random() * 0.05F);
 	}
 
 	@Override
@@ -97,7 +97,7 @@ public class ItemFlugelEye extends ItemRelic implements ICoordBoundItem, IManaUs
 			float x = (float) (entity.posX + Math.random());
 			float y = (float) (entity.posY - 1.6 + Math.random());
 			float z = (float) (entity.posZ + Math.random());
-			Botania.proxy.wispFX(entity.worldObj, x, y, z, (float) Math.random(), (float) Math.random(), (float) Math.random(), (float) Math.random(), -0.3F + (float) Math.random() * 0.2F);
+			Botania.getProxy().wispFX(entity.worldObj, x, y, z, (float) Math.random(), (float) Math.random(), (float) Math.random(), (float) Math.random(), -0.3F + (float) Math.random() * 0.2F);
 		}
 		if(!entity.worldObj.isRemote)
 			entity.worldObj.playSoundAtEntity(entity, "mob.endermen.portal", 1F, 1F);

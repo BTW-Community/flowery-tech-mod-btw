@@ -60,7 +60,7 @@ public class ItemDirtRod extends ItemMod implements IManaUsingItem, ICraftAchiev
 				if(stackToPlace.stackSize == 0) {
 					ManaItemHandler.requestManaExactForTool(par1ItemStack, par2EntityPlayer, cost, true);
 					for(int i = 0; i < 6; i++)
-						Botania.proxy.sparkleFX(par3World, par4 + dir.offsetX + Math.random(), par5 + dir.offsetY + Math.random(), par6 + dir.offsetZ + Math.random(), r, g, b, 1F, 5);
+						Botania.getProxy().sparkleFX(par3World, par4 + dir.offsetX + Math.random(), par5 + dir.offsetY + Math.random(), par6 + dir.offsetZ + Math.random(), r, g, b, 1F, 5);
 				}
 			}
 		}

@@ -208,7 +208,7 @@ public class EntitySpark extends Entity implements ISparkEntity, EntityWithCusto
 		float b = 0.4F + 0.3F * (float) Math.random();
 		float size = 0.125F + 0.125F * (float) Math.random();
 
-		Botania.proxy.wispFX(worldObj, thisVec.x, thisVec.y, thisVec.z, r, g, b, size, (float) motion.x, (float) motion.y, (float) motion.z);
+		Botania.getProxy().wispFX(worldObj, thisVec.x, thisVec.y, thisVec.z, r, g, b, size, (float) motion.x, (float) motion.y, (float) motion.z);
 	}
 
 	public static void particleBeam(Entity e1, Entity e2) {
@@ -231,9 +231,9 @@ public class EntitySpark extends Entity implements ISparkEntity, EntityWithCusto
 			float g = Math.min(1F, color.getGreen() / 255F + 0.4F);
 			float b = Math.min(1F, color.getBlue() / 255F + 0.4F);
 
-			Botania.proxy.setSparkleFXNoClip(true);
-			Botania.proxy.sparkleFX(e1.worldObj, currentPos.x, currentPos.y, currentPos.z, r, g, b, 1F, 12);
-			Botania.proxy.setSparkleFXNoClip(false);
+			Botania.getProxy().setSparkleFXNoClip(true);
+			Botania.getProxy().sparkleFX(e1.worldObj, currentPos.x, currentPos.y, currentPos.z, r, g, b, 1F, 12);
+			Botania.getProxy().setSparkleFXNoClip(false);
 			currentPos.add(movement);
 		}
 	}

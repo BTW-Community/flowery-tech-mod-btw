@@ -17,6 +17,7 @@ import java.net.URI;
 import java.util.Calendar;
 
 import dev.bagel.util.Items;
+import net.fabricmc.api.EnvType;
 import net.minecraft.src.*;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
@@ -163,7 +164,7 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLLog;
 
 public class ClientProxy extends CommonProxy {
-
+	public static final ClientProxy instance = new ClientProxy();
 	public static boolean jingleTheBells = false;
 	public static boolean dootDoot = false;
 
@@ -323,7 +324,8 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityManaStorm.class, new RenderManaStorm());
 		RenderingRegistry.registerEntityRenderingHandler(EntityBabylonWeapon.class, new RenderBabylonWeapon());
 
-		ShaderHelper.initShaders();
+		//todofix shaders??
+//		ShaderHelper.initShaders();
 	}
 
 	@Override

@@ -141,7 +141,7 @@ public final class HUDHandler {
 				profiler.endSection();
 			}*/
 
-			if(Botania.proxy.isClientPlayerWearingMonocle()) {
+			if(Botania.getProxy().isClientPlayerWearingMonocle()) {
 				profiler.startSection("monocle");
 				ItemMonocle.renderHUD(event.resolution, mc.thePlayer);
 				profiler.endSection();

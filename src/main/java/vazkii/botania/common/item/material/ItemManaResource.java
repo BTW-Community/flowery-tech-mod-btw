@@ -146,7 +146,7 @@ public class ItemManaResource extends ItemMod implements IFlowerComponent, IElve
 	@Environment(EnvType.CLIENT)
 	public int getColorFromItemStack(ItemStack par1ItemStack, int par2) {
 		if(par1ItemStack.getItemDamage() == 5 || par1ItemStack.getItemDamage() == 14)
-			return Color.HSBtoRGB(Botania.proxy.getWorldElapsedTicks() * 2 % 360 / 360F, 0.25F, 1F);
+			return Color.HSBtoRGB(Botania.getProxy().getWorldElapsedTicks() * 2 % 360 / 360F, 0.25F, 1F);
 
 		return 0xFFFFFF;
 	}

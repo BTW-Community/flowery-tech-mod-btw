@@ -248,7 +248,7 @@ public class ItemLens extends ItemMod implements ILensControl, ICompositableLens
 			return 0xFFFFFF;
 
 		if(storedColor == 16)
-			return Color.HSBtoRGB(Botania.proxy.getWorldElapsedTicks() * 2 % 360 / 360F, 1F, 1F);
+			return Color.HSBtoRGB(Botania.getProxy().getWorldElapsedTicks() * 2 % 360 / 360F, 1F, 1F);
 
 		float[] color = EntitySheep.fleeceColorTable[storedColor];
 		return new Color(color[0], color[1], color[2]).getRGB();

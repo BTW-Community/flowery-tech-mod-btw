@@ -137,13 +137,13 @@ public class BlockAltGrass extends BlockMod implements ILexiconable {
 			break;
 		case 4: // Infused
 			if(r.nextInt(100) == 0)
-				Botania.proxy.sparkleFX(world, x + r.nextFloat(), y + 1.05, z + r.nextFloat(), 0F, 1F, 1F, r.nextFloat() * 0.2F + 1F, 5);
+				Botania.getProxy().sparkleFX(world, x + r.nextFloat(), y + 1.05, z + r.nextFloat(), 0F, 1F, 1F, r.nextFloat() * 0.2F + 1F, 5);
 			break;
 		case 5: // Mutated
 			if(r.nextInt(100) == 0) {
 				if(r.nextInt(100) > 25)
-					Botania.proxy.sparkleFX(world, x + r.nextFloat(), y + 1.05, z + r.nextFloat(), 1F, 0F, 1F, r.nextFloat() * 0.2F + 1F, 5);
-				else Botania.proxy.sparkleFX(world, x + r.nextFloat(), y + 1.05, z + r.nextFloat(), 1F, 1F, 0F, r.nextFloat() * 0.2F + 1F, 5);
+					Botania.getProxy().sparkleFX(world, x + r.nextFloat(), y + 1.05, z + r.nextFloat(), 1F, 0F, 1F, r.nextFloat() * 0.2F + 1F, 5);
+				else Botania.getProxy().sparkleFX(world, x + r.nextFloat(), y + 1.05, z + r.nextFloat(), 1F, 1F, 0F, r.nextFloat() * 0.2F + 1F, 5);
 			}
 			break;
 		}

@@ -54,7 +54,6 @@ public abstract class RenderPlayerMixin extends RendererLivingEntity {
     @ModifyArgs(method = "setArmorModel", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/RenderPlayer;setRenderPassModel(Lnet/minecraft/src/ModelBase;)V"))
     private void getForgeArmorModel(Args args, @Local(argsOnly = true) AbstractClientPlayer living, @Local ItemStack stack, @Local(argsOnly = true) int slot) {
         var model = ForgeHooksClient.getArmorModel(living, stack, slot, args.get(0));
-        System.out.println("rendering armor, old " + args.get(0) + "new " + model);
         args.set(0, model);
     }
 

@@ -39,7 +39,7 @@ public final class SubTileRadiusRenderHandler {
 		Minecraft mc = Minecraft.getMinecraft();
 		MovingObjectPosition pos = mc.objectMouseOver;
 
-		if(!Botania.proxy.isClientPlayerWearingMonocle() || pos == null || pos.entityHit != null)
+		if(!Botania.getProxy().isClientPlayerWearingMonocle() || pos == null || pos.entityHit != null)
 			return;
 		int x = pos.blockX;
 		int y = pos.blockY;

@@ -63,7 +63,7 @@ public class LensFlare extends Lens {
 			b = colortable[2];
 		}
 
-		Botania.proxy.wispFX(tile.getWorldObj(), tile.xCoord + 0.5, tile.yCoord + 0.5, tile.zCoord + 0.5, r, g, b, 0.4F, mx, my, mz);
+		Botania.getProxy().wispFX(tile.getWorldObj(), tile.xCoord + 0.5, tile.yCoord + 0.5, tile.zCoord + 0.5, r, g, b, 0.4F, mx, my, mz);
 	}
 
 }

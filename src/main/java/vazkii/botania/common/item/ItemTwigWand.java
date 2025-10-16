@@ -110,7 +110,7 @@ public class ItemTwigWand extends Item16Colors implements ICoordBoundItem {
 
 					float velMul = 0.07F;
 
-					Botania.proxy.wispFX(par3World, par4 + 0.5 + x, par5 + 0.5 + y, par6 + 0.5 + z, red, green, blue, (float) Math.random() * 0.15F + 0.15F, (float) -x * velMul, (float) -y * velMul, (float) -z * velMul);
+					Botania.getProxy().wispFX(par3World, par4 + 0.5 + x, par5 + 0.5 + y, par6 + 0.5 + z, red, green, blue, (float) Math.random() * 0.15F + 0.15F, (float) -x * velMul, (float) -y * velMul, (float) -z * velMul);
 				}
 			}
 		} else if(block instanceof IWandable) {
@@ -167,9 +167,9 @@ public class ItemTwigWand extends Item16Colors implements ICoordBoundItem {
 			float g = color.getGreen() / 255F;
 			float b = color.getBlue() / 255F;
 
-			Botania.proxy.setSparkleFXNoClip(true);
-			Botania.proxy.sparkleFX(world, currentPos.x, currentPos.y, currentPos.z, r, g, b, 0.5F, 4);
-			Botania.proxy.setSparkleFXNoClip(false);
+			Botania.getProxy().setSparkleFXNoClip(true);
+			Botania.getProxy().sparkleFX(world, currentPos.x, currentPos.y, currentPos.z, r, g, b, 0.5F, 4);
+			Botania.getProxy().setSparkleFXNoClip(false);
 			currentPos.add(movement);
 		}
 	}

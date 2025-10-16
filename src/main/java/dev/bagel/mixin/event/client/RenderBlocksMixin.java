@@ -20,7 +20,6 @@ public abstract class RenderBlocksMixin {
         int renderType = block.getRenderType();
         if (renderType == 1) return;
         if (RenderingRegistry.instance().renderWorldBlock(((RenderBlocks)(Object) this), this.blockAccess, i, j, k, block, renderType)) {
-            System.err.println("Render World Block for block "+ block);
             cir.setReturnValue(true);
         }
     }

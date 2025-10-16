@@ -77,7 +77,7 @@ public class ItemTornadoRod extends ItemMod implements IManaUsingItem, IAvatarWi
 
 					player.worldObj.playSoundAtEntity(player, "botania:airRod", 0.1F, 0.25F);
 					for(int i = 0; i < 5; i++)
-						Botania.proxy.wispFX(player.worldObj, player.posX, player.posY, player.posZ, 0.25F, 0.25F, 0.25F, 0.35F + (float) Math.random() * 0.1F, 0.2F * (float) (Math.random() - 0.5), -0.01F * (float) Math.random(), 0.2F * (float) (Math.random() - 0.5));
+						Botania.getProxy().wispFX(player.worldObj, player.posX, player.posY, player.posZ, 0.25F, 0.25F, 0.25F, 0.35F + (float) Math.random() * 0.1F, 0.2F * (float) (Math.random() - 0.5), -0.01F * (float) Math.random(), 0.2F * (float) (Math.random() - 0.5));
 				}
 
 				par1ItemStack.setItemDamage(Math.min(max, par1ItemStack.getItemDamage() + FALL_MULTIPLIER));
@@ -167,7 +167,7 @@ public class ItemTornadoRod extends ItemMod implements IManaUsingItem, IAvatarWi
 
 					for(int i = 0; i < 20; i++)
 						for(int j = 0; j < 5; j++)
-							Botania.proxy.wispFX(p.worldObj, p.posX, p.posY + i, p.posZ, 0.25F, 0.25F, 0.25F, 0.35F + (float) Math.random() * 0.1F, 0.2F * (float) (Math.random() - 0.5), -0.01F * (float) Math.random(), 0.2F * (float) (Math.random() - 0.5));
+							Botania.getProxy().wispFX(p.worldObj, p.posX, p.posY + i, p.posZ, 0.25F, 0.25F, 0.25F, 0.35F + (float) Math.random() * 0.1F, 0.2F * (float) (Math.random() - 0.5), -0.01F * (float) Math.random(), 0.2F * (float) (Math.random() - 0.5));
 
 					if(!world.isRemote) {
 						p.worldObj.playSoundAtEntity(p, "botania:dash", 1F, 1F);

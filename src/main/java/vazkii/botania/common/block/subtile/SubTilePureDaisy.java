@@ -71,7 +71,7 @@ public class SubTilePureDaisy extends SubTileEntity {
 			if(recipe != null) {
 				ticksRemaining[positionAt] = ticksRemaining[positionAt] - 1;
 
-				Botania.proxy.sparkleFX(supertile.getWorldObj(), coords.posX + Math.random(), coords.posY + Math.random(), coords.posZ + Math.random(), 1F, 1F, 1F, (float) Math.random(), 5);
+				Botania.getProxy().sparkleFX(supertile.getWorldObj(), coords.posX + Math.random(), coords.posY + Math.random(), coords.posZ + Math.random(), 1F, 1F, 1F, (float) Math.random(), 5);
 
 				if(ticksRemaining[positionAt] <= 0) {
 					ticksRemaining[positionAt] = TIME_PER;
@@ -82,7 +82,7 @@ public class SubTilePureDaisy extends SubTileEntity {
 							double y = coords.posY + Math.random() + 0.5;
 							double z = coords.posZ + Math.random();
 
-							Botania.proxy.wispFX(supertile.getWorldObj(), x, y, z, 1F, 1F, 1F, (float) Math.random() / 2F);
+							Botania.getProxy().wispFX(supertile.getWorldObj(), x, y, z, 1F, 1F, 1F, (float) Math.random() / 2F);
 						}
 						if(ConfigHandler.blockBreakParticles)
 							supertile.getWorldObj().playAuxSFX(2001, coords.posX, coords.posY, coords.posZ, BlockExtensions.getIdFromBlock(recipe.getOutput()) + (recipe.getOutputMeta() << 12));

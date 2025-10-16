@@ -11,21 +11,9 @@
 package vazkii.botania.common.core.proxy;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import net.minecraft.src.Block;
-import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.EntityDragon;
-import net.minecraft.src.EntityDragonPart;
-import net.minecraft.src.EntityWither;
-import net.minecraft.src.EntityEnderCrystal;
-import net.minecraft.src.EntityItemFrame;
-import net.minecraft.src.EntityPainting;
-import net.minecraft.src.EntityPlayerMP;
-import net.minecraft.src.ItemRecord;
-import net.minecraft.src.ItemStack;
+import net.fabricmc.api.EnvType;
+import net.minecraft.src.*;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.src.MovingObjectPosition;
-import net.minecraft.src.StatCollector;
-import net.minecraft.src.World;
 import net.minecraftforge.common.MinecraftForge;
 
 import org.apache.logging.log4j.Level;

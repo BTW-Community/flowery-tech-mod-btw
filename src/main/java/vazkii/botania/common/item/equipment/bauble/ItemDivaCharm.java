@@ -77,7 +77,7 @@ public class ItemDivaCharm extends ItemBauble implements IManaUsingItem, IBauble
 							double z = event.entityLiving.posZ;
 
 							for(int i = 0; i < 50; i++)
-								Botania.proxy.sparkleFX(event.entityLiving.worldObj, x + Math.random() * event.entityLiving.width, y + Math.random() * event.entityLiving.height, z + Math.random() * event.entityLiving.width, 1F, 1F, 0.25F, 1F, 3);
+								Botania.getProxy().sparkleFX(event.entityLiving.worldObj, x + Math.random() * event.entityLiving.width, y + Math.random() * event.entityLiving.height, z + Math.random() * event.entityLiving.width, 1F, 1F, 0.25F, 1F, 3);
 						}
 					}
 				}

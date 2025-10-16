@@ -147,7 +147,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 					double y = par5 + 0.5;
 					double z = par6 + 0.5 - Math.sin(rad) * RANGE;
 
-					Botania.proxy.sparkleFX(par3World, x, y, z, r, g, b, 5F, 120);
+					Botania.getProxy().sparkleFX(par3World, x, y, z, r, g, b, 5F, 120);
 				}
 
 				if(!par3World.isRemote)
@@ -469,7 +469,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 	@Override
 	public void setDead() {
 		ChunkCoordinates source = getSource();
-		Botania.proxy.playRecordClientSided(worldObj, source.posX, source.posY, source.posZ, null);
+		Botania.getProxy().playRecordClientSided(worldObj, source.posX, source.posY, source.posZ, null);
 		isPlayingMusic = false;
 		super.setDead();
 	}
@@ -526,7 +526,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 		int playerCount = getPlayerCount();
 
 		if(worldObj.isRemote && !isPlayingMusic && !isDead && !players.isEmpty()) {
-			Botania.proxy.playRecordClientSided(worldObj, source.posX, source.posY, source.posZ, (ItemRecord) (hard ? ModItems.recordGaia2 : ModItems.recordGaia1));
+			Botania.getProxy().playRecordClientSided(worldObj, source.posX, source.posY, source.posZ, (ItemRecord) (hard ? ModItems.recordGaia2 : ModItems.recordGaia1));
 			isPlayingMusic = true;
 		}
 
@@ -543,7 +543,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 			double y = source.posY + 0.5;
 			double z = source.posZ + 0.5 - Math.sin(rad) * range;
 
-			Botania.proxy.wispFX(worldObj, x, y, z, r, g, b, 0.5F, (float) (Math.random() - 0.5F) * m, (float) (Math.random() - 0.5F) * mv, (float) (Math.random() - 0.5F) * m);
+			Botania.getProxy().wispFX(worldObj, x, y, z, r, g, b, 0.5F, (float) (Math.random() - 0.5F) * m, (float) (Math.random() - 0.5F) * mv, (float) (Math.random() - 0.5F) * m);
 		}
 
 		if(players.isEmpty() && !worldObj.playerEntities.isEmpty())
@@ -605,8 +605,8 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 				float g = (float) Math.random() * 0.3F;
 				float b = 0.7F + (float) Math.random() * 0.3F;
 
-				Botania.proxy.wispFX(worldObj, partPos.x, partPos.y, partPos.z, r, g, b, 0.25F + (float) Math.random() * 0.1F, -0.075F - (float) Math.random() * 0.015F);
-				Botania.proxy.wispFX(worldObj, partPos.x, partPos.y, partPos.z, r, g, b, 0.4F, (float) mot.x, (float) mot.y, (float) mot.z);
+				Botania.getProxy().wispFX(worldObj, partPos.x, partPos.y, partPos.z, r, g, b, 0.25F + (float) Math.random() * 0.1F, -0.075F - (float) Math.random() * 0.015F);
+				Botania.getProxy().wispFX(worldObj, partPos.x, partPos.y, partPos.z, r, g, b, 0.4F, (float) mot.x, (float) mot.y, (float) mot.z);
 			}
 		}
 

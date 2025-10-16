@@ -158,7 +158,7 @@ public class BlockSpecialFlower extends BlockFlower implements ITileEntityProvid
 	public Block setUnlocalizedName(String par1Str) {
 		var item = new ItemBlockSpecialFlower(this);
 //		GameRegistry.registerBlock(this, ItemBlockSpecialFlower.class, par1Str);
-		return this/*super.setUnlocalizedName(par1Str)*/;
+		return super.setUnlocalizedName(par1Str);
 	}
 
 	@Override

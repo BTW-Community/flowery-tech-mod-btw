@@ -74,11 +74,11 @@ public class BlockModFlower extends BlockFlower implements ILexiconable, IPickup
 			par3List.add(new ItemStack(par1, 1, i));
 	}
 
-//	@Override
+	@Override
 	public Block setUnlocalizedName(String par1Str) {
 		var item = new ItemBlockWithMetadataAndName(this);
 //GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
-		return this/*super.setUnlocalizedName(par1Str)*/;
+		return super.setUnlocalizedName(par1Str);
 	}
 
 	@Override
@@ -120,7 +120,7 @@ public class BlockModFlower extends BlockFlower implements ILexiconable, IPickup
 		float[] color = EntitySheep.fleeceColorTable[meta];
 
 		if(par5Random.nextDouble() < ConfigHandler.flowerParticleFrequency)
-			Botania.proxy.sparkleFX(par1World, par2 + 0.3 + par5Random.nextFloat() * 0.5, par3 + 0.5 + par5Random.nextFloat() * 0.5, par4 + 0.3 + par5Random.nextFloat() * 0.5, color[0], color[1], color[2], par5Random.nextFloat(), 5);
+			Botania.getProxy().sparkleFX(par1World, par2 + 0.3 + par5Random.nextFloat() * 0.5, par3 + 0.5 + par5Random.nextFloat() * 0.5, par4 + 0.3 + par5Random.nextFloat() * 0.5, color[0], color[1], color[2], par5Random.nextFloat(), 5);
 	}
 
 	@Override

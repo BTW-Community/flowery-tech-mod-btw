@@ -59,7 +59,7 @@ public class ItemDiviningRod extends ItemMod implements IManaUsingItem, IAvatarW
 	}
 
 	public void doHighlight(World world, int x, int y, int z, int range, long seedxor) {
-		Botania.proxy.setWispFXDepthTest(false);
+		Botania.getProxy().setWispFXDepthTest(false);
 		for(int i = -range; i < range + 1; i++)
 			for(int j = -range; j < range + 1; j++)
 				for(int k = -range; k < range + 1; k++) {
@@ -74,12 +74,12 @@ public class ItemDiviningRod extends ItemMod implements IManaUsingItem, IAvatarW
 //						String s = OreDictionary.getOreName(id);
 //						if(s.matches("^ore[A-Z].+")) {
 //							Random rand = new Random(s.hashCode() ^ seedxor);
-//							Botania.proxy.wispFX(world, xp + world.rand.nextFloat(), yp + world.rand.nextFloat(), zp + world.rand.nextFloat(), rand.nextFloat(), rand.nextFloat(), rand.nextFloat(), 0.25F, 0F, 8);
+//							Botania.getProxy().wispFX(world, xp + world.rand.nextFloat(), yp + world.rand.nextFloat(), zp + world.rand.nextFloat(), rand.nextFloat(), rand.nextFloat(), rand.nextFloat(), 0.25F, 0F, 8);
 //							break;
 //						}
 //					}
 				}
-		Botania.proxy.setWispFXDepthTest(true);
+		Botania.getProxy().setWispFXDepthTest(true);
 	}
 
 	@Override

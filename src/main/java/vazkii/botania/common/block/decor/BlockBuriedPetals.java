@@ -44,9 +44,9 @@ public class BlockBuriedPetals extends BlockModFlower {
 		int meta = par1World.getBlockMetadata(par2, par3, par4);
 		float[] color = EntitySheep.fleeceColorTable[meta];
 
-		Botania.proxy.setSparkleFXNoClip(true);
-		Botania.proxy.sparkleFX(par1World, par2 + 0.3 + par5Random.nextFloat() * 0.5, par3 + 0.1 + par5Random.nextFloat() * 0.1, par4 + 0.3 + par5Random.nextFloat() * 0.5, color[0], color[1], color[2], par5Random.nextFloat(), 5);
-		Botania.proxy.setSparkleFXNoClip(false);
+		Botania.getProxy().setSparkleFXNoClip(true);
+		Botania.getProxy().sparkleFX(par1World, par2 + 0.3 + par5Random.nextFloat() * 0.5, par3 + 0.1 + par5Random.nextFloat() * 0.1, par4 + 0.3 + par5Random.nextFloat() * 0.5, color[0], color[1], color[2], par5Random.nextFloat(), 5);
+		Botania.getProxy().setSparkleFXNoClip(false);
 	}
 
 	@Override

@@ -11,7 +11,11 @@
 package vazkii.botania.common;
 
 import btw.BTWAddon;
+import net.fabricmc.api.EnvType;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.src.ServerListenThread;
+import net.minecraft.src.ThreadMinecraftServer;
+import vazkii.botania.client.core.proxy.ClientProxy;
 import vazkii.botania.common.core.proxy.CommonProxy;
 import vazkii.botania.common.integration.coloredlights.ILightHelper;
 import vazkii.botania.common.integration.coloredlights.LightHelperVanilla;
@@ -32,9 +36,23 @@ public class Botania extends BTWAddon {
 
 	public static Botania instance = new Botania();
 
+	public EnvType getEffectiveSide() {
+		Thread thr = Thread.currentThread();
+		return !(thr instanceof ThreadMinecraftServer) && !(thr instanceof ServerListenThread) ? EnvType.CLIENT : EnvType.SERVER;
+	}
+
 //	@SidedProxy(serverSide = LibMisc.PROXY_COMMON, clientSide = LibMisc.PROXY_CLIENT)
 	//ADDED interface
 	public static CommonProxy proxy = new CommonProxy();
+
+	public static CommonProxy getProxy() {
+		if (instance.getEffectiveSide() == EnvType.SERVER) {
+			return proxy;
+		}
+		else {
+			return ClientProxy.instance;
+		}
+	}
 
 	@Override
 	public void preInitialize() {
@@ -50,27 +68,27 @@ public class Botania extends BTWAddon {
 		
 		lightHelper = /*coloredLightsLoaded ? new LightHelperColored() :*/ new LightHelperVanilla();
 
-		proxy.preInit();
+		getProxy().preInit();
 	}
 	//FMLInitializationEvent
 	@Override
 	public void initialize() {
-		proxy.init();
+		getProxy().init();
 	}
 	//FMLPostInitializationEvent
 	@Override
 	public void postInitialize() {
-		proxy.postInit();
+		getProxy().postInit();
 	}
 
 	//FMLServerAboutToStartEvent
 	public void serverAboutToStart() {
-//		proxy.serverAboutToStart();
+//		getProxy().serverAboutToStart();
 	}
 
 	//FMLServerStartingEvent
 	public void serverStarting() {
-		proxy.serverStarting();
+		getProxy().serverStarting();
 	}
 
 	//FMLServerStoppingEvent

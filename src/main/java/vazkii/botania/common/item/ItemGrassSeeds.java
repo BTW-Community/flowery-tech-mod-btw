@@ -159,7 +159,7 @@ public class ItemGrassSeeds extends ItemMod implements IFloatingFlowerVariant {
 
 				float velMul = 0.025F;
 
-				Botania.proxy.wispFX(par3World, par4 + 0.5 + x, par5 + 0.5 + y, par6 + 0.5 + z, r, g, b, (float) Math.random() * 0.15F + 0.15F, (float) -x * velMul, (float) -y * velMul, (float) -z * velMul);
+				Botania.getProxy().wispFX(par3World, par4 + 0.5 + x, par5 + 0.5 + y, par6 + 0.5 + z, r, g, b, (float) Math.random() * 0.15F + 0.15F, (float) -x * velMul, (float) -y * velMul, (float) -z * velMul);
 			}
 
 			par1ItemStack.stackSize--;

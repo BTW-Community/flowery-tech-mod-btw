@@ -50,15 +50,15 @@ public class ItemLexicon extends ItemMod implements ILexicon, IElvenItem {
 				if(block instanceof ILexiconable) {
 					LexiconEntry entry = ((ILexiconable) block).getEntry(par3World, par4, par5, par6, par2EntityPlayer, par1ItemStack);
 					if(entry != null && isKnowledgeUnlocked(par1ItemStack, entry.getKnowledgeType())) {
-						Botania.proxy.setEntryToOpen(entry);
-						Botania.proxy.setLexiconStack(par1ItemStack);
+						Botania.getProxy().setEntryToOpen(entry);
+						Botania.getProxy().setLexiconStack(par1ItemStack);
 
 						openBook(par2EntityPlayer, par1ItemStack, par3World, false);
 						return true;
 					}
 				} else if(par3World.isRemote) {
 					MovingObjectPosition pos = new MovingObjectPosition(par4, par5, par6, par7, Vec3.createVectorHelper(par8, par9, par10));
-					return Botania.proxy.openWikiPage(par3World, block, pos);
+					return Botania.getProxy().openWikiPage(par3World, block, pos);
 				}
 			}
 		}
@@ -114,7 +114,7 @@ public class ItemLexicon extends ItemMod implements ILexicon, IElvenItem {
 		if(force != null && !force.isEmpty()) {
 			LexiconEntry entry = getEntryFromForce(par1ItemStack);
 			if(entry != null)
-				Botania.proxy.setEntryToOpen(entry);
+				Botania.getProxy().setEntryToOpen(entry);
 			else par3EntityPlayer.addChatMessage(ChatMessageComponent.createFromTranslationKey("botaniamisc.cantOpen").setColor(EnumChatFormatting.RED).toString());
 			setForcedPage(par1ItemStack, "");
 		}
@@ -128,7 +128,7 @@ public class ItemLexicon extends ItemMod implements ILexicon, IElvenItem {
 	public static void openBook(EntityPlayer player, ItemStack stack, World world, boolean skipSound) {
 		ILexicon l = (ILexicon) stack.getItem();
 
-		Botania.proxy.setToTutorialIfFirstLaunch();
+		Botania.getProxy().setToTutorialIfFirstLaunch();
 
 		if(!l.isKnowledgeUnlocked(stack, BotaniaAPI.relicKnowledge) && l.isKnowledgeUnlocked(stack, BotaniaAPI.elvenKnowledge))
 			for(ItemStack rstack : ItemDice.relicStacks) {
@@ -139,7 +139,7 @@ public class ItemLexicon extends ItemMod implements ILexicon, IElvenItem {
 				}
 			}
 
-		Botania.proxy.setLexiconStack(stack);
+		Botania.getProxy().setLexiconStack(stack);
 		player.addStat(ModAchievements.lexiconUse, 1);
 		player.openGui(Botania.instance, LibGuiIDs.LEXICON, world, 0, 0, 0);
 		if(!world.isRemote && !skipSound)

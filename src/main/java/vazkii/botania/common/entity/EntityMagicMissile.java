@@ -86,15 +86,15 @@ public class EntityMagicMissile extends EntityThrowable implements EntityWithCus
 		int steps = (int) (diff.mag() / step.mag());
 		Vector3 particlePos = oldPos.copy();
 
-		Botania.proxy.setSparkleFXCorrupt(evil);
+		Botania.getProxy().setSparkleFXCorrupt(evil);
 		for(int i = 0; i < steps; i++) {
-			Botania.proxy.sparkleFX(worldObj, particlePos.x, particlePos.y, particlePos.z, 1F, evil ? 0F : 0.4F, 1F, 0.8F, 2);
+			Botania.getProxy().sparkleFX(worldObj, particlePos.x, particlePos.y, particlePos.z, 1F, evil ? 0F : 0.4F, 1F, 0.8F, 2);
 			if(worldObj.rand.nextInt(steps) <= 1)
-				Botania.proxy.sparkleFX(worldObj, particlePos.x + (Math.random() - 0.5) * 0.4, particlePos.y + (Math.random() - 0.5) * 0.4, particlePos.z + (Math.random() - 0.5) * 0.4, 1F, evil ? 0F : 0.4F, 1F, 0.8F, 2);
+				Botania.getProxy().sparkleFX(worldObj, particlePos.x + (Math.random() - 0.5) * 0.4, particlePos.y + (Math.random() - 0.5) * 0.4, particlePos.z + (Math.random() - 0.5) * 0.4, 1F, evil ? 0F : 0.4F, 1F, 0.8F, 2);
 
 			particlePos.add(step);
 		}
-		Botania.proxy.setSparkleFXCorrupt(false);
+		Botania.getProxy().setSparkleFXCorrupt(false);
 
 		EntityLivingBase target = getTargetEntity();
 		if(target != null) {
