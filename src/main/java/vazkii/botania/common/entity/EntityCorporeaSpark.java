@@ -10,10 +10,13 @@
  */
 package vazkii.botania.common.entity;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import btw.entity.EntityWithCustomPacket;
+import btw.network.packet.BTWPacketManager;
 import net.minecraft.src.*;
 import vazkii.botania.api.corporea.ICorporeaSpark;
 import vazkii.botania.common.core.helper.InventoryHelper;
@@ -304,7 +307,8 @@ public class EntityCorporeaSpark extends Entity implements ICorporeaSpark, Entit
 
 	@Override
 	public Packet getSpawnPacketForThisEntity() {
-		return null;
+		return ModEntities.getSpawnPacket(this, ModEntities.EntityCorporeaSparkId);
+
 	}
 
 	@Override

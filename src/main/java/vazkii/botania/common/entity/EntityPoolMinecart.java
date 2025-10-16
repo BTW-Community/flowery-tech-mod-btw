@@ -11,6 +11,7 @@
 package vazkii.botania.common.entity;
 
 import btw.entity.EntityWithCustomPacket;
+import btw.network.packet.BTWPacketManager;
 import net.minecraft.src.*;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
@@ -20,6 +21,9 @@ import vazkii.botania.common.block.tile.mana.TilePool;
 import vazkii.botania.common.block.tile.mana.TilePump;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.lib.LibMisc;
+
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 
 public class EntityPoolMinecart extends EntityMinecart implements EntityWithCustomPacket {
 
@@ -153,7 +157,8 @@ public class EntityPoolMinecart extends EntityMinecart implements EntityWithCust
 
 	@Override
 	public Packet getSpawnPacketForThisEntity() {
-		return null;
+		return ModEntities.getSpawnPacket(this, ModEntities.EntityPoolMinecartId);
+
 	}
 
 	@Override

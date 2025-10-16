@@ -44,7 +44,7 @@ public class TileMod extends TileEntity implements TileEntityDataPacketHandler {
 	public Packet getDescriptionPacket() {
 		NBTTagCompound nbttagcompound = new NBTTagCompound();
 		writeCustomNBT(nbttagcompound);
-		return new Packet132TileEntityData(xCoord, yCoord, zCoord, -999, nbttagcompound);
+		return new Packet132TileEntityData(xCoord, yCoord, zCoord, 1, nbttagcompound);
 	}
 
 /*	@Override

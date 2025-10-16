@@ -11,8 +11,12 @@
 package vazkii.botania.common.entity;
 
 import btw.entity.EntityWithCustomPacket;
+import btw.network.packet.BTWPacketManager;
 import net.minecraft.src.*;
 import vazkii.botania.common.Botania;
+
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 
 public class EntitySignalFlare extends Entity implements EntityWithCustomPacket {
 
@@ -75,7 +79,8 @@ public class EntitySignalFlare extends Entity implements EntityWithCustomPacket 
 
 	@Override
 	public Packet getSpawnPacketForThisEntity() {
-		return null;
+		return ModEntities.getSpawnPacket(this, ModEntities.EntitySignalFlareId);
+
 	}
 
 	@Override

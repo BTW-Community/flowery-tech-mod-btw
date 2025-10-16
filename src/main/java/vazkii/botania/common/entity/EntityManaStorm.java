@@ -11,10 +11,14 @@
 package vazkii.botania.common.entity;
 
 import btw.entity.EntityWithCustomPacket;
+import btw.network.packet.BTWPacketManager;
 import net.minecraft.src.*;
 import vazkii.botania.common.core.helper.Vector3;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.lens.ItemLens;
+
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 
 public class EntityManaStorm extends Entity implements EntityWithCustomPacket {
 
@@ -95,7 +99,8 @@ public class EntityManaStorm extends Entity implements EntityWithCustomPacket {
 
 	@Override
 	public Packet getSpawnPacketForThisEntity() {
-		return null;
+		return ModEntities.getSpawnPacket(this, ModEntities.EntityManaStormId);
+
 	}
 
 	@Override

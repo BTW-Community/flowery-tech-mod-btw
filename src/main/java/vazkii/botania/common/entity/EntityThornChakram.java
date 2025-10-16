@@ -11,12 +11,16 @@
 package vazkii.botania.common.entity;
 
 import btw.entity.EntityWithCustomPacket;
+import btw.network.packet.BTWPacketManager;
 import dev.bagel.shim.BlockBush;
 import net.minecraft.src.*;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.common.core.helper.MathHelper;
 import vazkii.botania.common.core.helper.Vector3;
 import vazkii.botania.common.item.ModItems;
+
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 
 public class EntityThornChakram extends EntityThrowable implements EntityWithCustomPacket {
 
@@ -152,7 +156,8 @@ public class EntityThornChakram extends EntityThrowable implements EntityWithCus
 
 	@Override
 	public Packet getSpawnPacketForThisEntity() {
-		return null;
+		return ModEntities.getSpawnPacket(this, ModEntities.EntityThornChakramId);
+
 	}
 
 	@Override

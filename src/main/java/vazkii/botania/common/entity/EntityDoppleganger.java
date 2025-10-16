@@ -11,6 +11,8 @@
 package vazkii.botania.common.entity;
 
 import java.awt.Rectangle;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -19,6 +21,7 @@ import java.util.regex.Pattern;
 
 import btw.block.tileentity.beacon.BeaconEffectHandler;
 import btw.entity.EntityWithCustomPacket;
+import btw.network.packet.BTWPacketManager;
 import dev.bagel.client.RenderInstances;
 import dev.bagel.interfaces.BlockExtensions;
 import net.minecraft.src.*;
@@ -908,7 +911,8 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 
 	@Override
 	public Packet getSpawnPacketForThisEntity() {
-		return null;
+		return ModEntities.getSpawnPacket(this, ModEntities.EntityDopplegangerId);
+
 	}
 
 	@Override

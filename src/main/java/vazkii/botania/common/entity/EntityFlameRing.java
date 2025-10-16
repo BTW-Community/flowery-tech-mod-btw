@@ -11,9 +11,12 @@
 package vazkii.botania.common.entity;
 
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.util.List;
 
 import btw.entity.EntityWithCustomPacket;
+import btw.network.packet.BTWPacketManager;
 import net.minecraft.src.*;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.core.helper.MathHelper;
@@ -103,7 +106,8 @@ public class EntityFlameRing extends Entity implements EntityWithCustomPacket {
 
 	@Override
 	public Packet getSpawnPacketForThisEntity() {
-		return null;
+		return ModEntities.getSpawnPacket(this, ModEntities.EntityFlameRingId);
+
 	}
 
 	@Override

@@ -10,10 +10,13 @@
  */
 package vazkii.botania.common.entity;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import btw.entity.EntityWithCustomPacket;
+import btw.network.packet.BTWPacketManager;
 import dev.bagel.interfaces.BlockExtensions;
 import net.minecraft.src.*;
 import net.minecraft.src.Block;
@@ -72,7 +75,7 @@ public class EntityEnderAirBottle extends EntityThrowable implements EntityWithC
 
 	@Override
 	public Packet getSpawnPacketForThisEntity() {
-		return null;
+		return ModEntities.getSpawnPacket(this, ModEntities.EntityEnderAirBottleId);
 	}
 
 	@Override

@@ -11,7 +11,11 @@
 package vazkii.botania.common.entity;
 
 import btw.entity.EntityWithCustomPacket;
+import btw.network.packet.BTWPacketManager;
 import net.minecraft.src.*;
+
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 
 public class EntityPinkWither extends EntityWither implements EntityWithCustomPacket {
 
@@ -103,7 +107,8 @@ public class EntityPinkWither extends EntityWither implements EntityWithCustomPa
 
 	@Override
 	public Packet getSpawnPacketForThisEntity() {
-		return null;
+		return ModEntities.getSpawnPacket(this, ModEntities.EntityPinkWitherId);
+
 	}
 
 	@Override

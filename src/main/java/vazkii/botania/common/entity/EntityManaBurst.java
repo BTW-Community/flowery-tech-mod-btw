@@ -11,12 +11,15 @@
 package vazkii.botania.common.entity;
 
 import java.awt.Color;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
 import btw.entity.EntityWithCustomPacket;
+import btw.network.packet.BTWPacketManager;
 import net.minecraft.src.*;
 import net.minecraft.src.Block;
 import vazkii.botania.api.BotaniaAPI;
@@ -847,7 +850,8 @@ public class EntityManaBurst extends EntityThrowable implements IManaBurst, Enti
 
 	@Override
 	public Packet getSpawnPacketForThisEntity() {
-		return new Packet250CustomPayload();
+		return ModEntities.getSpawnPacket(this, ModEntities.EntityManaBurstId);
+
 	}
 
 	@Override

@@ -11,10 +11,13 @@
 package vazkii.botania.common.block.tile;
 
 import java.awt.Color;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import btw.entity.EntityWithCustomPacket;
+import btw.network.packet.BTWPacketManager;
 import net.minecraft.src.*;
 import vazkii.botania.api.wand.IWandBindable;
 import vazkii.botania.common.Botania;
@@ -22,6 +25,7 @@ import vazkii.botania.common.achievement.ModAchievements;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.core.helper.MathHelper;
 import vazkii.botania.common.core.helper.Vector3;
+import vazkii.botania.common.entity.ModEntities;
 
 public class TileLightRelay extends TileMod implements IWandBindable {
 
@@ -292,7 +296,7 @@ public class TileLightRelay extends TileMod implements IWandBindable {
 
 		@Override
 		public Packet getSpawnPacketForThisEntity() {
-			return null;
+			return ModEntities.getSpawnPacket(this, ModEntities.EntityPlayerMoverId);
 		}
 
 		@Override

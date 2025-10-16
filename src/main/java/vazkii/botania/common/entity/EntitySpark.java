@@ -11,6 +11,8 @@
 package vazkii.botania.common.entity;
 
 import java.awt.Color;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -23,6 +25,7 @@ import java.util.WeakHashMap;
 
 import baubles.common.lib.PlayerHandler;
 import btw.entity.EntityWithCustomPacket;
+import btw.network.packet.BTWPacketManager;
 import net.minecraft.src.*;
 import vazkii.botania.api.mana.IManaItem;
 import vazkii.botania.api.mana.IManaPool;
@@ -32,7 +35,6 @@ import vazkii.botania.api.mana.spark.SparkHelper;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.core.helper.Vector3;
 import vazkii.botania.common.item.ModItems;
-//import baubles.common.lib.PlayerHandler;
 
 public class EntitySpark extends Entity implements ISparkEntity, EntityWithCustomPacket {
 
@@ -378,12 +380,12 @@ public class EntitySpark extends Entity implements ISparkEntity, EntityWithCusto
 
 	@Override
 	public Packet getSpawnPacketForThisEntity() {
-		return null;
+		return ModEntities.getSpawnPacket(this, ModEntities.EntitySparkId);
 	}
 
 	@Override
 	public int getTrackerViewDistance() {
-		return  64;
+		return 64;
 	}
 
 	@Override

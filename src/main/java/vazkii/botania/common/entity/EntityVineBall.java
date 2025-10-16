@@ -11,10 +11,14 @@
 package vazkii.botania.common.entity;
 
 import btw.entity.EntityWithCustomPacket;
+import btw.network.packet.BTWPacketManager;
 import dev.bagel.interfaces.BlockExtensions;
 import net.minecraft.src.*;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.common.block.ModBlocks;
+
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 
 public class EntityVineBall extends EntityThrowable implements EntityWithCustomPacket {
 
@@ -65,7 +69,8 @@ public class EntityVineBall extends EntityThrowable implements EntityWithCustomP
 
 	@Override
 	public Packet getSpawnPacketForThisEntity() {
-		return null;
+		return ModEntities.getSpawnPacket(this, ModEntities.EntityVineBallId);
+
 	}
 
 	@Override

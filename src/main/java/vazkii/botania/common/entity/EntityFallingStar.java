@@ -10,9 +10,12 @@
  */
 package vazkii.botania.common.entity;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.util.List;
 
 import btw.entity.EntityWithCustomPacket;
+import btw.network.packet.BTWPacketManager;
 import dev.bagel.interfaces.BlockExtensions;
 import net.minecraft.src.*;
 import vazkii.botania.common.Botania;
@@ -79,7 +82,8 @@ public class EntityFallingStar extends EntityThrowableCopy implements EntityWith
 
 	@Override
 	public Packet getSpawnPacketForThisEntity() {
-		return null;
+		return ModEntities.getSpawnPacket(this, ModEntities.EntityFallingStarId);
+
 	}
 
 	@Override
