@@ -58,7 +58,8 @@ public class ItemIncenseStick extends ItemMod implements IBrewItem, IBrewContain
 
 	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
-		icons = new Icon[2];
+		//todofix incense stick rendering should be 2, but crashes with 2. strange
+		icons = new Icon[3];
 		for(int i = 0; i < icons.length; i++)
 			icons[i] = IconHelper.forItem(par1IconRegister, this, i);
 	}
@@ -66,6 +67,11 @@ public class ItemIncenseStick extends ItemMod implements IBrewItem, IBrewContain
 	@Override
 	public boolean requiresMultipleRenderPasses() {
 		return true;
+	}
+
+	@Override
+	public int getRenderPasses(int metadata) {
+		return 2;
 	}
 
 	@Override
