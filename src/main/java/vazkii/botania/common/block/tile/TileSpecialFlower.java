@@ -141,7 +141,6 @@ public class TileSpecialFlower extends TileMod implements IWandBindable, ISubTil
 
 		if(subTile != null)
 			subTile.readFromPacketNBTInternal(subCmp);
-		System.out.println("tags: "+ cmp.getTags());
 	}
 
 	public Icon getIcon() {

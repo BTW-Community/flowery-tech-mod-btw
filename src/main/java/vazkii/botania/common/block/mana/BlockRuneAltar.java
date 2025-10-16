@@ -40,7 +40,7 @@ public class BlockRuneAltar extends BlockModContainer implements IWandable, ILex
 
 	public BlockRuneAltar(int id) {
 		super(id, Material.rock);
-		setBlockBounds(0F, 0F, 0F, 1F, 0.75F, 1F);
+		initBlockBounds(0F, 0F, 0F, 1F, 0.75F, 1F);
 		setHardness(2.0F);
 		setResistance(10.0F);
 		setStepSound(soundStoneFootstep);

@@ -25,7 +25,7 @@ public class BlockTeruTeruBozu extends BlockModContainer implements ILexiconable
 		super(id, Material.cloth);
 		setUnlocalizedName(LibBlockNames.TERU_TERU_BOZU);
 		float f = 0.25F;
-		setBlockBounds(f, 0.01F, f, 1F - f, 0.99F, 1F - f);
+		initBlockBounds(f, 0.01F, f, 1F - f, 0.99F, 1F - f);
 	}
 
 	@Override

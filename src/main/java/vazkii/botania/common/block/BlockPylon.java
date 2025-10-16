@@ -42,7 +42,7 @@ public class BlockPylon extends BlockModContainer implements ILexiconable {
 		setLightValue(0.5F);
 
 		float f = 1F / 16F * 2F;
-		setBlockBounds(f, 0F, f, 1F - f, 1F / 16F * 21F, 1F - f);
+		initBlockBounds(f, 0F, f, 1F - f, 1F / 16F * 21F, 1F - f);
 	}
 	@Override
 	protected boolean shouldRegisterInNameSet() {

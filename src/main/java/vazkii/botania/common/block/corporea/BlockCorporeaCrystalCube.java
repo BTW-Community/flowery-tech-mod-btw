@@ -32,7 +32,7 @@ public class BlockCorporeaCrystalCube extends BlockCorporeaBase implements ILexi
 		setHardness(5.5F);
 		setStepSound(soundMetalFootstep);
 		float f = (1F - 10F / 16F) / 2F;
-		setBlockBounds(f, 0F, f, 1F - f, 1F, 1F - f);
+		initBlockBounds(f, 0F, f, 1F - f, 1F, 1F - f);
 	}
 
 	@Override

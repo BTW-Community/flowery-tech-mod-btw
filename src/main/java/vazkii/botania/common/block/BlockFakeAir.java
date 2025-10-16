@@ -30,7 +30,7 @@ public class BlockFakeAir extends BlockModContainer {
 	public BlockFakeAir(int id) {
 		super(id, Material.air);
 		setUnlocalizedName(LibBlockNames.FAKE_AIR);
-		setBlockBounds(0, 0, 0, 0, 0, 0);
+		initBlockBounds(0, 0, 0, 0, 0, 0);
 		setTickRandomly(true);
 	}
 

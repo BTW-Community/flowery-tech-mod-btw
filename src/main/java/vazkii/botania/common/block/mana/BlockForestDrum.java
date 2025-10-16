@@ -36,7 +36,7 @@ public class BlockForestDrum extends BlockMod implements IManaTrigger, ILexicona
 	public BlockForestDrum(int id) {
 		super(id, Material.wood);
 		float f = 1F / 16F;
-		setBlockBounds(f * 3, 0F, f * 3, 1F - f * 3, 1F - f * 2, 1F - f * 3);
+		initBlockBounds(f * 3, 0F, f * 3, 1F - f * 3, 1F - f * 2, 1F - f * 3);
 
 		setHardness(2.0F);
 		setStepSound(soundWoodFootstep);

@@ -29,7 +29,7 @@ public class BlockTinyPlanet extends BlockModContainer implements ILexiconable {
 		setResistance(100F);
 		setStepSound(soundStoneFootstep);
 		float size = 3F / 16F;
-		setBlockBounds(size, size, size, 1F - size, 1F - size, 1F - size);
+		initBlockBounds(size, size, size, 1F - size, 1F - size, 1F - size);
 		setUnlocalizedName(LibBlockNames.TINY_PLANET);
 	}
 

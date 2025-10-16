@@ -40,7 +40,7 @@ public class BlockHourglass extends BlockModContainer implements IManaTrigger, I
 		float f = 1F / 16F;
 		float w = 8F * f;
 		float d = (1F - w) / 2;
-		setBlockBounds(d, 0F, d, 1F - d, 1.15F, 1F - d);
+		initBlockBounds(d, 0F, d, 1F - d, 1.15F, 1F - d);
 
 		random = new Random();
 	}

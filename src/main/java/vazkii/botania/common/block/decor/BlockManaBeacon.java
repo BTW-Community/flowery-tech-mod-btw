@@ -45,7 +45,7 @@ public class BlockManaBeacon extends BlockModContainer implements ILexiconable {
 		setResistance(10.0F);
 		setStepSound(soundMetalFootstep);
 		float size = 3F / 16F;
-		setBlockBounds(size, size, size, 1F - size, 1F - size, 1F - size);
+		initBlockBounds(size, size, size, 1F - size, 1F - size, 1F - size);
 		setUnlocalizedName(LibBlockNames.MANA_BEACON);
 	}
 

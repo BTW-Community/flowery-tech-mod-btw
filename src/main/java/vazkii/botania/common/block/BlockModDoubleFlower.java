@@ -46,7 +46,7 @@ import vazkii.botania.common.lib.LibBlockNames;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
-//todo double flower block backport
+//todo double flower block backport, this is pain
 public class BlockModDoubleFlower extends BlockDoublePlant implements ILexiconable {
 
     private static final int COUNT = 8;

@@ -62,7 +62,7 @@ public class BlockPool extends BlockModContainer implements IWandHUD, IWandable,
 		setResistance(10.0F);
 		setStepSound(soundStoneFootstep);
 		setUnlocalizedName(LibBlockNames.POOL);
-		setBlockBounds(0F, 0F, 0F, 1F, 0.5F, 1F);
+		initBlockBounds(0F, 0F, 0F, 1F, 0.5F, 1F);
 
 		BotaniaAPI.blacklistBlockFromMagnet(this, Short.MAX_VALUE);
 	}
@@ -129,18 +129,18 @@ public class BlockPool extends BlockModContainer implements IWandHUD, IWandable,
 	}
 
 	@Override
-	public void addCollisionBoxesToList(World p_149743_1_, int p_149743_2_, int p_149743_3_, int p_149743_4_, AxisAlignedBB p_149743_5_, List p_149743_6_, Entity p_149743_7_) {
+	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB intersecting, List list, Entity entity) {
 		float f = 1F / 16F;
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, f, 1.0F);
-		super.addCollisionBoxesToList(p_149743_1_, p_149743_2_, p_149743_3_, p_149743_4_, p_149743_5_, p_149743_6_, p_149743_7_);
+		super.addCollisionBoxesToList(world, x, y, z, intersecting, list, entity);
 		setBlockBounds(0.0F, 0.0F, 0.0F, f, 0.5F, 1.0F);
-		super.addCollisionBoxesToList(p_149743_1_, p_149743_2_, p_149743_3_, p_149743_4_, p_149743_5_, p_149743_6_, p_149743_7_);
+		super.addCollisionBoxesToList(world, x, y, z, intersecting, list, entity);
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, f);
-		super.addCollisionBoxesToList(p_149743_1_, p_149743_2_, p_149743_3_, p_149743_4_, p_149743_5_, p_149743_6_, p_149743_7_);
+		super.addCollisionBoxesToList(world, x, y, z, intersecting, list, entity);
 		setBlockBounds(1.0F - f, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
-		super.addCollisionBoxesToList(p_149743_1_, p_149743_2_, p_149743_3_, p_149743_4_, p_149743_5_, p_149743_6_, p_149743_7_);
+		super.addCollisionBoxesToList(world, x, y, z, intersecting, list, entity);
 		setBlockBounds(0.0F, 0.0F, 1.0F - f, 1.0F, 0.5F, 1.0F);
-		super.addCollisionBoxesToList(p_149743_1_, p_149743_2_, p_149743_3_, p_149743_4_, p_149743_5_, p_149743_6_, p_149743_7_);
+		super.addCollisionBoxesToList(world, x, y, z, intersecting, list, entity);
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
 	}
 
@@ -148,6 +148,12 @@ public class BlockPool extends BlockModContainer implements IWandHUD, IWandable,
 //	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, ForgeDirection side) {
 //		return side == ForgeDirection.DOWN;
 //	}
+
+
+	@Override
+	public boolean hasCenterHardPointToFacing(IBlockAccess blockAccess, int i, int j, int k, int iFacing) {
+		return super.hasCenterHardPointToFacing(blockAccess, i, j, k, iFacing);
+	}
 
 	@Override
 	public boolean isOpaqueCube() {

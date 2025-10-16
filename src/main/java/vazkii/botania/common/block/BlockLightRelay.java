@@ -42,7 +42,7 @@ public class BlockLightRelay extends BlockModContainer implements IWandable, ILe
 	protected BlockLightRelay(int id) {
 		super(id, Material.glass);
 		float f = 5F / 16F;
-		setBlockBounds(f, f, f, 1F - f, 1F - f, 1F - f);
+		initBlockBounds(f, f, f, 1F - f, 1F - f, 1F - f);
 		setUnlocalizedName(LibBlockNames.LIGHT_RELAY);
 	}
 

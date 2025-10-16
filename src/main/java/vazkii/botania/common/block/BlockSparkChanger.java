@@ -39,7 +39,7 @@ public class BlockSparkChanger extends BlockModContainer implements ILexiconable
 
 	public BlockSparkChanger(int id) {
 		super(id, Material.rock);
-		setBlockBounds(0F, 0F, 0F, 1F, 3F / 16F, 1F);
+		initBlockBounds(0F, 0F, 0F, 1F, 3F / 16F, 1F);
 		setHardness(2.0F);
 		setResistance(10.0F);
 		setStepSound(soundStoneFootstep);

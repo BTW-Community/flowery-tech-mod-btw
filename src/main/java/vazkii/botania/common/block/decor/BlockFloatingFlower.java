@@ -55,7 +55,7 @@ public class BlockFloatingFlower extends BlockModContainer implements ILexiconab
 		setLightValue(1F);
 
 		float f = 0.1F;
-		setBlockBounds(f, f, f, 1F - f, 1F - f, 1F - f);
+		initBlockBounds(f, f, f, 1F - f, 1F - f, 1F - f);
 	}
 
 	@Override
