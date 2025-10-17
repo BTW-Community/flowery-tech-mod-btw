@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common;
 
+import baubles.common.Baubles;
 import btw.BTWAddon;
 import btw.world.biome.BiomeDecoratorBase;
 import net.fabricmc.api.EnvType;
@@ -65,6 +66,7 @@ public class Botania extends BTWAddon {
 
 	@Override
 	public void preInitialize() {
+		Baubles.instance.preInit();
 		gardenOfGlassLoaded = FabricLoader.getInstance().isModLoaded("GardenOfGlass");
 
 		thaumcraftLoaded = FabricLoader.getInstance().isModLoaded("Thaumcraft");
@@ -82,6 +84,7 @@ public class Botania extends BTWAddon {
 	//FMLInitializationEvent
 	@Override
 	public void initialize() {
+		Baubles.instance.init();
 		getProxy().init();
 	}
 	//FMLPostInitializationEvent

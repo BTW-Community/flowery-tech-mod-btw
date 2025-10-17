@@ -30,7 +30,7 @@ public class Baubles {
     public static final Item itemDebugger = new ItemDebugger(1000).setUnlocalizedName("baubleSlotDebugTool");
 
 //    FMLPreInitializationEvent event
-    @SubscribeEvent
+//    @SubscribeEvent
     public void preInit() {
 
         PacketHandler.init();
