@@ -65,4 +65,8 @@ public class ItemManaCookie extends ItemFood {
 		totalBiscuitIcon = IconHelper.forName(par1IconRegister, "totalBiscuit");
 	}
 
+	@Override
+	public String getModId() {
+		return "botania";
+	}
 }

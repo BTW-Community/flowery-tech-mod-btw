@@ -182,4 +182,8 @@ public class ItemLivingwoodBow extends ItemBow implements IManaUsingItem {
 		return itemIcon;
 	}
 
+	@Override
+	public String getModId() {
+		return "botania";
+	}
 }

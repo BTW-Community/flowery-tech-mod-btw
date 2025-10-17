@@ -133,4 +133,9 @@ public class ItemManasteelShears extends ItemShears implements IManaUsingItem {
 	public boolean usesMana(ItemStack stack) {
 		return true;
 	}
+
+	@Override
+	public String getModId() {
+		return "botania";
+	}
 }

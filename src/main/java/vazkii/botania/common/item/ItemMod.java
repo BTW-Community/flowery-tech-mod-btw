@@ -27,6 +27,11 @@ public class ItemMod extends Item {
 	}
 
 	@Override
+	public String getModId() {
+		return "botania";
+	}
+
+	@Override
 	public Item setUnlocalizedName(String par1Str) {
 //		GameRegistry.registerItem(this, par1Str);
 		return super.setUnlocalizedName(par1Str);

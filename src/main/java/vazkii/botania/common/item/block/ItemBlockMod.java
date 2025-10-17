@@ -46,4 +46,8 @@ public class ItemBlockMod extends ItemBlock implements IPickupAchievement, ICraf
 		return Block.blocksList[blockID] instanceof IPickupAchievement ca ? ca.getAchievementOnPickup(stack, player, item) : null;
 	}
 
+	@Override
+	public String getModId() {
+		return "botania";
+	}
 }

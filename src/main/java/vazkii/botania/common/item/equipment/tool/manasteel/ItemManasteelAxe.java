@@ -124,4 +124,8 @@ public class ItemManasteelAxe extends ItemAxe implements IManaUsingItem, ISortab
 		return ToolCommons.getToolPriority(stack);
 	}
 
+	@Override
+	public String getModId() {
+		return "botania";
+	}
 }

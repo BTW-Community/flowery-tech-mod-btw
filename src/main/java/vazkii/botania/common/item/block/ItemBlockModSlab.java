@@ -26,4 +26,8 @@ public class ItemBlockModSlab extends ItemSlab {
 		return Block.blocksList[getBlockID()].getUnlocalizedName().replaceAll("tile.", "tile.botania:");
 	}
 
+	@Override
+	public String getModId() {
+		return "botania";
+	}
 }

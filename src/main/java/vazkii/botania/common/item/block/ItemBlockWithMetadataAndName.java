@@ -47,4 +47,9 @@ public class ItemBlockWithMetadataAndName extends ItemBlockWithMetadata implemen
 		return Block.blocksList[blockID] instanceof IPickupAchievement pa ? pa.getAchievementOnPickup(stack, player, item) : null;
 	}
 
+	@Override
+	public String getModId() {
+		return "botania";
+	}
+
 }

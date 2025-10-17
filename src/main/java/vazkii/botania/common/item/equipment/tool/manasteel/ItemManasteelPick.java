@@ -123,4 +123,8 @@ public class ItemManasteelPick extends ItemPickaxe implements IManaUsingItem, IS
 		return ToolCommons.getToolPriority(stack);
 	}
 
+	@Override
+	public String getModId() {
+		return "botania";
+	}
 }

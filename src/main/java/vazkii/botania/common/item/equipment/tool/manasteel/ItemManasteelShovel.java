@@ -133,4 +133,8 @@ public class ItemManasteelShovel extends ItemSpade implements IManaUsingItem, IS
 		return ToolCommons.getToolPriority(stack);
 	}
 
+	@Override
+	public String getModId() {
+		return "botania";
+	}
 }

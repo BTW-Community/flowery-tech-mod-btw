@@ -25,4 +25,9 @@ public class ItemBlockSpecialQuartz extends ItemMultiTextureTile {
 	public String getUnlocalizedName(ItemStack par1ItemStack) {
 		return par1ItemStack.getItemDamage() >= 3 ? "" : ((BlockSpecialQuartz) Block.blocksList[blockID]).getNames()[par1ItemStack.getItemDamage()];
 	}
+
+	@Override
+	public String getModId() {
+		return "botania";
+	}
 }

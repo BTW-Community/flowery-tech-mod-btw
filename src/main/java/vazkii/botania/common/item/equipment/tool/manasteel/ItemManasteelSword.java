@@ -104,4 +104,8 @@ public class ItemManasteelSword extends ItemSword implements IManaUsingItem {
 		return true;
 	}
 
+	@Override
+	public String getModId() {
+		return "botania";
+	}
 }
