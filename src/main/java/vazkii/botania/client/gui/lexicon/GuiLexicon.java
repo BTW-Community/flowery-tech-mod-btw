@@ -572,7 +572,7 @@ public class GuiLexicon extends GuiScreen {
 		if(par2 == KONAMI_CODE[konamiIndex]) {
 			konamiIndex++;
 			if(konamiIndex >= KONAMI_CODE.length) {
-				mc.sndManager.playSoundFX(BotaniaSounds.WAY.sound(), 1.0f, 1.0f);
+				mc.sndManager.playSoundFX("botania:way", 1.0f, 1.0f);
 				konamiIndex = 0;
 			}
 		} else konamiIndex = 0;

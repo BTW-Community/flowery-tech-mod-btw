@@ -2,11 +2,13 @@ package net.minecraftforge.event;
 
 import cpw.mods.fml.common.eventhandler.Cancelable;
 import cpw.mods.fml.common.eventhandler.Event;
+import net.legacyfabric.fabric.api.event.EventFactory;
+import net.minecraft.src.ChatMessageComponent;
 import net.minecraft.src.EntityPlayerMP;
 
 /**
  * ServerChatEvent is fired whenever a C01PacketChatMessage is processed. <br>
- * This event is fired via {@link ForgeHooks#onServerChatEvent(net.minecraft.network.NetHandlerPlayServer, String, ChatComponentTranslation)}, 
+ * This event is fired via {@link ForgeHooks#onServerChatEvent(net.minecraft.network.NetHandlerPlayServer, String, ChatComponentTranslation)},
  * which is executed by the NetHandlerPlayServer#processChatMessage(net.minecraft.network.play.client.C01PacketChatMessage)<br>
  * <br>
  * {@link #username} contains the username of the player sending the chat message.<br>
@@ -22,17 +24,35 @@ import net.minecraft.src.EntityPlayerMP;
  * This event is fired on the {@link MinecraftForge#EVENT_BUS}.
  **/
 @Cancelable
-public class ServerChatEvent extends Event
-{
+public class ServerChatEvent extends Event {
     public final String message, username;
     public final EntityPlayerMP player;
-    public String component;
-    public ServerChatEvent(EntityPlayerMP player, String message, String component)
-    {
+    public ChatMessageComponent component;
+
+    public ServerChatEvent(EntityPlayerMP player, String message, ChatMessageComponent component) {
         super();
         this.message = message;
         this.player = player;
         this.username = player.username;
         this.component = component;
+    }
+
+    public static final net.legacyfabric.fabric.api.event.Event<ServerChatEventCallback> EVENT = EventFactory.createArrayBacked(ServerChatEventCallback.class, (callbacks) -> (event -> {
+        for (ServerChatEventCallback callback : callbacks) {
+            callback.onServerChat(event);
+            if (event.isCanceled()) {
+                return;
+            }
+        }
+    }));
+
+    @Override
+    public boolean isCancelable() {
+        return true;
+    }
+
+    @FunctionalInterface
+    public interface ServerChatEventCallback {
+        void onServerChat(ServerChatEvent event);
     }
 }

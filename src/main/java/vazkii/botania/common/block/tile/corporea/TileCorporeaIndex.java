@@ -242,9 +242,10 @@ public class TileCorporeaIndex extends TileCorporeaBase implements ICorporeaRequ
 
 		public InputHandler() {
 			CorporeaHelper.registerAutoCompleteController(this);
+			ServerChatEvent.EVENT.register(this::onChatMessage);
 		}
 
-		@SubscribeEvent(priority = EventPriority.HIGHEST)
+//		@SubscribeEvent(priority = EventPriority.HIGHEST)
 		public void onChatMessage(ServerChatEvent event) {
 			List<TileCorporeaIndex> nearbyIndexes = getNearbyIndexes(event.player);
 			if(!nearbyIndexes.isEmpty()) {

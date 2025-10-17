@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.Calendar;
 
+import dev.bagel.util.BotaniaSounds;
 import dev.bagel.util.Items;
 import net.fabricmc.api.EnvType;
 import net.minecraft.src.*;
@@ -212,6 +213,7 @@ public class ClientProxy extends CommonProxy {
 		}
 
 		initRenderers();
+		BotaniaSounds.registerSounds();
 	}
 
 	@Override

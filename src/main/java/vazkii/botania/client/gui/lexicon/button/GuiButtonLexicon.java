@@ -26,7 +26,7 @@ public class GuiButtonLexicon extends GuiButtonSound {
 	@Override
 	public void func_146113_a()  {
 
-		Minecraft.getMinecraft().sndManager.playSoundFX(BotaniaSounds.LEXICON_PAGE.sound(), 1.0f, 1.0f);
+		Minecraft.getMinecraft().sndManager.playSoundFX("botania:lexiconPage", 1.0f, 1.0f);
 	}
 
 }
