@@ -36,7 +36,7 @@ public class BlockTerraPlate extends BlockModContainer implements ILexiconable {
 
 	public BlockTerraPlate(int id) {
 		super(id, Material.iron);
-		setBlockBounds(0F, 0F, 0F, 1F, 3F / 16F, 1F);
+		initBlockBounds(0F, 0F, 0F, 1F, 3F / 16F, 1F);
 		setHardness(3F);
 		setResistance(10F);
 		setStepSound(soundMetalFootstep);

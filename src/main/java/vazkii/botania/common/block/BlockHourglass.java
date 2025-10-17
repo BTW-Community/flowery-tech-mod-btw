@@ -12,6 +12,7 @@ package vazkii.botania.common.block;
 
 import java.util.Random;
 
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.src.*;
 import vazkii.botania.api.internal.IManaBurst;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
@@ -74,6 +75,16 @@ public class BlockHourglass extends BlockModContainer implements IManaTrigger, I
 		}
 
 		return false;
+	}
+
+	@Override
+	public boolean renderBlock(RenderBlocks renderer, int i, int j, int k) {
+		return false;
+	}
+
+	@Override
+	public void renderBlockAsItem(RenderBlocks renderBlocks, int iItemDamage, float fBrightness) {
+		RenderingRegistry.instance().renderInventoryBlock(renderBlocks, this, iItemDamage, getRenderType());
 	}
 
 	@Override

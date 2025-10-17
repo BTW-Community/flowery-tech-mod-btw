@@ -29,7 +29,7 @@ public class BlockBuriedPetals extends BlockModFlower {
 
 	public BlockBuriedPetals(int id) {
 		super(id, LibBlockNames.BURIED_PETALS);
-		setBlockBounds(0F, 0F, 0F, 1F, 0.1F, 1F);
+		initBlockBounds(0F, 0F, 0F, 1F, 0.1F, 1F);
 		setLightValue(0.25F);
 	}
 
@@ -66,6 +66,11 @@ public class BlockBuriedPetals extends BlockModFlower {
 
 	@Override
 	public int idDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
+		return ModItems.petal.itemID;
+	}
+
+	@Override
+	public int idPicked(World par1World, int par2, int par3, int par4) {
 		return ModItems.petal.itemID;
 	}
 

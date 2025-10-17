@@ -12,6 +12,7 @@ package vazkii.botania.common.block.mana;
 
 import java.util.List;
 
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.src.*;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -30,7 +31,7 @@ public class BlockSpawnerClaw extends BlockModContainer implements ILexiconable 
 
 		float f = 1F / 8F;
 		float f1 = 1F / 16F;
-		setBlockBounds(f, 0F, f, 1F - f, f1, 1F - f);
+		initBlockBounds(f, 0F, f, 1F - f, f1, 1F - f);
 	}
 
 	@Override
@@ -42,6 +43,16 @@ public class BlockSpawnerClaw extends BlockModContainer implements ILexiconable 
 	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		//NO-OP
+	}
+
+	@Override
+	public boolean renderBlock(RenderBlocks renderer, int i, int j, int k) {
+		return false;
+	}
+
+	@Override
+	public void renderBlockAsItem(RenderBlocks renderBlocks, int iItemDamage, float fBrightness) {
+		RenderingRegistry.instance().renderInventoryBlock(renderBlocks, this, iItemDamage, getRenderType());
 	}
 
 	@Override

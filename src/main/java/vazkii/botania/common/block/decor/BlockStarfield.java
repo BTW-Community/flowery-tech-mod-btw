@@ -36,7 +36,7 @@ public class BlockStarfield extends BlockModContainer implements ILexiconable {
 		setStepSound(soundMetalFootstep);
 		setUnlocalizedName(LibBlockNames.STARFIELD);
 
-		setBlockBounds(0F, 0F, 0F, 1F, 0.25F, 1F);
+		initBlockBounds(0F, 0F, 0F, 1F, 0.25F, 1F);
 	}
 
 	@Override

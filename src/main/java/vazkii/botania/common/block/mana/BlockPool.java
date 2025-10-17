@@ -13,6 +13,7 @@ package vazkii.botania.common.block.mana;
 import java.util.ArrayList;
 import java.util.List;
 
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.src.*;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.BotaniaAPI;
@@ -114,6 +115,11 @@ public class BlockPool extends BlockModContainer implements IWandHUD, IWandable,
 	@Override
 	public boolean renderBlock(RenderBlocks renderer, int i, int j, int k) {
 		return false;
+	}
+
+	@Override
+	public void renderBlockAsItem(RenderBlocks renderBlocks, int iItemDamage, float fBrightness) {
+		RenderingRegistry.instance().renderInventoryBlock(renderBlocks, this, iItemDamage, getRenderType());
 	}
 
 	@Override

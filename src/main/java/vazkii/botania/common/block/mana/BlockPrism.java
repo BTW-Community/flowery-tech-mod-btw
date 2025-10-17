@@ -69,10 +69,10 @@ public class BlockPrism extends BlockModContainer implements IManaTrigger, ILexi
 		return false;
 	}
 
-	@Override
-	public boolean renderBlock(RenderBlocks renderer, int i, int j, int k) {
-		return false;
-	}
+//	@Override
+//	public boolean renderBlock(RenderBlocks renderer, int i, int j, int k) {
+//		return false;
+//	}
 
 	@Override
 	public boolean renderAsNormalBlock() {

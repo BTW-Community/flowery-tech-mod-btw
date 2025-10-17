@@ -13,6 +13,7 @@ package vazkii.botania.common.block.mana;
 import java.util.List;
 import java.util.Random;
 
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.src.*;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -57,6 +58,11 @@ public class BlockSpreader extends BlockModContainer implements IWandable, IWand
 	@Override
 	public boolean renderBlock(RenderBlocks renderer, int i, int j, int k) {
 		return false;
+	}
+
+	@Override
+	public void renderBlockAsItem(RenderBlocks renderBlocks, int iItemDamage, float fBrightness) {
+		RenderingRegistry.instance().renderInventoryBlock(renderBlocks, this, iItemDamage, getRenderType());
 	}
 
 	@Override

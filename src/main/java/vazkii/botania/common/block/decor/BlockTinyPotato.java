@@ -12,6 +12,7 @@ package vazkii.botania.common.block.decor;
 
 import java.util.ArrayList;
 
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.src.*;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -59,6 +60,11 @@ public class BlockTinyPotato extends BlockModContainer implements ILexiconable {
 	@Override
 	public boolean renderBlock(RenderBlocks renderer, int i, int j, int k) {
 		return false;
+	}
+
+	@Override
+	public void renderBlockAsItem(RenderBlocks renderBlocks, int iItemDamage, float fBrightness) {
+		RenderingRegistry.instance().renderInventoryBlock(renderBlocks, this, iItemDamage, getRenderType());
 	}
 
 	@Override

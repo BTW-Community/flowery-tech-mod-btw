@@ -52,7 +52,7 @@ public class BlockModMushroom extends BlockMushroom implements IHornHarvestable,
 		setLightValue(0.2F);
 		setHardness(0F);
 		setStepSound(soundGrassFootstep);
-		setBlockBounds(0.3F, 0.0F, 0.3F, 0.8F, 1, 0.8F);
+		initBlockBounds(0.3F, 0.0F, 0.3F, 0.8F, 1, 0.8F);
 		setTickRandomly(false);
 		setCreativeTab(CreativeTabs.tabMisc);
 	}
@@ -81,8 +81,7 @@ public class BlockModMushroom extends BlockMushroom implements IHornHarvestable,
 //	@Override
 	public Block setUnlocalizedName(String par1Str) {
 		var item = new ItemBlockWithMetadataAndName(this);
-//GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
-		return this;
+		return super.setUnlocalizedName(par1Str);
 	}
 
 	@Override
