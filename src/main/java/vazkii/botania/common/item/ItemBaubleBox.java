@@ -33,7 +33,7 @@ public class ItemBaubleBox extends ItemMod {
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-		player.openGui(Botania.instance, LibGuiIDs.BAUBLE_BOX, world, 0, 0, 0);
+		player.openGui(Botania.instance.getModID(), LibGuiIDs.BAUBLE_BOX, world, 0, 0, 0);
 		return stack;
 	}
 

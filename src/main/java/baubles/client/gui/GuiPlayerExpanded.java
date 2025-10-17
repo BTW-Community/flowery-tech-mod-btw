@@ -275,7 +275,7 @@ public class GuiPlayerExpanded extends GuiContainer {
 
 	@Override
 	protected void keyTyped(char par1, int keyCode) {
-		if (keyCode == Baubles.proxy.keyHandler.key.keyCode) {
+		if (keyCode == Baubles.getProxy().keyHandler.key.keyCode) {
             mc.thePlayer.closeScreen();
         } else {
         	super.keyTyped(par1, keyCode);

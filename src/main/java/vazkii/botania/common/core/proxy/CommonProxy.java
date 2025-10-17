@@ -11,6 +11,8 @@
 package vazkii.botania.common.core.proxy;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.network.IGuiHandler;
+import dev.bagel.network.CustomGuiPacketHandler;
 import net.fabricmc.api.EnvType;
 import net.minecraft.src.*;
 import net.minecraft.server.MinecraftServer;
@@ -73,6 +75,7 @@ import vazkii.botania.common.world.WorldTypeSkyblock;
 import cpw.mods.fml.common.FMLLog;
 
 public class CommonProxy {
+	public static GuiHandler guiHandler = new GuiHandler();
 	@SubscribeEvent
 	public void preInit() {
 		BotaniaAPI.internalHandler = new InternalMethodHandler();
@@ -93,6 +96,7 @@ public class CommonProxy {
 	}
 
 	public void init() {
+		CustomGuiPacketHandler.INSTANCE.modIdToHandler.put("botania", guiHandler);
 		ModBlocks.init();
 		ModItems.init();
 		ModEntities.init();

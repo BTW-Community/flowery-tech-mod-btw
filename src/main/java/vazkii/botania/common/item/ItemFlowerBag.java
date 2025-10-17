@@ -88,7 +88,7 @@ public class ItemFlowerBag extends ItemMod {
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-		player.openGui(Botania.instance, LibGuiIDs.FLOWER_BAG, world, 0, 0, 0);
+		player.openGui(Botania.instance.getModID(), LibGuiIDs.FLOWER_BAG, world, 0, 0, 0);
 		return stack;
 	}
 

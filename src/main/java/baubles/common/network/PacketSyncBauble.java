@@ -56,7 +56,7 @@ public class PacketSyncBauble implements IMessage, IMessageHandler<PacketSyncBau
 
 	@Override
 	public IMessage onMessage(PacketSyncBauble message, MessageContext ctx) {
-		World world = Baubles.proxy.getClientWorld();
+		World world = Baubles.getProxy().getClientWorld();
 		if (world == null) return null;
 		Entity e = world.getEntityByID(message.playerId);
 		if (e instanceof EntityPlayer player) {

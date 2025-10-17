@@ -13,6 +13,9 @@ package vazkii.botania.common;
 import baubles.common.Baubles;
 import btw.BTWAddon;
 import btw.world.biome.BiomeDecoratorBase;
+import cpw.mods.fml.common.network.IGuiHandler;
+import dev.bagel.network.CustomGuiPacketHandler;
+import dev.bagel.util.GuiHandlerHolder;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.src.*;
@@ -26,7 +29,7 @@ import vazkii.botania.common.integration.coloredlights.LightHelperVanilla;
 import java.util.Random;
 
 //@Mod(modid = LibMisc.MOD_ID, name = LibMisc.MOD_NAME, version = LibMisc.VERSION, dependencies = LibMisc.DEPENDENCIES, guiFactory = LibMisc.GUI_FACTORY)
-public class Botania extends BTWAddon {
+public class Botania extends BTWAddon implements GuiHandlerHolder {
 
 	public static boolean gardenOfGlassLoaded = false;
 
@@ -40,11 +43,6 @@ public class Botania extends BTWAddon {
 	public static ILightHelper lightHelper;
 
 	public static Botania instance = new Botania();
-
-	public EnvType getEffectiveSide() {
-		Thread thr = Thread.currentThread();
-		return !(thr instanceof ThreadMinecraftServer) && !(thr instanceof ServerListenThread) ? EnvType.CLIENT : EnvType.SERVER;
-	}
 
 	@Override
 	public void postSetup() {
@@ -65,6 +63,11 @@ public class Botania extends BTWAddon {
 	}
 
 	@Override
+	public String getModID() {
+		return "botania";
+	}
+
+	@Override
 	public void preInitialize() {
 		Baubles.instance.preInit();
 		gardenOfGlassLoaded = FabricLoader.getInstance().isModLoaded("GardenOfGlass");
@@ -81,9 +84,11 @@ public class Botania extends BTWAddon {
 
 		getProxy().preInit();
 	}
+
 	//FMLInitializationEvent
 	@Override
 	public void initialize() {
+		registerPacketHandler("botania|GUI", CustomGuiPacketHandler.INSTANCE);
 		Baubles.instance.init();
 		getProxy().init();
 	}
@@ -97,6 +102,12 @@ public class Botania extends BTWAddon {
 	public void decorateWorld(BiomeDecoratorBase decorator, World world, Random rand, int x, int y, BiomeGenBase biome) {
 		new BiomeDecorationHandler().decorate(world, rand, x, y);
 		BiomeDecorationHandler.onWorldDecoration(new DecorateBiomeEvent.Decorate(world, rand, x, y, DecorateBiomeEvent.Decorate.EventType.FLOWERS));
+	}
+
+
+	@Override
+	public IGuiHandler getGuiHandler() {
+		return CommonProxy.guiHandler;
 	}
 
 	//FMLServerAboutToStartEvent
