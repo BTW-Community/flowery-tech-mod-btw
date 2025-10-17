@@ -14,14 +14,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import btw.block.BTWBlocks;
+import btw.item.BTWItems;
+import btw.item.tag.BTWTags;
+import btw.item.tag.Tag;
+import btw.item.tag.TagInstance;
 import dev.bagel.util.Items;
-import net.minecraft.src.Block;
+import net.minecraft.src.*;
 import net.minecraft.src.Block;
 import net.minecraft.src.Item;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.CraftingManager;
-import net.minecraft.src.IRecipe;
 
 import org.apache.logging.log4j.Level;
 
@@ -316,14 +317,14 @@ public final class ModCraftingRecipes {
 	public static IRecipe recipeMagmaToSlimeball;
 	public static IRecipe recipeFelPumpkin;
 	public static IRecipe recipeEndPortal;
-
+	private static final Tag saplings = Tag.of(new ResourceLocation("btw:saplings")).add(BTWBlocks.oakSapling, BTWBlocks.birchSapling, BTWBlocks.jungleSapling, BTWBlocks.spruceSapling);
 	public static void init() {
 		if (!ConfigHandler.enableDefaultRecipes) return;
 
 		int recipeListSize = CraftingManager.getInstance().getRecipeList().size();
 
 		// Lexicon Recipe
-		addShapelessOreDictRecipe(new ItemStack(ModItems.lexicon), "treeSapling", Item.book);
+		addShapelessOreDictRecipe(new ItemStack(ModItems.lexicon), TagInstance.of(saplings), Item.book);
 		recipeLexicon = BotaniaAPI.getLatestAddedRecipe();
 
 		// Petal/Dye Recipes
@@ -345,8 +346,8 @@ public final class ModCraftingRecipes {
 		// Pestle and Mortar Recipe
 		addOreDictRecipe(new ItemStack(ModItems.pestleAndMortar),
 				" S", "W ", "B ",
-				'S', "stickWood",
-				'W', "plankWood",
+				'S', Item.stick,
+				'W', BTWTags.planks,
 				'B', Item.bowlEmpty);
 		recipePestleAndMortar = BotaniaAPI.getLatestAddedRecipe();
 
@@ -367,7 +368,7 @@ public final class ModCraftingRecipes {
 					"SPS", " C ", "CCC",
 					'S', "slabCobblestone",
 					'P', LibOreDict.PETAL[i],
-					'C', "cobblestone");
+					'C', Block.cobblestone);
 		recipesApothecary = BotaniaAPI.getLatestAddedRecipes(16);
 
 		// Mana Spreader Recipes
@@ -376,7 +377,7 @@ public final class ModCraftingRecipes {
 					"WWW", "GP ", "WWW",
 					'W', LibOreDict.LIVING_WOOD,
 					'P', LibOreDict.PETAL[i],
-					'G', Botania.gardenOfGlassLoaded ? LibOreDict.LIVING_WOOD : "ingotGold");
+					'G', Botania.gardenOfGlassLoaded ? LibOreDict.LIVING_WOOD : Item.ingotGold);
 		recipesSpreader = BotaniaAPI.getLatestAddedRecipes(16);
 
 		// Mana Lens Recipe
@@ -452,7 +453,7 @@ public final class ModCraftingRecipes {
 		addShapelessOreDictRecipe(new ItemStack(ModItems.lens, 1, 9), new ItemStack(ModItems.lens), new ItemStack(ModBlocks.platform));
 		recipeLensPhantom = BotaniaAPI.getLatestAddedRecipe();
 
-		addShapelessOreDictRecipe(new ItemStack(ModItems.lens, 1, 10), new ItemStack(ModItems.lens), "ingotIron", "ingotGold");
+		addShapelessOreDictRecipe(new ItemStack(ModItems.lens, 1, 10), new ItemStack(ModItems.lens), Item.ingotIron, Item.ingotGold);
 		recipeLensMagnet = BotaniaAPI.getLatestAddedRecipe();
 
 		addShapelessOreDictRecipe(new ItemStack(ModItems.lens, 1, 11), new ItemStack(ModItems.lens), LibOreDict.RUNE[14]);
@@ -470,7 +471,7 @@ public final class ModCraftingRecipes {
 		// Mana Pylon Recipe
 		addOreDictRecipe(new ItemStack(ModBlocks.pylon),
 				" G ", "MDM", " G ",
-				'G', "ingotGold",
+				'G', Item.ingotGold,
 				'M', LibOreDict.MANA_STEEL,
 				'D', LibOreDict.MANA_DIAMOND);
 		recipePylon = BotaniaAPI.getLatestAddedRecipe();
@@ -489,7 +490,7 @@ public final class ModCraftingRecipes {
 		recipeLivingrockDecor1 = BotaniaAPI.getLatestAddedRecipe();
 		addShapelessOreDictRecipe(new ItemStack(ModBlocks.livingrock, 1, 2), new ItemStack(ModBlocks.livingrock, 1, 1), new ItemStack(Item.seeds));
 		recipeLivingrockDecor2 = BotaniaAPI.getLatestAddedRecipe();
-		addShapelessOreDictRecipe(new ItemStack(ModBlocks.livingrock, 2, 3), new ItemStack(ModBlocks.livingrock, 1, 1), "cobblestone");
+		addShapelessOreDictRecipe(new ItemStack(ModBlocks.livingrock, 2, 3), new ItemStack(ModBlocks.livingrock, 1, 1), Block.cobblestone);
 		recipeLivingrockDecor3 = BotaniaAPI.getLatestAddedRecipe();
 		addOreDictRecipe(new ItemStack(ModBlocks.livingrock, 4, 4),
 				"RR", "RR",
@@ -509,7 +510,7 @@ public final class ModCraftingRecipes {
 				" W ", "W W", " W ",
 				'W', new ItemStack(ModBlocks.livingwood, 1, 1));
 		recipeLivingwoodDecor4 = BotaniaAPI.getLatestAddedRecipe();
-		addShapelessOreDictRecipe(new ItemStack(ModBlocks.livingwood, 1, 5), LibOreDict.LIVING_WOOD, "dustGlowstone");
+		addShapelessOreDictRecipe(new ItemStack(ModBlocks.livingwood, 1, 5), LibOreDict.LIVING_WOOD, Item.glowstone);
 		recipeLivingwoodDecor5 = BotaniaAPI.getLatestAddedRecipe();
 
 		// Dreamwood Decorative Blocks
@@ -521,7 +522,7 @@ public final class ModCraftingRecipes {
 		addOreDictRecipe(new ItemStack(ModBlocks.dreamwood, 4, 4),
 				" W ", "W W", " W ",
 				'W', new ItemStack(ModBlocks.dreamwood, 1, 1));
-		addShapelessOreDictRecipe(new ItemStack(ModBlocks.dreamwood, 1, 5), LibOreDict.DREAM_WOOD, "dustGlowstone");
+		addShapelessOreDictRecipe(new ItemStack(ModBlocks.dreamwood, 1, 5), LibOreDict.DREAM_WOOD, Item.glowstone);
 
 		// Mana Beacon Recipe
 		for(int i = 0; i < 16; i++)
@@ -536,7 +537,7 @@ public final class ModCraftingRecipes {
 			addOreDictRecipe(ItemSignalFlare.forColor(i),
 					"I ", " B", "W ",
 					'B', new ItemStack(ModBlocks.manaBeacon, 1, i),
-					'I', "ingotIron",
+					'I', Item.ingotIron,
 					'W', LibOreDict.LIVING_WOOD);
 		recipesSignalFlares = BotaniaAPI.getLatestAddedRecipes(16);
 
@@ -792,7 +793,7 @@ public final class ModCraftingRecipes {
 		// Golden Laurel Crown Recipe
 		addOreDictRecipe(new ItemStack(ModItems.goldLaurel),
 				"G G", "LEL", "LLL",
-				'G', "ingotGold",
+				'G', Item.ingotGold,
 				'L', "treeLeaves",
 				'E', LibOreDict.LIFE_ESSENCE);
 		recipeGoldenLaurel = BotaniaAPI.getLatestAddedRecipe();
@@ -808,7 +809,7 @@ public final class ModCraftingRecipes {
 		addOreDictRecipe(new ItemStack(ModBlocks.alchemyCatalyst),
 				"SGS", "BPB", "SGS",
 				'S', LibOreDict.LIVING_ROCK,
-				'G', "ingotGold",
+				'G', Item.ingotGold,
 				'B', new ItemStack(Item.brewingStand),
 				'P', LibOreDict.MANA_PEARL);
 		recipeAlchemyCatalyst = BotaniaAPI.getLatestAddedRecipe();
@@ -875,7 +876,7 @@ public final class ModCraftingRecipes {
 		addOreDictRecipe(new ItemStack(ModItems.divaCharm),
 				"LGP", " HG", " GL",
 				'L', LibOreDict.LIFE_ESSENCE,
-				'G', "ingotGold",
+				'G', Item.ingotGold,
 				'H', LibOreDict.RUNE[15],
 				'P', new ItemStack(ModItems.tinyPlanet));
 		recipeDivaCharm = BotaniaAPI.getLatestAddedRecipe();
@@ -891,7 +892,7 @@ public final class ModCraftingRecipes {
 
 		// Glimmering Flowers Recipes
 		for(int i = 0; i < 16; i++)
-			addShapelessOreDictRecipe(new ItemStack(ModBlocks.shinyFlower, 1, i), "dustGlowstone", "dustGlowstone", LibOreDict.FLOWER[i]);
+			addShapelessOreDictRecipe(new ItemStack(ModBlocks.shinyFlower, 1, i), Item.glowstone, Item.glowstone, LibOreDict.FLOWER[i]);
 		recipesShinyFlowers = BotaniaAPI.getLatestAddedRecipes(16);
 
 		// Abstruse Platform Recipe
@@ -1101,14 +1102,14 @@ public final class ModCraftingRecipes {
 		recipeSlingshot = BotaniaAPI.getLatestAddedRecipe();
 
 		// Moss Stone Recipe
-		addShapelessOreDictRecipe(new ItemStack(Block.cobblestoneMossy), "cobblestone", new ItemStack(ModItems.vineBall));
+		addShapelessOreDictRecipe(new ItemStack(Block.cobblestoneMossy), Block.cobblestone, new ItemStack(ModItems.vineBall));
 		recipeMossStone = BotaniaAPI.getLatestAddedRecipe();
 
 		// Prismarine Recipe
 		addOreDictRecipe(new ItemStack(ModBlocks.prismarine, 1, 0),
 				" S ", "SBS", " S ",
 				'S', LibOreDict.PRISMARINE_SHARD,
-				'B', "cobblestone");
+				'B', Block.cobblestone);
 		recipePrismarine = BotaniaAPI.getLatestAddedRecipe();
 
 		// Prismarine Brick Recipe
@@ -1320,7 +1321,7 @@ public final class ModCraftingRecipes {
 		// The Spectator Recipe
 		addOreDictRecipe(new ItemStack(ModItems.itemFinder),
 				" I ", "IYI", "IEI",
-				'I', "ingotIron",
+				'I', Item.ingotIron,
 				'Y', new ItemStack(Item.eyeOfEnder),
 				'E', "gemEmerald");
 		recipeItemFinder = BotaniaAPI.getLatestAddedRecipe();
@@ -1528,7 +1529,7 @@ public final class ModCraftingRecipes {
 		addOreDictRecipe(new ItemStack(ModItems.holyCloak),
 				"WWW", "GWG", "GSG",
 				'W', new ItemStack(Block.cloth),
-				'G', "dustGlowstone",
+				'G', Item.glowstone,
 				'S', LibOreDict.LIFE_ESSENCE);
 		recipeHolyCloak = BotaniaAPI.getLatestAddedRecipe();
 
@@ -1599,7 +1600,7 @@ public final class ModCraftingRecipes {
 				'F', LibOreDict.RUNE[1],
 				'W', LibOreDict.RUNE[0],
 				'T', LibOreDict.LIVINGWOOD_TWIG,
-				'C', "cobblestone");
+				'C', Block.cobblestone);
 		recipeCobbleRod = BotaniaAPI.getLatestAddedRecipe();
 
 		// Rod of the Molten Core Recipe
@@ -1877,7 +1878,7 @@ public final class ModCraftingRecipes {
 		// Hovering Hourglass Recipe
 		addOreDictRecipe(new ItemStack(ModBlocks.hourglass),
 				"GMG", "RSR", "GMG",
-				'G', "ingotGold",
+				'G', Item.ingotGold,
 				'M', new ItemStack(ModBlocks.manaGlass),
 				'R', "dustRedstone",
 				'S', LibOreDict.MANA_STEEL);
@@ -1928,7 +1929,7 @@ public final class ModCraftingRecipes {
 		recipeFelPumpkin = BotaniaAPI.getLatestAddedRecipe();
 
 		// Luminizer Recipe
-		addShapelessOreDictRecipe(new ItemStack(ModBlocks.lightRelay), LibOreDict.RED_STRING, LibOreDict.DRAGONSTONE, "dustGlowstone", "dustGlowstone");
+		addShapelessOreDictRecipe(new ItemStack(ModBlocks.lightRelay), LibOreDict.RED_STRING, LibOreDict.DRAGONSTONE, Item.glowstone, Item.glowstone);
 		recipeLuminizer = BotaniaAPI.getLatestAddedRecipe();
 
 		// Detector Luminizer Recipe
@@ -1953,7 +1954,7 @@ public final class ModCraftingRecipes {
 		if(OreDictionary.getOres("ingotBrass").isEmpty())
 			addOreDictRecipe(new ItemStack(ModItems.cacophonium),
 					" G ", "GNG", "GG ",
-					'G', "ingotGold",
+					'G', Item.ingotGold,
 					'N', new ItemStack(Block.music));
 		else addOreDictRecipe(new ItemStack(ModItems.cacophonium),
 				" G ", "GNG", "GG ",
@@ -2067,12 +2068,12 @@ public final class ModCraftingRecipes {
 		recipeAutocraftingHalo = BotaniaAPI.getLatestAddedRecipe();
 
 		// Pavement Recipes
-		addShapelessOreDictRecipe(new ItemStack(ModFluffBlocks.pavement, 3, 0), LibOreDict.LIVING_ROCK, "cobblestone", "gravel");
-		addShapelessOreDictRecipe(new ItemStack(ModFluffBlocks.pavement, 3, 1), LibOreDict.LIVING_ROCK, "cobblestone", "gravel", new ItemStack(Item.coal));
-		addShapelessOreDictRecipe(new ItemStack(ModFluffBlocks.pavement, 3, 2), LibOreDict.LIVING_ROCK, "cobblestone", "gravel", new ItemStack(Item.dyePowder, 1, 4));
-		addShapelessOreDictRecipe(new ItemStack(ModFluffBlocks.pavement, 3, 3), LibOreDict.LIVING_ROCK, "cobblestone", "gravel", new ItemStack(Item.redstone));
-		addShapelessOreDictRecipe(new ItemStack(ModFluffBlocks.pavement, 3, 4), LibOreDict.LIVING_ROCK, "cobblestone", "gravel", new ItemStack(Item.wheat));
-		addShapelessOreDictRecipe(new ItemStack(ModFluffBlocks.pavement, 3, 5), LibOreDict.LIVING_ROCK, "cobblestone", "gravel", new ItemStack(Item.slimeBall));
+		addShapelessOreDictRecipe(new ItemStack(ModFluffBlocks.pavement, 3, 0), LibOreDict.LIVING_ROCK, Block.cobblestone, "gravel");
+		addShapelessOreDictRecipe(new ItemStack(ModFluffBlocks.pavement, 3, 1), LibOreDict.LIVING_ROCK, Block.cobblestone, "gravel", new ItemStack(Item.coal));
+		addShapelessOreDictRecipe(new ItemStack(ModFluffBlocks.pavement, 3, 2), LibOreDict.LIVING_ROCK, Block.cobblestone, "gravel", new ItemStack(Item.dyePowder, 1, 4));
+		addShapelessOreDictRecipe(new ItemStack(ModFluffBlocks.pavement, 3, 3), LibOreDict.LIVING_ROCK, Block.cobblestone, "gravel", new ItemStack(Item.redstone));
+		addShapelessOreDictRecipe(new ItemStack(ModFluffBlocks.pavement, 3, 4), LibOreDict.LIVING_ROCK, Block.cobblestone, "gravel", new ItemStack(Item.wheat));
+		addShapelessOreDictRecipe(new ItemStack(ModFluffBlocks.pavement, 3, 5), LibOreDict.LIVING_ROCK, Block.cobblestone, "gravel", new ItemStack(Item.slimeBall));
 		recipesPavement = BotaniaAPI.getLatestAddedRecipes(6);
 
 		// Cellular Block Recipe
@@ -2127,7 +2128,7 @@ public final class ModCraftingRecipes {
 				" M ", "MCG", " M ",
 				'M', LibOreDict.MANA_STEEL,
 				'C', new ItemStack(Block.chest),
-				'G', "ingotGold");
+				'G', Item.ingotGold);
 		recipeBaubleCase = BotaniaAPI.getLatestAddedRecipe();
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2350,6 +2351,6 @@ public final class ModCraftingRecipes {
 	}
 
 	private static void addShapelessOreDictRecipe(ItemStack output, Object... recipe) {
-		CraftingManager.getInstance().addRecipe(output, recipe);
+		CraftingManager.getInstance().addShapelessRecipe(output, recipe);
 	}
 }

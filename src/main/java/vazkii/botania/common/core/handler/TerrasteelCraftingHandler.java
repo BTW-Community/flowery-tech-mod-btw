@@ -73,12 +73,12 @@ public final class TerrasteelCraftingHandler {
 		int y = MathHelper.floor_double(item.posY);
 		int z = MathHelper.floor_double(item.posZ);
 
-		if(item.worldObj.getBlock(x, y - 1, z) != Block.beacon)
-			return -1;
-
-		TileEntityBeacon beacon = (TileEntityBeacon) item.worldObj.getTileEntity(x, y - 1, z);
-		if(beacon.getLevels() <= 0)
-			return -1;
+//		if(item.worldObj.getBlock(x, y - 1, z) != Block.beacon)
+//			return -1;
+//
+//		TileEntityBeacon beacon = (TileEntityBeacon) item.worldObj.getTileEntity(x, y - 1, z);
+//		if(beacon.getLevels() <= 0)
+//			return -1;
 
 		List<EntityItem> items = item.worldObj.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(x, y, z, x + 1, y + 1, z + 1));
 

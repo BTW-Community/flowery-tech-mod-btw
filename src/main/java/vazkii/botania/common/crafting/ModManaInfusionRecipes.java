@@ -47,13 +47,13 @@ public final class ModManaInfusionRecipes {
 		if (!ConfigHandler.enableDefaultRecipes) return;
 
 		manasteelRecipes = new ArrayList<>();
-		manasteelRecipes.add(BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModItems.manaResource, 1, 0), "ingotIron", 3000));
+		manasteelRecipes.add(BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModItems.manaResource, 1, 0), new ItemStack(Item.ingotIron), 3000));
 		manasteelRecipes.add(BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModBlocks.storage, 1, 0), new ItemStack(Block.blockIron), 27000));
 
 		manaPearlRecipe = BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModItems.manaResource, 1, 1), new ItemStack(Item.enderPearl), 6000);
 
 		manaDiamondRecipes = new ArrayList<>();
-		manaDiamondRecipes.add(BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModItems.manaResource, 1, 2), "gemDiamond", 10000));
+		manaDiamondRecipes.add(BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModItems.manaResource, 1, 2), new ItemStack(Item.diamond), 10000));
 		manaDiamondRecipes.add(BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModBlocks.storage, 1, 3), new ItemStack(Block.blockDiamond), 90000));
 
 		manaPowderRecipes = new ArrayList<>();

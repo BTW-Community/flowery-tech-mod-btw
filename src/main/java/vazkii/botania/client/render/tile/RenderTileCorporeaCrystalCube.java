@@ -44,6 +44,9 @@ public class RenderTileCorporeaCrystalCube extends TileEntitySpecialRenderer {
 
 		entity.age = ClientTickHandler.ticksInGame;
 		ItemStack stack = cube.getRequestTarget();
+		if (stack == null || stack.getItem() == null) {
+			System.out.println("Attempting to render corporea crystal cube with null item target!");
+		}
 		entity.setEntityItemStack(stack);
 
 		double time = ClientTickHandler.ticksInGame + f;

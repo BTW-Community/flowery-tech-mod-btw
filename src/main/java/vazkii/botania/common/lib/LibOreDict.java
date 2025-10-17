@@ -10,50 +10,62 @@
  */
 package vazkii.botania.common.lib;
 
+import btw.item.BTWItems;
+import btw.item.tag.Tag;
+import dev.bagel.util.Items;
+import net.minecraft.src.Block;
+import net.minecraft.src.Item;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.ResourceLocation;
+import vazkii.botania.common.Botania;
+import vazkii.botania.common.block.ModBlocks;
+import vazkii.botania.common.item.ModItems;
+
 public final class LibOreDict {
 
-	public static final String LEXICON = "lexicaBotania";
-	public static final String PESTLE_AND_MORTAR = "pestleAndMortar";
-	public static final String TWIG_WAND = "twigWand";
-	public static final String LIVING_WOOD = "livingwood";
-	public static final String LIVING_ROCK = "livingrock";
-	public static final String MANA_STEEL = "ingotManasteel";
-	public static final String MANA_PEARL = "manaPearl";
-	public static final String MANA_DIAMOND = "manaDiamond";
-	public static final String LIVINGWOOD_TWIG = "livingwoodTwig";
-	public static final String TERRA_STEEL = "ingotTerrasteel";
-	public static final String LIFE_ESSENCE = "eternalLifeEssence";
-	public static final String REDSTONE_ROOT = "redstoneRoot";
-	public static final String DREAM_WOOD = "dreamwood";
-	public static final String ELEMENTIUM = "ingotElvenElementium";
-	public static final String PIXIE_DUST = "elvenPixieDust";
-	public static final String DRAGONSTONE = "elvenDragonstone";
-	public static final String PRISMARINE_SHARD = "shardPrismarine";
-	public static final String PLACEHOLDER = "bPlaceholder";
-	public static final String RED_STRING = "bRedString";
-	public static final String DREAMWOOD_TWIG = "dreamwoodTwig";
-	public static final String GAIA_INGOT = "gaiaIngot";
-	public static final String ENDER_AIR_BOTTLE = "bEnderAirBottle";
-	public static final String MANA_STRING = "manaString";
-	public static final String MANASTEEL_NUGGET = "nuggetManasteel";
-	public static final String TERRASTEEL_NUGGET = "nuggetTerrasteel";
-	public static final String ELEMENTIUM_NUGGET = "nuggetElvenElementium";
-	public static final String ROOT = "livingRoot";
-	public static final String PEBBLE = "pebble";
-	public static final String MANAWEAVE_CLOTH = "clothManaweave";
-	public static final String MANA_POWDER = "powderMana";
+	public static final ItemStack LEXICON = new ItemStack(ModItems.lexicon);
+	public static final ItemStack PESTLE_AND_MORTAR = new ItemStack(ModItems.pestleAndMortar);
+	public static final ItemStack TWIG_WAND = new ItemStack(ModItems.twigWand);
+	public static final ItemStack LIVING_WOOD = new ItemStack(ModBlocks.livingwood);
+	public static final ItemStack LIVING_ROCK = new ItemStack(ModBlocks.livingrock);
+	public static final ItemStack MANA_STEEL = new ItemStack(ModItems.manaResource, 1, 0);
+	public static final ItemStack MANA_PEARL = new ItemStack(ModItems.manaResource, 1, 1);
+	public static final ItemStack MANA_DIAMOND = new ItemStack(ModItems.manaResource, 1, 2);
+	public static final ItemStack LIVINGWOOD_TWIG = new ItemStack(ModItems.manaResource, 1, 3);
+	public static final ItemStack TERRA_STEEL = new ItemStack(ModItems.manaResource, 1, 3);
+	public static final ItemStack LIFE_ESSENCE = new ItemStack(ModItems.manaResource, 1, 4);
+	public static final ItemStack REDSTONE_ROOT = new ItemStack(ModItems.manaResource, 1, 5);
+	public static final ItemStack DREAM_WOOD = new ItemStack(ModItems.manaResource, 1, 6);
+	public static final ItemStack ELEMENTIUM = new ItemStack(ModItems.manaResource, 1, 7);
+	public static final ItemStack PIXIE_DUST = new ItemStack(ModItems.manaResource, 1, 8);
+	public static final ItemStack DRAGONSTONE = new ItemStack(ModItems.manaResource, 1, 9);
+	public static final ItemStack PRISMARINE_SHARD = new ItemStack(ModItems.manaResource, 1, 10);
+	public static final ItemStack PLACEHOLDER = new ItemStack(ModItems.manaResource, 1, 11);
+	public static final ItemStack RED_STRING = new ItemStack(ModItems.manaResource, 1, 12);
+	public static final ItemStack DREAMWOOD_TWIG = new ItemStack(ModItems.manaResource, 1, 13);
+	public static final ItemStack GAIA_INGOT = new ItemStack(ModItems.manaResource, 1, 14);
+	public static final ItemStack ENDER_AIR_BOTTLE = new ItemStack(ModItems.manaResource, 1, 15);
+	public static final ItemStack MANA_STRING = new ItemStack(ModItems.manaResource, 1, 16);
+	public static final ItemStack MANASTEEL_NUGGET = new ItemStack(ModItems.manaResource, 1, 17);
+	public static final ItemStack TERRASTEEL_NUGGET = new ItemStack(ModItems.manaResource, 1, 18);
+	public static final ItemStack ELEMENTIUM_NUGGET = new ItemStack(ModItems.manaResource, 1, 19);
+	public static final ItemStack ROOT = new ItemStack(ModItems.manaResource, 1, 20);
+	public static final ItemStack PEBBLE = new ItemStack(ModItems.manaResource, 1, 21);
+	public static final ItemStack MANAWEAVE_CLOTH = new ItemStack(ModItems.manaResource, 1, 22);
+	public static final ItemStack MANA_POWDER = new ItemStack(ModItems.manaResource, 1, 23);
 
 	public static final String VIAL = "bVial";
 	public static final String FLASK = "bFlask";
 
 	public static final String PRISMARINE_BLOCK = "blockPrismarine";
-	public static final String BLAZE_BLOCK = "blockBlaze";
+	public static final Block BLAZE_BLOCK = ModBlocks.blazeBlock;
 
-	public static final String[] FLOWER = new String[] {
-		"mysticFlowerWhite", "mysticFlowerOrange", "mysticFlowerMagenta", "mysticFlowerLightBlue",
-		"mysticFlowerYellow", "mysticFlowerLime", "mysticFlowerPink", "mysticFlowerGray",
-		"mysticFlowerLightGray", "mysticFlowerCyan", "mysticFlowerPurple", "mysticFlowerBlue",
-		"mysticFlowerBrown", "mysticFlowerGreen", "mysticFlowerRed", "mysticFlowerBlack"
+	private static final Item FLOWER_ITEM = Items.getItemFromBlock(ModBlocks.flower);
+	public static final ItemStack[] FLOWER = new ItemStack[] {
+			new ItemStack(FLOWER_ITEM, 1, 0), new ItemStack(FLOWER_ITEM, 1, 1), new ItemStack(FLOWER_ITEM, 1, 2), new ItemStack(FLOWER_ITEM, 1, 3),
+			new ItemStack(FLOWER_ITEM, 1, 4), new ItemStack(FLOWER_ITEM, 1, 5), new ItemStack(FLOWER_ITEM, 1, 6), new ItemStack(FLOWER_ITEM, 1, 7),
+			new ItemStack(FLOWER_ITEM, 1, 8), new ItemStack(FLOWER_ITEM, 1, 9), new ItemStack(FLOWER_ITEM, 1, 10), new ItemStack(FLOWER_ITEM, 1, 11),
+			new ItemStack(FLOWER_ITEM, 1, 12), new ItemStack(FLOWER_ITEM, 1, 13), new ItemStack(FLOWER_ITEM, 1, 14), new ItemStack(FLOWER_ITEM, 1, 15)
 	};
 
 	public static final String[] DOUBLE_FLOWER = new String[] {
@@ -62,12 +74,13 @@ public final class LibOreDict {
 		"mysticFlowerLightGrayDouble", "mysticFlowerCyanDouble", "mysticFlowerPurpleDouble", "mysticFlowerBlueDouble",
 		"mysticFlowerBrownDouble", "mysticFlowerGreenDouble", "mysticFlowerRedDouble", "mysticFlowerBlackDouble"
 	};
+	public static final Tag PETALS = Tag.of(Botania.loc("petal")).addUntilDamage(15, ModItems.petal);
 
-	public static final String[] PETAL = new String[] {
-		"petalWhite", "petalOrange", "petalMagenta", "petalLightBlue",
-		"petalYellow", "petalLime", "petalPink", "petalGray",
-		"petalLightGray", "petalCyan", "petalPurple", "petalBlue",
-		"petalBrown", "petalGreen", "petalRed", "petalBlack"
+	public static final ItemStack[] PETAL = new ItemStack[] {
+			new ItemStack(ModItems.petal, 1, 0), new ItemStack(ModItems.petal, 1, 1), new ItemStack(ModItems.petal, 1, 2), new ItemStack(ModItems.petal, 1, 3),
+			new ItemStack(ModItems.petal, 1, 4), new ItemStack(ModItems.petal, 1, 5), new ItemStack(ModItems.petal, 1, 6), new ItemStack(ModItems.petal, 1, 7),
+			new ItemStack(ModItems.petal, 1, 8), new ItemStack(ModItems.petal, 1, 9), new ItemStack(ModItems.petal, 1, 10), new ItemStack(ModItems.petal, 1, 11),
+			new ItemStack(ModItems.petal, 1, 12), new ItemStack(ModItems.petal, 1, 13), new ItemStack(ModItems.petal, 1, 14), new ItemStack(ModItems.petal, 1, 15)
 	};
 
 	public static final String[] DYE = new String[] {
@@ -77,7 +90,13 @@ public final class LibOreDict {
 		"dyeBrown", "dyeGreen", "dyeRed", "dyeBlack"
 	};
 
-	public static final String[] RUNE = new String[] {
+	public static final ItemStack[] RUNE = new ItemStack[] {
+			new ItemStack(ModItems.rune, 1, 0), new ItemStack(ModItems.rune, 1, 1), new ItemStack(ModItems.rune, 1, 2), new ItemStack(ModItems.rune, 1, 3),
+			new ItemStack(ModItems.rune, 1, 4), new ItemStack(ModItems.rune, 1, 5), new ItemStack(ModItems.rune, 1, 6), new ItemStack(ModItems.rune, 1, 7),
+			new ItemStack(ModItems.rune, 1, 8), new ItemStack(ModItems.rune, 1, 9), new ItemStack(ModItems.rune, 1, 10), new ItemStack(ModItems.rune, 1, 11),
+			new ItemStack(ModItems.rune, 1, 12), new ItemStack(ModItems.rune, 1, 13), new ItemStack(ModItems.rune, 1, 14), new ItemStack(ModItems.rune, 1, 15)
+	};
+	public static final String[] RUNEs = new String[] {
 		"runeWaterB", "runeFireB", "runeEarthB", "runeAirB",
 		"runeSpringB", "runeSummerB", "runeAutumnB", "runeWinterB",
 		"runeManaB", "runeLustB", "runeGluttonyB", "runeGreedB",
@@ -95,4 +114,5 @@ public final class LibOreDict {
 		"quartzDark", "quartzMana", "quartzBlaze", 
 		"quartzLavender", "quartzRed", "quartzElven", "quartzSunny"
 	};
+
 }

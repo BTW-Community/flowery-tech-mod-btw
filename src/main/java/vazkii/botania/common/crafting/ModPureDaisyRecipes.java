@@ -10,23 +10,27 @@
  */
 package vazkii.botania.common.crafting;
 
+import btw.block.BTWBlocks;
+import btw.item.tag.BTWTags;
+import btw.item.tag.Tag;
 import net.minecraft.src.Block;
+import net.minecraft.src.ResourceLocation;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.core.handler.ConfigHandler;
 import vazkii.botania.common.lib.LibOreDict;
 
 public final class ModPureDaisyRecipes {
-
+	public static final Tag SMOOTH_STONES = Tag.of(new ResourceLocation("btw:stone")).addUntilDamage(2, Block.stone);
 	public static void init() {
 		if (!ConfigHandler.enableDefaultRecipes) return;
 
-		BotaniaAPI.registerPureDaisyRecipe("stone", ModBlocks.livingrock, 0);
-		BotaniaAPI.registerPureDaisyRecipe("logWood", ModBlocks.livingwood, 0);
+		BotaniaAPI.registerPureDaisyRecipe(SMOOTH_STONES, ModBlocks.livingrock, 0);
+		BotaniaAPI.registerPureDaisyRecipe(BTWTags.logs, ModBlocks.livingwood, 0);
 
-		BotaniaAPI.registerPureDaisyRecipe("netherrack", Block.cobblestone, 0);
-		BotaniaAPI.registerPureDaisyRecipe("soulSand", Block.sand, 0);
-		BotaniaAPI.registerPureDaisyRecipe("ice", Block.ice, 0);
+		BotaniaAPI.registerPureDaisyRecipe(Block.netherrack, Block.cobblestone, 0);
+		BotaniaAPI.registerPureDaisyRecipe(Block.slowSand, Block.sand, 0);
+//		BotaniaAPI.registerPureDaisyRecipe(Block.ice, Block.packedIce, 0); No packed ice in this version
 		BotaniaAPI.registerPureDaisyRecipe(LibOreDict.BLAZE_BLOCK, Block.obsidian, 0);
 		BotaniaAPI.registerPureDaisyRecipe(Block.waterMoving, Block.snow, 0);
 		BotaniaAPI.registerPureDaisyRecipe(Block.waterStill, Block.snow, 0);

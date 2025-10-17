@@ -14,10 +14,7 @@ import btw.BTWAddon;
 import btw.world.biome.BiomeDecoratorBase;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.src.BiomeGenBase;
-import net.minecraft.src.ServerListenThread;
-import net.minecraft.src.ThreadMinecraftServer;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import vazkii.botania.client.core.proxy.ClientProxy;
 import vazkii.botania.common.core.handler.BiomeDecorationHandler;
@@ -117,5 +114,9 @@ public class Botania extends BTWAddon {
 	//FMLInterModComms.IMCEvent event
 	public void handleIMC() {
 //		IMCHandler.processMessages(event.getMessages());
+	}
+
+	public static ResourceLocation loc(String id) {
+		return new ResourceLocation("botania", id);
 	}
 }

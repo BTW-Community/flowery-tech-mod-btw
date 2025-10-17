@@ -15,6 +15,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import btw.item.tag.Tag;
+import btw.item.tag.TagInstance;
 import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
@@ -22,7 +24,7 @@ import vazkii.botania.api.subtile.SubTileEntity;
 
 public class RecipePureDaisy {
 
-	private static final Map<String, List<ItemStack>> oreMap = new HashMap<>();
+	private static final Map<Tag, List<ItemStack>> oreMap = new HashMap<>();
 
 	Object input;
 	Block output;
@@ -33,8 +35,8 @@ public class RecipePureDaisy {
 		this.output = output;
 		this.outputMeta = outputMeta;
 
-		if(input != null && !(input instanceof String || input instanceof Block))
-			throw new IllegalArgumentException("input must be an oredict String or a Block.");
+		if(input != null && !(input instanceof TagInstance || input instanceof Tag || input instanceof Block))
+			throw new IllegalArgumentException("input must be a Tag, TagInstance or a Block.");
 	}
 
 	/**
@@ -45,11 +47,17 @@ public class RecipePureDaisy {
 			return block == input;
 
 		ItemStack stack = new ItemStack(block, 1, meta);
-		String oredict = (String) input;
-		return isOreDict(stack, oredict);
+		Tag tag;
+		if (input instanceof TagInstance ti) {
+			tag = ti.tag();
+		}
+		else {
+			tag = (Tag) input;
+		}
+		return isTag(stack, tag);
 	}
 
-	public boolean isOreDict(ItemStack stack, String entry) {
+	public boolean isTag(ItemStack stack, Tag entry) {
 		if(stack == null || stack.getItem() == null)
 			return false;
 
@@ -59,7 +67,7 @@ public class RecipePureDaisy {
 		else {
 			//todo oredict -> tags, temp fix
 			ores = new ArrayList<>();
-//			ores = OreDictionary.getOres(entry);
+			ores = entry.getItems();
 
 			oreMap.put(entry, ores);
 		}

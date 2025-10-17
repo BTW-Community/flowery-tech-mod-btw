@@ -12,6 +12,7 @@ package vazkii.botania.api.recipe;
 
 import java.util.List;
 
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 
 public class RecipeManaInfusion {
@@ -23,6 +24,9 @@ public class RecipeManaInfusion {
 	boolean isConjuration = false;
 
 	public RecipeManaInfusion(ItemStack output, Object input, int mana) {
+		if (input instanceof Item i) {
+			input = new ItemStack(i);
+		}
 		this.output = output;
 		this.input = input;
 		this.mana = mana;
