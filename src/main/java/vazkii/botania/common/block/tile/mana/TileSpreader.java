@@ -372,7 +372,7 @@ public class TileSpreader extends TileSimpleInventory implements IManaCollector,
 				writeCustomNBT(nbttagcompound);
 				nbttagcompound.setInteger(TAG_KNOWN_MANA, mana);
 				if(player instanceof EntityPlayerMP)
-					((EntityPlayerMP) player).playerNetServerHandler.sendPacket(new Packet132TileEntityData(xCoord, yCoord, zCoord, -999, nbttagcompound));
+					((EntityPlayerMP) player).playerNetServerHandler.sendPacket(new Packet132TileEntityData(xCoord, yCoord, zCoord, 1, nbttagcompound));
 			}
 			worldObj.playSoundAtEntity(player, "botania:ding", 0.1F, 1F);
 		} else {

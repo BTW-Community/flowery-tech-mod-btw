@@ -328,7 +328,7 @@ public class TilePool extends TileMod implements IManaPool, IDyablePool, IKeyLoc
 			writeCustomNBT(nbttagcompound);
 			nbttagcompound.setInteger(TAG_KNOWN_MANA, getCurrentMana());
 			if(player instanceof EntityPlayerMP)
-				((EntityPlayerMP) player).playerNetServerHandler.sendPacket(new Packet132TileEntityData(xCoord, yCoord, zCoord, -999, nbttagcompound));
+				((EntityPlayerMP) player).playerNetServerHandler.sendPacket(new Packet132TileEntityData(xCoord, yCoord, zCoord, 1, nbttagcompound));
 		}
 
 		worldObj.playSoundAtEntity(player, "botania:ding", 0.11F, 1F);

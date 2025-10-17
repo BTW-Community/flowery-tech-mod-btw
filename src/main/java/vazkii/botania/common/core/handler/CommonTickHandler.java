@@ -33,7 +33,7 @@ public final class CommonTickHandler {
 	}
 	public static void init() {}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public static void onTick(WorldTickEvent event) {
 		if(event.phase == Phase.END) {
 			List<Entity> entities = new ArrayList(event.world.loadedEntityList);
