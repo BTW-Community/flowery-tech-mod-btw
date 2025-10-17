@@ -69,21 +69,23 @@ public class ItemRainbowRod extends ItemMod implements IManaUsingItem, IAvatarWi
 			int maxlen = prof ? 160 : 100;
 			int time = prof ? (int) (TIME * 1.6) : TIME;
 
-			while(count < maxlen && (int) lx == (int) x && (int) ly == (int) y && (int) lz == (int) z || count < 4 || par2World.getBlock((int) x, (int) y, (int) z).isAir(par2World, (int) x, (int) y, (int) z) || par2World.getBlock((int) x, (int) y, (int) z) == place) {
+			while(count < maxlen && (int) lx == (int) x && (int) ly == (int) y && (int) lz == (int) z || count < 4 || par2World.isAirBlock((int) x, (int) y, (int) z) || par2World.getBlock((int) x, (int) y, (int) z) == place) {
 				if(y >= 256 || y <= 0)
 					break;
 
 				for(int i = -2; i < 1; i++)
-					for(int j = -2; j < 1; j++)
-						if(par2World.getBlock((int) x + i, (int) y, (int) z + j).isAir(par2World, (int) x + i, (int) y, (int) z + j) || par2World.getBlock((int) x + i, (int) y, (int) z + j) == place) {
+					for(int j = -2; j < 1; j++) {
+						Block block = par2World.getBlock((int) x + i, (int) y, (int) z + j);
+						if (block == null || block.isAir(par2World, (int) x + i, (int) y, (int) z + j) || par2World.getBlock((int) x + i, (int) y, (int) z + j) == place) {
 							par2World.setBlock((int) x + i, (int) y, (int) z + j, place);
 							TileBifrost tile = (TileBifrost) par2World.getTileEntity((int) x + i, (int) y, (int) z + j);
-							if(tile != null) {
-								for(int k = 0; k < 4; k++)
+							if (tile != null) {
+								for (int k = 0; k < 4; k++)
 									Botania.getProxy().sparkleFX(par2World, tile.xCoord + Math.random(), tile.yCoord + Math.random(), tile.zCoord + Math.random(), (float) Math.random(), (float) Math.random(), (float) Math.random(), 0.45F + 0.2F * (float) Math.random(), 6);
 								tile.ticks = time;
 							}
 						}
+					}
 
 				lx = x;
 				ly = y;
@@ -183,7 +185,7 @@ public class ItemRainbowRod extends ItemMod implements IManaUsingItem, IAvatarWi
 						continue;
 
 					Block block = world.getBlock(ex, py, ez);
-					if(block.isAir(world, ex, py, ez)) {
+					if(block == null || block.isAir(world, ex, py, ez)) {
 						world.setBlock(ex, py, ez, ModBlocks.bifrost);
 						TileBifrost tileBifrost = (TileBifrost) world.getTileEntity(ex, py, ez);
 						tileBifrost.ticks = 10;
