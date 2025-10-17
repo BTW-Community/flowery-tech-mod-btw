@@ -12,7 +12,7 @@ public class EventBusShim {
     }
 
     public boolean post(Event event) {
-        System.err.println("Attempting to post event " + event.getClass().getSimpleName() + " to event bus!");
+//        System.err.println("Attempting to post event " + event.getClass().getSimpleName() + " to event bus!");
         return (event.isCancelable() ? event.isCanceled() : false);
     }
 

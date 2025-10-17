@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.block;
 
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.src.*;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
@@ -81,6 +82,16 @@ public class BlockIncensePlate extends BlockModContainer implements ILexiconable
 	@Override
 	public int getComparatorInputOverride(World world, int x, int y, int z, int side) {
 		return ((TileIncensePlate) world.getTileEntity(x, y, z)).comparatorOutput;
+	}
+
+	@Override
+	public boolean renderBlock(RenderBlocks renderer, int i, int j, int k) {
+		return false;
+	}
+
+	@Override
+	public void renderBlockAsItem(RenderBlocks renderBlocks, int iItemDamage, float fBrightness) {
+		RenderingRegistry.instance().renderInventoryBlock(renderBlocks, this, iItemDamage, getRenderType());
 	}
 
 	@Override

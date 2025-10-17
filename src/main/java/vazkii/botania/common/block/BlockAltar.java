@@ -13,6 +13,7 @@ package vazkii.botania.common.block;
 import java.util.List;
 import java.util.Random;
 
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.src.*;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
 import vazkii.botania.api.lexicon.ILexiconable;
@@ -65,6 +66,16 @@ public class BlockAltar extends BlockModContainer implements ILexiconable {
 	public void getSubBlocks(int item, CreativeTabs tab, List list) {
 		for(int i = 0; i < 9; i++)
 			list.add(new ItemStack(item, 1, i));
+	}
+
+	@Override
+	public boolean renderBlock(RenderBlocks renderer, int i, int j, int k) {
+		return false;
+	}
+
+	@Override
+	public void renderBlockAsItem(RenderBlocks renderBlocks, int iItemDamage, float fBrightness) {
+		RenderingRegistry.instance().renderInventoryBlock(renderBlocks, this, iItemDamage, getRenderType());
 	}
 
 	@Override
