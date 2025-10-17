@@ -91,7 +91,7 @@ public class CommonProxy {
 
 		LexiconData.preInit();
 	}
-	@SubscribeEvent
+
 	public void init() {
 		ModBlocks.init();
 		ModItems.init();
@@ -125,7 +125,7 @@ public class CommonProxy {
 			MinecraftForge.EVENT_BUS.register(new SkyblockWorldEvents());
 
 //		FMLCommonHandler.instance().bus().register(new CommonTickHandler());
-
+		CommonTickHandler.init();
 //		if(Botania.bcTriggersLoaded)
 //			new StatementAPIPlugin();
 

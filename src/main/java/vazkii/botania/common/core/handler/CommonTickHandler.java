@@ -29,7 +29,9 @@ import java.util.List;
 public final class CommonTickHandler {
 	static {
 		TickEvent.ClientTickEvent.EVENT.register(CommonTickHandler::onTick);
+		TickEvent.WorldTickEvent.EVENT.register(CommonTickHandler::onTick);
 	}
+	public static void init() {}
 
 	@SubscribeEvent
 	public static void onTick(WorldTickEvent event) {

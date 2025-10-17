@@ -56,6 +56,16 @@ public class TickEvent extends Event {
             super(Type.WORLD, EnvType, phase);
             this.world = world;
         }
+        public static net.legacyfabric.fabric.api.event.Event<WorldTickEventEventCallback> EVENT = EventFactory.createArrayBacked(WorldTickEventEventCallback.class, callbacks -> (event) -> {
+            for (WorldTickEventEventCallback callback : callbacks) {
+                callback.onTick(event);
+            }
+        });
+
+        @FunctionalInterface
+        public static interface WorldTickEventEventCallback {
+            void onTick(WorldTickEvent event);
+        }
     }
 
     public static class PlayerTickEvent extends TickEvent {
