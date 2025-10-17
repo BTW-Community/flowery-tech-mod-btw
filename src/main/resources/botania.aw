@@ -41,3 +41,4 @@ accessible field net/minecraft/src/EffectRenderer particleTextures Lnet/minecraf
 accessible field net/minecraft/src/EntityList stringToClassMapping Ljava/util/Map;
 accessible field net/minecraft/src/EntityHorse horseJumpStrength Lnet/minecraft/src/Attribute;
 accessible field net/minecraft/src/RenderBiped field_110859_k Ljava/util/Map;
+accessible field net/minecraft/src/SaveHandler playersDirectory Ljava/io/File;

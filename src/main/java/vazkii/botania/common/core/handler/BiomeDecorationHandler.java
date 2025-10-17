@@ -29,7 +29,7 @@ import java.util.Random;
 
 public class BiomeDecorationHandler implements BiomeDecoratorBase {
 
-	@SubscribeEvent(priority = EventPriority.LOWEST)
+//	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void onWorldDecoration(DecorateBiomeEvent.Decorate event) {
 		if((event.getResult() == Result.ALLOW || event.getResult() == Result.DEFAULT) && event.type == EventType.FLOWERS) {
 			boolean flowers = true;

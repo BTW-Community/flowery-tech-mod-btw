@@ -26,7 +26,7 @@ public class EventHandlerEntity {
 		LivingEvent.LivingUpdateEvent.EVENT.register(EventHandlerEntity::playerTick);
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public static boolean playerTick(PlayerEvent.LivingUpdateEvent event) {
 
 		// player events
@@ -56,7 +56,7 @@ public class EventHandlerEntity {
 
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public static void playerLoad(PlayerEvent.LoadFromFile event) {
 		playerLoadDo(event.entityPlayer, event.playerDirectory, event.entityPlayer.capabilities.isCreativeMode);
 		playerDirectory = event.playerDirectory;
@@ -98,7 +98,7 @@ public class EventHandlerEntity {
         return new File(playerDirectory, playerName + "." + extension);
     }
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public static void playerSave(PlayerEvent.SaveToFile event) {
 		playerSaveDo(event.entityPlayer, event.playerDirectory, event.entityPlayer.capabilities.isCreativeMode);
 	}

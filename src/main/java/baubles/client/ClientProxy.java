@@ -13,7 +13,9 @@ import net.minecraft.src.World;
 import net.minecraftforge.common.MinecraftForge;
 
 public class ClientProxy extends CommonProxy {
-	
+
+	public static ClientProxy instance = new ClientProxy();
+
 	@Override
 	public void registerHandlers() {}
 	

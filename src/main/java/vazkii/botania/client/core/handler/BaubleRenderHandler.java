@@ -44,7 +44,7 @@ import vazkii.botania.common.item.equipment.armor.terrasteel.ItemTerrasteelHelm;
 public final class BaubleRenderHandler {
 
 	@SubscribeEvent
-	public void onPlayerRender(RenderPlayerEvent.Specials.Post event) {
+	public static void onPlayerRender(RenderPlayerEvent.Specials.Post event) {
 		if(!ConfigHandler.renderBaubles || event.entityPlayer.getActivePotionEffect(Potion.invisibility) != null)
 			return;
 
@@ -73,21 +73,19 @@ public final class BaubleRenderHandler {
 		GL11.glPopMatrix();
 	}
 
-	private void dispatchRenders(InventoryBaubles inv, RenderPlayerEvent event, RenderType type) {
+	private static void dispatchRenders(InventoryBaubles inv, RenderPlayerEvent event, RenderType type) {
 		for(int i = 0; i < inv.getSizeInventory(); i++) {
 			ItemStack stack = inv.getStackInSlot(i);
 			if(stack != null) {
 				Item item = stack.getItem();
 
-				if(item instanceof IPhantomInkable) {
-					IPhantomInkable inkable = (IPhantomInkable) item;
-					if(inkable.hasPhantomInk(stack))
+				if(item instanceof IPhantomInkable inkable) {
+                    if(inkable.hasPhantomInk(stack))
 						continue;
 				}
 
-				if(item instanceof ICosmeticAttachable) {
-					ICosmeticAttachable attachable = (ICosmeticAttachable) item;
-					ItemStack cosmetic = attachable.getCosmeticItem(stack);
+				if(item instanceof ICosmeticAttachable attachable) {
+                    ItemStack cosmetic = attachable.getCosmeticItem(stack);
 					if(cosmetic != null) {
 						GL11.glPushMatrix();
 						GL11.glColor4f(1F, 1F, 1F, 1F);
@@ -108,7 +106,7 @@ public final class BaubleRenderHandler {
 	}
 
 	@SubscribeEvent
-	private void renderManaTablet(RenderPlayerEvent event) {
+	private static void renderManaTablet(RenderPlayerEvent event) {
 		EntityPlayer player = event.entityPlayer;
 		boolean renderedOne = false;
 		for(int i = 0; i < player.inventory.getSizeInventory(); i++) {
@@ -131,8 +129,7 @@ public final class BaubleRenderHandler {
 				OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, lightmapX, lightmapY);
 				for(int j = 0; j < 2; j++) {
 					//todofix get icon based on render pass
-//					Icon icon = item.getIcon(stack, j);
-					Icon icon = CITUtils.getIcon(item.getIconFromDamage(stack.getItemDamage()), stack, j);
+					Icon icon = item.getIcon(stack, j);
 					float f = icon.getMinU();
 					float f1 = icon.getMaxU();
 					float f2 = icon.getMinV();

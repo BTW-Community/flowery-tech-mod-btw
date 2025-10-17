@@ -4,6 +4,7 @@ import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.src.*;
 import net.minecraftforge.client.ForgeHooksClient;
+import net.minecraftforge.client.event.RenderPlayerEvent;
 import org.lwjgl.opengl.GL11;
 import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Final;
@@ -12,7 +13,9 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArgs;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
+import vazkii.botania.client.core.handler.BaubleRenderHandler;
 
 import java.util.Map;
 
@@ -57,4 +60,9 @@ public abstract class RenderPlayerMixin extends RendererLivingEntity {
         args.set(0, model);
     }
 
+
+    @Inject(method = "renderEquippedItems", at = @At("TAIL"))
+    private void forge$renderSpecialsPost(EntityLivingBase entity, float par2, CallbackInfo ci) {
+        BaubleRenderHandler.onPlayerRender(new RenderPlayerEvent.Specials.Post((EntityPlayer) entity, (RenderPlayer) (Object) this, par2));
+    }
 }

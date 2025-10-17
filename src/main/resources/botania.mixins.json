@@ -12,6 +12,8 @@
     "event.client.RenderBlocksMixin",
     "event.client.RenderItemMixin",
     "event.client.RenderPlayerMixin",
+    "event.saving.SaveHandlerMixin",
+    "event.saving.ServerConfigurationManagerMixin",
     "extensions.BlockExtensionMixin",
     "extensions.EntityExtensionMixin",
     "extensions.EntityPlayerExtensionsMixin",

@@ -161,7 +161,7 @@ public class GuiPlayerExpanded extends GuiContainer {
     }
 
     private void drawPotionEffects() {
-/*        int slotIndent = 26;
+        int slotIndent = 26;
         if (BaubleExpandedSlots.slotsCurrentlyUsed() > 8) {
             slotIndent = 42;
         }
@@ -184,26 +184,26 @@ public class GuiPlayerExpanded extends GuiContainer {
         for (PotionEffect effect : potionCollection) {
             Potion potion = Potion.potionTypes[effect.getPotionID()];
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-            this.mc.getTextureManager().bindTexture(field_147001_a);
+            this.mc.getTextureManager().bindTexture(field_110408_a);
             this.drawTexturedModalRect(positionHorizontal, positionVertical, 0, 166, 140, 32);
 
             if (potion.hasStatusIcon()) {
                 int potionIconIndex = potion.getStatusIconIndex();
                 this.drawTexturedModalRect(positionHorizontal + 6, positionVertical + 7, potionIconIndex % 8 * 18, 198 + potionIconIndex / 8 * 18, 18, 18);
             }
-
-            potion.renderInventoryEffect(positionHorizontal, positionVertical, effect, mc);
-            if (!potion.shouldRenderInvText(effect)) continue;
-            String potionName = I18n.format(potion.getName());
+//          from forge
+//            potion.renderInventoryEffect(positionHorizontal, positionVertical, effect, mc);
+//            if (!potion.shouldRenderInvText(effect)) continue;
+            String potionName = I18n.getString(potion.getName());
 
             if (effect.getAmplifier() >= 1) {
-                potionName = potionName + " " + I18n.format("enchantment.level." + effect.getAmplifier());
+                potionName = potionName + " " + I18n.getString("enchantment.level." + effect.getAmplifier());
             }
-            this.fontRendererObj.drawStringWithShadow(potionName, positionHorizontal + 10 + 18, positionVertical + 6, 16777215);
+            this.fontRenderer.drawStringWithShadow(potionName, positionHorizontal + 10 + 18, positionVertical + 6, 16777215);
             String s = Potion.getDurationString(effect);
-            this.fontRendererObj.drawStringWithShadow(s, positionHorizontal + 10 + 18, positionVertical + 6 + 10, 8355711);
+            this.fontRenderer.drawStringWithShadow(s, positionHorizontal + 10 + 18, positionVertical + 6 + 10, 8355711);
             positionVertical += maxNumber;
-        }*/
+        }
     }
 
     private boolean needsScrollBars() {

@@ -1,10 +1,14 @@
 package baubles.common;
 
+import baubles.client.ClientProxy;
 import baubles.common.event.EventHandlerEntity;
 import baubles.common.event.EventHandlerNetwork;
 import baubles.common.network.PacketHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.fabricmc.api.EnvType;
 import net.minecraft.src.Item;
+import net.minecraft.src.ServerListenThread;
+import net.minecraft.src.ThreadMinecraftServer;
 import net.minecraftforge.common.MinecraftForge;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,6 +24,15 @@ public class Baubles {
     public static CommonProxy proxy = new CommonProxy();
 
     public static Baubles instance = new Baubles();
+
+    public static CommonProxy getProxy() {
+        if (instance.getEffectiveSide() == EnvType.SERVER) {
+            return proxy;
+        }
+        else {
+            return ClientProxy.instance;
+        }
+    }
 
     public EventHandlerEntity entityEventHandler;
     public EventHandlerNetwork entityEventNetwork;
@@ -37,6 +50,7 @@ public class Baubles {
 
         entityEventHandler = new EventHandlerEntity();
         entityEventNetwork = new EventHandlerNetwork();
+        EventHandlerEntity.init();
 
         MinecraftForge.EVENT_BUS.register(entityEventHandler);
 //        FMLCommonHandler.instance().bus().register(entityEventNetwork);
@@ -52,4 +66,8 @@ public class Baubles {
 //          GameRegistry.registerItem(itemDebugger, "bauble_slot_debug_tool", Baubles.MODID);
     }
 
+    public EnvType getEffectiveSide() {
+        Thread thr = Thread.currentThread();
+        return !(thr instanceof ThreadMinecraftServer) && !(thr instanceof ServerListenThread) ? EnvType.CLIENT : EnvType.SERVER;
+    }
 }

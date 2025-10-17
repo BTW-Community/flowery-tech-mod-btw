@@ -687,6 +687,7 @@ public final class BotaniaAPI {
 	}
 
 	private static String getMagnetKey(Block block, int meta) {
+		if (block == null) return "air";
 		return "bm_" + block.getUnlocalizedName() + "@" + meta;
 	}
 
