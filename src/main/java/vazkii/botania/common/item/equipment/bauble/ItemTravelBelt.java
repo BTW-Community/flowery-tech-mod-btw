@@ -21,6 +21,7 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.ResourceLocation;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 
@@ -55,7 +56,7 @@ public class ItemTravelBelt extends ItemBauble implements IBaubleRender, IManaUs
 
 	public ItemTravelBelt(int id) {
 		this(id, LibItemNames.TRAVEL_BELT, 0.035F, 0.2F, 2F);
-		MinecraftForge.EVENT_BUS.register(this);
+		LivingEvent.LivingUpdateEvent.EVENT.register(this::updatePlayerStepStatus);
 	}
 
 	public ItemTravelBelt(int id, String name, float speed, float jump, float fallBuffer) {
@@ -70,11 +71,10 @@ public class ItemTravelBelt extends ItemBauble implements IBaubleRender, IManaUs
 		return BaubleType.BELT;
 	}
 
-	@SubscribeEvent
-	public void updatePlayerStepStatus(LivingUpdateEvent event) {
-		if(event.entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) event.entityLiving;
-			String s = playerStr(player);
+//	@SubscribeEvent
+	public boolean updatePlayerStepStatus(LivingUpdateEvent event) {
+		if(event.entityLiving instanceof EntityPlayer player) {
+            String s = playerStr(player);
 
 			ItemStack belt = PlayerHandler.getPlayerBaubles(player).getStackInSlot(3);
 			if(playersWithStepup.contains(s)) {
@@ -103,6 +103,7 @@ public class ItemTravelBelt extends ItemBauble implements IBaubleRender, IManaUs
 				player.stepHeight = 1F;
 			}
 		}
+		return false;
 	}
 
 	public float getSpeed(ItemStack stack) {

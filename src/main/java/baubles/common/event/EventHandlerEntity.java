@@ -9,6 +9,7 @@ import btw.client.mojapi.UserProfile;
 import com.google.common.io.Files;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.src.EntityPlayer;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 
@@ -19,10 +20,14 @@ import java.util.Optional;
 public class EventHandlerEntity {
 
 	// player directory
-	private File playerDirectory;
+	private static File playerDirectory;
+
+	public static void init() {
+		LivingEvent.LivingUpdateEvent.EVENT.register(EventHandlerEntity::playerTick);
+	}
 
 	@SubscribeEvent
-	public void playerTick(PlayerEvent.LivingUpdateEvent event) {
+	public static boolean playerTick(PlayerEvent.LivingUpdateEvent event) {
 
 		// player events
 		if (event.entity instanceof EntityPlayer player) {
@@ -36,11 +41,11 @@ public class EventHandlerEntity {
 			}
 
 		}
-
+		return false;
 	}
 
 	@SubscribeEvent
-	public void playerDeath(PlayerDropsEvent event) {
+	public static void playerDeath(PlayerDropsEvent event) {
 		if (event.entity instanceof EntityPlayer
 				&& !event.entity.worldObj.isRemote
 				&& !event.entity.worldObj.getGameRules()
@@ -52,12 +57,12 @@ public class EventHandlerEntity {
 	}
 
 	@SubscribeEvent
-	public void playerLoad(PlayerEvent.LoadFromFile event) {
+	public static void playerLoad(PlayerEvent.LoadFromFile event) {
 		playerLoadDo(event.entityPlayer, event.playerDirectory, event.entityPlayer.capabilities.isCreativeMode);
 		playerDirectory = event.playerDirectory;
 	}
 
-	private void playerLoadDo(EntityPlayer player, File directory, Boolean gamemode) {
+	private static void playerLoadDo(EntityPlayer player, File directory, Boolean gamemode) {
 		PlayerHandler.clearPlayerBaubles(player);
 
 		File mainFile, backupFile;
@@ -88,17 +93,17 @@ public class EventHandlerEntity {
 		PlayerHandler.loadPlayerBaubles(player, mainFile, backupFile);
 	}
 
-	public File getPlayerFile(String extension, File playerDirectory, String playerName) {
+	public static File getPlayerFile(String extension, File playerDirectory, String playerName) {
         if("dat".equals(extension)) throw new IllegalArgumentException("The extension 'dat' is reserved");
         return new File(playerDirectory, playerName + "." + extension);
     }
 
 	@SubscribeEvent
-	public void playerSave(PlayerEvent.SaveToFile event) {
+	public static void playerSave(PlayerEvent.SaveToFile event) {
 		playerSaveDo(event.entityPlayer, event.playerDirectory, event.entityPlayer.capabilities.isCreativeMode);
 	}
 
-	private void playerSaveDo(EntityPlayer player, File directory, Boolean gamemode) {
+	private static void playerSaveDo(EntityPlayer player, File directory, Boolean gamemode) {
 		PlayerHandler.savePlayerBaubles(player,
 				getPlayerFile("baub", directory, player.getCommandSenderName()),
 				getPlayerFile("baubback", directory, player.getCommandSenderName()));

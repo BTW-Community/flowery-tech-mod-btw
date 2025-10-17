@@ -19,7 +19,7 @@ public class Baubles {
 //    @SidedProxy(clientSide = "baubles.client.ClientProxy", serverSide = "baubles.common.CommonProxy")
     public static CommonProxy proxy = new CommonProxy();
 
-    public static Baubles instance =new Baubles();
+    public static Baubles instance = new Baubles();
 
     public EventHandlerEntity entityEventHandler;
     public EventHandlerNetwork entityEventNetwork;

@@ -1,6 +1,8 @@
 package net.minecraftforge.event.entity.living;
 
 import cpw.mods.fml.common.eventhandler.Cancelable;
+import net.legacyfabric.fabric.api.event.Event;
+import net.legacyfabric.fabric.api.event.EventFactory;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraftforge.event.entity.EntityEvent;
 
@@ -38,6 +40,20 @@ public class LivingEvent extends EntityEvent
     public static class LivingUpdateEvent extends LivingEvent
     {
         public LivingUpdateEvent(EntityLivingBase e){ super(e); }
+        public static final Event<LivingUpdateEventCallback> EVENT = EventFactory.createArrayBacked(LivingUpdateEventCallback.class, (callbacks) -> (event) -> {
+            for (var callback : callbacks) {
+                boolean cancelled = callback.onLivingUpdate(event);
+                if (cancelled) {
+                    return true;
+                }
+            }
+            return false;
+        });
+
+        @FunctionalInterface
+        public interface LivingUpdateEventCallback {
+            public boolean onLivingUpdate(LivingUpdateEvent event);
+        }
     }
     
     /**

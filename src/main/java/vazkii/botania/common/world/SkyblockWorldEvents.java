@@ -16,6 +16,7 @@ import dev.bagel.util.Persisted;
 import net.minecraft.src.*;
 import net.minecraft.src.Block;
 import net.minecraftforge.client.event.RenderWorldEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
@@ -30,6 +31,9 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
 public final class SkyblockWorldEvents {
+	public SkyblockWorldEvents() {
+		LivingEvent.LivingUpdateEvent.EVENT.register(this::onPlayerUpdate);
+	}
 
 	private static final String TAG_MADE_ISLAND = "Botania-MadeIsland";
 	private static final String TAG_HAS_OWN_ISLAND = "Botania-HasOwnIsland";
@@ -37,8 +41,8 @@ public final class SkyblockWorldEvents {
 	private static final String TAG_ISLAND_Y = "Botania-IslandY";
 	private static final String TAG_ISLAND_Z = "Botania-IslandZ";
 
-	@SubscribeEvent
-	public void onPlayerUpdate(LivingUpdateEvent event) {
+//	@SubscribeEvent
+	public boolean onPlayerUpdate(LivingUpdateEvent event) {
 		if(event.entityLiving instanceof EntityPlayer && !event.entity.worldObj.isRemote) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
 			NBTTagCompound data = player.getEntityData();
@@ -58,6 +62,7 @@ public final class SkyblockWorldEvents {
 				persist.setBoolean(TAG_MADE_ISLAND, true);
 			}
 		}
+		return false;
 	}
 
 	@SubscribeEvent

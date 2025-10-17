@@ -26,6 +26,7 @@ import net.minecraft.src.EntitySquid;
 import net.minecraft.src.EntityVillager;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lexicon.page.PageShedding;
@@ -33,13 +34,17 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public final class SheddingHandler {
 
-	public static ArrayList<ShedPattern> patterns = new ArrayList<ShedPattern>();
-	public static ArrayList<ShedPattern> defaultPatterns = new ArrayList<ShedPattern>();
+	public SheddingHandler() {
+		LivingEvent.LivingUpdateEvent.EVENT.register(this::onLivingUpdate);
+	}
+
+	public static ArrayList<ShedPattern> patterns = new ArrayList<>();
+	public static ArrayList<ShedPattern> defaultPatterns = new ArrayList<>();
 
 	@SubscribeEvent
-	public void onLivingUpdate(LivingUpdateEvent event) {
+	public boolean onLivingUpdate(LivingUpdateEvent event) {
 		if(event.entity.worldObj.isRemote)
-			return;
+			return false;
 
 		ShedPattern pattern = getShedPattern(event.entity);
 
@@ -47,6 +52,7 @@ public final class SheddingHandler {
 			if(event.entity.worldObj.rand.nextInt(pattern.getRate()) == 0)
 				event.entity.entityDropItem(pattern.getItemStack(), 0.0F);
 		}
+		return false;
 	}
 
 	public static ShedPattern getShedPattern(Entity entity) {

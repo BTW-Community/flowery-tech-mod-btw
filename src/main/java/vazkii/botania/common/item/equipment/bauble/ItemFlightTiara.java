@@ -89,6 +89,7 @@ public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaub
 		MinecraftForge.EVENT_BUS.register(this);
 //		FMLCommonHandler.instance().bus().register(this);
 		setHasSubtypes(true);
+		LivingEvent.LivingUpdateEvent.EVENT.register(this::updatePlayerFlyStatus);
 	}
 
 	@Override
@@ -215,8 +216,8 @@ public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaub
 		}
 	}
 
-	@SubscribeEvent
-	public void updatePlayerFlyStatus(LivingEvent.LivingUpdateEvent event) {
+//	@SubscribeEvent
+	public boolean updatePlayerFlyStatus(LivingEvent.LivingUpdateEvent event) {
 		if(event.entityLiving instanceof EntityPlayer player) {
             ItemStack tiara = PlayerHandler.getPlayerBaubles(player).getStackInSlot(0);
 			int left = ItemNBTHelper.getInt(tiara, TAG_TIME_LEFT, MAX_FLY_TIME);
@@ -302,6 +303,7 @@ public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaub
 				player.capabilities.allowFlying = true;
 			}
 		}
+		return false;
 	}
 
 	@SubscribeEvent

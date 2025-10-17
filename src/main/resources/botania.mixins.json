@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "RenderItemMixin",
+    "event.EntityLivingBaseMixin",
     "event.MinecraftServerMixin",
     "event.NetServerHandlerMixin",
     "event.client.RenderBipedMixin",
