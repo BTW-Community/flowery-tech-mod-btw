@@ -22,7 +22,7 @@ public class BlockModStairs extends BlockStairs implements ILexiconable {
 	public Block setUnlocalizedName(String par1Str) {
 		var item = new ItemBlockMod(this);
 //		GameRegistry.registerBlock(this, ItemBlockMod.class, par1Str);
-		return this;
+		return super.setUnlocalizedName(par1Str);
 	}
 
 	@Override

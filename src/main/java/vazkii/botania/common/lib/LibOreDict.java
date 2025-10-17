@@ -68,11 +68,17 @@ public final class LibOreDict {
 			new ItemStack(FLOWER_ITEM, 1, 12), new ItemStack(FLOWER_ITEM, 1, 13), new ItemStack(FLOWER_ITEM, 1, 14), new ItemStack(FLOWER_ITEM, 1, 15)
 	};
 
-	public static final String[] DOUBLE_FLOWER = new String[] {
-		"mysticFlowerWhiteDouble", "mysticFlowerOrangeDouble", "mysticFlowerMagentaDouble", "mysticFlowerLightBlueDouble",
-		"mysticFlowerYellowDouble", "mysticFlowerLimeDouble", "mysticFlowerPinkDouble", "mysticFlowerGrayDouble",
-		"mysticFlowerLightGrayDouble", "mysticFlowerCyanDouble", "mysticFlowerPurpleDouble", "mysticFlowerBlueDouble",
-		"mysticFlowerBrownDouble", "mysticFlowerGreenDouble", "mysticFlowerRedDouble", "mysticFlowerBlackDouble"
+	private static final Item DOUBLE_FLOWER_ITEM_1 = Items.getItemFromBlock(ModBlocks.doubleFlower1);
+	private static final Item DOUBLE_FLOWER_ITEM_2 = Items.getItemFromBlock(ModBlocks.doubleFlower2);
+	public static final ItemStack[] DOUBLE_FLOWER = new ItemStack[] {
+			new ItemStack(DOUBLE_FLOWER_ITEM_1, 1, 0), new ItemStack(DOUBLE_FLOWER_ITEM_1, 1, 1), new ItemStack(DOUBLE_FLOWER_ITEM_1, 1, 2), new ItemStack(DOUBLE_FLOWER_ITEM_1, 1, 3),
+			new ItemStack(DOUBLE_FLOWER_ITEM_1, 1, 4), new ItemStack(DOUBLE_FLOWER_ITEM_1, 1, 5), new ItemStack(DOUBLE_FLOWER_ITEM_1, 1, 6), new ItemStack(DOUBLE_FLOWER_ITEM_1, 1, 7),
+			new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 0), new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 1), new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 2), new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 3),
+			new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 4), new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 5), new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 6), new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 7),
+//		"mysticFlowerWhiteDouble", "mysticFlowerOrangeDouble", "mysticFlowerMagentaDouble", "mysticFlowerLightBlueDouble",
+//		"mysticFlowerYellowDouble", "mysticFlowerLimeDouble", "mysticFlowerPinkDouble", "mysticFlowerGrayDouble",
+//		"mysticFlowerLightGrayDouble", "mysticFlowerCyanDouble", "mysticFlowerPurpleDouble", "mysticFlowerBlueDouble",
+//		"mysticFlowerBrownDouble", "mysticFlowerGreenDouble", "mysticFlowerRedDouble", "mysticFlowerBlackDouble"
 	};
 	public static final Tag PETALS = Tag.of(Botania.loc("petal")).addUntilDamage(15, ModItems.petal);
 
@@ -96,12 +102,6 @@ public final class LibOreDict {
 			new ItemStack(ModItems.rune, 1, 8), new ItemStack(ModItems.rune, 1, 9), new ItemStack(ModItems.rune, 1, 10), new ItemStack(ModItems.rune, 1, 11),
 			new ItemStack(ModItems.rune, 1, 12), new ItemStack(ModItems.rune, 1, 13), new ItemStack(ModItems.rune, 1, 14), new ItemStack(ModItems.rune, 1, 15)
 	};
-	public static final String[] RUNEs = new String[] {
-		"runeWaterB", "runeFireB", "runeEarthB", "runeAirB",
-		"runeSpringB", "runeSummerB", "runeAutumnB", "runeWinterB",
-		"runeManaB", "runeLustB", "runeGluttonyB", "runeGreedB",
-		"runeSlothB", "runeWrathB", "runeEnvyB", "runePrideB"
-	};
 
 	public static final String[] STONE_18_VARIANTS = new String[] {
 		"stoneAndesite", "stoneBasalt", "stoneDiorite", "stoneGranite",
@@ -110,9 +110,13 @@ public final class LibOreDict {
 		"stoneAndesiteChiseled", "stoneBasaltChiseled", "stoneDioriteChiseled", "stoneGraniteChiseled"
 	};
 
-	public static final String[] QUARTZ = new String[] {
-		"quartzDark", "quartzMana", "quartzBlaze", 
-		"quartzLavender", "quartzRed", "quartzElven", "quartzSunny"
+	public static final ItemStack[] QUARTZ = new ItemStack[] {
+			new ItemStack(ModItems.quartz, 1, 0), new ItemStack(ModItems.quartz, 1, 1),
+			new ItemStack(ModItems.quartz, 1, 2), new ItemStack(ModItems.rune, 1, 3),
+			new ItemStack(ModItems.quartz, 1, 4), new ItemStack(ModItems.quartz, 1, 5),
+			new ItemStack(ModItems.quartz, 1, 6), new ItemStack(ModItems.quartz, 1, 7)
+//		"quartzDark", "quartzMana", "quartzBlaze",
+//		"quartzLavender", "quartzRed", "quartzElven", "quartzSunny"
 	};
 
 }

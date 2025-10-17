@@ -10,6 +10,9 @@
  */
 package vazkii.botania.common.lib;
 
+import net.minecraft.src.Block;
+import net.minecraft.src.ItemStack;
+
 public final class LibBlockNames {
 
 	public static final String FLOWER = "flower";
@@ -79,7 +82,7 @@ public final class LibBlockNames {
 	public static final String MUSHROOM = "mushroom";
 	public static final String PUMP = "pump";
 	public static final String DOUBLE_FLOWER = "doubleFlower";
-	public static final String STONE = "stone";
+	public static final ItemStack STONE = new ItemStack(Block.stone);
 	public static final String FAKE_AIR = "fakeAir";
 	public static final String BLAZE_BLOCK = "blazeBlock";
 	public static final String CORPOREA_INTERCEPTOR = "corporeaInterceptor";

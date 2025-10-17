@@ -135,7 +135,7 @@ public final class ModManaAlchemyRecipes {
 
 		if(ConfigHandler.stones18Enabled) {
 			stoneRecipes = new ArrayList<>();
-			stoneRecipes.add(BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(ModFluffBlocks.stone), "stone", 200));
+			stoneRecipes.add(BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(ModFluffBlocks.stone), Block.stone, 200));
 			for(int i = 0; i < 4; i++)
 				stoneRecipes.add(BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(ModFluffBlocks.stone, 1, i), new ItemStack(ModFluffBlocks.stone, 1, i == 0 ? 3 : i - 1), 200));
 		}

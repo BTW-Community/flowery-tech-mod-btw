@@ -41,7 +41,7 @@ public class BlockBlaze extends BlockMod implements ILexiconable/*, IFuelHandler
 	public LexiconEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon) {
 		return LexiconData.blazeBlock;
 	}
-	private static final TileEntityFurnace furnace = new TileEntityFurnace();
+	public static final TileEntityFurnace furnace = new TileEntityFurnace();
 
 	@Override
 	public int getFurnaceBurnTime(int iItemDamage) {

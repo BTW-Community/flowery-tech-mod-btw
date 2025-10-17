@@ -395,8 +395,8 @@ public final class ModBlocks {
 		OreDictionary.registerOre("soulSand", Block.slowSand);
 		OreDictionary.registerOre("ice", Block.ice);
 		OreDictionary.registerOre("slabCobblestone", new ItemStack(Blocks.stone_slab, 1, 3));
-		OreDictionary.registerOre("chestWood", Blocks.chest);
-		OreDictionary.registerOre("craftingTableWood", Blocks.crafting_table);
+		OreDictionary.registerOre(BTWBlocks.chest, Blocks.chest);
+		OreDictionary.registerOre(Block.anvil, Blocks.crafting_table);
 */
 
 		BotaniaAPI.registerPaintableBlock(unstableBlock);

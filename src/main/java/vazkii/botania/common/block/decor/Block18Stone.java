@@ -40,7 +40,7 @@ public class Block18Stone extends BlockMod implements ILexiconable {
 		setHardness(1.5F);
 		setResistance(10F);
 		setStepSound(soundStoneFootstep);
-		setUnlocalizedName(LibBlockNames.STONE);
+		setUnlocalizedName("stone");
 	}
 
 	@Override

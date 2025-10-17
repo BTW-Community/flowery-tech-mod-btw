@@ -56,8 +56,8 @@ public final class ModRuneRecipes {
 		recipeFireRune = BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 2, 1), costTier1, LibOreDict.MANA_POWDER, LibOreDict.MANA_STEEL, new ItemStack(Item.netherrackBrick), new ItemStack(Item.gunpowder), new ItemStack(Item.netherStalkSeeds));
 
 		recipesEarthRune = new ArrayList<>();
-		recipesEarthRune.add(BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 2, 2), costTier1, LibOreDict.MANA_POWDER, LibOreDict.MANA_STEEL, "stone", new ItemStack(Block.coalBlock), new ItemStack(Block.mushroomBrown)));
-		recipesEarthRune.add(BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 2, 2), costTier1, LibOreDict.MANA_POWDER, LibOreDict.MANA_STEEL, "stone", new ItemStack(Block.coalBlock), new ItemStack(Block.mushroomRed)));
+		recipesEarthRune.add(BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 2, 2), costTier1, LibOreDict.MANA_POWDER, LibOreDict.MANA_STEEL, new ItemStack(Block.stone), new ItemStack(Block.coalBlock), new ItemStack(Block.mushroomBrown)));
+		recipesEarthRune.add(BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 2, 2), costTier1, LibOreDict.MANA_POWDER, LibOreDict.MANA_STEEL, new ItemStack(Block.stone), new ItemStack(Block.coalBlock), new ItemStack(Block.mushroomRed)));
 
 		recipesAirRune = new ArrayList<>();
 		for(int i = 0; i < 16; i++)

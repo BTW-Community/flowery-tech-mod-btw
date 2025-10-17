@@ -24,6 +24,7 @@ import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.SubTileGenerating;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.block.ModBlocks;
+import vazkii.botania.common.block.decor.BlockBlaze;
 import vazkii.botania.common.lexicon.LexiconData;
 
 public class SubTileEndoflame extends SubTileGenerating {
@@ -33,7 +34,6 @@ public class SubTileEndoflame extends SubTileGenerating {
 	private static final int RANGE = 3;
 
 	int burnTime = 0;
-	private static final TileEntityFurnace furnace = new TileEntityFurnace();
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
@@ -52,7 +52,7 @@ public class SubTileEndoflame extends SubTileGenerating {
 							if(stack.getItem().hasContainerItem())
 								continue;
 
-							int burnTime = stack == null || stack.getItem() == Items.getItemFromBlock(ModBlocks.spreader) ? 0 : furnace.getItemBurnTime(stack);
+							int burnTime = stack == null || stack.getItem() == Items.getItemFromBlock(ModBlocks.spreader) ? 0 : BlockBlaze.furnace.getItemBurnTime(stack);
 							if(burnTime > 0 && stack.stackSize > 0) {
 								this.burnTime = Math.min(FUEL_CAP, burnTime) / 2;
 
