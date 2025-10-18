@@ -12,6 +12,7 @@ package vazkii.botania.common.block;
 
 import java.util.ArrayList;
 
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.src.*;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -41,6 +42,16 @@ public class BlockCocoon extends BlockModContainer implements ILexiconable {
 	@Override
 	public Icon getIcon(int p_149691_1_, int p_149691_2_) {
 		return Block.web.getBlockTextureFromSide(0);
+	}
+
+	@Override
+	public boolean renderBlock(RenderBlocks renderer, int i, int j, int k) {
+		return false;
+	}
+
+	@Override
+	public void renderBlockAsItem(RenderBlocks renderBlocks, int iItemDamage, float fBrightness) {
+		RenderingRegistry.instance().renderInventoryBlock(renderBlocks, this, iItemDamage, getRenderType());
 	}
 
 	@Override

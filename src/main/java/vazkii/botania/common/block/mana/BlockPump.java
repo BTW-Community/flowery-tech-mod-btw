@@ -10,16 +10,8 @@
  */
 package vazkii.botania.common.block.mana;
 
-import net.minecraft.src.Material;
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.Icon;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.IBlockAccess;
-import net.minecraft.src.World;
+import cpw.mods.fml.client.registry.RenderingRegistry;
+import net.minecraft.src.*;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -88,6 +80,16 @@ public class BlockPump extends BlockModContainer implements ILexiconable {
 	@Override
 	public boolean renderAsNormalBlock() {
 		return false;
+	}
+
+	@Override
+	public boolean renderBlock(RenderBlocks renderer, int i, int j, int k) {
+		return false;
+	}
+
+	@Override
+	public void renderBlockAsItem(RenderBlocks renderBlocks, int iItemDamage, float fBrightness) {
+		RenderingRegistry.instance().renderInventoryBlock(renderBlocks, this, iItemDamage, getRenderType());
 	}
 
 	@Override

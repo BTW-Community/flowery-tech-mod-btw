@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.block;
 
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import dev.bagel.util.Items;
 import net.minecraft.src.*;
 import vazkii.botania.api.lexicon.ILexiconable;
@@ -60,6 +61,16 @@ public class BlockTeruTeruBozu extends BlockModContainer implements ILexiconable
 	public boolean isBlueOrchid(ItemStack stack) {
 		return false;
 //		return stack.getItem() == Items.getItemFromBlock(Block.red_flower) && stack.getItemDamage() == 1;
+	}
+
+	@Override
+	public boolean renderBlock(RenderBlocks renderer, int i, int j, int k) {
+		return false;
+	}
+
+	@Override
+	public void renderBlockAsItem(RenderBlocks renderBlocks, int iItemDamage, float fBrightness) {
+		RenderingRegistry.instance().renderInventoryBlock(renderBlocks, this, iItemDamage, getRenderType());
 	}
 
 	public boolean removeRain(World world) {

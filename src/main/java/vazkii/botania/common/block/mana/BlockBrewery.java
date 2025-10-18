@@ -12,18 +12,8 @@ package vazkii.botania.common.block.mana;
 
 import java.util.Random;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.Material;
-import net.minecraft.src.Minecraft;
-import net.minecraft.src.ScaledResolution;
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.EntityItem;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.Icon;
-import net.minecraft.src.World;
+import cpw.mods.fml.client.registry.RenderingRegistry;
+import net.minecraft.src.*;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.wand.IWandHUD;
@@ -41,7 +31,7 @@ public class BlockBrewery extends BlockModContainer implements ILexiconable, IWa
 	public BlockBrewery(int id) {
 		super(id, Material.rock);
 		float f = 6F / 16F;
-		setBlockBounds(f, 0.05F, f, 1F - f, 0.95F, 1F - f);
+		initBlockBounds(f, 0.05F, f, 1F - f, 0.95F, 1F - f);
 		setUnlocalizedName(LibBlockNames.BREWERY);
 		setHardness(2.0F);
 		setResistance(10.0F);
@@ -147,6 +137,16 @@ public class BlockBrewery extends BlockModContainer implements ILexiconable, IWa
 	@Override
 	public boolean renderAsNormalBlock() {
 		return false;
+	}
+
+	@Override
+	public boolean renderBlock(RenderBlocks renderer, int i, int j, int k) {
+		return false;
+	}
+
+	@Override
+	public void renderBlockAsItem(RenderBlocks renderBlocks, int iItemDamage, float fBrightness) {
+		RenderingRegistry.instance().renderInventoryBlock(renderBlocks, this, iItemDamage, getRenderType());
 	}
 
 	@Override
