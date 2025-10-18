@@ -13,6 +13,7 @@ package vazkii.botania.common.item.equipment.tool;
 import dev.bagel.util.Items;
 import net.minecraft.src.*;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import vazkii.botania.common.item.equipment.tool.manasteel.ItemManasteelPick;
 import vazkii.botania.common.lib.LibItemNames;
@@ -27,9 +28,10 @@ public class ItemGlassPick extends ItemManasteelPick {
 	public ItemGlassPick(int id) {
 		super(id, MATERIAL, LibItemNames.GLASS_PICK);
 		MinecraftForge.EVENT_BUS.register(this);
+		BlockEvent.HarvestDropsEvent.EVENT.register(this::onBlockDrops);
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onBlockDrops(HarvestDropsEvent event) {
 		if(event.harvester != null && event.block != null && event.drops.isEmpty() && event.harvester.getCurrentEquippedItem() != null && event.harvester.getCurrentEquippedItem().getItem() == this && event.block.blockMaterial == Material.glass /*&& event.block.canSilkHarvest(event.world, event.harvester, event.x, event.y, event.z, event.blockMetadata)*/)
 			event.drops.add(new ItemStack(event.block, 1, event.blockMetadata));

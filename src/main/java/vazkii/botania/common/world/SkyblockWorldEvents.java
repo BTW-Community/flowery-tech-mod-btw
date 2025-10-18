@@ -20,6 +20,7 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import vazkii.botania.client.render.world.SkyblockSkyRenderer;
 import vazkii.botania.common.block.ModBlocks;
@@ -33,6 +34,7 @@ import net.fabricmc.api.EnvType;
 public final class SkyblockWorldEvents {
 	public SkyblockWorldEvents() {
 		LivingEvent.LivingUpdateEvent.EVENT.register(this::onPlayerUpdate);
+		BlockEvent.HarvestDropsEvent.EVENT.register(this::onDrops);
 	}
 
 	private static final String TAG_MADE_ISLAND = "Botania-MadeIsland";
@@ -102,7 +104,7 @@ public final class SkyblockWorldEvents {
 		}
 	}
 
-	@SubscribeEvent
+
 	public void onDrops(HarvestDropsEvent event) {
 		if(WorldTypeSkyblock.isWorldSkyblock(event.world) && event.block == Block.tallGrass) {
 			ItemStack stackToRemove = null;

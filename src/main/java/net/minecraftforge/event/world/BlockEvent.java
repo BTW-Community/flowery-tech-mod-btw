@@ -3,6 +3,7 @@ package net.minecraftforge.event.world;
 import com.google.common.collect.ImmutableList;
 import cpw.mods.fml.common.eventhandler.Cancelable;
 import cpw.mods.fml.common.eventhandler.Event;
+import net.legacyfabric.fabric.api.event.EventFactory;
 import net.minecraft.src.Block;
 import net.minecraft.src.EnchantmentHelper;
 import net.minecraft.src.EntityPlayer;
@@ -57,6 +58,17 @@ public class BlockEvent extends Event {
             this.drops = drops;
             this.isSilkTouching = isSilkTouching;
             this.harvester = harvester;
+        }
+
+        public static final net.legacyfabric.fabric.api.event.Event<HarvestDropsEventCallback> EVENT = EventFactory.createArrayBacked(HarvestDropsEventCallback.class, (callbacks) -> (event ->  {
+            for (HarvestDropsEventCallback callback : callbacks) {
+                callback.harvestDropsEvent(event);
+            }
+        }));
+
+        @FunctionalInterface
+        public interface HarvestDropsEventCallback {
+            void harvestDropsEvent(HarvestDropsEvent event);
         }
     }
 }

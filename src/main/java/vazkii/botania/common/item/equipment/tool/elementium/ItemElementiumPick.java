@@ -8,6 +8,7 @@ import net.minecraft.src.Block;
 import net.minecraft.src.EnumToolMaterial;
 import net.minecraft.src.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.common.item.ModItems;
@@ -20,10 +21,10 @@ public class ItemElementiumPick extends ItemManasteelPick {
 
 	public ItemElementiumPick(int id) {
 		super(id, EnumToolMaterial.EMERALD/*BotaniaAPI.elementiumToolMaterial*/, LibItemNames.ELEMENTIUM_PICK);
-		MinecraftForge.EVENT_BUS.register(this);
+		BlockEvent.HarvestDropsEvent.EVENT.register(this::onHarvestDrops);
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onHarvestDrops(HarvestDropsEvent event) {
 		if(event.harvester != null) {
 			ItemStack stack = event.harvester.getCurrentEquippedItem();
