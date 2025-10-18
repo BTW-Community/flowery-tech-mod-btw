@@ -19,6 +19,7 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.ResourceLocation;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.block.ModBlocks;
+import vazkii.botania.common.block.ModFluffBlocks;
 import vazkii.botania.common.item.ModItems;
 
 public final class LibOreDict {
@@ -32,10 +33,10 @@ public final class LibOreDict {
 	public static final ItemStack MANA_PEARL = new ItemStack(ModItems.manaResource, 1, 1);
 	public static final ItemStack MANA_DIAMOND = new ItemStack(ModItems.manaResource, 1, 2);
 	public static final ItemStack LIVINGWOOD_TWIG = new ItemStack(ModItems.manaResource, 1, 3);
-	public static final ItemStack TERRA_STEEL = new ItemStack(ModItems.manaResource, 1, 3);
-	public static final ItemStack LIFE_ESSENCE = new ItemStack(ModItems.manaResource, 1, 4);
-	public static final ItemStack REDSTONE_ROOT = new ItemStack(ModItems.manaResource, 1, 5);
-	public static final ItemStack DREAM_WOOD = new ItemStack(ModItems.manaResource, 1, 6);
+	public static final ItemStack TERRA_STEEL = new ItemStack(ModItems.manaResource, 1, 4);
+	public static final ItemStack LIFE_ESSENCE = new ItemStack(ModItems.manaResource, 1, 5);
+	public static final ItemStack REDSTONE_ROOT = new ItemStack(ModItems.manaResource, 1, 6);
+	public static final ItemStack DREAM_WOOD = new ItemStack(ModBlocks.dreamwood);
 	public static final ItemStack ELEMENTIUM = new ItemStack(ModItems.manaResource, 1, 7);
 	public static final ItemStack PIXIE_DUST = new ItemStack(ModItems.manaResource, 1, 8);
 	public static final ItemStack DRAGONSTONE = new ItemStack(ModItems.manaResource, 1, 9);
@@ -75,10 +76,6 @@ public final class LibOreDict {
 			new ItemStack(DOUBLE_FLOWER_ITEM_1, 1, 4), new ItemStack(DOUBLE_FLOWER_ITEM_1, 1, 5), new ItemStack(DOUBLE_FLOWER_ITEM_1, 1, 6), new ItemStack(DOUBLE_FLOWER_ITEM_1, 1, 7),
 			new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 0), new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 1), new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 2), new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 3),
 			new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 4), new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 5), new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 6), new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 7),
-//		"mysticFlowerWhiteDouble", "mysticFlowerOrangeDouble", "mysticFlowerMagentaDouble", "mysticFlowerLightBlueDouble",
-//		"mysticFlowerYellowDouble", "mysticFlowerLimeDouble", "mysticFlowerPinkDouble", "mysticFlowerGrayDouble",
-//		"mysticFlowerLightGrayDouble", "mysticFlowerCyanDouble", "mysticFlowerPurpleDouble", "mysticFlowerBlueDouble",
-//		"mysticFlowerBrownDouble", "mysticFlowerGreenDouble", "mysticFlowerRedDouble", "mysticFlowerBlackDouble"
 	};
 	public static final Tag PETALS = Tag.of(Botania.loc("petal")).addUntilDamage(15, ModItems.petal);
 
@@ -103,11 +100,11 @@ public final class LibOreDict {
 			new ItemStack(ModItems.rune, 1, 12), new ItemStack(ModItems.rune, 1, 13), new ItemStack(ModItems.rune, 1, 14), new ItemStack(ModItems.rune, 1, 15)
 	};
 
-	public static final String[] STONE_18_VARIANTS = new String[] {
-		"stoneAndesite", "stoneBasalt", "stoneDiorite", "stoneGranite",
-		"stoneAndesitePolished", "stoneBasaltPolished", "stoneDioritePolished", "stoneGranitePolished",
-		"stoneAndesiteBricks", "stoneBasaltBricks", "stoneDioriteBricks", "stoneGraniteBricks",
-		"stoneAndesiteChiseled", "stoneBasaltChiseled", "stoneDioriteChiseled", "stoneGraniteChiseled"
+	public static final ItemStack[] STONE_18_VARIANTS = new ItemStack[]{
+			new ItemStack(ModFluffBlocks.stone, 1, 0), new ItemStack(ModFluffBlocks.stone, 1, 1), new ItemStack(ModFluffBlocks.stone, 1, 2), new ItemStack(ModFluffBlocks.stone, 1, 3),
+			new ItemStack(ModFluffBlocks.stone, 1, 4), new ItemStack(ModFluffBlocks.stone, 1, 5), new ItemStack(ModFluffBlocks.stone, 1, 6), new ItemStack(ModFluffBlocks.stone, 1, 7),
+			new ItemStack(ModFluffBlocks.stone, 1, 8), new ItemStack(ModFluffBlocks.stone, 1, 9), new ItemStack(ModFluffBlocks.stone, 1, 10), new ItemStack(ModFluffBlocks.stone, 1, 11),
+			new ItemStack(ModFluffBlocks.stone, 1, 12), new ItemStack(ModFluffBlocks.stone, 1, 13), new ItemStack(ModFluffBlocks.stone, 1, 14), new ItemStack(ModFluffBlocks.stone, 1, 15)
 	};
 
 	public static final ItemStack[] QUARTZ = new ItemStack[] {

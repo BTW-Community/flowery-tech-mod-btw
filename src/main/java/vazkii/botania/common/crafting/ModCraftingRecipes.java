@@ -370,7 +370,7 @@ public final class ModCraftingRecipes {
 		for(int i = 0; i < 16; i++)
 			addOreDictRecipe(new ItemStack(ModBlocks.altar),
 					"SPS", " C ", "CCC",
-					'S', new ItemStack(BTWBlocks.cobblestoneSlab, 1, 3),
+					'S', new ItemStack(BTWBlocks.cobblestoneSlab, 1, 2),
 					'P', LibOreDict.PETAL[i].copy(),
 					'C', Block.cobblestone);
 		recipesApothecary = BotaniaAPI.getLatestAddedRecipes(16);
@@ -1811,22 +1811,22 @@ public final class ModCraftingRecipes {
 		recipe18StonePolish = new ArrayList<>();
 		recipe18StoneBrick = new ArrayList<>();
 		recipe18StoneChisel = new ArrayList<>();
-//		for(int i = 0; i < 4; i++) {
-//			addOreDictRecipe(new ItemStack(ModFluffBlocks.stone, 8, i + 4),
-//					"SSS", "S S", "SSS",
-//					'S', LibOreDict.STONE_18_VARIANTS[i]);
-//			recipe18StonePolish.add(BotaniaAPI.getLatestAddedRecipe());
-//
-//			addOreDictRecipe(new ItemStack(ModFluffBlocks.stone, 4, i + 8),
-//					"SS", "SS",
-//					'S', LibOreDict.STONE_18_VARIANTS[i]);
-//			recipe18StoneBrick.add(BotaniaAPI.getLatestAddedRecipe());
-//
-//			addOreDictRecipe(new ItemStack(ModFluffBlocks.stone, 1, i + 12),
-//					"S", "S",
-//					'S', new ItemStack(ModFluffBlocks.stoneSlabs[i + 4], 1, 0));
-//			recipe18StoneChisel.add(BotaniaAPI.getLatestAddedRecipe());
-//		}
+		for(int i = 0; i < 4; i++) {
+			addOreDictRecipe(new ItemStack(ModFluffBlocks.stone, 8, i + 4),
+					"SSS", "S S", "SSS",
+					'S', LibOreDict.STONE_18_VARIANTS[i]);
+			recipe18StonePolish.add(BotaniaAPI.getLatestAddedRecipe());
+
+			addOreDictRecipe(new ItemStack(ModFluffBlocks.stone, 4, i + 8),
+					"SS", "SS",
+					'S', LibOreDict.STONE_18_VARIANTS[i]);
+			recipe18StoneBrick.add(BotaniaAPI.getLatestAddedRecipe());
+
+			addOreDictRecipe(new ItemStack(ModFluffBlocks.stone, 1, i + 12),
+					"S", "S",
+					'S', new ItemStack(ModFluffBlocks.stoneSlabs[i + 4], 1, 0));
+			recipe18StoneChisel.add(BotaniaAPI.getLatestAddedRecipe());
+		}
 
 		// Blaze Light Recipe
 		addOreDictRecipe(new ItemStack(ModBlocks.blazeBlock),
@@ -2232,28 +2232,28 @@ public final class ModCraftingRecipes {
 
 		// 1.8 Block Stone Stairs & Slabs
 		for(int i = 0; i < 4; i++) {
-//			addOreDictRecipe(new ItemStack(ModFluffBlocks.stoneSlabs[i], 6),
-//					"QQQ",
-//					'Q', LibOreDict.STONE_18_VARIANTS[i]);
-//			addOreDictRecipe(new ItemStack(ModFluffBlocks.stoneStairs[i], 4),
-//					"  Q", " QQ", "QQQ",
-//					'Q', LibOreDict.STONE_18_VARIANTS[i]);
-//			addOreDictRecipe(new ItemStack(ModFluffBlocks.stoneStairs[i], 4),
-//					"Q  ", "QQ ", "QQQ",
-//					'Q', LibOreDict.STONE_18_VARIANTS[i]);
+			addOreDictRecipe(new ItemStack(ModFluffBlocks.stoneSlabs[i], 6),
+					"QQQ",
+					'Q', LibOreDict.STONE_18_VARIANTS[i]);
+			addOreDictRecipe(new ItemStack(ModFluffBlocks.stoneStairs[i], 4),
+					"  Q", " QQ", "QQQ",
+					'Q', LibOreDict.STONE_18_VARIANTS[i]);
+			addOreDictRecipe(new ItemStack(ModFluffBlocks.stoneStairs[i], 4),
+					"Q  ", "QQ ", "QQQ",
+					'Q', LibOreDict.STONE_18_VARIANTS[i]);
 			addOreDictRecipe(new ItemStack(ModFluffBlocks.stone, 1, i),
 					"Q", "Q",
 					'Q', new ItemStack(ModFluffBlocks.stoneSlabs[i]));
 			
-//			addOreDictRecipe(new ItemStack(ModFluffBlocks.stoneSlabs[i + 4], 6),
-//					"QQQ",
-//					'Q', LibOreDict.STONE_18_VARIANTS[i + 8]);
-//			addOreDictRecipe(new ItemStack(ModFluffBlocks.stoneStairs[i + 4], 4),
-//					"  Q", " QQ", "QQQ",
-//					'Q', LibOreDict.STONE_18_VARIANTS[i + 8]);
-//			addOreDictRecipe(new ItemStack(ModFluffBlocks.stoneStairs[i + 4], 4),
-//					"Q  ", "QQ ", "QQQ",
-//					'Q', LibOreDict.STONE_18_VARIANTS[i + 8]);
+			addOreDictRecipe(new ItemStack(ModFluffBlocks.stoneSlabs[i + 4], 6),
+					"QQQ",
+					'Q', LibOreDict.STONE_18_VARIANTS[i + 8]);
+			addOreDictRecipe(new ItemStack(ModFluffBlocks.stoneStairs[i + 4], 4),
+					"  Q", " QQ", "QQQ",
+					'Q', LibOreDict.STONE_18_VARIANTS[i + 8]);
+			addOreDictRecipe(new ItemStack(ModFluffBlocks.stoneStairs[i + 4], 4),
+					"Q  ", "QQ ", "QQQ",
+					'Q', LibOreDict.STONE_18_VARIANTS[i + 8]);
 			addOreDictRecipe(new ItemStack(ModFluffBlocks.stone, 1, i + 8),	//VERY 		VERY
 					"Q", "Q",												//BIG		BIG
 					'Q', new ItemStack(ModFluffBlocks.stoneSlabs[i + 4]));	//PROBLEM	PROBLEM
