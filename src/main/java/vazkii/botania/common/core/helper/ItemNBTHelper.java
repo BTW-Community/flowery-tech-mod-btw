@@ -14,7 +14,6 @@
 package vazkii.botania.common.core.helper;
 
 import btw.inventory.util.InventoryUtils;
-import codechicken.nei.PositionedStack;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTBase;
 import net.minecraft.src.NBTTagCompound;
@@ -216,27 +215,5 @@ public final class ItemNBTHelper {
 	private static NBTBase get(NBTTagList tag, int idx)
 	{
 		return idx >= 0 && idx < tag.tagList.size() ? (NBTBase)tag.tagList.get(idx) : null;
-	}
-
-	/**
-	 * NBT-friendly version of {@link codechicken.nei.recipe.TemplateRecipeHandler.CachedRecipe#contains(Collection, ItemStack)}
-	 */
-	public static boolean cachedRecipeContainsWithNBT(Collection<PositionedStack> ingredients, ItemStack ingredient) {
-		for (PositionedStack stack : ingredients)
-			if (positionedStackContainsWithNBT(stack, ingredient))
-				return true;
-
-		return false;
-	}
-
-	/**
-	 * NBT-friendly version of {@link codechicken.nei.PositionedStack#contains(ItemStack)}
-	 */
-	public static boolean positionedStackContainsWithNBT(PositionedStack stack, ItemStack ingredient) {
-		for(ItemStack item : stack.items)
-			if(areStacksSameTypeCraftingWithNBT(item, ingredient))
-				return true;
-
-		return false;
 	}
 }
