@@ -17,7 +17,7 @@ import net.minecraft.src.Block;
 
 public class WikiHooks {
 
-	private static final IWikiProvider FALLBACK_PROVIDER = new SimpleWikiProvider("FTB Wiki", "http://ftb.gamepedia.com/%s");
+	private static final IWikiProvider FALLBACK_PROVIDER = new SimpleWikiProvider("BTW Wiki", "https://wiki.btwce.com/view/%s");
 
 	private static final Map<String, IWikiProvider> modWikis = new HashMap<>();
 
