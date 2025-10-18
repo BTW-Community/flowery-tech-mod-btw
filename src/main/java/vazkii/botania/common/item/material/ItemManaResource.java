@@ -13,18 +13,8 @@ package vazkii.botania.common.item.material;
 import java.awt.Color;
 import java.util.List;
 
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.EntityItem;
-import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.*;
 import net.minecraft.src.Item;
-import net.minecraft.src.IInventory;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.Achievement;
-import net.minecraft.src.Icon;
-import net.minecraft.src.MovingObjectPosition;
-import net.minecraft.src.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
@@ -91,18 +81,20 @@ public class ItemManaResource extends ItemMod implements IFlowerComponent, IElve
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
-		if(par1ItemStack.getItemDamage() == 4 || par1ItemStack.getItemDamage() == 14)
-			return EntityDoppleganger.spawn(par2EntityPlayer, par1ItemStack, par3World, par4, par5, par6, par1ItemStack.getItemDamage() == 14);
-//todofix bonemealing
-//		else if(par1ItemStack.getItemDamage() == 20 && ((net.minecraft.src.ItemDye) Item.dyePowder).applyBonemeal(par3World, par4, par5, par6)) {
-//			if(!par3World.isRemote)
-//				par3World.playAuxSFX(2005, par4, par5, par6, 0);
-//
-//			return true;
-//		}
+	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World world, int x, int y, int z, int par7, float par8, float par9, float par10) {
+		Block targetBlock = Block.blocksList[world.getBlockId(x, y, z)];
+		if(par1ItemStack.getItemDamage() == 4 || par1ItemStack.getItemDamage() == 14) {
+			return EntityDoppleganger.spawn(par2EntityPlayer, par1ItemStack, world, x, y, z, par1ItemStack.getItemDamage() == 14);
+		}
+		else if(par1ItemStack.getItemDamage() == 20 && targetBlock != null && targetBlock.attemptToApplyFertilizerTo(world, x, y, z)) {
+			if(!world.isRemote) {
+				world.playAuxSFX(2005, x, y, z, 0);
+			}
 
-		return super.onItemUse(par1ItemStack, par2EntityPlayer, par3World, par4, par5, par6, par7, par8, par9, par10);
+			return true;
+		}
+
+		return super.onItemUse(par1ItemStack, par2EntityPlayer, world, x, y, z, par7, par8, par9, par10);
 	}
 
 	@Override

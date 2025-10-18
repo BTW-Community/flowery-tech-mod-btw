@@ -25,6 +25,9 @@ import vazkii.botania.api.lexicon.multiblock.component.MultiblockComponent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public final class MultiblockRenderHandler {
+	public MultiblockRenderHandler() {
+		RenderWorldLastEvent.EVENT.register(this::onWorldRenderLast);
+	}
 
 	public static boolean rendering = false;
 

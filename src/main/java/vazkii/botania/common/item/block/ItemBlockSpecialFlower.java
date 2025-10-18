@@ -52,7 +52,7 @@ public class ItemBlockSpecialFlower extends ItemBlockMod implements IRecipeKeyPr
 
 	@Override
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int iFacing, float fClickX, float fClickY, float fClickZ) {
-		boolean placed =  super.onItemUse(stack, player, world, x, y, z, iFacing, fClickX, fClickY, fClickZ);
+		boolean placed = super.onItemUse(stack, player, world, x, y, z, iFacing, fClickX, fClickY, fClickZ);
 		if(placed) {
 			String type = getType(stack);
 			TileEntity te = world.getTileEntity(x, y, z);

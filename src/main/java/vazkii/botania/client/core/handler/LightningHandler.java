@@ -31,6 +31,9 @@ import vazkii.botania.common.core.helper.Vector3;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class LightningHandler {
+	public LightningHandler() {
+		RenderWorldLastEvent.EVENT.register(this::onRenderWorldLast);
+	}
 
 	private static final ResourceLocation outsideResource = new ResourceLocation(LibResources.MISC_WISP_LARGE);
 	private static final ResourceLocation insideResource = new ResourceLocation(LibResources.MISC_WISP_SMALL);

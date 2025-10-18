@@ -83,6 +83,7 @@ public class ItemCraftingHalo extends ItemMod implements ICraftAchievement {
 		this(id, LibItemNames.CRAFTING_HALO);
 		MinecraftForge.EVENT_BUS.register(this);
 //		FMLCommonHandler.instance().bus().register(this);
+		RenderWorldLastEvent.EVENT.register(this::onRenderWorldLast);
 	}
 
 	public ItemCraftingHalo(int id, String name) {

@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.lexicon;
 
+import btw.achievement.AchievementHandler;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.EntityClientPlayerMP;
 import net.minecraft.src.Achievement;
@@ -34,8 +35,7 @@ public class RLexiconEntry  extends BLexiconEntry {
 	@Environment(EnvType.CLIENT)
 	public boolean isVisible() {
 		EntityClientPlayerMP player = Minecraft.getMinecraft().thePlayer;
-		//todofix lexicon achievement
-		return a == null || player.capabilities.isCreativeMode/* || player.getStatFileWriter().hasAchievementUnlocked(a)*/;
+		return a == null || player.capabilities.isCreativeMode || AchievementHandler.hasUnlocked(player, a);
 	}
 
 }

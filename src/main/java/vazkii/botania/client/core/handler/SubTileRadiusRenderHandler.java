@@ -33,6 +33,9 @@ import vazkii.botania.common.item.ModItems;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public final class SubTileRadiusRenderHandler {
+	public SubTileRadiusRenderHandler() {
+		RenderWorldLastEvent.EVENT.register(this::onWorldRenderLast);
+	}
 
 	@SubscribeEvent
 	public void onWorldRenderLast(RenderWorldLastEvent event) {

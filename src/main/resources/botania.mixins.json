@@ -8,6 +8,8 @@
     "event.EntityLivingBaseMixin",
     "event.MinecraftServerMixin",
     "event.NetServerHandlerMixin",
+    "event.SlotCraftingMixin",
+    "event.client.EntityRendererMixin",
     "event.client.RenderBipedMixin",
     "event.client.RenderBlocksMixin",
     "event.client.RenderItemMixin",
