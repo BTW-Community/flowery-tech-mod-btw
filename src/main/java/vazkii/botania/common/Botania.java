@@ -11,8 +11,10 @@
 package vazkii.botania.common;
 
 import baubles.common.Baubles;
+import baubles.common.network.PacketHandler;
 import btw.BTWAddon;
 import btw.world.biome.BiomeDecoratorBase;
+import cpw.mods.fml.common.gameevent.PlayerEvent;
 import cpw.mods.fml.common.network.IGuiHandler;
 import dev.bagel.network.CustomGuiPacketHandler;
 import dev.bagel.util.GuiHandlerHolder;
@@ -70,6 +72,7 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 	@Override
 	public void preInitialize() {
 		Baubles.instance.preInit();
+		registerPacketHandler("botania|BAUB", PacketHandler.INSTANCE);
 		gardenOfGlassLoaded = FabricLoader.getInstance().isModLoaded("GardenOfGlass");
 
 		thaumcraftLoaded = FabricLoader.getInstance().isModLoaded("Thaumcraft");
@@ -83,6 +86,11 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 		lightHelper = /*coloredLightsLoaded ? new LightHelperColored() :*/ new LightHelperVanilla();
 
 		getProxy().preInit();
+	}
+
+	@Override
+	public void serverPlayerConnectionInitialized(NetServerHandler serverHandler, EntityPlayerMP playerMP) {
+		Baubles.instance.entityEventNetwork.playerLoggedInEvent(new PlayerEvent.PlayerLoggedInEvent(playerMP));
 	}
 
 	//FMLInitializationEvent

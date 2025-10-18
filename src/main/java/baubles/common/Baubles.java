@@ -44,7 +44,7 @@ public class Baubles implements GuiHandlerHolder {
     public static final Logger log = LogManager.getLogger("Baubles");
     public static final int GUI = 0;
 
-    public static final Item itemDebugger = new ItemDebugger(1000).setUnlocalizedName("baubleSlotDebugTool");
+    public static final Item itemDebugger = new ItemDebugger(2700).setUnlocalizedName("baubleSlotDebugTool");
 
 //    FMLPreInitializationEvent event
 //    @SubscribeEvent

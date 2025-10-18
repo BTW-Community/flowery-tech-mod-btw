@@ -8,11 +8,10 @@ import dev.bagel.network.IMessage;
 import dev.bagel.network.IMessageHandler;
 import dev.bagel.network.MessageContext;
 import emi.shims.java.net.minecraft.network.PacketByteBuf;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 
 public class PacketSyncBauble implements IMessage, IMessageHandler<PacketSyncBauble, IMessage> {
@@ -35,14 +34,21 @@ public class PacketSyncBauble implements IMessage, IMessageHandler<PacketSyncBau
 		this.initial = reset;
 	}
 
+	public void write(DataOutputStream data) throws IOException {
+		data.writeByte(slot);
+		data.writeInt(playerId);
+		data.writeBoolean(initial);
+		Packet.writeItemStack(bauble, data);
+	}
+
 	@Override
 	public void toBytes(PacketByteBuf buffer) {
 		buffer.writeByte(slot);
 		buffer.writeInt(playerId);
 		buffer.writeBoolean(initial);
-
+		buffer.writeItemStack(bauble);
 //		PacketBuffer pb = new PacketBuffer(buffer);
-        buffer.writeItemStack(bauble);
+
     }
 
 	@Override
@@ -50,8 +56,9 @@ public class PacketSyncBauble implements IMessage, IMessageHandler<PacketSyncBau
 		slot = buffer.readByte();
 		playerId = buffer.readInt();
 		initial = buffer.readBoolean();
+		bauble = buffer.readItemStack();
 //		PacketBuffer pb = new PacketBuffer(buffer);
-        bauble = buffer.readItemStack();
+
     }
 
 	@Override

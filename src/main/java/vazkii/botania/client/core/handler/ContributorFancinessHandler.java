@@ -38,7 +38,7 @@ public final class ContributorFancinessHandler {
 	private volatile static boolean startedLoading = false;
 
 	private static boolean phi = true;
-	@SubscribeEvent
+//	@SubscribeEvent
 	public static void render(RenderPlayerEvent.Specials event) {
 		String name = event.entityPlayer.username;
 

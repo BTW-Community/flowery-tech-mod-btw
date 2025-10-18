@@ -4,6 +4,7 @@
   "package": "dev.bagel.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "ItemStackMixin",
     "RenderItemMixin",
     "event.BlockMixin",
     "event.EntityLivingBaseMixin",

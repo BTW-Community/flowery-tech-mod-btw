@@ -38,8 +38,6 @@ import vazkii.botania.api.item.IPhantomInkable;
 import vazkii.botania.common.core.handler.ConfigHandler;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.equipment.armor.terrasteel.ItemTerrasteelHelm;
-//import baubles.common.container.InventoryBaubles;
-//import baubles.common.lib.PlayerHandler;
 
 public final class BaubleRenderHandler {
 
