@@ -48,6 +48,8 @@ import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.block.ItemBlockSpecialFlower;
 import vazkii.botania.common.lib.LibBlockNames;
 
+import static vazkii.botania.common.item.block.ItemBlockSpecialFlower.getType;
+
 
 public class BlockSpecialFlower extends BlockFlower implements ITileEntityProvider, ISpecialFlower, IWandable, ILexiconable, IWandHUD {
 
@@ -258,6 +260,17 @@ public class BlockSpecialFlower extends BlockFlower implements ITileEntityProvid
 
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack) {
+		if(entity instanceof EntityPlayer player) {
+			String type = getType(stack);
+			TileEntity te = world.getTileEntity(x, y, z);
+			if(te instanceof TileSpecialFlower tile) {
+				tile.setSubTile(type);
+				tile.onBlockAdded(world, x, y, z);
+				tile.onBlockPlacedBy(world, x, y, z, player, stack);
+				if(!world.isRemote)
+					world.markBlockForUpdate(x, y, z);
+			}
+		}
 		((TileSpecialFlower) world.getTileEntity(x, y, z)).onBlockPlacedBy(world, x, y, z, entity, stack);
 	}
 
