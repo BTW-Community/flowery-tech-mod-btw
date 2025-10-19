@@ -6,6 +6,7 @@ import baubles.common.event.EventHandlerNetwork;
 import baubles.common.network.PacketHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.network.IGuiHandler;
+import dev.bagel.network.CustomGuiPacketHandler;
 import dev.bagel.util.GuiHandlerHolder;
 import net.fabricmc.api.EnvType;
 import net.minecraft.src.Item;
@@ -62,6 +63,7 @@ public class Baubles implements GuiHandlerHolder {
     }
 
     public void init() {
+        CustomGuiPacketHandler.INSTANCE.modIdToHandler.put("baubles", getGuiHandler());
         //This config is intentionally loaded later than normal.
 //        BaublesConfig.loadConfig(new Configuration(new File(Launch.minecraftHome, "config" + File.separator + "Baubles.cfg")));
 

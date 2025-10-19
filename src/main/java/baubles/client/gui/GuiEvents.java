@@ -18,7 +18,7 @@ import static baubles.common.BaublesConfig.useOldGuiButton;
 public class GuiEvents {
 
 	@Environment(EnvType.CLIENT)
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void guiPostInit(GuiScreenEvent.InitGuiEvent.Post event) {
         if (!(event.gui instanceof GuiInventory) && !(event.gui instanceof GuiPlayerExpanded)) {
             return;
@@ -45,10 +45,10 @@ public class GuiEvents {
 
     }
 
-	@Environment(value = EnvType.CLIENT)
+	//implemented via mixin directly in GuiScreenMixin
+/*	@Environment(value = EnvType.CLIENT)
 	@SubscribeEvent
 	public void guiPostAction(GuiScreenEvent.ActionPerformedEvent.Post event) {
-		//todobaubles open gui packet
 		if (event.gui instanceof GuiInventory) {
 			if (event.button.id == 55) {
 				PacketHandler.INSTANCE.sendToServer(new PacketOpenBaublesInventory(event.gui.mc.thePlayer));
@@ -61,7 +61,7 @@ public class GuiEvents {
 				PacketHandler.INSTANCE.sendToServer(new PacketOpenNormalInventory(event.gui.mc.thePlayer));
 			}
 		}
-	}
+	}*/
 
 	static Method isNEIHidden;
 	boolean isNeiHidden() {

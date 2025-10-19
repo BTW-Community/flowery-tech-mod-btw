@@ -33,6 +33,7 @@
     "event.TextureMapMixin",
     "event.client.ClientTickEventMixin",
     "event.client.GuiIngameMixin",
+    "event.client.GuiScreenMixin",
     "extensions.enums.EnumRarityMixin"
   ],
   "injectors": {

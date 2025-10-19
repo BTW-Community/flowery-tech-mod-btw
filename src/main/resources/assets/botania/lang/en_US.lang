@@ -3861,3 +3861,7 @@ botania.page.banners1=Showcase of the various banners
 botania.entry.preventingDecay=Preventing Decay
 botania.tagline.preventingDecay=Preventing passive flowers' decay
 botania.page.preventingDecay0=no
+
+# -- EMI
+emi.category.botania.petal_apothecary=Petal Apothecary
+emi.category.botania.mana_pool=Mana Pool

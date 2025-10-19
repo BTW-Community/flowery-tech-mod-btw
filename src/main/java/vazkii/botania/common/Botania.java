@@ -12,6 +12,7 @@ package vazkii.botania.common;
 
 import baubles.common.Baubles;
 import baubles.common.network.PacketHandler;
+import btw.AddonHandler;
 import btw.BTWAddon;
 import btw.world.biome.BiomeDecoratorBase;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
@@ -71,6 +72,7 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 
 	@Override
 	public void preInitialize() {
+		addResourcePackDomain("baubles");
 		Baubles.instance.preInit();
 		registerPacketHandler("botania|BAUB", PacketHandler.INSTANCE);
 		gardenOfGlassLoaded = FabricLoader.getInstance().isModLoaded("GardenOfGlass");
