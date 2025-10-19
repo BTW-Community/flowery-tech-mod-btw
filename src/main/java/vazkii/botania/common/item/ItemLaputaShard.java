@@ -111,7 +111,7 @@ public class ItemLaputaShard extends ItemMod implements ILensEffect, ITinyPlanet
 
 						if(inRange(x, y, z, srcx, srcy, srcz, range, heightscale, pointy)) {
 							Block block = world.getBlock(x, y, z);
-							if(!block.isAir(world, x, y, z) && !block.isReplaceableVegetation(world, x, y, z) && !(block instanceof FallingBlock) && (!(block instanceof ILaputaImmobile) || ((ILaputaImmobile) block).canMove(world, x, y, z)) && block.getBlockHardness(world, x, y, z) != -1) {
+							if(block != null && !block.isAir(world, x, y, z) && !block.isReplaceableVegetation(world, x, y, z) && !(block instanceof FallingBlock) && (!(block instanceof ILaputaImmobile) || ((ILaputaImmobile) block).canMove(world, x, y, z)) && block.getBlockHardness(world, x, y, z) != -1) {
 								int id = BlockExtensions.getIdFromBlock(block);
 								int meta = world.getBlockMetadata(x, y, z);
 								TileEntity tile = world.getTileEntity(x, y, z);
@@ -223,7 +223,7 @@ public class ItemLaputaShard extends ItemMod implements ILensEffect, ITinyPlanet
 
 					TileEntity tile = null;
 					NBTTagCompound tilecmp = ItemNBTHelper.getCompound(lens, TAG_TILE, false);
-					if(tilecmp.hasKey("id"))
+					if(tilecmp != null && tilecmp.hasKey("id"))
 						tile = TileEntity.createAndLoadEntity(tilecmp);
 
 					entity.worldObj.setBlock(x, y, z, block, meta, 1 | 2);
