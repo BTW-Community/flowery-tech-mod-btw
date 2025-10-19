@@ -19,7 +19,6 @@ import java.util.Map;
 import java.util.Set;
 
 import btw.item.tag.TagOrStack;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.src.Block;
 import net.minecraft.src.Entity;
 import net.minecraft.src.Item;
@@ -30,8 +29,6 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.CraftingManager;
 import net.minecraft.src.IRecipe;
 import net.minecraft.src.EnumChatFormatting;
-//import net.minecraftforge.common.util.EnumHelper;
-//import net.minecraftforge.oredict.OreDictionary;
 import vazkii.botania.api.brew.Brew;
 import vazkii.botania.api.internal.DummyMethodHandler;
 import vazkii.botania.api.internal.DummySubTile;
@@ -59,37 +56,37 @@ import com.google.common.collect.HashBiMap;
 
 public final class BotaniaAPI {
 
-	private static List<LexiconCategory> categories = new ArrayList<LexiconCategory>();
-	private static List<LexiconEntry> allEntries = new ArrayList<LexiconEntry>();
+	private static List<LexiconCategory> categories = new ArrayList<>();
+	private static List<LexiconEntry> allEntries = new ArrayList<>();
 
-	public static Map<String, KnowledgeType> knowledgeTypes = new HashMap<String, KnowledgeType>();
+	public static Map<String, KnowledgeType> knowledgeTypes = new HashMap<>();
 
-	public static Map<String, Brew> brewMap = new LinkedHashMap<String, Brew>();
+	public static Map<String, Brew> brewMap = new LinkedHashMap<>();
 	
-	public static List<String> disposableBlocks = new ArrayList<String>();
-	public static List<String> semiDisposableBlocks = new ArrayList<String>();
+	public static List<String> disposableBlocks = new ArrayList<>();
+	public static List<String> semiDisposableBlocks = new ArrayList<>();
 
-	public static List<RecipePetals> petalRecipes = new ArrayList<RecipePetals>();
-	public static List<RecipePureDaisy> pureDaisyRecipes = new ArrayList<RecipePureDaisy>();
-	public static List<RecipeManaInfusion> manaInfusionRecipes = new ArrayList<RecipeManaInfusion>();
-	public static List<RecipeRuneAltar> runeAltarRecipes = new ArrayList<RecipeRuneAltar>();
-	public static List<RecipeElvenTrade> elvenTradeRecipes = new ArrayList<RecipeElvenTrade>();
-	public static List<RecipeBrew> brewRecipes = new ArrayList<RecipeBrew>();
-	public static List<RecipeManaInfusion> miniFlowerRecipes = new ArrayList<RecipeManaInfusion>();
+	public static List<RecipePetals> petalRecipes = new ArrayList<>();
+	public static List<RecipePureDaisy> pureDaisyRecipes = new ArrayList<>();
+	public static List<RecipeManaInfusion> manaInfusionRecipes = new ArrayList<>();
+	public static List<RecipeRuneAltar> runeAltarRecipes = new ArrayList<>();
+	public static List<RecipeElvenTrade> elvenTradeRecipes = new ArrayList<>();
+	public static List<RecipeBrew> brewRecipes = new ArrayList<>();
+	public static List<RecipeManaInfusion> miniFlowerRecipes = new ArrayList<>();
 
-	private static BiMap<String, Class<? extends SubTileEntity>> subTiles = HashBiMap.<String, Class<? extends SubTileEntity>> create();
-	private static Map<Class<? extends SubTileEntity>, SubTileSignature> subTileSignatures = new HashMap<Class<? extends SubTileEntity>, SubTileSignature>();
-	public static Set<String> subtilesForCreativeMenu = new LinkedHashSet();
-	public static Map<String, String> subTileMods = new HashMap<String, String>();
-	public static BiMap<String, String> miniFlowers = HashBiMap.<String, String> create();
+	private static BiMap<String, Class<? extends SubTileEntity>> subTiles = HashBiMap.create();
+	private static Map<Class<? extends SubTileEntity>, SubTileSignature> subTileSignatures = new HashMap<>();
+	public static Set<String> subtilesForCreativeMenu = new LinkedHashSet<>();
+	public static Map<String, String> subTileMods = new HashMap<>();
+	public static BiMap<String, String> miniFlowers = HashBiMap.create();
 
-	public static Map<String, Integer> oreWeights = new HashMap<String, Integer>();
-	public static Map<String, Integer> oreWeightsNether = new HashMap<String, Integer>();
+	public static Map<String, Integer> oreWeights = new HashMap<>();
+	public static Map<String, Integer> oreWeightsNether = new HashMap<>();
 	public static Map<Item, Block> seeds = new HashMap<>();
-	public static Set<Item> looniumBlacklist = new LinkedHashSet<Item>();
-	public static Set<Block> paintableBlocks = new LinkedHashSet<Block>();
-	public static Set<String> magnetBlacklist = new LinkedHashSet<String>();
-	public static Set<Class<? extends Entity>> gravityRodBlacklist = new LinkedHashSet<Class<? extends Entity>>();
+	public static Set<Item> looniumBlacklist = new LinkedHashSet<>();
+	public static Set<Block> paintableBlocks = new LinkedHashSet<>();
+	public static Set<String> magnetBlacklist = new LinkedHashSet<>();
+	public static Set<Class<? extends Entity>> gravityRodBlacklist = new LinkedHashSet<>();
 
 
  //todo enumhelper
@@ -332,7 +329,7 @@ public final class BotaniaAPI {
 	 * Blacklists an Entity from being affected by the Rod of the Shaded Mesa.
 	 * Pass in the class for the Entity, e.g. EntityCow.class
 	 */
-	public static void blacklistEntityFromGravityRod(Class entity) {
+	public static void blacklistEntityFromGravityRod(Class<? extends Entity> entity) {
 		gravityRodBlacklist.add(entity);
 	}
 	
@@ -340,7 +337,7 @@ public final class BotaniaAPI {
 	 * Checks if the provided Entity is contained in the Blacklist.
 	 * Pass in the class for the Entity, e.g. entity.getClass()
 	 */
-	public static boolean isEntityBlacklistedFromGravityRod(Class entity) {
+	public static boolean isEntityBlacklistedFromGravityRod(Class<? extends Entity> entity) {
 		return gravityRodBlacklist.contains(entity);
 	}
 	
@@ -491,7 +488,7 @@ public final class BotaniaAPI {
 	/**
 	 * Registers a Brew Recipe (for the Botanical Brewery).
 	 * @param brew The brew in to be set in this recipe.
-	 * @inputs The items used in the recipe, no more than 6.
+	 * @param inputs The items used in the recipe, no more than 6.
 	 */
 	public static RecipeBrew registerBrewRecipe(Brew brew, Object... inputs) {
 		RecipeBrew recipe = new RecipeBrew(brew, inputs);
@@ -590,23 +587,23 @@ public final class BotaniaAPI {
 	}
 
 	/**
-	 * Maps an ore (ore dictionary key) to it's weight on the world generation. This
-	 * is used for the Orechid flower. Check the static block in the BotaniaAPI class
-	 * to get the weights for the vanilla blocks.<br>
-	 * Alternatively get the values with the OreDetector mod:<br>
-	 * https://gist.github.com/Vazkii/9493322
-	 */
+     * Maps an ore (ore dictionary key) to it's weight on the world generation. This
+     * is used for the Orechid flower. Check the static block in the BotaniaAPI class
+     * to get the weights for the vanilla blocks.<br>
+     * Alternatively get the values with the OreDetector mod:<br>
+     * <a href="https://gist.github.com/Vazkii/9493322">Gist</a>
+     */
 	public static void addOreWeight(String ore, int weight) {
 		oreWeights.put(ore, weight);
 	}
 
 	/**
-	 * Maps an ore (ore dictionary key) to it's weight on the nether world generation. This
-	 * is used for the Orechid Ignem flower. Check the static block in the BotaniaAPI class
-	 * to get the weights for the vanilla blocks.<br>
-	 * Alternatively get the values with the OreDetector mod:<br>
-	 * https://gist.github.com/Vazkii/9493322
-	 */
+     * Maps an ore (ore dictionary key) to it's weight on the nether world generation. This
+     * is used for the Orechid Ignem flower. Check the static block in the BotaniaAPI class
+     * to get the weights for the vanilla blocks.<br>
+     * Alternatively get the values with the OreDetector mod:<br>
+     * <a href="https://gist.github.com/Vazkii/9493322">Gist</a>
+     */
 	public static void addOreWeightNether(String ore, int weight) {
 		if(ore.contains("Nether") /*&& OreDictionary.getOres(ore.replace("Nether", "")).size() == 0*/)
 			return;
