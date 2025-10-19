@@ -25,11 +25,12 @@ public final class TooltipHandler {
 
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void onTooltipEvent(ItemTooltipEvent event) {
-		if(event.itemStack.getItem() == Items.getItemFromBlock(Block.dirt) && event.itemStack.getItemDamage() == 1) {
-			event.toolTip.add(StatCollector.translateToLocal("botaniamisc.coarseDirt0"));
-			event.toolTip.add(StatCollector.translateToLocal("botaniamisc.coarseDirt1"));
-		} else if(event.itemStack.getItem() == Items.getItemFromBlock(Block.mobSpawner) && event.entityPlayer.capabilities.isCreativeMode)
-			event.toolTip.add(StatCollector.translateToLocal("botaniamisc.spawnerTip"));
+//		if(event.itemStack.getItem() == Items.getItemFromBlock(Block.dirt) && event.itemStack.getItemDamage() == 1) {
+//			event.toolTip.add(StatCollector.translateToLocal("botaniamisc.coarseDirt0"));
+//			event.toolTip.add(StatCollector.translateToLocal("botaniamisc.coarseDirt1"));
+//		} else
+			if(event.itemStack.getItem() == Items.getItemFromBlock(Block.mobSpawner) && event.entityPlayer.capabilities.isCreativeMode)
+				event.toolTip.add(StatCollector.translateToLocal("botaniamisc.spawnerTip"));
 
 		if(ItemNBTHelper.detectNBT(event.itemStack) && ItemNBTHelper.getBoolean(event.itemStack, ItemRegenIvy.TAG_REGEN, false))
 			event.toolTip.add(StatCollector.translateToLocal("botaniamisc.hasIvy"));
