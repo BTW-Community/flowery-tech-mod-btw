@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.crafting.recipe;
 
+import btw.item.tag.TagOrStack;
 import net.minecraft.src.Item;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
@@ -21,7 +22,7 @@ public class HeadRecipe extends RecipeRuneAltar {
 
 	String name = "";
 
-	public HeadRecipe(ItemStack output, int mana, Object... inputs) {
+	public HeadRecipe(ItemStack output, int mana, TagOrStack... inputs) {
 		super(output, mana, inputs);
 	}
 

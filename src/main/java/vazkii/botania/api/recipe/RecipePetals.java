@@ -13,20 +13,23 @@ package vazkii.botania.api.recipe;
 import java.util.ArrayList;
 import java.util.List;
 
+import btw.item.tag.Tag;
+import btw.item.tag.TagInstance;
+import btw.item.tag.TagOrStack;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
 
 public class RecipePetals {
 
 	ItemStack output;
-	List<Object> inputs;
+	List<TagOrStack> inputs;
 
-	public RecipePetals(ItemStack output, Object... inputs) {
+	public RecipePetals(ItemStack output, TagOrStack... inputs) {
 		this.output = output;
 
-		List<Object> inputsToSet = new ArrayList<>();
-		for(Object obj : inputs) {
-			if(obj instanceof String || obj instanceof ItemStack)
+		List<TagOrStack> inputsToSet = new ArrayList<>();
+		for(TagOrStack obj : inputs) {
+			if(obj instanceof TagInstance || obj instanceof ItemStack)
 				inputsToSet.add(obj);
 			else throw new IllegalArgumentException("Invalid input");
 		}
@@ -47,26 +50,26 @@ public class RecipePetals {
 			for(int j = 0; j < inputsMissing.size(); j++) {
 				Object input = inputsMissing.get(j);
 				//todo oredict -> tag
-//				if(input instanceof String) {
-//					List<ItemStack> validStacks = OreDictionary.getOres((String) input);
-//					boolean found = false;
-//					for(ItemStack ostack : validStacks) {
-//						ItemStack cstack = ostack.copy();
-//						if(cstack.getItemDamage() == Short.MAX_VALUE)
-//							cstack.setItemDamage(stack.getItemDamage());
-//
-//						if(stack.isItemEqual(cstack)) {
-//							oredictIndex = j;
-//							found = true;
-//							break;
-//						}
-//					}
-//
-//
-//					if(found)
-//						break;
-//				}
-//				else
+				if(input instanceof TagInstance ti) {
+					List<ItemStack> validStacks = ti.tag().getItems();
+					boolean found = false;
+					for(ItemStack ostack : validStacks) {
+						ItemStack cstack = ostack.copy();
+						if(cstack.getItemDamage() == Short.MAX_VALUE)
+							cstack.setItemDamage(stack.getItemDamage());
+
+						if(stack.isItemEqual(cstack)) {
+							oredictIndex = j;
+							found = true;
+							break;
+						}
+					}
+
+
+					if(found)
+						break;
+				}
+				else
 					if(input instanceof ItemStack && simpleAreStacksEqual((ItemStack) input, stack)) {
 					stackIndex = j;
 					break;
@@ -87,8 +90,8 @@ public class RecipePetals {
 		return stack.getItem() == stack2.getItem() && stack.getItemDamage() == stack2.getItemDamage();
 	}
 
-	public List<Object> getInputs() {
-		return new ArrayList(inputs);
+	public List<TagOrStack> getInputs() {
+		return new ArrayList<>(inputs);
 	}
 
 	public ItemStack getOutput() {

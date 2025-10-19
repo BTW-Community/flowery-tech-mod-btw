@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import btw.item.tag.TagInstance;
+import btw.item.tag.TagOrStack;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.FontRenderer;
 import net.minecraft.src.GuiScreen;
@@ -71,16 +73,15 @@ public class PagePetalRecipe<T extends RecipePetals> extends PageRecipe {
 		renderItemAtGridPos(gui, 3, 0, recipe.getOutput(), false);
 		renderItemAtGridPos(gui, 2, 1, getMiddleStack(), false);
 
-		List<Object> inputs = recipe.getInputs();
+		List<TagOrStack> inputs = recipe.getInputs();
 		int degreePerInput = (int) (360F / inputs.size());
 		float currentDegree = ConfigHandler.lexiconRotatingItems ? GuiScreen.isShiftKeyDown() ? ticksElapsed : (float) (ticksElapsed + ClientTickHandler.partialTicks) : 0;
 
-		for(Object obj : inputs) {
-			Object input = obj;
-			if(input instanceof String) {
-				//todofix ore dict tag stuff
-//				List<ItemStack> ores = OreDictionary.getOres((String) input);
-//				input = ores.get(oredictCounter % ores.size());
+		for(TagOrStack obj : inputs) {
+			TagOrStack input = obj;
+			if(input instanceof TagInstance ti) {
+				List<ItemStack> ores = ti.tag().getItems();
+				input = ores.get(oredictCounter % ores.size());
 			}
 
 			renderItemAtAngle(gui, currentDegree, (ItemStack) input);

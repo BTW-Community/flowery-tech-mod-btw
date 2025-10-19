@@ -12,18 +12,20 @@ package vazkii.botania.api.recipe;
 
 import java.util.List;
 
+import btw.item.tag.TagInstance;
+import btw.item.tag.TagOrStack;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 
 public class RecipeManaInfusion {
 
 	ItemStack output;
-	Object input;
+	TagOrStack input;
 	int mana;
 	boolean isAlchemy = false;
 	boolean isConjuration = false;
 
-	public RecipeManaInfusion(ItemStack output, Object input, int mana) {
+	public RecipeManaInfusion(ItemStack output, TagOrStack input, int mana) {
 		if (input instanceof Item i) {
 			input = new ItemStack(i);
 		}
@@ -33,8 +35,8 @@ public class RecipeManaInfusion {
 	}
 
 	public boolean matches(ItemStack stack) {
-		if(input instanceof ItemStack) {
-			ItemStack inputCopy = ((ItemStack) input).copy();
+		if(input instanceof ItemStack is) {
+			ItemStack inputCopy = is.copy();
 			if(inputCopy.getItemDamage() == Short.MAX_VALUE)
 				inputCopy.setItemDamage(stack.getItemDamage());
 
@@ -42,8 +44,8 @@ public class RecipeManaInfusion {
 		}
 
 		//todo replace with tags
-		/*if(input instanceof String) {
-			List<ItemStack> validStacks = OreDictionary.getOres((String) input);
+		if(input instanceof TagInstance ti) {
+			List<ItemStack> validStacks = ti.tag().getItems();
 
 			for(ItemStack ostack : validStacks) {
 				ItemStack cstack = ostack.copy();
@@ -53,7 +55,7 @@ public class RecipeManaInfusion {
 				if(stack.isItemEqual(cstack))
 					return true;
 			}
-		}*/
+		}
 
 		return false;
 	}
@@ -74,7 +76,7 @@ public class RecipeManaInfusion {
 		return isConjuration;
 	}
 
-	public Object getInput() {
+	public TagOrStack getInput() {
 		return input;
 	}
 

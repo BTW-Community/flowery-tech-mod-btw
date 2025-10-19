@@ -12,6 +12,7 @@ package vazkii.botania.common.crafting;
 
 import java.util.Arrays;
 
+import btw.item.tag.TagOrStack;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import vazkii.botania.api.BotaniaAPI;
@@ -130,7 +131,7 @@ public final class ModPetalRecipes {
 
 		ItemStack stack = new ItemStack(Item.skull, 1, 3);
 		ItemNBTHelper.setString(stack, "SkullOwner", "Vazkii");
-		Object[] inputs = new Object[16];
+		TagOrStack[] inputs = new TagOrStack[16];
 		Arrays.fill(inputs, pink);
 		BotaniaAPI.registerPetalRecipe(stack, inputs);
 	}

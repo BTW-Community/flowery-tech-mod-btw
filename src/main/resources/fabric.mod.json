@@ -20,6 +20,9 @@
   "entrypoints": {
     "btw:addon": [
       "vazkii.botania.common.Botania"
+    ],
+    "emi": [
+      "dev.bagel.emi.BotaniaEmiPlugin"
     ]
   },
   "mixins": [

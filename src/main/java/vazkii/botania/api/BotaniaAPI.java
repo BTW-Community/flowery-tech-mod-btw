@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import btw.item.tag.TagOrStack;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.src.Block;
 import net.minecraft.src.Entity;
@@ -405,7 +406,7 @@ public final class BotaniaAPI {
 	 * or String (case for Ore Dictionary). The array can't be larger than 16.
 	 * @return The recipe created.
 	 */
-	public static RecipePetals registerPetalRecipe(ItemStack output, Object... inputs) {
+	public static RecipePetals registerPetalRecipe(ItemStack output, TagOrStack... inputs) {
 		RecipePetals recipe = new RecipePetals(output, inputs);
 		petalRecipes.add(recipe);
 		return recipe;
@@ -432,7 +433,7 @@ public final class BotaniaAPI {
 	 * or String (case for Ore Dictionary). The array can't be larger than 16.
 	 * @return The recipe created.
 	 */
-	public static RecipeRuneAltar registerRuneAltarRecipe(ItemStack output, int mana, Object... inputs) {
+	public static RecipeRuneAltar registerRuneAltarRecipe(ItemStack output, int mana, TagOrStack... inputs) {
 		RecipeRuneAltar recipe = new RecipeRuneAltar(output, mana, inputs);
 		runeAltarRecipes.add(recipe);
 		return recipe;
@@ -445,7 +446,7 @@ public final class BotaniaAPI {
 	 * @param mana The amount of mana required. Don't go over 100000!
 	 * @return The recipe created.
 	 */
-	public static RecipeManaInfusion registerManaInfusionRecipe(ItemStack output, Object input, int mana) {
+	public static RecipeManaInfusion registerManaInfusionRecipe(ItemStack output, TagOrStack input, int mana) {
 		RecipeManaInfusion recipe = new RecipeManaInfusion(output, input, mana);
 		manaInfusionRecipes.add(recipe);
 		return recipe;
@@ -456,7 +457,7 @@ public final class BotaniaAPI {
 	 * Alchemy Catalyst below the pool).
 	 * @see BotaniaAPI#registerManaInfusionRecipe
 	 */
-	public static RecipeManaInfusion registerManaAlchemyRecipe(ItemStack output, Object input, int mana) {
+	public static RecipeManaInfusion registerManaAlchemyRecipe(ItemStack output, TagOrStack input, int mana) {
 		RecipeManaInfusion recipe = new RecipeManaInfusion(output, input, mana);
 		recipe.setAlchemy(true);
 		manaInfusionRecipes.add(0, recipe);
@@ -468,7 +469,7 @@ public final class BotaniaAPI {
 	 * Conjuration Catalyst below the pool).
 	 * @see BotaniaAPI#registerManaInfusionRecipe
 	 */
-	public static RecipeManaInfusion registerManaConjurationRecipe(ItemStack output, Object input, int mana) {
+	public static RecipeManaInfusion registerManaConjurationRecipe(ItemStack output, TagOrStack input, int mana) {
 		RecipeManaInfusion recipe = new RecipeManaInfusion(output, input, mana);
 		recipe.setConjuration(true);
 		manaInfusionRecipes.add(0, recipe);

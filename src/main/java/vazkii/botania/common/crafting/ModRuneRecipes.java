@@ -13,6 +13,7 @@ package vazkii.botania.common.crafting;
 import java.util.ArrayList;
 import java.util.List;
 
+import btw.item.tag.TagInstance;
 import net.minecraft.src.Block;
 import net.minecraft.src.Block;
 import net.minecraft.src.Item;
@@ -63,9 +64,9 @@ public final class ModRuneRecipes {
 		for(int i = 0; i < 16; i++)
 			recipesAirRune.add(BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 2, 3), costTier1, LibOreDict.MANA_POWDER, LibOreDict.MANA_STEEL, new ItemStack(Block.carpet, 1, i), new ItemStack(Item.feather), new ItemStack(Item.silk)));
 
-		recipeSpringRune = BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 1, 4), costTier2, LibOreDict.RUNE[0], LibOreDict.RUNE[1], "treeSapling", "treeSapling", "treeSapling", new ItemStack(Item.wheat));
+		recipeSpringRune = BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 1, 4), costTier2, LibOreDict.RUNE[0], LibOreDict.RUNE[1], TagInstance.of(ModCraftingRecipes.saplings), TagInstance.of(ModCraftingRecipes.saplings), TagInstance.of(ModCraftingRecipes.saplings), new ItemStack(Item.wheat));
 		recipeSummerRune = BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 1, 5), costTier2, LibOreDict.RUNE[2], LibOreDict.RUNE[3], new ItemStack(Block.sand), new ItemStack(Block.sand), new ItemStack(Item.slimeBall), new ItemStack(Item.melon));
-		recipeAutumnRune = BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 1, 6), costTier2, LibOreDict.RUNE[1], LibOreDict.RUNE[3], "treeLeaves", "treeLeaves", "treeLeaves", new ItemStack(Item.spiderEye));
+		recipeAutumnRune = BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 1, 6), costTier2, LibOreDict.RUNE[1], LibOreDict.RUNE[3], TagInstance.of(ModCraftingRecipes.leaves), TagInstance.of(ModCraftingRecipes.leaves), TagInstance.of(ModCraftingRecipes.leaves), new ItemStack(Item.spiderEye));
 
 		recipesWinterRune = new ArrayList<>();
 		for(int i = 0; i < 16; i++)

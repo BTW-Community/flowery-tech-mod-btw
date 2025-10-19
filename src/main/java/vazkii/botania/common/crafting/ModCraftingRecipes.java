@@ -317,10 +317,10 @@ public final class ModCraftingRecipes {
 	public static IRecipe recipeMagmaToSlimeball;
 	public static IRecipe recipeFelPumpkin;
 	public static IRecipe recipeEndPortal;
-	private static final Tag saplings = Tag.of(new ResourceLocation("btw:saplings")).add(BTWBlocks.oakSapling, BTWBlocks.birchSapling, BTWBlocks.jungleSapling, BTWBlocks.spruceSapling);
-	private static final Tag leaves = Tag.of(new ResourceLocation("btw:leaves")).addUntilDamage(4, Block.leaves).add(BTWBlocks.bloodWoodLeaves);
-	private static final Tag dyes = Tag.of(new ResourceLocation("btw:dyes")).addUntilDamage(15, Item.dyePowder);
-	private static final Tag stones = Tag.of(new ResourceLocation("btw:stone")).addUntilDamage(2, Block.stone);
+	static final Tag saplings = Tag.of(new ResourceLocation("btw:saplings")).add(BTWBlocks.oakSapling, BTWBlocks.birchSapling, BTWBlocks.jungleSapling, BTWBlocks.spruceSapling);
+	static final Tag leaves = Tag.of(new ResourceLocation("btw:leaves")).addUntilDamage(4, Block.leaves).add(BTWBlocks.bloodWoodLeaves);
+	static final Tag dyes = Tag.of(new ResourceLocation("btw:dyes")).addUntilDamage(15, Item.dyePowder);
+	static final Tag stones = Tag.of(new ResourceLocation("btw:stone")).addUntilDamage(2, Block.stone);
 
 	public static void init() {
 		if (!ConfigHandler.enableDefaultRecipes) return;
@@ -2271,7 +2271,7 @@ public final class ModCraftingRecipes {
 			initGardenOfGlass();
 
 		int newRecipeListSize = CraftingManager.getInstance().getRecipeList().size();
-		FMLLog.log(Level.INFO, "[Botania] Registered %d recipes.", newRecipeListSize - recipeListSize);
+		FMLLog.log(Level.INFO, "[Botania] Registered {} recipes.", newRecipeListSize - recipeListSize);
 	}
 
 	private static void initGardenOfGlass() {
