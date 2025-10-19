@@ -179,6 +179,8 @@ public class BlockAltar extends BlockModContainer implements ILexiconable {
 			return false;
 		if(stack.getItem() == ModItems.waterBowl)
 			return true;
+		if(stack.getItem() == Item.bucketWater)
+			return true;
 
 		return false;
 		//todofix maybe????? implement fluid support
