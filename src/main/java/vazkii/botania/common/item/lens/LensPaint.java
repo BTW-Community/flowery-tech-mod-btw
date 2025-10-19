@@ -31,9 +31,9 @@ public class LensPaint extends Lens {
 	public boolean collideBurst(IManaBurst burst, EntityThrowable entity, MovingObjectPosition pos, boolean isManaBlock, boolean dead, ItemStack stack) {
 		int storedColor = ItemLens.getStoredColor(stack);
 		if(!burst.isFake() && storedColor > -1 && storedColor < 17) {
-			if(pos.entityHit != null && pos.entityHit instanceof EntitySheep) {
+			if(pos.entityHit instanceof EntitySheep es) {
 				int r = 20;
-				int sheepColor = ((EntitySheep) pos.entityHit).getFleeceColor();
+				int sheepColor = es.getFleeceColor();
 				List<EntitySheep> sheepList = entity.worldObj.getEntitiesWithinAABB(EntitySheep.class, AxisAlignedBB.getBoundingBox(pos.entityHit.posX - r, pos.entityHit.posY - r, pos.entityHit.posZ - r, pos.entityHit.posX + r, pos.entityHit.posY + r, pos.entityHit.posZ + r));
 				for(EntitySheep sheep : sheepList) {
 					if(sheep.getFleeceColor() == sheepColor)
@@ -51,7 +51,7 @@ public class LensPaint extends Lens {
 					coordsFound.add(theseCoords);
 
 					do {
-						List<ChunkCoordinates> iterCoords = new ArrayList(coordsFound);
+						List<ChunkCoordinates> iterCoords = new ArrayList<>(coordsFound);
 						for(ChunkCoordinates coords : iterCoords) {
 							coordsFound.remove(coords);
 							coordsToPaint.add(coords);
