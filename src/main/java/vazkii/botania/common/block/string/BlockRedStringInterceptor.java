@@ -27,9 +27,10 @@ public class BlockRedStringInterceptor extends BlockRedString {
 	public BlockRedStringInterceptor(int id) {
 		super(id, LibBlockNames.RED_STRING_INTERCEPTOR);
 		MinecraftForge.EVENT_BUS.register(this);
+		PlayerInteractEvent.EVENT.register(this::onInteract);
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onInteract(PlayerInteractEvent event) {
 		if(event.action == Action.RIGHT_CLICK_BLOCK)
 			TileRedStringInterceptor.onInteract(event.entityPlayer, event.world, event.x, event.y, event.z);

@@ -35,6 +35,7 @@ public final class SkyblockWorldEvents {
 	public SkyblockWorldEvents() {
 		LivingEvent.LivingUpdateEvent.EVENT.register(this::onPlayerUpdate);
 		BlockEvent.HarvestDropsEvent.EVENT.register(this::onDrops);
+		PlayerInteractEvent.EVENT.register(this::onPlayerInteract);
 	}
 
 	private static final String TAG_MADE_ISLAND = "Botania-MadeIsland";
@@ -67,7 +68,7 @@ public final class SkyblockWorldEvents {
 		return false;
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event) {
 		if(WorldTypeSkyblock.isWorldSkyblock(event.world)) {
 			ItemStack equipped = event.entityPlayer.getCurrentEquippedItem();

@@ -61,10 +61,11 @@ public class ItemLokiRing extends ItemRelicBauble implements IExtendedWireframeC
 
 	public ItemLokiRing(int id) {
 		super(id, LibItemNames.LOKI_RING);
-		MinecraftForge.EVENT_BUS.register(this);
+//		MinecraftForge.EVENT_BUS.register(this);
+		PlayerInteractEvent.EVENT.register(this::onPlayerInteract);
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event) {
 		EntityPlayer player = event.entityPlayer;
 		ItemStack lokiRing = getLokiRing(player);

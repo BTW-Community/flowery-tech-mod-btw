@@ -1,6 +1,8 @@
 package net.minecraftforge.event.entity.player;
 
 import cpw.mods.fml.common.eventhandler.Cancelable;
+import net.legacyfabric.fabric.api.event.Event;
+import net.legacyfabric.fabric.api.event.EventFactory;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.World;
 
@@ -69,12 +71,31 @@ public class PlayerInteractEvent extends PlayerEvent
         if (face == -1) useBlock = DENY;
         this.world = world;
     }
-    
+
+    @Override
+    public boolean isCancelable() {
+        return true;
+    }
+
     @Override
     public void setCanceled(boolean cancel)
     {
         super.setCanceled(cancel);
         useBlock = (cancel ? DENY : useBlock == DENY ? DEFAULT : useBlock);
         useItem = (cancel ? DENY : useItem == DENY ? DEFAULT : useItem);
+    }
+
+    public static final Event<PlayerInteractEventCallback> EVENT = EventFactory.createArrayBacked(PlayerInteractEventCallback.class, (callbacks) -> (event) -> {
+        for (var callback : callbacks) {
+            callback.onPlayerInteract(event);
+            if (event.isCanceled()) {
+                return;
+            }
+        }
+    });
+
+    @FunctionalInterface
+    public interface PlayerInteractEventCallback {
+        public void onPlayerInteract(PlayerInteractEvent event);
     }
 }

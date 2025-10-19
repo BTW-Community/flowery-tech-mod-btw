@@ -27,6 +27,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 public final class MultiblockRenderHandler {
 	public MultiblockRenderHandler() {
 		RenderWorldLastEvent.EVENT.register(this::onWorldRenderLast);
+		PlayerInteractEvent.EVENT.register(this::onPlayerInteract);
 	}
 
 	public static boolean rendering = false;
@@ -49,7 +50,7 @@ public final class MultiblockRenderHandler {
 			dimension = mc.theWorld.provider.dimensionId;
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onWorldRenderLast(RenderWorldLastEvent event) {
 		Minecraft mc = Minecraft.getMinecraft();
 		if(mc.thePlayer != null && mc.objectMouseOver != null && (!mc.thePlayer.isSneaking() || anchor != null)) {
@@ -58,7 +59,7 @@ public final class MultiblockRenderHandler {
 		}
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event) {
 		if(currentMultiblock != null && anchor == null && event.action == Action.RIGHT_CLICK_BLOCK && event.entityPlayer == Minecraft.getMinecraft().thePlayer) {
 			anchor = new ChunkCoordinates(event.x, event.y, event.z);

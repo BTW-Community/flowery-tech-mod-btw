@@ -69,6 +69,7 @@ public class ItemExchangeRod extends ItemMod implements IManaUsingItem, IWirefra
 		setMaxStackSize(1);
 		setUnlocalizedName(LibItemNames.EXCHANGE_ROD);
 		MinecraftForge.EVENT_BUS.register(this);
+		PlayerInteractEvent.EVENT.register(this::onLeftClick);
 	}
 
 	@Override
@@ -109,7 +110,7 @@ public class ItemExchangeRod extends ItemMod implements IManaUsingItem, IWirefra
 		return false;
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onLeftClick(PlayerInteractEvent event) {
 		if(event.action == Action.LEFT_CLICK_BLOCK) {
 			ItemStack stack = event.entityPlayer.getCurrentEquippedItem();

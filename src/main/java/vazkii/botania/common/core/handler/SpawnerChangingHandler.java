@@ -16,8 +16,11 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public final class SpawnerChangingHandler {
+	public SpawnerChangingHandler() {
+		PlayerInteractEvent.EVENT.register(this::onInteract);
+	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onInteract(PlayerInteractEvent event) {
 		if(event.entityPlayer == null || event.entityPlayer.capabilities == null || event.world == null)
 			return; // Cauldron breaks stuff

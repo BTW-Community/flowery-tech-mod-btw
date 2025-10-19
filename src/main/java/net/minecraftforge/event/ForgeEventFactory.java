@@ -45,7 +45,8 @@ public class ForgeEventFactory
     public static PlayerInteractEvent onPlayerInteract(EntityPlayer player, Action action, int x, int y, int z, int face, World world)
     {
         PlayerInteractEvent event = new PlayerInteractEvent(player, action, x, y, z, face, world);
-        MinecraftForge.EVENT_BUS.post(event);
+//        MinecraftForge.EVENT_BUS.post(event);
+        PlayerInteractEvent.EVENT.invoker().onPlayerInteract(event);
         return event;
     }
 

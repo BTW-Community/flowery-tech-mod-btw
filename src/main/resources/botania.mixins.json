@@ -10,6 +10,7 @@
     "RenderItemMixin",
     "event.BlockMixin",
     "event.EntityLivingBaseMixin",
+    "event.ItemInWorldManagerMixin",
     "event.MinecraftServerMixin",
     "event.NetServerHandlerMixin",
     "event.SlotCraftingMixin",
@@ -36,6 +37,7 @@
     "event.client.ClientTickEventMixin",
     "event.client.GuiIngameMixin",
     "event.client.GuiScreenMixin",
+    "event.client.MinecraftMixin",
     "extensions.enums.EnumRarityMixin"
   ],
   "injectors": {

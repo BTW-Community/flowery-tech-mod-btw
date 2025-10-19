@@ -50,9 +50,10 @@ public class ItemManaResource extends ItemMod implements IFlowerComponent, IElve
 		setUnlocalizedName(LibItemNames.MANA_RESOURCE);
 		setHasSubtypes(true);
 		MinecraftForge.EVENT_BUS.register(this);
+		PlayerInteractEvent.EVENT.register(this::onPlayerInteract);
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event) {
 		boolean rightEvent = event.action == Action.RIGHT_CLICK_AIR;
 		ItemStack stack = event.entityPlayer.getCurrentEquippedItem();

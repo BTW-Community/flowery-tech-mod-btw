@@ -37,7 +37,7 @@ public final class SubTileRadiusRenderHandler {
 		RenderWorldLastEvent.EVENT.register(this::onWorldRenderLast);
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onWorldRenderLast(RenderWorldLastEvent event) {
 		Minecraft mc = Minecraft.getMinecraft();
 		MovingObjectPosition pos = mc.objectMouseOver;

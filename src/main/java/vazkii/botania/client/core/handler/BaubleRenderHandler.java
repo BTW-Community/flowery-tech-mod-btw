@@ -41,7 +41,7 @@ import vazkii.botania.common.item.equipment.armor.terrasteel.ItemTerrasteelHelm;
 
 public final class BaubleRenderHandler {
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public static void onPlayerRender(RenderPlayerEvent.Specials.Post event) {
 		if(!ConfigHandler.renderBaubles || event.entityPlayer.getActivePotionEffect(Potion.invisibility) != null)
 			return;
@@ -103,7 +103,7 @@ public final class BaubleRenderHandler {
 		}
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	private static void renderManaTablet(RenderPlayerEvent event) {
 		EntityPlayer player = event.entityPlayer;
 		boolean renderedOne = false;
@@ -126,7 +126,6 @@ public final class BaubleRenderHandler {
 				int lightmapY = light / 65536;
 				OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, lightmapX, lightmapY);
 				for(int j = 0; j < 2; j++) {
-					//todofix get icon based on render pass
 					Icon icon = item.getIcon(stack, j);
 					float f = icon.getMinU();
 					float f1 = icon.getMaxU();

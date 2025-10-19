@@ -2,13 +2,12 @@ package dev.bagel.mixin.event;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.src.ChatMessageComponent;
-import net.minecraft.src.EntityPlayerMP;
-import net.minecraft.src.NetServerHandler;
-import net.minecraft.src.ServerConfigurationManager;
+import com.llamalad7.mixinextras.sugar.Local;
+import cpw.mods.fml.common.eventhandler.Event;
+import net.minecraft.src.*;
+import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.event.ServerChatEvent;
-import org.spongepowered.asm.mixin.Final;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -34,5 +33,14 @@ public class NetServerHandlerMixin {
         if (!event.isCanceled()) {
             original.call(instance, component, alwaysFalse);
         }
+    }
+
+    @WrapOperation(method = "handlePlace", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/ItemInWorldManager;tryUseItem(Lnet/minecraft/src/EntityPlayer;Lnet/minecraft/src/World;Lnet/minecraft/src/ItemStack;)Z"))
+    private boolean forge$playerInteract(ItemInWorldManager instance, EntityPlayer par1EntityPlayer, World par2World, ItemStack par3ItemStack, Operation<Boolean> original, @Local WorldServer worldServer) {
+        PlayerInteractEvent event = ForgeEventFactory.onPlayerInteract(playerEntity, PlayerInteractEvent.Action.RIGHT_CLICK_AIR, 0, 0, 0, -1, worldServer);
+        if (event.useItem != Event.Result.DENY) {
+            return original.call(instance, par1EntityPlayer, par2World, par3ItemStack);
+        }
+        return false;
     }
 }
