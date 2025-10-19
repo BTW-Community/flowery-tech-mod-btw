@@ -300,7 +300,7 @@ public class ItemCraftingHalo extends ItemMod implements ICraftAchievement {
 			ItemNBTHelper.setCompound(stack, TAG_STORED_RECIPE_PREFIX + pos, getLastCraftingCompound(stack, false));
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onItemCrafted(ItemCraftedEvent event) {
 		if(!(event.craftMatrix instanceof InventoryCraftingHalo))
 			return;
@@ -392,7 +392,7 @@ public class ItemCraftingHalo extends ItemMod implements ICraftAchievement {
 	}
 
 	@Environment(EnvType.CLIENT)
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onRenderWorldLast(RenderWorldLastEvent event) {
 		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
 		ItemStack stack = player.getCurrentEquippedItem();

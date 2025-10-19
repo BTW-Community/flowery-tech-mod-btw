@@ -69,10 +69,10 @@ public class BlockPistonRelay extends BlockMod implements IWandable, ILexiconabl
 		return 0;
 	}
 
-	/*	@Override
-	public int quantityDropped(int meta, int fortune, Random random) {
+	@Override
+	public int quantityDropped(Random par1Random) {
 		return 0;
-	}*/
+	}
 
 	@Override
 	public boolean isOpaqueCube() {
@@ -264,7 +264,7 @@ public class BlockPistonRelay extends BlockMod implements IWandable, ILexiconabl
 		}
 
 		// ConcurrentModificationException failsafe
-		ArrayList<String> remove = new ArrayList(removeThese);
+		ArrayList<String> remove = new ArrayList<>(removeThese);
 		for(String s : remove) {
 			coordsToCheck.remove(s);
 			if(checkedCoords.contains(s))

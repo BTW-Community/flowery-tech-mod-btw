@@ -152,7 +152,7 @@ public class CommonProxy {
 				if(page instanceof ITwoNamedPage)
 					words += countWords(((ITwoNamedPage) page).getSecondUnlocalizedName());
 			}
-		FMLLog.log(Level.INFO, "[Botania] The Lexica Botania has %d words.", words);
+		FMLLog.log(Level.INFO, "[Botania] The Lexica Botania has {} words.", words);
 
 		registerDefaultEntityBlacklist();
 	}
