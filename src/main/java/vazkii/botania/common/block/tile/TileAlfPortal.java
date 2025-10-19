@@ -361,7 +361,7 @@ public class TileAlfPortal extends TileMod {
 		}
 
 		Block blockat = worldObj.getBlock(x, y, z);
-		if(block == null ? blockat.isAir(worldObj, x, y, z) : blockat == block) {
+		if(block == null ? (blockat == null || blockat.isAir(worldObj, x, y, z)) : blockat == block) {
 			if(meta == -1)
 				return true;
 
