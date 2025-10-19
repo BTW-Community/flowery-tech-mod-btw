@@ -3,19 +3,21 @@ package vazkii.botania.api.recipe;
 import java.util.ArrayList;
 import java.util.List;
 
+import btw.item.tag.TagInstance;
+import btw.item.tag.TagOrStack;
 import net.minecraft.src.ItemStack;
 
 public class RecipeElvenTrade {
 
 	ItemStack output;
-	List<Object> inputs;
+	List<TagOrStack> inputs;
 
-	public RecipeElvenTrade(ItemStack output, Object... inputs) {
+	public RecipeElvenTrade(ItemStack output, TagOrStack... inputs) {
 		this.output = output;
 
-		List<Object> inputsToSet = new ArrayList<>();
-		for(Object obj : inputs) {
-			if(obj instanceof String || obj instanceof ItemStack)
+		List<TagOrStack> inputsToSet = new ArrayList<>();
+		for(TagOrStack obj : inputs) {
+			if(obj instanceof TagInstance || obj instanceof ItemStack)
 				inputsToSet.add(obj);
 			else throw new IllegalArgumentException("Invalid input");
 		}
@@ -85,8 +87,8 @@ public class RecipeElvenTrade {
 		return stack.getItem() == stack2.getItem() && stack.getItemDamage() == stack2.getItemDamage();
 	}
 
-	public List<Object> getInputs() {
-		return new ArrayList(inputs);
+	public List<TagOrStack> getInputs() {
+		return new ArrayList<>(inputs);
 	}
 
 	public ItemStack getOutput() {

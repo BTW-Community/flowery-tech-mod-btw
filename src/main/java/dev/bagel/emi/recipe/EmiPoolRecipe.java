@@ -24,18 +24,15 @@ import vazkii.botania.common.block.tile.mana.TilePool;
 
 import java.util.List;
 
-public class EmiPoolRecipe implements EmiRecipe {
+public class EmiPoolRecipe extends BotaniaEmiRecipe {
     private final int mana;
-    private final EmiIngredient input;
-    private final EmiStack output;
     private final boolean isAlchemy;
     private final boolean isConjuration;
     private final EmiStack catalyst;
 
     public EmiPoolRecipe(RecipeManaInfusion recipe) {
+        super(BotaniaEmiPlugin.MANA_POOL, null, RetroEMI.wildcardIngredient(recipe.getInput()), EmiStack.of(recipe.getOutput()));
         this.mana = recipe.getManaToConsume();
-        this.input = RetroEMI.wildcardIngredient(recipe.getInput());
-        this.output = EmiStack.of(recipe.getOutput());
         this.isAlchemy = recipe.isAlchemy();
         this.isConjuration = recipe.isConjuration();
         if (isAlchemy) {
@@ -47,27 +44,6 @@ public class EmiPoolRecipe implements EmiRecipe {
         else  {
             this.catalyst = EmiStack.EMPTY;
         }
-
-    }
-
-    @Override
-    public EmiRecipeCategory getCategory() {
-        return BotaniaEmiPlugin.MANA_POOL;
-    }
-
-    @Override
-    public @Nullable ResourceLocation getId() {
-        return null;
-    }
-
-    @Override
-    public List<EmiIngredient> getInputs() {
-        return List.of(input);
-    }
-
-    @Override
-    public List<EmiStack> getOutputs() {
-        return List.of(output);
     }
 
     @Override
@@ -97,10 +73,10 @@ public class EmiPoolRecipe implements EmiRecipe {
         if (isConjuration || isAlchemy) {
             widgets.addSlot(catalyst, 51, 34).drawBack(false);
         }
-        widgets.addSlot(EmiStack.of(new ItemStack(ModBlocks.pool, 1, output.getItemStack().getItem() == Items.getItemFromBlock(ModBlocks.pool) ? 2 : 0)), 51, 17).drawBack(false);
+        widgets.addSlot(EmiStack.of(new ItemStack(ModBlocks.pool, 1, outputs.get(0).getItemStack().getItem() == Items.getItemFromBlock(ModBlocks.pool) ? 2 : 0)), 51, 17).drawBack(false);
 
-        widgets.addSlot(input, 22, 17);
+        widgets.addSlot(inputs.get(0), 22, 17);
 
-        widgets.addSlot(output, 81, 17);
+        widgets.addSlot(outputs.get(0), 81, 17);
     }
 }

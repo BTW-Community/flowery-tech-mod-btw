@@ -9,6 +9,7 @@ import emi.dev.emi.emi.api.stack.EmiStack;
 import emi.dev.emi.emi.api.widget.WidgetHolder;
 import emi.dev.emi.emi.runtime.EmiDrawContext;
 import emi.shims.java.com.unascribed.retroemi.RetroEMI;
+import net.minecraft.src.ItemStack;
 import net.minecraft.src.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 import org.lwjgl.opengl.GL11;
@@ -21,37 +22,14 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class EmiPetalRecipe implements EmiRecipe {
-
-    private final List<EmiIngredient> inputs;
-    private final EmiStack output;
-    private final ResourceLocation recipeId;
+public class EmiPetalRecipe extends BotaniaEmiRecipe {
 
     public EmiPetalRecipe(RecipePetals recipe) {
-        this.inputs = recipe.getInputs().stream().map(RetroEMI::wildcardIngredient).collect(Collectors.toList());
-        this.output = EmiStack.of(recipe.getOutput());
-        String type = ItemBlockSpecialFlower.getType(recipe.getOutput());
-        this.recipeId = Botania.loc(type.isEmpty() ? output.getId().getResourcePath() : type);
+        super(BotaniaEmiPlugin.PETAL_APOTHECARY, getId(recipe), recipe.getInputs().stream().map(RetroEMI::wildcardIngredient).toList(), EmiStack.of(recipe.getOutput()));
     }
 
-    @Override
-    public EmiRecipeCategory getCategory() {
-        return BotaniaEmiPlugin.PETAL_APOTHECARY;
-    }
-
-    @Override
-    public @Nullable ResourceLocation getId() {
-        return recipeId;
-    }
-
-    @Override
-    public List<EmiIngredient> getInputs() {
-        return inputs;
-    }
-
-    @Override
-    public List<EmiStack> getOutputs() {
-        return Collections.singletonList(output);
+    public EmiPetalRecipe(EmiRecipeCategory category, ResourceLocation id, List<EmiIngredient> inputs, List<EmiStack> outputs) {
+        super(category, id, inputs, outputs);
     }
 
     @Override
@@ -75,9 +53,7 @@ public class EmiPetalRecipe implements EmiRecipe {
             GL11.glEnable(GL11.GL_BLEND);
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.5F);
             EmiDrawContext.wrap(draw).drawTexture(new ResourceLocation(LibResources.GUI_PETAL_OVERLAY), 15, 0, 38, 7, 92, 92);
-//            GuiDraw.drawTexturedModalRect(45, 10, 38, 7, 92, 92);
         });
-
 
         float degreePerInput = 360F / inputs.size();
         float currentDegree = -90F;
@@ -89,6 +65,11 @@ public class EmiPetalRecipe implements EmiRecipe {
             widgets.addSlot(o, posX, posY).drawBack(false);
             currentDegree += degreePerInput;
         }
-        widgets.addSlot(output, 80, 10).drawBack(false);
+        widgets.addSlot(outputs.get(0), 80, 10).drawBack(false);
+    }
+
+    private static ResourceLocation getId(RecipePetals recipe) {
+        String type = ItemBlockSpecialFlower.getType(recipe.getOutput());
+        return Botania.loc(type.isBlank() ? EmiStack.of(recipe.getOutput()).getId().getResourcePath() : type);
     }
 }

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import btw.item.tag.TagInstance;
+import btw.item.tag.TagOrStack;
 import dev.bagel.client.RenderInstances;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.GuiScreen;
@@ -65,13 +67,13 @@ public class PageElvenRecipe extends PageRecipe {
 
 		renderItemAtGridPos(gui, 3, 1, recipe.getOutput(), false);
 
-		List<Object> inputs = recipe.getInputs();
+		List<TagOrStack> inputs = recipe.getInputs();
 		int i = 0;
-		for(Object obj : inputs) {
+		for(TagOrStack obj : inputs) {
 			Object input = obj;
-			if(input instanceof String) {
+			if(input instanceof TagInstance ti) {
 				//todofix elven recipe use tags
-//				input = OreDictionary.getOres((String) input).get(0);
+				input = ti.tag().getItems().get(0);
 			}
 
 			renderItemAtInputPos(gui, i, (ItemStack) input);

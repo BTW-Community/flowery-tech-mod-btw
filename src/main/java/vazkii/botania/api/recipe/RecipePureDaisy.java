@@ -66,7 +66,7 @@ public class RecipePureDaisy {
 			ores = oreMap.get(entry);
 		else {
 			//todo oredict -> tags, temp fix
-			ores = new ArrayList<>();
+//			ores = new ArrayList<>();
 			ores = entry.getItems();
 
 			oreMap.put(entry, ores);

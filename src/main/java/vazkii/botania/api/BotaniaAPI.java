@@ -464,7 +464,7 @@ public final class BotaniaAPI {
 	 * @param inputs The items required, can be ItemStack or ore dictionary entry string.
 	 * @return The recipe created.
 	 */
-	public static RecipeElvenTrade registerElvenTradeRecipe(ItemStack output, Object... inputs) {
+	public static RecipeElvenTrade registerElvenTradeRecipe(ItemStack output, TagOrStack... inputs) {
 		RecipeElvenTrade recipe = new RecipeElvenTrade(output, inputs);
 		elvenTradeRecipes.add(recipe);
 		return recipe;
