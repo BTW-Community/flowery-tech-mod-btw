@@ -25,12 +25,15 @@
     "extensions.ItemExtensionMixin",
     "extensions.NBTTagListExtensionMixin",
     "extensions.TileEntityExtensionsMixin",
-    "extensions.WorldExtensionsMixin"
+    "extensions.WorldExtensionsMixin",
+    "extensions.enums.EnumArmorMaterialMixin",
+    "extensions.enums.EnumToolMaterialMixin"
   ],
   "client": [
     "event.TextureMapMixin",
     "event.client.ClientTickEventMixin",
-    "event.client.GuiIngameMixin"
+    "event.client.GuiIngameMixin",
+    "extensions.enums.EnumRarityMixin"
   ],
   "injectors": {
     "defaultRequire": 1
