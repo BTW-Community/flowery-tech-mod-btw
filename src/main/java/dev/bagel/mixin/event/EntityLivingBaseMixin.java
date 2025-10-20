@@ -9,6 +9,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import vazkii.botania.common.item.equipment.bauble.ItemTravelBelt;
 
 @Mixin(EntityLivingBase.class)
 public abstract class EntityLivingBaseMixin {
@@ -33,5 +34,11 @@ public abstract class EntityLivingBaseMixin {
                 ci.cancel();
             }
         }
+    }
+
+    @Inject(method = "jump", at = @At("TAIL"))
+    private void forge$onJump(final CallbackInfo ci)
+    {
+        ItemTravelBelt.onPlayerJump(new LivingEvent.LivingJumpEvent((EntityLivingBase) (Object) this));
     }
 }

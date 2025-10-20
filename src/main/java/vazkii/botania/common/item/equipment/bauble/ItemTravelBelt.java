@@ -118,15 +118,14 @@ public class ItemTravelBelt extends ItemBauble implements IBaubleRender, IManaUs
 		// NO-OP
 	}
 
-	@SubscribeEvent
-	public void onPlayerJump(LivingJumpEvent event) {
-		if(event.entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) event.entityLiving;
-			ItemStack belt = PlayerHandler.getPlayerBaubles(player).getStackInSlot(3);
+//	@SubscribeEvent
+	public static void onPlayerJump(LivingJumpEvent event) {
+		if(event.entityLiving instanceof EntityPlayer player) {
+            ItemStack belt = PlayerHandler.getPlayerBaubles(player).getStackInSlot(3);
 
-			if(belt != null && belt.getItem() instanceof ItemTravelBelt && ManaItemHandler.requestManaExact(belt, player, COST, false)) {
-				player.motionY += ((ItemTravelBelt) belt.getItem()).jump;
-				player.fallDistance = -((ItemTravelBelt) belt.getItem()).fallBuffer;
+			if(belt != null && belt.getItem() instanceof ItemTravelBelt travelBelt && ManaItemHandler.requestManaExact(belt, player, COST, false)) {
+				player.motionY += travelBelt.jump;
+				player.fallDistance = -travelBelt.fallBuffer;
 			}
 		}
 	}

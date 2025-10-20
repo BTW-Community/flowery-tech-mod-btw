@@ -1,6 +1,8 @@
 package net.minecraftforge.event.entity.living;
 
 import cpw.mods.fml.common.eventhandler.Cancelable;
+import net.legacyfabric.fabric.api.event.Event;
+import net.legacyfabric.fabric.api.event.EventFactory;
 import net.minecraft.src.EntityLiving;
 import net.minecraft.src.World;
 
@@ -47,6 +49,15 @@ public class LivingSpawnEvent extends LivingEvent
         public CheckSpawn(EntityLiving entity, World world, float x, float y, float z)
         {
             super(entity, world, x, y, z);
+        }
+        public static Event<CheckSpawnCallback> EVENT = EventFactory.createArrayBacked(CheckSpawnCallback.class, (callbacks) -> (event) -> {
+            for (var callback : callbacks) {
+                callback.checkSpawn(event);
+            }
+        });
+
+        public interface CheckSpawnCallback {
+            public void checkSpawn(CheckSpawn event);
         }
     }
 

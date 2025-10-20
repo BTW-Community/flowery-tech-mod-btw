@@ -29,9 +29,10 @@ public class PotionEmptiness extends PotionMod {
 	public PotionEmptiness() {
 		super(ConfigHandler.potionIDEmptiness, LibPotionNames.EMPTINESS, false, 0xFACFFF, 2);
 		MinecraftForge.EVENT_BUS.register(this);
+		LivingSpawnEvent.CheckSpawn.EVENT.register(this::onSpawn);
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onSpawn(LivingSpawnEvent.CheckSpawn event) {
 		if(event.getResult() != Result.ALLOW && event.entityLiving instanceof IMob) {
 			List<EntityPlayer> players = event.world.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(event.x - RANGE, event.y - RANGE, event.z - RANGE, event.x + RANGE, event.y + RANGE, event.z + RANGE));
