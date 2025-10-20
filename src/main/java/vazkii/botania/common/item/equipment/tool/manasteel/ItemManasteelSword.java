@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.item.equipment.tool.manasteel;
 
+import btw.item.items.SwordItem;
 import net.minecraft.src.*;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.mana.IManaUsingItem;
@@ -24,7 +25,7 @@ import vazkii.botania.common.lib.LibItemNames;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
-public class ItemManasteelSword extends ItemSword implements IManaUsingItem {
+public class ItemManasteelSword extends SwordItem implements IManaUsingItem {
 
 	public static final int MANA_PER_DAMAGE = 60;
 

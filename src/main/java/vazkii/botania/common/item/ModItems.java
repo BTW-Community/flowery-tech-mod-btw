@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.item;
 
+import btw.item.tag.BTWTags;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import vazkii.botania.api.BotaniaAPI;
@@ -416,6 +417,7 @@ public final class ModItems {
 		speedUpBelt = new ItemSpeedUpBelt(id++);
 		baubleBox = new ItemBaubleBox(id++);
 
+		BTWTags.shears.add(manasteelShears, elementiumShears);
 		//todo move ore dict to tags
 //		OreDictionary.registerOre(LibOreDict.LEXICON, lexicon);
 //		for(int i = 0; i < 16; i++) {

@@ -12,6 +12,7 @@ package vazkii.botania.common.item.equipment.tool.manasteel;
 
 import java.util.regex.Pattern;
 
+import btw.item.items.AxeItem;
 import net.minecraft.src.*;
 import net.minecraft.src.Block;
 import vazkii.botania.api.BotaniaAPI;
@@ -29,7 +30,7 @@ import vazkii.botania.common.lib.LibItemNames;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
-public class ItemManasteelAxe extends ItemAxe implements IManaUsingItem, ISortableTool {
+public class ItemManasteelAxe extends AxeItem implements IManaUsingItem, ISortableTool {
 
 	private static final Pattern SAPLING_PATTERN = Pattern.compile("(?:(?:(?:[A-Z-_.:]|^)sapling)|(?:(?:[a-z-_.:]|^)Sapling))(?:[A-Z-_.:]|$)");
 

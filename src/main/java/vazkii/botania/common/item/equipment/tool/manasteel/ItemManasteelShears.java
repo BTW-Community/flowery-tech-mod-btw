@@ -87,6 +87,25 @@ public class ItemManasteelShears extends ItemShears implements IManaUsingItem {
 		return false;
 	}
 
+
+	@Override
+	public float getStrVsBlock(ItemStack var1, World var2, Block var3, int var4, int var5, int var6) {
+		if (super.isEfficientVsBlock(var1, var2, var3, var4, var5, var6)) {
+			return super.getStrVsBlock(var1, var2, var3, var4, var5, var6) * 1.33f;
+		}
+		return super.getStrVsBlock(var1, var2, var3, var4, var5, var6);
+	}
+
+	@Override
+	public boolean isConsumedInCrafting() {
+		return false;
+	}
+
+	@Override
+	public int getItemEnchantability() {
+		return EnumToolMaterial.EMERALD.MANASTEEL().getEnchantability();
+	}
+
 	@Override
 	public boolean onBlockStartBreak(ItemStack itemstack, int x, int y, int z, EntityPlayer player) {
 		if (player.worldObj.isRemote)

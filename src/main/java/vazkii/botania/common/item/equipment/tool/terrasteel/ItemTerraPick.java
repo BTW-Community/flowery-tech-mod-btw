@@ -13,6 +13,7 @@ package vazkii.botania.common.item.equipment.tool.terrasteel;
 import java.awt.Color;
 import java.util.List;
 
+import btw.block.BTWBlocks;
 import net.minecraft.src.*;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.BotaniaAPI;

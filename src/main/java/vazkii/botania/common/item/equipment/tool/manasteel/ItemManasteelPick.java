@@ -12,6 +12,7 @@ package vazkii.botania.common.item.equipment.tool.manasteel;
 
 import java.util.regex.Pattern;
 
+import btw.item.items.PickaxeItem;
 import net.minecraft.src.*;
 import net.minecraft.src.Block;
 import vazkii.botania.api.BotaniaAPI;
@@ -28,8 +29,8 @@ import vazkii.botania.common.lib.LibItemNames;
 
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
-//todofix this and subclasses use enumtoolmaterial
-public class ItemManasteelPick extends ItemPickaxe implements IManaUsingItem, ISortableTool {
+
+public class ItemManasteelPick extends PickaxeItem implements IManaUsingItem, ISortableTool {
 
 	private static final Pattern TORCH_PATTERN = Pattern.compile("(?:(?:(?:[A-Z-_.:]|^)torch)|(?:(?:[a-z-_.:]|^)Torch))(?:[A-Z-_.:]|$)");
 

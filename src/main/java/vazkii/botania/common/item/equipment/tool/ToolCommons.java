@@ -100,9 +100,9 @@ public final class ToolCommons {
 
 		if(block != null && blk != block)
 			return;
-		//todofix improve block harvesting checks
-		Material mat = world.getBlock(x, y, z).blockMaterial;
-		if(!world.isRemote && blk != null && !blk.isAir(world, x, y, z) && blk.getPlayerRelativeBlockHardness(player, world, x, y, z) > 0) {
+		if (blk == null) return;
+		Material mat = blk.blockMaterial;
+		if(mat != null && !world.isRemote && !blk.isAir(world, x, y, z) && blk.getPlayerRelativeBlockHardness(player, world, x, y, z) > 0) {
 			if(/*!blk.canHarvestBlock(player, meta) ||*/ !isRightMaterial(mat, materialsListing))
 				return;
 
@@ -130,11 +130,10 @@ public final class ToolCommons {
 			return 0;
 
 		Item item = stack.getItem();
-		if(!(item instanceof ItemTool))
+		if(!(item instanceof ItemTool tool))
 			return 0;
 
-		ItemTool tool = (ItemTool) item;
-		EnumToolMaterial material = tool.getToolMaterial();
+        EnumToolMaterial material = tool.getToolMaterial();
 		int materialLevel = 0;
 		if(material == BotaniaAPI.manasteelToolMaterial)
 			materialLevel = 10;

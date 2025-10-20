@@ -10,25 +10,23 @@
  */
 package vazkii.botania.common.item.equipment.tool.manasteel;
 
+import btw.item.items.ShovelItem;
 import net.minecraft.src.*;
 import net.minecraft.src.Block;
-import net.minecraftforge.common.MinecraftForge;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.item.ISortableTool;
 import vazkii.botania.api.mana.IManaUsingItem;
 import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.client.lib.LibResources;
-import vazkii.botania.common.core.BotaniaCreativeTab;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.equipment.tool.ToolCommons;
 import vazkii.botania.common.lib.LibItemNames;
-import cpw.mods.fml.common.eventhandler.Event.Result;
 
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
-public class ItemManasteelShovel extends ItemSpade implements IManaUsingItem, ISortableTool {
+public class ItemManasteelShovel extends ShovelItem implements IManaUsingItem, ISortableTool {
 
 	private static final int MANA_PER_DAMAGE = 60;
 

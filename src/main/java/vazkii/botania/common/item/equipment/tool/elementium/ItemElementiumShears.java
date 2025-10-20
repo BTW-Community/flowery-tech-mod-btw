@@ -4,17 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.Enchantment;
-import net.minecraft.src.EnchantmentHelper;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityItem;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EnumAction;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.Icon;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import net.minecraftforge.common.IShearable;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.item.equipment.tool.ToolCommons;
@@ -52,6 +42,16 @@ public class ItemElementiumShears extends ItemManasteelShears {
 	public void registerIcons(IconRegister par1IconRegister) {
 		super.registerIcons(par1IconRegister);
 		dammitReddit = IconHelper.forName(par1IconRegister, "dammitReddit");
+	}
+
+	@Override
+	public int getItemEnchantability() {
+		return EnumToolMaterial.EMERALD.B_ELEMENTIUM().getEnchantability();
+	}
+
+	@Override
+	public boolean isDamagedInCrafting() {
+		return false;
 	}
 
 	@Override

@@ -7,6 +7,7 @@
     "CommandGiveMixin",
     "EmiScreenManagerMixin",
     "ItemStackMixin",
+    "PlayerControllerMPMixin",
     "RenderItemMixin",
     "event.BlockMixin",
     "event.EntityLivingBaseMixin",
