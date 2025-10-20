@@ -166,6 +166,18 @@ public class ItemLivingwoodBow extends ItemBow implements IManaUsingItem {
 	}
 
 	@Override
+	public Icon getItemIconForUseDuration(int j) {
+		if(j >= 18)
+			return pullIcons[2];
+		if(j > 13)
+			return pullIcons[1];
+		if(j > 0)
+			return pullIcons[0];
+
+		return itemIcon;
+	}
+
+	@Override
 	public Icon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining) {
 		if(stack != usingItem)
 			return itemIcon;

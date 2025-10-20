@@ -15,7 +15,6 @@ import java.util.List;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityItem;
-import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.TileEntity;
@@ -72,26 +71,11 @@ public class TileAlfPortal extends TileMod {
 	private boolean closeNow = false;
 	private boolean hasUnloadedParts = false;
 
-	private static final Function<int[], int[]> CONVERTER_X_Z = new Function<int[], int[]>() {
-		@Override
-		public int[] apply(int[] input) {
-			return new int[] { input[2], input[1], input[0] };
-		}
-	};
+	private static final Function<int[], int[]> CONVERTER_X_Z = input -> new int[]{input[2], input[1], input[0]};
 
-	private static final Function<double[], double[]> CONVERTER_X_Z_FP = new Function<double[], double[]>() {
-		@Override
-		public double[] apply(double[] input) {
-			return new double[] { input[2], input[1], input[0] };
-		}
-	};
+	private static final Function<double[], double[]> CONVERTER_X_Z_FP = input -> new double[] { input[2], input[1], input[0] };
 
-	private static final Function<int[], int[]> CONVERTER_Z_SWAP = new Function<int[], int[]>() {
-		@Override
-		public int[] apply(int[] input) {
-			return new int[] { input[0], input[1], -input[2] };
-		}
-	};
+	private static final Function<int[], int[]> CONVERTER_Z_SWAP = input -> new int[] { input[0], input[1], -input[2] };
 
 	public static MultiblockSet makeMultiblockSet() {
 		Multiblock mb = new Multiblock();
@@ -291,7 +275,8 @@ public class TileAlfPortal extends TileMod {
 		return checkMultipleConverters(baseConverter) || checkMultipleConverters(CONVERTER_Z_SWAP, baseConverter);
 	}
 
-	private boolean checkMultipleConverters(Function<int[], int[]>... converters) {
+	@SafeVarargs
+    private boolean checkMultipleConverters(Function<int[], int[]>... converters) {
 		if(!check2DArray(AIR_POSITIONS, null, -1, converters))
 			return false;
 		if(!check2DArray(LIVINGWOOD_POSITIONS, ModBlocks.livingwood, 0, converters))
@@ -307,7 +292,8 @@ public class TileAlfPortal extends TileMod {
 		return true;
 	}
 
-	private void lightPylons(Function<int[], int[]>... converters) {
+	@SafeVarargs
+    private void lightPylons(Function<int[], int[]>... converters) {
 		if(ticksOpen < 50)
 			return;
 
@@ -319,18 +305,16 @@ public class TileAlfPortal extends TileMod {
 					pos = f.apply(pos);
 
 			TileEntity tile = worldObj.getTileEntity(xCoord + pos[0], yCoord + pos[1], zCoord + pos[2]);
-			if(tile instanceof TilePylon) {
-				TilePylon pylon = (TilePylon) tile;
-				pylon.activated = true;
+			if(tile instanceof TilePylon pylon) {
+                pylon.activated = true;
 				pylon.centerX = xCoord;
 				pylon.centerY = yCoord;
 				pylon.centerZ = zCoord;
 			}
 
 			tile = worldObj.getTileEntity(xCoord + pos[0], yCoord + pos[1] - 1, zCoord + pos[2]);
-			if(tile instanceof TilePool) {
-				TilePool pool = (TilePool) tile;
-				if(pool.getCurrentMana() < cost)
+			if(tile instanceof TilePool pool) {
+                if(pool.getCurrentMana() < cost)
 					closeNow = true;
 				else if(!worldObj.isRemote)
 					pool.recieveMana(-cost);
@@ -338,7 +322,8 @@ public class TileAlfPortal extends TileMod {
 		}
 	}
 
-	private boolean check2DArray(int[][] positions, Block block, int meta, Function<int[], int[]>... converters) {
+	@SafeVarargs
+    private boolean check2DArray(int[][] positions, Block block, int meta, Function<int[], int[]>... converters) {
 		for(int[] pos : positions) {
 			for(Function<int[], int[]> f : converters)
 				if(f != null)
