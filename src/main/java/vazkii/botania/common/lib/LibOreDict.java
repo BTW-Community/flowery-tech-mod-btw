@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.lib;
 
+import btw.block.BTWBlocks;
 import btw.item.BTWItems;
 import btw.item.tag.Tag;
 import dev.bagel.util.Items;
@@ -115,5 +116,9 @@ public final class LibOreDict {
 //		"quartzDark", "quartzMana", "quartzBlaze",
 //		"quartzLavender", "quartzRed", "quartzElven", "quartzSunny"
 	};
+
+	public static final Tag COBBLESTONE_SLABS = Tag.of(new ResourceLocation("btw:cobblestone_slabs")).addUntilDamage(2, BTWBlocks.cobblestoneSlab);
+	public static final Tag MANA_DIAMOND_AND_PEARL = Tag.of(Botania.loc("mana_pearl_and_diamond"), MANA_PEARL, MANA_DIAMOND);
+	public static final Tag DYE_POWDERS = Tag.of(Botania.loc("dye_powders")).addUntilDamage(15, ModItems.dye);
 
 }

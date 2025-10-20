@@ -426,7 +426,7 @@ public final class LexiconData {
 						new PageCraftingRecipe("10", ModCraftingRecipes.recipePoolDiluted), new PageText("14"),
 						new PageText("2"), new PageText("8"),
 						new PageManaInfusionRecipe("3", ModManaInfusionRecipes.manasteelRecipes),
-						new PageManaInfusionRecipe("4", ModManaInfusionRecipes.manaPearlRecipe),
+						new PageManaInfusionRecipe("4", ModManaInfusionRecipes.manaPearlRecipes),
 						new PageManaInfusionRecipe("5", ModManaInfusionRecipes.manaDiamondRecipes),
 						new PageManaInfusionRecipe("6", ModManaInfusionRecipes.manaPowderRecipes),
 						new PageManaInfusionRecipe("11", ModManaInfusionRecipes.managlassRecipe),

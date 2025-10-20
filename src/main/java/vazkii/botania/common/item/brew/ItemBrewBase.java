@@ -155,7 +155,12 @@ public abstract class ItemBrewBase extends ItemMod implements IBrewItem, IPickup
 
 	@Override
 	public String getItemStackDisplayName(ItemStack stack) {
-		return String.format(StatCollector.translateToLocal(getUnlocalizedNameInefficiently(stack) + ".name"), StatCollector.translateToLocal(getBrew(stack).getUnlocalizedName(stack)), EnumChatFormatting.BOLD + "" + getSwigsLeft(stack) + EnumChatFormatting.RESET);
+        return String.format(StatCollector.translateToLocal(getUnlocalizedNameInefficiently(stack) + ".name"), StatCollector.translateToLocal(getBrew(stack).getUnlocalizedName(stack)), EnumChatFormatting.BOLD + "" + getSwigsLeft(stack) + EnumChatFormatting.RESET);
+	}
+
+	@Override
+	public String getItemDisplayName(ItemStack stack) {
+        return String.format(StatCollector.translateToLocal(getUnlocalizedNameInefficiently(stack) + ".name"), StatCollector.translateToLocal(getBrew(stack).getUnlocalizedName(stack)), EnumChatFormatting.BOLD + "" + getSwigsLeft(stack) + EnumChatFormatting.RESET);
 	}
 
 	@Override

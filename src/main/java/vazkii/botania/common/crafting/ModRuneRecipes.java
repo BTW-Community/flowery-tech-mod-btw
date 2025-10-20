@@ -13,6 +13,9 @@ package vazkii.botania.common.crafting;
 import java.util.ArrayList;
 import java.util.List;
 
+import btw.block.BTWBlocks;
+import btw.block.blocks.AestheticOpaqueEarthBlock;
+import btw.item.BTWItems;
 import btw.item.tag.TagInstance;
 import net.minecraft.src.Block;
 import net.minecraft.src.Block;
@@ -53,16 +56,16 @@ public final class ModRuneRecipes {
 		final int costTier2 = 8000;
 		final int costTier3 = 12000;
 
-		recipeWaterRune = BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 2, 0), costTier1, LibOreDict.MANA_POWDER, LibOreDict.MANA_STEEL, new ItemStack(Item.dyePowder, 1, 15), new ItemStack(Item.reed	), new ItemStack(Item.fishingRod));
-		recipeFireRune = BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 2, 1), costTier1, LibOreDict.MANA_POWDER, LibOreDict.MANA_STEEL, new ItemStack(Item.netherrackBrick), new ItemStack(Item.gunpowder), new ItemStack(Item.netherStalkSeeds));
+		recipeWaterRune = BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 2, 0), costTier1, LibOreDict.MANA_POWDER, LibOreDict.MANA_STEEL, new ItemStack(Item.dyePowder, 1, 0), new ItemStack(Item.reed	), new ItemStack(Item.fishingRod));
+		recipeFireRune = BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 2, 1), costTier1, LibOreDict.MANA_POWDER, LibOreDict.MANA_STEEL, new ItemStack(BTWItems.hellfireDust), new ItemStack(Item.gunpowder), new ItemStack(Item.netherStalkSeeds));
 
 		recipesEarthRune = new ArrayList<>();
-		recipesEarthRune.add(BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 2, 2), costTier1, LibOreDict.MANA_POWDER, LibOreDict.MANA_STEEL, new ItemStack(Block.stone), new ItemStack(Block.coalBlock), new ItemStack(Block.mushroomBrown)));
-		recipesEarthRune.add(BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 2, 2), costTier1, LibOreDict.MANA_POWDER, LibOreDict.MANA_STEEL, new ItemStack(Block.stone), new ItemStack(Block.coalBlock), new ItemStack(Block.mushroomRed)));
+		recipesEarthRune.add(BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 2, 2), costTier1, LibOreDict.MANA_POWDER, LibOreDict.MANA_STEEL, new ItemStack(BTWBlocks.aestheticEarth, 1, AestheticOpaqueEarthBlock.SUBTYPE_PACKED_EARTH), new ItemStack(Block.coalBlock), new ItemStack(Block.mushroomBrown)));
+		recipesEarthRune.add(BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 2, 2), costTier1, LibOreDict.MANA_POWDER, LibOreDict.MANA_STEEL, new ItemStack(BTWBlocks.aestheticEarth, 1, AestheticOpaqueEarthBlock.SUBTYPE_PACKED_EARTH), new ItemStack(Block.coalBlock), new ItemStack(Block.mushroomRed)));
 
 		recipesAirRune = new ArrayList<>();
-		for(int i = 0; i < 16; i++)
-			recipesAirRune.add(BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 2, 3), costTier1, LibOreDict.MANA_POWDER, LibOreDict.MANA_STEEL, new ItemStack(Block.carpet, 1, i), new ItemStack(Item.feather), new ItemStack(Item.silk)));
+//		for(int i = 0; i < 16; i++)
+			recipesAirRune.add(BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 2, 3), costTier1, LibOreDict.MANA_POWDER, LibOreDict.MANA_STEEL, new ItemStack(BTWItems.fabric, 1), new ItemStack(Item.feather), new ItemStack(Item.silk)));
 
 		recipeSpringRune = BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 1, 4), costTier2, LibOreDict.RUNE[0], LibOreDict.RUNE[1], TagInstance.of(ModCraftingRecipes.saplings), TagInstance.of(ModCraftingRecipes.saplings), TagInstance.of(ModCraftingRecipes.saplings), new ItemStack(Item.wheat));
 		recipeSummerRune = BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 1, 5), costTier2, LibOreDict.RUNE[2], LibOreDict.RUNE[3], new ItemStack(Block.sand), new ItemStack(Block.sand), new ItemStack(Item.slimeBall), new ItemStack(Item.melon));

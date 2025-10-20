@@ -13,8 +13,9 @@ package vazkii.botania.common.crafting;
 import java.util.ArrayList;
 import java.util.List;
 
+import btw.item.BTWItems;
+import btw.item.tag.TagInstance;
 import net.minecraft.src.Block;
-import net.minecraft.src.Item;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import vazkii.botania.api.BotaniaAPI;
@@ -23,11 +24,12 @@ import vazkii.botania.common.Botania;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.core.handler.ConfigHandler;
 import vazkii.botania.common.item.ModItems;
+import vazkii.botania.common.lib.LibOreDict;
 
 public final class ModManaInfusionRecipes {
 
 	public static List<RecipeManaInfusion> manasteelRecipes;
-	public static RecipeManaInfusion manaPearlRecipe;
+	public static RecipeManaInfusion manaPearlRecipes;
 	public static List<RecipeManaInfusion> manaDiamondRecipes;
 	public static List<RecipeManaInfusion> manaPowderRecipes;
 	public static RecipeManaInfusion pistonRelayRecipe;
@@ -46,23 +48,24 @@ public final class ModManaInfusionRecipes {
 	public static void init() {
 		if (!ConfigHandler.enableDefaultRecipes) return;
 
-		manasteelRecipes = new ArrayList<>();
-		manasteelRecipes.add(BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModItems.manaResource, 1, 0), new ItemStack(Item.ingotIron), 3000));
-		manasteelRecipes.add(BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModBlocks.storage, 1, 0), new ItemStack(Block.blockIron), 27000));
+//		manasteelRecipes = new ArrayList<>();
+//		manasteelRecipes.add(BotaniaAPI.registerManaInfusionRecipe(LibOreDict.MANA_STEEL, new ItemStack(Item.ingotIron), 3000));
+//		manasteelRecipes.add(BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModBlocks.storage, 1, 0), new ItemStack(Block.blockIron), 27000));
 
-		manaPearlRecipe = BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModItems.manaResource, 1, 1), new ItemStack(Item.enderPearl), 6000);
+		manaPearlRecipes = BotaniaAPI.registerManaInfusionRecipe(LibOreDict.MANA_PEARL, new ItemStack(Item.enderPearl), 6000);
+		//todo potential use block to craft 9?
 
 		manaDiamondRecipes = new ArrayList<>();
-		manaDiamondRecipes.add(BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModItems.manaResource, 1, 2), new ItemStack(Item.diamond), 10000));
+		manaDiamondRecipes.add(BotaniaAPI.registerManaInfusionRecipe(LibOreDict.MANA_DIAMOND, new ItemStack(Item.diamond), 10000));
 		manaDiamondRecipes.add(BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModBlocks.storage, 1, 3), new ItemStack(Block.blockDiamond), 90000));
 
 		manaPowderRecipes = new ArrayList<>();
-		manaPowderRecipes.add(BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModItems.manaResource, 1, 23), new ItemStack(Item.gunpowder), 500));
-		manaPowderRecipes.add(BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModItems.manaResource, 1, 23), new ItemStack(Item.redstone), 500));
-		manaPowderRecipes.add(BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModItems.manaResource, 1, 23), new ItemStack(Item.glowstone), 500));
-		manaPowderRecipes.add(BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModItems.manaResource, 1, 23), new ItemStack(Item.sugar), 500));
-		for(int i = 0; i < 16; i++)
-			manaPowderRecipes.add(BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModItems.manaResource, 1, 23), new ItemStack(ModItems.dye, 1, i), 400));
+		manaPowderRecipes.add(BotaniaAPI.registerManaInfusionRecipe(LibOreDict.MANA_POWDER, new ItemStack(Item.gunpowder), 500));
+		manaPowderRecipes.add(BotaniaAPI.registerManaInfusionRecipe(LibOreDict.MANA_POWDER, new ItemStack(Item.redstone), 500));
+		manaPowderRecipes.add(BotaniaAPI.registerManaInfusionRecipe(LibOreDict.MANA_POWDER, new ItemStack(Item.glowstone), 500));
+		manaPowderRecipes.add(BotaniaAPI.registerManaInfusionRecipe(LibOreDict.MANA_POWDER, new ItemStack(Item.sugar), 500));
+//		for(int i = 0; i < 16; i++)
+			manaPowderRecipes.add(BotaniaAPI.registerManaInfusionRecipe(LibOreDict.MANA_POWDER, TagInstance.of(LibOreDict.DYE_POWDERS), 400));
 
 		pistonRelayRecipe = BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModBlocks.pistonRelay), new ItemStack(Block.pistonBase), 15000);
 		manaCookieRecipe = BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModItems.manaCookie), new ItemStack(Item.cookie), 20000);
@@ -82,7 +85,7 @@ public final class ModManaInfusionRecipes {
 //		}
 
 		managlassRecipe = BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModBlocks.manaGlass), new ItemStack(Block.glass), 150);
-		manaStringRecipe = BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModItems.manaResource, 1, 16), new ItemStack(Item.silk), 5000);
+		manaStringRecipe = BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModItems.manaResource, 1, 16), new ItemStack(BTWItems.hempFibers), 5000);
 
 		if(Botania.gardenOfGlassLoaded)
 			sugarCaneRecipe = BotaniaAPI.registerManaInfusionRecipe(new ItemStack(Item.reed), new ItemStack(Block.hay), 2000);

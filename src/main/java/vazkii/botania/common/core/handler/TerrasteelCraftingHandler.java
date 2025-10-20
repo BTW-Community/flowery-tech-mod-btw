@@ -12,6 +12,7 @@ package vazkii.botania.common.core.handler;
 
 import java.util.List;
 
+import btw.item.BTWItems;
 import net.minecraft.src.*;
 import vazkii.botania.api.mana.IManaPool;
 import vazkii.botania.common.Botania;
@@ -28,7 +29,7 @@ public final class TerrasteelCraftingHandler {
 
 	public static void onEntityUpdate(EntityItem item) {
 		ItemStack stack = item.getEntityItem();
-		if(stack != null && stack.getItem() == ModItems.manaResource && stack.getItemDamage() == 0) {
+		if(stack != null && stack.getItem() == BTWItems.soulforgedSteelIngot && stack.getItemDamage() == 0) {
 			int time = validateCraftingItem(item);
 
 			if(time != -1) {
@@ -73,12 +74,12 @@ public final class TerrasteelCraftingHandler {
 		int y = MathHelper.floor_double(item.posY);
 		int z = MathHelper.floor_double(item.posZ);
 
-//		if(item.worldObj.getBlock(x, y - 1, z) != Block.beacon)
-//			return -1;
-//
-//		TileEntityBeacon beacon = (TileEntityBeacon) item.worldObj.getTileEntity(x, y - 1, z);
-//		if(beacon.getLevels() <= 0)
-//			return -1;
+		if(item.worldObj.getBlock(x, y - 1, z) != Block.beacon)
+			return -1;
+
+		TileEntityBeacon beacon = (TileEntityBeacon) item.worldObj.getTileEntity(x, y - 1, z);
+		if(beacon.getLevels() <= 0)
+			return -1;
 
 		List<EntityItem> items = item.worldObj.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(x, y, z, x + 1, y + 1, z + 1));
 
