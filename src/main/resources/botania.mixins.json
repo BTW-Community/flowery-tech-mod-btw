@@ -28,11 +28,14 @@
     "extensions.EntityPlayerExtensionsMixin",
     "extensions.IBlockAccessExtensionMixin",
     "extensions.ItemExtensionMixin",
+    "extensions.ItemInWorldManagerExtensionMixin",
     "extensions.NBTTagListExtensionMixin",
     "extensions.TileEntityExtensionsMixin",
     "extensions.WorldExtensionsMixin",
     "extensions.enums.EnumArmorMaterialMixin",
-    "extensions.enums.EnumToolMaterialMixin"
+    "extensions.enums.EnumToolMaterialMixin",
+    "extensions.reach.ItemMixin",
+    "extensions.reach.NetServerHandlerReachMixin"
   ],
   "client": [
     "event.TextureMapMixin",

@@ -533,9 +533,8 @@ public class TileSpreader extends TileSimpleInventory implements IManaCollector,
 		float f7 = f4 * f5;
 		float f8 = f3 * f5;
 		double d3 = range;
-		//todofix extra block reach
-//		if (player instanceof EntityPlayerMP pmp)
-//			d3 = pmp.theItemInWorldManager.getBlockReachDistance();
+		if (player instanceof EntityPlayerMP pmp)
+			d3 = pmp.theItemInWorldManager.getBlockReachDistance();
 		Vec3 vec31 = vec3.addVector(f7 * d3, f6 * d3, f8 * d3);
 //		return world.func_147447_a(vec3, vec31, par3, !par3, par3);
 		return world.rayTraceBlocks_do_do(vec3, vec31, par3, !par3);

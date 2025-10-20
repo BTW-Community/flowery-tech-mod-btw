@@ -236,10 +236,9 @@ public class CommonProxy {
 		return false;
 	}
 
-	//todofix set extra entity reach
 	public void setExtraReach(EntityLivingBase entity, float reach) {
-//		if(entity instanceof EntityPlayerMP)
-//			((EntityPlayerMP) entity).theItemInWorldManager.setBlockReachDistance(Math.max(5, ((EntityPlayerMP) entity).theItemInWorldManager.getBlockReachDistance() + reach));
+		if(entity instanceof EntityPlayerMP)
+			((EntityPlayerMP) entity).theItemInWorldManager.setBlockReachDistance(Math.max(5, ((EntityPlayerMP) entity).theItemInWorldManager.getBlockReachDistance() + reach));
 	}
 
 	public boolean openWikiPage(World world, Block block, MovingObjectPosition pos) {
