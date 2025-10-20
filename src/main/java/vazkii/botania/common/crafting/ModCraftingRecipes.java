@@ -1256,7 +1256,7 @@ public final class ModCraftingRecipes {
 		recipeSpawnerClaw = BotaniaAPI.getLatestAddedRecipe();
 
 		// Crafty Crate Recipe
-		CraftingManager.getInstance().addRecipe(new ItemStack(ModBlocks.openCrate, 1, 1),
+		CraftingManager.getInstance().addRecipe(new ItemStack(ModBlocks.craftyCrate, 1),
 				"WCW", "W W", "W W",
 				'C', Block.anvil,
 				'W', new ItemStack(ModBlocks.dreamwood, 1, 1));

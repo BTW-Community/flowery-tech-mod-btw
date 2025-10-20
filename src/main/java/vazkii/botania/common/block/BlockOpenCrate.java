@@ -83,8 +83,8 @@ public class BlockOpenCrate extends BlockModContainer implements ILexiconable, I
 
 	@Override
 	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
-		for(int i = 0; i < SUBTYPES; i++)
-			par3List.add(new ItemStack(par1, 1, i));
+//		for(int i = 0; i < SUBTYPES; i++)
+			par3List.add(new ItemStack(par1, 1, 0));
 	}
 
 	@Override
@@ -170,7 +170,12 @@ public class BlockOpenCrate extends BlockModContainer implements ILexiconable, I
 
 	@Override
 	public TileEntity createNewTileEntityT(World world, int meta) {
-		return meta == 0 ? new TileOpenCrate() : new TileCraftCrate();
+		return new TileOpenCrate();
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World world) {
+		return new TileOpenCrate();
 	}
 
 	@Override
@@ -187,10 +192,9 @@ public class BlockOpenCrate extends BlockModContainer implements ILexiconable, I
 	@Override
 	public void renderHUD(Minecraft mc, ScaledResolution res, World world, int x, int y, int z) {
 		TileEntity tile = world.getTileEntity(x, y, z);
-		if(tile instanceof TileCraftCrate) {
-			TileCraftCrate craft = (TileCraftCrate) tile;
+		if(tile instanceof TileCraftCrate craft) {
 
-			int width = 52;
+            int width = 52;
 			int height = 52;
 			int xc = res.getScaledWidth() / 2 + 20;
 			int yc = res.getScaledHeight() / 2 - height / 2;

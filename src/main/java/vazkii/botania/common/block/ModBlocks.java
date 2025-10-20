@@ -196,6 +196,7 @@ public final class ModBlocks {
 	public static Block tinyPlanet;
 	public static Block alchemyCatalyst;
 	public static Block openCrate;
+	public static Block craftyCrate;
 	public static Block forestEye;
 	public static Block storage;
 	public static Block forestDrum;
@@ -289,6 +290,7 @@ public final class ModBlocks {
 		tinyPlanet = new BlockTinyPlanet(id++);
 		alchemyCatalyst = new BlockAlchemyCatalyst(id++);
 		openCrate = new BlockOpenCrate(id++);
+		craftyCrate = new BlockCraftyCrate(id++);
 		forestEye = new BlockForestEye(id++);
 		storage = new BlockStorage(id++);
 		forestDrum = new BlockForestDrum(id++);
