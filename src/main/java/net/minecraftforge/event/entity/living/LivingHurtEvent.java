@@ -1,6 +1,8 @@
 package net.minecraftforge.event.entity.living;
 
 import cpw.mods.fml.common.eventhandler.Cancelable;
+import net.legacyfabric.fabric.api.event.Event;
+import net.legacyfabric.fabric.api.event.EventFactory;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.DamageSource;
 
@@ -34,4 +36,14 @@ public class LivingHurtEvent extends LivingEvent
         this.ammount = ammount;
     }
 
+    public static final Event<LivingHurtEventCallback> EVENT = EventFactory.createArrayBacked(LivingHurtEventCallback.class, (callbacks) -> (event) -> {
+        for (var callback : callbacks) {
+            callback.onLivingHurt(event);
+        }
+    });
+
+    @FunctionalInterface
+    public interface LivingHurtEventCallback {
+        public void onLivingHurt(LivingHurtEvent event);
+    }
 }

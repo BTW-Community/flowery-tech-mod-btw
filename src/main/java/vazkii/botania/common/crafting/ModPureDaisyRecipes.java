@@ -21,11 +21,11 @@ import vazkii.botania.common.core.handler.ConfigHandler;
 import vazkii.botania.common.lib.LibOreDict;
 
 public final class ModPureDaisyRecipes {
-	public static final Tag SMOOTH_STONES = Tag.of(new ResourceLocation("btw:stone")).addUntilDamage(2, Block.stone);
+
 	public static void init() {
 		if (!ConfigHandler.enableDefaultRecipes) return;
 
-		BotaniaAPI.registerPureDaisyRecipe(SMOOTH_STONES, ModBlocks.livingrock, 0);
+		BotaniaAPI.registerPureDaisyRecipe(ModCraftingRecipes.stones, ModBlocks.livingrock, 0);
 		BotaniaAPI.registerPureDaisyRecipe(BTWTags.logs, ModBlocks.livingwood, 0);
 
 		BotaniaAPI.registerPureDaisyRecipe(Block.netherrack, Block.cobblestone, 0);

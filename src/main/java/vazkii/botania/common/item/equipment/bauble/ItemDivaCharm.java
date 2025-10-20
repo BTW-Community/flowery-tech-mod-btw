@@ -46,9 +46,10 @@ public class ItemDivaCharm extends ItemBauble implements IManaUsingItem, IBauble
 	public ItemDivaCharm(int id) {
 		super(id, LibItemNames.DIVA_CHARM);
 		MinecraftForge.EVENT_BUS.register(this);
+		LivingHurtEvent.EVENT.register(this::onEntityDamaged);
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onEntityDamaged(LivingHurtEvent event) {
 		if(event.source.getEntity() instanceof EntityPlayer && event.entityLiving instanceof EntityLiving && !event.entityLiving.worldObj.isRemote && Math.random() < 0.6F) {
 			EntityPlayer player = (EntityPlayer) event.source.getEntity();

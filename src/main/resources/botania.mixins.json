@@ -10,6 +10,7 @@
     "RenderItemMixin",
     "event.BlockMixin",
     "event.EntityLivingBaseMixin",
+    "event.EntityPlayerMixin",
     "event.ItemInWorldManagerMixin",
     "event.MinecraftServerMixin",
     "event.NetServerHandlerMixin",

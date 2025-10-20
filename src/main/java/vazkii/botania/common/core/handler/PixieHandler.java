@@ -17,11 +17,14 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class PixieHandler {
 
-	@SubscribeEvent
+	public PixieHandler() {
+		LivingHurtEvent.EVENT.register(this::onDamageTaken);
+	}
+
+//	@SubscribeEvent
 	public void onDamageTaken(LivingHurtEvent event) {
-		if(!event.entityLiving.worldObj.isRemote && event.entityLiving instanceof EntityPlayer && event.source.getEntity() != null && event.source.getEntity() instanceof EntityLivingBase) {
-			EntityPlayer player = (EntityPlayer) event.entityLiving;
-			ItemStack stack = player.getCurrentEquippedItem();
+		if(!event.entityLiving.worldObj.isRemote && event.entityLiving instanceof EntityPlayer player && event.source.getEntity() != null && event.source.getEntity() instanceof EntityLivingBase) {
+            ItemStack stack = player.getCurrentEquippedItem();
 
 			float chance = getChance(stack);
 			for (ItemStack element : player.inventory.armorInventory)

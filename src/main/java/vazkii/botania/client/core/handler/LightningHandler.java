@@ -47,7 +47,7 @@ public class LightningHandler {
 		return new Vector3((float) renderEntity.posX - pos.x, (float) renderEntity.posY + renderEntity.getEyeHeight() - pos.y, (float) renderEntity.posZ - pos.z);
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onRenderWorldLast(RenderWorldLastEvent event) {
 		Profiler profiler = Minecraft.getMinecraft().mcProfiler;
 

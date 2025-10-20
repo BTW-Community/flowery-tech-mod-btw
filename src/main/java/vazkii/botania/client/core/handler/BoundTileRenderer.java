@@ -39,7 +39,7 @@ public final class BoundTileRenderer {
 		RenderWorldLastEvent.EVENT.register(this::onWorldRenderLast);
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onWorldRenderLast(RenderWorldLastEvent event) {
 		GL11.glPushMatrix();
 		GL11.glPushAttrib(GL11.GL_LIGHTING);

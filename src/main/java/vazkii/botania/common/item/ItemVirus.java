@@ -33,13 +33,13 @@ public class ItemVirus extends ItemMod {
         setUnlocalizedName(LibItemNames.VIRUS);
 		setHasSubtypes(true);
 		MinecraftForge.EVENT_BUS.register(this);
+		LivingHurtEvent.EVENT.register(this::onLivingHurt);
 	}
 
 	@Override
 	public boolean itemInteractionForEntity(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, EntityLivingBase par3EntityLivingBase) {
-		if(par3EntityLivingBase instanceof EntityHorse) {
-			EntityHorse horse = (EntityHorse) par3EntityLivingBase;
-			if(horse.getHorseType() != 3 && horse.getHorseType() != 4 && horse.isTame()) {
+		if(par3EntityLivingBase instanceof EntityHorse horse) {
+            if(horse.getHorseType() != 3 && horse.getHorseType() != 4 && horse.isTame()) {
 				horse.setHorseType(3 + par1ItemStack.getItemDamage());
 				BaseAttributeMap attributes = horse.getAttributeMap();
 				AttributeInstance movementSpeed = attributes.getAttributeInstance(SharedMonsterAttributes.movementSpeed);
@@ -57,7 +57,7 @@ public class ItemVirus extends ItemMod {
 		return false;
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onLivingHurt(LivingHurtEvent event) {
 		EntityLivingBase entity = event.entityLiving;
 		if(entity.ridingEntity != null && entity.ridingEntity instanceof EntityLivingBase)
