@@ -1,11 +1,18 @@
 package dev.bagel.emi;
 
+import baubles.api.expanded.BaubleExpandedSlots;
+import baubles.client.gui.GuiPlayerExpanded;
+import baubles.common.BaublesConfig;
+import baubles.common.container.SlotBauble;
 import dev.bagel.emi.recipe.*;
+import emi.dev.emi.emi.api.EmiExclusionArea;
 import emi.dev.emi.emi.api.EmiPlugin;
 import emi.dev.emi.emi.api.EmiRegistry;
 import emi.dev.emi.emi.api.recipe.EmiRecipeCategory;
 import emi.dev.emi.emi.api.stack.Comparison;
 import emi.dev.emi.emi.api.stack.EmiStack;
+import emi.dev.emi.emi.screen.Bounds;
+import net.minecraft.src.GuiInventory;
 import net.minecraft.src.ItemStack;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.recipe.*;
@@ -16,6 +23,8 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static baubles.common.BaublesConfig.useOldGuiRendering;
 
 public class BotaniaEmiPlugin implements EmiPlugin {
     public static EmiRecipeCategory PETAL_APOTHECARY = new EmiRecipeCategory(Botania.loc("petal_apothecary"), EmiStack.of(new ItemStack(ModBlocks.altar)));
@@ -28,6 +37,22 @@ public class BotaniaEmiPlugin implements EmiPlugin {
 
     @Override
     public void register(EmiRegistry reg) {
+        reg.addExclusionArea(GuiPlayerExpanded.class, (screen, boundsConsumer) ->{
+            final int slotOffset = 18;
+            final int slotStartX = 80;
+            final int slotStartY = 8;
+
+            for (int i = 0; i < BaubleExpandedSlots.slotLimit; i++) {
+                String slotType = BaubleExpandedSlots.getSlotType(i);
+                if (BaublesConfig.showUnusedSlots || !slotType.equals(BaubleExpandedSlots.unknownType)) {
+                    if (useOldGuiRendering) {
+                        boundsConsumer.accept(new Bounds(slotStartX + (slotOffset * (i / 4)), slotStartY + (slotOffset * (i % 4)), 18, 18));
+                    } else {
+                        boundsConsumer.accept(new Bounds(-18, 12 + (slotOffset * i), 18, 18));
+                    }
+                }
+            }
+        });
         reg.addCategory(PETAL_APOTHECARY);
         reg.addCategory(MANA_POOL);
         reg.addCategory(PURE_DAISY);

@@ -4,6 +4,7 @@ import baubles.api.IBauble;
 import baubles.common.Baubles;
 import baubles.common.container.InventoryBaubles;
 import baubles.common.lib.PlayerHandler;
+import btw.inventory.BTWContainers;
 import btw.network.packet.handler.CustomPacketHandler;
 import dev.bagel.network.IMessage;
 import dev.bagel.network.IMessageHandler;
@@ -18,9 +19,6 @@ public class PacketHandler implements CustomPacketHandler {
 //    public static final SimpleNetworkWrapper INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel(Baubles.MODID.toLowerCase());
     public static final PacketHandler INSTANCE = new PacketHandler();
     public static void init() {
-        INSTANCE.registerMessage(PacketOpenBaublesInventory.class, PacketOpenBaublesInventory.class, 0, EnvType.SERVER);
-        INSTANCE.registerMessage(PacketOpenNormalInventory.class, PacketOpenNormalInventory.class, 1, EnvType.SERVER);
-        INSTANCE.registerMessage(PacketSyncBauble.class, PacketSyncBauble.class, 2, EnvType.CLIENT);
     }
 
     private Packet250CustomPayload makePackets(IMessage message) throws IOException {
@@ -43,10 +41,10 @@ public class PacketHandler implements CustomPacketHandler {
     public void sendToAll(IMessage message) {
         try {
             Packet250CustomPayload packet = makePackets(message);
-//            if (MinecraftServer.getIsServer()) {
+            if (MinecraftServer.getIsServer()) {
                 MinecraftServer.getServer().getConfigurationManager().sendPacketToAllPlayers(packet);
                 System.out.println("sent");
-//            }
+            }
             System.out.println("sending all baubles to player");
         }
         catch (IOException e) {
@@ -87,6 +85,7 @@ public class PacketHandler implements CustomPacketHandler {
             int id = data.readInt();
             switch (id) {
                 case 0:
+//                    player.openContainer.removeCraftingFromCrafters((ICrafting) player);
                     player.openGui(Baubles.instance.modId, Baubles.GUI, player.worldObj, (int)player.posX, (int)player.posY, (int)player.posZ);
                     break;
                 case 1:

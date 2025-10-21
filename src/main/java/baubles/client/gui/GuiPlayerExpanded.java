@@ -28,7 +28,6 @@ import java.util.List;
 
 import static baubles.common.BaublesConfig.useOldGuiRendering;
 
-//todobaubles rendering of guiPlayer
 public class GuiPlayerExpanded extends GuiContainer {
 
     public static final ResourceLocation background = new ResourceLocation("baubles","textures/gui/bauble_inventory.png");

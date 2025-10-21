@@ -20,6 +20,7 @@ import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.KnowledgeType;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.recipe.IElvenItem;
+import vazkii.botania.client.gui.lexicon.GuiLexicon;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.achievement.ModAchievements;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
@@ -141,7 +142,8 @@ public class ItemLexicon extends ItemMod implements ILexicon, IElvenItem {
 
 		Botania.getProxy().setLexiconStack(stack);
 		player.addStat(ModAchievements.lexiconUse, 1);
-		player.openGui(Botania.instance.getModID(), LibGuiIDs.LEXICON, world, 0, 0, 0);
+		Minecraft.getMinecraft().displayGuiScreen(GuiLexicon.currentOpenLexicon);
+//		player.openGui(Botania.instance.getModID(), LibGuiIDs.LEXICON, world, 0, 0, 0);
 		if(!world.isRemote && !skipSound)
 			world.playSoundAtEntity(player, "botania:lexiconOpen", 0.5F, 1F);
 	}
