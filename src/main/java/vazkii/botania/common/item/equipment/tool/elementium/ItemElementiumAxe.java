@@ -41,7 +41,7 @@ public class ItemElementiumAxe extends ItemManasteelAxe {
 				int looting = EnchantmentHelper.getEnchantmentLevel(Enchantment.fortune.effectId, weapon);
 
 				if(event.entityLiving instanceof EntitySkeleton && rand.nextInt(26) <= 3 + looting)
-					addDrop(event, new ItemStack(Item.skull, 1, ((EntitySkeleton)event.entityLiving).getSkeletonType()));
+					addDrop(event, new ItemStack(Item.skull, 1, ((EntitySkeleton)event.entityLiving).getSkeletonType().id()));
 				else if(event.entityLiving instanceof EntityZombie && !(event.entityLiving instanceof EntityPigZombie) && rand.nextInt(26) <= 2 + 2 * looting)
 					addDrop(event, new ItemStack(Item.skull, 1, 2));
 				else if(event.entityLiving instanceof EntityCreeper && rand.nextInt(26) <= 2 + 2 * looting)
