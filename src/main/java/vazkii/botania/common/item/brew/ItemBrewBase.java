@@ -15,7 +15,6 @@ import java.util.List;
 
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EnumAction;
 import net.minecraft.src.Item;
@@ -196,7 +195,7 @@ public abstract class ItemBrewBase extends ItemMod implements IBrewItem, IPickup
 	}
 
 	@Override
-	public Achievement getAchievementOnPickup(ItemStack stack, EntityPlayer player, EntityItem item) {
+	public Achievement getAchievementOnPickup(ItemStack stack) {
 		return ModAchievements.brewPickup;
 	}
 

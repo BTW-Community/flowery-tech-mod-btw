@@ -395,10 +395,10 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 	public void onDeath(DamageSource p_70645_1_) {
 		super.onDeath(p_70645_1_);
 		EntityLivingBase entitylivingbase = func_94060_bK();
-		if(entitylivingbase instanceof EntityPlayer) {
-			((EntityPlayer) entitylivingbase).addStat(ModAchievements.gaiaGuardianKill, 1);
+		if(entitylivingbase instanceof EntityPlayer player) {
+			ModAchievements.trigger(player, ModAchievements.gaiaGuardianKill);
 			if(!anyWithArmor)
-				((EntityPlayer) entitylivingbase).addStat(ModAchievements.gaiaGuardianNoArmor, 1);
+				ModAchievements.trigger(player, ModAchievements.gaiaGuardianNoArmor);
 		}
 
 		worldObj.playSoundAtEntity(this, "random.explode", 20F, (1F + (worldObj.rand.nextFloat() - worldObj.rand.nextFloat()) * 0.2F) * 0.7F);

@@ -27,7 +27,7 @@ import vazkii.botania.common.achievement.ModAchievements;
 import vazkii.botania.common.entity.EntitySpark;
 import vazkii.botania.common.lib.LibItemNames;
 
-public class ItemSpark extends ItemMod implements ICraftAchievement, IManaGivingItem {
+public class ItemSpark extends ItemMod implements IManaGivingItem {
 
 	public static Icon invIcon, worldIcon;
 
@@ -39,9 +39,8 @@ public class ItemSpark extends ItemMod implements ICraftAchievement, IManaGiving
 	@Override
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float xv, float yv, float zv) {
 		TileEntity tile = world.getTileEntity(x, y, z);
-		if(tile instanceof ISparkAttachable) {
-			ISparkAttachable attach = (ISparkAttachable) tile;
-			if(attach.canAttachSpark(stack) && attach.getAttachedSpark() == null) {
+		if(tile instanceof ISparkAttachable attach) {
+            if(attach.canAttachSpark(stack) && attach.getAttachedSpark() == null) {
 				stack.stackSize--;
 				if(!world.isRemote) {
 					EntitySpark spark = new EntitySpark(world);
@@ -63,13 +62,8 @@ public class ItemSpark extends ItemMod implements ICraftAchievement, IManaGiving
 	}
 
 	@Override
-	public Icon getIconFromDamage(int p_77617_1_) {
+	public Icon getIconFromDamage(int damage) {
 		return invIcon;
-	}
-
-	@Override
-	public Achievement getAchievementOnCraft(ItemStack stack, EntityPlayer player, IInventory matrix) {
-		return ModAchievements.sparkCraft;
 	}
 
 }

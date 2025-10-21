@@ -29,7 +29,6 @@ import vazkii.botania.common.entity.EntityEnderAirBottle;
 import vazkii.botania.common.item.ItemMod;
 import vazkii.botania.common.item.equipment.tool.ToolCommons;
 import vazkii.botania.common.lib.LibItemNames;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
@@ -65,7 +64,7 @@ public class ItemManaResource extends ItemMod implements IFlowerComponent, IElve
 
 			if(pos == null) {
 				ItemStack stack1 = new ItemStack(this, 1, 15);
-				event.entityPlayer.addStat(ModAchievements.enderAirMake, 1);
+				ModAchievements.trigger(event.entityPlayer, ModAchievements.luminizerRide);
 
 				if(!event.entityPlayer.inventory.addItemStackToInventory(stack1))
 					event.entityPlayer.dropPlayerItemWithRandomChoice(stack1, true);
@@ -178,7 +177,7 @@ public class ItemManaResource extends ItemMod implements IFlowerComponent, IElve
 	}
 
 	@Override
-	public Achievement getAchievementOnPickup(ItemStack stack, EntityPlayer player, EntityItem item) {
+	public Achievement getAchievementOnPickup(ItemStack stack) {
 		return stack.getItemDamage() == 4 ? ModAchievements.terrasteelPickup : null;
 	}
 

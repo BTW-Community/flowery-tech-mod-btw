@@ -12,17 +12,13 @@ package vazkii.botania.common.block.decor;
 
 import java.util.Random;
 
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.EntitySheep;
-import net.minecraft.src.Item;
-import net.minecraft.src.Icon;
-import net.minecraft.src.IBlockAccess;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.block.BlockModFlower;
 import vazkii.botania.common.integration.coloredlights.ColoredLightHelper;
 import vazkii.botania.common.item.ModItems;
+import vazkii.botania.common.item.block.ItemBlockWithMetadataAndName;
 import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockBuriedPetals extends BlockModFlower {
@@ -31,6 +27,7 @@ public class BlockBuriedPetals extends BlockModFlower {
 		super(id, LibBlockNames.BURIED_PETALS);
 		initBlockBounds(0F, 0F, 0F, 1F, 0.1F, 1F);
 		setLightValue(0.25F);
+		hideFromEMI();
 	}
 
 //	@Override
@@ -38,6 +35,13 @@ public class BlockBuriedPetals extends BlockModFlower {
 //	public int getLightValue(IBlockAccess world, int x, int y, int z) {
 //		return ColoredLightHelper.getPackedColor(world.getBlockMetadata(x, y, z), originalLight);
 //	}
+
+	@Override
+	public Block setUnlocalizedName(String par1Str) {
+		var item = new ItemBlockWithMetadataAndName(this).hideFromEMI();
+//GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
+		return super.setUnlocalizedName(par1Str);
+	}
 
 	@Override
 	public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random) {

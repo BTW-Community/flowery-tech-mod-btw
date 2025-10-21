@@ -26,7 +26,7 @@ import vazkii.botania.common.achievement.ModAchievements;
 import vazkii.botania.common.entity.EntityThornChakram;
 import vazkii.botania.common.lib.LibItemNames;
 
-public class ItemThornChakram extends ItemMod implements ICraftAchievement {
+public class ItemThornChakram extends ItemMod {
 
 	Icon iconFire;
 
@@ -73,11 +73,6 @@ public class ItemThornChakram extends ItemMod implements ICraftAchievement {
 
 
 		return p_77659_1_;
-	}
-
-	@Override
-	public Achievement getAchievementOnCraft(ItemStack stack, EntityPlayer player, IInventory matrix) {
-		return ModAchievements.terrasteelWeaponCraft;
 	}
 
 }

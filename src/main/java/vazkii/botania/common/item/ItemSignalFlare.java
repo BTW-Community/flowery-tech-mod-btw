@@ -76,7 +76,7 @@ public class ItemSignalFlare extends ItemMod {
 					}
 
 				if(stunned >= 100)
-					par3EntityPlayer.addStat(ModAchievements.signalFlareStun, 1);
+					ModAchievements.trigger(par3EntityPlayer, ModAchievements.signalFlareStun);
 			}
 			par1ItemStack.damageItem(200, par3EntityPlayer);
 		}

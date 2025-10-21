@@ -39,7 +39,7 @@ import vazkii.botania.common.item.ItemMod;
 import vazkii.botania.common.lib.LibItemNames;
 import vazkii.botania.common.lib.LibMisc;
 
-public class ItemTerraformRod extends ItemMod implements IManaUsingItem, IBlockProvider, ICraftAchievement{
+public class ItemTerraformRod extends ItemMod implements IManaUsingItem, IBlockProvider {
 
 	private static final int COST_PER = 55;
 
@@ -273,11 +273,6 @@ public class ItemTerraformRod extends ItemMod implements IManaUsingItem, IBlockP
 		if(block == Block.dirt && meta == 0)
 			return -1;
 		return 0;
-	}
-
-	@Override
-	public Achievement getAchievementOnCraft(ItemStack stack, EntityPlayer player, IInventory matrix) {
-		return ModAchievements.terraformRodCraft;
 	}
 
 }

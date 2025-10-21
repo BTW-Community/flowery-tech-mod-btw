@@ -18,10 +18,8 @@ import net.minecraft.src.Block;
 import net.minecraft.src.BlockFlower;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntitySheep;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Achievement;
 import net.minecraft.src.Icon;
@@ -33,7 +31,6 @@ import vazkii.botania.client.lib.LibRenderIDs;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.achievement.IPickupAchievement;
 import vazkii.botania.common.achievement.ModAchievements;
-import vazkii.botania.common.core.BotaniaCreativeTab;
 import vazkii.botania.common.core.handler.ConfigHandler;
 import vazkii.botania.common.item.block.ItemBlockWithMetadataAndName;
 import vazkii.botania.common.lexicon.LexiconData;
@@ -62,7 +59,9 @@ public class BlockModFlower extends BlockFlower implements ILexiconable, IPickup
 		setStepSound(soundGrassFootstep);
 		initBlockBounds(0.3F, 0.0F, 0.3F, 0.8F, 1, 0.8F);
 		setTickRandomly(false);
-		setCreativeTab(registerInCreative() ? CreativeTabs.tabMisc/*BotaniaCreativeTab.INSTANCE*/ : CreativeTabs.tabMisc);
+		if (registerInCreative()) {
+			setCreativeTab(CreativeTabs.tabMisc);
+		}
 	}
 
 	public boolean registerInCreative() {
@@ -130,7 +129,7 @@ public class BlockModFlower extends BlockFlower implements ILexiconable, IPickup
 	}
 
 	@Override
-	public Achievement getAchievementOnPickup(ItemStack stack, EntityPlayer player, EntityItem item) {
+	public Achievement getAchievementOnPickup(ItemStack stack) {
 		return ModAchievements.flowerPickup;
 	}
 

@@ -18,6 +18,7 @@ import net.minecraft.src.TileEntity;
 import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
+import vazkii.botania.api.item.IRelic;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.wand.IWandable;
@@ -65,7 +66,7 @@ public class BlockAlfPortal extends BlockModContainer implements IWandable, ILex
 	public boolean onUsedByWand(EntityPlayer player, ItemStack stack, World world, int x, int y, int z, int side) {
 		boolean did = ((TileAlfPortal) world.getTileEntity(x, y, z)).onWanded();
 		if(did && player != null)
-			player.addStat(ModAchievements.elfPortalOpen, 1);
+			ModAchievements.trigger(player, ModAchievements.elfPortalOpen);
 		return did;
 	}
 

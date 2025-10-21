@@ -33,7 +33,7 @@ import vazkii.botania.common.core.helper.Vector3;
 import vazkii.botania.common.item.equipment.tool.manasteel.ItemManasteelSword;
 import vazkii.botania.common.lib.LibItemNames;
 
-public class ItemThunderSword extends ItemManasteelSword implements ICraftAchievement {
+public class ItemThunderSword extends ItemManasteelSword {
 
 	private static final String TAG_LIGHTNING_SEED = "lightningSeed";
 
@@ -85,10 +85,6 @@ public class ItemThunderSword extends ItemManasteelSword implements ICraftAchiev
 		return super.hitEntity(stack, entity, attacker);
 	}
 
-	@Override
-	public Achievement getAchievementOnCraft(ItemStack stack, EntityPlayer player, IInventory matrix) {
-		return ModAchievements.terrasteelWeaponCraft;
-	}
 
 
 }

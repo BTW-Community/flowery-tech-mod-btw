@@ -27,7 +27,7 @@ import vazkii.botania.common.block.tile.corporea.TileCorporeaRetainer;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
-public class BlockCorporeaRetainer extends BlockModContainer implements ILexiconable, ICraftAchievement {
+public class BlockCorporeaRetainer extends BlockModContainer implements ILexiconable {
 
 	public BlockCorporeaRetainer(int id) {
 		super(id, Material.iron);
@@ -62,11 +62,6 @@ public class BlockCorporeaRetainer extends BlockModContainer implements ILexicon
 	@Override
 	public TileEntity createNewTileEntityT(World world, int meta) {
 		return new TileCorporeaRetainer();
-	}
-
-	@Override
-	public Achievement getAchievementOnCraft(ItemStack stack, EntityPlayer player, IInventory matrix) {
-		return ModAchievements.corporeaCraft;
 	}
 
 	@Override

@@ -12,22 +12,50 @@ package vazkii.botania.common.achievement;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import btw.achievement.AchievementProvider;
 import btw.achievement.event.BTWAchievementEvents;
 import net.minecraft.src.*;
-import vazkii.botania.api.item.IRelic;
+import vazkii.botania.common.Botania;
 
 public class AchievementMod {
 
 	public static List<Achievement> achievements = new ArrayList<>();
-
-	public static <T> Achievement<ItemStack> AchievementModd(String name, int x, int y, ItemStack icon, Achievement<?> parent) {
-		var achievement = AchievementProvider.getBuilder(BTWAchievementEvents.ItemEvent.class).name(new ResourceLocation("botania", name)).icon(icon).displayLocation(x, y).alwaysTrigger();
+	public static <T> Achievement<ItemStack> basic(String name, int x, int y, ItemStack icon, Achievement<?> parent) {
+		var achievement = AchievementProvider.getBuilder(BTWAchievementEvents.ItemEvent.class).name(Botania.loc(name)).icon(icon).displayLocation(x, y).triggerCondition(ModAchievements.LATER);
 		if (parent != null) {
 			achievement = achievement.parents(parent);
 		}
-		return achievement.build();
+		var ach = achievement.build().registerAchievement(ModAchievements.botaniaPage);
+		achievements.add(ach);
+		return ach;
+	}
+
+	public static <T> Achievement<ItemStack> basic(String name, int x, int y, Item icon, Achievement<?> parent) {
+		return basic(name, x, y, new ItemStack(icon), parent);
+	}
+
+	public static <T> Achievement<ItemStack> basic(String name, int x, int y, Block icon, Achievement<?> parent) {
+		return basic(name, x, y, new ItemStack(icon), parent);
+	}
+
+	public static <T> Achievement<ItemStack> basic(String name, int x, int y, ItemStack icon, Predicate<ItemStack> unlock, Achievement<?> parent) {
+		var achievement = AchievementProvider.getBuilder(BTWAchievementEvents.ItemEvent.class).name(Botania.loc(name)).icon(icon).displayLocation(x, y).triggerCondition(unlock);
+		if (parent != null) {
+			achievement = achievement.parents(parent);
+		}
+		var ach = achievement.build().registerAchievement(ModAchievements.botaniaPage);
+		achievements.add(ach);
+		return ach;
+	}
+
+	public static <T> Achievement<ItemStack> basic(String name, int x, int y, Item icon, Predicate<ItemStack> unlock, Achievement<?> parent) {
+		return basic(name, x, y, new ItemStack(icon), unlock, parent);
+	}
+
+	public static <T> Achievement<ItemStack> basic(String name, int x, int y, Block icon, Predicate<ItemStack> unlock, Achievement<?> parent) {
+		return basic(name, x, y, new ItemStack(icon), unlock, parent);
 	}
 
 /*	public AchievementMod(String name, int x, int y, ItemStack icon, Achievement parent) {

@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.item;
 
+import btw.item.items.FoodItem;
 import net.minecraft.src.*;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.client.lib.LibResources;
@@ -20,21 +21,20 @@ import vazkii.botania.common.lib.LibItemNames;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
-public class ItemManaCookie extends ItemFood {
+public class ItemManaCookie extends FoodItem {
 
 	private Icon totalBiscuitIcon;
 
 	public ItemManaCookie(int id) {
-		super(id, 0, 0.1F, false);
+		super(id, 0, 0.1F, false, LibItemNames.MANA_COOKIE, true);
 		setPotionEffect(Potion.field_76443_y.id, 1,  0, 1F);
 		setCreativeTab(CreativeTabs.tabMisc);
-		setUnlocalizedName(LibItemNames.MANA_COOKIE);
 	}
 
 	@Override
-	protected void onFoodEaten(ItemStack p_77849_1_, World p_77849_2_, EntityPlayer p_77849_3_) {
-		super.onFoodEaten(p_77849_1_, p_77849_2_, p_77849_3_);
-		p_77849_3_.addStat(ModAchievements.manaCookieEat, 1);
+	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
+		super.onFoodEaten(stack, world, player);
+		ModAchievements.trigger(player, ModAchievements.manaCookieEat);
 	}
 
 	@Override

@@ -27,7 +27,7 @@ import vazkii.botania.common.block.BlockModContainer;
 import vazkii.botania.common.block.tile.TileSimpleInventory;
 import vazkii.botania.common.block.tile.corporea.TileCorporeaBase;
 
-public abstract class BlockCorporeaBase extends BlockModContainer<TileCorporeaBase> implements ICraftAchievement {
+public abstract class BlockCorporeaBase extends BlockModContainer<TileCorporeaBase> {
 
 	Random random;
 
@@ -75,10 +75,4 @@ public abstract class BlockCorporeaBase extends BlockModContainer<TileCorporeaBa
 
 		super.breakBlock(par1World, par2, par3, par4, block, par6);
 	}
-
-	@Override
-	public Achievement getAchievementOnCraft(ItemStack stack, EntityPlayer player, IInventory matrix) {
-		return ModAchievements.corporeaCraft;
-	}
-
 }

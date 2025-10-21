@@ -28,7 +28,7 @@ import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.equipment.tool.manasteel.ItemManasteelSword;
 import vazkii.botania.common.lib.LibItemNames;
 
-public class ItemStarSword extends ItemManasteelSword implements ICraftAchievement {
+public class ItemStarSword extends ItemManasteelSword {
 
 	private static final int MANA_PER_DAMAGE = 120;
 
@@ -74,11 +74,5 @@ public class ItemStarSword extends ItemManasteelSword implements ICraftAchieveme
 	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
 		return par2ItemStack.getItem() == ModItems.manaResource && par2ItemStack.getItemDamage() == 4 ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
 	}
-
-	@Override
-	public Achievement getAchievementOnCraft(ItemStack stack, EntityPlayer player, IInventory matrix) {
-		return ModAchievements.terrasteelWeaponCraft;
-	}
-
 
 }

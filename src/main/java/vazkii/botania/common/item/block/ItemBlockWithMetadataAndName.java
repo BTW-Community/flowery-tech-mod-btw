@@ -11,7 +11,6 @@
 package vazkii.botania.common.item.block;
 
 import net.minecraft.src.Block;
-import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemBlockWithMetadata;
@@ -43,8 +42,8 @@ public class ItemBlockWithMetadataAndName extends ItemBlockWithMetadata implemen
 	}
 
 	@Override
-	public Achievement getAchievementOnPickup(ItemStack stack, EntityPlayer player, EntityItem item) {
-		return Block.blocksList[blockID] instanceof IPickupAchievement pa ? pa.getAchievementOnPickup(stack, player, item) : null;
+	public Achievement getAchievementOnPickup(ItemStack stack) {
+		return Block.blocksList[blockID] instanceof IPickupAchievement pa ? pa.getAchievementOnPickup(stack) : null;
 	}
 
 	@Override

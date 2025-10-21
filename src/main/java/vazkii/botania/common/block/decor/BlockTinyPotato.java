@@ -72,7 +72,7 @@ public class BlockTinyPotato extends BlockModContainer implements ILexiconable {
 		TileEntity tile = par1World.getTileEntity(par2, par3, par4);
 		if(tile instanceof TileTinyPotato) {
 			((TileTinyPotato) tile).interact();
-			par5EntityPlayer.addStat(ModAchievements.tinyPotatoPet, 1);
+			ModAchievements.trigger(par5EntityPlayer, ModAchievements.tinyPotatoPet);
 			par1World.spawnParticle("heart", par2 + minX + Math.random() * (maxX - minX), par3 + maxY, par4 + minZ + Math.random() * (maxZ - minZ), 0, 0 ,0);
 		}
 		return true;

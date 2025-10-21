@@ -24,6 +24,7 @@ import net.minecraft.src.StatCollector;
 import net.minecraft.src.World;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.item.IRelic;
+import vazkii.botania.common.achievement.ModAchievements;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.item.ItemMod;
 import vazkii.botania.common.item.ModItems;
@@ -97,7 +98,7 @@ public class ItemRelic extends ItemMod implements IRelic {
 
 		String soulbind = getSoulbindUsernameS(stack);
 		if(soulbind.isEmpty()) {
-			player.addStat(((IRelic) stack.getItem()).getBindAchievement(), 1);
+			ModAchievements.trigger(player, ((IRelic) stack.getItem()).getBindAchievement());
 			bindToPlayer(player, stack);
 			soulbind = getSoulbindUsernameS(stack);
 		}

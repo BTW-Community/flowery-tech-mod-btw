@@ -39,7 +39,7 @@ import vazkii.botania.common.item.equipment.tool.ToolCommons;
 import vazkii.botania.common.item.equipment.tool.manasteel.ItemManasteelSword;
 import vazkii.botania.common.lib.LibItemNames;
 
-public class ItemTerraSword extends ItemManasteelSword implements ILensEffect, ICraftAchievement {
+public class ItemTerraSword extends ItemManasteelSword implements ILensEffect {
 
 	private static final String TAG_ATTACKER_USERNAME = "attackerUsername";
 
@@ -137,10 +137,4 @@ public class ItemTerraSword extends ItemManasteelSword implements ILensEffect, I
 	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
 		return par2ItemStack.getItem() == ModItems.manaResource && par2ItemStack.getItemDamage() == 4 ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
 	}
-
-	@Override
-	public Achievement getAchievementOnCraft(ItemStack stack, EntityPlayer player, IInventory matrix) {
-		return ModAchievements.terrasteelWeaponCraft;
-	}
-
 }

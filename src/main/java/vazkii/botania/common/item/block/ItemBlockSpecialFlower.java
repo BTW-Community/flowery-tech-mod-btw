@@ -13,7 +13,6 @@ package vazkii.botania.common.item.block;
 import java.util.List;
 
 import net.minecraft.src.Block;
-import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Achievement;
@@ -131,28 +130,6 @@ public class ItemBlockSpecialFlower extends ItemBlockMod implements IRecipeKeyPr
 	@Override
 	public String getKey(ItemStack stack) {
 		return "flower." + getType(stack);
-	}
-
-	@Override
-	public Achievement getAchievementOnPickup(ItemStack stack, EntityPlayer player, EntityItem item) {
-		String type = getType(stack);
-		if(type.equals(LibBlockNames.SUBTILE_DAYBLOOM))
-			return ModAchievements.daybloomPickup;
-		else if(type.equals(LibBlockNames.SUBTILE_ENDOFLAME))
-			return ModAchievements.endoflamePickup;
-		else if(type.equals(LibBlockNames.SUBTILE_KEKIMURUS))
-			return ModAchievements.kekimurusPickup;
-		else if(type.equals(LibBlockNames.SUBTILE_HEISEI_DREAM))
-			return ModAchievements.heiseiDreamPickup;
-		else if(type.equals(LibBlockNames.SUBTILE_POLLIDISIAC))
-			return ModAchievements.pollidisiacPickup;
-		else if(type.equals(LibBlockNames.SUBTILE_BUBBELL))
-			return ModAchievements.bubbellPickup;
-		else if(type.equals(LibBlockNames.SUBTILE_DANDELIFEON))
-			return ModAchievements.dandelifeonPickup;
-		else if(type.equals(""))
-			return ModAchievements.nullFlower;
-		return null;
 	}
 
 }

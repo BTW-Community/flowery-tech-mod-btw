@@ -14,10 +14,7 @@ import java.util.List;
 
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.EntityItem;
-import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IInventory;
-import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Achievement;
 import net.minecraft.src.Icon;
@@ -76,7 +73,7 @@ public class ItemRune extends ItemMod implements IFlowerComponent, IPickupAchiev
 	}
 
 	@Override
-	public Achievement getAchievementOnPickup(ItemStack stack, EntityPlayer player, EntityItem item) {
+	public Achievement getAchievementOnPickup(ItemStack stack) {
 		return ModAchievements.runePickup;
 	}
 
