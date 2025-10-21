@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import btw.block.BTWBlocks;
 import net.minecraft.src.Block;
 import net.minecraft.src.BlockFlower;
 import net.minecraft.src.EntityPlayer;
@@ -33,6 +34,7 @@ import vazkii.botania.api.subtile.ISpecialFlower;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.achievement.ICraftAchievement;
 import vazkii.botania.common.achievement.ModAchievements;
+import vazkii.botania.common.block.ModFluffBlocks;
 import vazkii.botania.common.item.ItemMod;
 import vazkii.botania.common.lib.LibItemNames;
 import vazkii.botania.common.lib.LibMisc;
@@ -40,6 +42,33 @@ import vazkii.botania.common.lib.LibMisc;
 public class ItemTerraformRod extends ItemMod implements IManaUsingItem, IBlockProvider, ICraftAchievement{
 
 	private static final int COST_PER = 55;
+
+	static final List<Block> validBlockses = List.of((new Block[] {
+			Block.stone,
+			Block.dirt,
+			Block.grass,
+			Block.sand,
+			Block.gravel,
+			Block.hardenedClay,
+			Block.snow,
+			Block.mycelium,
+			BTWBlocks.looseDirt,
+			Block.sandStone,
+
+			// Mod support
+			ModFluffBlocks.stone,
+/*			ModFluffBlocks.biomeStoneA,
+			"blockDiorite",
+			"stoneDiorite",
+			"blockGranite",
+			"stoneGranite",
+			"blockAndesite",
+			"stoneAndesite",
+			"marble",
+			"blockMarble",
+			"limestone",
+			"blockLimestone"*/
+	}));
 
 	static final List<String> validBlocks = Arrays.asList(new String[] {
 			"stone",
@@ -121,7 +150,48 @@ public class ItemTerraformRod extends ItemMod implements IManaUsingItem, IBlockP
 
 					Block block = par2World.getBlock(x, y, z);
 					int meta = par2World.getBlockMetadata(x, y, z);
+					if (block == null) return; //added by bagel
 
+					if (validBlockses.contains(block)) {
+						boolean hasAir = false;
+						List<ChunkCoordinates> airBlocks = new ArrayList<>();
+
+						for (ForgeDirection dir : LibMisc.CARDINAL_DIRECTIONS) {
+							int x_ = x + dir.offsetX;
+							int y_ = y + dir.offsetY;
+							int z_ = z + dir.offsetZ;
+
+							Block block_ = par2World.getBlock(x_, y_, z_);
+							if (par2World.isAirBlock(x_, y_, z_) || block_.isReplaceableVegetation(par2World, x_, y_, z_) || block_ instanceof BlockFlower && !(block_ instanceof ISpecialFlower) || block_ == Block.tallGrass) {
+								airBlocks.add(new ChunkCoordinates(x_, y_, z_));
+								hasAir = true;
+							}
+						}
+
+						if (hasAir) {
+							if (y > yCenter)
+								blocks.add(new CoordsWithBlock(x, y, z, null));
+							else for (ChunkCoordinates coords : airBlocks) {
+								if (!par2World.isAirBlock(coords.posX, coords.posY - 1, coords.posZ))
+									blocks.add(new CoordsWithBlock(coords.posX, coords.posY, coords.posZ, Block.dirt));
+							}
+						}
+						break;
+					}
+					--k;
+				}
+//				while(true) {
+//					if(yStart + k < 0)
+//						break;
+//
+//					int x = xCenter + i;
+//					int y = yStart + k;
+//					int z = zCenter + j;
+//
+//					Block block = par2World.getBlock(x, y, z);
+//					int meta = par2World.getBlockMetadata(x, y, z);
+//					if (block == null) return; //added by bagel
+//
 //					int[] ids = OreDictionary.getOreIDs(new ItemStack(block, 1, meta));
 //					for(int id : ids)
 //						if(validBlocks.contains(OreDictionary.getOreName(id))) {
@@ -134,7 +204,7 @@ public class ItemTerraformRod extends ItemMod implements IManaUsingItem, IBlockP
 //								int z_ = z + dir.offsetZ;
 //
 //								Block block_ = par2World.getBlock(x_, y_, z_);
-//								if(block_.isAir(par2World, x_, y_, z_) || block_.isReplaceable(par2World, x_, y_, z_) || block_ instanceof BlockFlower && !(block_ instanceof ISpecialFlower) || block_ == Blocks.double_plant) {
+//								if(block_.isAir(par2World, x_, y_, z_) || block_.isReplaceableVegetation(par2World, x_, y_, z_) || block_ instanceof BlockFlower && !(block_ instanceof ISpecialFlower) || block_ == Blocks.double_plant) {
 //									airBlocks.add(new ChunkCoordinates(x_, y_, z_));
 //									hasAir = true;
 //								}
@@ -142,16 +212,16 @@ public class ItemTerraformRod extends ItemMod implements IManaUsingItem, IBlockP
 //
 //							if(hasAir) {
 //								if(y > yCenter)
-//									blocks.add(new CoordsWithBlock(x, y, z, Blocks.air));
+//									blocks.add(new CoordsWithBlock(x, y, z, null));
 //								else for(ChunkCoordinates coords : airBlocks) {
-//									if(par2World.getBlock(coords.posX, coords.posY - 1, coords.posZ) != Blocks.air)
+//									if(!par2World.isAirBlock(coords.posX, coords.posY - 1, coords.posZ))
 //										blocks.add(new CoordsWithBlock(coords.posX, coords.posY, coords.posZ, Block.dirt));
 //								}
 //							}
 //							break;
 //						}
-					--k;
-				}
+//					--k;
+//				}
 			}
 
 		int cost = COST_PER * blocks.size();
