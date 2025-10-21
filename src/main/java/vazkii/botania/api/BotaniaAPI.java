@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import btw.block.BTWBlocks;
+import btw.item.BTWItems;
 import btw.item.tag.TagOrStack;
 import net.minecraft.src.Block;
 import net.minecraft.src.Entity;
@@ -200,6 +202,9 @@ public final class BotaniaAPI {
 		addSeed(Item.seeds, Block.crops);
 		addSeed(Item.potato, Block.potato);
 		addSeed(Item.carrot, Block.carrot);
+		addSeed(BTWItems.carrot, BTWBlocks.carrotCrop);
+		addSeed(BTWItems.wheatSeeds, BTWBlocks.wheatCrop);
+		addSeed(BTWItems.hempSeeds, BTWBlocks.hempCrop);
 		addSeed(Item.netherStalkSeeds, Block.netherStalk);
 		addSeed(Item.pumpkinSeeds, Block.pumpkinStem);
 		addSeed(Item.melonSeeds, Block.melonStem);

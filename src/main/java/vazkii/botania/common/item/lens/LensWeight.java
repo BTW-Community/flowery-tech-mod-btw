@@ -29,11 +29,10 @@ public class LensWeight extends Lens {
 			int harvestLevel = ConfigHandler.harvestLevelWeight;
 			
 			Block block = entity.worldObj.getBlock(x, y, z);
-			Block blockBelow = entity.worldObj.getBlock(x, y - 1, z);
 			int meta = entity.worldObj.getBlockMetadata(x, y, z);
 			int neededHarvestLevel = block.getHarvestToolLevel(entity.worldObj, x, y, z);
 			
-			if(blockBelow.isAir(entity.worldObj, x, y - 1, z) && block.getBlockHardness(entity.worldObj, x, y, z) != -1 && neededHarvestLevel <= harvestLevel && entity.worldObj.getTileEntity(x, y, z) == null /*&& block.canSilkHarvest(entity.worldObj, null, x, y, z, meta)*/) {
+			if( entity.worldObj.isAirBlock(x, y - 1, z) && block.getBlockHardness(entity.worldObj, x, y, z) != -1 && neededHarvestLevel <= harvestLevel && entity.worldObj.getTileEntity(x, y, z) == null /*&& block.canSilkHarvest(entity.worldObj, null, x, y, z, meta)*/) {
 				EntityFallingSand falling = new EntityFallingSand(entity.worldObj, x + 0.5, y + 0.5, z + 0.5, block.blockID, meta);
 				if(!entity.worldObj.isRemote)
 					entity.worldObj.spawnEntityInWorld(falling);

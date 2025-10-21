@@ -39,7 +39,7 @@ public class LensLight extends Lens {
 
 			if(blockAt == ModBlocks.manaFlame)
 				entity.worldObj.setBlock(pos.blockX, pos.blockY, pos.blockZ, null);
-			else if(blockAt_.isAir(entity.worldObj, x, y, z) || blockAt_.isReplaceableVegetation(entity.worldObj, x, y, z)) {
+			else if(blockAt_ == null || entity.worldObj.isAirBlock(x, y, z) || blockAt_.isReplaceableVegetation(entity.worldObj, x, y, z)) {
 				entity.worldObj.setBlock(x, y, z, ModBlocks.manaFlame);
 				TileEntity tile = entity.worldObj.getTileEntity(x, y, z);
 

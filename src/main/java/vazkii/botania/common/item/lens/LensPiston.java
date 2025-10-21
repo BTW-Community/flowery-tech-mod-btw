@@ -20,7 +20,7 @@ import net.minecraft.src.ChunkCoordinates;
 import net.minecraft.src.MovingObjectPosition;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.internal.IManaBurst;
-
+//todo implement pushing tile entities
 public class LensPiston extends Lens {
 
 	@Override

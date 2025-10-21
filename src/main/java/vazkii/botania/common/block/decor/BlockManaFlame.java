@@ -30,7 +30,7 @@ public class BlockManaFlame extends BlockModContainer implements ILexiconable {
 		setUnlocalizedName(LibBlockNames.MANA_FLAME);
 		float f = 0.25F;
 		setStepSound(soundClothFootstep);
-		setBlockBounds(f, f, f, 1F - f, 1F - f, 1F - f);
+		initBlockBounds(f, f, f, 1F - f, 1F - f, 1F - f);
 		setLightValue(1F);
 	}
 
@@ -68,6 +68,11 @@ public class BlockManaFlame extends BlockModContainer implements ILexiconable {
 	@Override
 	public boolean getBlocksMovement(IBlockAccess p_149655_1_, int p_149655_2_, int p_149655_3_, int p_149655_4_) {
 		return true;
+	}
+
+	@Override
+	public boolean renderBlock(RenderBlocks renderer, int i, int j, int k) {
+		return false;
 	}
 
 	@Override

@@ -51,7 +51,7 @@ public class LensFirework extends Lens {
 			else type = 0;
 		}
 
-		explosion.setInteger("Type", type);
+		explosion.setByte("Type", (byte) type);
 
 		if(Math.random() < 0.05)
 			if(Math.random() < 0.5)
@@ -61,7 +61,7 @@ public class LensFirework extends Lens {
 		ItemNBTHelper.setCompound(stack, "Explosion", explosion);
 
 		NBTTagCompound fireworks = new NBTTagCompound();
-		fireworks.setInteger("Flight", (int) Math.random() * 3 + 2);
+		fireworks.setByte("Flight", (byte) (Math.random() * 3 + 2));
 
 		NBTTagList explosions = new NBTTagList();
 		explosions.appendTag(explosion);
