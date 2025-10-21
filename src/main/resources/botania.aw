@@ -43,3 +43,5 @@ accessible field net/minecraft/src/EntityHorse horseJumpStrength Lnet/minecraft/
 accessible field net/minecraft/src/RenderBiped field_110859_k Ljava/util/Map;
 accessible field net/minecraft/src/SaveHandler playersDirectory Ljava/io/File;
 accessible field net/minecraft/src/EntityPlayerMP currentWindowId I
+accessible method net/minecraft/src/TextureUtil copyToBufferPos ([III)V
+accessible field net/minecraft/src/TextureUtil dataBuffer Ljava/nio/IntBuffer;

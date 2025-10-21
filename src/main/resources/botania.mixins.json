@@ -9,6 +9,7 @@
     "ItemStackMixin",
     "PlayerControllerMPMixin",
     "RenderItemMixin",
+    "debug.AchievementDataAccessor",
     "event.BlockMixin",
     "event.EntityLivingBaseMixin",
     "event.EntityPlayerMixin",

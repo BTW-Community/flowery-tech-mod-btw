@@ -2,10 +2,13 @@ package baubles.common;
 
 import baubles.api.BaubleType;
 import baubles.api.expanded.BaubleExpandedSlots;
+import btw.achievement.AchievementHandler;
+import dev.bagel.mixin.debug.AchievementDataAccessor;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.src.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ItemDebugger extends BaubleItemBase {
@@ -67,4 +70,15 @@ public class ItemDebugger extends BaubleItemBase {
 		}
 	}
 
+	@Override
+	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer player, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
+		var data = player.getData(AchievementHandler.ACHIEVEMENTS_DATA).getDataForPlayer(player.username);
+		List<Achievement<?>> achievements = new ArrayList<>();
+		((AchievementDataAccessor) data).getAchievements().forEach((ach, val) -> {
+			achievements.add(ach);
+		});
+		achievements.forEach(data::revokeAchievement);
+
+		return super.onItemUse(par1ItemStack, player, par3World, par4, par5, par6, par7, par8, par9, par10);
+	}
 }
