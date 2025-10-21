@@ -134,8 +134,12 @@ public class GuiLexicon extends GuiScreen {
 		Collections.sort(allCategories);
 
 		lastTime = ClientTickHandler.ticksInGame;
-
-		title = stackUsed.getDisplayName();
+		if (stackUsed != null) {
+			title = stackUsed.getDisplayName();
+		}
+		else {
+			title = "Unknown error occurred!";
+		}
 		currentOpenLexicon = this;
 
 		left = width / 2 - guiWidth / 2;
