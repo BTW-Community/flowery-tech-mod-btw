@@ -143,7 +143,6 @@ public class ContainerPlayerExpanded extends Container {
         }
 
         for (int i = 0; i < activeBaubleSlots && i < BaubleExpandedSlots.slotLimit; i++) {
-            //TODO: Find a way to not use a magic number to get to the correct ID range for the Slot editing.
             Slot slot = (Slot) this.inventorySlots.get(9 + i);
             if (i >= 0) {
                 slot.yDisplayPosition = (12 - (slotOffset * 18) + (i) * 18);
