@@ -41,7 +41,7 @@ public final class SheddingHandler {
 	public static ArrayList<ShedPattern> patterns = new ArrayList<>();
 	public static ArrayList<ShedPattern> defaultPatterns = new ArrayList<>();
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public boolean onLivingUpdate(LivingUpdateEvent event) {
 		if(event.entity.worldObj.isRemote)
 			return false;

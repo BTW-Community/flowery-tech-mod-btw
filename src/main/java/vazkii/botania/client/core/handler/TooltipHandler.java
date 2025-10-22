@@ -22,8 +22,8 @@ import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public final class TooltipHandler {
-
-	@SubscribeEvent(priority = EventPriority.HIGHEST)
+	public static TooltipHandler instance = new TooltipHandler();
+//	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void onTooltipEvent(ItemTooltipEvent event) {
 //		if(event.itemStack.getItem() == Items.getItemFromBlock(Block.dirt) && event.itemStack.getItemDamage() == 1) {
 //			event.toolTip.add(StatCollector.translateToLocal("botaniamisc.coarseDirt0"));

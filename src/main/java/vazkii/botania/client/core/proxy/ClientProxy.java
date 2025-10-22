@@ -195,7 +195,7 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForge.EVENT_BUS.register(new LightningHandler());
 		if(ConfigHandler.boundBlockWireframe)
 			MinecraftForge.EVENT_BUS.register(new BoundTileRenderer());
-		MinecraftForge.EVENT_BUS.register(new TooltipHandler());
+		MinecraftForge.EVENT_BUS.register(TooltipHandler.instance);
 		MinecraftForge.EVENT_BUS.register(new BaubleRenderHandler());
 		MinecraftForge.EVENT_BUS.register(new DebugHandler());
 		MinecraftForge.EVENT_BUS.register(new SubTileRadiusRenderHandler());
