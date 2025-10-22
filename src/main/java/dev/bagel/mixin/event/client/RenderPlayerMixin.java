@@ -19,7 +19,6 @@ import vazkii.botania.client.core.handler.BaubleRenderHandler;
 
 import java.util.Map;
 
-@Debug(export = true)
 @Mixin( RenderPlayer.class)
 public abstract class RenderPlayerMixin extends RendererLivingEntity {
 

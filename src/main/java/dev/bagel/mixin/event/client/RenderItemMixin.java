@@ -15,7 +15,6 @@ import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
 import java.util.Random;
 
-@Debug(export = true)
 @Mixin(RenderItem.class)
 public abstract class RenderItemMixin extends Render {
     @Shadow private Random random;

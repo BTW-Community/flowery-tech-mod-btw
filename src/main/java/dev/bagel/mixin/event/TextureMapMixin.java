@@ -11,7 +11,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.block.ModFluffBlocks;
 
-@Debug(export = true)
 @Mixin(TextureMap.class)
 public class TextureMapMixin {
     @Inject(method = "loadTextureAtlas", at = @At(value = "INVOKE", target = "Lcom/prupe/mcpatcher/mal/tile/TileLoader;registerIcons(Lnet/minecraft/src/TextureMap;Ljava/lang/String;Ljava/util/Map;)V", shift = At.Shift.AFTER, remap = false))
