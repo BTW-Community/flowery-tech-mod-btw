@@ -109,11 +109,11 @@ public final class ModAchievements {
 	private static Predicate<ItemStack> reqItems(ItemStack... stack) {
 		return other -> {
 			for (ItemStack s : stack) {
-				if (other.getItem().itemID != s.getItem().itemID) {
-					return false;
+				if (other.getItem().itemID == s.getItem().itemID) {
+					return true;
 				}
 			}
-			return true;
+			return false;
 		};
 	}
 
@@ -160,8 +160,8 @@ public final class ModAchievements {
 		sparkCraft = AchievementMod.basic(LibAchievementNames.SPARK_CRAFT, 4, -2, ModItems.spark, reqItem(ModItems.spark), manaPoolPickup);
 		baubleWear = AchievementMod.basic(LibAchievementNames.BAUBLE_WEAR, 4, 0, ModItems.manaRing, manaPoolPickup);
 		manaCookieEat = AchievementMod.basic(LibAchievementNames.MANA_COOKIE_EAT, 2, -4, ModItems.manaCookie, manaPoolPickup);
-		manaweaveArmorCraft = AchievementMod.basic(LibAchievementNames.MANAWEAVE_ARMOR_CRAFT, 4, -4, ModItems.manaweaveChest, manaPoolPickup);
-		craftingHaloCraft = AchievementMod.basic(LibAchievementNames.CRAFTING_HALO_CRAFT, 3, -6, ModItems.craftingHalo, manaPoolPickup);
+		manaweaveArmorCraft = AchievementMod.basic(LibAchievementNames.MANAWEAVE_ARMOR_CRAFT, 4, -4, ModItems.manaweaveChest, reqItems(ModItems.manaweaveChest, ModItems.manaweaveHelm, ModItems.manaweaveLegs, ModItems.manaweaveBoots), manaPoolPickup);
+		craftingHaloCraft = AchievementMod.basic(LibAchievementNames.CRAFTING_HALO_CRAFT, 3, -6, ModItems.craftingHalo, reqItem(ModItems.craftingHalo), manaPoolPickup);
 		manaCartCraft = AchievementMod.basic(LibAchievementNames.MANA_CART_CRAFT, 5, 3, ModItems.poolMinecart, reqItem(ModItems.poolMinecart), manaPoolPickup);
 		enchanterMake = AchievementMod.basic(LibAchievementNames.ENCHANTER_MAKE, 1, 2, ModBlocks.enchanter, manaPoolPickup);
 		runePickup = AchievementMod.basic(LibAchievementNames.RUNE_PICKUP, 6, 2, ModBlocks.runeAltar, reqItem(ModBlocks.runeAltar), manaPoolPickup);
@@ -186,8 +186,8 @@ public final class ModAchievements {
 		gaiaGuardianKill = AchievementMod.basic(LibAchievementNames.GAIA_GUARDIAN_KILL, 2, 9, new ItemStack(ModItems.manaResource, 1, 5), elfPortalOpen).setSpecial();
 
 		spawnerMoverUse = AchievementMod.basic(LibAchievementNames.SPAWNER_MOVER_USE, -1, 10, ModItems.spawnerMover, gaiaGuardianKill);
-		tiaraWings = AchievementMod.basic(LibAchievementNames.TIARA_WINGS, -1, 8, ModItems.flightTiara, gaiaGuardianKill);
-		manaBombIgnite = AchievementMod.basic(LibAchievementNames.MANA_BOMB_IGNITE, 0, 11, ModBlocks.manaBomb, gaiaGuardianKill);
+		tiaraWings = AchievementMod.basic(LibAchievementNames.TIARA_WINGS, -1, 8, ModItems.flightTiara, reqItemWithDamage(new ItemStack(ModItems.flightTiara, 1, 1)), gaiaGuardianKill);
+		manaBombIgnite = AchievementMod.basic(LibAchievementNames.MANA_BOMB_IGNITE, 0, 11, ModBlocks.manaBomb, reqItem(new ItemStack(ModBlocks.manaBomb)), gaiaGuardianKill);
 		dandelifeonPickup = AchievementMod.basic(LibAchievementNames.DANDELIFEON_PICKUP, 0, 7, ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_DANDELIFEON), reqItemFlower(ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_DANDELIFEON)), gaiaGuardianKill);
 
 		signalFlareStun = AchievementMod.basic(LibAchievementNames.SIGNAL_FLARE_STUN, -3, 1, ModItems.signalFlare, null).setSpecial();
