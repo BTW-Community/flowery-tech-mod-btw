@@ -15,6 +15,7 @@ import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
 import java.util.Random;
 
+@Debug(export = true)
 @Mixin(RenderItem.class)
 public abstract class RenderItemMixin extends Render {
     @Shadow private Random random;
@@ -41,12 +42,6 @@ public abstract class RenderItemMixin extends Render {
         }
     }
 
-    @ModifyArgs(method = "doRenderItem",
-            slice = @Slice(from = @At(value = "INVOKE", target = "Lcom/prupe/mcpatcher/cit/CITUtils;getIcon(Lnet/minecraft/src/Icon;Lnet/minecraft/src/ItemStack;I)Lnet/minecraft/src/Icon;")),
-            at = @At(value = "INVOKE", target = "Lcom/prupe/mcpatcher/cit/CITUtils;getIcon(Lnet/minecraft/src/Icon;Lnet/minecraft/src/ItemStack;I)Lnet/minecraft/src/Icon;", remap = false))
-    private void forge$stackSensetiveItem(Args args, @Local ItemStack stack, @Local int pass) {
-        args.set(0, stack.getItem().getIcon(stack, pass));
-    }
 
     @ModifyExpressionValue(method = "doRenderItem",
             slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/src/Item;requiresMultipleRenderPasses()Z", shift = At.Shift.AFTER)),
@@ -55,10 +50,19 @@ public abstract class RenderItemMixin extends Render {
         return stack.getItem().getRenderPasses(stack.getItemDamage());
     }
 
+    @ModifyArgs(method = "doRenderItem",
+            slice = @Slice(from = @At(value = "INVOKE", target = "Lcom/prupe/mcpatcher/cit/CITUtils;getIcon(Lnet/minecraft/src/Icon;Lnet/minecraft/src/ItemStack;I)Lnet/minecraft/src/Icon;")),
+            at = @At(value = "INVOKE", target = "Lcom/prupe/mcpatcher/cit/CITUtils;getIcon(Lnet/minecraft/src/Icon;Lnet/minecraft/src/ItemStack;I)Lnet/minecraft/src/Icon;"))
+    private void forge$stackSensetiveItem(Args args) {
+        ItemStack stack = args.get(1);
+        int pass = args.get(2);
+        args.set(0, stack.getItem().getIcon(stack, pass));
+    }
+
     @ModifyArgs(method = "renderItemIntoGUI",
             slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/src/Item;requiresMultipleRenderPasses()Z")),
-            at = @At(value = "INVOKE", target = "Lcom/prupe/mcpatcher/cit/CITUtils;getIcon(Lnet/minecraft/src/Icon;Lnet/minecraft/src/ItemStack;I)Lnet/minecraft/src/Icon;", remap = false))
-    private void forge$stackSensetiveItem2(Args args, @Local ItemStack stack, @Local(ordinal = 5) int pass) {
+            at = @At(value = "INVOKE", target = "Lcom/prupe/mcpatcher/cit/CITUtils;getIcon(Lnet/minecraft/src/Icon;Lnet/minecraft/src/ItemStack;I)Lnet/minecraft/src/Icon;"))
+    private void forge$stackSensetiveItem2(Args args, @Local(argsOnly = true) ItemStack stack, @Local(ordinal = 5) int pass) {
         args.set(0, stack.getItem().getIcon(stack, pass));
     }
 

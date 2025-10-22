@@ -13,7 +13,7 @@ import vazkii.botania.common.block.ModFluffBlocks;
 
 @Mixin(TextureMap.class)
 public class TextureMapMixin {
-    @Inject(method = "loadTextureAtlas", at = @At(value = "INVOKE", target = "Lcom/prupe/mcpatcher/mal/tile/TileLoader;registerIcons(Lnet/minecraft/src/TextureMap;Ljava/lang/String;Ljava/util/Map;)V", shift = At.Shift.AFTER, remap = false))
+    @Inject(method = "loadTextureAtlas", at = @At(value = "INVOKE", target = "Lcom/prupe/mcpatcher/mal/tile/TileLoader;registerIcons(Lnet/minecraft/src/TextureMap;Ljava/lang/String;Ljava/util/Map;)V", shift = At.Shift.AFTER))
     private void forge$TextureStitchEventPre(ResourceManager resourceManager, CallbackInfo ci) {
         TextureStitchEvent.Pre event = new TextureStitchEvent.Pre(((TextureMap) (Object) this));
         ModBlocks.bifrost.loadTextures(event);
