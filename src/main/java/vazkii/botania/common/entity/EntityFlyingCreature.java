@@ -51,7 +51,8 @@ public class EntityFlyingCreature extends EntityAmbientCreature {
 			if (onGround)  {
 				f2 = 0.54600006F;
 				Block block = worldObj.getBlock(MathHelper.floor_double(posX), MathHelper.floor_double(boundingBox.minY) - 1, MathHelper.floor_double(posZ));
-				f2 = block.slipperiness * 0.91F;
+				if(block != null)
+					f2 = block.slipperiness * 0.91F;
 			}
 
 			float f3 = 0.16277136F / (f2 * f2 * f2);
@@ -61,7 +62,8 @@ public class EntityFlyingCreature extends EntityAmbientCreature {
 			if (onGround) {
 				f2 = 0.54600006F;
 				Block block = worldObj.getBlock(MathHelper.floor_double(posX), MathHelper.floor_double(boundingBox.minY) - 1, MathHelper.floor_double(posZ));
-				f2 = block.slipperiness * 0.91F;
+				if(block != null)
+					f2 = block.slipperiness * 0.91F;
 			}
 
 			moveEntity(motionX, motionY, motionZ);

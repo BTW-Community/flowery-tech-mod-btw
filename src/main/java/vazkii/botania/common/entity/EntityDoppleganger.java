@@ -204,7 +204,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 				yCheck: {
 					for(int k = heightCheck + heightMin + 1; k >= -heightCheck; k--) {
 						int y = sy + k;
-						boolean isAir = world.getBlock(x, y, z).getCollisionBoundingBoxFromPool(world, x, y, z) == null;
+						boolean isAir = world.isAirBlock(x, y, z) || world.getBlock(x, y, z).getCollisionBoundingBoxFromPool(world, x, y, z) == null;
 						if(isAir)
 							air++;
 						else {
@@ -511,6 +511,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 						int zp = posZInt + k;
 						if(isCheatyBlock(worldObj, xp, yp, zp)) {
 							Block block = worldObj.getBlock(xp, yp, zp);
+							if (block == null) continue;
 							List<ItemStack> items = block.getDrops(worldObj, xp, yp, zp, 0, 0);
 							for(ItemStack stack : items) {
 								if(ConfigHandler.blockBreakParticles)
@@ -753,6 +754,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 
 	public static boolean isCheatyBlock(World world, int x, int y, int z) {
 		Block block = world.getBlock(x, y, z);
+		if (block == null) return false;
 		String name = block.getUnlocalizedName();
 		return CHEATY_BLOCKS.contains(name);
 	}
@@ -784,7 +786,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 			while(!flag1 && j > 0) {
 				Block block = worldObj.getBlock(i, j - 1, k);
 
-				if(block.blockMaterial.blocksMovement())
+				if(block != null && block.blockMaterial.blocksMovement())
 					flag1 = true;
 				else {
 					--posY;
