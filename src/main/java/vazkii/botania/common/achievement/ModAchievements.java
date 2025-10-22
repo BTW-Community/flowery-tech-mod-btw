@@ -26,68 +26,68 @@ import java.util.function.Predicate;
 
 public final class ModAchievements {
 	
-	public static final AchievementTab botaniaPage = new AchievementTab("botania")/*.setIcon(BTWItems.firePlough)*/;
-	public static int pageIndex;
+	public static final AchievementTab botaniaPage = new AchievementTab("botania").setIcon(ModBlocks.flower)/*.setIcon(BTWItems.firePlough)*/;
+//	public static int pageIndex;
 
-	public static Achievement flowerPickup;
-	public static Achievement lexiconUse;
-	public static Achievement daybloomPickup;
-	public static Achievement cacophoniumCraft;
-	public static Achievement manaPoolPickup;
+	public static Achievement<ItemStack> flowerPickup;
+	public static Achievement<ItemStack> lexiconUse;
+	public static Achievement<ItemStack> daybloomPickup;
+	public static Achievement<ItemStack> cacophoniumCraft;
+	public static Achievement<ItemStack> manaPoolPickup;
 
-	public static Achievement endoflamePickup;
-	public static Achievement tinyPotatoPet;
-	public static Achievement sparkCraft;
-	public static Achievement baubleWear;
-	public static Achievement manaCookieEat;
-	public static Achievement manaweaveArmorCraft;
-	public static Achievement craftingHaloCraft;
-	public static Achievement manaCartCraft;
-	public static Achievement enchanterMake;
-	public static Achievement runePickup;
+	public static Achievement<ItemStack> endoflamePickup;
+	public static Achievement<ItemStack> tinyPotatoPet;
+	public static Achievement<ItemStack> sparkCraft;
+	public static Achievement<ItemStack> baubleWear;
+	public static Achievement<ItemStack> manaCookieEat;
+	public static Achievement<ItemStack> manaweaveArmorCraft;
+	public static Achievement<ItemStack> craftingHaloCraft;
+	public static Achievement<ItemStack> manaCartCraft;
+	public static Achievement<ItemStack> enchanterMake;
+	public static Achievement<ItemStack> runePickup;
 
-	public static Achievement dirtRodCraft;
-	public static Achievement terraformRodCraft;
-	public static Achievement manaBlasterShoot;
-	public static Achievement pollidisiacPickup;
-	public static Achievement brewPickup;
-	public static Achievement terrasteelPickup;
+	public static Achievement<ItemStack> dirtRodCraft;
+	public static Achievement<ItemStack> terraformRodCraft;
+	public static Achievement<ItemStack> manaBlasterShoot;
+	public static Achievement<ItemStack> pollidisiacPickup;
+	public static Achievement<ItemStack> brewPickup;
+	public static Achievement<ItemStack> terrasteelPickup;
 
-	public static Achievement terrasteelWeaponCraft;
-	public static Achievement elfPortalOpen;
+	public static Achievement<ItemStack> terrasteelWeaponCraft;
+	public static Achievement<ItemStack> elfPortalOpen;
 
-	public static Achievement kekimurusPickup;
-	public static Achievement heiseiDreamPickup;
-	public static Achievement bubbellPickup;
-	public static Achievement luminizerRide;
+	public static Achievement<ItemStack> kekimurusPickup;
+	public static Achievement<ItemStack> heiseiDreamPickup;
+	public static Achievement<ItemStack> bubbellPickup;
+	public static Achievement<ItemStack> luminizerRide;
 
-	public static Achievement enderAirMake;
-	public static Achievement corporeaCraft;
+	public static Achievement<ItemStack> enderAirMake;
+	public static Achievement<ItemStack> corporeaCraft;
 
-	public static Achievement gaiaGuardianKill;
+	public static Achievement<ItemStack> gaiaGuardianKill;
 
-	public static Achievement spawnerMoverUse;
-	public static Achievement tiaraWings;
-	public static Achievement manaBombIgnite;
-	public static Achievement dandelifeonPickup;
+	public static Achievement<ItemStack> spawnerMoverUse;
+	public static Achievement<ItemStack> tiaraWings;
+	public static Achievement<ItemStack> manaBombIgnite;
+	public static Achievement<ItemStack> dandelifeonPickup;
 
-	public static Achievement signalFlareStun;
-	public static Achievement l20ShardUse;
-	public static Achievement gaiaGuardianNoArmor;
-	public static Achievement rankSSPick;
-	public static Achievement superCorporeaRequest;
-	public static Achievement pinkinator;
+	public static Achievement<ItemStack> signalFlareStun;
+	public static Achievement<ItemStack> l20ShardUse;
+	public static Achievement<ItemStack> gaiaGuardianNoArmor;
+	public static Achievement<ItemStack> rankSSPick;
+	public static Achievement<ItemStack> superCorporeaRequest;
+	public static Achievement<ItemStack> pinkinator;
 
-	public static Achievement relicInfiniteFruit;
-	public static Achievement relicKingKey;
-	public static Achievement relicFlugelEye;
-	public static Achievement relicThorRing;
-	public static Achievement relicOdinRing;
-	public static Achievement relicLokiRing;
-	public static Achievement relicAesirRing;
+	public static Achievement<ItemStack> relicInfiniteFruit;
+	public static Achievement<ItemStack> relicKingKey;
+	public static Achievement<ItemStack> relicFlugelEye;
+	public static Achievement<ItemStack> relicThorRing;
+	public static Achievement<ItemStack> relicOdinRing;
+	public static Achievement<ItemStack> relicLokiRing;
+	public static Achievement<ItemStack> relicAesirRing;
 
-	public static Achievement nullFlower;
-	public static Achievement desuGun;
+	public static Achievement<ItemStack> nullFlower;
+	public static Achievement<ItemStack> desuGun;
 
 	public static void trigger(EntityPlayer player, Achievement<?> achievement) {
 		player.addStat(achievement, 1);
@@ -125,10 +125,6 @@ public final class ModAchievements {
 		return reqItems(Arrays.stream(block).map(ItemStack::new).toArray(ItemStack[]::new));
 	}
 
-	private static Predicate<ItemStack> reqItemNbt(ItemStack stack) {
-		return other -> other.isItemEqual(stack) && (other.hasTagCompound() && stack.hasTagCompound()) && other.getTagCompound().equals(stack.getTagCompound());
-	}
-
 	private static Predicate<ItemStack> reqItemFlower(ItemStack stack) {
 		return other -> ItemBlockSpecialFlower.getType(stack).equals(ItemBlockSpecialFlower.getType(other));
 	}
@@ -147,7 +143,6 @@ public final class ModAchievements {
 
 	public static Predicate<ItemStack> LATER = s -> false;
 
-	//todo achievements
 	public static void init() {
 		flowerPickup = AchievementMod.basic(LibAchievementNames.FLOWER_PICKUP, 0, 4, new ItemStack(ModBlocks.flower, 1, 6), reqItem(ModBlocks.flower), null);
 		lexiconUse = AchievementMod.basic(LibAchievementNames.LEXICON_USE, 1, 5, ModItems.lexicon, flowerPickup);
@@ -190,34 +185,28 @@ public final class ModAchievements {
 		manaBombIgnite = AchievementMod.basic(LibAchievementNames.MANA_BOMB_IGNITE, 0, 11, ModBlocks.manaBomb, reqItem(new ItemStack(ModBlocks.manaBomb)), gaiaGuardianKill);
 		dandelifeonPickup = AchievementMod.basic(LibAchievementNames.DANDELIFEON_PICKUP, 0, 7, ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_DANDELIFEON), reqItemFlower(ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_DANDELIFEON)), gaiaGuardianKill);
 
-		signalFlareStun = AchievementMod.basic(LibAchievementNames.SIGNAL_FLARE_STUN, -3, 1, ModItems.signalFlare, null).setSpecial();
-		l20ShardUse = AchievementMod.basic(LibAchievementNames.L20_SHARD_USE, -5, 3, ModItems.laputaShard, null).setSpecial();
-		gaiaGuardianNoArmor = AchievementMod.basic(LibAchievementNames.GAIA_GUARDIAN_NO_ARMOR, -5, 1, new ItemStack(Item.skull, 1, 3), null).setSpecial();
-		rankSSPick = AchievementMod.basic(LibAchievementNames.RANK_SS_PICK, -3, 3, ModItems.terraPick, null).setSpecial();
-		superCorporeaRequest = AchievementMod.basic(LibAchievementNames.SUPER_CORPOREA_REQUEST, -3, -1, ModBlocks.corporeaIndex, null).setSpecial();
-		pinkinator = AchievementMod.basic(LibAchievementNames.PINKINATOR, -5, -1, ModItems.pinkinator, null).setSpecial();
+		signalFlareStun = AchievementMod.basic(LibAchievementNames.SIGNAL_FLARE_STUN, -3, 1, ModItems.signalFlare, null).setSpecial().setSecret();
+		l20ShardUse = AchievementMod.basic(LibAchievementNames.L20_SHARD_USE, -5, 3, ModItems.laputaShard, null).setSpecial().setSecret();
+		gaiaGuardianNoArmor = AchievementMod.basic(LibAchievementNames.GAIA_GUARDIAN_NO_ARMOR, -5, 1, new ItemStack(Item.skull, 1, 3), null).setSpecial().setSecret();
+		rankSSPick = AchievementMod.basic(LibAchievementNames.RANK_SS_PICK, -3, 3, ModItems.terraPick, null).setSpecial().setSecret();
+		superCorporeaRequest = AchievementMod.basic(LibAchievementNames.SUPER_CORPOREA_REQUEST, -3, -1, ModBlocks.corporeaIndex, null).setSpecial().setSecret();
+		pinkinator = AchievementMod.basic(LibAchievementNames.PINKINATOR, -5, -1, ModItems.pinkinator, null).setSpecial().setSecret();
 
 		if(ConfigHandler.relicsEnabled) {
-			relicInfiniteFruit = AchievementMod.basic(LibAchievementNames.RELIC_INFINITE_FRUIT, -9, 8, ModItems.infiniteFruit, null);
-			relicKingKey = AchievementMod.basic(LibAchievementNames.RELIC_KING_KEY, -7, 11, ModItems.kingKey, null);
-			relicFlugelEye = AchievementMod.basic(LibAchievementNames.RELIC_FLUGEL_EYE, -5, 8, ModItems.flugelEye, null);
-			relicThorRing = AchievementMod.basic(LibAchievementNames.RELIC_THOR_RING, -7, 7, ModItems.thorRing, null);
-			relicOdinRing = AchievementMod.basic(LibAchievementNames.RELIC_ODIN_RING, -9, 10, ModItems.odinRing, null);
-			relicLokiRing = AchievementMod.basic(LibAchievementNames.RELIC_LOKI_RING, -5, 10, ModItems.lokiRing, null);
-			relicAesirRing = AchievementMod.basic(LibAchievementNames.RELIC_AESIR_RING, -7, 9, ModItems.aesirRing, null).setSpecial();
+			relicInfiniteFruit = AchievementMod.basic(LibAchievementNames.RELIC_INFINITE_FRUIT, -9, 8, ModItems.infiniteFruit, reqItem(ModItems.infiniteFruit), null).setSecret();
+			relicKingKey = AchievementMod.basic(LibAchievementNames.RELIC_KING_KEY, -7, 11, ModItems.kingKey, reqItem(ModItems.kingKey), null).setSecret();
+			relicFlugelEye = AchievementMod.basic(LibAchievementNames.RELIC_FLUGEL_EYE, -5, 8, ModItems.flugelEye, reqItem(ModItems.flugelEye), null).setSecret();
+			relicThorRing = AchievementMod.basic(LibAchievementNames.RELIC_THOR_RING, -7, 7, ModItems.thorRing, reqItem(ModItems.thorRing), null).setSecret();
+			relicOdinRing = AchievementMod.basic(LibAchievementNames.RELIC_ODIN_RING, -9, 10, ModItems.odinRing, reqItem(ModItems.odinRing), null).setSecret();
+			relicLokiRing = AchievementMod.basic(LibAchievementNames.RELIC_LOKI_RING, -5, 10, ModItems.lokiRing, reqItem(ModItems.lokiRing), null).setSecret();
+			relicAesirRing = AchievementMod.basic(LibAchievementNames.RELIC_AESIR_RING, -7, 9, ModItems.aesirRing, reqItem(ModItems.aesirRing), null).setSecret().setSpecial();
 		}
 
-		nullFlower = AchievementMod.basic(LibAchievementNames.NULL_FLOWER, -8, 0, ModBlocks.specialFlower, stack -> stack.isItemEqual(new ItemStack(ModBlocks.specialFlower), true) && ItemBlockSpecialFlower.getType(stack).isEmpty(), null).setSpecial();
+		nullFlower = AchievementMod.basic(LibAchievementNames.NULL_FLOWER, -8, 0, ModBlocks.specialFlower, stack -> stack.isItemEqual(new ItemStack(ModBlocks.specialFlower), true) && ItemBlockSpecialFlower.getType(stack).isEmpty(), null).setSpecial().setHidden();
 
 		ItemStack desu = new ItemStack(ModItems.manaGun);
 		desu.setItemName("desu gun");
 		desuGun = AchievementMod.basic(LibAchievementNames.DESU_GUN, -8, 2, desu, null).setSpecial();
-
-//		pageIndex = AchievementPage.getAchievementPages().size();
-//		botaniaPage = new AchievementPage(LibMisc.MOD_NAME, AchievementMod.achievements.toArray(new Achievement[AchievementMod.achievements.size()]));
-//		AchievementPage.registerAchievementPage(botaniaPage);
-//
-//		FMLCommonHandler.instance().bus().register(new AchievementTriggerer());
 	}
 
 }
