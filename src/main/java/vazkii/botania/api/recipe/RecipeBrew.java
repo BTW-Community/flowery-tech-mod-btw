@@ -13,6 +13,8 @@ package vazkii.botania.api.recipe;
 import java.util.ArrayList;
 import java.util.List;
 
+import btw.item.tag.TagInstance;
+import btw.item.tag.TagOrStack;
 import net.minecraft.src.Item;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
@@ -22,14 +24,14 @@ import vazkii.botania.api.brew.IBrewContainer;
 public class RecipeBrew {
 
 	Brew brew;
-	List<Object> inputs;
+	List<TagOrStack> inputs;
 
-	public RecipeBrew(Brew brew, Object... inputs) {
+	public RecipeBrew(Brew brew, TagOrStack... inputs) {
 		this.brew = brew;
 
-		List<Object> inputsToSet = new ArrayList<>();
-		for(Object obj : inputs) {
-			if(obj instanceof String || obj instanceof ItemStack)
+		List<TagOrStack> inputsToSet = new ArrayList<>();
+		for(TagOrStack obj : inputs) {
+			if(obj instanceof TagInstance || obj instanceof ItemStack)
 				inputsToSet.add(obj);
 			else throw new IllegalArgumentException("Invalid input");
 		}
@@ -93,7 +95,7 @@ public class RecipeBrew {
 		return stack.getItem() == stack2.getItem() && stack.getItemDamage() == stack2.getItemDamage();
 	}
 
-	public List<Object> getInputs() {
+	public List<TagOrStack> getInputs() {
 		return new ArrayList(inputs);
 	}
 
@@ -106,11 +108,10 @@ public class RecipeBrew {
 	}
 
 	public ItemStack getOutput(ItemStack stack) {
-		if(stack == null || !(stack.getItem() instanceof IBrewContainer))
+		if(stack == null || !(stack.getItem() instanceof IBrewContainer container))
 			return new ItemStack(Item.glassBottle); // Fallback...
-		IBrewContainer container = (IBrewContainer) stack.getItem();
 
-		return container.getItemForBrew(brew, stack);
+        return container.getItemForBrew(brew, stack);
 	}
 
 }

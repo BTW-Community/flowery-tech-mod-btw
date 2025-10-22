@@ -15,9 +15,11 @@ import emi.dev.emi.emi.screen.Bounds;
 import net.minecraft.src.GuiInventory;
 import net.minecraft.src.ItemStack;
 import vazkii.botania.api.BotaniaAPI;
+import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.recipe.*;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.block.ModBlocks;
+import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.block.ItemBlockSpecialFlower;
 import vazkii.botania.common.lib.LibBlockNames;
 
@@ -34,6 +36,18 @@ public class BotaniaEmiPlugin implements EmiPlugin {
     public static EmiRecipeCategory RUNIC_ALTAR = new EmiRecipeCategory(Botania.loc("runic_altar"), EmiStack.of(new ItemStack(ModBlocks.runeAltar)));
     public static EmiRecipeCategory ELVEN_TRADE = new EmiRecipeCategory(Botania.loc("elven_trade"), EmiStack.of(new ItemStack(ModBlocks.alfPortal)));
     public static EmiRecipeCategory BREWING = new EmiRecipeCategory(Botania.loc("brewing"), EmiStack.of(new ItemStack(ModBlocks.brewery)));
+    public static EmiRecipeCategory LEXICA_BOTANIA = new EmiRecipeCategory(Botania.loc("lexica_botania"), EmiStack.of(new ItemStack(ModItems.lexicon)));
+    public static EmiRecipeCategory TERRESTRIAL_AGGLOMERATION = new EmiRecipeCategory(Botania.loc("terrestrial_agglomeration"), EmiStack.of(new ItemStack(ModBlocks.terraPlate)));
+
+    public static int rotateXAround(int x, int y, int cx, int cy, double degrees) {
+        double rad = Math.toRadians(degrees);
+        return (int) (Math.cos(rad) * (x - cx) - Math.sin(rad) * (y - cy) + cx);
+    }
+
+    public static int rotateYAround(int x, int y, int cx, int cy, double degrees) {
+        double rad = Math.toRadians(degrees);
+        return (int) (Math.sin(rad) * (x - cx) - Math.cos(rad) * (y - cy) + cy);
+    }
 
     @Override
     public void register(EmiRegistry reg) {
@@ -59,8 +73,17 @@ public class BotaniaEmiPlugin implements EmiPlugin {
         reg.addCategory(RUNIC_ALTAR);
         reg.addCategory(ELVEN_TRADE);
         reg.addCategory(BREWING);
+        reg.addCategory(LEXICA_BOTANIA);
+        reg.addCategory(TERRESTRIAL_AGGLOMERATION);
 
-        reg.setDefaultComparison(EmiStack.of(new ItemStack(ModBlocks.specialFlower)), Comparison.compareNbt());
+        reg.setDefaultComparison(EmiStack.of(new ItemStack(ModBlocks.specialFlower)), Comparison.of((es1, es2) -> {
+            String s1 = ItemBlockSpecialFlower.getType(es1.getItemStack());
+            String s2 = ItemBlockSpecialFlower.getType(es2.getItemStack());
+            if (s1.isEmpty() || s2.isEmpty()) {
+                return false;
+            }
+            return s1.equals(s2);
+        }));
         for (var s : BotaniaAPI.subtilesForCreativeMenu) {
             reg.addEmiStack(EmiStack.of(ItemBlockSpecialFlower.ofType(s)));
                 if(BotaniaAPI.miniFlowers.containsKey(s))
@@ -82,8 +105,18 @@ public class BotaniaEmiPlugin implements EmiPlugin {
             reg.addRecipe(new EmiElvenTradeRecipe(recipe));
         }
         for (var recipe : BotaniaAPI.brewRecipes) {
-
+            reg.addRecipe(new EmiBrewingRecipe(recipe, new ItemStack(ModItems.vial, 1, 0)));
+            reg.addRecipe(new EmiBrewingRecipe(recipe, new ItemStack(ModItems.vial, 1, 1)));
+            reg.addRecipe(new EmiBrewingRecipe(recipe, new ItemStack(ModItems.incenseStick, 1, 0)));
         }
+        reg.addRecipe(new EmiTerrasteelRecipe());
+
+        for(LexiconEntry entry : BotaniaAPI.getAllEntries()) {
+            List<ItemStack> stacks = entry.getDisplayedRecipes();
+            for(ItemStack stack : stacks)
+                reg.addRecipe(new EmiLexicaBotaniaRecipe(entry, stack));
+        }
+
         //todo potentially lexica botania recipes?
         // also there is a keybind for requesting an item from corporea it would seem
         for (int i = 0; i < 9; i++) {

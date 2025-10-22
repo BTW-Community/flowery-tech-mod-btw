@@ -480,7 +480,7 @@ public final class BotaniaAPI {
 	 * @param brew The brew in to be set in this recipe.
 	 * @param inputs The items used in the recipe, no more than 6.
 	 */
-	public static RecipeBrew registerBrewRecipe(Brew brew, Object... inputs) {
+	public static RecipeBrew registerBrewRecipe(Brew brew, TagOrStack... inputs) {
 		RecipeBrew recipe = new RecipeBrew(brew, inputs);
 		brewRecipes.add(recipe);
 		return recipe;
