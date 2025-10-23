@@ -32,7 +32,7 @@ import vazkii.botania.common.block.tile.mana.TileManaDetector;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
-public class BlockManaDetector extends BlockModContainer implements ILexiconable {
+public class BlockManaDetector extends BlockModContainer<TileManaDetector> implements ILexiconable {
 
 	Icon[] icons;
 
@@ -73,7 +73,7 @@ public class BlockManaDetector extends BlockModContainer implements ILexiconable
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
+	public TileManaDetector createNewTileEntityT(World world, int meta) {
 		return new TileManaDetector();
 	}
 

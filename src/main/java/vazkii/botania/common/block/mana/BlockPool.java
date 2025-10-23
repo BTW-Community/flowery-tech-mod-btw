@@ -15,7 +15,6 @@ import java.util.List;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.src.*;
-import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
 import vazkii.botania.api.lexicon.ILexiconable;
@@ -30,11 +29,10 @@ import vazkii.botania.common.block.BlockModContainer;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.block.tile.mana.TilePool;
 import vazkii.botania.common.item.block.ItemBlockPool;
-import vazkii.botania.common.item.block.ItemBlockWithMetadataAndName;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
-public class BlockPool extends BlockModContainer implements IWandHUD, IWandable, ILexiconable, ICraftAchievement {
+public class BlockPool extends BlockModContainer<TilePool> implements IWandHUD, IWandable, ILexiconable, ICraftAchievement {
 
 	boolean lastFragile = false;
 
@@ -99,7 +97,7 @@ public class BlockPool extends BlockModContainer implements IWandHUD, IWandable,
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
+	public TilePool createNewTileEntityT(World world, int meta) {
 		return new TilePool();
 	}
 
@@ -122,6 +120,7 @@ public class BlockPool extends BlockModContainer implements IWandHUD, IWandable,
 		RenderingRegistry.instance().renderInventoryBlock(renderBlocks, this, iItemDamage, getRenderType());
 	}
 
+	//todo what should i use instead
 	@Override
 	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB intersecting, List list, Entity entity) {
 		float f = 1F / 16F;
@@ -138,7 +137,12 @@ public class BlockPool extends BlockModContainer implements IWandHUD, IWandable,
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
 	}
 
-//	@Override
+	@Override
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int i, int j, int k) {
+		return super.getCollisionBoundingBoxFromPool(world, i, j, k);
+	}
+
+	//	@Override
 //	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, ForgeDirection side) {
 //		return side == ForgeDirection.DOWN;
 //	}

@@ -24,7 +24,7 @@ import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
 
-public class BlockPylon extends BlockModContainer implements ILexiconable {
+public class BlockPylon extends BlockModContainer<TilePylon> implements ILexiconable {
 
 	public BlockPylon(int id) {
 		super(id, Material.iron);
@@ -101,7 +101,7 @@ public class BlockPylon extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
+	public TilePylon createNewTileEntityT(World world, int meta) {
 		return new TilePylon();
 	}
 

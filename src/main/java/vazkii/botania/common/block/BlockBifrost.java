@@ -35,7 +35,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
-public class BlockBifrost extends BlockModContainer implements ILexiconable {
+public class BlockBifrost extends BlockModContainer<TileBifrost> implements ILexiconable {
 
 	public BlockBifrost(int id) {
 		super(id, Material.glass);
@@ -101,7 +101,7 @@ public class BlockBifrost extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
+	public TileBifrost createNewTileEntityT(World world, int meta) {
 		return new TileBifrost();
 	}
 

@@ -20,7 +20,7 @@ import vazkii.botania.common.block.tile.TileTeruTeruBozu;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
-public class BlockTeruTeruBozu extends BlockModContainer implements ILexiconable {
+public class BlockTeruTeruBozu extends BlockModContainer<TileTeruTeruBozu> implements ILexiconable {
 
 	public BlockTeruTeruBozu(int id) {
 		super(id, Material.cloth);
@@ -126,17 +126,12 @@ public class BlockTeruTeruBozu extends BlockModContainer implements ILexiconable
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
+	public TileTeruTeruBozu createNewTileEntityT(World world, int meta) {
 		return new TileTeruTeruBozu();
 	}
 
 	@Override
 	public LexiconEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon) {
 		return LexiconData.teruTeruBozu;
-	}
-
-	@Override
-	public TileEntity createNewTileEntity(World world) {
-		return new TileTeruTeruBozu();
 	}
 }

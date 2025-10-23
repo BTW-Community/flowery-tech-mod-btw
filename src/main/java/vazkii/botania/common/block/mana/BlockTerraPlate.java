@@ -15,7 +15,6 @@ import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.src.TileEntity;
 import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
@@ -29,7 +28,7 @@ import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
-public class BlockTerraPlate extends BlockModContainer implements ILexiconable {
+public class BlockTerraPlate extends BlockModContainer<TileTerraPlate> implements ILexiconable {
 
 	public static Icon overlay;
 	Icon[] icons;
@@ -49,9 +48,9 @@ public class BlockTerraPlate extends BlockModContainer implements ILexiconable {
 	public boolean onBlockActivated(World worldObj, int x, int y, int z, EntityPlayer player, int s, float xs, float ys, float zs) {
 		ItemStack stack = player.getCurrentEquippedItem();
 		if(stack != null && stack.getItem() == ModItems.manaResource && stack.getItemDamage() < 3) {
-			if(player == null || !player.capabilities.isCreativeMode) {
+			if(!player.capabilities.isCreativeMode) {
 				stack.stackSize--;
-				if(stack.stackSize == 0 && player != null)
+				if(stack.stackSize == 0)
 					player.inventory.setInventorySlotContents(player.inventory.currentItem, null);
 			}
 
@@ -98,7 +97,7 @@ public class BlockTerraPlate extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
+	public TileTerraPlate createNewTileEntityT(World world, int meta) {
 		return new TileTerraPlate();
 	}
 

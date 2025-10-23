@@ -26,7 +26,7 @@ import vazkii.botania.common.block.tile.mana.TileDistributor;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
-public class BlockDistributor extends BlockModContainer implements ILexiconable {
+public class BlockDistributor extends BlockModContainer<TileDistributor> implements ILexiconable {
 
 	Icon iconSide, iconTop;
 
@@ -50,7 +50,7 @@ public class BlockDistributor extends BlockModContainer implements ILexiconable 
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
+	public TileDistributor createNewTileEntityT(World world, int meta) {
 		return new TileDistributor();
 	}
 

@@ -35,7 +35,7 @@ import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
 
-public class BlockManaBeacon extends BlockModContainer implements ILexiconable {
+public class BlockManaBeacon extends BlockModContainer<TileManaBeacon> implements ILexiconable {
 
 	Icon[] icons;
 
@@ -111,7 +111,7 @@ public class BlockManaBeacon extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
+	public TileManaBeacon createNewTileEntityT(World world, int meta) {
 		return new TileManaBeacon();
 	}
 }

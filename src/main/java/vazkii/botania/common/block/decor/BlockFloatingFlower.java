@@ -30,7 +30,7 @@ import vazkii.botania.common.lib.LibBlockNames;
 import java.util.List;
 import java.util.Random;
 
-public class BlockFloatingFlower extends BlockModContainer implements ILexiconable {
+public class BlockFloatingFlower extends BlockModContainer<TileEntity> implements ILexiconable {
 
 	public BlockFloatingFlower(int id) {
 		this(id, LibBlockNames.MINI_ISLAND);

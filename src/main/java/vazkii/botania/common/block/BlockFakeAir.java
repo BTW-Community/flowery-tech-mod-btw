@@ -25,7 +25,7 @@ import net.minecraft.src.World;
 import vazkii.botania.common.block.tile.TileFakeAir;
 import vazkii.botania.common.lib.LibBlockNames;
 
-public class BlockFakeAir extends BlockModContainer {
+public class BlockFakeAir extends BlockModContainer<TileFakeAir> {
 
 	public BlockFakeAir(int id) {
 		super(id, Material.air);
@@ -127,7 +127,7 @@ public class BlockFakeAir extends BlockModContainer {
 //	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
+	public TileFakeAir createNewTileEntityT(World world, int meta) {
 		return new TileFakeAir();
 	}
 

@@ -23,7 +23,7 @@ import vazkii.botania.common.block.tile.TileCell;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
-public class BlockCell extends BlockModContainer implements ILexiconable {
+public class BlockCell extends BlockModContainer<TileCell> implements ILexiconable {
 
 	public BlockCell(int id) {
 		super(id, Material.pumpkin);
@@ -37,7 +37,7 @@ public class BlockCell extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
+	public TileCell createNewTileEntityT(World world, int meta) {
 		return new TileCell();
 	}
 

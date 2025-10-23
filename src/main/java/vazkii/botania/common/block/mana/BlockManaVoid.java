@@ -15,7 +15,6 @@ import net.minecraft.src.Material;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.src.TileEntity;
 import net.minecraft.src.Icon;
 import net.minecraft.src.World;
 import vazkii.botania.api.lexicon.ILexiconable;
@@ -27,7 +26,7 @@ import vazkii.botania.common.block.tile.mana.TileManaVoid;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
-public class BlockManaVoid extends BlockModContainer implements ILexiconable, IPoolOverlayProvider {
+public class BlockManaVoid extends BlockModContainer<TileManaVoid> implements ILexiconable, IPoolOverlayProvider {
 
 	Icon overlay;
 
@@ -46,7 +45,7 @@ public class BlockManaVoid extends BlockModContainer implements ILexiconable, IP
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int id) {
+	public TileManaVoid createNewTileEntityT(World world, int id) {
 		return new TileManaVoid();
 	}
 

@@ -18,9 +18,7 @@ import net.minecraft.src.Material;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.src.TileEntity;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;
@@ -35,7 +33,7 @@ import vazkii.botania.common.item.block.ItemBlockWithMetadataAndName;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
-public class BlockLightRelay extends BlockModContainer implements IWandable, ILexiconable {
+public class BlockLightRelay extends BlockModContainer<TileLightRelay> implements IWandable, ILexiconable {
 
 	public static Icon invIcon, worldIcon, invIconRed, worldIconRed;
 
@@ -140,7 +138,7 @@ public class BlockLightRelay extends BlockModContainer implements IWandable, ILe
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
+	public TileLightRelay createNewTileEntityT(World world, int meta) {
 		return new TileLightRelay();
 	}
 

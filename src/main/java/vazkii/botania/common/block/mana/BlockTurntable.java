@@ -29,7 +29,7 @@ import vazkii.botania.common.block.tile.mana.TileTurntable;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
-public class BlockTurntable extends BlockModContainer implements IWandable, IWandHUD, ILexiconable {
+public class BlockTurntable extends BlockModContainer<TileTurntable> implements IWandable, IWandHUD, ILexiconable {
 
 	Icon[] icons;
 
@@ -53,7 +53,7 @@ public class BlockTurntable extends BlockModContainer implements IWandable, IWan
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
+	public TileTurntable createNewTileEntityT(World world, int meta) {
 		return new TileTurntable();
 	}
 

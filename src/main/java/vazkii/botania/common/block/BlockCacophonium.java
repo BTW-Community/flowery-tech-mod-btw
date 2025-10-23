@@ -24,7 +24,7 @@ import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.block.tile.TileCacophonium;
 import vazkii.botania.common.lib.LibBlockNames;
 
-public class BlockCacophonium extends BlockModContainer {
+public class BlockCacophonium extends BlockModContainer<TileCacophonium> {
 
 	Icon top;
 
@@ -63,8 +63,8 @@ public class BlockCacophonium extends BlockModContainer {
 
 		if(power && !powered) {
 			TileEntity tile = world.getTileEntity(x, y, z);
-			if(tile != null && tile instanceof TileCacophonium)
-				((TileCacophonium) tile).annoyDirewolf();
+			if(tile instanceof TileCacophonium cacophonium)
+				cacophonium.annoyDirewolf();
 			world.setBlockMetadataWithNotify(x, y, z, meta | 8, 4);
 		} else if(!power && powered)
 			world.setBlockMetadataWithNotify(x, y, z, meta & -9, 4);
@@ -81,9 +81,9 @@ public class BlockCacophonium extends BlockModContainer {
 		ArrayList<ItemStack> stacks = new ArrayList<>();
 
 		TileEntity tile = world.getTileEntity(x, y, z);
-		if(tile != null && tile instanceof TileCacophonium) {
+		if(tile instanceof TileCacophonium cacophonium) {
 			stacks.add(new ItemStack(Block.music));
-			ItemStack thingy = ((TileCacophonium) tile).stack;
+			ItemStack thingy = cacophonium.stack;
 			if(thingy != null)
 				stacks.add(thingy.copy());
 		}
@@ -92,7 +92,7 @@ public class BlockCacophonium extends BlockModContainer {
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
+	public TileCacophonium createNewTileEntityT(World world, int meta) {
 		return new TileCacophonium();
 	}
 

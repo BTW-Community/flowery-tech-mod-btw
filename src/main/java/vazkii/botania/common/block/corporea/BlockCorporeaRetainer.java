@@ -27,7 +27,7 @@ import vazkii.botania.common.block.tile.corporea.TileCorporeaRetainer;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
-public class BlockCorporeaRetainer extends BlockModContainer implements ILexiconable {
+public class BlockCorporeaRetainer extends BlockModContainer<TileCorporeaRetainer> implements ILexiconable {
 
 	public BlockCorporeaRetainer(int id) {
 		super(id, Material.iron);
@@ -60,7 +60,7 @@ public class BlockCorporeaRetainer extends BlockModContainer implements ILexicon
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
+	public TileCorporeaRetainer createNewTileEntityT(World world, int meta) {
 		return new TileCorporeaRetainer();
 	}
 

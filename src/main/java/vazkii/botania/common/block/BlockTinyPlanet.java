@@ -18,7 +18,7 @@ import vazkii.botania.common.block.tile.TileTinyPlanet;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
-public class BlockTinyPlanet extends BlockModContainer implements ILexiconable {
+public class BlockTinyPlanet extends BlockModContainer<TileTinyPlanet> implements ILexiconable {
 
 	protected BlockTinyPlanet(int id) {
 		super(id, Material.rock);
@@ -46,7 +46,7 @@ public class BlockTinyPlanet extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
+	public TileTinyPlanet createNewTileEntityT(World world, int meta) {
 		return new TileTinyPlanet();
 	}
 

@@ -22,7 +22,7 @@ import vazkii.botania.common.block.tile.TileSpawnerClaw;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
-public class BlockSpawnerClaw extends BlockModContainer implements ILexiconable {
+public class BlockSpawnerClaw extends BlockModContainer<TileSpawnerClaw> implements ILexiconable {
 
 	public BlockSpawnerClaw(int id) {
 		super(id, Material.iron);
@@ -37,7 +37,7 @@ public class BlockSpawnerClaw extends BlockModContainer implements ILexiconable 
 	@Override
 	public void getSubBlocks(int item, CreativeTabs tab, List list) {
 		list.add(new ItemStack(Item.itemsList[item]));
-		list.add(new ItemStack(Block.mobSpawner));
+//		list.add(new ItemStack(Block.mobSpawner));
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class BlockSpawnerClaw extends BlockModContainer implements ILexiconable 
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
+	public TileSpawnerClaw createNewTileEntityT(World world, int meta) {
 		return new TileSpawnerClaw();
 	}
 

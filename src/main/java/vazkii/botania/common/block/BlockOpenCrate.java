@@ -21,11 +21,8 @@ import net.minecraft.src.Gui;
 import net.minecraft.src.ScaledResolution;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;
@@ -47,7 +44,7 @@ import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
 
-public class BlockOpenCrate extends BlockModContainer implements ILexiconable, IWandable, IWandHUD {
+public class BlockOpenCrate extends BlockModContainer<TileOpenCrate> implements ILexiconable, IWandable, IWandHUD {
 
 	Icon iconSide;
 	Icon iconBottom;
@@ -106,39 +103,7 @@ public class BlockOpenCrate extends BlockModContainer implements ILexiconable, I
 
 	@Override
 	public void breakBlock(World par1World, int par2, int par3, int par4, int block, int par6) {
-		TileSimpleInventory inv = (TileSimpleInventory) par1World.getTileEntity(par2, par3, par4);
-
-		if (inv != null) {
-			for (int j1 = 0; j1 < inv.getSizeInventory(); ++j1) {
-				ItemStack itemstack = inv.getStackInSlot(j1);
-
-				if (itemstack != null) {
-					float f = random.nextFloat() * 0.8F + 0.1F;
-					float f1 = random.nextFloat() * 0.8F + 0.1F;
-					EntityItem entityitem;
-
-					for (float f2 = random.nextFloat() * 0.8F + 0.1F; itemstack.stackSize > 0; par1World.spawnEntityInWorld(entityitem)) {
-						int k1 = random.nextInt(21) + 10;
-
-						if (k1 > itemstack.stackSize)
-							k1 = itemstack.stackSize;
-
-						itemstack.stackSize -= k1;
-						entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.getItem(), k1, itemstack.getItemDamage()));
-						float f3 = 0.05F;
-						entityitem.motionX = (float)random.nextGaussian() * f3;
-						entityitem.motionY = (float)random.nextGaussian() * f3 + 0.2F;
-						entityitem.motionZ = (float)random.nextGaussian() * f3;
-
-						if (itemstack.hasTagCompound())
-							entityitem.getEntityItem().setTagCompound((NBTTagCompound)itemstack.getTagCompound().copy());
-					}
-				}
-			}
-
-			par1World.func_96440_m(par2, par3, par4, block);
-		}
-
+		TileSimpleInventory.breakBlock(par1World, par2, par3, par4, block, this.random);
 		super.breakBlock(par1World, par2, par3, par4, block, par6);
 	}
 
@@ -162,19 +127,14 @@ public class BlockOpenCrate extends BlockModContainer implements ILexiconable, I
 	@Override
 	public Icon getIcon(IBlockAccess world, int x, int y, int z, int side) {
 		TileEntity tile = world.getBlockTileEntity(x, y, z);
-		if(tile != null && tile instanceof TileCraftCrate && ((TileCraftCrate) tile).pattern != -1 && side != 0)
-			return sidePatternIcons[((TileCraftCrate) tile).pattern];
+		if(tile instanceof TileCraftCrate crate && crate.pattern != -1 && side != 0)
+			return sidePatternIcons[crate.pattern];
 
 		return super.getIcon(world, x, y, z, side);
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
-		return new TileOpenCrate();
-	}
-
-	@Override
-	public TileEntity createNewTileEntity(World world) {
+	public TileOpenCrate createNewTileEntityT(World world, int meta) {
 		return new TileOpenCrate();
 	}
 

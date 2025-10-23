@@ -22,7 +22,7 @@ import vazkii.botania.common.entity.EntityDoppleganger;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
-public class BlockBellows extends BlockModContainer implements ILexiconable {
+public class BlockBellows extends BlockModContainer<TileBellows> implements ILexiconable {
 
 	private static final int[] META_ROTATIONS = new int[] { 3, 4, 2, 5 };
 
@@ -85,7 +85,7 @@ public class BlockBellows extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
+	public TileBellows createNewTileEntityT(World world, int meta) {
 		return new TileBellows();
 	}
 

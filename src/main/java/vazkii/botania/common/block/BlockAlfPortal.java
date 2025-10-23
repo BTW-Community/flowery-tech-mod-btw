@@ -14,11 +14,9 @@ import net.minecraft.src.Material;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.src.TileEntity;
 import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
-import vazkii.botania.api.item.IRelic;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.wand.IWandable;
@@ -28,7 +26,7 @@ import vazkii.botania.common.block.tile.TileAlfPortal;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
-public class BlockAlfPortal extends BlockModContainer implements IWandable, ILexiconable {
+public class BlockAlfPortal extends BlockModContainer<TileAlfPortal> implements IWandable, ILexiconable {
 
 	Icon iconOff, iconOn;
 	public static Icon portalTex;
@@ -53,7 +51,7 @@ public class BlockAlfPortal extends BlockModContainer implements IWandable, ILex
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
+	public TileAlfPortal createNewTileEntityT(World world, int meta) {
 		return new TileAlfPortal();
 	}
 

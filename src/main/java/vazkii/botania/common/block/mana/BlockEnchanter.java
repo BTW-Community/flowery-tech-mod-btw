@@ -24,7 +24,7 @@ import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
-public class BlockEnchanter extends BlockModContainer implements IWandable, ILexiconable, IWandHUD {
+public class BlockEnchanter extends BlockModContainer<TileEnchanter> implements IWandable, ILexiconable, IWandHUD {
 
 	Random random;
 	public static Icon overlay;
@@ -52,7 +52,7 @@ public class BlockEnchanter extends BlockModContainer implements IWandable, ILex
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
+	public TileEnchanter createNewTileEntityT(World world, int meta) {
 		return new TileEnchanter();
 	}
 

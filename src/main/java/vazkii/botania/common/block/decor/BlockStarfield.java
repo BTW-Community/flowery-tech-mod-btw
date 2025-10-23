@@ -25,7 +25,7 @@ import vazkii.botania.common.block.tile.TileStarfield;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
-public class BlockStarfield extends BlockModContainer implements ILexiconable {
+public class BlockStarfield extends BlockModContainer<TileStarfield> implements ILexiconable {
 
 	Icon[] icons;
 
@@ -62,7 +62,7 @@ public class BlockStarfield extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
+	public TileStarfield createNewTileEntityT(World world, int meta) {
 		return new TileStarfield();
 	}
 

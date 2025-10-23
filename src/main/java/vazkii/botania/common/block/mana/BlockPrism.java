@@ -25,7 +25,7 @@ import vazkii.botania.common.block.tile.mana.TilePrism;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
-public class BlockPrism extends BlockModContainer implements IManaTrigger, ILexiconable {
+public class BlockPrism extends BlockModContainer<TilePrism> implements IManaTrigger, ILexiconable {
 
 	Random random;
 	Icon[] icons;
@@ -82,11 +82,10 @@ public class BlockPrism extends BlockModContainer implements IManaTrigger, ILexi
 	@Override
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
 		TileEntity tile = par1World.getTileEntity(par2, par3, par4);
-		if(!(tile instanceof TilePrism))
+		if(!(tile instanceof TilePrism prism))
 			return false;
 
-		TilePrism prism = (TilePrism) tile;
-		ItemStack lens = prism.getStackInSlot(0);
+        ItemStack lens = prism.getStackInSlot(0);
 		ItemStack heldItem = par5EntityPlayer.getCurrentEquippedItem();
 		boolean isHeldItemLens = heldItem != null && heldItem.getItem() instanceof ILens;
 		int meta = par1World.getBlockMetadata(par2, par3, par4);
@@ -126,55 +125,19 @@ public class BlockPrism extends BlockModContainer implements IManaTrigger, ILexi
 
 	@Override
 	public void breakBlock(World par1World, int par2, int par3, int par4, int block, int par6) {
-		TileEntity tile = par1World.getTileEntity(par2, par3, par4);
-		if(!(tile instanceof TileSimpleInventory))
-			return;
-
-		TileSimpleInventory inv = (TileSimpleInventory) tile;
-
-		if (inv != null) {
-			for (int j1 = 0; j1 < inv.getSizeInventory(); ++j1) {
-				ItemStack itemstack = inv.getStackInSlot(j1);
-
-				if (itemstack != null) {
-					float f = random.nextFloat() * 0.8F + 0.1F;
-					float f1 = random.nextFloat() * 0.8F + 0.1F;
-					EntityItem entityitem;
-
-					for (float f2 = random.nextFloat() * 0.8F + 0.1F; itemstack.stackSize > 0; par1World.spawnEntityInWorld(entityitem)) {
-						int k1 = random.nextInt(21) + 10;
-
-						if (k1 > itemstack.stackSize)
-							k1 = itemstack.stackSize;
-
-						itemstack.stackSize -= k1;
-						entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.getItem(), k1, itemstack.getItemDamage()));
-						float f3 = 0.05F;
-						entityitem.motionX = (float)random.nextGaussian() * f3;
-						entityitem.motionY = (float)random.nextGaussian() * f3 + 0.2F;
-						entityitem.motionZ = (float)random.nextGaussian() * f3;
-
-						if (itemstack.hasTagCompound())
-							entityitem.getEntityItem().setTagCompound((NBTTagCompound)itemstack.getTagCompound().copy());
-					}
-				}
-			}
-
-			par1World.func_96440_m(par2, par3, par4, block);
-		}
-
-		super.breakBlock(par1World, par2, par3, par4, block, par6);
+		TileSimpleInventory.breakBlock(par1World, par2, par3, par4, block, this.random);
+        super.breakBlock(par1World, par2, par3, par4, block, par6);
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
+	public TilePrism createNewTileEntityT(World world, int meta) {
 		return new TilePrism();
 	}
 
 	@Override
 	public void onBurstCollision(IManaBurst burst, World world, int x, int y, int z) {
 		TileEntity tile = world.getTileEntity(x, y, z);
-		if(tile != null && tile instanceof TilePrism)
+		if(tile instanceof TilePrism)
 			((TilePrism) tile).onBurstCollision(burst);
 	}
 

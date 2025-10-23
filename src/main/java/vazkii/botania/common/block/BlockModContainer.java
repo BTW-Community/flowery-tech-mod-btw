@@ -23,7 +23,7 @@ public abstract class BlockModContainer<T extends TileEntity> extends BlockConta
 	protected BlockModContainer(int id, Material par2Material) {
 		super(id, par2Material);
 		if(registerInCreative())
-			setCreativeTab(CreativeTabs.tabMisc/*.INSTANCE*/);
+			setCreativeTab(CreativeTabs.tabMisc);
 	}
 
 	@Override

@@ -21,7 +21,7 @@ import vazkii.botania.common.block.tile.TileCocoon;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
-public class BlockCocoon extends BlockModContainer implements ILexiconable {
+public class BlockCocoon extends BlockModContainer<TileCocoon> implements ILexiconable {
 
 	protected BlockCocoon(int id) {
 		super(id, Material.cloth);
@@ -47,6 +47,11 @@ public class BlockCocoon extends BlockModContainer implements ILexiconable {
 	@Override
 	public boolean renderBlock(RenderBlocks renderer, int i, int j, int k) {
 		return false;
+	}
+
+	@Override
+	protected ItemStack createStackedBlock(int par1) {
+		return super.createStackedBlock(par1);
 	}
 
 	@Override
@@ -93,7 +98,7 @@ public class BlockCocoon extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
+	public TileCocoon createNewTileEntityT(World world, int meta) {
 		return new TileCocoon();
 	}
 

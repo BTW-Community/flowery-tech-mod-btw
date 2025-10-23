@@ -23,7 +23,7 @@ import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 import vazkii.botania.common.world.WorldTypeSkyblock;
 
-public class BlockManaFlame extends BlockModContainer implements ILexiconable {
+public class BlockManaFlame extends BlockModContainer<TileManaFlame> implements ILexiconable {
 
 	public BlockManaFlame(int id) {
 		super(id, Material.cloth);
@@ -107,7 +107,7 @@ public class BlockManaFlame extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
+	public TileManaFlame createNewTileEntityT(World world, int meta) {
 		return new TileManaFlame();
 	}
 

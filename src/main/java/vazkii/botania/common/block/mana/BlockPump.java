@@ -12,7 +12,6 @@ package vazkii.botania.common.block.mana;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.src.*;
-import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.client.lib.LibRenderIDs;
@@ -22,7 +21,7 @@ import vazkii.botania.common.block.tile.mana.TilePump;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
-public class BlockPump extends BlockModContainer implements ILexiconable {
+public class BlockPump extends BlockModContainer<TilePump> implements ILexiconable {
 
 	private static final int[] META_ROTATIONS = new int[] { 2, 5, 3, 4 };
 
@@ -32,7 +31,6 @@ public class BlockPump extends BlockModContainer implements ILexiconable {
 		setResistance(10.0F);
 		setStepSound(soundStoneFootstep);
 		setUnlocalizedName(LibBlockNames.PUMP);
-		setBlockBounds(true);
 	}
 
 	@Override
@@ -42,14 +40,12 @@ public class BlockPump extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public void setBlockBoundsBasedOnState(IBlockAccess w, 	int x, int y, int z) {
-		setBlockBounds(w.getBlockMetadata(x, y, z) < 4);
-	}
-
-	public void setBlockBounds(boolean horiz) {
-		if(horiz)
-			setBlockBounds(0.25F, 0F, 0F, 0.75F, 0.5F, 1F);
-		else setBlockBounds(0F, 0F, 0.25F, 1F, 0.5F, 0.75F);
+	public AxisAlignedBB getBlockBoundsFromPoolBasedOnState(IBlockAccess w, int x, int y, int z) {
+		boolean horiz = w.getBlockMetadata(x, y, z) < 4;
+		if (horiz) {
+			return AxisAlignedBB.getAABBPool().getAABB(0.25F, 0F, 0F, 0.75F, 0.5F, 1F);
+		}
+		return AxisAlignedBB.getAABBPool().getAABB(0F, 0F, 0.25F, 1F, 0.5F, 0.75F);
 	}
 
 //	@Override
@@ -108,7 +104,7 @@ public class BlockPump extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
+	public TilePump createNewTileEntityT(World world, int meta) {
 		return new TilePump();
 	}
 }

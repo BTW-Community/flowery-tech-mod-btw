@@ -41,9 +41,8 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 		TileEntity tile = world.getBlockTileEntity(x, y, z);
 		int meta = world.getBlockMetadata(x, y, z);
 
-		if(tile instanceof TileCamo) {
-			TileCamo camo = (TileCamo) tile;
-			Block block = camo.camo;
+		if(tile instanceof TileCamo camo) {
+            Block block = camo.camo;
 			if(block != null && isValidBlock(block))
 				return block.getIcon(side, camo.camoMeta);
 		}
@@ -63,9 +62,8 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
 		TileEntity tile = par1World.getTileEntity(par2, par3, par4);
 
-		if(tile instanceof TileCamo) {
-			TileCamo camo = (TileCamo) tile;
-			ItemStack currentStack = par5EntityPlayer.getCurrentEquippedItem();
+		if(tile instanceof TileCamo camo) {
+            ItemStack currentStack = par5EntityPlayer.getCurrentEquippedItem();
 
 //			if(currentStack == null)
 //				currentStack = new ItemStack(ModBlocks.fakeAir, 1, 0);
@@ -131,9 +129,8 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 	@Environment(EnvType.CLIENT)
 	public int colorMultiplier(IBlockAccess par1World, int par2, int par3, int par4) {
 		TileEntity tile = par1World.getBlockTileEntity(par2, par3, par4);
-		if(tile instanceof TileCamo) {
-			TileCamo camo = (TileCamo) tile;
-			Block block = camo.camo;
+		if(tile instanceof TileCamo camo) {
+            Block block = camo.camo;
 			if(block != null)
 				return block instanceof BlockCamo ? 0xFFFFFF : block.getRenderColor(camo.camoMeta);
 

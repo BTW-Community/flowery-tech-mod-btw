@@ -8,7 +8,8 @@ import vazkii.botania.common.block.tile.TileCraftCrate;
 
 import java.util.List;
 
-public class BlockCraftyCrate extends BlockOpenCrate{
+public class BlockCraftyCrate extends BlockOpenCrate {
+
     public BlockCraftyCrate(int id) {
         super(id);
     }

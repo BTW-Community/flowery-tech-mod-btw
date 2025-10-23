@@ -12,7 +12,6 @@ package vazkii.botania.common.block;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.src.*;
-import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -21,7 +20,7 @@ import vazkii.botania.common.block.tile.TileIncensePlate;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
-public class BlockIncensePlate extends BlockModContainer implements ILexiconable {
+public class BlockIncensePlate extends BlockModContainer<TileIncensePlate> implements ILexiconable {
 
 	private static final int[] META_ROTATIONS = new int[] { 2, 5, 3, 4 };
 
@@ -30,7 +29,6 @@ public class BlockIncensePlate extends BlockModContainer implements ILexiconable
 		setUnlocalizedName(LibBlockNames.INCENSE_PLATE);
 		setHardness(2.0F);
 		setStepSound(soundWoodFootstep);
-		setBlockBounds(true);
 	}
 
 	@Override
@@ -51,16 +49,15 @@ public class BlockIncensePlate extends BlockModContainer implements ILexiconable
 			if(stack != null && stack.getItem() == Item.flintAndSteel) {
 				plate.ignite();
 				stack.damageItem(1, player);
-				did = true;
-			} else {
+            } else {
 				ItemStack addStack = plateStack.copy();
 				if(!player.inventory.addItemStackToInventory(addStack))
 					player.dropPlayerItemWithRandomChoice(addStack, false);
 				plate.setInventorySlotContents(0, null);
 
-				did = true;
-			}
-		}
+            }
+            did = true;
+        }
 
 		if(did)
 			VanillaPacketDispatcher.dispatchTEToNearbyPlayers(plate);
@@ -95,19 +92,17 @@ public class BlockIncensePlate extends BlockModContainer implements ILexiconable
 	}
 
 	@Override
-	public void setBlockBoundsBasedOnState(IBlockAccess w, 	int x, int y, int z) {
-		setBlockBounds(w.getBlockMetadata(x, y, z) < 4);
-	}
-
-	public void setBlockBounds(boolean horiz) {
+	public AxisAlignedBB getBlockBoundsFromPoolBasedOnState(IBlockAccess world, int x, int y, int z) {
+		boolean horiz = world.getBlockMetadata(x, y, z) < 4;
 		float f = 1F / 16F;
 		float w = 12 * f;
 		float l = 4 * f;
 		float xs = (1F - w) / 2;
 		float zs = (1F - l) / 2;
 		if(horiz)
-			setBlockBounds(xs, 0F, zs, 1F - xs, f, 1f - zs);
-		else setBlockBounds(zs, 0F, xs, 1F - zs, f, 1f - xs);
+			return AxisAlignedBB.getAABBPool().getAABB(xs, 0F, zs, 1F - xs, f, 1f - zs);
+		else
+			return AxisAlignedBB.getAABBPool().getAABB(zs, 0F, xs, 1F - zs, f, 1f - xs);
 	}
 
 //	@Override
@@ -141,7 +136,7 @@ public class BlockIncensePlate extends BlockModContainer implements ILexiconable
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
+	public TileIncensePlate createNewTileEntityT(World world, int meta) {
 		return new TileIncensePlate();
 	}
 

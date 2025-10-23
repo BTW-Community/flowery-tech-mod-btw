@@ -14,7 +14,6 @@ import net.minecraft.src.Material;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.src.TileEntity;
 import net.minecraft.src.Icon;
 import net.minecraft.src.World;
 import vazkii.botania.api.lexicon.ILexiconable;
@@ -24,7 +23,7 @@ import vazkii.botania.common.block.tile.TileForestEye;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
-public class BlockForestEye extends BlockModContainer implements ILexiconable {
+public class BlockForestEye extends BlockModContainer<TileForestEye> implements ILexiconable {
 
 	Icon[] icons;
 
@@ -71,7 +70,7 @@ public class BlockForestEye extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
+	public TileForestEye createNewTileEntityT(World world, int meta) {
 		return new TileForestEye();
 	}
 

@@ -30,7 +30,7 @@ import vazkii.botania.common.item.block.ItemBlockWithMetadataAndName;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
-public class BlockSpreader extends BlockModContainer implements IWandable, IWandHUD, ILexiconable, IWireframeAABBProvider {
+public class BlockSpreader extends BlockModContainer<TileSpreader> implements IWandable, IWandHUD, ILexiconable, IWireframeAABBProvider {
 
 	Random random;
 
@@ -176,43 +176,39 @@ public class BlockSpreader extends BlockModContainer implements IWandable, IWand
 	@Override
 	public void breakBlock(World par1World, int par2, int par3, int par4, int block, int par6) {
 		TileEntity tile = par1World.getTileEntity(par2, par3, par4);
-		if(!(tile instanceof TileSpreader))
+		if(!(tile instanceof TileSpreader inv))
 			return;
 
-		TileSpreader inv = (TileSpreader) tile;
+        for (int j1 = 0; j1 < inv.getSizeInventory() + 1; ++j1) {
+            ItemStack itemstack = j1 >= inv.getSizeInventory() ? inv.paddingColor == -1 ? null : new ItemStack(Block.cloth, 1, inv.paddingColor) : inv.getStackInSlot(j1);
 
-		if (inv != null) {
-			for (int j1 = 0; j1 < inv.getSizeInventory() + 1; ++j1) {
-				ItemStack itemstack = j1 >= inv.getSizeInventory() ? inv.paddingColor == -1 ? null : new ItemStack(Block.cloth, 1, inv.paddingColor) : inv.getStackInSlot(j1);
+            if (itemstack != null) {
+                float f = random.nextFloat() * 0.8F + 0.1F;
+                float f1 = random.nextFloat() * 0.8F + 0.1F;
+                EntityItem entityitem;
 
-				if(itemstack != null) {
-					float f = random.nextFloat() * 0.8F + 0.1F;
-					float f1 = random.nextFloat() * 0.8F + 0.1F;
-					EntityItem entityitem;
+                for (float f2 = random.nextFloat() * 0.8F + 0.1F; itemstack.stackSize > 0; par1World.spawnEntityInWorld(entityitem)) {
+                    int k1 = random.nextInt(21) + 10;
 
-					for (float f2 = random.nextFloat() * 0.8F + 0.1F; itemstack.stackSize > 0; par1World.spawnEntityInWorld(entityitem)) {
-						int k1 = random.nextInt(21) + 10;
+                    if (k1 > itemstack.stackSize)
+                        k1 = itemstack.stackSize;
 
-						if (k1 > itemstack.stackSize)
-							k1 = itemstack.stackSize;
+                    itemstack.stackSize -= k1;
+                    entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.getItem(), k1, itemstack.getItemDamage()));
+                    float f3 = 0.05F;
+                    entityitem.motionX = (float) random.nextGaussian() * f3;
+                    entityitem.motionY = (float) random.nextGaussian() * f3 + 0.2F;
+                    entityitem.motionZ = (float) random.nextGaussian() * f3;
 
-						itemstack.stackSize -= k1;
-						entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.getItem(), k1, itemstack.getItemDamage()));
-						float f3 = 0.05F;
-						entityitem.motionX = (float)random.nextGaussian() * f3;
-						entityitem.motionY = (float)random.nextGaussian() * f3 + 0.2F;
-						entityitem.motionZ = (float)random.nextGaussian() * f3;
+                    if (itemstack.hasTagCompound())
+                        entityitem.getEntityItem().setTagCompound((NBTTagCompound) itemstack.getTagCompound().copy());
+                }
+            }
+        }
 
-						if (itemstack.hasTagCompound())
-							entityitem.getEntityItem().setTagCompound((NBTTagCompound)itemstack.getTagCompound().copy());
-					}
-				}
-			}
+        par1World.func_96440_m(par2, par3, par4, block);
 
-			par1World.func_96440_m(par2, par3, par4, block);
-		}
-
-		super.breakBlock(par1World, par2, par3, par4, block, par6);
+        super.breakBlock(par1World, par2, par3, par4, block, par6);
 	}
 
 	@Override
@@ -222,7 +218,7 @@ public class BlockSpreader extends BlockModContainer implements IWandable, IWand
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
+	public TileSpreader createNewTileEntityT(World world, int meta) {
 		return new TileSpreader();
 	}
 
