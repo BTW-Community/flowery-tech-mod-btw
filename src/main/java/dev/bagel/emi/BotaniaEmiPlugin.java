@@ -159,7 +159,7 @@ public class BotaniaEmiPlugin implements EmiPlugin {
         }
         return null;
     };
-    public static KeyBinding KEY = new KeyBinding("key.botania.search", Keyboard.KEY_T);
+    public static KeyBinding KEY = new KeyBinding("key.botania.search", Keyboard.KEY_N);
 
     public static boolean handleKey(int keyCode) {
         Minecraft mc = Minecraft.getMinecraft();
