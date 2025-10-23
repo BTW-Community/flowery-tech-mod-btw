@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import net.minecraft.src.Material;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -37,7 +36,7 @@ public class BlockCell extends BlockModContainer<TileCell> implements ILexiconab
 	}
 
 	@Override
-	public TileCell createNewTileEntityT(World world, int meta) {
+	public TileCell createNewTileEntityT(World world) {
 		return new TileCell();
 	}
 

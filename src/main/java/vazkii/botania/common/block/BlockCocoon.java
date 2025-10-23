@@ -98,7 +98,7 @@ public class BlockCocoon extends BlockModContainer<TileCocoon> implements ILexic
 	}
 
 	@Override
-	public TileCocoon createNewTileEntityT(World world, int meta) {
+	public TileCocoon createNewTileEntityT(World world) {
 		return new TileCocoon();
 	}
 

@@ -14,7 +14,6 @@ import net.minecraft.src.Material;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.src.TileEntity;
 import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
@@ -59,7 +58,7 @@ public class BlockEnderEye extends BlockModContainer<TileEnderEye> implements IL
 	}
 
 	@Override
-	public TileEnderEye createNewTileEntityT(World world, int meta) {
+	public TileEnderEye createNewTileEntityT(World world) {
 		return new TileEnderEye();
 	}
 

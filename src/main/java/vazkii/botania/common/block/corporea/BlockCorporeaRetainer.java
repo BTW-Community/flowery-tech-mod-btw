@@ -10,18 +10,12 @@
  */
 package vazkii.botania.common.block.corporea;
 
-import net.minecraft.src.Block;
 import net.minecraft.src.Material;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
-import net.minecraft.src.Achievement;
-import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
-import vazkii.botania.common.achievement.ICraftAchievement;
-import vazkii.botania.common.achievement.ModAchievements;
 import vazkii.botania.common.block.BlockModContainer;
 import vazkii.botania.common.block.tile.corporea.TileCorporeaRetainer;
 import vazkii.botania.common.lexicon.LexiconData;
@@ -60,7 +54,7 @@ public class BlockCorporeaRetainer extends BlockModContainer<TileCorporeaRetaine
 	}
 
 	@Override
-	public TileCorporeaRetainer createNewTileEntityT(World world, int meta) {
+	public TileCorporeaRetainer createNewTileEntityT(World world) {
 		return new TileCorporeaRetainer();
 	}
 

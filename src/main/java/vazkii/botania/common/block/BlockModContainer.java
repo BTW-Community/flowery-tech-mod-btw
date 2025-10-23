@@ -55,10 +55,9 @@ public abstract class BlockModContainer<T extends TileEntity> extends BlockConta
 		return true;
 	}
 
-	public abstract T createNewTileEntityT(World world, int meta);
-	//todofix IMPORTANT no meta support for different tiles >:(
+	public abstract T createNewTileEntityT(World world);
 	@Override
 	public TileEntity createNewTileEntity(World world) {
-		return createNewTileEntityT(world, 0);
+		return createNewTileEntityT(world);
 	}
 }

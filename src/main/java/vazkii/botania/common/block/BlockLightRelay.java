@@ -138,7 +138,7 @@ public class BlockLightRelay extends BlockModContainer<TileLightRelay> implement
 	}
 
 	@Override
-	public TileLightRelay createNewTileEntityT(World world, int meta) {
+	public TileLightRelay createNewTileEntityT(World world) {
 		return new TileLightRelay();
 	}
 

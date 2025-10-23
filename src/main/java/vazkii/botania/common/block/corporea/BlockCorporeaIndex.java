@@ -65,7 +65,7 @@ public class BlockCorporeaIndex extends BlockCorporeaBase implements ILexiconabl
 	}
 
 	@Override
-	public TileCorporeaBase createNewTileEntityT(World world, int meta) {
+	public TileCorporeaBase createNewTileEntityT(World world) {
 		return new TileCorporeaIndex();
 	}
 

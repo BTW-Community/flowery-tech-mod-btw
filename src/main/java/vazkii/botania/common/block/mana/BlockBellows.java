@@ -85,7 +85,7 @@ public class BlockBellows extends BlockModContainer<TileBellows> implements ILex
 	}
 
 	@Override
-	public TileBellows createNewTileEntityT(World world, int meta) {
+	public TileBellows createNewTileEntityT(World world) {
 		return new TileBellows();
 	}
 

@@ -104,7 +104,7 @@ public class BlockPump extends BlockModContainer<TilePump> implements ILexiconab
 	}
 
 	@Override
-	public TilePump createNewTileEntityT(World world, int meta) {
+	public TilePump createNewTileEntityT(World world) {
 		return new TilePump();
 	}
 }

@@ -97,7 +97,7 @@ public class BlockTerraPlate extends BlockModContainer<TileTerraPlate> implement
 	}
 
 	@Override
-	public TileTerraPlate createNewTileEntityT(World world, int meta) {
+	public TileTerraPlate createNewTileEntityT(World world) {
 		return new TileTerraPlate();
 	}
 

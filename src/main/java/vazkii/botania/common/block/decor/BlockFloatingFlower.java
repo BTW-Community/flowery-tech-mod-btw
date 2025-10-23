@@ -21,7 +21,6 @@ import vazkii.botania.common.block.BlockModContainer;
 import vazkii.botania.common.block.decor.IFloatingFlower.IslandType;
 import vazkii.botania.common.block.tile.TileFloatingFlower;
 import vazkii.botania.common.core.handler.ConfigHandler;
-import vazkii.botania.common.integration.coloredlights.ColoredLightHelper;
 import vazkii.botania.common.item.IFloatingFlowerVariant;
 import vazkii.botania.common.item.block.ItemBlockWithMetadataAndName;
 import vazkii.botania.common.lexicon.LexiconData;
@@ -142,7 +141,7 @@ public class BlockFloatingFlower extends BlockModContainer<TileEntity> implement
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world) {
 		return new TileFloatingFlower();
 	}
 

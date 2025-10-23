@@ -10,7 +10,6 @@
  */
 package vazkii.botania.common.block.string;
 
-import net.minecraft.src.Block;
 import net.minecraft.src.World;
 import vazkii.botania.common.block.tile.string.TileRedString;
 import vazkii.botania.common.block.tile.string.TileRedStringDispenser;
@@ -36,7 +35,7 @@ public class BlockRedStringDispenser extends BlockRedString {
 	}
 
 	@Override
-	public TileRedString createNewTileEntityT(World world, int meta) {
+	public TileRedString createNewTileEntityT(World world) {
 		return new TileRedStringDispenser();
 	}
 

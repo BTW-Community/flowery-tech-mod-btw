@@ -14,7 +14,6 @@ import net.minecraft.src.Material;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.src.TileEntity;
 import net.minecraft.src.Icon;
 import net.minecraft.src.World;
 import vazkii.botania.api.lexicon.ILexiconable;
@@ -62,7 +61,7 @@ public class BlockStarfield extends BlockModContainer<TileStarfield> implements 
 	}
 
 	@Override
-	public TileStarfield createNewTileEntityT(World world, int meta) {
+	public TileStarfield createNewTileEntityT(World world) {
 		return new TileStarfield();
 	}
 

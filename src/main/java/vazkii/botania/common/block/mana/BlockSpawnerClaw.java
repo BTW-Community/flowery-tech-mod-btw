@@ -71,7 +71,7 @@ public class BlockSpawnerClaw extends BlockModContainer<TileSpawnerClaw> impleme
 	}
 
 	@Override
-	public TileSpawnerClaw createNewTileEntityT(World world, int meta) {
+	public TileSpawnerClaw createNewTileEntityT(World world) {
 		return new TileSpawnerClaw();
 	}
 

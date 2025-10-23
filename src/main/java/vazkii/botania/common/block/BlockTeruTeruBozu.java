@@ -11,7 +11,6 @@
 package vazkii.botania.common.block;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
-import dev.bagel.util.Items;
 import net.minecraft.src.*;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -126,7 +125,7 @@ public class BlockTeruTeruBozu extends BlockModContainer<TileTeruTeruBozu> imple
 	}
 
 	@Override
-	public TileTeruTeruBozu createNewTileEntityT(World world, int meta) {
+	public TileTeruTeruBozu createNewTileEntityT(World world) {
 		return new TileTeruTeruBozu();
 	}
 

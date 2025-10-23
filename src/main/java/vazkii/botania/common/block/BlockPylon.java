@@ -18,7 +18,6 @@ import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.client.lib.LibRenderIDs;
 import vazkii.botania.common.block.tile.TilePylon;
-import vazkii.botania.common.core.handler.ConfigHandler;
 import vazkii.botania.common.item.block.ItemBlockWithMetadataAndName;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
@@ -101,7 +100,7 @@ public class BlockPylon extends BlockModContainer<TilePylon> implements ILexicon
 	}
 
 	@Override
-	public TilePylon createNewTileEntityT(World world, int meta) {
+	public TilePylon createNewTileEntityT(World world) {
 		return new TilePylon();
 	}
 

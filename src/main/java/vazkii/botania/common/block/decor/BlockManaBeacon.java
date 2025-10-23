@@ -19,9 +19,7 @@ import net.minecraft.src.IconRegister;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EntitySheep;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.src.TileEntity;
 import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
@@ -111,7 +109,7 @@ public class BlockManaBeacon extends BlockModContainer<TileManaBeacon> implement
 	}
 
 	@Override
-	public TileManaBeacon createNewTileEntityT(World world, int meta) {
+	public TileManaBeacon createNewTileEntityT(World world) {
 		return new TileManaBeacon();
 	}
 }

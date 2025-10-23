@@ -126,7 +126,7 @@ public class BlockTinyPotato extends BlockModContainer<TileTinyPotato> implement
 	}
 
 	@Override
-	public TileTinyPotato createNewTileEntityT(World world, int meta) {
+	public TileTinyPotato createNewTileEntityT(World world) {
 		return new TileTinyPotato();
 	}
 

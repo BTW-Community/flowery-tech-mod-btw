@@ -87,7 +87,7 @@ public class BlockCorporeaCrystalCube extends BlockCorporeaBase implements ILexi
 	}
 
 	@Override
-	public TileCorporeaBase createNewTileEntityT(World world, int meta) {
+	public TileCorporeaBase createNewTileEntityT(World world) {
 		return new TileCorporeaCrystalCube();
 	}
 

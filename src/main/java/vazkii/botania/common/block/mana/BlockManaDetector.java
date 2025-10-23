@@ -18,7 +18,6 @@ import net.minecraft.src.IconRegister;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.src.TileEntity;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.Icon;
 import net.minecraft.src.IBlockAccess;
@@ -73,7 +72,7 @@ public class BlockManaDetector extends BlockModContainer<TileManaDetector> imple
 	}
 
 	@Override
-	public TileManaDetector createNewTileEntityT(World world, int meta) {
+	public TileManaDetector createNewTileEntityT(World world) {
 		return new TileManaDetector();
 	}
 

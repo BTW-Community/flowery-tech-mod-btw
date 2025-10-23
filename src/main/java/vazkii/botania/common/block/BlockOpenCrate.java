@@ -134,7 +134,7 @@ public class BlockOpenCrate extends BlockModContainer<TileOpenCrate> implements 
 	}
 
 	@Override
-	public TileOpenCrate createNewTileEntityT(World world, int meta) {
+	public TileOpenCrate createNewTileEntityT(World world) {
 		return new TileOpenCrate();
 	}
 

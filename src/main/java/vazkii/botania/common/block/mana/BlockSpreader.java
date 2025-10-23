@@ -218,7 +218,7 @@ public class BlockSpreader extends BlockModContainer<TileSpreader> implements IW
 	}
 
 	@Override
-	public TileSpreader createNewTileEntityT(World world, int meta) {
+	public TileSpreader createNewTileEntityT(World world) {
 		return new TileSpreader();
 	}
 

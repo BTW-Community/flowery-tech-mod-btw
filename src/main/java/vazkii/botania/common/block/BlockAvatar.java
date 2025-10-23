@@ -14,7 +14,6 @@ import java.util.Random;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.src.*;
-import net.minecraftforge.common.util.ForgeDirection;
 //import net.minecraftforge.common.util.RotationHelper;
 import vazkii.botania.api.item.IAvatarWieldable;
 import vazkii.botania.api.lexicon.ILexiconable;
@@ -133,7 +132,7 @@ public class BlockAvatar extends BlockModContainer<TileAvatar> implements ILexic
 	}
 
 	@Override
-	public TileAvatar createNewTileEntityT(World world, int meta) {
+	public TileAvatar createNewTileEntityT(World world) {
 		return new TileAvatar();
 	}
 

@@ -11,6 +11,8 @@
 package vazkii.botania.common.block;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.src.*;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -46,7 +48,7 @@ public class BlockTinyPlanet extends BlockModContainer<TileTinyPlanet> implement
 	}
 
 	@Override
-	public TileTinyPlanet createNewTileEntityT(World world, int meta) {
+	public TileTinyPlanet createNewTileEntityT(World world) {
 		return new TileTinyPlanet();
 	}
 

@@ -18,7 +18,6 @@ import net.minecraft.src.IconRegister;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.Icon;
@@ -96,7 +95,7 @@ public class BlockPlatform extends BlockCamo implements ILexiconable, IWandable 
 	}
 
 	@Override
-	public TileCamo createNewTileEntityT(World world, int meta) {
+	public TileCamo createNewTileEntityT(World world) {
 		return new TilePlatform();
 	}
 

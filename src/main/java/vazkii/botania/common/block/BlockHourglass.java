@@ -139,7 +139,7 @@ public class BlockHourglass extends BlockModContainer<TileHourglass> implements 
 	}
 
 	@Override
-	public TileHourglass createNewTileEntityT(World world, int meta) {
+	public TileHourglass createNewTileEntityT(World world) {
 		return new TileHourglass();
 	}
 

@@ -130,7 +130,7 @@ public class BlockPrism extends BlockModContainer<TilePrism> implements IManaTri
 	}
 
 	@Override
-	public TilePrism createNewTileEntityT(World world, int meta) {
+	public TilePrism createNewTileEntityT(World world) {
 		return new TilePrism();
 	}
 

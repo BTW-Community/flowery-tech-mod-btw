@@ -45,7 +45,7 @@ public class BlockManaVoid extends BlockModContainer<TileManaVoid> implements IL
 	}
 
 	@Override
-	public TileManaVoid createNewTileEntityT(World world, int id) {
+	public TileManaVoid createNewTileEntityT(World world) {
 		return new TileManaVoid();
 	}
 

@@ -97,7 +97,7 @@ public class BlockPool extends BlockModContainer<TilePool> implements IWandHUD, 
 	}
 
 	@Override
-	public TilePool createNewTileEntityT(World world, int meta) {
+	public TilePool createNewTileEntityT(World world) {
 		return new TilePool();
 	}
 

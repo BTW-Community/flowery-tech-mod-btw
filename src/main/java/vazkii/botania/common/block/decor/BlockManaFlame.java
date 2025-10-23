@@ -107,7 +107,7 @@ public class BlockManaFlame extends BlockModContainer<TileManaFlame> implements 
 	}
 
 	@Override
-	public TileManaFlame createNewTileEntityT(World world, int meta) {
+	public TileManaFlame createNewTileEntityT(World world) {
 		return new TileManaFlame();
 	}
 

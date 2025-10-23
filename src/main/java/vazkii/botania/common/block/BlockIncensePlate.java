@@ -136,7 +136,7 @@ public class BlockIncensePlate extends BlockModContainer<TileIncensePlate> imple
 	}
 
 	@Override
-	public TileIncensePlate createNewTileEntityT(World world, int meta) {
+	public TileIncensePlate createNewTileEntityT(World world) {
 		return new TileIncensePlate();
 	}
 

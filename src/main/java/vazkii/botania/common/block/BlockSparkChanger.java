@@ -132,7 +132,7 @@ public class BlockSparkChanger extends BlockModContainer<TileSparkChanger> imple
 	}
 
 	@Override
-	public TileSparkChanger createNewTileEntityT(World world, int meta) {
+	public TileSparkChanger createNewTileEntityT(World world) {
 		return new TileSparkChanger();
 	}
 

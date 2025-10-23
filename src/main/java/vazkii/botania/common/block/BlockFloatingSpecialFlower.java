@@ -154,7 +154,7 @@ public class BlockFloatingSpecialFlower extends BlockFloatingFlower implements I
 	}
 
 	@Override
-	public TileEntity createNewTileEntityT(World world, int meta) {
+	public TileEntity createNewTileEntityT(World world) {
 		return new TileFloatingSpecialFlower();
 	}
 

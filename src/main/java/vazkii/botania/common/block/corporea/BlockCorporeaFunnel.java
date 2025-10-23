@@ -10,7 +10,6 @@
  */
 package vazkii.botania.common.block.corporea;
 
-import net.minecraft.src.Block;
 import net.minecraft.src.Material;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityPlayer;
@@ -61,7 +60,7 @@ public class BlockCorporeaFunnel extends BlockCorporeaBase implements ILexiconab
 	}
 
 	@Override
-	public TileCorporeaBase createNewTileEntityT(World world, int meta) {
+	public TileCorporeaBase createNewTileEntityT(World world) {
 		return new TileCorporeaFunnel();
 	}
 

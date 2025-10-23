@@ -14,10 +14,8 @@ import java.util.Random;
 
 import net.minecraft.src.Material;
 import net.minecraft.src.IconRegister;
-import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.Icon;
 import net.minecraft.src.World;
 import vazkii.botania.api.BotaniaAPI;
@@ -103,7 +101,7 @@ public class BlockRuneAltar extends BlockModContainer<TileRuneAltar> implements 
 	}
 
 	@Override
-	public TileRuneAltar createNewTileEntityT(World world, int meta) {
+	public TileRuneAltar createNewTileEntityT(World world) {
 		return new TileRuneAltar();
 	}
 

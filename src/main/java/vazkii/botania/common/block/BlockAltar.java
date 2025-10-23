@@ -230,7 +230,7 @@ public class BlockAltar extends BlockModContainer<TileAltar> implements ILexicon
 	}
 
 	@Override
-	public TileAltar createNewTileEntityT(World world, int meta) {
+	public TileAltar createNewTileEntityT(World world) {
 		return new TileAltar();
 	}
 

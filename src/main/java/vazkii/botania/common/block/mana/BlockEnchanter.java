@@ -52,7 +52,7 @@ public class BlockEnchanter extends BlockModContainer<TileEnchanter> implements 
 	}
 
 	@Override
-	public TileEnchanter createNewTileEntityT(World world, int meta) {
+	public TileEnchanter createNewTileEntityT(World world) {
 		return new TileEnchanter();
 	}
 

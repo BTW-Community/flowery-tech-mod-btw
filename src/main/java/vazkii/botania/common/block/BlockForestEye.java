@@ -70,7 +70,7 @@ public class BlockForestEye extends BlockModContainer<TileForestEye> implements 
 	}
 
 	@Override
-	public TileForestEye createNewTileEntityT(World world, int meta) {
+	public TileForestEye createNewTileEntityT(World world) {
 		return new TileForestEye();
 	}
 

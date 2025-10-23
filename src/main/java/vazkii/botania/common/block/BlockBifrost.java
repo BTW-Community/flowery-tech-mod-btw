@@ -18,7 +18,6 @@ import net.minecraft.src.IconRegister;
 import net.minecraft.src.TextureAtlasSprite;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
-import net.minecraft.src.TileEntity;
 import net.minecraft.src.MovingObjectPosition;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
@@ -31,7 +30,6 @@ import vazkii.botania.common.block.tile.TileBifrost;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
@@ -101,7 +99,7 @@ public class BlockBifrost extends BlockModContainer<TileBifrost> implements ILex
 	}
 
 	@Override
-	public TileBifrost createNewTileEntityT(World world, int meta) {
+	public TileBifrost createNewTileEntityT(World world) {
 		return new TileBifrost();
 	}
 

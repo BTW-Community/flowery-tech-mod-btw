@@ -118,7 +118,7 @@ public class BlockBrewery extends BlockModContainer<TileBrewery> implements ILex
 	}
 
 	@Override
-	public TileBrewery createNewTileEntityT(World world, int meta) {
+	public TileBrewery createNewTileEntityT(World world) {
 		return new TileBrewery();
 	}
 

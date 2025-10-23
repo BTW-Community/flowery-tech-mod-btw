@@ -51,7 +51,7 @@ public class BlockAlfPortal extends BlockModContainer<TileAlfPortal> implements 
 	}
 
 	@Override
-	public TileAlfPortal createNewTileEntityT(World world, int meta) {
+	public TileAlfPortal createNewTileEntityT(World world) {
 		return new TileAlfPortal();
 	}
 

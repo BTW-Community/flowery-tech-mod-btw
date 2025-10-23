@@ -92,7 +92,7 @@ public class BlockCacophonium extends BlockModContainer<TileCacophonium> {
 	}
 
 	@Override
-	public TileCacophonium createNewTileEntityT(World world, int meta) {
+	public TileCacophonium createNewTileEntityT(World world) {
 		return new TileCacophonium();
 	}
 
