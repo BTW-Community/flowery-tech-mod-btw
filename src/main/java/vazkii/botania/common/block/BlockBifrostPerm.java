@@ -54,7 +54,7 @@ public class BlockBifrostPerm extends BlockMod implements ILexiconable {
 	}
 
 	public boolean shouldSideBeRendered1(IBlockAccess world, int p_149646_2_, int p_149646_3_, int p_149646_4_, int p_149646_5_) {
-		Block block = ((World) world).getBlock(p_149646_2_, p_149646_3_, p_149646_4_);
+		Block block = world.getBlock(p_149646_2_, p_149646_3_, p_149646_4_);
 
 		return block == this ? false : super.shouldSideBeRendered(world, p_149646_2_, p_149646_3_, p_149646_4_, p_149646_5_);
 	}

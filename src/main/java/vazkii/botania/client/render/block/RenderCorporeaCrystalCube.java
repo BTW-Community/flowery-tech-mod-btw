@@ -10,10 +10,7 @@
  */
 package vazkii.botania.client.render.block;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.RenderBlocks;
-import net.minecraft.src.TileEntityRenderer;
-import net.minecraft.src.IBlockAccess;
+import net.minecraft.src.*;
 
 import org.lwjgl.opengl.GL11;
 
