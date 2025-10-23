@@ -138,8 +138,8 @@ public class ItemTerraPick extends ItemManasteelPick implements IManaItem, ISequ
 			return;
 
 		World world = player.worldObj;
-		Material mat = world.getBlock(x, y, z).blockMaterial;
-		if(!ToolCommons.isRightMaterial(mat, MATERIALS))
+		Block block = world.getBlock(x, y, z);
+		if(block != null && !ToolCommons.isRightMaterial(block.blockMaterial, MATERIALS))
 			return;
 
 		if(world.isAirBlock(x, y, z))
