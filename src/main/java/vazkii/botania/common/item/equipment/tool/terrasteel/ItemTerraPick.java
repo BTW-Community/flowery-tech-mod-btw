@@ -157,6 +157,8 @@ public class ItemTerraPick extends ItemManasteelPick implements IManaItem, ISequ
 		int level = origLevel + (thor ? 1 : 0);
 		if(ItemTemperanceStone.hasTemperanceActive(player) && level > 2)
 			level = 2;
+		//todo config for funsies
+		level += 0;
 
 		int range = Math.max(0, level - 1);
 		int rangeY = Math.max(1, range);
