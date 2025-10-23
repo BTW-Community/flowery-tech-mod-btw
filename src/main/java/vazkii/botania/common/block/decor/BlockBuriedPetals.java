@@ -26,7 +26,7 @@ public class BlockBuriedPetals extends BlockModFlower {
 	public BlockBuriedPetals(int id) {
 		super(id, LibBlockNames.BURIED_PETALS);
 		initBlockBounds(0F, 0F, 0F, 1F, 0.1F, 1F);
-		setLightValue(0.25F);
+		setLightValue(1 / 16F);
 		hideFromEMI();
 	}
 
