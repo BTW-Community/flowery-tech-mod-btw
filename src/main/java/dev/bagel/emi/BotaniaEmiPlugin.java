@@ -5,26 +5,33 @@ import baubles.client.gui.GuiPlayerExpanded;
 import baubles.common.BaublesConfig;
 import baubles.common.container.SlotBauble;
 import dev.bagel.emi.recipe.*;
+import emi.dev.emi.emi.api.EmiApi;
 import emi.dev.emi.emi.api.EmiExclusionArea;
 import emi.dev.emi.emi.api.EmiPlugin;
 import emi.dev.emi.emi.api.EmiRegistry;
 import emi.dev.emi.emi.api.recipe.EmiRecipeCategory;
 import emi.dev.emi.emi.api.stack.Comparison;
+import emi.dev.emi.emi.api.stack.EmiIngredient;
 import emi.dev.emi.emi.api.stack.EmiStack;
 import emi.dev.emi.emi.screen.Bounds;
-import net.minecraft.src.GuiInventory;
-import net.minecraft.src.ItemStack;
+import net.minecraft.src.*;
+import org.lwjgl.input.Keyboard;
 import vazkii.botania.api.BotaniaAPI;
+import vazkii.botania.api.corporea.CorporeaHelper;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.recipe.*;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.block.ModBlocks;
+import vazkii.botania.common.block.tile.corporea.TileCorporeaIndex;
+import vazkii.botania.common.item.ItemManaTablet;
+import vazkii.botania.common.item.ItemTwigWand;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.block.ItemBlockSpecialFlower;
 import vazkii.botania.common.lib.LibBlockNames;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 
 import static baubles.common.BaublesConfig.useOldGuiRendering;
 
@@ -75,7 +82,19 @@ public class BotaniaEmiPlugin implements EmiPlugin {
         reg.addCategory(BREWING);
         reg.addCategory(LEXICA_BOTANIA);
         reg.addCategory(TERRESTRIAL_AGGLOMERATION);
+        for(int i = 15; i > 0; i--) {
+            reg.addEmiStackAfter(EmiStack.of(ItemTwigWand.forColors(i, i)), EmiStack.of(ItemTwigWand.forColors(i-1, i-1)));
+        }
+        // Full tablet
+        ItemStack fullPower = new ItemStack(ModItems.manaTablet, 1, 0);
+        ItemManaTablet.setMana(fullPower, ItemManaTablet.MAX_MANA);
+        reg.addEmiStackAfter(EmiStack.of(fullPower), EmiStack.of(ModItems.manaTablet));
 
+        // Creative Tablet
+        ItemStack creative = new ItemStack(ModItems.manaTablet, 1, 0);
+        ItemManaTablet.setMana(creative, ItemManaTablet.MAX_MANA);
+        ItemManaTablet.setStackCreative(creative);
+        reg.addEmiStackAfter(EmiStack.of(creative), EmiStack.of(fullPower));
         reg.setDefaultComparison(EmiStack.of(new ItemStack(ModBlocks.specialFlower)), Comparison.of((es1, es2) -> {
             String s1 = ItemBlockSpecialFlower.getType(es1.getItemStack());
             String s2 = ItemBlockSpecialFlower.getType(es2.getItemStack());
@@ -117,8 +136,7 @@ public class BotaniaEmiPlugin implements EmiPlugin {
                 reg.addRecipe(new EmiLexicaBotaniaRecipe(entry, stack));
         }
 
-        //todo potentially lexica botania recipes?
-        // also there is a keybind for requesting an item from corporea it would seem
+        // todo there is a keybind for requesting an item from corporea it would seem
         for (int i = 0; i < 9; i++) {
             reg.addWorkstation(PETAL_APOTHECARY, EmiStack.of(new ItemStack(ModBlocks.altar, 1, i)));
         }
@@ -128,5 +146,77 @@ public class BotaniaEmiPlugin implements EmiPlugin {
         reg.addWorkstation(RUNIC_ALTAR, EmiStack.of(new ItemStack(ModBlocks.runeAltar)));
         reg.addWorkstation(ELVEN_TRADE, EmiStack.of(new ItemStack(ModBlocks.alfPortal)));
         reg.addWorkstation(BREWING, EmiStack.of(new ItemStack(ModBlocks.brewery)));
+    }
+
+    private void addComparisons(EmiRegistry reg) {
+    }
+
+
+    private static final Supplier<ItemStack> HOVERED_STACK_GETTER = () -> {
+        EmiIngredient ingr = EmiApi.getHoveredStack(true).getStack();
+        if (!ingr.getEmiStacks().isEmpty()) {
+            return ingr.getEmiStacks().get(0).getItemStack();
+        }
+        return null;
+    };
+    public static KeyBinding KEY = new KeyBinding("key.botania.search", Keyboard.KEY_T);
+
+    public static boolean handleKey(int keyCode) {
+        Minecraft mc = Minecraft.getMinecraft();
+        if(TileCorporeaIndex.InputHandler.getNearbyIndexes(mc.thePlayer).isEmpty())
+            return false;
+
+        int bind = KEY.keyCode;
+
+        if(keyCode == bind) {
+            ItemStack stack = HOVERED_STACK_GETTER.get();
+            if(stack != null && stack.getItem() != null) {
+                int count = 1;
+                int max = stack.getMaxStackSize();
+                if(GuiScreen.isShiftKeyDown()) {
+                    count = max;
+                    if(GuiScreen.isCtrlKeyDown())
+                        count /= 4;
+                } else if(GuiScreen.isCtrlKeyDown())
+                    count = max / 2;
+
+                if(count > 0) {
+                    String name = CorporeaHelper.stripControlCodes(stack.getDisplayName());
+                    String full = count + " " + name;
+
+                    mc.ingameGUI.getChatGUI().addToSentMessages(full);
+                    mc.thePlayer.sendChatMessage(full);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private Comparison comparingNbtSpecific(String... nbtKeys) {
+        return Comparison.of(((s1, s2) -> {
+            if (!Comparison.DEFAULT_COMPARISON.compare(s1, s2)) {
+                return false;
+            }
+            NBTTagCompound an = s1.getNbt();
+            NBTTagCompound bn = s2.getNbt();
+            if (an == null || bn == null) {
+                return an == bn;
+            }
+            boolean matches;
+            for (String key : nbtKeys) {
+                var tag1 = an.getTag(key);
+                var tag2 = bn.getTag(key);
+                if (tag1 == null || tag2 == null) {
+                    matches = tag1 == tag2;
+                    if (!matches) return false;
+                    continue;
+                }
+                if (!tag1.equals(tag2)) {
+                    return false;
+                }
+            }
+            return true;
+        }));
     }
 }

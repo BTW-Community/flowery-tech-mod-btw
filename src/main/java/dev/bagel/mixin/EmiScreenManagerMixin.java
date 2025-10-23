@@ -16,14 +16,19 @@ public class EmiScreenManagerMixin {
     private static String getStr(NBTTagCompound instance) {
         final StringBuilder s = new StringBuilder(" {");
         Map<String, NBTBase> map = instance.tagMap;
+        final int[] i = {0};
         map.forEach((k, v) -> {
             s.append(k).append(':');
             if (v instanceof NBTTagString str) {
                 var data = str.data;
-                s.append('"').append(str.data).append('"');
+                s.append('"').append(data).append('"');
             }
             else {
                 s.append(v);
+            }
+            i[0]++;
+            if (i[0] != map.size()) {
+                s.append(',');
             }
         });
         s.append("}");

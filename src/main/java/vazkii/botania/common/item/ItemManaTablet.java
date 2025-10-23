@@ -33,7 +33,7 @@ public class ItemManaTablet extends ItemMod implements IManaItem, ICreativeManaP
 
 	Icon[] icons;
 
-	private static final int MAX_MANA = 500000;
+	public static final int MAX_MANA = 500000;
 
 	private static final String TAG_MANA = "mana";
 	private static final String TAG_CREATIVE = "creative";

@@ -6,6 +6,7 @@
   "mixins": [
     "CommandGiveMixin",
     "EmiScreenManagerMixin",
+    "GameSettingsMixin",
     "ItemStackMixin",
     "PlayerControllerMPMixin",
     "RenderItemMixin",
@@ -44,6 +45,7 @@
     "extensions.reach.NetServerHandlerReachMixin"
   ],
   "client": [
+    "GuiScreenMixin",
     "event.TextureMapMixin",
     "event.client.ClientTickEventMixin",
     "event.client.GuiIngameMixin",
