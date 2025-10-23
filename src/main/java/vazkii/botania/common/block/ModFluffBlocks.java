@@ -203,7 +203,7 @@ public final class ModFluffBlocks {
 	public static BlockBifrostPane bifrostPane;
 
 	public static void init() {
-		int id = 2200;
+		int id = 421+256;
 		livingwoodStairs = new BlockLivingwoodStairs(id++);
 		livingwoodSlab = new BlockLivingwoodSlab(id++, false);
 		livingwoodSlabFull = new BlockLivingwoodSlab(id++, true);
