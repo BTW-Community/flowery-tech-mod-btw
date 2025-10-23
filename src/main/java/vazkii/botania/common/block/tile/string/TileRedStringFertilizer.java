@@ -12,11 +12,11 @@ package vazkii.botania.common.block.tile.string;
 
 import java.util.Random;
 
+import btw.block.BTWBlocks;
 import dev.bagel.IGrowable;
 import net.minecraft.src.Block;
 import net.minecraft.src.ChunkCoordinates;
 import net.minecraft.src.World;
-//todofix IGrowing pains
 public class TileRedStringFertilizer extends TileRedString {
 
 	public boolean func_149851_a(World p_149851_1_, boolean p_149851_5_) {
@@ -33,19 +33,20 @@ public class TileRedStringFertilizer extends TileRedString {
 	}
 
 	//try grow
-	public void func_149853_b(World world, Random p_149853_2_) {
+	public boolean func_149853_b(World world) {
 		ChunkCoordinates binding = getBinding();
 		Block block = getBlockAtBinding();
-		block.attemptToApplyFertilizerTo(world, binding.posX, binding.posY, binding.posZ);
-		if(block instanceof IGrowable)
-			((IGrowable) block).func_149853_b(world, p_149853_2_, binding.posX, binding.posY, binding.posZ);
+		if (binding == null || block == null) return false;
+		return block.attemptToApplyFertilizerTo(world, binding.posX, binding.posY, binding.posZ);
+//		if(block instanceof IGrowable)
+//			((IGrowable) block).func_149853_b(world, p_149853_2_, binding.posX, binding.posY, binding.posZ);
 	}
 
 	@Override
 	public boolean acceptBlock(int x, int y, int z) {
 		var block = worldObj.getBlock(x, y, z);
-		if (block == null) return false;//todofix add support for vanilla/btw growables
-		return block instanceof IGrowable;
+		if (block == null) return false;
+		return block instanceof IGrowable || block == Block.tilledField || block == BTWBlocks.farmland || block == BTWBlocks.hempCrop || block == BTWBlocks.carrotCrop || block == BTWBlocks.wheatCrop || block == Block.pumpkinStem || block == Block.melonStem;
 	}
 
 }

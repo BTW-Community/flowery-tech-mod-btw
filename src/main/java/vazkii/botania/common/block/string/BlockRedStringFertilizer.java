@@ -17,7 +17,7 @@ import net.minecraft.src.World;
 import vazkii.botania.common.block.tile.string.TileRedString;
 import vazkii.botania.common.block.tile.string.TileRedStringFertilizer;
 import vazkii.botania.common.lib.LibBlockNames;
-
+//todofix doesnt work
 public class BlockRedStringFertilizer extends BlockRedString implements IGrowable {
 
 	public BlockRedStringFertilizer(int id) {
@@ -33,10 +33,16 @@ public class BlockRedStringFertilizer extends BlockRedString implements IGrowabl
 		return ((TileRedStringFertilizer) world.getTileEntity(x, y, z)).func_149852_a(world, rand);
 	}
 
+	@Override
+	public boolean attemptToApplyFertilizerTo(World world, int i, int j, int k) {
+		((TileRedStringFertilizer) world.getTileEntity(i, j, k)).func_149853_b(world);
+		return super.attemptToApplyFertilizerTo(world, i, j, k);
+	}
+
 	//try grow
 	@Override
 	public void func_149853_b(World world, Random rand, int x, int y, int z) {
-		((TileRedStringFertilizer) world.getTileEntity(x, y, z)).func_149853_b(world, rand);
+//		((TileRedStringFertilizer) world.getTileEntity(x, y, z)).func_149853_b(world, rand);
 	}
 
 	@Override
