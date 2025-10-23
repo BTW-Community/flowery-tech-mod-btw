@@ -39,6 +39,7 @@ public class ItemAesirRing extends ItemRelicBauble implements IExtendedWireframe
 		CraftingManager.getInstance().getRecipeList().add(new AesirRingRecipe());
 //		RecipeSorter.register("botania:aesirRing", AesirRingRecipe.class, Category.SHAPELESS, "");
 		MinecraftForge.EVENT_BUS.register(this);
+		setBindAchievement(ModAchievements.relicAesirRing);
 	}
 
 	@SubscribeEvent

@@ -90,6 +90,10 @@ public final class ModAchievements {
 	public static Achievement<ItemStack> desuGun;
 
 	public static void trigger(EntityPlayer player, Achievement<?> achievement) {
+		if (achievement == null) {
+			new RuntimeException("Achievement is null!").printStackTrace();
+			return;
+		}
 		player.addStat(achievement, 1);
 		player.getData(AchievementHandler.ACHIEVEMENTS_DATA).getDataForPlayer(player.username).triggerAchievement(achievement);
 	}
@@ -196,10 +200,10 @@ public final class ModAchievements {
 			relicInfiniteFruit = AchievementMod.basic(LibAchievementNames.RELIC_INFINITE_FRUIT, -9, 8, ModItems.infiniteFruit, reqItem(ModItems.infiniteFruit), null).setSecret();
 			relicKingKey = AchievementMod.basic(LibAchievementNames.RELIC_KING_KEY, -7, 11, ModItems.kingKey, reqItem(ModItems.kingKey), null).setSecret();
 			relicFlugelEye = AchievementMod.basic(LibAchievementNames.RELIC_FLUGEL_EYE, -5, 8, ModItems.flugelEye, reqItem(ModItems.flugelEye), null).setSecret();
-			relicThorRing = AchievementMod.basic(LibAchievementNames.RELIC_THOR_RING, -7, 7, ModItems.thorRing, reqItem(ModItems.thorRing), null).setSecret();
-			relicOdinRing = AchievementMod.basic(LibAchievementNames.RELIC_ODIN_RING, -9, 10, ModItems.odinRing, reqItem(ModItems.odinRing), null).setSecret();
-			relicLokiRing = AchievementMod.basic(LibAchievementNames.RELIC_LOKI_RING, -5, 10, ModItems.lokiRing, reqItem(ModItems.lokiRing), null).setSecret();
-			relicAesirRing = AchievementMod.basic(LibAchievementNames.RELIC_AESIR_RING, -7, 9, ModItems.aesirRing, reqItem(ModItems.aesirRing), null).setSecret().setSpecial();
+			relicThorRing = AchievementMod.basic(LibAchievementNames.RELIC_THOR_RING, -7, 7, ModItems.thorRing, /*reqItem(ModItems.thorRing),*/ null).setSecret();
+			relicOdinRing = AchievementMod.basic(LibAchievementNames.RELIC_ODIN_RING, -9, 10, ModItems.odinRing, /*reqItem(ModItems.odinRing),*/ null).setSecret();
+			relicLokiRing = AchievementMod.basic(LibAchievementNames.RELIC_LOKI_RING, -5, 10, ModItems.lokiRing, /*reqItem(ModItems.lokiRing),*/ null).setSecret();
+			relicAesirRing = AchievementMod.basic(LibAchievementNames.RELIC_AESIR_RING, -7, 9, ModItems.aesirRing, /*reqItem(ModItems.aesirRing),*/ null).setSecret().setSpecial();
 		}
 
 		nullFlower = AchievementMod.basic(LibAchievementNames.NULL_FLOWER, -8, 0, ModBlocks.specialFlower, stack -> stack.isItemEqual(new ItemStack(ModBlocks.specialFlower), true) && ItemBlockSpecialFlower.getType(stack).isEmpty(), null).setSpecial().setHidden();

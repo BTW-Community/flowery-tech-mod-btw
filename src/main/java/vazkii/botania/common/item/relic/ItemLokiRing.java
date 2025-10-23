@@ -34,6 +34,7 @@ import vazkii.botania.api.item.IExtendedWireframeCoordinateListProvider;
 import vazkii.botania.api.item.ISequentialBreaker;
 import vazkii.botania.api.mana.IManaUsingItem;
 import vazkii.botania.api.mana.ManaItemHandler;
+import vazkii.botania.common.achievement.ModAchievements;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.equipment.tool.ToolCommons;
@@ -63,6 +64,7 @@ public class ItemLokiRing extends ItemRelicBauble implements IExtendedWireframeC
 		super(id, LibItemNames.LOKI_RING);
 //		MinecraftForge.EVENT_BUS.register(this);
 		PlayerInteractEvent.EVENT.register(this::onPlayerInteract);
+		setBindAchievement(ModAchievements.relicLokiRing);
 	}
 
 //	@SubscribeEvent

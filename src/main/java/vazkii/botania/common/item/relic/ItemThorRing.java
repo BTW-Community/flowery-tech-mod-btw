@@ -12,6 +12,7 @@ package vazkii.botania.common.item.relic;
 
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
+import vazkii.botania.common.achievement.ModAchievements;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.lib.LibItemNames;
 import baubles.api.BaubleType;
@@ -22,6 +23,7 @@ public class ItemThorRing extends ItemRelicBauble {
 
 	public ItemThorRing(int id) {
 		super(id, LibItemNames.THOR_RING);
+		setBindAchievement(ModAchievements.relicThorRing);
 	}
 
 	@Override

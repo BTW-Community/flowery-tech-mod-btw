@@ -21,6 +21,7 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.DamageSource;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import vazkii.botania.common.achievement.ModAchievements;
 import vazkii.botania.common.core.handler.ConfigHandler;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.lib.LibItemNames;
@@ -53,6 +54,7 @@ public class ItemOdinRing extends ItemRelicBauble {
 
 		damageNegations.add(DamageSource.inWall.damageType);
 		damageNegations.add(DamageSource.starve.damageType);
+		setBindAchievement(ModAchievements.relicOdinRing);
 	}
 
 	@Override
