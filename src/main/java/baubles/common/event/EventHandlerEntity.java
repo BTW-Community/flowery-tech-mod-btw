@@ -45,7 +45,7 @@ public class EventHandlerEntity {
 		return false;
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public static void playerDeath(PlayerDropsEvent event) {
 		if (event.entity instanceof EntityPlayer
 				&& !event.entity.worldObj.isRemote

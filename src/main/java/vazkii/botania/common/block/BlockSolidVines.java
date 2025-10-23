@@ -45,10 +45,9 @@ public class BlockSolidVines extends BlockVine implements ILexiconable {
 
 	@Override
 	public Block setUnlocalizedName(String par1Str) {
-		super.setUnlocalizedName(par1Str);
 		var item = new ItemBlockMod(this);
 //		GameRegistry.registerBlock(this, ItemBlockMod.class, par1Str);
-		return this;
+		return super.setUnlocalizedName(par1Str);
 	}
 
 	//todofix not shearable

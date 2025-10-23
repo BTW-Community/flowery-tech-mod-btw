@@ -94,9 +94,9 @@ public class BlockModFlower extends BlockFlower implements ILexiconable, IPickup
 	}
 
 	@Override
-	public Block setLightValue(float p_149715_1_) {
-		originalLight = (int) (p_149715_1_ * 15);
-		return super.setLightValue(p_149715_1_);
+	public Block setLightValue(float lightValue) {
+		originalLight = (int) (lightValue * 15);
+		return super.setLightValue(lightValue);
 	}
 
 	@Override
