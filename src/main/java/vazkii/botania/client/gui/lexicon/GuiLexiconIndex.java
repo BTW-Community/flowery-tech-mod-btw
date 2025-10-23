@@ -391,7 +391,7 @@ public class GuiLexiconIndex extends GuiLexicon implements IParented {
 		if(Mouse.getEventButton() == 0)
 			swiped = false;
 
-		int w = Mouse.getEventDWheel();
+		int w = Mouse.getEventDWheel() / 120;
 		if(w < 0)
 			nextPage();
 		else if(w > 0)
@@ -435,15 +435,15 @@ public class GuiLexiconIndex extends GuiLexicon implements IParented {
 	}
 
 	void nextPage() {
-		if(rightButton.enabled && backButton instanceof GuiButtonSound bs) {
-			actionPerformed(backButton);
+		if(rightButton.enabled && rightButton instanceof GuiButtonSound bs) {
+			actionPerformed(rightButton);
 			bs.func_146113_a();
 		}
 	}
 
 	void prevPage() {
-		if(leftButton.enabled && backButton instanceof GuiButtonSound bs) {
-			actionPerformed(backButton);
+		if(leftButton.enabled && leftButton instanceof GuiButtonSound bs) {
+			actionPerformed(leftButton);
 			bs.func_146113_a();
 		}
 	}

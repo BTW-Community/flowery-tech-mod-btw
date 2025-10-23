@@ -342,15 +342,15 @@ public class GuiLexiconEntry extends GuiLexicon implements IGuiLexiconEntry, IPa
 	}
 
 	void nextPage() {
-		if(rightButton.enabled && backButton instanceof GuiButtonSound bs) {
-			actionPerformed(backButton);
+		if(rightButton.enabled && rightButton instanceof GuiButtonSound bs) {
+			actionPerformed(rightButton);
 			bs.func_146113_a();
 		}
 	}
 
 	void prevPage() {
-		if(leftButton.enabled && backButton instanceof GuiButtonSound bs) {
-			actionPerformed(backButton);
+		if(leftButton.enabled && leftButton instanceof GuiButtonSound bs) {
+			actionPerformed(leftButton);
 			bs.func_146113_a();
 		}
 	}
