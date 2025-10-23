@@ -39,9 +39,11 @@ public class ItemKeepIvy extends ItemMod {
 //		RecipeSorter.register("botania:keepIvy", KeepIvyRecipe.class, Category.SHAPELESS, "");
 		MinecraftForge.EVENT_BUS.register(this);
 //		FMLCommonHandler.instance().bus().register(this);
+		PlayerDropsEvent.PLAYER_DROPS.register(this::onPlayerDrops);
+		PlayerRespawnEvent.EVENT.register(this::onPlayerRespawn);
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onPlayerDrops(PlayerDropsEvent event) {
 		List<EntityItem> keeps = new ArrayList<>();
 		for(EntityItem item : event.drops) {
@@ -75,7 +77,7 @@ public class ItemKeepIvy extends ItemMod {
 		}
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onPlayerRespawn(PlayerRespawnEvent event) {
 		NBTTagCompound data = event.player.getEntityData();
 		if(data.hasKey(Persisted.PERSISTED_NBT_TAG)) {

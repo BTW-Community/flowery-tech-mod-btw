@@ -45,6 +45,7 @@ public class BlockFelPumpkin extends BlockMod implements ILexiconable {
 		setHardness(1F);
 		setStepSound(soundWoodFootstep);
 		MinecraftForge.EVENT_BUS.register(this);
+		LivingDropsEvent.LIVING_DROPS.register(this::onDrops);
 	}
 
 	@Override
@@ -85,7 +86,7 @@ public class BlockFelPumpkin extends BlockMod implements ILexiconable {
 		blockIcon = Block.pumpkin.getIcon(2, 0);
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onDrops(LivingDropsEvent event) {
 		if(event.entity instanceof EntityBlaze && event.entity.getEntityData().getBoolean(TAG_FEL_SPAWNED))
 			if(event.drops.isEmpty())

@@ -2,14 +2,20 @@ package dev.bagel.mixin.extensions;
 
 import dev.bagel.interfaces.EntityExtensions;
 import net.minecraft.src.Entity;
+import net.minecraft.src.EntityItem;
 import net.minecraft.src.NBTTagCompound;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Mixin(Entity.class)
 public abstract class EntityExtensionMixin implements EntityExtensions {
+    private ArrayList<EntityItem> capturedItems = new ArrayList<>();
+    private boolean captureDrops = false;
     private NBTTagCompound forge$customEntityData;
 
     @Override
@@ -32,5 +38,20 @@ public abstract class EntityExtensionMixin implements EntityExtensions {
         if (forge$customEntityData != null) {
             tag.setTag("extraData", forge$customEntityData);
         }
+    }
+
+    @Override
+    public ArrayList<EntityItem> getCapturedDrops() {
+        return capturedItems;
+    }
+
+    @Override
+    public void setCaptureDrops(boolean flag) {
+        this.captureDrops = flag;
+    }
+
+    @Override
+    public boolean getCaptureDrops() {
+        return captureDrops;
     }
 }

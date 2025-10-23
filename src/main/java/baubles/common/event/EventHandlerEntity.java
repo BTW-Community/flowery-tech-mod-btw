@@ -24,6 +24,7 @@ public class EventHandlerEntity {
 
 	public static void init() {
 		LivingEvent.LivingUpdateEvent.EVENT.register(EventHandlerEntity::playerTick);
+		PlayerDropsEvent.PLAYER_DROPS.register(EventHandlerEntity::playerDeath);
 	}
 
 //	@SubscribeEvent

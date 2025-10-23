@@ -31,4 +31,9 @@ public class LivingDeathEvent extends LivingEvent
         super(entity);
         this.source = source;
     }
+
+    @Override
+    public boolean isCancelable() {
+        return true;
+    }
 }

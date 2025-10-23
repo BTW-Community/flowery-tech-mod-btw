@@ -1,6 +1,8 @@
 package net.minecraftforge.event.entity.living;
 
 import cpw.mods.fml.common.eventhandler.Cancelable;
+import net.legacyfabric.fabric.api.event.Event;
+import net.legacyfabric.fabric.api.event.EventFactory;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.DamageSource;
@@ -44,5 +46,16 @@ public class LivingDropsEvent extends LivingEvent
         this.lootingLevel = lootingLevel;
         this.recentlyHit = recentlyHit;
         this.specialDropValue = specialDropValue;
+    }
+
+    public static Event<LivingDropsEventCallback> LIVING_DROPS = EventFactory.createArrayBacked(LivingDropsEventCallback.class, (callbacks) -> (event) -> {
+        for (LivingDropsEventCallback callback : callbacks) {
+            callback.onLivingDropsEvent(event);
+            if (event.isCanceled()) return;
+        }
+    });
+    @FunctionalInterface
+    public interface LivingDropsEventCallback {
+        public void onLivingDropsEvent(LivingDropsEvent event);
     }
 }

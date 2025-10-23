@@ -1,6 +1,7 @@
 package cpw.mods.fml.common.gameevent;
 
 import cpw.mods.fml.common.eventhandler.Event;
+import net.legacyfabric.fabric.api.event.EventFactory;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IInventory;
@@ -32,14 +33,6 @@ public class PlayerEvent extends Event {
             this.craftMatrix = craftMatrix;
         }
     }
-    public static class ItemSmeltedEvent extends PlayerEvent {
-        public final ItemStack smelting;
-        public ItemSmeltedEvent(EntityPlayer player, ItemStack crafting)
-        {
-            super(player);
-            this.smelting = crafting;
-        }
-    }
 
     public static class PlayerLoggedInEvent extends PlayerEvent {
         public PlayerLoggedInEvent(EntityPlayer player)
@@ -59,6 +52,14 @@ public class PlayerEvent extends Event {
         public PlayerRespawnEvent(EntityPlayer player)
         {
             super(player);
+        }
+        public static net.legacyfabric.fabric.api.event.Event<PlayerRespawnEventCallback> EVENT = EventFactory.createArrayBacked(PlayerRespawnEventCallback.class, (callbacks) -> (event) -> {
+            for (PlayerRespawnEventCallback eventCallback : callbacks) {
+                eventCallback.onPlayerRespawn(event);
+            }
+        });
+        public interface PlayerRespawnEventCallback {
+            public void onPlayerRespawn(PlayerRespawnEvent event);
         }
     }
 

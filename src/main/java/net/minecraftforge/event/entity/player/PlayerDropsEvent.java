@@ -1,6 +1,8 @@
 package net.minecraftforge.event.entity.player;
 
 import cpw.mods.fml.common.eventhandler.Cancelable;
+import net.legacyfabric.fabric.api.event.Event;
+import net.legacyfabric.fabric.api.event.EventFactory;
 import net.minecraft.src.EnchantmentHelper;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
@@ -15,24 +17,43 @@ import java.util.ArrayList;
  * world.
  */
 @Cancelable
-public class PlayerDropsEvent extends LivingDropsEvent
-{
+public class PlayerDropsEvent extends LivingDropsEvent {
     public final EntityPlayer entityPlayer;
 
     /**
      * Creates a new event containing all the items that will drop into the
      * world when a player dies.
-     * @param entity The dying player. 
+     *
+     * @param entity The dying player.
      * @param source The source of the damage which is killing the player.
-     * @param drops List of all drops entering the world.
+     * @param drops  List of all drops entering the world.
      */
-    public PlayerDropsEvent(EntityPlayer entity, DamageSource source, ArrayList<EntityItem> drops, boolean recentlyHit)
-    {
-        super(entity, source, drops, 
-            (source.getEntity() instanceof EntityPlayer) ? 
-                EnchantmentHelper.getLootingModifier(((EntityPlayer)source.getEntity())) : 0,
-            recentlyHit, 0);
-        
+    public PlayerDropsEvent(EntityPlayer entity, DamageSource source, ArrayList<EntityItem> drops, boolean recentlyHit) {
+        super(entity, source, drops,
+                (source.getEntity() instanceof EntityPlayer player) ? EnchantmentHelper.getLootingModifier(player) : 0, recentlyHit, 0);
+
         this.entityPlayer = entity;
+    }
+
+    public static Event<PlayerDropsEventCallback> PLAYER_DROPS = EventFactory.createArrayBacked(PlayerDropsEventCallback.class, (callbacks) -> (event) -> {
+        for (PlayerDropsEventCallback callback : callbacks) {
+            callback.onLivingDropsEvent(event);
+            if (event.isCanceled()) return;
+        }
+    });
+
+    @Override
+    public boolean isCancelable() {
+        return true;
+    }
+
+    @Override
+    public void setCanceled(boolean cancel) {
+        super.setCanceled(cancel);
+    }
+
+    @FunctionalInterface
+    public interface PlayerDropsEventCallback {
+        public void onLivingDropsEvent(PlayerDropsEvent event);
     }
 }
