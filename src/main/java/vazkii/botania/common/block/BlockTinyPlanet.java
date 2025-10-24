@@ -33,11 +33,6 @@ public class BlockTinyPlanet extends BlockModContainer<TileTinyPlanet> implement
 	}
 
 	@Override
-	public void renderBlockAsItem(RenderBlocks renderBlocks, int iItemDamage, float fBrightness) {
-		RenderingRegistry.instance().renderInventoryBlock(renderBlocks, this, iItemDamage, getRenderType());
-	}
-
-	@Override
 	public boolean renderAsNormalBlock() {
 		return false;
 	}
