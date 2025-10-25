@@ -1,11 +1,13 @@
 package dev.bagel.emi.recipe;
 
+import btw.item.BTWItems;
 import dev.bagel.emi.BlendTextureWidget;
 import dev.bagel.emi.BotaniaEmiPlugin;
 import dev.bagel.emi.ManaWidget;
 import emi.dev.emi.emi.api.stack.EmiIngredient;
 import emi.dev.emi.emi.api.stack.EmiStack;
 import emi.dev.emi.emi.api.widget.WidgetHolder;
+import net.minecraft.src.ItemStack;
 import net.minecraft.src.ResourceLocation;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.block.ModBlocks;
@@ -25,7 +27,7 @@ public class EmiTerrasteelRecipe extends BotaniaEmiRecipe {
     private final int mana;
 
     public EmiTerrasteelRecipe() {
-        super(BotaniaEmiPlugin.TERRESTRIAL_AGGLOMERATION, Botania.loc("terrasteel"), Stream.of(LibOreDict.MANA_STEEL, LibOreDict.MANA_DIAMOND, LibOreDict.MANA_PEARL).map(stack -> (EmiIngredient) EmiStack.of(stack)).toList(), List.of(EmiStack.of(LibOreDict.TERRA_STEEL)));
+        super(BotaniaEmiPlugin.TERRESTRIAL_AGGLOMERATION, Botania.loc("terrasteel"), Stream.of(new ItemStack(BTWItems.soulforgedSteelIngot), LibOreDict.MANA_DIAMOND, LibOreDict.MANA_PEARL).map(stack -> ((EmiIngredient) EmiStack.of(stack))).toList(), List.of(EmiStack.of(LibOreDict.TERRA_STEEL)));
         this.mana = TileTerraPlate.MAX_MANA;
     }
 
