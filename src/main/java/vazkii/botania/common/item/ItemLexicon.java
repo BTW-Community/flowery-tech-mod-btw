@@ -107,7 +107,7 @@ public class ItemLexicon extends ItemMod implements ILexicon, IElvenItem {
 	}
 
 	public static String getEdition() {
-		return "BTW";
+		return "Better Than Wolves";
 	}
 
 	@Override

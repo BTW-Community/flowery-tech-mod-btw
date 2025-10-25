@@ -23,6 +23,7 @@
     "event.SlotCraftingMixin",
     "event.SpawnerAnimalsMixin",
     "event.client.EntityRendererMixin",
+    "event.client.ItemRendererMixin",
     "event.client.ItemStackMixin",
     "event.client.RenderBipedMixin",
     "event.client.RenderBlocksMixin",

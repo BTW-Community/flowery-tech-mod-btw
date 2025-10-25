@@ -22,6 +22,7 @@ import org.lwjgl.opengl.GL14;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
 import org.lwjgl.opengl.GLContext;
+import vazkii.botania.client.core.helper.ShaderHelper;
 
 @Environment(EnvType.CLIENT)
 public class OpenGlHelper2
@@ -199,6 +200,7 @@ public class OpenGlHelper2
 
         shadersSupported = framebufferSupported && field_153213_x;
         field_153197_d = GL11.glGetString(GL11.GL_VENDOR).toLowerCase().contains("nvidia");
+        ShaderHelper.initShaders();
     }
 
     public static boolean func_153193_b()

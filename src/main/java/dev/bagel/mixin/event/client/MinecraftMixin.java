@@ -2,11 +2,15 @@ package dev.bagel.mixin.event.client;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import dev.bagel.client.OpenGlHelper2;
 import net.minecraft.src.*;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import vazkii.botania.client.core.helper.ShaderHelper;
 
 @Mixin(Minecraft.class)
 public class MinecraftMixin {
@@ -26,5 +30,11 @@ public class MinecraftMixin {
     private boolean forge$onClick2(PlayerControllerMP instance, EntityPlayer player, World world, ItemStack stack, Operation<Boolean> original) {
         boolean result = !net.minecraftforge.event.ForgeEventFactory.onPlayerInteract(thePlayer, PlayerInteractEvent.Action.RIGHT_CLICK_AIR, 0, 0, 0, -1, this.theWorld).isCanceled();
         return result && original.call(instance, player, world, stack);
+    }
+
+    @Inject(method = "startGame", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/OpenGlHelper;initializeTextures()V"))
+    private void forge$invokeImprovedOGLHelper(CallbackInfo ci) {
+        OpenGlHelper2.initializeTextures();
+        System.err.println("ogl: "+OpenGlHelper2.func_153172_c());
     }
 }
