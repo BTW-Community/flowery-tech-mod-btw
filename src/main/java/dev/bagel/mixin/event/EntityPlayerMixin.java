@@ -1,5 +1,6 @@
 package dev.bagel.mixin.event;
 
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.src.*;
 import net.minecraftforge.common.MinecraftForge;
@@ -24,8 +25,12 @@ public abstract class EntityPlayerMixin extends EntityLivingBase {
     @Shadow
     protected abstract void joinEntityItemWithWorld(EntityItem par1EntityItem);
 
+    @Shadow private ItemStack itemInUse;
     @Unique
     private boolean isCancelled = false;
+
+    @Unique
+    private int itemInUseCount;
 
     public EntityPlayerMixin(World par1World) {
         super(par1World);
@@ -92,5 +97,10 @@ public abstract class EntityPlayerMixin extends EntityLivingBase {
             return false;
         }
         return true;
+    }
+
+    @ModifyReturnValue(method = "getItemIcon", at = @At("RETURN"))
+    private Icon getItemIcon(Icon original, ItemStack stack, int pass) {
+        return stack.getItem().getIcon(stack, pass, ((EntityPlayer) (Object) this), this.itemInUse, itemInUseCount);
     }
 }

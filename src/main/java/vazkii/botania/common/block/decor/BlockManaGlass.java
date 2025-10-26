@@ -41,6 +41,11 @@ public class BlockManaGlass extends BlockMod implements ILexiconable {
 		return false;
 	}
 
+	@Override
+	public boolean renderAsNormalBlock() {
+		return false;
+	}
+
 	public boolean shouldSideBeRendered1(IBlockAccess world, int p_149646_2_, int p_149646_3_, int p_149646_4_, int p_149646_5_) {
 		Block block = world.getBlock(p_149646_2_, p_149646_3_, p_149646_4_);
 

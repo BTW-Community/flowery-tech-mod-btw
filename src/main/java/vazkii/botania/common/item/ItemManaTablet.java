@@ -70,7 +70,7 @@ public class ItemManaTablet extends ItemMod implements IManaItem, ICreativeManaP
 		return par2 == 1 ? Color.HSBtoRGB(0.528F,  mana / MAX_MANA, 1F) : 0xFFFFFF;
 	}
 
-	@Override
+/*	@Override
 	public int getDamage(ItemStack stack) {
 		// Compatibility shim, so tablets from previous versions of botania
 		// stack right in barrels and so forth
@@ -78,7 +78,7 @@ public class ItemManaTablet extends ItemMod implements IManaItem, ICreativeManaP
 //			super.setDamage(stack, 0);
 
 		return 0;
-	}
+	}*/
 
 	@Override
 	public void registerIcons(IconRegister par1IconRegister) {

@@ -24,16 +24,16 @@ public abstract class RenderItemMixin extends Render {
     @Shadow public float zLevel;
 
     @Inject(method = "renderItemAndEffectIntoGUI", at = @At(value = "HEAD"), cancellable = true)
-    private void btb$renderCustomInvItem(FontRenderer fontRenderer, TextureManager textureManager, ItemStack stack, int x, int y, CallbackInfo ci) {
+    private void forge$renderCustomInvItem(FontRenderer fontRenderer, TextureManager textureManager, ItemStack stack, int x, int y, CallbackInfo ci) {
         if (stack != null && ForgeHooksClient.renderInventoryItem(this.renderBlocks, textureManager, stack, this.renderWithColor, this.zLevel, (float) x, (float) y)) {
             ci.cancel();
         }
     }
 
     //this is fine mcdev just is dumb
-    @Inject(method = "doRenderItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/ItemStack;getItemSpriteNumber()I"),
-            locals = LocalCapture.CAPTURE_FAILHARD, cancellable = true)
-    private void btb$renderCustomItemEntity(EntityItem par1EntityItem, double par2, double par4, double par6, float par8, float par9, CallbackInfo ci, ItemStack stack, float bobbing, float rotation) {
+    @Inject(method = "doRenderItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/ItemStack;getItemSpriteNumber()I", ordinal = 0),
+            cancellable = true)
+    private void forge$renderCustomItemEntity(EntityItem par1EntityItem, double par2, double par4, double par6, float par8, float par9, CallbackInfo ci, @Local ItemStack stack, @Local(ordinal = 2) float bobbing, @Local(ordinal = 3) float rotation) {
         if (ForgeHooksClient.renderEntityItem(par1EntityItem, stack, bobbing, rotation, this.random, this.renderManager.renderEngine, this.renderBlocks)) {
             //these are called normally afterwards
             GL11.glDisable(32826);
@@ -47,7 +47,7 @@ public abstract class RenderItemMixin extends Render {
             slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/src/Item;requiresMultipleRenderPasses()Z", shift = At.Shift.AFTER)),
             at = @At(value = "CONSTANT", args = "intValue=1"))
     private int forge$multipleRenderPasses(int constant, @Local ItemStack stack) {
-        return stack.getItem().getRenderPasses(stack.getItemDamage());
+        return stack.getItem().getRenderPasses(stack.getItemDamage()) - 1;
     }
 
     @ModifyArgs(method = "doRenderItem",
@@ -70,6 +70,6 @@ public abstract class RenderItemMixin extends Render {
             slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/src/Item;requiresMultipleRenderPasses()Z", shift = At.Shift.AFTER)),
             at = @At(value = "CONSTANT", args = "intValue=1"))
     private int forge$multipleRenderPasses2(int constant, @Local(argsOnly = true) ItemStack stack) {
-        return stack.getItem().getRenderPasses(stack.getItemDamage());
+        return stack.getItem().getRenderPasses(stack.getItemDamage()) - 1;
     }
 }

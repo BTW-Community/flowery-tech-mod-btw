@@ -57,7 +57,7 @@ public interface IItemRenderer {
          * Data parameters:
          * RenderBlocks render - The RenderBlocks instance
          * EntityLiving entity - The entity holding this item
-         */
+         *///todo not implemented
         EQUIPPED,
 
         /**
