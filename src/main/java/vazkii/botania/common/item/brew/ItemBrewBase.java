@@ -38,7 +38,7 @@ import vazkii.botania.common.item.ItemMod;
 
 public abstract class ItemBrewBase extends ItemMod implements IBrewItem, IPickupAchievement {
 
-	private static final String TAG_BREW_KEY = "brewKey";
+	public static final String TAG_BREW_KEY = "brewKey";
 	private static final String TAG_SWIGS_LEFT = "swigsLeft";
 
 	String name;

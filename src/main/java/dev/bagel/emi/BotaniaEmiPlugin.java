@@ -10,6 +10,7 @@ import emi.dev.emi.emi.api.EmiExclusionArea;
 import emi.dev.emi.emi.api.EmiPlugin;
 import emi.dev.emi.emi.api.EmiRegistry;
 import emi.dev.emi.emi.api.recipe.EmiRecipeCategory;
+import emi.dev.emi.emi.api.recipe.EmiRecipeSorting;
 import emi.dev.emi.emi.api.stack.Comparison;
 import emi.dev.emi.emi.api.stack.EmiIngredient;
 import emi.dev.emi.emi.api.stack.EmiStack;
@@ -23,10 +24,15 @@ import vazkii.botania.api.recipe.*;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.block.tile.corporea.TileCorporeaIndex;
+import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.item.ItemManaTablet;
 import vazkii.botania.common.item.ItemTwigWand;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.block.ItemBlockSpecialFlower;
+import vazkii.botania.common.item.brew.ItemBrewBase;
+import vazkii.botania.common.item.brew.ItemIncenseStick;
+import vazkii.botania.common.item.brew.ItemVial;
+import vazkii.botania.common.item.equipment.bauble.ItemBloodPendant;
 import vazkii.botania.common.lib.LibBlockNames;
 
 import java.util.ArrayList;
@@ -42,9 +48,9 @@ public class BotaniaEmiPlugin implements EmiPlugin {
     public static EmiRecipeCategory PURE_DAISY = new EmiRecipeCategory(Botania.loc("pure_daisy"), EmiStack.of(ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_PUREDAISY)));
     public static EmiRecipeCategory RUNIC_ALTAR = new EmiRecipeCategory(Botania.loc("runic_altar"), EmiStack.of(new ItemStack(ModBlocks.runeAltar)));
     public static EmiRecipeCategory ELVEN_TRADE = new EmiRecipeCategory(Botania.loc("elven_trade"), EmiStack.of(new ItemStack(ModBlocks.alfPortal)));
-    public static EmiRecipeCategory BREWING = new EmiRecipeCategory(Botania.loc("brewing"), EmiStack.of(new ItemStack(ModBlocks.brewery)));
+    public static EmiRecipeCategory BREWING = new EmiRecipeCategory(Botania.loc("brewing"), EmiStack.of(new ItemStack(ModBlocks.brewery)), EmiStack.of(new ItemStack(ModBlocks.brewery)), EmiRecipeSorting.identifier());
     public static EmiRecipeCategory LEXICA_BOTANIA = new EmiRecipeCategory(Botania.loc("lexica_botania"), EmiStack.of(new ItemStack(ModItems.lexicon)));
-    public static EmiRecipeCategory TERRESTRIAL_AGGLOMERATION = new EmiRecipeCategory(Botania.loc("terrestrial_agglomeration"), EmiStack.of(new ItemStack(ModBlocks.terraPlate)));
+    public static EmiRecipeCategory TERRESTRIAL_AGGLOMERATION = new EmiRecipeCategory(Botania.loc("terrestrial_agglomeration"), EmiStack.of(new ItemStack(ModBlocks.terraPlate)), EmiStack.of(new ItemStack(ModBlocks.terraPlate)), EmiRecipeSorting.identifier());
 
     public static int rotateXAround(int x, int y, int cx, int cy, double degrees) {
         double rad = Math.toRadians(degrees);
@@ -82,7 +88,7 @@ public class BotaniaEmiPlugin implements EmiPlugin {
         reg.addCategory(BREWING);
         reg.addCategory(LEXICA_BOTANIA);
         reg.addCategory(TERRESTRIAL_AGGLOMERATION);
-        for(int i = 15; i > 0; i--) {
+        for(int i = 15; i > 0; i--) { // reverse! reverse!
             reg.addEmiStackAfter(EmiStack.of(ItemTwigWand.forColors(i, i)), EmiStack.of(ItemTwigWand.forColors(i-1, i-1)));
         }
         // Full tablet
@@ -108,6 +114,9 @@ public class BotaniaEmiPlugin implements EmiPlugin {
                 if(BotaniaAPI.miniFlowers.containsKey(s))
                     reg.addEmiStack(EmiStack.of(ItemBlockSpecialFlower.ofType(BotaniaAPI.miniFlowers.get(s))));
         }
+
+        addComparisons(reg);
+
         for (var recipe : BotaniaAPI.petalRecipes) {
             reg.addRecipe(new EmiPetalRecipe(recipe));
         }
@@ -124,16 +133,24 @@ public class BotaniaEmiPlugin implements EmiPlugin {
             reg.addRecipe(new EmiElvenTradeRecipe(recipe));
         }
         for (var recipe : BotaniaAPI.brewRecipes) {
-            reg.addRecipe(new EmiBrewingRecipe(recipe, new ItemStack(ModItems.vial, 1, 0)));
-            reg.addRecipe(new EmiBrewingRecipe(recipe, new ItemStack(ModItems.vial, 1, 1)));
-            reg.addRecipe(new EmiBrewingRecipe(recipe, new ItemStack(ModItems.incenseStick, 1, 0)));
+            if (((ItemVial) ModItems.vial).getItemForBrew(recipe.getBrew(), new ItemStack(ModItems.vial, 1, 0)) != null) {
+                reg.addRecipe(new EmiBrewingRecipe(recipe, new ItemStack(ModItems.vial, 1, 0), "vial"));
+                reg.addRecipe(new EmiBrewingRecipe(recipe, new ItemStack(ModItems.vial, 1, 1), "flask"));
+            }
+            if (((ItemIncenseStick) ModItems.incenseStick).getItemForBrew(recipe.getBrew(), new ItemStack(ModItems.incenseStick, 1)) != null)
+                reg.addRecipe(new EmiBrewingRecipe(recipe, new ItemStack(ModItems.incenseStick, 1), "incense_stick"));
+            if (((ItemBloodPendant) ModItems.bloodPendant).getItemForBrew(recipe.getBrew(), new ItemStack(ModItems.bloodPendant, 1)) != null)
+                reg.addRecipe(new EmiBrewingRecipe(recipe, new ItemStack(ModItems.bloodPendant, 1), "blood_pendant"));
         }
         reg.addRecipe(new EmiTerrasteelRecipe());
 
         for(LexiconEntry entry : BotaniaAPI.getAllEntries()) {
             List<ItemStack> stacks = entry.getDisplayedRecipes();
-            for(ItemStack stack : stacks)
-                reg.addRecipe(new EmiLexicaBotaniaRecipe(entry, stack));
+            int i = 1;
+            for(ItemStack stack : stacks) {
+                reg.addRecipe(new EmiLexicaBotaniaRecipe(entry, stack, i));
+                i++;
+            }
         }
 
         // todo there is a keybind for requesting an item from corporea it would seem
@@ -149,6 +166,45 @@ public class BotaniaEmiPlugin implements EmiPlugin {
     }
 
     private void addComparisons(EmiRegistry reg) {
+        var comparison = Comparison.of((es1, es2) -> {
+            String s1 = ItemNBTHelper.getString(es1.getItemStack(), ItemBrewBase.TAG_BREW_KEY, "");
+            String s2 = ItemNBTHelper.getString(es2.getItemStack(), ItemBrewBase.TAG_BREW_KEY, "");
+            if ((s1.isEmpty() || s2.isEmpty()) && !s1.equals(s2)) {
+                return false;
+            }
+            return s1.equals(s2);
+        });
+        reg.setDefaultComparison(EmiStack.of(new ItemStack(ModItems.brewFlask, 1, 0)), comparison);
+        reg.setDefaultComparison(EmiStack.of(new ItemStack(ModItems.brewVial, 1, 0)), comparison);
+        reg.setDefaultComparison(EmiStack.of(new ItemStack(ModItems.incenseStick, 1)), comparison);
+        reg.setDefaultComparison(EmiStack.of(new ItemStack(ModItems.bloodPendant, 1)), comparison);
+        EmiStack[] initals = new EmiStack[]{
+                EmiStack.of(new ItemStack(ModItems.brewVial, 1, 0)),
+                EmiStack.of(new ItemStack(ModItems.brewFlask, 1, 0)),
+                EmiStack.of(new ItemStack(ModItems.incenseStick, 1, 0)),
+                EmiStack.of(new ItemStack(ModItems.bloodPendant, 1, 0)),
+        };
+        //iterate brews and add all valid ones to emi
+        for (var brew : BotaniaAPI.brewMap.values()) {
+            if (((ItemVial) ModItems.vial).getItemForBrew(brew, new ItemStack(ModItems.vial, 1, 0)) != null) {
+                var newStack1 = EmiStack.of(((ItemVial) ModItems.vial).getItemForBrew(brew, new ItemStack(ModItems.vial, 1, 0)));
+                reg.addEmiStackAfter(newStack1.copy(), initals[0].copy());
+                initals[0] = newStack1;
+                var newStack2 = EmiStack.of(((ItemVial) ModItems.vial).getItemForBrew(brew, new ItemStack(ModItems.vial, 1, 1)));
+                reg.addEmiStackAfter(newStack2.copy(), initals[1].copy());
+                initals[1] = newStack2;
+            }
+            if (((ItemIncenseStick) ModItems.incenseStick).getItemForBrew(brew, new ItemStack(ModItems.incenseStick, 1)) != null) {
+                var newStack = EmiStack.of(((ItemIncenseStick) ModItems.incenseStick).getItemForBrew(brew, new ItemStack(ModItems.incenseStick, 1, 0)));
+                reg.addEmiStackAfter(newStack.copy(), initals[2].copy());
+                initals[2] = newStack;
+            }
+            if (((ItemBloodPendant) ModItems.bloodPendant).getItemForBrew(brew, new ItemStack(ModItems.bloodPendant, 1)) != null) {
+                var newStack = EmiStack.of(((ItemBloodPendant) ModItems.bloodPendant).getItemForBrew(brew, new ItemStack(ModItems.bloodPendant, 1, 0)));
+                reg.addEmiStackAfter(newStack.copy(), initals[3].copy());
+                initals[3] = newStack;
+            }
+        }
     }
 
 

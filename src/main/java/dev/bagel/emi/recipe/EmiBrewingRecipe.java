@@ -17,8 +17,8 @@ import java.util.List;
 
 public class EmiBrewingRecipe extends BotaniaEmiRecipe {
     private final List<EmiIngredient> inputWithFlask;
-    public EmiBrewingRecipe(RecipeBrew recipe, ItemStack flask) {
-        super(BotaniaEmiPlugin.BREWING, null, recipe.getInputs().stream().map(tagOrStack -> {
+    public EmiBrewingRecipe(RecipeBrew recipe, ItemStack flask, String brewType) {
+        super(BotaniaEmiPlugin.BREWING, getRecipeId(recipe, brewType), recipe.getInputs().stream().map(tagOrStack -> {
             if (tagOrStack instanceof TagInstance ti) {
                 return EmiIngredient.of(ti);
             }
@@ -61,5 +61,9 @@ public class EmiBrewingRecipe extends BotaniaEmiRecipe {
             widgets.addSlot(ingredient, 86, 41).recipeContext(this);
             i++;
         }
+    }
+
+    private static ResourceLocation getRecipeId(RecipeBrew brewRecipe, String brewType) {
+        return new ResourceLocation("botania", "brew/" + brewType + "/" + brewRecipe.getBrew().getUnlocalizedName());
     }
 }

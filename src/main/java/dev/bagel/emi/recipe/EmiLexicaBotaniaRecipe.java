@@ -17,8 +17,8 @@ import java.util.List;
 public class EmiLexicaBotaniaRecipe extends BotaniaEmiRecipe{
     private final LexiconEntry entry;
     private final ItemStack stack;
-    public EmiLexicaBotaniaRecipe(LexiconEntry entry, ItemStack stack) {
-        super(BotaniaEmiPlugin.LEXICA_BOTANIA, new ResourceLocation(entry.getUnlocalizedName().replace('.', '_')), List.of(EmiStack.of(stack)), List.of());
+    public EmiLexicaBotaniaRecipe(LexiconEntry entry, ItemStack stack, int page) {
+        super(BotaniaEmiPlugin.LEXICA_BOTANIA, new ResourceLocation(entry.getUnlocalizedName().replace('.', '_') + "/page_" + page), List.of(EmiStack.of(stack)), List.of());
         this.entry = entry;
         this.stack = stack;
     }

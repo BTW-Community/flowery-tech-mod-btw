@@ -70,7 +70,7 @@ public class ItemIncenseStick extends ItemMod implements IBrewItem, IBrewContain
 
 	@Override
 	public int getRenderPasses(int metadata) {
-		return 1;
+		return 2;
 	}
 
 	@Override
