@@ -62,7 +62,7 @@ public final class ConfigHandler {
 	public static int manaBarHeight = 29;
 	public static int flightBarHeight = 49;
 	public static int flightBarBreathHeight = 59;
-	public static int glSecondaryTextureUnit = 7;
+	public static int glSecondaryTextureUnit = 8;
 
 	public static boolean altFlowerTextures = false;
 	public static boolean matrixMode = false;
