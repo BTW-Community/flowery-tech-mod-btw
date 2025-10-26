@@ -37,11 +37,12 @@ public class BlockGaiaHead extends BlockSkull {
 		super(id);
 		setUnlocalizedName(LibBlockNames.GAIA_HEAD);
 		setHardness(1.0F);
+		var item = new ItemBlockMod(this);
 	}
 
 	@Override
 	public Block setUnlocalizedName(String par1Str) {
-		var item = new ItemBlockMod(this);
+//		var item = new ItemBlockMod(this);
 //		GameRegistry.registerBlock(this, ItemBlockMod.class, par1Str);
 		return super.setUnlocalizedName(par1Str);
 	}

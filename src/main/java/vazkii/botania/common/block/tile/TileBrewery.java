@@ -191,10 +191,10 @@ public class TileBrewery extends TileSimpleInventory implements ISidedInventory,
 		return 7;
 	}
 
-//	@Override
-//	public AxisAlignedBB getRenderBoundingBox() {
-//		return INFINITE_EXTENT_AABB;
-//	}
+	@Override
+	public AxisAlignedBB getRenderBoundingBox() {
+		return INFINITE_EXTENT_AABB;
+	}
 
 	@Override
 	public String getInvName() {

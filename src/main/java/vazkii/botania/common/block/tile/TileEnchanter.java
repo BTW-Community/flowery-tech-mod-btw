@@ -269,10 +269,10 @@ public class TileEnchanter extends TileMod implements ISparkAttachable {
 		}
 	}
 
-//	@Override
-//	public AxisAlignedBB getRenderBoundingBox() {
-//		return INFINITE_EXTENT_AABB;
-//	}
+	@Override
+	public AxisAlignedBB getRenderBoundingBox() {
+		return INFINITE_EXTENT_AABB;
+	}
 
 	@Override
 	public int getCurrentMana() {

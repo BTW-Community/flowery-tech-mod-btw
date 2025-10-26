@@ -37,13 +37,6 @@ public class BlockBuriedPetals extends BlockModFlower {
 //	}
 
 	@Override
-	public Block setUnlocalizedName(String par1Str) {
-		var item = new ItemBlockWithMetadataAndName(this).hideFromEMI();
-//GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
-		return super.setUnlocalizedName(par1Str);
-	}
-
-	@Override
 	public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random) {
 		int meta = par1World.getBlockMetadata(par2, par3, par4);
 		float[] color = EntitySheep.fleeceColorTable[meta];

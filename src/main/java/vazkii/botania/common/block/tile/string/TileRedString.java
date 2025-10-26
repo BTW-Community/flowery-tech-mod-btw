@@ -63,10 +63,10 @@ public abstract class TileRedString extends TileMod implements ITileBound {
 		// NO-OP
 	}
 
-//	@Override
-//	public AxisAlignedBB getRenderBoundingBox() {
-//		return INFINITE_EXTENT_AABB;
-//	}
+	@Override
+	public AxisAlignedBB getRenderBoundingBox() {
+		return INFINITE_EXTENT_AABB;
+	}
 
 	@Override
 	public ChunkCoordinates getBinding() {

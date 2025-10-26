@@ -357,9 +357,8 @@ public class TileAlfPortal extends TileMod {
 		return false;
 	}
 
-	//todofix visual bounding box for tile entity
-/*	@Override
-	public AxisAlignedBB getVisualBoundingBox() {
+	@Override
+	public AxisAlignedBB getRenderBoundingBox() {
 		return INFINITE_EXTENT_AABB;
-	}*/
+	}
 }

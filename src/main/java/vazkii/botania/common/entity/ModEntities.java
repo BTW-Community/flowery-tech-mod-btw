@@ -44,8 +44,6 @@ public final class ModEntities {
 	public static final int EntityBabylonWeaponId = id++;
 	public static final int EntityFallingStarId = id++;
 	public static void init() {
-		int id = 600;
-		//todofix HIGH PRIO: Entity have null packets on spawn
 		EntityList.addMapping(EntityManaBurst.class, LibEntityNames.MANA_BURST, EntityManaBurstId);
 		CustomEntityPacketHandler.entryMap.put(EntityManaBurstId, ((world, data, packet) ->{
 			var entity = new EntityManaBurst(world);

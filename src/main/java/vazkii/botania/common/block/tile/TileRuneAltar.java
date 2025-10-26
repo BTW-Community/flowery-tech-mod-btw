@@ -297,11 +297,10 @@ public class TileRuneAltar extends TileSimpleInventory implements ISidedInventor
 		return 16;
 	}
 
-	//todofix low priority, render bounding box
-//	@Override
-//	public AxisAlignedBB getRenderBoundingBox() {
-//		return INFINITE_EXTENT_AABB;
-//	}
+	@Override
+	public AxisAlignedBB getRenderBoundingBox() {
+		return INFINITE_EXTENT_AABB;
+	}
 
 	@Override
 	public String getInvName() {

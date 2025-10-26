@@ -9,6 +9,7 @@
     "GameSettingsMixin",
     "ItemStackMixin",
     "PlayerControllerMPMixin",
+    "RenderGlobalMixin",
     "RenderItemMixin",
     "debug.AchievementDataAccessor",
     "event.BlockMixin",

@@ -301,6 +301,7 @@ public final class ModBlocks {
 		conjurationCatalyst = new BlockConjurationCatalyst(id++);
 		bifrost = new BlockBifrost(id++);
 		solidVines = new BlockSolidVines(id++);
+		solidVines.setUnlocalizedName(LibBlockNames.SOLID_VINE);
 		buriedPetals = new BlockBuriedPetals(id++);
 		prismarine = new BlockPrismarine(id++);
 		seaLamp = new BlockSeaLamp(id++);
@@ -355,6 +356,7 @@ public final class ModBlocks {
 		cellBlock = new BlockCell(id++);
 		redStringInterceptor = new BlockRedStringInterceptor(id++);
 		gaiaHead = new BlockGaiaHead(id++);
+		gaiaHead.setUnlocalizedName(LibBlockNames.GAIA_HEAD);
 		corporeaRetainer = new BlockCorporeaRetainer(id++);
 		teruTeruBozu = new BlockTeruTeruBozu(id++);
 		shimmerrock = new BlockShimmerrock(id++);
