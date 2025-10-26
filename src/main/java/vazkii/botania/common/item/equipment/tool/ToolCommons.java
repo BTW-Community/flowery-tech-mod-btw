@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.item.equipment.tool;
 
+import btw.block.BTWBlocks;
 import dev.bagel.interfaces.BlockExtensions;
 import net.minecraft.src.Block;
 import net.minecraft.src.Material;
@@ -35,13 +36,13 @@ import vazkii.botania.common.item.equipment.tool.terrasteel.ItemTerraPick;
 
 public final class ToolCommons {
 
-	public static Material[] materialsPick = new Material[]{ Material.rock, Material.iron, Material.ice, Material.glass, Material.piston, Material.anvil };
-	public static Material[] materialsShovel = new Material[]{ Material.grass, Material.ground, Material.sand, Material.snow, Material.craftedSnow, Material.clay };
-	public static Material[] materialsAxe = new Material[]{ Material.coral, Material.leaves, Material.plants, Material.wood, Material.pumpkin };
+	public static Material[] materialsPick = new Material[]{ Material.rock, Material.iron, Material.ice, Material.glass, Material.piston, Material.anvil, BTWBlocks.soulforgedSteelMaterial, BTWBlocks.netherRockMaterial, BTWBlocks.cementMaterial};
+	public static Material[] materialsShovel = new Material[]{ Material.grass, Material.ground, Material.sand, Material.snow, Material.craftedSnow, Material.clay, BTWBlocks.naturalClayMaterial };
+	public static Material[] materialsAxe = new Material[]{ Material.coral, Material.leaves, Material.plants, Material.wood, Material.pumpkin, BTWBlocks.plankMaterial , BTWBlocks.logMaterial, BTWBlocks.wickerMaterial };
 
 	public static void damageItem(ItemStack stack, int dmg, EntityLivingBase entity, int manaPerDamage) {
 		int manaToRequest = dmg * manaPerDamage;
-		boolean manaRequested = entity instanceof EntityPlayer ? ManaItemHandler.requestManaExactForTool(stack, (EntityPlayer) entity, manaToRequest, true) : false;
+		boolean manaRequested = entity instanceof EntityPlayer && ManaItemHandler.requestManaExactForTool(stack, (EntityPlayer) entity, manaToRequest, true);
 
 		if(!manaRequested)
 			stack.damageItem(dmg, entity);
