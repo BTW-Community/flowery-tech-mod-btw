@@ -18,7 +18,6 @@ import java.util.Calendar;
 
 import dev.bagel.util.BotaniaSounds;
 import dev.bagel.util.Items;
-import net.fabricmc.api.EnvType;
 import net.minecraft.src.*;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
@@ -43,7 +42,6 @@ import vazkii.botania.client.core.handler.MultiblockRenderHandler;
 import vazkii.botania.client.core.handler.PersistentVariableHelper;
 import vazkii.botania.client.core.handler.SubTileRadiusRenderHandler;
 import vazkii.botania.client.core.handler.TooltipHandler;
-import vazkii.botania.client.core.helper.ShaderHelper;
 import vazkii.botania.client.fx.FXSparkle;
 import vazkii.botania.client.fx.FXWisp;
 import vazkii.botania.client.gui.lexicon.GuiLexicon;
@@ -111,7 +109,6 @@ import vazkii.botania.client.render.tile.RenderTileTerraPlate;
 import vazkii.botania.client.render.tile.RenderTileTeruTeruBozu;
 import vazkii.botania.client.render.tile.RenderTileTinyPotato;
 import vazkii.botania.client.render.world.SkyblockRenderEvents;
-import vazkii.botania.common.Botania;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.block.tile.TileAlfPortal;
 import vazkii.botania.common.block.tile.TileAltar;
@@ -160,7 +157,6 @@ import vazkii.botania.common.item.ItemSextant.MultiblockSextant;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.equipment.bauble.ItemMonocle;
 import vazkii.botania.common.lexicon.LexiconData;
-import vazkii.botania.common.lib.LibObfuscation;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLLog;
 
@@ -325,9 +321,6 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityPinkWither.class, new RenderPinkWither());
 		RenderingRegistry.registerEntityRenderingHandler(EntityManaStorm.class, new RenderManaStorm());
 		RenderingRegistry.registerEntityRenderingHandler(EntityBabylonWeapon.class, new RenderBabylonWeapon());
-
-		//todofix shaders??
-//		ShaderHelper.initShaders();
 	}
 
 	@Override
@@ -406,7 +399,7 @@ public class ClientProxy extends CommonProxy {
 			world.playAuxSFXAtEntity(null, 1005, x, y, z, 0);
 		else {
 			world.playAuxSFXAtEntity(null, 1005, x, y, z, record.itemID);
-			mc.ingameGUI.setRecordPlayingMessage(record.recordName);
+			mc.ingameGUI.setRecordPlayingMessage(record.getRecordTitle());
 		}
 	}
 

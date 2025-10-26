@@ -11,6 +11,7 @@
     "PlayerControllerMPMixin",
     "RenderGlobalMixin",
     "RenderItemMixin",
+    "SoundManagerMixin",
     "debug.AchievementDataAccessor",
     "event.BlockMixin",
     "event.EntityLivingBaseMixin",

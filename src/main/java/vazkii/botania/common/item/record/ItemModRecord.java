@@ -37,6 +37,11 @@ public class ItemModRecord extends ItemRecord {
 	}
 
 	@Override
+	public String getRecordTitle() {
+		return I18n.getString("item.record.%s.desc".formatted(recordName));
+	}
+
+	@Override
 	public String getUnlocalizedNameInefficiently(ItemStack par1ItemStack) {
 		return super.getUnlocalizedNameInefficiently(par1ItemStack).replaceAll("item\\.", "item." + LibResources.PREFIX_MOD);
 	}
