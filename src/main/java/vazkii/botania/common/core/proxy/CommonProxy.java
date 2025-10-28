@@ -80,8 +80,9 @@ public class CommonProxy {
 
 		ChestGenHandler.init();
 
-		if(Botania.gardenOfGlassLoaded)
-			new WorldTypeSkyblock();
+		if(Botania.gardenOfGlassLoaded) {
+			new WorldTypeSkyblock(9); // sure why not 9
+		}
 
 		LexiconData.preInit();
 	}

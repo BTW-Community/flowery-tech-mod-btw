@@ -54,6 +54,10 @@ public class SimpleWikiProvider implements IWikiProvider {
 		if(block == null)
 			return null;
 
+		if (block.idPicked(world, x, y, z) <= 0 && block.getUnlocalizedName() != null) {
+			return block.getLocalizedName();
+		}
+
 		ItemStack stack = block.getPickBlock(pos, world, x, y, z);
 
 		if(stack == null || stack.getItem() == null)

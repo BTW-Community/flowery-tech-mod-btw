@@ -18,8 +18,8 @@ import net.minecraftforge.common.MinecraftForge;
 
 public class WorldTypeSkyblock extends WorldType {
 
-	public WorldTypeSkyblock() {
-		super(1, "botania-skyblock");
+	public WorldTypeSkyblock(int id) {
+		super(id, "botania-skyblock");
 	}
 
 	public static boolean isWorldSkyblock(World world) {
