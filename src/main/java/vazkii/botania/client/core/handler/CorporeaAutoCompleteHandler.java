@@ -2,30 +2,27 @@
  * This class was created by <SoundLogic>. It's distributed as
  * part of the Botania Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Botania
- * 
+ * <p>
  * Botania is Open Source and distributed under the
  * Botania License: http://botaniamod.net/license.php
- * 
+ * <p>
  * File Created @ [June 8, 2015, 12:55:20 AM (GMT)]
  */
 package vazkii.botania.client.core.handler;
 
 import java.util.*;
 
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.GuiChat;
 import net.minecraft.src.GuiScreen;
 import net.minecraft.src.GuiTextField;
-import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 
 import org.lwjgl.input.Keyboard;
 
 import vazkii.botania.api.corporea.CorporeaHelper;
-import vazkii.botania.common.lib.LibObfuscation;
 import cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
 
@@ -39,7 +36,7 @@ public abstract class CorporeaAutoCompleteHandler {
 
 	boolean isAutoCompleted = false;
 	String originalString = "";
-	List<CompletionData> completions = new ArrayList<CompletionData>();
+	List<CompletionData> completions = new ArrayList<>();
 	int position;
 
 	static TreeSet<String> itemNames = new TreeSet<>(String::compareToIgnoreCase);
@@ -49,7 +46,7 @@ public abstract class CorporeaAutoCompleteHandler {
 	public static void updateItemList() {
 		itemNames.clear();
 		Iterator<Item> iterator = Arrays.asList(Item.itemsList).iterator();
-		ArrayList<ItemStack> curList = new ArrayList<ItemStack>();
+		ArrayList<ItemStack> curList = new ArrayList<>();
 
 		while(iterator.hasNext()) {
 			Item item = iterator.next();
@@ -61,7 +58,7 @@ public abstract class CorporeaAutoCompleteHandler {
 					for(ItemStack stack : curList)
 						itemNames.add(CorporeaHelper.stripControlCodes(stack.getDisplayName().trim()));
 				}
-				catch (Exception e) {}
+				catch (Exception ignored) {}
 			}
 		}
 	}
@@ -71,12 +68,11 @@ public abstract class CorporeaAutoCompleteHandler {
 		if(event.phase != Phase.END)
 			return;
 		GuiScreen screen = Minecraft.getMinecraft().currentScreen;
-		if(!(screen instanceof GuiChat)) {
+		if(!(screen instanceof GuiChat chat)) {
 			isAutoCompleted = false;
 			return;
 		}
-		GuiChat chat = (GuiChat) screen;
-		if(isAutoCompleted) {
+        if(isAutoCompleted) {
 			boolean valid = chat.field_73905_m;
 			if(!valid)
 				isAutoCompleted = false;
@@ -97,10 +93,10 @@ public abstract class CorporeaAutoCompleteHandler {
 		if(!isAutoCompleted)
 			buildAutoCompletes(inputField, chat);
 		if(isAutoCompleted && !completions.isEmpty())
-			advanceAutoComplete(inputField, chat);
+			advanceAutoComplete(inputField);
 	}
 
-	private void advanceAutoComplete(GuiTextField inputField, GuiChat chat) {
+	private void advanceAutoComplete(GuiTextField inputField) {
 		position++;
 		if(position >= completions.size())
 			position -= completions.size();
@@ -115,7 +111,7 @@ public abstract class CorporeaAutoCompleteHandler {
 			leftOfCursor = "";
 		else
 			leftOfCursor = inputField.getText().substring(0, inputField.getCursorPosition());
-		if(leftOfCursor.length() == 0 || leftOfCursor.charAt(0) == '/')
+		if(leftOfCursor.isEmpty() || leftOfCursor.charAt(0) == '/')
 			return;
 		completions = getNames(leftOfCursor);
 		if(completions.isEmpty())
@@ -126,7 +122,7 @@ public abstract class CorporeaAutoCompleteHandler {
 		CompletionData data;
 		for(Iterator<CompletionData> iterator = completions.iterator(); iterator.hasNext(); stringbuilder.append(data.string)) {
 			data = iterator.next();
-			if(stringbuilder.length() > 0)
+			if(!stringbuilder.isEmpty())
 				stringbuilder.append(", ");
 		}
 
@@ -140,21 +136,21 @@ public abstract class CorporeaAutoCompleteHandler {
 		if(s.isEmpty())
 			return new ArrayList<>();
 				
-		TreeSet<CompletionData> result = new TreeSet<CompletionData>();
+		TreeSet<CompletionData> result = new TreeSet<>();
 		String[] words = s.split(" ");
 		int i = words.length - 1;
-		String curPrefix = words[i];
+		StringBuilder curPrefix = new StringBuilder(words[i]);
 		while(i >= 0) {
-			result.addAll(getNamesStartingWith(curPrefix.toLowerCase()));
+			result.addAll(getNamesStartingWith(curPrefix.toString().toLowerCase()));
 			i--;
 			if(i >= 0)
-				curPrefix = words[i] + " " + curPrefix;
+				curPrefix.insert(0, words[i] + " ");
 		}
-		return new ArrayList<CompletionData>(result);
+		return new ArrayList<>(result);
 	}
 
 	private List<CompletionData> getNamesStartingWith(String prefix) {
-		ArrayList<CompletionData> result = new ArrayList<CompletionData>();
+		ArrayList<CompletionData> result = new ArrayList<>();
 		int length = prefix.length();
 		SortedSet<String> after = itemNames.tailSet(prefix);
 		for(String str : after) {
@@ -165,20 +161,12 @@ public abstract class CorporeaAutoCompleteHandler {
 		return result;
 	}
 
-	private static class CompletionData implements Comparable<CompletionData> {
-
-		private String string;
-		private int prefixLength;
-
-		public CompletionData(String string, int prefixLength) {
-			this.string = string;
-			this.prefixLength = prefixLength;
-		}
+	private record CompletionData(String string, int prefixLength) implements Comparable<CompletionData> {
 
 		@Override
-		public int compareTo(CompletionData arg0) {
-			return string.compareTo(arg0.string);
+			public int compareTo(CompletionData arg0) {
+				return string.compareTo(arg0.string);
+			}
 		}
-	}
 
 }

@@ -198,6 +198,7 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForge.EVENT_BUS.register(new MultiblockRenderHandler());
 		MinecraftForge.EVENT_BUS.register(new SkyblockRenderEvents());
 		//todofix CorporeaAutoCompleteHandler
+		CorporeaAutoCompleteHandler.INSTANCE.getClass(); //wew
 //		FMLCommonHandler.instance().bus().register(new CorporeaAutoCompleteHandler());
 
 		if(ConfigHandler.enableSeasonalFeatures) {
