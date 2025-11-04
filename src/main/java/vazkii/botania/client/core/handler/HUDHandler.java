@@ -341,7 +341,7 @@ public final class HUDHandler {
 
 		if(!draw && pos.entityHit == null) {
 			profiler.startSection("wikiLookup");
-			if(!block.isAir(mc.theWorld, pos.blockX, pos.blockY, pos.blockZ) && !(block instanceof BlockFluid)) {
+			if(!mc.theWorld.isAirBlock(pos.blockX, pos.blockY, pos.blockZ) && !(block instanceof BlockFluid)) {
 				IWikiProvider provider = WikiHooks.getWikiFor(block);
 				String url = provider.getWikiURL(mc.theWorld, pos);
 				if(url != null && !url.isEmpty()) {

@@ -26,8 +26,7 @@ public class AnyComponent extends MultiblockComponent {
 	@Override
 	public boolean matches(World world, int x, int y, int z) {
 		Block block = world.getBlock(x, y, z);
-		//todo added null check
-		return block != null && !block.isAir(world, x, y, z) && block.getCollisionBoundingBoxFromPool(world, x, y, z) != null;
+		return block != null && !block.isAirBlock() && block.getCollisionBoundingBoxFromPool(world, x, y, z) != null;
 	}
 
 }

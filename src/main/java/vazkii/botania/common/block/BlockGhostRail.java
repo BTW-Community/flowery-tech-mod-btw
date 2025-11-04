@@ -55,7 +55,7 @@ public class BlockGhostRail extends BlockRailBase implements ILexiconable {
 		int y = MathHelper.floor_double(event.entity.posY);
 		int z = MathHelper.floor_double(event.entity.posZ);
 		Block block = event.entity.worldObj.getBlock(x, y, z);
-		boolean air = block.isAir(event.entity.worldObj, x, y, z);
+		boolean air = event.entity.worldObj.isAirBlock(x, y, z);
 		int floatTicks = event.entity.getEntityData().getInteger(TAG_FLOAT_TICKS);
 
 		if(block == this)
@@ -68,8 +68,7 @@ public class BlockGhostRail extends BlockRailBase implements ILexiconable {
 		floatTicks = event.entity.getEntityData().getInteger(TAG_FLOAT_TICKS);
 
 		if(floatTicks > 0) {
-			Block blockBelow = event.entity.worldObj.getBlock(x, y - 1, z);
-			boolean airBelow = blockBelow.isAir(event.entity.worldObj, x, y - 1, z);
+			boolean airBelow = event.entity.worldObj.isAirBlock(x, y - 1, z);
 			if(air && airBelow || !air && !airBelow)
 				event.entity.noClip = true;
 			event.entity.motionY = 0.2;
