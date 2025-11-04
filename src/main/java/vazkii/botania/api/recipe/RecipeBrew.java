@@ -54,16 +54,15 @@ public class RecipeBrew {
 
 			for(int j = 0; j < inputsMissing.size(); j++) {
 				Object input = inputsMissing.get(j);
-				//todo replace oredict with tags
-/*				if(input instanceof String) {
-					List<ItemStack> validStacks = OreDictionary.getOres((String) input);
+				if(input instanceof TagInstance tagInstance) {
+					List<ItemStack> validStacks = tagInstance.tag().getItems();
 					boolean found = false;
 					for(ItemStack ostack : validStacks) {
 						ItemStack cstack = ostack.copy();
 						if(cstack.getItemDamage() == Short.MAX_VALUE)
 							cstack.setItemDamage(stack.getItemDamage());
 
-						if(stack.isItemEqual(cstack)) {
+						if(stack.isItemEqual(cstack, true)) {
 							oredictIndex = j;
 							found = true;
 							break;
@@ -74,7 +73,7 @@ public class RecipeBrew {
 					if(found)
 						break;
 				}
-				else */
+				else
 					if(input instanceof ItemStack && simpleAreStacksEqual((ItemStack) input, stack)) {
 					stackIndex = j;
 					break;
