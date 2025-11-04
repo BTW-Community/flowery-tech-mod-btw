@@ -11,6 +11,8 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Constant;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -42,5 +44,10 @@ public class NetServerHandlerMixin {
             return original.call(instance, par1EntityPlayer, par2World, par3ItemStack);
         }
         return false;
+    }
+
+    @ModifyConstant(method = "handleStartBlockHarvest", constant = @Constant(doubleValue = 36d))
+    private double botania$reach(double constant) {
+        return Math.pow(this.playerEntity.theItemInWorldManager.getBlockReachDistance() + 1, 2);
     }
 }
