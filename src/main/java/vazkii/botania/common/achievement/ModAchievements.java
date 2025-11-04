@@ -94,7 +94,7 @@ public final class ModAchievements {
 			new RuntimeException("Achievement is null!").printStackTrace();
 			return;
 		}
-		player.addStat(achievement, 1);
+//		player.addStat(achievement, 1);
 		player.getData(AchievementHandler.ACHIEVEMENTS_DATA).getDataForPlayer(player.username).triggerAchievement(achievement);
 	}
 
