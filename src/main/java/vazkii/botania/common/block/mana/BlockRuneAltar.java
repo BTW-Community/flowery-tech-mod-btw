@@ -12,12 +12,8 @@ package vazkii.botania.common.block.mana;
 
 import java.util.Random;
 
-import net.minecraft.src.Material;
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.Icon;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
+import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -45,6 +41,15 @@ public class BlockRuneAltar extends BlockModContainer<TileRuneAltar> implements 
 		BotaniaAPI.blacklistBlockFromMagnet(this, Short.MAX_VALUE);
 
 		random = new Random();
+	}
+
+	@Override
+	public boolean shouldSideBeRendered(IBlockAccess blockAccess, int iNeighborI, int iNeighborJ, int iNeighborK, int iSide) {
+		Block neighborBlock = blocksList[blockAccess.getBlockId(iNeighborI, iNeighborJ, iNeighborK)];
+		if (neighborBlock != null) {
+			return neighborBlock.shouldRenderNeighborFullFaceSide(blockAccess, iNeighborI, iNeighborJ, iNeighborK, iSide) || iSide == EnumFacing.UP.ordinal();
+		}
+		return true;
 	}
 
 	@Override
