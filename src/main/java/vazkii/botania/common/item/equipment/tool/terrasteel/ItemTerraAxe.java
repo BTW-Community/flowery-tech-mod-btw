@@ -80,6 +80,7 @@ public class ItemTerraAxe extends ItemManasteelAxe implements ISequentialBreaker
 	public ItemTerraAxe(int id) {
 		super(id, BotaniaAPI.terrasteelToolMaterial, LibItemNames.TERRA_AXE);
 //		FMLCommonHandler.instance().bus().register(this);
+		TickEvent.WorldTickEvent.EVENT.register(this::onTickEnd);
 	}
 
 	@Override
@@ -132,7 +133,7 @@ public class ItemTerraAxe extends ItemManasteelAxe implements ISequentialBreaker
 		return false;
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onTickEnd(TickEvent.WorldTickEvent event) {
 		// Block Swapping ticking should only occur on the server
 		if(event.world.isRemote)

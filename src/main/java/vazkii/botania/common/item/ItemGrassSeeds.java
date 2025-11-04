@@ -61,6 +61,7 @@ public class ItemGrassSeeds extends ItemMod implements IFloatingFlowerVariant {
 		setUnlocalizedName(LibItemNames.GRASS_SEEDS);
 		setHasSubtypes(true);
 //		FMLCommonHandler.instance().bus().register(this);
+		TickEvent.WorldTickEvent.EVENT.register(this::onTickEnd);
 	}
 
 	@Override
@@ -168,7 +169,7 @@ public class ItemGrassSeeds extends ItemMod implements IFloatingFlowerVariant {
 		return true;
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onTickEnd(TickEvent.WorldTickEvent event) {
 		// Block swapper updates should only occur on the server
 		if(event.world.isRemote)
