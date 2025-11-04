@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.item.equipment.tool.manasteel;
 
+import btw.block.BTWBlocks;
 import btw.item.items.ShovelItem;
 import net.minecraft.src.*;
 import net.minecraft.src.Block;
@@ -72,8 +73,8 @@ public class ItemManasteelShovel extends ShovelItem implements IManaUsingItem, I
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack p_77648_1_, EntityPlayer p_77648_2_, World p_77648_3_, int p_77648_4_, int p_77648_5_, int p_77648_6_, int p_77648_7_, float p_77648_8_, float p_77648_9_, float p_77648_10_) {
-		if(!p_77648_2_.canPlayerEdit(p_77648_4_, p_77648_5_, p_77648_6_, p_77648_7_, p_77648_1_))
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int p_77648_7_, float p_77648_8_, float p_77648_9_, float p_77648_10_) {
+		if(!player.canPlayerEdit(x, y, z, p_77648_7_, stack))
 			return false;
 		else {
 //			UseHoeEvent event = new UseHoeEvent(p_77648_2_, p_77648_1_, p_77648_3_, p_77648_4_, p_77648_5_, p_77648_6_);
@@ -84,19 +85,19 @@ public class ItemManasteelShovel extends ShovelItem implements IManaUsingItem, I
 //				ToolCommons.damageItem(p_77648_1_, 1, p_77648_2_, MANA_PER_DAMAGE);
 //				return true;
 //			}
-			ToolCommons.damageItem(p_77648_1_, 1, p_77648_2_, MANA_PER_DAMAGE);
+			ToolCommons.damageItem(stack, 1, player, MANA_PER_DAMAGE);
 
-			Block block = p_77648_3_.getBlock(p_77648_4_, p_77648_5_, p_77648_6_);
+			Block block = world.getBlock(x, y, z);
 
-			if(p_77648_7_ != 0 && p_77648_3_.getBlock(p_77648_4_, p_77648_5_ + 1, p_77648_6_).isAir(p_77648_3_, p_77648_4_, p_77648_5_ + 1, p_77648_6_) && (block == Block.grass || block == Block.dirt)) {
+			if(p_77648_7_ != 0 && world.isAirBlock(x, y + 1, z) && (block == Block.grass || block == Block.dirt || block == BTWBlocks.looseDirt || block == BTWBlocks.looseSparseGrass)) {
 				Block block1 = Block.tilledField;
-				p_77648_3_.playSoundEffect(p_77648_4_ + 0.5F, p_77648_5_ + 0.5F, p_77648_6_ + 0.5F, block1.stepSound.getStepSound(), (block1.stepSound.getVolume() + 1.0F) / 2.0F, block1.stepSound.getPitch() * 0.8F);
+				world.playSoundEffect(x + 0.5F, y + 0.5F, z + 0.5F, block1.stepSound.getStepSound(), (block1.stepSound.getVolume() + 1.0F) / 2.0F, block1.stepSound.getPitch() * 0.8F);
 
-				if (p_77648_3_.isRemote)
+				if (world.isRemote)
 					return true;
 				else {
-					p_77648_3_.setBlock(p_77648_4_, p_77648_5_, p_77648_6_, block1);
-					ToolCommons.damageItem(p_77648_1_, 1, p_77648_2_, MANA_PER_DAMAGE);
+					world.setBlock(x, y, z, block1);
+					ToolCommons.damageItem(stack, 1, player, MANA_PER_DAMAGE);
 					return true;
 				}
 			}
