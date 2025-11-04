@@ -43,7 +43,7 @@ public class ItemFlowerBag extends ItemMod {
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onPickupItem(EntityItemPickupEvent event) {
 		ItemStack stack = event.item.getEntityItem();
 		if(stack.getItem() == Items.getItemFromBlock(ModBlocks.flower) && stack.stackSize > 0) {

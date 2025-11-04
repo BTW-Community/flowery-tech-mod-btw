@@ -30,7 +30,6 @@ public abstract class RenderItemMixin extends Render {
         }
     }
 
-    //this is fine mcdev just is dumb
     @Inject(method = "doRenderItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/ItemStack;getItemSpriteNumber()I", ordinal = 0),
             cancellable = true)
     private void forge$renderCustomItemEntity(EntityItem par1EntityItem, double par2, double par4, double par6, float par8, float par9, CallbackInfo ci, @Local ItemStack stack, @Local(ordinal = 2) float bobbing, @Local(ordinal = 3) float rotation) {

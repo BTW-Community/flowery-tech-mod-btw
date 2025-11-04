@@ -153,7 +153,6 @@ public class BotaniaEmiPlugin implements EmiPlugin {
             }
         }
 
-        // todo there is a keybind for requesting an item from corporea it would seem
         for (int i = 0; i < 9; i++) {
             reg.addWorkstation(PETAL_APOTHECARY, EmiStack.of(new ItemStack(ModBlocks.altar, 1, i)));
         }

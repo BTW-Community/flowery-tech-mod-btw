@@ -26,4 +26,9 @@ public class EntityItemPickupEvent extends PlayerEvent
         super(player);
         this.item = item;
     }
+
+    @Override
+    public boolean isCancelable() {
+        return true;
+    }
 }
