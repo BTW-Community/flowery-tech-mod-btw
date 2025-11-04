@@ -200,8 +200,8 @@ public class BlockPistonRelay extends BlockMod implements IWandable, ILexiconabl
 	}
 
 	@SubscribeEvent
-	public void tickEnd(TickEvent event) {
-		if(event.type == Type.SERVER && event.phase == Phase.END) {
+	public void tickEnd(TickEvent.ServerTickEvent event) {
+		if( event.phase == Phase.END) {
 			List<String> coordsToCheckCopy = new ArrayList<>(coordsToCheck.keySet());
 			for(String s : coordsToCheckCopy) {
 				decrCoords(s);
