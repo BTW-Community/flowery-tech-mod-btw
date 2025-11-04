@@ -325,11 +325,6 @@ public class ClientProxy extends CommonProxy {
 	}
 
 	@Override
-	public void registerNEIStuff() {
-//		NEIGuiHooks.init();
-	}
-
-	@Override
 	public void setEntryToOpen(LexiconEntry entry) {
 		GuiLexicon.currentOpenLexicon = new GuiLexiconEntry(entry, new GuiLexiconIndex(entry.category));
 	}

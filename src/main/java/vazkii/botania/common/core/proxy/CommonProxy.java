@@ -67,7 +67,7 @@ import cpw.mods.fml.common.FMLLog;
 
 public class CommonProxy {
 	public static GuiHandler guiHandler = new GuiHandler();
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void preInit() {
 		BotaniaAPI.internalHandler = new InternalMethodHandler();
 
@@ -106,11 +106,6 @@ public class CommonProxy {
 		ModBrewRecipes.init();
 		ModAchievements.init();
 		ModMultiblocks.init();
-		//todofix gui handler, terrain bus
-//		NetworkRegistry.INSTANCE.registerGuiHandler(Botania.instance, new GuiHandler());
-
-//		MinecraftForge.TERRAIN_GEN_BUS.register(new BiomeDecorationHandler());
-		/*MinecraftForge.EVENT_BUS.register(ManaNetworkHandler.instance); DONE*/
 		MinecraftForge.EVENT_BUS.register(new PixieHandler());
 		MinecraftForge.EVENT_BUS.register(new SheddingHandler());
 		MinecraftForge.EVENT_BUS.register(new SpawnerChangingHandler());
@@ -120,10 +115,7 @@ public class CommonProxy {
 		if(Botania.gardenOfGlassLoaded)
 			MinecraftForge.EVENT_BUS.register(new SkyblockWorldEvents());
 
-//		FMLCommonHandler.instance().bus().register(new CommonTickHandler());
 		CommonTickHandler.init();
-//		if(Botania.bcTriggersLoaded)
-//			new StatementAPIPlugin();
 
 		LexiconData.init();
 	}
@@ -202,10 +194,6 @@ public class CommonProxy {
 
 /*		if(Botania.gardenOfGlassLoaded)
 			event.registerServerCommand(new CommandSkyblockSpread());*/
-	}
-
-	public void registerNEIStuff() {
-		// NO-OP
 	}
 
 	public void setEntryToOpen(LexiconEntry entry) {
