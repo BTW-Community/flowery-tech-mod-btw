@@ -21,6 +21,7 @@ import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.KnowledgeType;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.recipe.IElvenItem;
+import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.client.gui.lexicon.GuiLexicon;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.achievement.ModAchievements;
@@ -77,6 +78,23 @@ public class ItemLexicon extends ItemMod implements ILexicon, IElvenItem {
 			unlockKnowledge(creative, type);
 		}
 		list.add(creative);
+	}
+
+	@Override
+	public Icon getIconIndex(ItemStack stack) {
+		if (isElvenItem(stack)) {
+			return icons[1];
+		}
+		return icons[0];
+	}
+
+	private Icon[] icons;
+	@Override
+	public void registerIcons(IconRegister par1IconRegister) {
+		icons = new Icon[2];
+		for(int i = 0; i < icons.length; i++) {
+			icons[i] = IconHelper.forItem(par1IconRegister, this, i == 0 ? "_default" : "_elven");
+		}
 	}
 
 	@Override
