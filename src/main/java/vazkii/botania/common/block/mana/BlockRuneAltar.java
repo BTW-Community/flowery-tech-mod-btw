@@ -10,8 +10,6 @@
  */
 package vazkii.botania.common.block.mana;
 
-import java.util.Random;
-
 import net.minecraft.src.*;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.BotaniaAPI;
@@ -27,7 +25,6 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockRuneAltar extends BlockModContainer<TileRuneAltar> implements IWandable, ILexiconable {
 
-	Random random;
 	Icon[] icons;
 
 	public BlockRuneAltar(int id) {
@@ -39,8 +36,6 @@ public class BlockRuneAltar extends BlockModContainer<TileRuneAltar> implements 
 		setUnlocalizedName(LibBlockNames.RUNE_ALTAR);
 
 		BotaniaAPI.blacklistBlockFromMagnet(this, Short.MAX_VALUE);
-
-		random = new Random();
 	}
 
 	@Override
@@ -96,7 +91,7 @@ public class BlockRuneAltar extends BlockModContainer<TileRuneAltar> implements 
 
 	@Override
 	public void breakBlock(World par1World, int par2, int par3, int par4, int block, int par6) {
-		TileSimpleInventory.breakBlock(par1World, par2, par3, par4, block, this.random);
+		TileSimpleInventory.breakBlock(par1World, par2, par3, par4, block, par1World.rand);
 		super.breakBlock(par1World, par2, par3, par4, block, par6);
 	}
 

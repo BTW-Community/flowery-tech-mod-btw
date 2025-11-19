@@ -145,37 +145,6 @@ public final class ItemNBTHelper {
 	// Utils ///////////////////////////////////////////////////////////////////
 
 	/**
-	 * NBT-friendly version of {@link codechicken.nei.NEIServerUtils#areStacksSameType(ItemStack, ItemStack)}
-	 * @param stack1 The {@link ItemStack} being compared.
-	 * @param stack2 The {@link ItemStack} to compare to.
-	 * @return whether the two items are the same in terms of itemID, damage and NBT.
-	 */
-	public static boolean areStacksSameTypeWithNBT(ItemStack stack1, ItemStack stack2) {
-		return stack1 != null && stack2 != null &&
-				stack1.getItem() == stack2.getItem() &&
-				(!stack2.getHasSubtypes() || stack2.getItemDamage() == stack1.getItemDamage()) &&
-				matchTag(stack1.getTagCompound(), stack2.getTagCompound());
-	}
-
-	/**
-	 * NBT-friendly version of {@link codechicken.nei.NEIServerUtils#areStacksSameTypeCrafting(ItemStack, ItemStack)}
-	 * @param stack1 The {@link ItemStack} being compared.
-	 * @param stack2 The {@link ItemStack} to compare to.
-	 * @return whether the two items are the same from the perspective of a crafting inventory.
-	 */
-	public static boolean areStacksSameTypeCraftingWithNBT(ItemStack stack1, ItemStack stack2) {
-		return stack1 != null && stack2 != null &&
-				stack1.getItem() == stack2.getItem() &&
-				(
-						stack1.getItemDamage() == stack2.getItemDamage() ||
-								stack1.getItemDamage() == InventoryUtils.IGNORE_METADATA ||
-								stack2.getItemDamage() == InventoryUtils.IGNORE_METADATA ||
-								stack1.getItem().isDamageable()
-				) &&
-				matchTag(stack1.getTagCompound(), stack2.getTagCompound());
-	}
-
-	/**
 	 * Returns true if the `target` tag contains all of the tags and values present in the `template` tag. Recurses into
 	 * compound tags and matches all template keys and values; recurses into list tags and matches the template against
 	 * the first elements of target. Empty lists and compounds in the template will match target lists and compounds of
