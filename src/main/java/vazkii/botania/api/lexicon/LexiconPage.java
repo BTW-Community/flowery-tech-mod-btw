@@ -12,8 +12,8 @@ package vazkii.botania.api.lexicon;
 
 import java.util.List;
 
-import net.minecraft.src.GuiButton;
-import net.minecraft.src.ItemStack;
+import net.minecraft.src.*;
+import org.lwjgl.opengl.GL11;
 import vazkii.botania.api.internal.IGuiLexiconEntry;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
@@ -27,7 +27,7 @@ public abstract class LexiconPage {
 		this.unlocalizedName = unlocalizedName;
 	}
 
-	/**
+    /**
 	 * Does the rendering for this page.
 	 * @param gui The active GuiScreen
 	 * @param mx The mouse's relative X position.
@@ -110,4 +110,17 @@ public abstract class LexiconPage {
 		skipRegistry = true;
 		return this;
 	}
+
+	@Environment(EnvType.CLIENT)
+	protected static void renderLexiconTexture(IGuiLexiconEntry gui, ResourceLocation resource) {
+		TextureManager render = Minecraft.getMinecraft().renderEngine;
+		render.bindTexture(resource);
+
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		GL11.glColor4f(1F, 1F, 1F, 1F);
+		((GuiScreen) gui).drawTexturedModalRect(gui.getLeft(), gui.getTop(), 0, 0, gui.getWidth(), gui.getHeight());
+		GL11.glDisable(GL11.GL_BLEND);
+	}
+
 }

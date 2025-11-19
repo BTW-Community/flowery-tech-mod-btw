@@ -2,10 +2,10 @@
  * This class was created by <SoundLogic>. It's distributed as
  * part of the Botania Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Botania
- * 
+ * <p>
  * Botania is Open Source and distributed under the
  * Botania License: http://botaniamod.net/license.php
- * 
+ * <p>
  * File Created @ [Jul 4, 2014, 10:38:50 PM (GMT)]
  */
 package vazkii.botania.common.lexicon.page;
@@ -35,14 +35,14 @@ public class PageEntity extends LexiconPage{
 	int relativeMouseX, relativeMouseY;
 	boolean tooltipEntity;
 	int size;
-	Constructor entityConstructor;
+	Constructor<? extends Entity> entityConstructor;
 
 	public PageEntity(String unlocalizedName, String entity, int size) {
 		super(unlocalizedName);
-		Class EntityClass = (Class) EntityList.stringToClassMapping.get(entity);
+		Class<? extends Entity> EntityClass = (Class<? extends Entity>) EntityList.stringToClassMapping.get(entity);
 		this.size = size;
 		try {
-			entityConstructor = EntityClass.getConstructor(new Class[] {World.class});
+			entityConstructor = EntityClass.getConstructor(World.class);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -75,7 +75,7 @@ public class PageEntity extends LexiconPage{
 	}
 
 	@Override
-	public void updateScreen() {
+	public void updateScreen(IGuiLexiconEntry gui) {
 		prepDummy();
 		dummyEntity.ticksExisted++;
 	}
@@ -108,7 +108,7 @@ public class PageEntity extends LexiconPage{
 	public void prepDummy() {
 		if(dummyEntity == null || dummyEntity.isDead) {
 			try {
-				dummyEntity = (Entity) entityConstructor.newInstance(new Object[] {Minecraft.getMinecraft().theWorld});
+				dummyEntity = entityConstructor.newInstance(Minecraft.getMinecraft().theWorld);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

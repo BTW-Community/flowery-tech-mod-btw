@@ -2,23 +2,21 @@
  * This class was created by <SoundLogic>. It's distributed as
  * part of the Botania Mod. Get the Source Code in github:
  * https://github.com/Vazkii/Botania
- * 
+ * <p>
  * Botania is Open Source and distributed under the
  * Botania License: http://botaniamod.net/license.php
- * 
+ * <p>
  * File Created @ [Jul 4, 2014, 10:38:50 PM (GMT)]
  */
 package vazkii.botania.common.lexicon.page;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.GuiScreen;
 import net.minecraft.src.RenderHelper;
 import net.minecraft.src.RenderItem;
-import net.minecraft.src.TextureManager;
 import net.minecraft.src.EntityList;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.EnumChatFormatting;
@@ -69,13 +67,8 @@ public class PageShedding extends PageEntity {
 
 		renderItem(gui, stack_x, stack_y, shedStack);
 
-		TextureManager render = Minecraft.getMinecraft().renderEngine;
-		render.bindTexture(sheddingOverlay);
-
+		renderLexiconTexture(gui, sheddingOverlay);
 		GL11.glEnable(GL11.GL_BLEND);
-		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-		GL11.glColor4f(1F, 1F, 1F, 1F);
-		((GuiScreen) gui).drawTexturedModalRect(gui.getLeft(), gui.getTop(), 0, 0, gui.getWidth(), gui.getHeight());
 
 		if(tooltipStack != null) {
 			List<String> tooltipData = tooltipStack.getTooltip(Minecraft.getMinecraft().thePlayer, false);
@@ -95,7 +88,7 @@ public class PageShedding extends PageEntity {
 			int tooltipY = 8 + tooltipData.size() * 11;
 
 			if(tooltipEntry) {
-				vazkii.botania.client.core.helper.RenderHelper.renderTooltipOrange(mx, my + tooltipY, Arrays.asList(EnumChatFormatting.GRAY + StatCollector.translateToLocal("botaniamisc.clickToRecipe")));
+				vazkii.botania.client.core.helper.RenderHelper.renderTooltipOrange(mx, my + tooltipY, List.of(EnumChatFormatting.GRAY + StatCollector.translateToLocal("botaniamisc.clickToRecipe")));
 				tooltipY += 18;
 			}
 		}

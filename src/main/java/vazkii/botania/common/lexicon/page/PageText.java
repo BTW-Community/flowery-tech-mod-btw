@@ -54,12 +54,12 @@ public class PageText extends LexiconPage {
 		FontRenderer font = Minecraft.getMinecraft().fontRenderer;
 		boolean unicode = font.getUnicodeFlag();
 		font.setUnicodeFlag(true);
-		String text = StatCollector.translateToLocal(unlocalizedText).replaceAll("&", "\u00a7");
+		String text = StatCollector.translateToLocal(unlocalizedText).replaceAll("&", "§");
 		String[] textEntries = text.split("<br>");
 
 		List<List<String>> lines = new ArrayList<>();
 
-		String controlCodes = "";
+		String controlCodes;
 		for(String s : textEntries) {
 			List<String> words = new ArrayList<>();
 			String lineStr = "";
@@ -86,7 +86,7 @@ public class PageText extends LexiconPage {
 
 		int i = 0;
 		for(List<String> words : lines) {
-			words.size();
+//			words.size();
 			int xi = x;
 			int spacing = 4;
 			int wcount = words.size();
@@ -120,13 +120,13 @@ public class PageText extends LexiconPage {
 	}
 
 	public static String getControlCodes(String s) {
-		String controls = s.replaceAll("(?<!\u00a7)(.)", "");
+		String controls = s.replaceAll("(?<!§)(.)", "");
 		String wiped = controls.replaceAll(".*r", "r");
 		return wiped;
 	}
 
 	public static String toControlCodes(String s) {
-		return s.replaceAll(".", "\u00a7$0");
+		return s.replaceAll(".", "§$0");
 	}
 
 }

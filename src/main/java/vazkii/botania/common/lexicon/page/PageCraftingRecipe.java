@@ -11,12 +11,11 @@
 package vazkii.botania.common.lexicon.page;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.GuiScreen;
-import net.minecraft.src.TextureManager;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.IRecipe;
 import net.minecraft.src.ShapedRecipes;
@@ -50,7 +49,7 @@ public class PageCraftingRecipe extends PageRecipe {
 	}
 
 	public PageCraftingRecipe(String unlocalizedName, IRecipe recipe) {
-		this(unlocalizedName, Arrays.asList(recipe));
+		this(unlocalizedName, Collections.singletonList(recipe));
 	}
 
 	@Override
@@ -65,18 +64,12 @@ public class PageCraftingRecipe extends PageRecipe {
 	public void renderRecipe(IGuiLexiconEntry gui, int mx, int my) {
 		oreDictRecipe = shapelessRecipe = false;
 
-		if (recipes.size() == 0) return;
+		if (recipes.isEmpty()) return;
 		IRecipe recipe = recipes.get(recipeAt);
 
 		renderCraftingRecipe(gui, recipe);
 
-		TextureManager render = Minecraft.getMinecraft().renderEngine;
-		render.bindTexture(craftingOverlay);
-
-		GL11.glEnable(GL11.GL_BLEND);
-		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-		GL11.glColor4f(1F, 1F, 1F, 1F);
-		((GuiScreen) gui).drawTexturedModalRect(gui.getLeft(), gui.getTop(), 0, 0, gui.getWidth(), gui.getHeight());
+		renderLexiconTexture(gui, craftingOverlay);
 
 		int iconX = gui.getLeft() + 115;
 		int iconY = gui.getTop() + 12;
@@ -88,26 +81,26 @@ public class PageCraftingRecipe extends PageRecipe {
 			((GuiScreen) gui).drawTexturedModalRect(iconX, iconY, 240, 0, 16, 16);
 
 			if(mx >= iconX && my >= iconY && mx < iconX + 16 && my < iconY + 16)
-				RenderHelper.renderTooltip(mx, my, Arrays.asList(StatCollector.translateToLocal("botaniamisc.shapeless")));
+				RenderHelper.renderTooltip(mx, my, Collections.singletonList(StatCollector.translateToLocal("botaniamisc.shapeless")));
 
 			iconY += 20;
 		}
 
-		render.bindTexture(craftingOverlay);
+		Minecraft.getMinecraft().renderEngine.bindTexture(craftingOverlay);
 		GL11.glEnable(GL11.GL_BLEND);
 
 		if(oreDictRecipe) {
 			((GuiScreen) gui).drawTexturedModalRect(iconX, iconY, 240, 16, 16, 16);
 
 			if(mx >= iconX && my >= iconY && mx < iconX + 16 && my < iconY + 16)
-				RenderHelper.renderTooltip(mx, my, Arrays.asList(StatCollector.translateToLocal("botaniamisc.oredict")));
+				RenderHelper.renderTooltip(mx, my, Collections.singletonList(StatCollector.translateToLocal("botaniamisc.oredict")));
 		}
 		GL11.glDisable(GL11.GL_BLEND);
 	}
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void updateScreen() {
+	public void updateScreen(IGuiLexiconEntry gui) {
 		if(GuiScreen.isShiftKeyDown())
 			return;
 
@@ -122,10 +115,9 @@ public class PageCraftingRecipe extends PageRecipe {
 
 	@Environment(EnvType.CLIENT)
 	public void renderCraftingRecipe(IGuiLexiconEntry gui, IRecipe recipe) {
-		if(recipe instanceof ShapedRecipes) {
-			ShapedRecipes shaped = (ShapedRecipes)recipe;
+		if(recipe instanceof ShapedRecipes shaped) {
 
-			for(int y = 0; y < shaped.getRecipeHeight(); y++)
+            for(int y = 0; y < shaped.getRecipeHeight(); y++)
 				for(int x = 0; x < shaped.getRecipeWidth(); x++)
 					renderItemAtGridPos(gui, 1 + x, 1 + y, shaped.getRecipeItems()[y * shaped.getRecipeWidth() + x], true);
 		}
@@ -143,10 +135,9 @@ public class PageCraftingRecipe extends PageRecipe {
 //
 //			oreDictRecipe = true;
 //		}
-		else if(recipe instanceof ShapelessRecipes) {
-			ShapelessRecipes shapeless = (ShapelessRecipes) recipe;
+		else if(recipe instanceof ShapelessRecipes shapeless) {
 
-			drawGrid : {
+            drawGrid : {
 				for(int y = 0; y < 3; y++)
 					for(int x = 0; x < 3; x++) {
 						int index = y * 3 + x;
@@ -154,7 +145,7 @@ public class PageCraftingRecipe extends PageRecipe {
 						if(index >= shapeless.getRecipeItems().size())
 							break drawGrid;
 
-						renderItemAtGridPos(gui, 1 + x, 1 + y, (ItemStack) shapeless.getRecipeItems().get(index), true);
+						renderItemAtGridPos(gui, 1 + x, 1 + y, shapeless.getRecipeItems().get(index), true);
 					}
 			}
 

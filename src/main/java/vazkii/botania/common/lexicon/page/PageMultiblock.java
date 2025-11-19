@@ -19,7 +19,6 @@ import net.minecraft.src.FontRenderer;
 import net.minecraft.src.GuiButton;
 import net.minecraft.src.GuiScreen;
 import net.minecraft.src.RenderHelper;
-import net.minecraft.src.RenderItem;
 import net.minecraft.src.TextureManager;
 import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
@@ -70,7 +69,7 @@ public class PageMultiblock extends LexiconPage {
 
 		final float maxX = 90, maxY = 60;
 		GL11.glPushMatrix();
-		GL11.glTranslatef(gui.getLeft() + gui.getWidth() / 2, gui.getTop() + 90, gui.getZLevel() + 100F);
+		GL11.glTranslatef(gui.getLeft() + (float) gui.getWidth() / 2, gui.getTop() + 90, gui.getZLevel() + 100F);
 
 		float diag = (float) Math.sqrt(mb.getXSize() * mb.getXSize() + mb.getZSize() * mb.getZSize());
 		float height = mb.getYSize();
@@ -146,7 +145,7 @@ public class PageMultiblock extends LexiconPage {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void updateScreen() {
+	public void updateScreen(IGuiLexiconEntry gui) {
 		++ticksElapsed;
 	}
 

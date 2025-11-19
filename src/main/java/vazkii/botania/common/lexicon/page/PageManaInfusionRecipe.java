@@ -12,14 +12,15 @@ package vazkii.botania.common.lexicon.page;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
+import btw.item.tag.TagInstance;
+import btw.item.tag.TagOrStack;
 import dev.bagel.util.Items;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.FontRenderer;
 import net.minecraft.src.GuiScreen;
-import net.minecraft.src.TextureManager;
-import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.src.ResourceLocation;
@@ -54,7 +55,7 @@ public class PageManaInfusionRecipe extends PageRecipe {
 	}
 
 	public PageManaInfusionRecipe(String unlocalizedName, RecipeManaInfusion recipe) {
-		this(unlocalizedName, Arrays.asList(recipe));
+		this(unlocalizedName, Collections.singletonList(recipe));
 	}
 
 	@Override
@@ -67,19 +68,18 @@ public class PageManaInfusionRecipe extends PageRecipe {
 	@Override
 	@Environment(EnvType.CLIENT)
 	public void renderRecipe(IGuiLexiconEntry gui, int mx, int my) {
-		if (recipes.size() == 0) return;
+		if (recipes.isEmpty()) return;
 		RecipeManaInfusion recipe = recipes.get(recipeAt);
 
-		TextureManager render = Minecraft.getMinecraft().renderEngine;
-		FontRenderer font = Minecraft.getMinecraft().fontRenderer;
+        FontRenderer font = Minecraft.getMinecraft().fontRenderer;
 
-		Object input = recipe.getInput();
-		if(input instanceof String) {
+		TagOrStack input = recipe.getInput();
+		if(input instanceof TagInstance ti) {
 			//todofix elven recipe use tags
-//			input = OreDictionary.getOres((String) input).get(0);
+			input = ti.tag().getItems().get(0);
 		}
 
-		renderItemAtGridPos(gui, 1, 1, (ItemStack) input, false);
+		renderItemAtGridPos(gui, 1, 1, input, false);
 
 		RenderTilePool.forceMana = true;
 		renderItemAtGridPos(gui, 2, 1, new ItemStack(ModBlocks.pool, 1, recipe.getOutput().getItem() == Items.getItemFromBlock(ModBlocks.pool) ? 2 : 0), false);
@@ -125,13 +125,7 @@ public class PageManaInfusionRecipe extends PageRecipe {
 
 		GL11.glDisable(GL11.GL_BLEND);
 
-		render.bindTexture(manaInfusionOverlay);
-
-		GL11.glEnable(GL11.GL_BLEND);
-		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-		GL11.glColor4f(1F, 1F, 1F, 1F);
-		((GuiScreen) gui).drawTexturedModalRect(gui.getLeft(), gui.getTop(), 0, 0, gui.getWidth(), gui.getHeight());
-		GL11.glDisable(GL11.GL_BLEND);
+		renderLexiconTexture(gui, manaInfusionOverlay);
 
 		if(hoveringOverDrop) {
 			String key = RenderHelper.getKeyDisplayString("key.drop");
@@ -143,7 +137,7 @@ public class PageManaInfusionRecipe extends PageRecipe {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void updateScreen() {
+	public void updateScreen(IGuiLexiconEntry gui) {
 		if(GuiScreen.isShiftKeyDown())
 			return;
 

@@ -12,6 +12,7 @@ package vazkii.botania.common.lexicon.page;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import btw.item.tag.TagInstance;
@@ -81,7 +82,7 @@ public class PageRecipe extends LexiconPage {
 			int tooltipY = 8 + tooltipData.size() * 11;
 
 			if(tooltipEntry) {
-				vazkii.botania.client.core.helper.RenderHelper.renderTooltipOrange(mx, my + tooltipY, Arrays.asList(EnumChatFormatting.GRAY + StatCollector.translateToLocal("botaniamisc.clickToRecipe")));
+				vazkii.botania.client.core.helper.RenderHelper.renderTooltipOrange(mx, my + tooltipY, Collections.singletonList(EnumChatFormatting.GRAY + StatCollector.translateToLocal("botaniamisc.clickToRecipe")));
 				tooltipY += 18;
 			}
 
@@ -112,7 +113,7 @@ public class PageRecipe extends LexiconPage {
 
 		angle -= 90;
 		int radius = 32;
-		double xPos = gui.getLeft() + Math.cos(angle * Math.PI / 180D) * radius + gui.getWidth() / 2 - 8;
+		double xPos = gui.getLeft() + Math.cos(angle * Math.PI / 180D) * radius + (double) gui.getWidth() / 2 - 8;
 		double yPos = gui.getTop() + Math.sin(angle * Math.PI / 180D) * radius + 53;
 
 		renderItem(gui, xPos, yPos, workStack, false);
@@ -124,9 +125,17 @@ public class PageRecipe extends LexiconPage {
 		if(stack == null )
 			return;
 		stack = stack.copy();
-
+		List<ItemStack> items = null;
 		if(stack instanceof ItemStack st && st.getItemDamage() == Short.MAX_VALUE)
 			st.setItemDamage(0);
+		else if (stack instanceof TagInstance tagInstance) {
+			items = tagInstance.tag().getItems().stream().map(st -> {
+				ItemStack copy = st.copy();
+				if (copy.getItemDamage() == Short.MAX_VALUE)
+					copy.setItemDamage(0);
+				return copy;
+            }).toList();
+		}
 
 		int xPos = gui.getLeft() + x * 29 + 7 + (y == 0  && x == 3 ? 10 : 0);
 		int yPos = gui.getTop() + y * 29 + 24 - (y == 0 ? 7 : 0);
@@ -137,7 +146,10 @@ public class PageRecipe extends LexiconPage {
 		if (stack1 instanceof ItemStack is) {
 			stackk = is;
 		}
-		else stackk = ((TagInstance) stack1).tag().getItems().getFirst();
+		else {
+            assert items != null;
+            stackk = items.getFirst();//todo improve tag item rendering for lexicon
+        }
 		renderItem(gui, xPos, yPos, stackk, accountForContainer);
 	}
 
@@ -189,8 +201,8 @@ public class PageRecipe extends LexiconPage {
 	}
 
 	public static <T> List<T> filterRecipes(List<T> list) {
-		if (list == null) return new ArrayList<T>();
-		ArrayList<T> filtered = new ArrayList<T>();
+		if (list == null) return new ArrayList<>();
+		ArrayList<T> filtered = new ArrayList<>();
 		for (T entry: list) {
 			if (entry != null) filtered.add(entry);
 		}

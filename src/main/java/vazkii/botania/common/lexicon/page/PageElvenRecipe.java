@@ -1,7 +1,7 @@
 package vazkii.botania.common.lexicon.page;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import btw.item.tag.TagInstance;
@@ -9,14 +9,10 @@ import btw.item.tag.TagOrStack;
 import dev.bagel.client.RenderInstances;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.GuiScreen;
-import net.minecraft.src.RenderItem;
-import net.minecraft.src.TextureManager;
 import net.minecraft.src.TextureMap;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Icon;
 import net.minecraft.src.ResourceLocation;
-
-import org.lwjgl.opengl.GL11;
 
 import vazkii.botania.api.internal.IGuiLexiconEntry;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -41,7 +37,7 @@ public class PageElvenRecipe extends PageRecipe {
 	}
 
 	public PageElvenRecipe(String unlocalizedName, RecipeElvenTrade recipe) {
-		this(unlocalizedName, Arrays.asList(recipe));
+		this(unlocalizedName, Collections.singletonList(recipe));
 	}
 
 	@Override
@@ -54,16 +50,10 @@ public class PageElvenRecipe extends PageRecipe {
 	@Override
 	@Environment(EnvType.CLIENT)
 	public void renderRecipe(IGuiLexiconEntry gui, int mx, int my) {
-		if (recipes.size() == 0) return;
+		if (recipes.isEmpty()) return;
 		RecipeElvenTrade recipe = recipes.get(recipeAt);
 
-		TextureManager render = Minecraft.getMinecraft().renderEngine;
-		render.bindTexture(elvenTradeOverlay);
-		GL11.glEnable(GL11.GL_BLEND);
-		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-		GL11.glColor4f(1F, 1F, 1F, 1F);
-		((GuiScreen) gui).drawTexturedModalRect(gui.getLeft(), gui.getTop(), 0, 0, gui.getWidth(), gui.getHeight());
-		GL11.glDisable(GL11.GL_BLEND);
+		renderLexiconTexture(gui, elvenTradeOverlay);
 
 		renderItemAtGridPos(gui, 3, 1, recipe.getOutput(), false);
 
@@ -106,7 +96,7 @@ public class PageElvenRecipe extends PageRecipe {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void updateScreen() {
+	public void updateScreen(IGuiLexiconEntry gui) {
 		if(GuiScreen.isShiftKeyDown())
 			return;
 

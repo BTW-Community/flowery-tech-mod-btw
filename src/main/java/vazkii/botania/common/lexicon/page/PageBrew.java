@@ -65,7 +65,7 @@ public class PageBrew extends PageRecipe implements ITwoNamedPage {
 
 		int i = 0;
 		y = gui.getTop() + gui.getHeight() - 54;
-		List<Object> inputs = new ArrayList(recipe.getInputs());
+		List<Object> inputs = new ArrayList<>(recipe.getInputs());
 
 		int offset = gui.getWidth() / 2 - inputs.size() * 9;
 		for(Object input : inputs) {

@@ -11,7 +11,7 @@
 package vazkii.botania.common.lexicon.page;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import btw.item.tag.TagInstance;
@@ -19,7 +19,6 @@ import btw.item.tag.TagOrStack;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.FontRenderer;
 import net.minecraft.src.GuiScreen;
-import net.minecraft.src.TextureManager;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.ResourceLocation;
 import net.minecraft.src.StatCollector;
@@ -52,7 +51,7 @@ public class PagePetalRecipe<T extends RecipePetals> extends PageRecipe {
 	}
 
 	public PagePetalRecipe(String unlocalizedName, T recipe) {
-		this(unlocalizedName, Arrays.asList(recipe));
+		this(unlocalizedName, Collections.singletonList(recipe));
 	}
 
 	@Override
@@ -65,17 +64,15 @@ public class PagePetalRecipe<T extends RecipePetals> extends PageRecipe {
 	@Override
 	@Environment(EnvType.CLIENT)
 	public void renderRecipe(IGuiLexiconEntry gui, int mx, int my) {
-		if (recipes.size() == 0) return;
+		if (recipes.isEmpty()) return;
 		T recipe = recipes.get(recipeAt);
-
-		TextureManager render = Minecraft.getMinecraft().renderEngine;
 
 		renderItemAtGridPos(gui, 3, 0, recipe.getOutput(), false);
 		renderItemAtGridPos(gui, 2, 1, getMiddleStack(), false);
 
 		List<TagOrStack> inputs = recipe.getInputs();
 		int degreePerInput = (int) (360F / inputs.size());
-		float currentDegree = ConfigHandler.lexiconRotatingItems ? GuiScreen.isShiftKeyDown() ? ticksElapsed : (float) (ticksElapsed + ClientTickHandler.partialTicks) : 0;
+		float currentDegree = ConfigHandler.lexiconRotatingItems ? GuiScreen.isShiftKeyDown() ? ticksElapsed : (ticksElapsed + ClientTickHandler.partialTicks) : 0;
 
 		for(TagOrStack obj : inputs) {
 			TagOrStack input = obj;
@@ -91,13 +88,7 @@ public class PagePetalRecipe<T extends RecipePetals> extends PageRecipe {
 
 		renderManaBar(gui, recipe, mx, my);
 
-		render.bindTexture(petalOverlay);
-
-		GL11.glEnable(GL11.GL_BLEND);
-		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-		GL11.glColor4f(1F, 1F, 1F, 1F);
-		((GuiScreen) gui).drawTexturedModalRect(gui.getLeft(), gui.getTop(), 0, 0, gui.getWidth(), gui.getHeight());
-		GL11.glDisable(GL11.GL_BLEND);
+		renderLexiconTexture(gui, petalOverlay);
 	}
 
 	ItemStack getMiddleStack() {
@@ -124,7 +115,7 @@ public class PagePetalRecipe<T extends RecipePetals> extends PageRecipe {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public void updateScreen() {
+	public void updateScreen(IGuiLexiconEntry gui) {
 		if(GuiScreen.isShiftKeyDown())
 			return;
 
