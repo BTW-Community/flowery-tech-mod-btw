@@ -81,7 +81,7 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 		}
 		Baubles.instance.preInit();
 		registerPacketHandler("botania|BAUB", PacketHandler.INSTANCE);
-		gardenOfGlassLoaded = FabricLoader.getInstance().isModLoaded("GardenOfGlass");
+		gardenOfGlassLoaded = FabricLoader.getInstance().isModLoaded("denovo");
 
 		thaumcraftLoaded = FabricLoader.getInstance().isModLoaded("Thaumcraft");
 		/*bcTriggersLoaded = ModAPIManager.INSTANCE.hasAPI("BuildCraftAPI|statements");*/
