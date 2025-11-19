@@ -107,11 +107,11 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 		registerPacketHandler("botania|GUI", CustomGuiPacketHandler.INSTANCE);
 		Baubles.instance.init();
 		getProxy().init();
-		registerAddonCommandServerOnly(new CommandShare());
-		registerAddonCommandServerOnly(new CommandOpen());
+		registerAddonCommand(new CommandShare());
+		registerAddonCommand(new CommandOpen());
 
 		if(Botania.gardenOfGlassLoaded)
-			registerAddonCommandServerOnly(new CommandSkyblockSpread());
+			registerAddonCommand(new CommandSkyblockSpread());
 	}
 	//FMLPostInitializationEvent
 	@Override
