@@ -1,9 +1,7 @@
 package dev.bagel.mixin;
 
 import emi.dev.emi.emi.screen.EmiScreenManager;
-import net.minecraft.src.NBTBase;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.NBTTagString;
+import net.minecraft.src.*;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -22,6 +20,18 @@ public class EmiScreenManagerMixin {
             if (v instanceof NBTTagString str) {
                 var data = str.data;
                 s.append('"').append(data).append('"');
+            }
+            else if (v instanceof NBTTagByte) {
+                s.append(v).append('B');
+            }
+            else if (v instanceof NBTTagShort) {
+                s.append(v).append('S');
+            }
+            else if (v instanceof NBTTagLong) {
+                s.append(v).append('L');
+            }
+            else if (v instanceof NBTTagFloat) {
+                s.append(v).append('F');
             }
             else {
                 s.append(v);
