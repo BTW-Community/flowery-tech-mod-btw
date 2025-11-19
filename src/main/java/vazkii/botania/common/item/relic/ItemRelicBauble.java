@@ -12,7 +12,6 @@ package vazkii.botania.common.item.relic;
 
 import java.util.List;
 
-import net.minecraft.src.Entity;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EnumRarity;
@@ -85,7 +84,7 @@ public abstract class ItemRelicBauble extends ItemBauble implements IRelic {
 
 	@Override
 	public EnumRarity getRarity(ItemStack p_77613_1_) {
-		return BotaniaAPI.rarityRelic;
+		return BotaniaAPI.Client.rarityRelic;
 	}
 
 	@Override

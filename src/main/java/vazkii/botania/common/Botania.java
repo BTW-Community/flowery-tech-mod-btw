@@ -21,9 +21,13 @@ import dev.bagel.network.CustomGuiPacketHandler;
 import dev.bagel.util.GuiHandlerHolder;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.src.*;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import vazkii.botania.client.core.proxy.ClientProxy;
+import vazkii.botania.common.core.command.CommandOpen;
+import vazkii.botania.common.core.command.CommandShare;
+import vazkii.botania.common.core.command.CommandSkyblockSpread;
 import vazkii.botania.common.core.handler.BiomeDecorationHandler;
 import vazkii.botania.common.core.proxy.CommonProxy;
 import vazkii.botania.common.integration.coloredlights.ILightHelper;
@@ -72,7 +76,9 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 
 	@Override
 	public void preInitialize() {
-		addResourcePackDomain("baubles");
+		if (!MinecraftServer.getIsServer()) {
+			addResourcePackDomain("baubles");
+		}
 		Baubles.instance.preInit();
 		registerPacketHandler("botania|BAUB", PacketHandler.INSTANCE);
 		gardenOfGlassLoaded = FabricLoader.getInstance().isModLoaded("GardenOfGlass");
@@ -101,6 +107,11 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 		registerPacketHandler("botania|GUI", CustomGuiPacketHandler.INSTANCE);
 		Baubles.instance.init();
 		getProxy().init();
+		registerAddonCommandServerOnly(new CommandShare());
+		registerAddonCommandServerOnly(new CommandOpen());
+
+		if(Botania.gardenOfGlassLoaded)
+			registerAddonCommandServerOnly(new CommandSkyblockSpread());
 	}
 	//FMLPostInitializationEvent
 	@Override

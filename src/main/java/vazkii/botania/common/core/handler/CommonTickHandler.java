@@ -11,6 +11,7 @@
 package vazkii.botania.common.core.handler;
 
 import cpw.mods.fml.common.gameevent.TickEvent;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.Minecraft;
@@ -28,7 +29,9 @@ import java.util.List;
 
 public final class CommonTickHandler {
 	static {
-		TickEvent.ClientTickEvent.EVENT.register(CommonTickHandler::onTick);
+		if (!MinecraftServer.getIsServer()) {
+			TickEvent.ClientTickEvent.EVENT.register(CommonTickHandler::onTick);
+		}
 		TickEvent.WorldTickEvent.EVENT.register(CommonTickHandler::onTick);
 	}
 	public static void init() {}
@@ -36,7 +39,7 @@ public final class CommonTickHandler {
 //	@SubscribeEvent
 	public static void onTick(WorldTickEvent event) {
 		if(event.phase == Phase.END) {
-			List<Entity> entities = new ArrayList(event.world.loadedEntityList);
+			List<Entity> entities = new ArrayList<>(event.world.loadedEntityList);
 			for(Entity entity : entities)
 				if(entity instanceof EntityItem ei)
 					TerrasteelCraftingHandler.onEntityUpdate(ei);
@@ -45,12 +48,12 @@ public final class CommonTickHandler {
 		}
 	}
 
-//	@Environment(EnvType.CLIENT)
+	@Environment(EnvType.CLIENT)
 	public static void onTick(ClientTickEvent event) {
 		if(event.phase == Phase.END) {
 			World world = Minecraft.getMinecraft().theWorld;
 			if(world != null) {
-				List<Entity> entities = new ArrayList(world.loadedEntityList);
+				List<Entity> entities = new ArrayList<>(world.loadedEntityList);
 				for(Entity entity : entities)
 					if(entity instanceof EntityItem)
 						TerrasteelCraftingHandler.onEntityUpdate((EntityItem) entity);

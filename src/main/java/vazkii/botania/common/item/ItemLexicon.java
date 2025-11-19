@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import btw.achievement.AchievementHandler;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.src.*;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.lexicon.ILexicon;
@@ -145,6 +147,7 @@ public class ItemLexicon extends ItemMod implements ILexicon, IElvenItem {
 		return par1ItemStack;
 	}
 
+	@Environment(EnvType.CLIENT)
 	public static void openBook(EntityPlayer player, ItemStack stack, World world, boolean skipSound) {
 		ILexicon l = (ILexicon) stack.getItem();
 

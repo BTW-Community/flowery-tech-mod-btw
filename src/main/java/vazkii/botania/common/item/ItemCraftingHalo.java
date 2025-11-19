@@ -14,6 +14,7 @@ import java.awt.Color;
 
 import dev.bagel.client.RenderInstances;
 import dev.bagel.util.Blocks;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.src.Block;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.Gui;
@@ -83,7 +84,8 @@ public class ItemCraftingHalo extends ItemMod implements ICraftAchievement {
 		this(id, LibItemNames.CRAFTING_HALO);
 		MinecraftForge.EVENT_BUS.register(this);
 //		FMLCommonHandler.instance().bus().register(this);
-		RenderWorldLastEvent.EVENT.register(this::onRenderWorldLast);
+		if (!MinecraftServer.getIsServer())
+			RenderWorldLastEvent.EVENT.register(this::onRenderWorldLast);
 	}
 
 	public ItemCraftingHalo(int id, String name) {

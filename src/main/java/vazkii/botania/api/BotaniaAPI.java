@@ -21,6 +21,8 @@ import java.util.Set;
 import btw.block.BTWBlocks;
 import btw.item.BTWItems;
 import btw.item.tag.TagOrStack;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.src.Block;
 import net.minecraft.src.Entity;
 import net.minecraft.src.Item;
@@ -101,9 +103,7 @@ public final class BotaniaAPI {
 
 	public static EnumArmorMaterial manaweaveArmorMaterial = EnumArmorMaterial.IRON.MANAWEAVE();
 
-	public static EnumRarity rarityRelic = EnumRarity.epic.rarityRelic();
-
-	public static KnowledgeType basicKnowledge;
+    public static KnowledgeType basicKnowledge;
 	public static KnowledgeType elvenKnowledge;
 
 	// This is here for completeness sake, but you shouldn't use it
@@ -679,4 +679,8 @@ public final class BotaniaAPI {
 		return "bm_" + block.getUnlocalizedName() + "@" + meta;
 	}
 
+	public static class Client {
+        @Environment(EnvType.CLIENT)
+        public static EnumRarity rarityRelic = EnumRarity.epic.rarityRelic();
+	}
 }
