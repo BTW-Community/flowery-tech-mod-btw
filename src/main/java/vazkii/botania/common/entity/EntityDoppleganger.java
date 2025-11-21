@@ -19,6 +19,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import btw.achievement.event.AchievementEventDispatcher;
 import btw.block.tileentity.beacon.BeaconEffectHandler;
 import btw.entity.EntityWithCustomPacket;
 import btw.network.packet.BTWPacketManager;
@@ -392,13 +393,14 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 	}
 
 	@Override
-	public void onDeath(DamageSource p_70645_1_) {
-		super.onDeath(p_70645_1_);
+	public void onDeath(DamageSource source) {
+		super.onDeath(source);
 		EntityLivingBase entitylivingbase = func_94060_bK();
 		if(entitylivingbase instanceof EntityPlayer player) {
-			ModAchievements.trigger(player, ModAchievements.gaiaGuardianKill);
-			if(!anyWithArmor)
-				ModAchievements.trigger(player, ModAchievements.gaiaGuardianNoArmor);
+			AchievementEventDispatcher.triggerEvent(ModAchievements.GaiaGuardianKillEvent.class, player, new ModAchievements.GaiaGuardianKillEventData(false));
+			if(!anyWithArmor) {
+				AchievementEventDispatcher.triggerEvent(ModAchievements.GaiaGuardianKillEvent.class, player, new ModAchievements.GaiaGuardianKillEventData(true));
+			}
 		}
 
 		worldObj.playSoundAtEntity(this, "random.explode", 20F, (1F + (worldObj.rand.nextFloat() - worldObj.rand.nextFloat()) * 0.2F) * 0.7F);

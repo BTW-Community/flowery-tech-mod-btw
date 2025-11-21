@@ -21,13 +21,13 @@ import vazkii.botania.common.Botania;
 
 public class AchievementMod {
 
-	public static List<Achievement> achievements = new ArrayList<>();
+	public static List<Achievement<?>> achievements = new ArrayList<>();
 	public static <T> Achievement<ItemStack> basic(String name, int x, int y, ItemStack icon, Achievement<?> parent) {
 		var achievement = AchievementProvider.getBuilder(BTWAchievementEvents.ItemEvent.class).name(Botania.loc(name)).icon(icon).displayLocation(x, y).triggerCondition(ModAchievements.LATER);
 		if (parent != null) {
 			achievement = achievement.parents(parent);
 		}
-		var ach = achievement.build().registerAchievement(ModAchievements.botaniaPage);
+		var ach = achievement.build().registerAchievement(ModAchievements.BOTANIA_PAGE);
 		achievements.add(ach);
 		return ach;
 	}
@@ -45,7 +45,7 @@ public class AchievementMod {
 		if (parent != null) {
 			achievement = achievement.parents(parent);
 		}
-		var ach = achievement.build().registerAchievement(ModAchievements.botaniaPage);
+		var ach = achievement.build().registerAchievement(ModAchievements.BOTANIA_PAGE);
 		achievements.add(ach);
 		return ach;
 	}

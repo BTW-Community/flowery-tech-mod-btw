@@ -12,6 +12,8 @@ package vazkii.botania.common.item;
 
 import java.util.List;
 
+import btw.achievement.event.AchievementEventDispatcher;
+import btw.achievement.event.BTWAchievementEvents;
 import btw.block.blocks.FallingBlock;
 import dev.bagel.interfaces.BlockExtensions;
 import net.minecraft.src.*;
@@ -68,8 +70,9 @@ public class ItemLaputaShard extends ItemMod implements ILensEffect, ITinyPlanet
 			par3World.playSound(par4 + 0.5D, par5 + 0.5D, par6 + 0.5D, "botania:laputaStart", 1.0F + par3World.rand.nextFloat(), par3World.rand.nextFloat() * 0.7F + 1.3F, false);
 			spawnBurstFirst(par3World, par4, par5, par6, par1ItemStack);
 			par1ItemStack.stackSize--;
-			if(par1ItemStack.getItemDamage() == 19)
-				ModAchievements.trigger(par2EntityPlayer, ModAchievements.l20ShardUse);
+			if(par1ItemStack.getItemDamage() == 19) {
+				AchievementEventDispatcher.triggerEvent(ModAchievements.LaputaEvent.class, par2EntityPlayer, BTWAchievementEvents.none());
+			}
 		}
 
 		return true;

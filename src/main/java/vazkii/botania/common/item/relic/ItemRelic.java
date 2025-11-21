@@ -11,7 +11,10 @@
 package vazkii.botania.common.item.relic;
 
 import java.util.List;
+import java.util.function.Supplier;
 
+import btw.achievement.AchievementHandler;
+import btw.achievement.event.AchievementEventDispatcher;
 import net.minecraft.src.GuiScreen;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EnumRarity;
@@ -32,7 +35,7 @@ public class ItemRelic extends ItemMod implements IRelic {
 
 	private static final String TAG_SOULBIND = "soulbind";
 
-	Achievement achievement;
+	Supplier<Achievement<?>> achievement;
 
 	public ItemRelic(int id, String name) {
         super(id);
@@ -97,7 +100,9 @@ public class ItemRelic extends ItemMod implements IRelic {
 
 		String soulbind = getSoulbindUsernameS(stack);
 		if(soulbind.isEmpty()) {
-			ModAchievements.trigger(player, ((IRelic) stack.getItem()).getBindAchievement());
+//			ModAchievements.trigger(player, ((IRelic) stack.getItem()).getBindAchievement().get());
+			AchievementEventDispatcher.triggerEvent(ModAchievements.RelicEvent.class, player, stack);
+//			AchievementHandler.triggerAchievement(player, ((IRelic) stack.getItem()).getBindAchievement().get());
 			bindToPlayer(player, stack);
 			soulbind = getSoulbindUsernameS(stack);
 		}
@@ -137,12 +142,12 @@ public class ItemRelic extends ItemMod implements IRelic {
 	}
 
 	@Override
-	public Achievement getBindAchievement() {
+	public Supplier<Achievement<?>> getBindAchievement() {
 		return achievement;
 	}
 
 	@Override
-	public void setBindAchievement(Achievement achievement) {
+	public void setBindAchievement(Supplier<Achievement<?>> achievement) {
 		this.achievement = achievement;
 	}
 

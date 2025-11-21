@@ -13,13 +13,13 @@ package vazkii.botania.common.item;
 import java.awt.Color;
 import java.util.List;
 
+import btw.achievement.event.AchievementEventDispatcher;
+import btw.achievement.event.BTWAchievementEvents;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.Entity;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntitySheep;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Potion;
 import net.minecraft.src.PotionEffect;
@@ -75,8 +75,9 @@ public class ItemSignalFlare extends ItemMod {
 						stunned++;
 					}
 
-				if(stunned >= 100)
-					ModAchievements.trigger(par3EntityPlayer, ModAchievements.signalFlareStun);
+				if(stunned >= 100) {
+					AchievementEventDispatcher.triggerEvent(ModAchievements.SignalFlareStunEvent.class, par3EntityPlayer, BTWAchievementEvents.none());
+				}
 			}
 			par1ItemStack.damageItem(200, par3EntityPlayer);
 		}

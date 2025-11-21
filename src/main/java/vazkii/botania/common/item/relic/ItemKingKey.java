@@ -22,6 +22,7 @@ import net.minecraft.src.World;
 import vazkii.botania.api.mana.IManaUsingItem;
 import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.client.core.helper.IconHelper;
+import vazkii.botania.common.achievement.ModAchievements;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.core.helper.Vector3;
 import vazkii.botania.common.entity.EntityBabylonWeapon;
@@ -37,6 +38,7 @@ public class ItemKingKey extends ItemRelic implements IManaUsingItem {
 
 	public ItemKingKey(int id) {
 		super(id, LibItemNames.KING_KEY);
+		setBindAchievement(() -> ModAchievements.RELIC_KING_KEY);
 	}
 
 	@Override

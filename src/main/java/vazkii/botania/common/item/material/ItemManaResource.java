@@ -13,6 +13,8 @@ package vazkii.botania.common.item.material;
 import java.awt.Color;
 import java.util.List;
 
+import btw.achievement.event.AchievementEventDispatcher;
+import btw.achievement.event.BTWAchievementEvents;
 import net.minecraft.src.*;
 import net.minecraft.src.Item;
 import net.minecraftforge.common.MinecraftForge;
@@ -64,7 +66,7 @@ public class ItemManaResource extends ItemMod implements IFlowerComponent, IElve
 
 			if(pos == null) {
 				ItemStack stack1 = new ItemStack(this, 1, 15);
-				ModAchievements.trigger(event.entityPlayer, ModAchievements.enderAirMake);
+				AchievementEventDispatcher.triggerEvent(ModAchievements.EnderAirMakeEvent.class, event.entityPlayer, BTWAchievementEvents.none());
 
 				if(!event.entityPlayer.inventory.addItemStackToInventory(stack1))
 					event.entityPlayer.dropPlayerItemWithRandomChoice(stack1, true);
@@ -178,7 +180,7 @@ public class ItemManaResource extends ItemMod implements IFlowerComponent, IElve
 
 	@Override
 	public Achievement getAchievementOnPickup(ItemStack stack) {
-		return stack.getItemDamage() == 4 ? ModAchievements.terrasteelPickup : null;
+		return stack.getItemDamage() == 4 ? ModAchievements.TERRASTEEL_PICKUP : null;
 	}
 
 }

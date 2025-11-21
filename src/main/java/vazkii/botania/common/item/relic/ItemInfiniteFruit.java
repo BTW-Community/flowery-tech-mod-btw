@@ -19,6 +19,7 @@ import net.minecraft.src.World;
 import vazkii.botania.api.mana.IManaUsingItem;
 import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.client.core.helper.IconHelper;
+import vazkii.botania.common.achievement.ModAchievements;
 import vazkii.botania.common.lib.LibItemNames;
 import vazkii.botania.common.lib.LibObfuscation;
 import net.fabricmc.api.Environment;
@@ -30,6 +31,7 @@ public class ItemInfiniteFruit extends ItemRelic implements IManaUsingItem {
 
 	public ItemInfiniteFruit(int id) {
 		super(id, LibItemNames.INFINITE_FRUIT);
+		setBindAchievement(() -> ModAchievements.RELIC_INFINITE_FRUIT);
 	}
 
 	@Override

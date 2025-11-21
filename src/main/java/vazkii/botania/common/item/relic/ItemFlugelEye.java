@@ -21,6 +21,7 @@ import vazkii.botania.api.mana.IManaUsingItem;
 import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.api.wand.ICoordBoundItem;
 import vazkii.botania.common.Botania;
+import vazkii.botania.common.achievement.ModAchievements;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.core.helper.MathHelper;
 import vazkii.botania.common.lib.LibItemNames;
@@ -29,6 +30,7 @@ public class ItemFlugelEye extends ItemRelic implements ICoordBoundItem, IManaUs
 
 	public ItemFlugelEye(int id) {
 		super(id, LibItemNames.FLUGEL_EYE);
+		setBindAchievement(() -> ModAchievements.RELIC_FLUGEL_EYE);
 	}
 
 	private static final String TAG_X = "x";

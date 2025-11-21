@@ -10,8 +10,6 @@
  */
 package vazkii.botania.common.item.equipment.bauble;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +31,6 @@ import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EntityPlayerMP;
 import net.minecraft.src.IInventory;
-import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Achievement;
 import net.minecraft.src.Icon;
@@ -544,7 +541,7 @@ public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaub
 
 	@Override
 	public Achievement getAchievementOnCraft(ItemStack stack, EntityPlayer player, IInventory matrix) {
-		return stack.getItemDamage() == 1 ? ModAchievements.tiaraWings : null;
+		return stack.getItemDamage() == 1 ? ModAchievements.TIARA_WINGS : null;
 	}
 
 }

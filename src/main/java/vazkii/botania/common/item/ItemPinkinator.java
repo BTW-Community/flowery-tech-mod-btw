@@ -12,6 +12,8 @@ package vazkii.botania.common.item;
 
 import java.util.List;
 
+import btw.achievement.event.AchievementEventDispatcher;
+import btw.achievement.event.BTWAchievementEvents;
 import net.minecraft.src.EntityWither;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
@@ -44,7 +46,7 @@ public class ItemPinkinator extends ItemMod {
 					world.spawnEntityInWorld(pink);
 					world.playSoundAtEntity(wither, "random.explode", 4F, (1F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.2F) * 0.7F);
 				}
-				ModAchievements.trigger(player, ModAchievements.pinkinator);
+				AchievementEventDispatcher.triggerEvent(ModAchievements.PinkificationEvent.class, player, new BTWAchievementEvents.None());
 
 				world.spawnParticle("hugeexplosion", wither.posX, wither.posY, wither.posZ, 1D, 0D, 0D);
 				stack.stackSize--;

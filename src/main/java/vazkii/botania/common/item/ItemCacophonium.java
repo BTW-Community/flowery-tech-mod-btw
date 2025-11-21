@@ -19,21 +19,16 @@ import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityCreeper;
 import net.minecraft.src.EntitySlime;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.IInventory;
 import net.minecraft.src.EnumAction;
 import net.minecraft.src.ItemStack;
-import net.minecraft.src.Achievement;
 import net.minecraft.src.StatCollector;
 import net.minecraft.src.World;
-import vazkii.botania.common.achievement.ICraftAchievement;
-import vazkii.botania.common.achievement.ModAchievements;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.block.tile.TileCacophonium;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.lib.LibItemNames;
-import vazkii.botania.common.lib.LibObfuscation;
 
-public class ItemCacophonium extends ItemMod implements ICraftAchievement {
+public class ItemCacophonium extends ItemMod {
 
 	private static final String TAG_SOUND = "sound";
 	private static final String TAG_SOUND_NAME = "soundName";
@@ -149,10 +144,5 @@ public class ItemCacophonium extends ItemMod implements ICraftAchievement {
 
 	private static boolean isDOIT(ItemStack stack) {
 		return stack != null && stack.getDisplayName().equalsIgnoreCase("shia labeouf");
-	}
-
-	@Override
-	public Achievement getAchievementOnCraft(ItemStack stack, EntityPlayer player, IInventory matrix) {
-		return ModAchievements.cacophoniumCraft;
 	}
 }

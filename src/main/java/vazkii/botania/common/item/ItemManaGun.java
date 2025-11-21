@@ -13,6 +13,8 @@ package vazkii.botania.common.item;
 import java.awt.Color;
 import java.util.List;
 
+import btw.achievement.event.AchievementEventDispatcher;
+import btw.achievement.event.BTWAchievementEvents;
 import net.minecraft.src.*;
 import vazkii.botania.api.mana.BurstProperties;
 import vazkii.botania.api.mana.ILens;
@@ -78,9 +80,10 @@ public class ItemManaGun extends ItemMod implements IManaUsingItem {
 			if(burst != null && ManaItemHandler.requestManaExact(par1ItemStack, par3EntityPlayer, burst.getMana(), true)) {
 				if(!par2World.isRemote) {
 					par2World.playSoundAtEntity(par3EntityPlayer, "botania:manaBlaster", 0.6F, 1F);
-					ModAchievements.trigger(par3EntityPlayer, ModAchievements.manaBlasterShoot);
-					if(isSugoiKawaiiDesuNe(par1ItemStack))
-						ModAchievements.trigger(par3EntityPlayer, ModAchievements.desuGun);
+					AchievementEventDispatcher.triggerEvent(ModAchievements.ManaBlasterFiredEvent.class, par3EntityPlayer, new ModAchievements.ManaBlasterFiredEventData(false));
+					if(isSugoiKawaiiDesuNe(par1ItemStack)) {
+						AchievementEventDispatcher.triggerEvent(ModAchievements.ManaBlasterFiredEvent.class, par3EntityPlayer, new ModAchievements.ManaBlasterFiredEventData(true));
+					}
 					par2World.spawnEntityInWorld(burst);
 				} else {
 					par3EntityPlayer.swingItem();

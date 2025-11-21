@@ -36,6 +36,7 @@ public final class SheddingHandler {
 
 	public SheddingHandler() {
 		LivingEvent.LivingUpdateEvent.EVENT.register(this::onLivingUpdate);
+		patterns.add(new ShedPattern(EntityChicken.class, new ItemStack(Item.feather), 26000, 20));
 	}
 
 	public static ArrayList<ShedPattern> patterns = new ArrayList<>();

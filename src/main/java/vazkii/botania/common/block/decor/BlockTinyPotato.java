@@ -12,6 +12,8 @@ package vazkii.botania.common.block.decor;
 
 import java.util.ArrayList;
 
+import btw.achievement.event.AchievementEventDispatcher;
+import btw.achievement.event.BTWAchievementEvents;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.src.*;
 import vazkii.botania.api.lexicon.ILexiconable;
@@ -72,7 +74,7 @@ public class BlockTinyPotato extends BlockModContainer<TileTinyPotato> implement
 		TileEntity tile = par1World.getTileEntity(par2, par3, par4);
 		if(tile instanceof TileTinyPotato) {
 			((TileTinyPotato) tile).interact();
-			ModAchievements.trigger(par5EntityPlayer, ModAchievements.tinyPotatoPet);
+			AchievementEventDispatcher.triggerEvent(ModAchievements.PetThePotatoPleaseTheyDeserveItEvent.class, par5EntityPlayer, BTWAchievementEvents.none());
 			par1World.spawnParticle("heart", par2 + minX + Math.random() * (maxX - minX), par3 + maxY, par4 + minZ + Math.random() * (maxZ - minZ), 0, 0 ,0);
 		}
 		return true;

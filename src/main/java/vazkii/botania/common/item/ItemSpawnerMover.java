@@ -12,6 +12,8 @@ package vazkii.botania.common.item;
 
 import java.util.List;
 
+import btw.achievement.event.AchievementEventDispatcher;
+import btw.achievement.event.BTWAchievementEvents;
 import net.minecraft.src.Block;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.Entity;
@@ -106,7 +108,7 @@ public class ItemSpawnerMover extends ItemMod {
 	@Override
 	public boolean onItemUse(ItemStack itemstack, EntityPlayer player, World world, int x, int y, int z, int side, float xOffset, float yOffset, float zOffset) {
 		if(getEntityId(itemstack) == null) {
-			if(world.getBlock(x, y, z).equals(Block.mobSpawner)) {
+			if(Block.mobSpawner.equals(world.getBlock(x, y, z))) {
 				TileEntity te = world.getTileEntity(x, y, z);
 				NBTTagCompound tag = new NBTTagCompound();
 				tag.setTag(TAG_SPAWNER, new NBTTagCompound());
@@ -162,15 +164,15 @@ public class ItemSpawnerMover extends ItemMod {
 			return false;
 		else if(!player.canPlayerEdit(x, y, z, side, itemstack))
 			return false;
-		else if(y == 255 && block.blockMaterial.isSolid())
+		else if(y == 255 && block != null && block.blockMaterial.isSolid())
 			return false;
 		else if(world.canPlaceEntityOnSide(Block.mobSpawner.blockID, x, y, z, false, side, player, itemstack)) {
-			int meta = block.onBlockPlaced(world, x, y, z, side, xOffset, yOffset, zOffset, 0);
+			int meta = block != null ? block.onBlockPlaced(world, x, y, z, side, xOffset, yOffset, zOffset, 0) : 0;
 
 			if(placeBlockAt(itemstack, player, world, x, y, z, side, xOffset, yOffset, zOffset, meta)) {
-				world.playSoundEffect(x + 0.5F, y + 0.5F, z + 0.5F, block.stepSound.getBreakSound(), (block.stepSound.getVolume() + 1.0F) / 2.0F, block.stepSound.getPitch() * 0.8F);
+				world.playSoundEffect(x + 0.5F, y + 0.5F, z + 0.5F, block != null ? block.stepSound.getBreakSound() : Block.mobSpawner.stepSound.getBreakSound(), (block != null ? block.stepSound.getVolume() : Block.mobSpawner.stepSound.getVolume() + 1.0F) / 2.0F, block != null ? block.stepSound.getPitch() : Block.mobSpawner.stepSound.getPitch() * 0.8F);
 				player.renderBrokenItemStack(itemstack);
-				ModAchievements.trigger(player, ModAchievements.spawnerMoverUse);
+				AchievementEventDispatcher.triggerEvent(ModAchievements.SpawnerMoverEvent.class, player, new BTWAchievementEvents.None());
 				for(int i = 0; i < 100; i++)
 					Botania.getProxy().sparkleFX(world, x + Math.random(), y + Math.random(), z + Math.random(), (float) Math.random(), (float) Math.random(), (float) Math.random(), 0.45F + 0.2F * (float) Math.random(), 6);
 
@@ -187,7 +189,7 @@ public class ItemSpawnerMover extends ItemMod {
 			return false;
 
 		Block block = world.getBlock(x, y, z);
-		if(block.equals(Block.mobSpawner)) {
+		if(Block.mobSpawner.equals(block)) {
 			TileEntity te = world.getTileEntity(x, y, z);
 			NBTTagCompound tag = stack.getTagCompound();
 			if (tag.hasKey(TAG_SPAWNER))

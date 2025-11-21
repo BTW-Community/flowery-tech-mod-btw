@@ -11,6 +11,7 @@
 package vazkii.botania.common.item.relic;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
@@ -24,7 +25,7 @@ import vazkii.botania.common.item.equipment.bauble.ItemBauble;
 
 public abstract class ItemRelicBauble extends ItemBauble implements IRelic {
 
-	Achievement achievement;
+	Supplier<Achievement<?>> achievement;
 
 	public ItemRelicBauble(int id, String name) {
 		super(id, name);
@@ -73,12 +74,12 @@ public abstract class ItemRelicBauble extends ItemBauble implements IRelic {
 	}
 
 	@Override
-	public Achievement getBindAchievement() {
+	public Supplier<Achievement<?>> getBindAchievement() {
 		return achievement;
 	}
 
 	@Override
-	public void setBindAchievement(Achievement achievement) {
+	public void setBindAchievement(Supplier<Achievement<?>> achievement) {
 		this.achievement = achievement;
 	}
 

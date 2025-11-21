@@ -13,7 +13,8 @@ package vazkii.botania.common.item;
 import java.util.ArrayList;
 import java.util.List;
 
-import btw.achievement.AchievementHandler;
+import btw.achievement.event.AchievementEventDispatcher;
+import btw.achievement.event.BTWAchievementEvents;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.src.*;
@@ -28,9 +29,7 @@ import vazkii.botania.client.gui.lexicon.GuiLexicon;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.achievement.ModAchievements;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
-import vazkii.botania.common.core.helper.MathHelper;
 import vazkii.botania.common.item.relic.ItemDice;
-import vazkii.botania.common.lib.LibGuiIDs;
 import vazkii.botania.common.lib.LibItemNames;
 
 public class ItemLexicon extends ItemMod implements ILexicon, IElvenItem {
@@ -163,7 +162,7 @@ public class ItemLexicon extends ItemMod implements ILexicon, IElvenItem {
 			}
 
 		Botania.getProxy().setLexiconStack(stack);
-		ModAchievements.trigger(player, ModAchievements.lexiconUse);
+		AchievementEventDispatcher.triggerEvent(ModAchievements.LexiconOpenEvent.class, player, BTWAchievementEvents.none());
 		Minecraft.getMinecraft().displayGuiScreen(GuiLexicon.currentOpenLexicon);
 //		player.openGui(Botania.instance.getModID(), LibGuiIDs.LEXICON, world, 0, 0, 0);
 		if(!world.isRemote && !skipSound)

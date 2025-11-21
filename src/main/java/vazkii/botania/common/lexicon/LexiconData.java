@@ -1311,23 +1311,23 @@ public final class LexiconData {
 			relicInfo.setLexiconPages(new PageText("0"), new PageText("1")).setIcon(new ItemStack(ModItems.dice));
 
 			infiniteFruit = new RLexiconEntry(LibLexicon.ALF_INFINITE_FRUIT, categoryAlfhomancy,
-					ModAchievements.relicInfiniteFruit);
+					ModAchievements.RELIC_INFINITE_FRUIT);
 			infiniteFruit.setLexiconPages(new PageText("0"));
 
-			kingKey = new RLexiconEntry(LibLexicon.ALF_KING_KEY, categoryAlfhomancy, ModAchievements.relicKingKey);
+			kingKey = new RLexiconEntry(LibLexicon.ALF_KING_KEY, categoryAlfhomancy, ModAchievements.RELIC_KING_KEY);
 			kingKey.setLexiconPages(new PageText("0"));
 
 			flugelEye = new RLexiconEntry(LibLexicon.ALF_FLUGEL_EYE, categoryAlfhomancy,
-					ModAchievements.relicFlugelEye);
+					ModAchievements.RELIC_FLUGEL_EYE);
 			flugelEye.setLexiconPages(new PageText("0"), new PageText("1"));
 
-			thorRing = new RLexiconEntry(LibLexicon.ALF_THOR_RING, categoryAlfhomancy, ModAchievements.relicThorRing);
+			thorRing = new RLexiconEntry(LibLexicon.ALF_THOR_RING, categoryAlfhomancy, ModAchievements.RELIC_THOR_RING);
 			thorRing.setLexiconPages(new PageText("0"));
 
-			lokiRing = new RLexiconEntry(LibLexicon.ALF_LOKI_RING, categoryAlfhomancy, ModAchievements.relicLokiRing);
+			lokiRing = new RLexiconEntry(LibLexicon.ALF_LOKI_RING, categoryAlfhomancy, ModAchievements.RELIC_LOKI_RING);
 			lokiRing.setLexiconPages(new PageText("0"), new PageText("1"), new PageText("2"), new PageText("3"));
 
-			odinRing = new RLexiconEntry(LibLexicon.ALF_ODIN_RING, categoryAlfhomancy, ModAchievements.relicOdinRing);
+			odinRing = new RLexiconEntry(LibLexicon.ALF_ODIN_RING, categoryAlfhomancy, ModAchievements.RELIC_ODIN_RING);
 			odinRing.setLexiconPages(new PageText("0"));
 		}
 

@@ -196,7 +196,7 @@ public abstract class ItemBrewBase extends ItemMod implements IBrewItem, IPickup
 
 	@Override
 	public Achievement getAchievementOnPickup(ItemStack stack) {
-		return ModAchievements.brewPickup;
+		return ModAchievements.BREW_PICKUP;
 	}
 
 }

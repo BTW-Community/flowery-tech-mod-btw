@@ -132,7 +132,7 @@ public class ItemManaweaveArmor extends ItemManasteelArmor implements ICraftAchi
 
 	@Override
 	public Achievement getAchievementOnCraft(ItemStack stack, EntityPlayer player, IInventory matrix) {
-		return ModAchievements.manaweaveArmorCraft;
+		return ModAchievements.MANAWEAVE_ARMOR_CRAFT;
 	}
 
 }

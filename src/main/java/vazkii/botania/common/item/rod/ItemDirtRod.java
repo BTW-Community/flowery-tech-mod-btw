@@ -13,7 +13,6 @@ package vazkii.botania.common.item.rod;
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Block;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Achievement;
@@ -80,7 +79,7 @@ public class ItemDirtRod extends ItemMod implements IManaUsingItem, ICraftAchiev
 
 	@Override
 	public Achievement getAchievementOnCraft(ItemStack stack, EntityPlayer player, IInventory matrix) {
-		return ModAchievements.dirtRodCraft;
+		return ModAchievements.DIRT_ROD_CRAFT;
 	}
 
 	@Override

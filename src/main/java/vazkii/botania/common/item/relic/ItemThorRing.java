@@ -23,7 +23,7 @@ public class ItemThorRing extends ItemRelicBauble {
 
 	public ItemThorRing(int id) {
 		super(id, LibItemNames.THOR_RING);
-		setBindAchievement(ModAchievements.relicThorRing);
+		setBindAchievement(() -> ModAchievements.RELIC_THOR_RING);
 	}
 
 	@Override

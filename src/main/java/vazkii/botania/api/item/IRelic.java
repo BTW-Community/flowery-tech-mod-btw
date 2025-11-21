@@ -13,6 +13,8 @@ package vazkii.botania.api.item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Achievement;
 
+import java.util.function.Supplier;
+
 /**
  * An item that implements this counts as a Relic item. This is purely for interaction
  * and other mod items should not implement this interface.
@@ -33,11 +35,11 @@ public interface IRelic {
 	/**
 	 * Sets the achievement that this relic binds to.
 	 */
-	public void setBindAchievement(Achievement achievement);
+	public void setBindAchievement(Supplier<Achievement<?>> achievement);
 
 	/**
 	 * Gets the achievement that this relic binds to.
 	 */
-	public Achievement getBindAchievement();
+	public Supplier<Achievement<?>> getBindAchievement();
 
 }

@@ -27,7 +27,6 @@ import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.ChunkCoordinates;
 import net.minecraft.src.MovingObjectPosition;
 import net.minecraft.src.World;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
 import vazkii.botania.api.item.IExtendedWireframeCoordinateListProvider;
@@ -44,7 +43,6 @@ import baubles.common.container.InventoryBaubles;
 import baubles.common.lib.PlayerHandler;
 import baubles.common.network.PacketHandler;
 import baubles.common.network.PacketSyncBauble;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
@@ -64,7 +62,7 @@ public class ItemLokiRing extends ItemRelicBauble implements IExtendedWireframeC
 		super(id, LibItemNames.LOKI_RING);
 //		MinecraftForge.EVENT_BUS.register(this);
 		PlayerInteractEvent.EVENT.register(this::onPlayerInteract);
-		setBindAchievement(ModAchievements.relicLokiRing);
+		setBindAchievement(() -> ModAchievements.RELIC_LOKI_RING);
 	}
 
 //	@SubscribeEvent
@@ -143,25 +141,24 @@ public class ItemLokiRing extends ItemRelicBauble implements IExtendedWireframeC
 
 	public static void breakOnAllCursors(EntityPlayer player, Item item, ItemStack stack, int x, int y, int z, int side) {
 		ItemStack lokiRing = getLokiRing(player);
-		if(lokiRing == null || player.worldObj.isRemote || !(item instanceof ISequentialBreaker))
+		if(lokiRing == null || player.worldObj.isRemote || !(item instanceof ISequentialBreaker breaker))
 			return;
 
 		List<ChunkCoordinates> cursors = getCursorList(lokiRing);
-		ISequentialBreaker breaker = (ISequentialBreaker) item;
-		World world = player.worldObj;
+        World world = player.worldObj;
 		boolean silk = EnchantmentHelper.getEnchantmentLevel(Enchantment.silkTouch.effectId, stack) > 0;
 		int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantment.fortune.effectId, stack);
 		boolean dispose = breaker.disposeOfTrashBlocks(stack);
 
-		for(int i = 0; i < cursors.size(); i++) {
-			ChunkCoordinates coords = cursors.get(i);
-			int xp = x + coords.posX;
-			int yp = y + coords.posY;
-			int zp = z + coords.posZ;
-			Block block = world.getBlock(xp, yp, zp);
-			breaker.breakOtherBlock(player, stack, xp, yp, zp, x, y, z, side);
-			ToolCommons.removeBlockWithDrops(player, stack, player.worldObj, xp, yp, zp, x, y, z, block, new Material[] { block.blockMaterial }, silk, fortune, block.getBlockHardness(world, xp, yp, zp), dispose);
-		}
+        for (ChunkCoordinates coords : cursors) {
+            int xp = x + coords.posX;
+            int yp = y + coords.posY;
+            int zp = z + coords.posZ;
+            Block block = world.getBlock(xp, yp, zp);
+            breaker.breakOtherBlock(player, stack, xp, yp, zp, x, y, z, side);
+            if (block == null) continue;
+            ToolCommons.removeBlockWithDrops(player, stack, player.worldObj, xp, yp, zp, x, y, z, block, new Material[]{block.blockMaterial}, silk, fortune, block.getBlockHardness(world, xp, yp, zp), dispose);
+        }
 	}
 
 	@Override
@@ -237,7 +234,8 @@ public class ItemLokiRing extends ItemRelicBauble implements IExtendedWireframeC
 		NBTTagCompound cmp = ItemNBTHelper.getCompound(stack, TAG_CURSOR_LIST, false);
 		List<ChunkCoordinates> cursors = new ArrayList<>();
 
-		int count = cmp.getInteger(TAG_CURSOR_COUNT);
+        assert cmp != null;
+        int count = cmp.getInteger(TAG_CURSOR_COUNT);
 		for(int i = 0; i < count; i++) {
 			NBTTagCompound cursorCmp = cmp.getCompoundTag(TAG_CURSOR_PREFIX + i);
 			int x = cursorCmp.getInteger(TAG_X_OFFSET);
@@ -274,7 +272,8 @@ public class ItemLokiRing extends ItemRelicBauble implements IExtendedWireframeC
 
 	private static void addCursor(ItemStack stack, int x, int y, int z) {
 		NBTTagCompound cmp = ItemNBTHelper.getCompound(stack, TAG_CURSOR_LIST, false);
-		int count = cmp.getInteger(TAG_CURSOR_COUNT);
+        assert cmp != null;
+        int count = cmp.getInteger(TAG_CURSOR_COUNT);
 		cmp.setTag(TAG_CURSOR_PREFIX + count, cursorToCmp(x, y, z));
 		cmp.setInteger(TAG_CURSOR_COUNT, count + 1);
 		ItemNBTHelper.setCompound(stack, TAG_CURSOR_LIST, cmp);

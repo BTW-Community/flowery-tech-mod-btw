@@ -52,7 +52,7 @@ public class ItemPoolMinecart extends ItemMod implements ICraftAchievement {
 
 	@Override
 	public Achievement getAchievementOnCraft(ItemStack stack, EntityPlayer player, IInventory matrix) {
-		return ModAchievements.manaCartCraft;
+		return ModAchievements.MANA_CART_CRAFT;
 	}
 //
 //	@Override

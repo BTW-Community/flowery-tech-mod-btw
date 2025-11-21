@@ -206,6 +206,6 @@ public class BlockPool extends BlockModContainer<TilePool> implements IWandHUD, 
 
 	@Override
 	public Achievement getAchievementOnCraft(ItemStack stack, EntityPlayer player, IInventory matrix) {
-		return ModAchievements.manaPoolPickup;
+		return ModAchievements.MANA_POOL_PICKUP;
 	}
 }

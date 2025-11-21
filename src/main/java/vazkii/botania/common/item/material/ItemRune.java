@@ -74,7 +74,7 @@ public class ItemRune extends ItemMod implements IFlowerComponent, IPickupAchiev
 
 	@Override
 	public Achievement getAchievementOnPickup(ItemStack stack) {
-		return ModAchievements.runePickup;
+		return ModAchievements.RUNE_PICKUP;
 	}
 
 }

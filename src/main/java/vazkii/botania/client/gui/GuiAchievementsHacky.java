@@ -12,7 +12,6 @@ package vazkii.botania.client.gui;
 
 import net.minecraft.src.GuiAchievements;
 import net.minecraft.src.GuiButton;
-import net.minecraft.src.GuiScreen;
 import net.minecraft.src.StatFileWriter;
 import vazkii.botania.common.achievement.ModAchievements;
 
@@ -26,7 +25,7 @@ public class GuiAchievementsHacky extends GuiAchievements {
 	@Override
 	public void initGui() {
 		super.initGui();
-		((GuiButton) buttonList.get(1)).displayString = ModAchievements.botaniaPage.getName();
+		((GuiButton) buttonList.get(1)).displayString = ModAchievements.BOTANIA_PAGE.getName();
 	}
 
 }

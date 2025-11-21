@@ -39,7 +39,7 @@ import vazkii.botania.common.lib.LibBlockNames;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
-public class BlockModFlower extends BlockFlower implements ILexiconable, IPickupAchievement, IGrowable {
+public class BlockModFlower extends BlockFlower implements ILexiconable, IGrowable {
 
 	public static Icon[] icons;
 	public static Icon[] iconsAlt;
@@ -129,11 +129,6 @@ public class BlockModFlower extends BlockFlower implements ILexiconable, IPickup
 	}
 
 	@Override
-	public Achievement getAchievementOnPickup(ItemStack stack) {
-		return ModAchievements.flowerPickup;
-	}
-
-	@Override
 	public boolean func_149851_a(World world, int x, int y, int z, boolean fuckifiknow) {
 		return world.isAirBlock(x, y + 1, z);
 	}
@@ -146,7 +141,7 @@ public class BlockModFlower extends BlockFlower implements ILexiconable, IPickup
 	@Override
 	public boolean attemptToApplyFertilizerTo(World world, int x, int y, int z) {
 		int meta = world.getBlockMetadata(x, y, z);
-		if (world.isAirBlock(x, y + 1, z) || world.getBlock(x, y + 1, z).isReplaceableVegetation(world, x, y+1, z)) {
+		if (world.isAirBlock(x, y + 1, z) || (world.getBlock(x, y + 1, z) != null && world.getBlock(x, y + 1, z).isReplaceableVegetation(world, x, y + 1, z))) {
 			placeDoubleFlower(world, x, y, z, meta, 1 | 2);
 			return true;
 		}

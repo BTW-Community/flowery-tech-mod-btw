@@ -45,3 +45,5 @@ accessible field net/minecraft/src/SaveHandler playersDirectory Ljava/io/File;
 accessible field net/minecraft/src/EntityPlayerMP currentWindowId I
 accessible method net/minecraft/src/TextureUtil copyToBufferPos ([III)V
 accessible field net/minecraft/src/TextureUtil dataBuffer Ljava/nio/IntBuffer;
+accessible class btw/achievement/AchievementProvider$AchievementBuilder
+accessible method btw/achievement/AchievementProvider$AchievementBuilder <init> (Ljava/lang/Class;)V

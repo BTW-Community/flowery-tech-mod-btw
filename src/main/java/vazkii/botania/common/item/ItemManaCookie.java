@@ -14,8 +14,6 @@ import btw.item.items.FoodItem;
 import net.minecraft.src.*;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.client.lib.LibResources;
-import vazkii.botania.common.achievement.ModAchievements;
-import vazkii.botania.common.core.BotaniaCreativeTab;
 import vazkii.botania.common.lib.LibItemNames;
 
 import net.fabricmc.api.Environment;
@@ -31,11 +29,11 @@ public class ItemManaCookie extends FoodItem {
 		setCreativeTab(CreativeTabs.tabMisc);
 	}
 
-	@Override
+/*	@Override
 	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
 		super.onFoodEaten(stack, world, player);
-		ModAchievements.trigger(player, ModAchievements.manaCookieEat);
-	}
+		ModAchievements.trigger(player, ModAchievements.MANA_COOKIE_EAT);
+	}*/
 
 	@Override
 	public Item setUnlocalizedName(String par1Str) {
@@ -55,7 +53,7 @@ public class ItemManaCookie extends FoodItem {
 
 	@Override
 	public Icon getIconIndex(ItemStack stack) {
-		return stack.getDisplayName().toLowerCase().equals("totalbiscuit") ? totalBiscuitIcon : super.getIconIndex(stack);
+		return stack.getDisplayName().equalsIgnoreCase("totalbiscuit") ? totalBiscuitIcon : super.getIconIndex(stack);
 	}
 
 	@Override

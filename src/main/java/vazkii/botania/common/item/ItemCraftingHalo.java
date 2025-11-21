@@ -22,10 +22,8 @@ import net.minecraft.src.ScaledResolution;
 import net.minecraft.src.ItemRenderer;
 import net.minecraft.src.RenderBlocks;
 import net.minecraft.src.Tessellator;
-import net.minecraft.src.RenderItem;
 import net.minecraft.src.RenderManager;
 import net.minecraft.src.TextureMap;
-import net.minecraft.src.Entity;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ContainerWorkbench;
@@ -62,7 +60,6 @@ import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.core.helper.Vector3;
 import vazkii.botania.common.lib.LibGuiIDs;
 import vazkii.botania.common.lib.LibItemNames;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
@@ -604,7 +601,7 @@ public class ItemCraftingHalo extends ItemMod implements ICraftAchievement {
 
 	@Override
 	public Achievement getAchievementOnCraft(ItemStack stack, EntityPlayer player, IInventory matrix) {
-		return ModAchievements.craftingHaloCraft;
+		return ModAchievements.CRAFTING_HALO_CRAFT;
 	}
 
 }

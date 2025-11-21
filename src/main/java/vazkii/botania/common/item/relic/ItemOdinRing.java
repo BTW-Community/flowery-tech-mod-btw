@@ -54,7 +54,7 @@ public class ItemOdinRing extends ItemRelicBauble {
 
 		damageNegations.add(DamageSource.inWall.damageType);
 		damageNegations.add(DamageSource.starve.damageType);
-		setBindAchievement(ModAchievements.relicOdinRing);
+		setBindAchievement(() -> ModAchievements.RELIC_ODIN_RING);
 	}
 
 	@Override

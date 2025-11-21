@@ -13,6 +13,7 @@ package vazkii.botania.common.item.relic;
 import java.util.ArrayList;
 import java.util.List;
 
+import btw.achievement.AchievementHandler;
 import net.minecraft.src.*;
 import vazkii.botania.api.item.IRelic;
 import vazkii.botania.common.item.ModItems;
@@ -82,13 +83,10 @@ public class ItemDice extends ItemRelic {
 		if(relic < 0 || relic > 5 || !(player instanceof EntityPlayerMP))
 			return true;
 
-		EntityPlayerMP mpPlayer = (EntityPlayerMP) player;
-		Item item = relicStacks[relic].getItem();
+        Item item = relicStacks[relic].getItem();
 		IRelic irelic = (IRelic) item;
-		Achievement achievement = irelic.getBindAchievement();
-		//todofix achievements
-//		return mpPlayer.func_147099_x().hasAchievementUnlocked(achievement);
-		return false;
+		Achievement<?> achievement = irelic.getBindAchievement().get();
+		return AchievementHandler.hasUnlocked(player, achievement);
 	}
 
 }

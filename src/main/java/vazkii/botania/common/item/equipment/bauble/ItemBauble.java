@@ -13,13 +13,9 @@ package vazkii.botania.common.item.equipment.bauble;
 import java.util.List;
 import java.util.UUID;
 
-import net.minecraft.src.GuiScreen;
-import net.minecraft.src.EntityLivingBase;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.StatCollector;
-import net.minecraft.src.World;
+import btw.achievement.event.AchievementEventDispatcher;
+import btw.achievement.event.BTWAchievementEvents;
+import net.minecraft.src.*;
 import vazkii.botania.api.item.ICosmeticAttachable;
 import vazkii.botania.api.item.IPhantomInkable;
 import vazkii.botania.common.achievement.ModAchievements;
@@ -130,8 +126,11 @@ public abstract class ItemBauble extends ItemMod implements IBauble, ICosmeticAt
 			if(!player.worldObj.isRemote)
 				player.worldObj.playSoundAtEntity(player, "botania:equipBauble", 0.1F, 1.3F);
 
-			if(player instanceof EntityPlayer entityPlayer)
-				ModAchievements.trigger(entityPlayer, ModAchievements.baubleWear);
+			if(player instanceof EntityPlayer entityPlayer) {
+//				ModAchievements.trigger(entityPlayer, ModAchievements.baubleWear);
+				AchievementEventDispatcher.triggerEvent(ModAchievements.BaubleWearEvent.class, entityPlayer, new ModAchievements.BaubleWearEventData(entityPlayer, this));
+
+			}
 
 			onEquippedOrLoadedIntoWorld(stack, player);
 			setLastPlayerHashcode(stack, player.hashCode());
