@@ -31,11 +31,7 @@ public abstract class EntityPlayerMPMixin extends EntityPlayer {
     @Inject(method = "onDeath", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/Scoreboard;func_96520_a(Lnet/minecraft/src/ScoreObjectiveCriteria;)Ljava/util/Collection;"))
     private void forge$onDeathDrop(DamageSource damageSource, CallbackInfo ci) {
         this.setCaptureDrops(false);
-        if (!onPlayerDrops(((EntityPlayer) (Object) this), damageSource, this.getCapturedDrops())) {
-            for (EntityItem item : this.getCapturedDrops()) {
-                this.worldObj.spawnEntityInWorld(item);
-            }
-        }
+        onPlayerDrops(((EntityPlayer) (Object) this), damageSource, this.getCapturedDrops());
     }
 
     @Unique
