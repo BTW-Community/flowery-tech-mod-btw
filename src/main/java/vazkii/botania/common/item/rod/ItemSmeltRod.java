@@ -60,9 +60,9 @@ public class ItemSmeltRod extends ItemMod implements IManaUsingItem {
 		return par1ItemStack;
 	}
 
-	//todofix implement onUsingTick
 	@Override
-	public void onUsingTick(ItemStack stack, EntityPlayer p, int time) {
+	public void updateUsingItem(ItemStack stack, World world, EntityPlayer p) {
+		int time = p.getItemInUseCount();
 		if(!ManaItemHandler.requestManaExactForTool(stack, p, COST_PER_TICK, false))
 			return;
 

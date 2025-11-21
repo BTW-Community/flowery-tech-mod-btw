@@ -51,6 +51,11 @@ public class ItemKingKey extends ItemRelic implements IManaUsingItem {
 	}
 
 	@Override
+	public boolean ignoreDamageWhenComparingDuringUse() {
+		return true;
+	}
+
+	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
 		par3EntityPlayer.setItemInUse(par1ItemStack, getMaxItemUseDuration(par1ItemStack));
 		setCharging(par1ItemStack, true);
@@ -67,7 +72,8 @@ public class ItemKingKey extends ItemRelic implements IManaUsingItem {
 	}
 
 	@Override
-	public void onUsingTick(ItemStack stack, EntityPlayer player, int count) {
+	public void updateUsingItem(ItemStack stack, World world, EntityPlayer player) {
+		int count = player.getItemInUseCount();
 		int spawned = getWeaponsSpawned(stack);
 
 		if(count != getMaxItemUseDuration(stack) && spawned < 20 && !player.worldObj.isRemote && ManaItemHandler.requestManaExact(stack, player, 150, true)) {

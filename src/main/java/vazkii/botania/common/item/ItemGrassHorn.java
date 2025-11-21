@@ -104,7 +104,8 @@ public class ItemGrassHorn extends ItemMod {
 	}
 
 	@Override
-	public void onUsingTick(ItemStack stack, EntityPlayer player, int time) {
+	public void updateUsingItem(ItemStack stack, World world, EntityPlayer player) {
+		int time = player.getItemInUseCount();
 		if(time != getMaxItemUseDuration(stack) && time % 5 == 0)
 			breakGrass(player.worldObj, stack, stack.getItemDamage(), (int) player.posX, (int) player.posY, (int) player.posZ);
 

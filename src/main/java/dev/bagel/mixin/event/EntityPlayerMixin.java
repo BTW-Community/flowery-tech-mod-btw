@@ -8,6 +8,7 @@ import net.minecraft.src.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerDropsEvent;
+import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -28,6 +29,8 @@ public abstract class EntityPlayerMixin extends EntityLivingBase {
     protected abstract void joinEntityItemWithWorld(EntityItem par1EntityItem);
 
     @Shadow private ItemStack itemInUse;
+    @Shadow
+    public InventoryPlayer inventory;
     @Unique
     private boolean isCancelled = false;
 
@@ -36,6 +39,11 @@ public abstract class EntityPlayerMixin extends EntityLivingBase {
 
     public EntityPlayerMixin(World par1World) {
         super(par1World);
+    }
+
+    @Inject(method = "onUpdate", at = @At(value = "CONSTANT", args = "intValue=25"))
+    private void forge$onUpdate(CallbackInfo ci) {
+        itemInUse.getItem().onUsingTick(itemInUse, (EntityPlayer) (Object) this, itemInUseCount);
     }
 
     @Inject(method = "damageEntity", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/DamageSource;isUnblockable()Z"), cancellable = true)

@@ -104,12 +104,7 @@ public class ItemTornadoRod extends ItemMod implements IManaUsingItem, IAvatarWi
 		return par1ItemStack;
 	}
 
-	@Override
-	public void onUsingTick(ItemStack stack, EntityPlayer player, int count) {
-
-	}
-
-	@Override
+    @Override
 	public Icon getIconIndex(ItemStack par1ItemStack) {
 		return isFlying(par1ItemStack) ? iconFlying : iconIdle;
 	}

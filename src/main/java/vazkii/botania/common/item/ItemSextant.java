@@ -46,9 +46,9 @@ public class ItemSextant extends ItemMod {
 		return 72000;
 	}
 
-	//todo implement Item#onUsingTick with mixin
 	@Override
-	public void onUsingTick(ItemStack stack, EntityPlayer player, int count) {
+	public void updateUsingItem(ItemStack stack, World world, EntityPlayer player) {
+		int count = player.getItemInUseCount();
 		if(getMaxItemUseDuration(stack) - count < 10)
 			return;
 
@@ -56,7 +56,6 @@ public class ItemSextant extends ItemMod {
 		int y = ItemNBTHelper.getInt(stack, TAG_SOURCE_Y, -1);
 		int z = ItemNBTHelper.getInt(stack, TAG_SOURCE_Z, 0);
 		if(y != -1) {
-			World world = player.worldObj;
 			Vector3 source = new Vector3(x, y, z);
 
 			double radius = calculateRadius(stack, player);

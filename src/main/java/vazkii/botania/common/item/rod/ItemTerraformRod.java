@@ -112,7 +112,8 @@ public class ItemTerraformRod extends ItemMod implements IManaUsingItem, IBlockP
 	}
 
 	@Override
-	public void onUsingTick(ItemStack stack, EntityPlayer player, int count) {
+	public void updateUsingItem(ItemStack stack, World world, EntityPlayer player) {
+		int count = player.getItemInUseCount();
 		if(count != getMaxItemUseDuration(stack) && count % 10 == 0)
 			terraform(stack, player.worldObj, player);
 	}

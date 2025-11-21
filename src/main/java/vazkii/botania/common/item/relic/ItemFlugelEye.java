@@ -62,7 +62,7 @@ public class ItemFlugelEye extends ItemRelic implements ICoordBoundItem, IManaUs
 	}
 
 	@Override
-	public void onUsingTick(ItemStack stack, EntityPlayer player, int count) {
+	public void updateUsingItem(ItemStack stack, World world, EntityPlayer player) {
 		float x = (float) (player.posX - Math.random() * player.width);
 		float y = (float) (player.posY - 1.6 + Math.random());
 		float z = (float) (player.posZ - Math.random() * player.width);

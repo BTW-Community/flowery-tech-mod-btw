@@ -149,7 +149,7 @@ public interface ItemExtensions {
      * @param itemStack The current ItemStack
      * @param world     The world the entity is in
      * @return The normal lifespan in ticks.
-     */
+     *///todo get entity lifespan
     default public int getEntityLifespan(ItemStack itemStack, World world) {
         return 6000;
     }

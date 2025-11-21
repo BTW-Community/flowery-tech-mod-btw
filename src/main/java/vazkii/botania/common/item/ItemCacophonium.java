@@ -124,7 +124,8 @@ public class ItemCacophonium extends ItemMod {
 	}
 
 	@Override
-	public void onUsingTick(ItemStack stack, EntityPlayer player, int count) {
+	public void updateUsingItem(ItemStack stack, World world, EntityPlayer player) {
+		int count = player.getItemInUseCount();
 		if(count % (isDOIT(stack) ? 20 : 6) == 0)
 			playSound(player.worldObj, stack, player.posX, player.posY, player.posZ, 0.9F);
 	}

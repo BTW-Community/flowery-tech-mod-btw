@@ -52,8 +52,9 @@ public class ItemInfiniteFruit extends ItemRelic implements IManaUsingItem {
 	}
 
 	@Override
-	public void onUsingTick(ItemStack stack, EntityPlayer player, int count) {
-		super.onUsingTick(stack, player, count);
+	public void updateUsingItem(ItemStack stack, World world, EntityPlayer player) {
+		int count = player.getItemInUseCount();
+		super.updateUsingItem(stack, world, player);
 
 		if(ManaItemHandler.requestManaExact(stack, player, 500, true)) {
 			if(count % 5 == 0)
@@ -62,7 +63,6 @@ public class ItemInfiniteFruit extends ItemRelic implements IManaUsingItem {
 			if(count == 5)
 				if(player.canEat(false)) {
 					player.setItemInUseCount(20);
-//					ReflectionHelper.setPrivateValue(EntityPlayer.class, player, 20, LibObfuscation.ITEM_IN_USE_COUNT);
 				}
 		}
 	}

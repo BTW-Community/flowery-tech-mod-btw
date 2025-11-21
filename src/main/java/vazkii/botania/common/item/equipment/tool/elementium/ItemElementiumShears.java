@@ -60,7 +60,8 @@ public class ItemElementiumShears extends ItemManasteelShears {
 	}
 
 	@Override
-	public void onUsingTick(ItemStack stack, EntityPlayer player, int count) {
+	public void updateUsingItem(ItemStack stack, World world, EntityPlayer player) {
+		int count = player.getItemInUseCount();
 		if(player.worldObj.isRemote)
 			return;
 

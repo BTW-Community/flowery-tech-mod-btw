@@ -52,7 +52,8 @@ public class ItemMissileRod extends ItemMod implements IManaUsingItem, IAvatarWi
 	}
 
 	@Override
-	public void onUsingTick(ItemStack stack, EntityPlayer player, int count) {
+	public void updateUsingItem(ItemStack stack, World world, EntityPlayer player) {
+		int count = player.getItemInUseCount();
 		if(count != getMaxItemUseDuration(stack) && count % (IManaProficiencyArmor.Helper.hasProficiency(player) ? 1 : 2) == 0 && !player.worldObj.isRemote && ManaItemHandler.requestManaExactForTool(stack, player, COST_PER, false)) {
 			if(spawnMissile(player.worldObj, player, player.posX + (Math.random() - 0.5 * 0.1), player.posY + 2.4 + (Math.random() - 0.5 * 0.1), player.posZ + (Math.random() - 0.5 * 0.1)))
 				ManaItemHandler.requestManaExactForTool(stack, player, COST_PER, true);
