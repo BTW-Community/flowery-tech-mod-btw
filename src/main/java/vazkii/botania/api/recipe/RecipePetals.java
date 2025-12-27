@@ -13,9 +13,9 @@ package vazkii.botania.api.recipe;
 import java.util.ArrayList;
 import java.util.List;
 
-import btw.item.tag.Tag;
-import btw.item.tag.TagInstance;
-import btw.item.tag.TagOrStack;
+import api.item.tag.Tag;
+import api.item.tag.TagInstance;
+import api.item.tag.TagOrStack;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
 

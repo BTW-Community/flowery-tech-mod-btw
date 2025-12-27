@@ -19,9 +19,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import btw.achievement.event.AchievementEventDispatcher;
-import btw.block.tileentity.beacon.BeaconEffectHandler;
-import btw.entity.EntityWithCustomPacket;
+import api.achievement.AchievementEventDispatcher;
+import api.block.beacon.BeaconEffectHandler;
+import api.entity.EntityWithCustomPacket;
 import btw.network.packet.BTWPacketManager;
 import dev.bagel.client.RenderInstances;
 import dev.bagel.interfaces.BlockExtensions;

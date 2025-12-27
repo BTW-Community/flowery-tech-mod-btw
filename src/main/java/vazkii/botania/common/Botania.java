@@ -12,9 +12,9 @@ package vazkii.botania.common;
 
 import baubles.common.Baubles;
 import baubles.common.network.PacketHandler;
-import btw.AddonHandler;
-import btw.BTWAddon;
-import btw.world.biome.BiomeDecoratorBase;
+import api.AddonHandler;
+import api.BTWAddon;
+import api.world.BiomeDecoratorBase;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
 import cpw.mods.fml.common.network.IGuiHandler;
 import dev.bagel.network.CustomGuiPacketHandler;

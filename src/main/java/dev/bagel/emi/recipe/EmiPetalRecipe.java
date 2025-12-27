@@ -1,6 +1,6 @@
 package dev.bagel.emi.recipe;
 
-import btw.item.tag.BTWTags;
+import btw.item.BTWTags;
 import dev.bagel.emi.BotaniaEmiPlugin;
 import emi.dev.emi.emi.api.recipe.EmiRecipe;
 import emi.dev.emi.emi.api.recipe.EmiRecipeCategory;

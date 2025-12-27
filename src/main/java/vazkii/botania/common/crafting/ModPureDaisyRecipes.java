@@ -11,8 +11,8 @@
 package vazkii.botania.common.crafting;
 
 import btw.block.BTWBlocks;
-import btw.item.tag.BTWTags;
-import btw.item.tag.Tag;
+import btw.item.BTWTags;
+import api.item.tag.Tag;
 import net.minecraft.src.Block;
 import net.minecraft.src.ResourceLocation;
 import vazkii.botania.api.BotaniaAPI;

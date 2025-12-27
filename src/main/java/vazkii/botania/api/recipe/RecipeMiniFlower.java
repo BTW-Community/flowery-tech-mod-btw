@@ -10,7 +10,7 @@
  */
 package vazkii.botania.api.recipe;
 
-import btw.item.tag.TagInstance;
+import api.item.tag.TagInstance;
 import net.minecraft.src.ItemStack;
 import vazkii.botania.api.BotaniaAPI;
 

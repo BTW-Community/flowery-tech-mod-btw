@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.lexicon;
 
-import btw.achievement.AchievementHandler;
+import api.achievement.AchievementHandler;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.EntityClientPlayerMP;
 import net.minecraft.src.Achievement;

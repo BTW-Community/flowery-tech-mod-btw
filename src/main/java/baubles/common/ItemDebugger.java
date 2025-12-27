@@ -2,7 +2,7 @@ package baubles.common;
 
 import baubles.api.BaubleType;
 import baubles.api.expanded.BaubleExpandedSlots;
-import btw.achievement.AchievementHandler;
+import api.achievement.AchievementHandler;
 import dev.bagel.mixin.debug.AchievementDataAccessor;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

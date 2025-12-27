@@ -13,8 +13,8 @@ package vazkii.botania.common.item;
 import java.awt.Color;
 import java.util.List;
 
-import btw.achievement.event.AchievementEventDispatcher;
-import btw.achievement.event.BTWAchievementEvents;
+import api.achievement.AchievementEventDispatcher;
+import btw.achievement.BTWAchievementEvents;
 import net.minecraft.src.Block;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.IconRegister;
@@ -99,7 +99,7 @@ public class ItemTwigWand extends Item16Colors implements ICoordBoundItem {
 
 			if(meta != -1 && !par3World.isRemote) {
 				par3World.setBlock(par4, par5, par6, ModBlocks.enchanter, meta, 1 | 2);
-				AchievementEventDispatcher.triggerEvent(ModAchievements.EnchanterMakeEvent.class, par2EntityPlayer, new BTWAchievementEvents.None());
+				AchievementEventDispatcher.triggerEvent(ModAchievements.EnchanterMakeEvent.class, par2EntityPlayer);
 				par3World.playSoundEffect(par4, par5, par6, "botania:enchanterBlock", 0.5F, 0.6F);
 				for(int i = 0; i < 50; i++) {
 					float red = (float) Math.random();

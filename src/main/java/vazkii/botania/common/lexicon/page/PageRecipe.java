@@ -15,8 +15,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import btw.item.tag.TagInstance;
-import btw.item.tag.TagOrStack;
+import api.item.tag.TagInstance;
+import api.item.tag.TagOrStack;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.GuiScreen;
 import net.minecraft.src.RenderHelper;

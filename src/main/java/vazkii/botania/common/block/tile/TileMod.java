@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.block.tile;
 
-import btw.block.tileentity.TileEntityDataPacketHandler;
+import api.block.TileEntityDataPacketHandler;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.Packet;
 import net.minecraft.src.Packet132TileEntityData;

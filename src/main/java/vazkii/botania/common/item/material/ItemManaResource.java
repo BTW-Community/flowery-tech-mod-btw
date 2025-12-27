@@ -13,8 +13,8 @@ package vazkii.botania.common.item.material;
 import java.awt.Color;
 import java.util.List;
 
-import btw.achievement.event.AchievementEventDispatcher;
-import btw.achievement.event.BTWAchievementEvents;
+import api.achievement.AchievementEventDispatcher;
+import btw.achievement.BTWAchievementEvents;
 import net.minecraft.src.*;
 import net.minecraft.src.Item;
 import net.minecraftforge.common.MinecraftForge;
@@ -66,7 +66,7 @@ public class ItemManaResource extends ItemMod implements IFlowerComponent, IElve
 
 			if(pos == null) {
 				ItemStack stack1 = new ItemStack(this, 1, 15);
-				AchievementEventDispatcher.triggerEvent(ModAchievements.EnderAirMakeEvent.class, event.entityPlayer, BTWAchievementEvents.none());
+				AchievementEventDispatcher.triggerEvent(ModAchievements.EnderAirMakeEvent.class, event.entityPlayer);
 
 				if(!event.entityPlayer.inventory.addItemStackToInventory(stack1))
 					event.entityPlayer.dropPlayerItemWithRandomChoice(stack1, true);

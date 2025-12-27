@@ -13,8 +13,8 @@ package vazkii.botania.common.item.equipment.tool.terrasteel;
 import java.awt.Color;
 import java.util.List;
 
-import btw.achievement.event.AchievementEventDispatcher;
-import btw.achievement.event.BTWAchievementEvents;
+import api.achievement.AchievementEventDispatcher;
+import btw.achievement.BTWAchievementEvents;
 import btw.block.BTWBlocks;
 import net.minecraft.src.*;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -170,7 +170,7 @@ public class ItemTerraPick extends ItemManasteelPick implements IManaItem, ISequ
 
 		ToolCommons.removeBlocksInIteration(player, stack, world, x, y, z, doX ? -range : 0, doY ? -1 : 0, doZ ? -range : 0, doX ? range + 1 : 1, doY ? rangeY * 2 : 1, doZ ? range + 1 : 1, null, MATERIALS, silk, fortune, isTipped(stack));
 		if(origLevel == 5) {
-			AchievementEventDispatcher.triggerEvent(ModAchievements.TerraPickEvent.class, player, new BTWAchievementEvents.None());
+			AchievementEventDispatcher.triggerEvent(ModAchievements.TerraPickEvent.class, player);
 		}
 	}
 

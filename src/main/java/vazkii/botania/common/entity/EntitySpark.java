@@ -24,7 +24,7 @@ import java.util.Set;
 import java.util.WeakHashMap;
 
 import baubles.common.lib.PlayerHandler;
-import btw.entity.EntityWithCustomPacket;
+import api.entity.EntityWithCustomPacket;
 import btw.network.packet.BTWPacketManager;
 import net.minecraft.src.*;
 import vazkii.botania.api.mana.IManaItem;

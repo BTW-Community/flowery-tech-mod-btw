@@ -13,7 +13,7 @@ package vazkii.botania.common.item.relic;
 import java.util.ArrayList;
 import java.util.List;
 
-import btw.achievement.AchievementHandler;
+import api.achievement.AchievementHandler;
 import net.minecraft.src.*;
 import vazkii.botania.api.item.IRelic;
 import vazkii.botania.common.item.ModItems;

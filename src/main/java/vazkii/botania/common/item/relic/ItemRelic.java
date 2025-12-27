@@ -13,8 +13,8 @@ package vazkii.botania.common.item.relic;
 import java.util.List;
 import java.util.function.Supplier;
 
-import btw.achievement.AchievementHandler;
-import btw.achievement.event.AchievementEventDispatcher;
+import api.achievement.AchievementHandler;
+import api.achievement.AchievementEventDispatcher;
 import net.minecraft.src.GuiScreen;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EnumRarity;

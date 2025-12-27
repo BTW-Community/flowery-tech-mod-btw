@@ -1,6 +1,6 @@
 package dev.bagel.util;
 
-import btw.item.items.PlaceAsBlockItem;
+import api.item.items.PlaceAsBlockItem;
 import net.minecraft.src.Block;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;

@@ -15,7 +15,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.util.List;
 
-import btw.entity.EntityWithCustomPacket;
+import api.entity.EntityWithCustomPacket;
 import btw.network.packet.BTWPacketManager;
 import net.minecraft.src.*;
 import vazkii.botania.common.Botania;

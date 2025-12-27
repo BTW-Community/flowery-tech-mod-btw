@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.entity;
 
-import btw.entity.EntityWithCustomPacket;
+import api.entity.EntityWithCustomPacket;
 import btw.network.packet.BTWPacketManager;
 import net.minecraft.src.*;
 import net.minecraftforge.common.util.ForgeDirection;

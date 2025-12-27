@@ -12,7 +12,7 @@ package vazkii.botania.common.lib;
 
 import btw.block.BTWBlocks;
 import btw.item.BTWItems;
-import btw.item.tag.Tag;
+import api.item.tag.Tag;
 import dev.bagel.util.Items;
 import net.minecraft.src.Block;
 import net.minecraft.src.Item;

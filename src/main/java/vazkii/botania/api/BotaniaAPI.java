@@ -20,7 +20,7 @@ import java.util.Set;
 
 import btw.block.BTWBlocks;
 import btw.item.BTWItems;
-import btw.item.tag.TagOrStack;
+import api.item.tag.TagOrStack;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.src.Block;

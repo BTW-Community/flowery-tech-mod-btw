@@ -13,8 +13,8 @@ package vazkii.botania.common.item;
 import java.util.ArrayList;
 import java.util.List;
 
-import btw.achievement.event.AchievementEventDispatcher;
-import btw.achievement.event.BTWAchievementEvents;
+import api.achievement.AchievementEventDispatcher;
+import btw.achievement.BTWAchievementEvents;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.src.*;
@@ -162,7 +162,7 @@ public class ItemLexicon extends ItemMod implements ILexicon, IElvenItem {
 			}
 
 		Botania.getProxy().setLexiconStack(stack);
-		AchievementEventDispatcher.triggerEvent(ModAchievements.LexiconOpenEvent.class, player, BTWAchievementEvents.none());
+		AchievementEventDispatcher.triggerEvent(ModAchievements.LexiconOpenEvent.class, player);
 		Minecraft.getMinecraft().displayGuiScreen(GuiLexicon.currentOpenLexicon);
 //		player.openGui(Botania.instance.getModID(), LibGuiIDs.LEXICON, world, 0, 0, 0);
 		if(!world.isRemote && !skipSound)

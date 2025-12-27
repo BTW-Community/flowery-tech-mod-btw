@@ -10,8 +10,8 @@
  */
 package vazkii.botania.common.block;
 
-import btw.achievement.event.AchievementEventDispatcher;
-import btw.achievement.event.BTWAchievementEvents;
+import api.achievement.AchievementEventDispatcher;
+import btw.achievement.BTWAchievementEvents;
 import net.minecraft.src.Material;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityPlayer;
@@ -66,7 +66,7 @@ public class BlockAlfPortal extends BlockModContainer<TileAlfPortal> implements 
 	public boolean onUsedByWand(EntityPlayer player, ItemStack stack, World world, int x, int y, int z, int side) {
 		boolean did = ((TileAlfPortal) world.getTileEntity(x, y, z)).onWanded();
 		if(did && player != null) {
-			AchievementEventDispatcher.triggerEvent(ModAchievements.AlfheimPortalOpenEvent.class, player, BTWAchievementEvents.none());
+			AchievementEventDispatcher.triggerEvent(ModAchievements.AlfheimPortalOpenEvent.class, player);
 		}
 		return did;
 	}

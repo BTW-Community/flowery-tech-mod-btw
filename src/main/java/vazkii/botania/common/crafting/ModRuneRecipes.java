@@ -16,7 +16,7 @@ import java.util.List;
 import btw.block.BTWBlocks;
 import btw.block.blocks.AestheticOpaqueEarthBlock;
 import btw.item.BTWItems;
-import btw.item.tag.TagInstance;
+import api.item.tag.TagInstance;
 import net.minecraft.src.Block;
 import net.minecraft.src.Block;
 import net.minecraft.src.Item;

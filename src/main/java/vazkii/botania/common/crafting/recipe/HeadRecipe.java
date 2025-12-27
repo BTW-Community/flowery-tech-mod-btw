@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.crafting.recipe;
 
-import btw.item.tag.TagOrStack;
+import api.item.tag.TagOrStack;
 import net.minecraft.src.Item;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;

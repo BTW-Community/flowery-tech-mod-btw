@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import btw.item.tag.Tag;
+import api.item.tag.Tag;
 import dev.bagel.interfaces.BlockExtensions;
 import dev.bagel.util.Blocks;
 import net.minecraft.src.*;

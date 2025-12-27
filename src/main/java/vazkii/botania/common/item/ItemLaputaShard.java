@@ -12,9 +12,9 @@ package vazkii.botania.common.item;
 
 import java.util.List;
 
-import btw.achievement.event.AchievementEventDispatcher;
-import btw.achievement.event.BTWAchievementEvents;
-import btw.block.blocks.FallingBlock;
+import api.achievement.AchievementEventDispatcher;
+import btw.achievement.BTWAchievementEvents;
+import api.block.blocks.FallingBlock;
 import dev.bagel.interfaces.BlockExtensions;
 import net.minecraft.src.*;
 import vazkii.botania.api.internal.IManaBurst;
@@ -71,7 +71,7 @@ public class ItemLaputaShard extends ItemMod implements ILensEffect, ITinyPlanet
 			spawnBurstFirst(par3World, par4, par5, par6, par1ItemStack);
 			par1ItemStack.stackSize--;
 			if(par1ItemStack.getItemDamage() == 19) {
-				AchievementEventDispatcher.triggerEvent(ModAchievements.LaputaEvent.class, par2EntityPlayer, BTWAchievementEvents.none());
+				AchievementEventDispatcher.triggerEvent(ModAchievements.LaputaEvent.class, par2EntityPlayer);
 			}
 		}
 

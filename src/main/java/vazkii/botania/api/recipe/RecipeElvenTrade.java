@@ -3,8 +3,8 @@ package vazkii.botania.api.recipe;
 import java.util.ArrayList;
 import java.util.List;
 
-import btw.item.tag.TagInstance;
-import btw.item.tag.TagOrStack;
+import api.item.tag.TagInstance;
+import api.item.tag.TagOrStack;
 import net.minecraft.src.ItemStack;
 
 public class RecipeElvenTrade {

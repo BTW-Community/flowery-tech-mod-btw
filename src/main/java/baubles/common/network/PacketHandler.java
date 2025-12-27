@@ -5,7 +5,7 @@ import baubles.common.Baubles;
 import baubles.common.container.InventoryBaubles;
 import baubles.common.lib.PlayerHandler;
 import btw.inventory.BTWContainers;
-import btw.network.packet.handler.CustomPacketHandler;
+import api.network.CustomPacketHandler;
 import dev.bagel.network.IMessage;
 import dev.bagel.network.IMessageHandler;
 import net.fabricmc.api.EnvType;

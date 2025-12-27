@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.core.handler;
 
-import btw.world.biome.BiomeDecoratorBase;
+import api.world.BiomeDecoratorBase;
 import net.minecraft.src.World;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType;

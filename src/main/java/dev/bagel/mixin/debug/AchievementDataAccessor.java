@@ -1,6 +1,6 @@
 package dev.bagel.mixin.debug;
 
-import btw.achievement.AchievementData;
+import api.achievement.AchievementData;
 import net.minecraft.src.Achievement;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;

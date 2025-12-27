@@ -1,6 +1,6 @@
 package dev.bagel.emi.recipe;
 
-import btw.item.tag.TagOrStack;
+import api.item.tag.TagOrStack;
 import dev.bagel.emi.BotaniaEmiPlugin;
 import dev.bagel.util.Items;
 import emi.dev.emi.emi.api.recipe.EmiRecipe;

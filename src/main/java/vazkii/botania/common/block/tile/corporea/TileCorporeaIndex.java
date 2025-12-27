@@ -20,8 +20,8 @@ import java.util.WeakHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import btw.achievement.event.AchievementEventDispatcher;
-import btw.achievement.event.BTWAchievementEvents;
+import api.achievement.AchievementEventDispatcher;
+import btw.achievement.BTWAchievementEvents;
 import emi.shims.java.net.minecraft.text.Text;
 import emi.shims.java.net.minecraft.util.Formatting;
 import net.minecraft.src.Minecraft;
@@ -280,7 +280,7 @@ public class TileCorporeaIndex extends TileCorporeaBase implements ICorporeaRequ
 
 						event.player.addChatMessage(Text.translatable("botaniamisc.requestMsg", count, WordUtils.capitalizeFully(name), CorporeaHelper.lastRequestMatches, CorporeaHelper.lastRequestExtractions).formatted(Formatting.LIGHT_PURPLE).toString());
 						if(CorporeaHelper.lastRequestExtractions >= 50000) {
-							AchievementEventDispatcher.triggerEvent(ModAchievements.SuperCorporeaRequestEvent.class, event.player, BTWAchievementEvents.none());
+							AchievementEventDispatcher.triggerEvent(ModAchievements.SuperCorporeaRequestEvent.class, event.player);
 						}
 					}
 				}

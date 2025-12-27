@@ -16,9 +16,10 @@ import java.io.DataOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import btw.achievement.event.AchievementEventDispatcher;
-import btw.achievement.event.BTWAchievementEvents;
-import btw.entity.EntityWithCustomPacket;
+import api.achievement.AchievementEventDispatcher;
+import api.achievement.AchievementEvents;
+import btw.achievement.BTWAchievementEvents;
+import api.entity.EntityWithCustomPacket;
 import btw.network.packet.BTWPacketManager;
 import net.minecraft.src.*;
 import vazkii.botania.api.wand.IWandBindable;
@@ -50,7 +51,7 @@ public class TileLightRelay extends TileMod implements IWandBindable {
 		if(!(e instanceof EntityItem)) {
 			worldObj.playSoundAtEntity(mover, "botania:lightRelay", 0.2F, (float) Math.random() * 0.3F + 0.7F);
 			if(e instanceof EntityPlayer player) {
-				AchievementEventDispatcher.triggerEvent(ModAchievements.LuminizerRideEvent.class, player, BTWAchievementEvents.none());
+				AchievementEventDispatcher.triggerEvent(ModAchievements.LuminizerRideEvent.class, player);
 			}
 		}
 	}

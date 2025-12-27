@@ -13,8 +13,8 @@ package vazkii.botania.common.lexicon.page;
 import java.util.ArrayList;
 import java.util.List;
 
-import btw.item.tag.Tag;
-import btw.item.tag.TagInstance;
+import api.item.tag.Tag;
+import api.item.tag.TagInstance;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.FontRenderer;
 import net.minecraft.src.ItemStack;

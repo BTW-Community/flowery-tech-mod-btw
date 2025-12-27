@@ -2,8 +2,7 @@ package dev.bagel.network;
 
 import baubles.common.network.PacketHandler;
 import btw.inventory.BTWContainers;
-import btw.network.packet.handler.CustomPacketHandler;
-import btw.world.util.WorldUtils;
+import api.network.CustomPacketHandler;
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteStreams;
 import cpw.mods.fml.common.network.IGuiHandler;

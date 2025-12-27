@@ -10,9 +10,10 @@
  */
 package vazkii.botania.common.achievement;
 
-import btw.achievement.AchievementTab;
-import btw.achievement.event.AchievementEventDispatcher;
-import btw.achievement.event.BTWAchievementEvents;
+import api.achievement.AchievementEvents;
+import api.achievement.AchievementTab;
+import api.achievement.AchievementEventDispatcher;
+import api.achievement.AchievementEvents;
 import net.minecraft.src.*;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.core.handler.ConfigHandler;
@@ -38,7 +39,7 @@ public final class ModAchievements {
 	public static final AchievementTab BOTANIA_PAGE = new AchievementTab("botania").setIcon(ModBlocks.flower);
 
 	public static final Achievement<ItemStack> FLOWER_PICKUP = pickedUp(LibAchievementNames.FLOWER_PICKUP, new ItemStack(ModBlocks.flower, 1, 6), 0, 4, reqItem(ModBlocks.flower), null);
-	public static final Achievement<BTWAchievementEvents.None> LEXICON_USE = getBuilder(LexiconOpenEvent.class)
+	public static final Achievement<AchievementEvents.None> LEXICON_USE = getBuilder(LexiconOpenEvent.class)
 			.name(LibAchievementNames.LEXICON_USE)
 			.icon(ModItems.lexicon)
 			.displayLocation(1, 5)
@@ -50,7 +51,7 @@ public final class ModAchievements {
 	public static final Achievement<ItemStack> MANA_POOL_PICKUP = pickedUp(LibAchievementNames.MANA_POOL_PICKUP, new ItemStack(ModBlocks.pool), 3, 2, reqItemWithDamage(ModBlocks.pool), DAYBLOOM_PICKUP);
 
 	public static final Achievement<ItemStack> ENDOFLAME_PICKUP = pickedUp(LibAchievementNames.ENDOFLAME_PICKUP, ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_ENDOFLAME), 2, 0, reqItemFlower(LibBlockNames.SUBTILE_ENDOFLAME), MANA_POOL_PICKUP);
-	public static final Achievement<BTWAchievementEvents.None> TINY_POTATO_PET = getBuilder(PetThePotatoPleaseTheyDeserveItEvent.class)
+	public static final Achievement<AchievementEvents.None> TINY_POTATO_PET = getBuilder(PetThePotatoPleaseTheyDeserveItEvent.class)
 			.name(LibAchievementNames.TINY_POTATO_PET)
 			.icon(ModBlocks.tinyPotato)
 			.displayLocation(2, -2)
@@ -65,7 +66,7 @@ public final class ModAchievements {
 			.alwaysTrigger()
 			.parents(MANA_POOL_PICKUP)
 			.build();
-	public static final Achievement<ItemStack> MANA_COOKIE_EAT = getBuilder(BTWAchievementEvents.EatenEvent.class)
+	public static final Achievement<ItemStack> MANA_COOKIE_EAT = getBuilder(AchievementEvents.EatenEvent.class)
 			.name(LibAchievementNames.MANA_COOKIE_EAT)
 			.icon(ModItems.manaCookie)
 			.displayLocation(2, -4)
@@ -75,7 +76,7 @@ public final class ModAchievements {
 	public static final Achievement<ItemStack> MANAWEAVE_ARMOR_CRAFT = crafted(LibAchievementNames.MANAWEAVE_ARMOR_CRAFT, new ItemStack(ModItems.manaweaveChest), 4, -4, reqItems(ModItems.manaweaveChest, ModItems.manaweaveHelm, ModItems.manaweaveLegs, ModItems.manaweaveBoots), MANA_POOL_PICKUP);
 	public static final Achievement<ItemStack> CRAFTING_HALO_CRAFT = crafted(LibAchievementNames.CRAFTING_HALO_CRAFT, new ItemStack(ModItems.craftingHalo), 3, -6, reqItem(ModItems.craftingHalo), MANA_POOL_PICKUP);
 	public static final Achievement<ItemStack> MANA_CART_CRAFT = crafted(LibAchievementNames.MANA_CART_CRAFT, new ItemStack(ModItems.poolMinecart), 5, 3, reqItem(ModItems.poolMinecart), MANA_POOL_PICKUP);
-	public static final Achievement<BTWAchievementEvents.None> ENCHANTER_MAKE = getBuilder(EnchanterMakeEvent.class)
+	public static final Achievement<AchievementEvents.None> ENCHANTER_MAKE = getBuilder(EnchanterMakeEvent.class)
 			.name(LibAchievementNames.ENCHANTER_MAKE)
 			.icon(ModBlocks.enchanter)
 			.displayLocation (1, 2)
@@ -92,7 +93,7 @@ public final class ModAchievements {
 	public static final Achievement<ItemStack> TERRASTEEL_PICKUP = pickedUp(LibAchievementNames.TERRASTEEL_PICKUP, LibOreDict.TERRA_STEEL, 6, 9, reqItemWithDamage(LibOreDict.TERRA_STEEL), RUNE_PICKUP).setSpecial();
 
 	public static final Achievement<ItemStack> terrasteelWeaponCraft = crafted(LibAchievementNames.TERRASTEEL_WEAPON_CRAFT, new ItemStack(ModItems.terraSword), 8, 10, reqItems(ModItems.terraSword, ModItems.thornChakram, ModItems.starSword, ModItems.thunderSword), TERRASTEEL_PICKUP);
-	public static final Achievement<BTWAchievementEvents.None> ELF_PORTAL_OPEN = getBuilder(AlfheimPortalOpenEvent.class)
+	public static final Achievement<AchievementEvents.None> ELF_PORTAL_OPEN = getBuilder(AlfheimPortalOpenEvent.class)
 			.name(LibAchievementNames.ELF_PORTAL_OPEN)
 			.icon(ModBlocks.alfPortal)
 			.displayLocation(4, 9)
@@ -105,20 +106,20 @@ public final class ModAchievements {
 	public static final Achievement<ItemStack> heiseiDreamPickup = pickedUp(LibAchievementNames.HEISEI_DREAM_PICKUP, ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_HEISEI_DREAM), 5, 11, reqItemFlower(LibBlockNames.SUBTILE_HEISEI_DREAM), ELF_PORTAL_OPEN);
 	public static final Achievement<ItemStack> bubbellPickup = pickedUp(LibAchievementNames.BUBBELL_PICKUP, ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_BUBBELL), 6, 12, reqItemFlower(LibBlockNames.SUBTILE_BUBBELL), ELF_PORTAL_OPEN);
 
-	public static final Achievement<BTWAchievementEvents.None> ENDER_AIR_MAKE = getBuilder(EnderAirMakeEvent.class)
+	public static final Achievement<AchievementEvents.None> ENDER_AIR_MAKE = getBuilder(EnderAirMakeEvent.class)
 			.name(LibAchievementNames.ENDER_AIR_MAKE)
 			.icon(LibOreDict.ENDER_AIR_BOTTLE)
 			.displayLocation(4, 14)
 			.alwaysTrigger()
 			.parents(ELF_PORTAL_OPEN)
 			.build();
-	public static final Achievement<BTWAchievementEvents.None> LUMINIZER_RIDE = getBuilder(LuminizerRideEvent.class).name(LibAchievementNames.LUMINIZER_RIDE).icon(ModBlocks.lightRelay).displayLocation(6, 14).alwaysTrigger().parents(ENDER_AIR_MAKE).build();
+	public static final Achievement<AchievementEvents.None> LUMINIZER_RIDE = getBuilder(LuminizerRideEvent.class).name(LibAchievementNames.LUMINIZER_RIDE).icon(ModBlocks.lightRelay).displayLocation(6, 14).alwaysTrigger().parents(ENDER_AIR_MAKE).build();
 
     public static final Achievement<ItemStack> corporeaCraft = crafted(LibAchievementNames.CORPOREA_CRAFT, new ItemStack(ModBlocks.corporeaFunnel), 2, 14, reqItems(ModBlocks.corporeaRetainer, ModBlocks.corporeaFunnel, ModBlocks.corporeaIndex, ModBlocks.corporeaInterceptor, ModBlocks.corporeaCrystalCube), ENDER_AIR_MAKE);
 
 	public static Achievement<GaiaGuardianKillEventData> gaiaGuardianKill = getBuilder(GaiaGuardianKillEvent.class).name(LibAchievementNames.GAIA_GUARDIAN_KILL).icon(LibOreDict.LIFE_ESSENCE).displayLocation(2, 9).alwaysTrigger().parents(ELF_PORTAL_OPEN).build().setSpecial();
 
-	public static Achievement<BTWAchievementEvents.None> spawnerMoverUse = getBuilder(SpawnerMoverEvent.class)
+	public static Achievement<AchievementEvents.None> spawnerMoverUse = getBuilder(SpawnerMoverEvent.class)
 			.name(LibAchievementNames.SPAWNER_MOVER_USE)
 			.icon(ModItems.spawnerMover)
 			.displayLocation(-1, 10)
@@ -129,7 +130,7 @@ public final class ModAchievements {
 	public static final Achievement<ItemStack> manaBombIgnite = crafted(LibAchievementNames.MANA_BOMB_IGNITE, new ItemStack(ModBlocks.manaBomb), 0, 11, reqItem(new ItemStack(ModBlocks.manaBomb)), gaiaGuardianKill);
 	public static final Achievement<ItemStack> dandelifeonPickup = pickedUp(LibAchievementNames.DANDELIFEON_PICKUP, ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_DANDELIFEON), 0, 7, reqItemFlower(LibBlockNames.SUBTILE_DANDELIFEON), gaiaGuardianKill);
 
-	public static final Achievement<BTWAchievementEvents.None> SIGNAL_FLARE_STUN = getBuilder(SignalFlareStunEvent.class)
+	public static final Achievement<AchievementEvents.None> SIGNAL_FLARE_STUN = getBuilder(SignalFlareStunEvent.class)
 			.name(LibAchievementNames.SIGNAL_FLARE_STUN)
 			.icon(ModItems.signalFlare)
 			.displayLocation(-3, 1)
@@ -137,7 +138,7 @@ public final class ModAchievements {
 			.build()
 			.setSpecial()
 			.setSecret();
-	public static final Achievement<BTWAchievementEvents.None> L20_SHARD_USE = getBuilder(LaputaEvent.class)
+	public static final Achievement<AchievementEvents.None> L20_SHARD_USE = getBuilder(LaputaEvent.class)
 			.name(LibAchievementNames.L20_SHARD_USE)
 			.icon(ModItems.laputaShard)
 			.displayLocation(-5, 3)
@@ -153,7 +154,7 @@ public final class ModAchievements {
 			.build()
 			.setSpecial()
 			.setHidden();
-	public static final Achievement<BTWAchievementEvents.None> RANK_SS_PICK = getBuilder(TerraPickEvent.class)
+	public static final Achievement<AchievementEvents.None> RANK_SS_PICK = getBuilder(TerraPickEvent.class)
 			.name(LibAchievementNames.RANK_SS_PICK)
 			.icon(new ItemStack(ModItems.terraPick, 1))
 			.displayLocation(-3, 3)
@@ -161,7 +162,7 @@ public final class ModAchievements {
 			.build()
 			.setSpecial()
 			.setHidden();
-	public static final Achievement<BTWAchievementEvents.None> SUPER_CORPOREA_REQUEST = getBuilder(SuperCorporeaRequestEvent.class)
+	public static final Achievement<AchievementEvents.None> SUPER_CORPOREA_REQUEST = getBuilder(SuperCorporeaRequestEvent.class)
 			.name(LibAchievementNames.SUPER_CORPOREA_REQUEST)
 			.icon(ModBlocks.corporeaIndex)
 			.displayLocation(-3, -1)
@@ -169,7 +170,7 @@ public final class ModAchievements {
 			.build()
 			.setSpecial()
 			.setHidden();
-	public static final Achievement<BTWAchievementEvents.None> PINKINATOR = getBuilder(PinkificationEvent.class)
+	public static final Achievement<AchievementEvents.None> PINKINATOR = getBuilder(PinkificationEvent.class)
 			.name(LibAchievementNames.PINKINATOR)
 			.icon(ModItems.pinkinator)
 			.displayLocation(-5, -1)
@@ -239,7 +240,7 @@ public final class ModAchievements {
 			.setSecret()
 			.setSpecial();
 
-	public static final Achievement<ItemStack> nullFlower = getBuilder(BTWAchievementEvents.ItemEvent.class)
+	public static final Achievement<ItemStack> nullFlower = getBuilder(AchievementEvents.ItemEvent.class)
 			.name(LibAchievementNames.NULL_FLOWER)
 			.icon(ModBlocks.specialFlower)
 			.displayLocation(-8, 0)
@@ -322,7 +323,7 @@ public final class ModAchievements {
 	}
 
 	public static Achievement<ItemStack> crafted(String name, ItemStack icon, int x, int y, Predicate<ItemStack> pred, Achievement<?> parent) {
-		return getBuilder(BTWAchievementEvents.ItemEvent.class)
+		return getBuilder(AchievementEvents.ItemEvent.class)
 				.name(name)
 				.icon(icon)
 				.displayLocation(x, y)
@@ -335,7 +336,7 @@ public final class ModAchievements {
 	}
 
 	public static Achievement<ItemStack> pickedUp(String name, ItemStack icon, int x, int y, Predicate<ItemStack> pred, Achievement<?> parent) {
-		return getBuilder(BTWAchievementEvents.ItemEvent.class)
+		return getBuilder(AchievementEvents.ItemEvent.class)
 				.name(name)
 				.icon(icon)
 				.displayLocation(x, y)
@@ -353,36 +354,36 @@ public final class ModAchievements {
 
 	public record GaiaGuardianKillEventData(boolean noArmor) {}
 
-	public static class TerraPickEvent extends AchievementEventDispatcher.AchievementEvent<BTWAchievementEvents.None> { }
+	public static class TerraPickEvent extends AchievementEventDispatcher.AchievementEvent<AchievementEvents.None> { }
 
-	public static class LaputaEvent extends AchievementEventDispatcher.AchievementEvent<BTWAchievementEvents.None> { }
+	public static class LaputaEvent extends AchievementEventDispatcher.AchievementEvent<AchievementEvents.None> { }
 
-	public static class PinkificationEvent extends AchievementEventDispatcher.AchievementEvent<BTWAchievementEvents.None> { }
+	public static class PinkificationEvent extends AchievementEventDispatcher.AchievementEvent<AchievementEvents.None> { }
 
-	public static class SignalFlareStunEvent extends AchievementEventDispatcher.AchievementEvent<BTWAchievementEvents.None> { }
+	public static class SignalFlareStunEvent extends AchievementEventDispatcher.AchievementEvent<AchievementEvents.None> { }
 
-	public static class SpawnerMoverEvent extends AchievementEventDispatcher.AchievementEvent<BTWAchievementEvents.None> { }
+	public static class SpawnerMoverEvent extends AchievementEventDispatcher.AchievementEvent<AchievementEvents.None> { }
 
-	public static class EnchanterMakeEvent extends AchievementEventDispatcher.AchievementEvent<BTWAchievementEvents.None> { }
+	public static class EnchanterMakeEvent extends AchievementEventDispatcher.AchievementEvent<AchievementEvents.None> { }
 
 	public static class GaiaGuardianKillEvent extends AchievementEventDispatcher.AchievementEvent<GaiaGuardianKillEventData> { }
 
-	public static class LuminizerRideEvent extends AchievementEventDispatcher.AchievementEvent<BTWAchievementEvents.None> { }
+	public static class LuminizerRideEvent extends AchievementEventDispatcher.AchievementEvent<AchievementEvents.None> { }
 
-	public static class SuperCorporeaRequestEvent extends AchievementEventDispatcher.AchievementEvent<BTWAchievementEvents.None> { }
+	public static class SuperCorporeaRequestEvent extends AchievementEventDispatcher.AchievementEvent<AchievementEvents.None> { }
 
 	public static class RelicEvent extends AchievementEventDispatcher.AchievementEvent<ItemStack> { }
 
-	public static class AlfheimPortalOpenEvent extends AchievementEventDispatcher.AchievementEvent<BTWAchievementEvents.None> { }
+	public static class AlfheimPortalOpenEvent extends AchievementEventDispatcher.AchievementEvent<AchievementEvents.None> { }
 
 	public static class ManaBlasterFiredEvent extends AchievementEventDispatcher.AchievementEvent<ManaBlasterFiredEventData> { }
 
-	public static class PetThePotatoPleaseTheyDeserveItEvent extends AchievementEventDispatcher.AchievementEvent<BTWAchievementEvents.None> { }
+	public static class PetThePotatoPleaseTheyDeserveItEvent extends AchievementEventDispatcher.AchievementEvent<AchievementEvents.None> { }
 
-	public static class LexiconOpenEvent extends AchievementEventDispatcher.AchievementEvent<BTWAchievementEvents.None> { }
+	public static class LexiconOpenEvent extends AchievementEventDispatcher.AchievementEvent<AchievementEvents.None> { }
 
 	public static class BaubleWearEvent extends AchievementEventDispatcher.AchievementEvent<BaubleWearEventData> { }
 
-	public static class EnderAirMakeEvent extends AchievementEventDispatcher.AchievementEvent<BTWAchievementEvents.None> { }
+	public static class EnderAirMakeEvent extends AchievementEventDispatcher.AchievementEvent<AchievementEvents.None> { }
 }
 

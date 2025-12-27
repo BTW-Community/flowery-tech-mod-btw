@@ -14,8 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-import btw.achievement.AchievementProvider;
-import btw.achievement.event.BTWAchievementEvents;
+import api.achievement.AchievementEvents;
+import api.achievement.AchievementProvider;
+import btw.achievement.BTWAchievementEvents;
 import net.minecraft.src.*;
 import vazkii.botania.common.Botania;
 
@@ -23,7 +24,7 @@ public class AchievementMod {
 
 	public static List<Achievement<?>> achievements = new ArrayList<>();
 	public static <T> Achievement<ItemStack> basic(String name, int x, int y, ItemStack icon, Achievement<?> parent) {
-		var achievement = AchievementProvider.getBuilder(BTWAchievementEvents.ItemEvent.class).name(Botania.loc(name)).icon(icon).displayLocation(x, y).triggerCondition(ModAchievements.LATER);
+		var achievement = AchievementProvider.getBuilder(AchievementEvents.ItemEvent.class).name(Botania.loc(name)).icon(icon).displayLocation(x, y).triggerCondition(ModAchievements.LATER);
 		if (parent != null) {
 			achievement = achievement.parents(parent);
 		}
@@ -41,7 +42,7 @@ public class AchievementMod {
 	}
 
 	public static <T> Achievement<ItemStack> basic(String name, int x, int y, ItemStack icon, Predicate<ItemStack> unlock, Achievement<?> parent) {
-		var achievement = AchievementProvider.getBuilder(BTWAchievementEvents.ItemEvent.class).name(Botania.loc(name)).icon(icon).displayLocation(x, y).triggerCondition(unlock);
+		var achievement = AchievementProvider.getBuilder(AchievementEvents.ItemEvent.class).name(Botania.loc(name)).icon(icon).displayLocation(x, y).triggerCondition(unlock);
 		if (parent != null) {
 			achievement = achievement.parents(parent);
 		}

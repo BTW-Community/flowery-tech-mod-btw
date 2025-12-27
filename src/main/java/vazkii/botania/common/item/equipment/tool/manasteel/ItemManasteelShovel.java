@@ -11,7 +11,7 @@
 package vazkii.botania.common.item.equipment.tool.manasteel;
 
 import btw.block.BTWBlocks;
-import btw.item.items.ShovelItem;
+import api.item.items.ShovelItem;
 import net.minecraft.src.*;
 import net.minecraft.src.Block;
 import vazkii.botania.api.BotaniaAPI;

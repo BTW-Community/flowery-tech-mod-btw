@@ -12,7 +12,7 @@ package vazkii.botania.common.item.equipment.tool.manasteel;
 
 import java.util.regex.Pattern;
 
-import btw.item.items.PickaxeItem;
+import api.item.items.PickaxeItem;
 import net.minecraft.src.*;
 import net.minecraft.src.Block;
 import vazkii.botania.api.BotaniaAPI;

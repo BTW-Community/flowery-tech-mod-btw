@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
-import btw.entity.EntityWithCustomPacket;
+import api.entity.EntityWithCustomPacket;
 import btw.network.packet.BTWPacketManager;
 import net.minecraft.src.*;
 import net.minecraft.src.Block;

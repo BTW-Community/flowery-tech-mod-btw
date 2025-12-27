@@ -5,7 +5,7 @@ import baubles.api.expanded.BaubleExpandedSlots;
 import baubles.api.expanded.IBaubleExpanded;
 import baubles.common.BaublesConfig;
 import baubles.common.lib.PlayerHandler;
-import btw.item.items.ArmorItem;
+import api.item.items.ArmorItem;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.src.EntityPlayer;

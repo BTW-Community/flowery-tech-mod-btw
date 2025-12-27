@@ -13,8 +13,8 @@ package vazkii.botania.common.item.equipment.bauble;
 import java.util.List;
 import java.util.UUID;
 
-import btw.achievement.event.AchievementEventDispatcher;
-import btw.achievement.event.BTWAchievementEvents;
+import api.achievement.AchievementEventDispatcher;
+import btw.achievement.BTWAchievementEvents;
 import net.minecraft.src.*;
 import vazkii.botania.api.item.ICosmeticAttachable;
 import vazkii.botania.api.item.IPhantomInkable;

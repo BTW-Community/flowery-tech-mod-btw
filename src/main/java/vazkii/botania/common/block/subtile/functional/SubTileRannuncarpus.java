@@ -13,7 +13,7 @@ package vazkii.botania.common.block.subtile.functional;
 import java.util.ArrayList;
 import java.util.List;
 
-import btw.item.items.PlaceAsBlockItem;
+import api.item.items.PlaceAsBlockItem;
 import dev.bagel.client.RenderInstances;
 import dev.bagel.interfaces.BlockExtensions;
 import dev.bagel.util.Items;

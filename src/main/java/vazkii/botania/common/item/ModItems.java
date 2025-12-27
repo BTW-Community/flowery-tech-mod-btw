@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.item;
 
-import btw.item.tag.BTWTags;
+import btw.item.BTWTags;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import vazkii.botania.api.BotaniaAPI;

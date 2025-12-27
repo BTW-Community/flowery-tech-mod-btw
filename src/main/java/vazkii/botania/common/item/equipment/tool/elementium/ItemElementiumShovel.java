@@ -1,6 +1,6 @@
 package vazkii.botania.common.item.equipment.tool.elementium;
 
-import btw.block.blocks.FallingBlock;
+import api.block.blocks.FallingBlock;
 import net.minecraft.src.Block;
 import net.minecraft.src.Material;
 import net.minecraft.src.EnchantmentHelper;

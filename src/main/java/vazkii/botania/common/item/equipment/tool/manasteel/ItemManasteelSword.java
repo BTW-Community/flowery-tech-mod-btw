@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.item.equipment.tool.manasteel;
 
-import btw.item.items.SwordItem;
+import api.item.items.SwordItem;
 import net.minecraft.src.*;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.mana.IManaUsingItem;

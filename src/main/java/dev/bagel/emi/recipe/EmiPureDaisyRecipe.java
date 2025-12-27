@@ -1,7 +1,7 @@
 package dev.bagel.emi.recipe;
 
-import btw.item.tag.Tag;
-import btw.item.tag.TagInstance;
+import api.item.tag.Tag;
+import api.item.tag.TagInstance;
 import dev.bagel.emi.BotaniaEmiPlugin;
 import emi.dev.emi.emi.api.recipe.EmiRecipeCategory;
 import emi.dev.emi.emi.api.stack.EmiIngredient;

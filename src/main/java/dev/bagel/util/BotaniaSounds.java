@@ -1,6 +1,6 @@
 package dev.bagel.util;
 
-import btw.util.sounds.AddonSoundRegistryEntry;
+import api.util.AddonSoundRegistryEntry;
 
 public class BotaniaSounds {
     public static void registerSounds() {

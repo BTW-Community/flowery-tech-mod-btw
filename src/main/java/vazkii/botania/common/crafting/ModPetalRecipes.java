@@ -13,7 +13,7 @@ package vazkii.botania.common.crafting;
 import java.util.Arrays;
 
 import btw.item.BTWItems;
-import btw.item.tag.TagOrStack;
+import api.item.tag.TagOrStack;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import vazkii.botania.api.BotaniaAPI;

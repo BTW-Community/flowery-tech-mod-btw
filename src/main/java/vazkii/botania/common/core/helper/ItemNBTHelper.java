@@ -13,7 +13,7 @@
  */
 package vazkii.botania.common.core.helper;
 
-import btw.inventory.util.InventoryUtils;
+import api.inventory.InventoryUtils;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTBase;
 import net.minecraft.src.NBTTagCompound;

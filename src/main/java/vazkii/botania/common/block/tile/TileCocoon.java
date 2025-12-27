@@ -52,8 +52,7 @@ public class TileCocoon extends TileMod {
 			float villagerChance = Math.min(1F, (float) emeraldsGiven / (float) MAX_EMERALDS);
 
 			if(Math.random() < villagerChance) {
-
-				EntityVillager villager = new EntityVillager(worldObj, worldObj.rand.nextInt(0, EntityVillager.professionMap.size() - 1));
+				EntityVillager villager = EntityVillager.createVillagerFromProfession(worldObj, worldObj.rand.nextInt(0, EntityVillager.professionMap.size() - 1));
 //				VillagerRegistry.applyRandomTrade(villager, worldObj.rand);
 				entity = villager;
 			} else {

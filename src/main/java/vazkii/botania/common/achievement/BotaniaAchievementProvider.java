@@ -1,7 +1,7 @@
 package vazkii.botania.common.achievement;
 
-import btw.achievement.AchievementProvider;
-import btw.achievement.event.AchievementEventDispatcher;
+import api.achievement.AchievementProvider;
+import api.achievement.AchievementEventDispatcher;
 import net.minecraft.src.*;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;

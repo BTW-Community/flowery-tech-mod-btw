@@ -15,8 +15,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import btw.item.tag.Tag;
-import btw.item.tag.TagInstance;
+import api.item.tag.Tag;
+import api.item.tag.TagInstance;
 import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;

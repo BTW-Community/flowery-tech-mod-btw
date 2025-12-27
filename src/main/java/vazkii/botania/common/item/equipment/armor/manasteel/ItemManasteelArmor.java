@@ -12,7 +12,7 @@ package vazkii.botania.common.item.equipment.armor.manasteel;
 
 import java.util.List;
 
-import btw.item.items.ArmorItem;
+import api.item.items.ArmorItem;
 import net.minecraft.src.*;
 import net.minecraftforge.common.ISpecialArmor;
 import vazkii.botania.api.BotaniaAPI;

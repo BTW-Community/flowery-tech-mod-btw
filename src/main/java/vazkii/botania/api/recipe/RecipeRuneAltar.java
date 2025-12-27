@@ -10,7 +10,7 @@
  */
 package vazkii.botania.api.recipe;
 
-import btw.item.tag.TagOrStack;
+import api.item.tag.TagOrStack;
 import net.minecraft.src.ItemStack;
 
 public class RecipeRuneAltar extends RecipePetals {
