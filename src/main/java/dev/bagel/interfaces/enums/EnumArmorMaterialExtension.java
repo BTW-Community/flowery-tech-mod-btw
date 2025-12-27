@@ -18,4 +18,12 @@ public interface EnumArmorMaterialExtension {
     default public EnumArmorMaterial MANAWEAVE() {
         throw new AssertionError();
     }
+
+    default public int forge$getWeight(int slot) {
+        throw new AssertionError();
+    }
+
+    default public double forge$getKnockbackResistance(int slot) {
+        throw new AssertionError();
+    }
 }

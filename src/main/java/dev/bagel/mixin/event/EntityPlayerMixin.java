@@ -22,7 +22,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.ArrayList;
 
 import static dev.bagel.util.Persisted.PERSISTED_NBT_TAG;
-
+@Debug(export = true)
 @Mixin(EntityPlayer.class)
 public abstract class EntityPlayerMixin extends EntityLivingBase {
     @Shadow

@@ -12,6 +12,7 @@ package vazkii.botania.common.item.equipment.armor.manasteel;
 
 import java.util.List;
 
+import btw.item.items.ArmorItem;
 import net.minecraft.src.*;
 import net.minecraftforge.common.ISpecialArmor;
 import vazkii.botania.api.BotaniaAPI;
@@ -21,7 +22,6 @@ import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.client.lib.LibResources;
 import vazkii.botania.client.model.armor.ModelArmorManasteel;
-import vazkii.botania.common.core.BotaniaCreativeTab;
 import vazkii.botania.common.core.handler.ConfigHandler;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.item.ModItems;
@@ -30,7 +30,7 @@ import vazkii.botania.common.item.equipment.tool.ToolCommons;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
-public class ItemManasteelArmor extends ItemArmor implements ISpecialArmor, IManaUsingItem, IPhantomInkable{
+public class ItemManasteelArmor extends ArmorItem implements ISpecialArmor, IManaUsingItem, IPhantomInkable{
 
 	private static final int MANA_PER_DAMAGE = 70;
 
@@ -44,7 +44,7 @@ public class ItemManasteelArmor extends ItemArmor implements ISpecialArmor, IMan
 	}
 
 	public ItemManasteelArmor(int id, int type, String name, EnumArmorMaterial mat) {
-		super(id, mat, 0, type);
+		super(id, mat, 0, type, mat.forge$getWeight(type), mat.forge$getKnockbackResistance(type));
 		this.type = type;
 		setCreativeTab(CreativeTabs.tabMisc);
 		setUnlocalizedName(name);

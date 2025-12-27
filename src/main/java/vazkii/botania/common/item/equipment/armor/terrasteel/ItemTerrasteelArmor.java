@@ -55,13 +55,13 @@ public class ItemTerrasteelArmor extends ItemManasteelArmor {
 		return par2ItemStack.getItem() == ModItems.manaResource && par2ItemStack.getItemDamage() == 4 ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
 	}
 
-	@Override
-	public Multimap getItemAttributeModifiers() {
-		Multimap multimap = HashMultimap.create();
-		UUID uuid = new UUID(getUnlocalizedName().hashCode(), 0);
-		multimap.put(SharedMonsterAttributes.knockbackResistance.getAttributeUnlocalizedName(), new AttributeModifier(uuid, "Terrasteel modifier " + type, (double) getArmorDisplay(null, new ItemStack(this), type) / 20, 0));
-		return multimap;
-	}
+//	@Override
+//	public Multimap getItemAttributeModifiers() {
+//		Multimap multimap = HashMultimap.create();
+//		UUID uuid = new UUID(getUnlocalizedName().hashCode(), 0);
+//		multimap.put(SharedMonsterAttributes.knockbackResistance.getAttributeUnlocalizedName(), new AttributeModifier(uuid, "Terrasteel modifier " + type, (double) getArmorDisplay(null, new ItemStack(this), type) / 20, 0));
+//		return multimap;
+//	}
 
 	static ItemStack[] armorset;
 
