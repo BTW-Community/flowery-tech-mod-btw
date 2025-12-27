@@ -15,7 +15,11 @@ import net.minecraft.src.*;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.item.block.ItemBlockSpecialFlower;
 
-public class SpecialFloatingFlowerRecipe implements IRecipe {
+public class SpecialFloatingFlowerRecipe extends BotaniaIRecipe {
+
+	public SpecialFloatingFlowerRecipe(ResourceLocation id) {
+		super(id);
+	}
 
 	@Override
 	public boolean matches(InventoryCrafting var1, World var2) {

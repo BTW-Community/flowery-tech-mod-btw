@@ -23,6 +23,7 @@ import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.client.core.handler.ClientTickHandler;
 import vazkii.botania.client.core.handler.ItemsRemainingRenderHandler;
 import vazkii.botania.client.core.helper.IconHelper;
+import vazkii.botania.common.Botania;
 import vazkii.botania.common.achievement.ModAchievements;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.crafting.recipe.ManaGunClipRecipe;
@@ -52,9 +53,9 @@ public class ItemManaGun extends ItemMod implements IManaUsingItem {
 		setNoRepair();
 		setUnlocalizedName(LibItemNames.MANA_GUN);
 
-		CraftingManager.getInstance().getRecipeList().add(new ManaGunLensRecipe());
-		CraftingManager.getInstance().getRecipeList().add(new ManaGunRemoveLensRecipe());
-		CraftingManager.getInstance().getRecipeList().add(new ManaGunClipRecipe());
+		CraftingManager.getInstance().getRecipeList().add(new ManaGunLensRecipe(Botania.loc("mana_gun/attach_lens")));
+		CraftingManager.getInstance().getRecipeList().add(new ManaGunRemoveLensRecipe(Botania.loc("mana_gun/remove_lens")));
+		CraftingManager.getInstance().getRecipeList().add(new ManaGunClipRecipe(Botania.loc("mana_gun/attach_clip")));
 //		RecipeSorter.register("botania:manaGunLens", ManaGunLensRecipe.class, Category.SHAPELESS, "");
 //		RecipeSorter.register("botania:manaGunRemoveLens", ManaGunRemoveLensRecipe.class, Category.SHAPELESS, "");
 //		RecipeSorter.register("botania:manaGunClip", ManaGunClipRecipe.class, Category.SHAPELESS, "");

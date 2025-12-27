@@ -14,7 +14,11 @@ import net.minecraft.src.*;
 import vazkii.botania.api.item.IPhantomInkable;
 import vazkii.botania.common.item.ModItems;
 
-public class PhantomInkRecipe implements IRecipe {
+public class PhantomInkRecipe extends BotaniaIRecipe {
+
+	public PhantomInkRecipe(ResourceLocation id) {
+		super(id);
+	}
 
 	@Override
 	public boolean matches(InventoryCrafting var1, World var2) {

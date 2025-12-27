@@ -15,7 +15,11 @@ import vazkii.botania.api.mana.ILens;
 import vazkii.botania.api.mana.ILensControl;
 import vazkii.botania.common.item.ItemManaGun;
 
-public class ManaGunLensRecipe implements IRecipe {
+public class ManaGunLensRecipe extends BotaniaIRecipe {
+
+	public ManaGunLensRecipe(ResourceLocation id) {
+		super(id);
+	}
 
 	@Override
 	public boolean matches(InventoryCrafting var1, World var2) {

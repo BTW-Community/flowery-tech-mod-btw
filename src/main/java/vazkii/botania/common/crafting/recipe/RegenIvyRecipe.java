@@ -15,7 +15,11 @@ import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.item.ItemRegenIvy;
 import vazkii.botania.common.item.ModItems;
 
-public class RegenIvyRecipe implements IRecipe {
+public class RegenIvyRecipe extends BotaniaIRecipe {
+
+	public RegenIvyRecipe(ResourceLocation id) {
+		super(id);
+	}
 
 	@Override
 	public boolean matches(InventoryCrafting var1, World var2) {

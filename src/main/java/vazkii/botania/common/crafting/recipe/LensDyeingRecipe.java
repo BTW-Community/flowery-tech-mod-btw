@@ -18,11 +18,15 @@ import vazkii.botania.api.mana.ILens;
 import vazkii.botania.common.item.lens.ItemLens;
 import vazkii.botania.common.lib.LibOreDict;
 
-public class LensDyeingRecipe implements IRecipe {
+public class LensDyeingRecipe extends BotaniaIRecipe {
 
 	private static final List<String> DYES = Arrays.asList(new String[] {
 			"dyeWhite", "dyeOrange", "dyeMagenta", "dyeLightBlue", "dyeYellow", "dyeLime", "dyePink", "dyeGray", "dyeLightGray", "dyeCyan", "dyePurple", "dyeBlue", "dyeBrown", "dyeGreen", "dyeRed", "dyeBlack"/*, LibOreDict.MANA_PEARL seems to be intentional*/
 	});
+
+	public LensDyeingRecipe(ResourceLocation id) {
+		super(id);
+	}
 
 	@Override
 	public boolean matches(InventoryCrafting var1, World var2) {

@@ -10,11 +10,16 @@
  */
 package vazkii.botania.common.crafting.recipe;
 
+import api.crafting.IdentifiableRecipe;
 import net.minecraft.src.*;
 import vazkii.botania.api.item.IRelic;
 import vazkii.botania.common.item.ModItems;
 
-public class AesirRingRecipe implements IRecipe {
+public class AesirRingRecipe extends BotaniaIRecipe {
+
+	public AesirRingRecipe(ResourceLocation id) {
+		super(id);
+	}
 
 	@Override
 	public boolean matches(InventoryCrafting var1, World var2) {

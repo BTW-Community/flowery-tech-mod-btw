@@ -14,7 +14,11 @@ import net.minecraft.src.*;
 import vazkii.botania.api.item.ICosmeticAttachable;
 import vazkii.botania.api.item.ICosmeticBauble;
 
-public class CosmeticRemoveRecipe implements IRecipe {
+public class CosmeticRemoveRecipe extends BotaniaIRecipe {
+
+	public CosmeticRemoveRecipe(ResourceLocation id) {
+		super(id);
+	}
 
 	@Override
 	public boolean matches(InventoryCrafting var1, World var2) {

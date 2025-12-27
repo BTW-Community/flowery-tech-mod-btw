@@ -65,8 +65,11 @@ public class ItemBottledMana extends ItemMod {
 			break;
 		}
 		case 5 : { // Randomly set HP
-			if(!player.worldObj.isRemote)
-				player.setHealth(player.worldObj.rand.nextInt(19) + 1);
+			if(!player.worldObj.isRemote) {
+				double maxHealthDouble = player.getEntityAttribute(SharedMonsterAttributes.maxHealth).getAttributeValue();
+				int maxHealthInt = (int) Math.floor(maxHealthDouble);
+				player.setHealth(player.worldObj.rand.nextInt(maxHealthInt) + 1);
+			}
 			break;
 		}
 		case 6 : { // Lots O' Hearts

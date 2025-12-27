@@ -15,7 +15,11 @@ import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.item.ItemKeepIvy;
 import vazkii.botania.common.item.ModItems;
 
-public class KeepIvyRecipe implements IRecipe {
+public class KeepIvyRecipe extends BotaniaIRecipe {
+
+	public KeepIvyRecipe(ResourceLocation id) {
+		super(id);
+	}
 
 	@Override
 	public boolean matches(InventoryCrafting var1, World var2) {

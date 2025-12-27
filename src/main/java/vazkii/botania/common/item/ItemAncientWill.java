@@ -14,6 +14,7 @@ import java.util.List;
 
 import net.minecraft.src.*;
 import vazkii.botania.client.core.helper.IconHelper;
+import vazkii.botania.common.Botania;
 import vazkii.botania.common.crafting.recipe.AncientWillRecipe;
 import vazkii.botania.common.lib.LibItemNames;
 
@@ -29,7 +30,7 @@ public class ItemAncientWill extends ItemMod {
 		setHasSubtypes(true);
 		setMaxStackSize(1);
 
-		CraftingManager.getInstance().getRecipeList().add(new AncientWillRecipe());
+		CraftingManager.getInstance().getRecipeList().add(new AncientWillRecipe(Botania.loc("ancient_will")));
 //		RecipeSorter.register("botania:ancientWill", AncientWillRecipe.class, Category.SHAPELESS, "");
 	}
 

@@ -20,6 +20,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.item.IBlockProvider;
 import vazkii.botania.client.core.handler.ItemsRemainingRenderHandler;
 import vazkii.botania.client.core.helper.IconHelper;
+import vazkii.botania.common.Botania;
 import vazkii.botania.common.core.helper.InventoryHelper;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.crafting.recipe.BlackHoleTalismanExtractRecipe;
@@ -42,7 +43,7 @@ public class ItemBlackHoleTalisman extends ItemMod implements IBlockProvider {
 		setMaxStackSize(1);
 		setHasSubtypes(true);
 
-		CraftingManager.getInstance().getRecipeList().add(new BlackHoleTalismanExtractRecipe());
+		CraftingManager.getInstance().getRecipeList().add(new BlackHoleTalismanExtractRecipe(Botania.loc("blackhole_talisman")));
 //		RecipeSorter.register("botania:blackHoleTalismanExtract", BlackHoleTalismanExtractRecipe.class, Category.SHAPELESS, "");
 	}
 

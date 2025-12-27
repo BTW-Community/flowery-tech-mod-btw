@@ -133,8 +133,8 @@ public class ItemLens extends ItemMod implements ILensControl, ICompositableLens
 		setMaxStackSize(1);
 		setHasSubtypes(true);
 
-		CraftingManager.getInstance().getRecipeList().add(new CompositeLensRecipe());
-		CraftingManager.getInstance().getRecipeList().add(new LensDyeingRecipe());
+		CraftingManager.getInstance().getRecipeList().add(new CompositeLensRecipe(Botania.loc("composite_lens")));
+		CraftingManager.getInstance().getRecipeList().add(new LensDyeingRecipe(Botania.loc("lens_dying")));
 //		RecipeSorter.register("botania:compositeLens", CompositeLensRecipe.class, Category.SHAPELESS, "");
 //		RecipeSorter.register("botania:lensDying", LensDyeingRecipe.class, Category.SHAPELESS, "");
 	}

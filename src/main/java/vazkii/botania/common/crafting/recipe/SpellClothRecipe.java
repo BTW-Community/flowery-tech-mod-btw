@@ -13,7 +13,11 @@ package vazkii.botania.common.crafting.recipe;
 import net.minecraft.src.*;
 import vazkii.botania.common.item.ModItems;
 
-public class SpellClothRecipe implements IRecipe {
+public class SpellClothRecipe extends BotaniaIRecipe {
+
+	public SpellClothRecipe(ResourceLocation id) {
+		super(id);
+	}
 
 	@Override
 	public boolean matches(InventoryCrafting var1, World var2) {

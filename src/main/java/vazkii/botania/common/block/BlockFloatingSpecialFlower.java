@@ -36,7 +36,7 @@ public class BlockFloatingSpecialFlower extends BlockFloatingFlower implements I
 	public BlockFloatingSpecialFlower(int id) {
 		super(id, LibBlockNames.FLOATING_SPECIAL_FLOWER);
 
-		CraftingManager.getInstance().getRecipeList().add(new SpecialFloatingFlowerRecipe());
+		CraftingManager.getInstance().getRecipeList().add(new SpecialFloatingFlowerRecipe(Botania.loc("special_floating_flower")));
 //		RecipeSorter.register("botania:floatingSpecialFlower", SpecialFloatingFlowerRecipe.class, Category.SHAPELESS, "");
 	}
 

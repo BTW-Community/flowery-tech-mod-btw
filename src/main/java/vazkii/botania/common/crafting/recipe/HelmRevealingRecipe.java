@@ -14,7 +14,11 @@ import net.minecraft.src.*;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.item.ModItems;
 
-public class HelmRevealingRecipe implements IRecipe {
+public class HelmRevealingRecipe extends BotaniaIRecipe {
+
+	public HelmRevealingRecipe(ResourceLocation id) {
+		super(id);
+	}
 
 	@Override
 	public boolean matches(InventoryCrafting var1, World var2) {

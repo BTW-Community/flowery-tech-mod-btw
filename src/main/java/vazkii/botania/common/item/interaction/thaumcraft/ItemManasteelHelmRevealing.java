@@ -14,6 +14,7 @@ import net.minecraft.src.CraftingManager;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.ItemStack;
 import vazkii.botania.client.lib.LibResources;
+import vazkii.botania.common.Botania;
 import vazkii.botania.common.core.handler.ConfigHandler;
 import vazkii.botania.common.crafting.recipe.HelmRevealingRecipe;
 import vazkii.botania.common.item.equipment.armor.manasteel.ItemManasteelHelm;
@@ -23,7 +24,7 @@ public class ItemManasteelHelmRevealing extends ItemManasteelHelm {
 
 	public ItemManasteelHelmRevealing(int id) {
 		super(id, LibItemNames.MANASTEEL_HELM_R);
-		CraftingManager.getInstance().getRecipeList().add(new HelmRevealingRecipe()); //Manasteel is the base so it gets the recipe added in its constructor so that ModItems can call it
+		CraftingManager.getInstance().getRecipeList().add(new HelmRevealingRecipe(Botania.loc("manasteel_helm_of_revealing"))); //Manasteel is the base so it gets the recipe added in its constructor so that ModItems can call it
 //		RecipeSorter.register("botania:helmRevealing", HelmRevealingRecipe.class, Category.SHAPELESS, "");
 	}
 

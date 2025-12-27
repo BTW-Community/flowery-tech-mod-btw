@@ -11,6 +11,7 @@
 package vazkii.botania.common.item;
 
 import net.minecraft.src.CraftingManager;
+import vazkii.botania.common.Botania;
 import vazkii.botania.common.crafting.recipe.PhantomInkRecipe;
 import vazkii.botania.common.lib.LibItemNames;
 
@@ -20,7 +21,7 @@ public class ItemPhantomInk extends ItemMod {
 	public ItemPhantomInk(int id) {
         super(id);
         setUnlocalizedName(LibItemNames.PHANTOM_INK);
-		CraftingManager.getInstance().getRecipeList().add(new PhantomInkRecipe());
+		CraftingManager.getInstance().getRecipeList().add(new PhantomInkRecipe(Botania.loc("phantom_ink")));
 //		RecipeSorter.register("botania:phantomInk", PhantomInkRecipe.class, Category.SHAPELESS, "");
 	}
 

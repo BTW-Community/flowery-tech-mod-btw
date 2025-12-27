@@ -15,7 +15,11 @@ import vazkii.botania.api.mana.ICompositableLens;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.lens.ItemLens;
 
-public class CompositeLensRecipe implements IRecipe {
+public class CompositeLensRecipe extends BotaniaIRecipe {
+
+	public CompositeLensRecipe(ResourceLocation id) {
+		super(id);
+	}
 
 	@Override
 	public boolean matches(InventoryCrafting var1, World var2) {

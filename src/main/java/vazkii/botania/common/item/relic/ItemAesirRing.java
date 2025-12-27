@@ -17,6 +17,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
 import vazkii.botania.api.item.IExtendedWireframeCoordinateListProvider;
 import vazkii.botania.api.item.IWireframeCoordinateListProvider;
+import vazkii.botania.common.Botania;
 import vazkii.botania.common.achievement.ICraftAchievement;
 import vazkii.botania.common.achievement.ModAchievements;
 import vazkii.botania.common.crafting.recipe.AesirRingRecipe;
@@ -36,7 +37,7 @@ public class ItemAesirRing extends ItemRelicBauble implements IExtendedWireframe
 
 	public ItemAesirRing(int id) {
 		super(id, LibItemNames.AESIR_RING);
-		CraftingManager.getInstance().getRecipeList().add(new AesirRingRecipe());
+		CraftingManager.getInstance().getRecipeList().add(new AesirRingRecipe(Botania.loc("aesir_ring")));
 //		RecipeSorter.register("botania:aesirRing", AesirRingRecipe.class, Category.SHAPELESS, "");
 		MinecraftForge.EVENT_BUS.register(this);
 		setBindAchievement(() -> ModAchievements.RELIC_AESIR_RING);

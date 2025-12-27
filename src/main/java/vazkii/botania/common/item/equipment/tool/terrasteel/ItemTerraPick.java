@@ -23,6 +23,7 @@ import vazkii.botania.api.item.ISequentialBreaker;
 import vazkii.botania.api.mana.IManaGivingItem;
 import vazkii.botania.api.mana.IManaItem;
 import vazkii.botania.client.core.helper.IconHelper;
+import vazkii.botania.common.Botania;
 import vazkii.botania.common.achievement.ModAchievements;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.crafting.recipe.TerraPickTippingRecipe;
@@ -63,7 +64,7 @@ public class ItemTerraPick extends ItemManasteelPick implements IManaItem, ISequ
 
 	public ItemTerraPick(int id) {
 		super(id, BotaniaAPI.terrasteelToolMaterial, LibItemNames.TERRA_PICK);
-		CraftingManager.getInstance().getRecipeList().add(new TerraPickTippingRecipe());
+		CraftingManager.getInstance().getRecipeList().add(new TerraPickTippingRecipe(Botania.loc("terra_pick_tip")));
 //		RecipeSorter.register("botania:terraPickTipping", TerraPickTippingRecipe.class, Category.SHAPELESS, "");
 	}
 

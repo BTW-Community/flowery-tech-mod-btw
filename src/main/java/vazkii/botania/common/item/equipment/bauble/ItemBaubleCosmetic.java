@@ -19,6 +19,7 @@ import org.lwjgl.opengl.GL11;
 
 import vazkii.botania.api.item.ICosmeticBauble;
 import vazkii.botania.client.core.helper.IconHelper;
+import vazkii.botania.common.Botania;
 import vazkii.botania.common.crafting.recipe.CosmeticAttachRecipe;
 import vazkii.botania.common.crafting.recipe.CosmeticRemoveRecipe;
 import vazkii.botania.common.lib.LibItemNames;
@@ -34,8 +35,8 @@ public class ItemBaubleCosmetic extends ItemBauble implements ICosmeticBauble {
 		super(id, LibItemNames.COSMETIC);
 		setHasSubtypes(true);
 
-		CraftingManager.getInstance().getRecipeList().add(new CosmeticAttachRecipe());
-		CraftingManager.getInstance().getRecipeList().add(new CosmeticRemoveRecipe());
+		CraftingManager.getInstance().getRecipeList().add(new CosmeticAttachRecipe(Botania.loc("attach_cosmetic")));
+		CraftingManager.getInstance().getRecipeList().add(new CosmeticRemoveRecipe(Botania.loc("remove_cosmetic")));
 //		RecipeSorter.register("botania:cosmeticAttach", CosmeticAttachRecipe.class, Category.SHAPELESS, "");
 //		RecipeSorter.register("botania:cosmeticRemove", CosmeticRemoveRecipe.class, Category.SHAPELESS, "");
 	}

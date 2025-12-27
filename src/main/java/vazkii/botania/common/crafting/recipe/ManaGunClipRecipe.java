@@ -14,7 +14,11 @@ import net.minecraft.src.*;
 import vazkii.botania.common.item.ItemManaGun;
 import vazkii.botania.common.item.ModItems;
 
-public class ManaGunClipRecipe  implements IRecipe {
+public class ManaGunClipRecipe extends BotaniaIRecipe {
+
+	public ManaGunClipRecipe(ResourceLocation id) {
+		super(id);
+	}
 
 	@Override
 	public boolean matches(InventoryCrafting var1, World var2) {

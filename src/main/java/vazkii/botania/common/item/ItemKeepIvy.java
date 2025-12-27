@@ -17,6 +17,7 @@ import dev.bagel.util.Persisted;
 import net.minecraft.src.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerDropsEvent;
+import vazkii.botania.common.Botania;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.crafting.recipe.KeepIvyRecipe;
 import vazkii.botania.common.lib.LibItemNames;
@@ -35,7 +36,7 @@ public class ItemKeepIvy extends ItemMod {
 	public ItemKeepIvy(int id) {
         super(id);
         setUnlocalizedName(LibItemNames.KEEP_IVY);
-		CraftingManager.getInstance().getRecipeList().add(new KeepIvyRecipe());
+		CraftingManager.getInstance().getRecipeList().add(new KeepIvyRecipe(Botania.loc("resolute_ivy")));
 //		RecipeSorter.register("botania:keepIvy", KeepIvyRecipe.class, Category.SHAPELESS, "");
 		MinecraftForge.EVENT_BUS.register(this);
 //		FMLCommonHandler.instance().bus().register(this);

@@ -14,6 +14,7 @@ import java.awt.Color;
 
 import net.minecraft.src.CraftingManager;
 import net.minecraft.src.ItemStack;
+import vazkii.botania.common.Botania;
 import vazkii.botania.common.crafting.recipe.SpellClothRecipe;
 import vazkii.botania.common.lib.LibItemNames;
 
@@ -29,7 +30,7 @@ public class ItemSpellCloth extends ItemMod {
 		setNoRepair();
 		setUnlocalizedName(LibItemNames.SPELL_CLOTH);
 
-		CraftingManager.getInstance().getRecipeList().add(new SpellClothRecipe());
+		CraftingManager.getInstance().getRecipeList().add(new SpellClothRecipe(Botania.loc("spellbinding_cloth")));
 //		RecipeSorter.register("botania:spellCloth", SpellClothRecipe.class, Category.SHAPELESS, "");
 	}
 

@@ -14,7 +14,11 @@ import net.minecraft.src.*;
 import vazkii.botania.api.item.IAncientWillContainer;
 import vazkii.botania.common.item.ModItems;
 
-public class AncientWillRecipe implements IRecipe {
+public class AncientWillRecipe extends BotaniaIRecipe {
+
+	public AncientWillRecipe(ResourceLocation id) {
+		super(id);
+	}
 
 	@Override
 	public boolean matches(InventoryCrafting var1, World var2) {

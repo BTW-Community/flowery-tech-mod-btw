@@ -14,7 +14,11 @@ import net.minecraft.src.*;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.equipment.tool.terrasteel.ItemTerraPick;
 
-public class TerraPickTippingRecipe implements IRecipe {
+public class TerraPickTippingRecipe extends BotaniaIRecipe {
+
+	public TerraPickTippingRecipe(ResourceLocation id) {
+		super(id);
+	}
 
 	@Override
 	public boolean matches(InventoryCrafting var1, World var2) {

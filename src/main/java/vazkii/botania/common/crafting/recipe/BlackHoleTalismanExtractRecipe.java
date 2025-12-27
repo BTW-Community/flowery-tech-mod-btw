@@ -14,7 +14,11 @@ import net.minecraft.src.*;
 import vazkii.botania.common.item.ItemBlackHoleTalisman;
 import vazkii.botania.common.item.ModItems;
 
-public class BlackHoleTalismanExtractRecipe implements IRecipe {
+public class BlackHoleTalismanExtractRecipe extends BotaniaIRecipe {
+
+	public BlackHoleTalismanExtractRecipe(ResourceLocation id) {
+		super(id);
+	}
 
 	@Override
 	public boolean matches(InventoryCrafting var1, World var2) {
