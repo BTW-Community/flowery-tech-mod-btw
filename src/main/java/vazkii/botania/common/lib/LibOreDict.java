@@ -23,6 +23,8 @@ import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.block.ModFluffBlocks;
 import vazkii.botania.common.item.ModItems;
 
+import static vazkii.botania.common.Botania.loc;
+
 public final class LibOreDict {
 
 	public static final ItemStack LEXICON = new ItemStack(ModItems.lexicon);
@@ -78,7 +80,7 @@ public final class LibOreDict {
 			new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 0), new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 1), new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 2), new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 3),
 			new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 4), new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 5), new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 6), new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 7),
 	};
-	public static final Tag PETALS = Tag.of(Botania.loc("petal")).addUntilDamage(15, ModItems.petal);
+	public static final Tag PETALS = Tag.of(loc("petal")).addUntilDamage(15, ModItems.petal);
 
 	public static final ItemStack[] PETAL = new ItemStack[] {
 			new ItemStack(ModItems.petal, 1, 0), new ItemStack(ModItems.petal, 1, 1), new ItemStack(ModItems.petal, 1, 2), new ItemStack(ModItems.petal, 1, 3),
@@ -117,8 +119,10 @@ public final class LibOreDict {
 //		"quartzLavender", "quartzRed", "quartzElven", "quartzSunny"
 	};
 
-	public static final Tag COBBLESTONE_SLABS = Tag.of(new ResourceLocation("btw:cobblestone_slabs")).addUntilDamage(2, BTWBlocks.cobblestoneSlab);
-	public static final Tag MANA_DIAMOND_AND_PEARL = Tag.of(Botania.loc("mana_pearl_and_diamond"), MANA_PEARL, MANA_DIAMOND);
-	public static final Tag DYE_POWDERS = Tag.of(Botania.loc("dye_powders")).addUntilDamage(15, ModItems.dye);
+	public static final Tag MANA_DIAMOND_AND_PEARL = Tag.of(loc("mana_pearl_and_diamond"), MANA_PEARL, MANA_DIAMOND);
+	public static final Tag DYE_POWDERS = Tag.of(loc("dye_powders")).addUntilDamage(15, ModItems.dye);
 
+
+	public static final Tag ANCIENT_WILL_CONTAINERS = Tag.of(loc("ancient_will_compatable")).add(ModItems.terrasteelHelm);
+	public static final Tag ANCIENT_WILLS = Tag.of(loc("ancient_wills")).addUntilDamage(5, ModItems.ancientWill);
 }

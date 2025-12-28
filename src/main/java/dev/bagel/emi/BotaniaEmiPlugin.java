@@ -5,6 +5,7 @@ import baubles.client.gui.GuiPlayerExpanded;
 import baubles.common.BaublesConfig;
 import baubles.common.container.SlotBauble;
 import dev.bagel.emi.recipe.*;
+import dev.bagel.emi.recipe.custom.CustomBotaniaEmiRecipe;
 import emi.dev.emi.emi.api.EmiApi;
 import emi.dev.emi.emi.api.EmiExclusionArea;
 import emi.dev.emi.emi.api.EmiPlugin;
@@ -162,6 +163,8 @@ public class BotaniaEmiPlugin implements EmiPlugin {
         reg.addWorkstation(RUNIC_ALTAR, EmiStack.of(new ItemStack(ModBlocks.runeAltar)));
         reg.addWorkstation(ELVEN_TRADE, EmiStack.of(new ItemStack(ModBlocks.alfPortal)));
         reg.addWorkstation(BREWING, EmiStack.of(new ItemStack(ModBlocks.brewery)));
+
+        CustomBotaniaEmiRecipe.initCustomRecipes(reg);
     }
 
     private void addComparisons(EmiRegistry reg) {
