@@ -14,6 +14,7 @@ import java.util.Map;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.Block;
+import net.minecraft.src.ResourceLocation;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.common.lexicon.LexiconData;
@@ -28,7 +29,7 @@ public class SubTileOrechidIgnem extends SubTileOrechid {
 	}
 
 	@Override
-	public Map<String, Integer> getOreMap() {
+	public Map<ResourceLocation, Integer> getOreMap() {
 		return BotaniaAPI.oreWeightsNether;
 	}
 

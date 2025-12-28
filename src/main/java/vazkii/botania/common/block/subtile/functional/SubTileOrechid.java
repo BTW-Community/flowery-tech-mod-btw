@@ -51,10 +51,11 @@ public class SubTileOrechid extends SubTileFunctional {
 				ItemStack stack = getOreToPut();
 				if(stack != null) {
 					Block block = Blocks.getBlockFromItem(stack.getItem());
-					int meta = stack.getItemDamage();
-					supertile.getWorldObj().setBlock(coords.posX, coords.posY, coords.posZ, block, meta, 1 | 2);
+//					int meta = stack.getItemDamage();
+					int oldMeta = supertile.getWorldObj().getBlockMetadata(coords.posX, coords.posY, coords.posZ);
+					supertile.getWorldObj().setBlock(coords.posX, coords.posY, coords.posZ, block, oldMeta, 1 | 2);
 					if(ConfigHandler.blockBreakParticles)
-						supertile.getWorldObj().playAuxSFX(2001, coords.posX, coords.posY, coords.posZ, BlockExtensions.getIdFromBlock(block) + (meta << 12));
+						supertile.getWorldObj().playAuxSFX(2001, coords.posX, coords.posY, coords.posZ, BlockExtensions.getIdFromBlock(block) + (oldMeta << 12));
 					supertile.getWorldObj().playSoundEffect(supertile.xCoord, supertile.yCoord, supertile.zCoord, "botania:orechid", 2F, 1F);
 
 					mana -= cost;
@@ -63,17 +64,21 @@ public class SubTileOrechid extends SubTileFunctional {
 			}
 		}
 	}
-//todofix translate to tag system
+
 	public ItemStack getOreToPut() {
 		Collection<WeightedRandomItem> values = new ArrayList<>();
-		Map<String, Integer> map = getOreMap();
-		for(String s : map.keySet())
+		Map<ResourceLocation, Integer> map = getOreMap();
+		for(ResourceLocation s : map.keySet())
 			values.add(new StringRandomItem(map.get(s), s));
 
-		String ore = ((StringRandomItem) WeightedRandom.getRandomItem(supertile.getWorldObj().rand, values)).s;
+		ResourceLocation ore = ((StringRandomItem) WeightedRandom.getRandomItem(supertile.getWorldObj().rand, values)).s;
 
 //		List<ItemStack> ores = OreDictionary.getOres(ore);
-		List<ItemStack> ores = Tag.getFromId(ore).getItems();
+		Tag tag = Tag.getFromId(ore.toString());
+		if (tag == null) {
+			return getOreToPut();
+		}
+		List<ItemStack> ores = tag.getItems();
 
 		for(ItemStack stack : ores) {
 			Item item = stack.getItem();
@@ -119,7 +124,7 @@ public class SubTileOrechid extends SubTileFunctional {
 		return true;
 	}
 
-	public Map<String, Integer> getOreMap() {
+	public Map<ResourceLocation, Integer> getOreMap() {
 		return BotaniaAPI.oreWeights;
 	}
 
@@ -162,10 +167,10 @@ public class SubTileOrechid extends SubTileFunctional {
 
 	private static class StringRandomItem extends WeightedRandomItem {
 
-		public String s;
+		public ResourceLocation s;
 
-		public StringRandomItem(int par1, String s) {
-			super(par1);
+		public StringRandomItem(int weight, ResourceLocation s) {
+			super(weight);
 			this.s = s;
 		}
 

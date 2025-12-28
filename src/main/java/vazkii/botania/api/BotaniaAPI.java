@@ -18,21 +18,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import api.item.tag.Tag;
 import btw.block.BTWBlocks;
 import btw.item.BTWItems;
 import api.item.tag.TagOrStack;
+import btw.item.BTWTags;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.src.Block;
-import net.minecraft.src.Entity;
-import net.minecraft.src.Item;
-import net.minecraft.src.EnumRarity;
-import net.minecraft.src.EnumToolMaterial;
-import net.minecraft.src.EnumArmorMaterial;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.CraftingManager;
-import net.minecraft.src.IRecipe;
-import net.minecraft.src.EnumChatFormatting;
+import net.minecraft.src.*;
 import vazkii.botania.api.brew.Brew;
 import vazkii.botania.api.internal.DummyMethodHandler;
 import vazkii.botania.api.internal.DummySubTile;
@@ -84,8 +77,8 @@ public final class BotaniaAPI {
 	public static Map<String, String> subTileMods = new HashMap<>();
 	public static BiMap<String, String> miniFlowers = HashBiMap.create();
 
-	public static Map<String, Integer> oreWeights = new HashMap<>();
-	public static Map<String, Integer> oreWeightsNether = new HashMap<>();
+	public static Map<ResourceLocation, Integer> oreWeights = new HashMap<>();
+	public static Map<ResourceLocation, Integer> oreWeightsNether = new HashMap<>();
 	public static Map<Item, Block> seeds = new HashMap<>();
 	public static Set<Item> looniumBlacklist = new LinkedHashSet<>();
 	public static Set<Block> paintableBlocks = new LinkedHashSet<>();
@@ -129,75 +122,6 @@ public final class BotaniaAPI {
 		basicKnowledge = registerKnowledgeType("minecraft", EnumChatFormatting.RESET, true);
 		elvenKnowledge = registerKnowledgeType("alfheim", EnumChatFormatting.DARK_GREEN, false);
 		relicKnowledge = registerKnowledgeType("relic", EnumChatFormatting.DARK_PURPLE, false);
-
-		addOreWeight("oreAluminum", 3940); // Tinkers' Construct
-		addOreWeight("oreAmber", 2075); // Thaumcraft
-		addOreWeight("oreApatite", 1595); // Forestry
-		addOreWeight("oreBlueTopaz", 3195); // Ars Magica
-		addOreWeight("oreCertusQuartz", 3975); // Applied Energistics
-		addOreWeight("oreChimerite", 3970); // Ars Magica
-		addOreWeight("oreCinnabar",  2585); // Thaumcraft
-		addOreWeight("oreCoal", 46525); // Vanilla
-		addOreWeight("oreCopper", 8325); // IC2, Thermal Expansion, Tinkers' Construct, etc.
-		addOreWeight("oreDark", 1350); // EvilCraft
-		addOreWeight("oreDarkIron", 1700); // Factorization (older versions)
-		addOreWeight("oreFzDarkIron", 1700); // Factorization (newer versions)
-		addOreWeight("oreDiamond", 1265); // Vanilla
-		addOreWeight("oreEmerald", 780); // Vanilla
-		addOreWeight("oreGalena", 1000); // Factorization
-		addOreWeight("oreGold", 2970); // Vanilla
-		addOreWeight("oreInfusedAir", 925); // Thaumcraft
-		addOreWeight("oreInfusedEarth", 925); // Thaumcraft
-		addOreWeight("oreInfusedEntropy", 925); // Thaumcraft
-		addOreWeight("oreInfusedFire", 925); // Thaumcraft
-		addOreWeight("oreInfusedOrder", 925); // Thaumcraft
-		addOreWeight("oreInfusedWater", 925); // Thaumcraft
-		addOreWeight("oreIron", 20665); // Vanilla
-		addOreWeight("oreLapis", 1285); // Vanilla
-		addOreWeight("oreLead", 7985); // IC2, Thermal Expansion, Factorization, etc.
-		addOreWeight("oreMCropsEssence", 3085); // Magical Crops
-		addOreWeight("oreMithril", 8); // Thermal Expansion
-		addOreWeight("oreNickel", 2275); // Thermal Expansion
-		addOreWeight("oreOlivine", 1100); // Project RED
-		addOreWeight("orePlatinum", 365); // Thermal Expansion
-		addOreWeight("oreRedstone", 6885); // Vanilla
-		addOreWeight("oreRuby", 1100); // Project RED
-		addOreWeight("oreSapphire", 1100); // Project RED
-		addOreWeight("oreSilver", 6300); // Thermal Expansion, Factorization, etc.
-		addOreWeight("oreSulfur", 1105); // Railcraft
-		addOreWeight("oreTin", 9450); // IC2, Thermal Expansion, etc.
-		addOreWeight("oreUranium", 1337); // IC2
-		addOreWeight("oreVinteum", 5925); // Ars Magica
-		addOreWeight("oreYellorite", 3520); // Big Reactors
-		addOreWeight("oreZinc", 6485); // Flaxbeard's Steam Power
-		addOreWeight("oreMythril", 6485); // Simple Ores2
-		addOreWeight("oreAdamantium", 2275); // Simple Ores2
-		addOreWeight("oreTungsten", 3520); // Simple Tungsten
-
-		addOreWeightNether("oreQuartz", 19600); // Vanilla
-		addOreWeightNether("oreCobalt", 500); // Tinker's Construct
-		addOreWeightNether("oreArdite", 500); // Tinker's Construct
-		addOreWeightNether("oreFirestone", 5); // Railcraft
-		addOreWeightNether("oreNetherCoal", 17000); // Nether Ores
-		addOreWeightNether("oreNetherCopper", 4700); // Nether Ores
-		addOreWeightNether("oreNetherDiamond", 175); // Nether Ores
-		addOreWeightNether("oreNetherEssence", 2460); // Magical Crops
-		addOreWeightNether("oreNetherGold", 3635); // Nether Ores
-		addOreWeightNether("oreNetherIron", 5790); // Nether Ores
-		addOreWeightNether("oreNetherLapis", 3250); // Nether Ores
-		addOreWeightNether("oreNetherLead", 2790); // Nether Ores
-		addOreWeightNether("oreNetherNickel", 1790); // Nether Ores
-		addOreWeightNether("oreNetherPlatinum", 170); // Nether Ores
-		addOreWeightNether("oreNetherRedstone", 5600); // Nether Ores
-		addOreWeightNether("oreNetherSilver", 1550); // Nether Ores
-		addOreWeightNether("oreNetherSteel", 1690); // Nether Ores
-		addOreWeightNether("oreNetherTin", 3750); // Nether Ores
-		addOreWeightNether("oreFyrite", 1000); // Netherrocks
-		addOreWeightNether("oreAshstone", 1000); // Netherrocks
-		addOreWeightNether("oreDragonstone", 175); // Netherrocks
-		addOreWeightNether("oreArgonite", 1000); // Netherrocks
-		addOreWeightNether("oreOnyx", 500); // SimpleOres 2
-		addOreWeightNether("oreHaditeCoal", 500); // Hadite
 
 		addSeed(Item.seeds, Block.crops);
 		addSeed(Item.potato, Block.potato);
@@ -253,6 +177,77 @@ public final class BotaniaAPI {
 		registerSemiDisposableBlock("stoneBasalt"); // Botania
 		registerSemiDisposableBlock("stoneDiorite"); // Botania
 		registerSemiDisposableBlock("stoneGranite"); // Botania
+	}
+
+	public static void init() {
+		//		addOreWeight("oreAluminum", 3940); // Tinkers' Construct
+//		addOreWeight("oreAmber", 2075); // Thaumcraft
+//		addOreWeight("oreApatite", 1595); // Forestry
+//		addOreWeight("oreBlueTopaz", 3195); // Ars Magica
+//		addOreWeight("oreCertusQuartz", 3975); // Applied Energistics
+//		addOreWeight("oreChimerite", 3970); // Ars Magica
+//		addOreWeight("oreCinnabar",  2585); // Thaumcraft
+		addOreWeight(BTWTags.coalOres, 46525); // Vanilla
+//		addOreWeight("oreCopper", 8325); // IC2, Thermal Expansion, Tinkers' Construct, etc.
+//		addOreWeight("oreDark", 1350); // EvilCraft
+//		addOreWeight("oreDarkIron", 1700); // Factorization (older versions)
+//		addOreWeight("oreFzDarkIron", 1700); // Factorization (newer versions)
+		addOreWeight(BTWTags.diamondOres, 1265); // Vanilla
+		addOreWeight(BTWTags.emeraldOres, 780); // Vanilla
+//		addOreWeight("oreGalena", 1000); // Factorization
+		addOreWeight(BTWTags.goldOres, 2970); // Vanilla
+//		addOreWeight("oreInfusedAir", 925); // Thaumcraft
+//		addOreWeight("oreInfusedEarth", 925); // Thaumcraft
+//		addOreWeight("oreInfusedEntropy", 925); // Thaumcraft
+//		addOreWeight("oreInfusedFire", 925); // Thaumcraft
+//		addOreWeight("oreInfusedOrder", 925); // Thaumcraft
+//		addOreWeight("oreInfusedWater", 925); // Thaumcraft
+		addOreWeight(BTWTags.ironOres, 20665); // Vanilla
+		addOreWeight(BTWTags.lapisOres, 1285); // Vanilla
+//		addOreWeight("oreLead", 7985); // IC2, Thermal Expansion, Factorization, etc.
+//		addOreWeight("oreMCropsEssence", 3085); // Magical Crops
+//		addOreWeight("oreMithril", 8); // Thermal Expansion
+//		addOreWeight("oreNickel", 2275); // Thermal Expansion
+//		addOreWeight("oreOlivine", 1100); // Project RED
+//		addOreWeight("orePlatinum", 365); // Thermal Expansion
+		addOreWeight(BTWTags.redstoneOres, 6885); // Vanilla
+//		addOreWeight("oreRuby", 1100); // Project RED
+//		addOreWeight("oreSapphire", 1100); // Project RED
+//		addOreWeight("oreSilver", 6300); // Thermal Expansion, Factorization, etc.
+//		addOreWeight("oreSulfur", 1105); // Railcraft
+//		addOreWeight("oreTin", 9450); // IC2, Thermal Expansion, etc.
+//		addOreWeight("oreUranium", 1337); // IC2
+//		addOreWeight("oreVinteum", 5925); // Ars Magica
+//		addOreWeight("oreYellorite", 3520); // Big Reactors
+//		addOreWeight("oreZinc", 6485); // Flaxbeard's Steam Power
+//		addOreWeight("oreMythril", 6485); // Simple Ores2
+//		addOreWeight("oreAdamantium", 2275); // Simple Ores2
+//		addOreWeight("oreTungsten", 3520); // Simple Tungsten
+
+		addOreWeightNether(BTWTags.quartzOres, 19600); // Vanilla
+//		addOreWeightNether("oreCobalt", 500); // Tinker's Construct
+//		addOreWeightNether("oreArdite", 500); // Tinker's Construct
+//		addOreWeightNether("oreFirestone", 5); // Railcraft
+//		addOreWeightNether("oreNetherCoal", 17000); // Nether Ores
+//		addOreWeightNether("oreNetherCopper", 4700); // Nether Ores
+//		addOreWeightNether("oreNetherDiamond", 175); // Nether Ores
+//		addOreWeightNether("oreNetherEssence", 2460); // Magical Crops
+//		addOreWeightNether("oreNetherGold", 3635); // Nether Ores
+//		addOreWeightNether("oreNetherIron", 5790); // Nether Ores
+//		addOreWeightNether("oreNetherLapis", 3250); // Nether Ores
+//		addOreWeightNether("oreNetherLead", 2790); // Nether Ores
+//		addOreWeightNether("oreNetherNickel", 1790); // Nether Ores
+//		addOreWeightNether("oreNetherPlatinum", 170); // Nether Ores
+//		addOreWeightNether("oreNetherRedstone", 5600); // Nether Ores
+//		addOreWeightNether("oreNetherSilver", 1550); // Nether Ores
+//		addOreWeightNether("oreNetherSteel", 1690); // Nether Ores
+//		addOreWeightNether("oreNetherTin", 3750); // Nether Ores
+//		addOreWeightNether("oreFyrite", 1000); // Netherrocks
+//		addOreWeightNether("oreAshstone", 1000); // Netherrocks
+//		addOreWeightNether("oreDragonstone", 175); // Netherrocks
+//		addOreWeightNether("oreArgonite", 1000); // Netherrocks
+//		addOreWeightNether("oreOnyx", 500); // SimpleOres 2
+//		addOreWeightNether("oreHaditeCoal", 500); // Hadite
 	}
 
 	/**
@@ -583,7 +578,15 @@ public final class BotaniaAPI {
      * Alternatively get the values with the OreDetector mod:<br>
      * <a href="https://gist.github.com/Vazkii/9493322">Gist</a>
      */
-	public static void addOreWeight(String ore, int weight) {
+//	public static void addOreWeight(String ore, int weight) {
+//		oreWeights.put(ore, weight);
+//	}
+
+	public static void addOreWeight(Tag ore, int weight) {
+		oreWeights.put(ore.id, weight);
+	}
+
+	public static void addOreWeight(ResourceLocation ore, int weight) {
 		oreWeights.put(ore, weight);
 	}
 
@@ -594,18 +597,22 @@ public final class BotaniaAPI {
      * Alternatively get the values with the OreDetector mod:<br>
      * <a href="https://gist.github.com/Vazkii/9493322">Gist</a>
      */
-	public static void addOreWeightNether(String ore, int weight) {
-		if(ore.contains("Nether") /*&& OreDictionary.getOres(ore.replace("Nether", "")).size() == 0*/)
-			return;
+	public static void addOreWeightNether(ResourceLocation ore, int weight) {
+//		if(ore.contains("Nether") /*&& OreDictionary.getOres(ore.replace("Nether", "")).size() == 0*/)
+//			return;
 
 		oreWeightsNether.put(ore, weight);
 	}
 
-	public static int getOreWeight(String ore) {
+	public static void addOreWeightNether(Tag ore, int weight) {
+		oreWeightsNether.put(ore.id, weight);
+	}
+
+	public static int getOreWeight(ResourceLocation ore) {
 		return oreWeights.get(ore);
 	}
 
-	public static int getOreWeightNether(String ore) {
+	public static int getOreWeightNether(ResourceLocation ore) {
 		return oreWeightsNether.get(ore);
 	}
 

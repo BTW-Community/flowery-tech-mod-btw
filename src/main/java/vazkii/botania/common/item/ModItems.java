@@ -288,7 +288,7 @@ public final class ModItems {
 		grassHorn = new ItemGrassHorn(id++);
 		manaMirror = new ItemManaMirror(id++);
 		manasteelHelm = new ItemManasteelHelm(id++);
-		manasteelHelmRevealing = new ItemManasteelHelmRevealing(id++);
+//		manasteelHelmRevealing = new ItemManasteelHelmRevealing(id++);
 		manasteelChest = new ItemManasteelChest(id++);
 		manasteelLegs = new ItemManasteelLegs(id++);
 		manasteelBoots = new ItemManasteelBoots(id++);
@@ -298,7 +298,7 @@ public final class ModItems {
 		manasteelSword = new ItemManasteelSword(id++);
 		manasteelShears = new ItemManasteelShears(id++);
 		terrasteelHelm = new ItemTerrasteelHelm(id++);
-		terrasteelHelmRevealing = new ItemTerrasteelHelmRevealing(id++);
+//		terrasteelHelmRevealing = new ItemTerrasteelHelmRevealing(id++);
 		terrasteelChest = new ItemTerrasteelChest(id++);
 		terrasteelLegs = new ItemTerrasteelLegs(id++);
 		terrasteelBoots = new ItemTerrasteelBoots(id++);
@@ -323,7 +323,7 @@ public final class ModItems {
 		quartz = new ItemQuartz(id++);
 		waterRod = new ItemWaterRod(id++);
 		elementiumHelm = new ItemElementiumHelm(id++);
-		elementiumHelmRevealing = new ItemElementiumHelmRevealing(id++);
+//		elementiumHelmRevealing = new ItemElementiumHelmRevealing(id++);
 		elementiumChest = new ItemElementiumChest(id++);
 		elementiumLegs = new ItemElementiumLegs(id++);
 		elementiumBoots = new ItemElementiumBoots(id++);

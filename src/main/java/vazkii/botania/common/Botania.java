@@ -24,6 +24,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.src.*;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
+import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.client.core.proxy.ClientProxy;
 import vazkii.botania.common.core.command.CommandOpen;
 import vazkii.botania.common.core.command.CommandShare;
@@ -104,6 +105,7 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 	//FMLInitializationEvent
 	@Override
 	public void initialize() {
+		BotaniaAPI.init();
 		registerPacketHandler("botania|GUI", CustomGuiPacketHandler.INSTANCE);
 		Baubles.instance.init();
 		getProxy().init();
