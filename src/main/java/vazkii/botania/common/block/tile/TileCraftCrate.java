@@ -19,7 +19,6 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.CraftingManager;
 import net.minecraft.src.IRecipe;
 import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.Packet132TileEntityData;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
 import vazkii.botania.common.item.ModItems;
 
@@ -101,7 +100,7 @@ public class TileCraftCrate extends TileOpenCrate {
 
 		if(newSignal != signal) {
 			signal = newSignal;
-			worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlockId(xCoord, yCoord, zCoord));
+			onInventoryChanged();
 		}
 	}
 
