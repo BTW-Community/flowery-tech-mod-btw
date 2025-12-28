@@ -69,9 +69,8 @@ public class ItemBlackHoleTalisman extends ItemMod implements IBlockProvider {
 			int bmeta = getBlockMeta(par1ItemStack);
 
 			TileEntity tile = par3World.getTileEntity(par4, par5, par6);
-			if(tile != null && tile instanceof IInventory) {
-				IInventory inv = (IInventory) tile;
-				int[] slots = inv instanceof ISidedInventory ? ((ISidedInventory) inv).getSlotsForFace(par7) : InventoryHelper.buildSlotsForLinearInventory(inv);
+			if(tile instanceof IInventory inv) {
+                int[] slots = inv instanceof ISidedInventory ? ((ISidedInventory) inv).getSlotsForFace(par7) : InventoryHelper.buildSlotsForLinearInventory(inv);
 				for(int slot : slots) {
 					ItemStack stackInSlot = inv.getStackInSlot(slot);
 					if(stackInSlot == null) {
@@ -176,7 +175,10 @@ public class ItemBlackHoleTalisman extends ItemMod implements IBlockProvider {
 	public String getItemStackDisplayName(ItemStack par1ItemStack) {
 		Block block = getBlock(par1ItemStack);
 		int meta = getBlockMeta(par1ItemStack);
-		ItemStack stack = new ItemStack(block, 1, meta);
+		ItemStack stack = null;
+		if (block != null) {
+			stack = new ItemStack(block, 1, meta);
+		}
 
 		return super.getItemStackDisplayName(par1ItemStack) + (stack == null || stack.getItem() == null ? "" : " (" + EnumChatFormatting.GREEN + stack.getDisplayName() + EnumChatFormatting.RESET + ")");
 	}
@@ -196,6 +198,11 @@ public class ItemBlackHoleTalisman extends ItemMod implements IBlockProvider {
 			copy.setItemDamage(0);
 
 		return copy;
+	}
+
+	@Override
+	public boolean hasContainerItem() {
+		return true;
 	}
 
 	@Override
@@ -250,7 +257,7 @@ public class ItemBlackHoleTalisman extends ItemMod implements IBlockProvider {
 	}
 
 	void addStringToTooltip(String s, List<String> tooltip) {
-		tooltip.add(s.replaceAll("&", "\u00a7"));
+		tooltip.add(s.replaceAll("&", "§"));
 	}
 
 	private static void setCount(ItemStack stack, int count) {

@@ -11,6 +11,7 @@
     "PlayerControllerMPMixin",
     "RenderGlobalMixin",
     "RenderItemMixin",
+    "SlotCraftingMixin",
     "SoundManagerMixin",
     "botania.GOGWorldProviderMixin",
     "debug.AchievementDataAccessor",

@@ -374,7 +374,7 @@ public final class ModCraftingRecipes {
 //		for(int i = 0; i < 16; i++)
 			addOreDictRecipe(new ItemStack(ModBlocks.altar),
 					"SPS", " C ", "CCC",
-					'S', LibOreDict.COBBLESTONE_SLABS,
+					'S', BTWTags.cobblestoneSlabs,
 					'P', LibOreDict.PETALS,
 					'C', BTWTags.cobblestones);
 		recipesApothecary = BotaniaAPI.getLatestAddedRecipes(16);
@@ -691,12 +691,12 @@ public final class ModCraftingRecipes {
 		recipeGrassHorn = BotaniaAPI.getLatestAddedRecipe();
 
 		// Terrasteel Armor Recipes
-		addOreDictRecipe(new ItemStack(ModItems.terrasteelHelmRevealing),
-				"TRT", "SAS", " S ",
-				'T', LibOreDict.LIVINGWOOD_TWIG,
-				'S', LibOreDict.TERRA_STEEL,
-				'R', LibOreDict.RUNE[4],
-				'A', new ItemStack(ModItems.manasteelHelmRevealing));
+//		addOreDictRecipe(new ItemStack(ModItems.terrasteelHelmRevealing),
+//				"TRT", "SAS", " S ",
+//				'T', LibOreDict.LIVINGWOOD_TWIG,
+//				'S', LibOreDict.TERRA_STEEL,
+//				'R', LibOreDict.RUNE[4],
+//				'A', new ItemStack(ModItems.manasteelHelmRevealing));
 		addOreDictRecipe(new ItemStack(ModItems.terrasteelHelm),
 				"TRT", "SAS", " S ",
 				'T', LibOreDict.LIVINGWOOD_TWIG,

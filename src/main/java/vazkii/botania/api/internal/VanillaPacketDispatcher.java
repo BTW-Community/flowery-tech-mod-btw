@@ -22,10 +22,9 @@ public final class VanillaPacketDispatcher {
 		World world = tile.getWorldObj();
 		List players = world.playerEntities;
 		for(Object player : players)
-			if(player instanceof EntityPlayerMP) {
-				EntityPlayerMP mp = (EntityPlayerMP) player;
-				if(pointDistancePlane(mp.posX, mp.posZ, tile.xCoord + 0.5, tile.zCoord + 0.5) < 64)
-					((EntityPlayerMP) player).playerNetServerHandler.sendPacket(tile.getDescriptionPacket());
+			if(player instanceof EntityPlayerMP mp) {
+                if(pointDistancePlane(mp.posX, mp.posZ, tile.xCoord + 0.5, tile.zCoord + 0.5) < 64)
+					mp.playerNetServerHandler.sendPacket(tile.getDescriptionPacket());
 			}
 	}
 
