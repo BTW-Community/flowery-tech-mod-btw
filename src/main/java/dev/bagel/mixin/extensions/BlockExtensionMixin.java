@@ -25,9 +25,12 @@ public abstract class BlockExtensionMixin implements BlockExtensions {
 
     @Shadow public abstract Icon getIcon(int par1, int par2);
 
+    @Shadow
+    public abstract int getDamageValue(World par1World, int par2, int par3, int par4);
+
     @Override
     public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
-        return new ItemStack(Item.itemsList[idPicked(world, x, y, z)]);
+        return new ItemStack(Item.itemsList[idPicked(world, x, y, z)], 1, getDamageValue(world, x, y, z));
     }
 
     @Override

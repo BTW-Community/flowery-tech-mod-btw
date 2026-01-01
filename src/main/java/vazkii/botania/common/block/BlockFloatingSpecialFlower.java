@@ -30,6 +30,8 @@ import vazkii.botania.common.item.block.ItemBlockFloatingSpecialFlower;
 import vazkii.botania.common.item.block.ItemBlockSpecialFlower;
 import vazkii.botania.common.lib.LibBlockNames;
 
+import static vazkii.botania.common.item.block.ItemBlockSpecialFlower.getType;
+
 
 public class BlockFloatingSpecialFlower extends BlockFloatingFlower implements ISpecialFlower, IWandable, ILexiconable, IWandHUD {
 
@@ -127,10 +129,21 @@ public class BlockFloatingSpecialFlower extends BlockFloatingFlower implements I
 		return ((TileSpecialFlower) world.getTileEntity(x, y, z)).onWanded(stack, player);
 	}
 
-	@Override
-	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack) {
-		((TileSpecialFlower) world.getTileEntity(x, y, z)).onBlockPlacedBy(world, x, y, z, entity, stack);
-	}
+    @Override
+    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack) {
+        if(entity instanceof EntityPlayer player) {
+            String type = getType(stack);
+            TileEntity te = world.getTileEntity(x, y, z);
+            if(te instanceof TileSpecialFlower tile) {
+                tile.setSubTile(type);
+                tile.onBlockAdded(world, x, y, z);
+                tile.onBlockPlacedBy(world, x, y, z, player, stack);
+                if(!world.isRemote)
+                    world.markBlockForUpdate(x, y, z);
+            }
+        }
+        ((TileSpecialFlower) world.getTileEntity(x, y, z)).onBlockPlacedBy(world, x, y, z, entity, stack);
+    }
 
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
