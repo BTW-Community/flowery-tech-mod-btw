@@ -12,6 +12,7 @@ package vazkii.botania.common.entity;
 
 import api.entity.EntityWithCustomPacket;
 import btw.network.packet.BTWPacketManager;
+import dev.bagel.interfaces.MinecartExtensions;
 import net.minecraft.src.*;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
@@ -25,7 +26,7 @@ import vazkii.botania.common.lib.LibMisc;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 
-public class EntityPoolMinecart extends EntityMinecart implements EntityWithCustomPacket {
+public class EntityPoolMinecart extends EntityMinecart implements EntityWithCustomPacket, MinecartExtensions {
 
 	private static final int TRANSFER_RATE = 10000;
 	private static final String TAG_MANA = "mana";
@@ -71,8 +72,9 @@ public class EntityPoolMinecart extends EntityMinecart implements EntityWithCust
 	public int getDefaultDisplayTileOffset() {
 		return 8;
 	}
+
 	//todofix minecart handling, line 417-435 of EntityMinecart before, inject after moveEntity call
-//	@Override
+	@Override
 	public void moveMinecartOnRail(int x, int y, int z, double par4) {
 //		super.moveMinecartOnRail(x, y, z, par4);
 
@@ -168,7 +170,7 @@ public class EntityPoolMinecart extends EntityMinecart implements EntityWithCust
 
 	@Override
 	public int getTrackerUpdateFrequency() {
-		return 30;
+		return 3;
 	}
 
 	@Override

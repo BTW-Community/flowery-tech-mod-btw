@@ -22,7 +22,6 @@ import net.minecraft.src.Block;
 import net.minecraft.src.Material;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTBase;
 import net.minecraft.src.NBTTagCompound;
@@ -42,7 +41,6 @@ import vazkii.botania.common.lib.LibBlockNames;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
-import cpw.mods.fml.common.gameevent.TickEvent.Type;
 
 public class BlockPistonRelay extends BlockMod implements IWandable, ILexiconable {
 
@@ -61,6 +59,9 @@ public class BlockPistonRelay extends BlockMod implements IWandable, ILexiconabl
 		setStepSound(soundMetalFootstep);
 
 		MinecraftForge.EVENT_BUS.register(this);
+        WorldEvent.Load.EVENT.register(this::onWorldLoad);
+        WorldEvent.Unload.EVENT.register(this::onWorldUnload);
+        TickEvent.ServerTickEvent.EVENT.register(this::tickEnd);
 //		FMLCommonHandler.instance().bus().register(this);
 	}
 
@@ -145,12 +146,12 @@ public class BlockPistonRelay extends BlockMod implements IWandable, ILexiconabl
 		return true;
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onWorldLoad(WorldEvent.Load event) {
 		WorldData.get(event.world);
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onWorldUnload(WorldEvent.Unload event) {
 		WorldData.get(event.world).markDirty();
 	}
@@ -199,9 +200,9 @@ public class BlockPistonRelay extends BlockMod implements IWandable, ILexiconabl
 		}
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void tickEnd(TickEvent.ServerTickEvent event) {
-		if( event.phase == Phase.END) {
+		if(event.phase == Phase.END) {
 			List<String> coordsToCheckCopy = new ArrayList<>(coordsToCheck.keySet());
 			for(String s : coordsToCheckCopy) {
 				decrCoords(s);

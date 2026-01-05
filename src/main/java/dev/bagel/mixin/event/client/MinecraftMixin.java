@@ -5,6 +5,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import dev.bagel.client.OpenGlHelper2;
 import net.minecraft.src.*;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.world.WorldEvent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -36,5 +37,12 @@ public class MinecraftMixin {
     private void forge$invokeImprovedOGLHelper(CallbackInfo ci) {
         OpenGlHelper2.initializeTextures();
         System.err.println("ogl: "+OpenGlHelper2.func_153172_c());
+    }
+
+    @Inject(method = "loadWorld(Lnet/minecraft/src/WorldClient;Ljava/lang/String;)V", at = @At("HEAD"))
+    private void forge$onWorldUnloadClient(WorldClient world, String par2Str, CallbackInfo ci) {
+        if (theWorld != null) {
+            WorldEvent.Unload.EVENT.invoker().onWorldUnload(new WorldEvent.Unload(theWorld));
+        }
     }
 }

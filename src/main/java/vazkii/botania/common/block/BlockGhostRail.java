@@ -34,6 +34,7 @@ public class BlockGhostRail extends BlockRailBase implements ILexiconable {
 		setCreativeTab(CreativeTabs.tabMisc);
 		MinecraftForge.EVENT_BUS.register(this);
 		setUnlocalizedName(LibBlockNames.GHOST_RAIL);
+        MinecartUpdateEvent.EVENT.register(this::onMinecartUpdate);
 	}
 
 	@Override

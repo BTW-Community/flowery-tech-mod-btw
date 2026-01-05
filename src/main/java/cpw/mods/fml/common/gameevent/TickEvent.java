@@ -30,6 +30,16 @@ public class TickEvent extends Event {
         public ServerTickEvent(Phase phase) {
             super(Type.SERVER, EnvType.SERVER, phase);
         }
+
+        public static final net.legacyfabric.fabric.api.event.Event<OnServerTick> EVENT = EventFactory.createArrayBacked(OnServerTick.class, (callbacks) -> (serverTick) -> {
+            for (OnServerTick event : callbacks) {
+                event.onServerTick(serverTick);
+            }
+        });
+
+        public interface OnServerTick {
+            void onServerTick(ServerTickEvent event);
+        }
     }
 
     public static class ClientTickEvent extends TickEvent {

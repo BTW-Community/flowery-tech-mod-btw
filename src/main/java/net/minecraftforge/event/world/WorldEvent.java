@@ -2,10 +2,8 @@ package net.minecraftforge.event.world;
 
 import cpw.mods.fml.common.eventhandler.Cancelable;
 import cpw.mods.fml.common.eventhandler.Event;
-import net.minecraft.src.EnumCreatureType;
-import net.minecraft.src.World;
-import net.minecraft.src.WorldSettings;
-import net.minecraft.src.SpawnListEntry;
+import net.legacyfabric.fabric.api.event.EventFactory;
+import net.minecraft.src.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +42,16 @@ public class WorldEvent extends Event
     public static class Load extends WorldEvent
     {
         public Load(World world) { super(world); }
+
+        public static final net.legacyfabric.fabric.api.event.Event<LoadCallback> EVENT = EventFactory.createArrayBacked(LoadCallback.class, (listeners) -> (loadEvent) -> {
+            for (LoadCallback event : listeners) {
+                event.onWorldLoad(loadEvent);
+            }
+        });
+
+        public interface LoadCallback {
+            public void onWorldLoad(Load loadEvent);
+        }
     }
 
     /**
@@ -64,6 +72,16 @@ public class WorldEvent extends Event
     public static class Unload extends WorldEvent
     {
         public Unload(World world) { super(world); }
+
+        public static final net.legacyfabric.fabric.api.event.Event<UnloadCallback> EVENT = EventFactory.createArrayBacked(UnloadCallback.class, (listeners) -> (world) -> {
+            for (UnloadCallback event : listeners) {
+                event.onWorldUnload(world);
+            }
+        });
+
+        public interface UnloadCallback {
+            public void onWorldUnload(Unload world);
+        }
     }
 
     /**

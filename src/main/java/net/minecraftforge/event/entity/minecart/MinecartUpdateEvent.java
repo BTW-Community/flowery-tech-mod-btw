@@ -1,5 +1,7 @@
 package net.minecraftforge.event.entity.minecart;
 
+import net.legacyfabric.fabric.api.event.Event;
+import net.legacyfabric.fabric.api.event.EventFactory;
 import net.minecraft.src.EntityMinecart;
 
 /**
@@ -29,5 +31,15 @@ public class MinecartUpdateEvent extends MinecartEvent
         this.x = x;
         this.y = y;
         this.z = z;
+    }
+
+    public static final Event<MinecartUpdateCallback> EVENT = EventFactory.createArrayBacked(MinecartUpdateCallback.class, (listeners) -> (event) -> {
+        for (MinecartUpdateCallback callback : listeners) {
+            callback.onMinecartUpdate(event);
+        }
+    });
+
+    public interface MinecartUpdateCallback {
+        void onMinecartUpdate(MinecartUpdateEvent event);
     }
 }
