@@ -10,10 +10,10 @@
  */
 package vazkii.botania.client.core.handler;
 
-import net.minecraft.src.Minecraft;
-import net.minecraft.src.GuiScreen;
-import net.minecraft.src.EnumChatFormatting;
-import net.minecraft.src.World;
+import api.client.debug.DebugInfoSection;
+import api.client.debug.DebugRegistry;
+import api.client.debug.DebugRegistryUtils;
+import net.minecraft.src.*;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 
 import org.lwjgl.opengl.ARBFragmentShader;
@@ -26,43 +26,74 @@ import vazkii.botania.client.fx.ParticleRenderDispatcher;
 import vazkii.botania.common.core.handler.ConfigHandler;
 import vazkii.botania.common.core.handler.ManaNetworkHandler;
 import vazkii.botania.common.lib.LibMisc;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+
+import java.util.Optional;
 
 public final class DebugHandler {
+    public static final ResourceLocation SECTION_ID = new ResourceLocation(LibMisc.MOD_ID, "debug");
+    public DebugHandler() {
+        DebugInfoSection section = DebugRegistryUtils.registerSection(SECTION_ID, DebugRegistryUtils.Side.RIGHT);
+        section.orderSection(DebugRegistry.specsSectionID, 100);
+        onDrawDebugText(section);
+    }
 
-	private static final String PREFIX = EnumChatFormatting.GREEN + "[Botania] " + EnumChatFormatting.RESET;
-//todo draw custom debug text
-	@SubscribeEvent
-	public void onDrawDebugText(RenderGameOverlayEvent.Text event) {
-//		World world = Minecraft.getMinecraft().theWorld;
-//		if(Minecraft.getMinecraft().gameSettings.showDebugInfo) {
-//			event.left.add(null);
-//			String version = LibMisc.VERSION;
-//			if(version.contains("GRADLE"))
-//				version = "N/A";
-//
-//			event.left.add(PREFIX + "pS: " + ParticleRenderDispatcher.sparkleFxCount + ", pFS: " + ParticleRenderDispatcher.fakeSparkleFxCount + ", pW: " + ParticleRenderDispatcher.wispFxCount + ", pDIW: " + ParticleRenderDispatcher.depthIgnoringWispFxCount + ", pLB: " + ParticleRenderDispatcher.lightningCount);
-//			event.left.add(PREFIX + "netColl: " + ManaNetworkHandler.instance.getAllCollectorsInWorld(world).size() + ", netPool: " + ManaNetworkHandler.instance.getAllPoolsInWorld(world).size() + ", rv: " + version);
-//
-//			if(GuiScreen.isCtrlKeyDown() && GuiScreen.isShiftKeyDown()) {
-//				event.left.add(PREFIX + "Config Context");
-//				event.left.add("  shaders.enabled: " + ConfigHandler.useShaders);
-//				event.left.add("  shaders.secondaryUnit: " + ConfigHandler.glSecondaryTextureUnit);
-//
-//				ContextCapabilities caps = GLContext.getCapabilities();
-//				event.left.add(PREFIX + "OpenGL Context");
-//				event.left.add("  GL_VERSION: " + GL11.glGetString(GL11.GL_VERSION));
-//				event.left.add("  GL_RENDERER: " + GL11.glGetString(GL11.GL_RENDERER));
-//				event.left.add("  GL_SHADING_LANGUAGE_VERSION: " + GL11.glGetString(GL20.GL_SHADING_LANGUAGE_VERSION));
-//				event.left.add("  GL_MAX_TEXTURE_IMAGE_UNITS_ARB: " + GL11.glGetInteger(ARBFragmentShader.GL_MAX_TEXTURE_IMAGE_UNITS_ARB));
-//				event.left.add("  GL_ARB_multitexture: " + caps.GL_ARB_multitexture);
-//				event.left.add("  GL_ARB_texture_non_power_of_two: " + caps.GL_ARB_texture_non_power_of_two);
-//				event.left.add("  OpenGL13: " + caps.OpenGL13);
-//			} else if(Minecraft.isRunningOnMac)
-//				event.left.add(PREFIX + "SHIFT+CMD for context");
-//			else event.left.add(PREFIX + "SHIFT+CTRL for context");
-//		}
+    private static final String PREFIX = EnumChatFormatting.GREEN + "[Botania] " + EnumChatFormatting.RESET;
+
+    private Optional<String> toOption(boolean isExtendedDebug, String expected) {
+        if (isExtendedDebug) {
+            return Optional.of(expected);
+        }
+        return Optional.empty();
+    }
+
+    private Optional<String> toOptionIfCtrlShiftDown(boolean isExtendedDebug, String expected) {
+        if (isExtendedDebug && GuiScreen.isCtrlKeyDown() && GuiScreen.isShiftKeyDown()) {
+            return Optional.of(expected);
+        }
+        return Optional.empty();
+    }
+
+//	@SubscribeEvent
+	public void onDrawDebugText(DebugInfoSection section) {
+		World world = Minecraft.getMinecraft().theWorld;
+        final String version;
+        if(LibMisc.VERSION.contains("GRADLE"))
+            version = "N/A";
+        else version = LibMisc.VERSION;
+        section.addEntry((mc, isExtendedDebug) -> toOption(isExtendedDebug, PREFIX + "pS: " + ParticleRenderDispatcher.sparkleFxCount + ", pFS: " + ParticleRenderDispatcher.fakeSparkleFxCount + ", pW: " + ParticleRenderDispatcher.wispFxCount + ", pDIW: " + ParticleRenderDispatcher.depthIgnoringWispFxCount + ", pLB: " + ParticleRenderDispatcher.lightningCount));
+        section.addEntry((mc, isExtendedDebug) -> toOption(isExtendedDebug, PREFIX + "netColl: " + ManaNetworkHandler.instance.getAllCollectorsInWorld(world).size() + ", netPool: " + ManaNetworkHandler.instance.getAllPoolsInWorld(world).size() + ", rv: " + version));
+        section.addEntry((mc, isExtendedDebug) -> toOptionIfCtrlShiftDown(isExtendedDebug, PREFIX + "Config Context"));
+        section.addEntry((mc, isExtendedDebug) -> toOptionIfCtrlShiftDown(isExtendedDebug, "  shaders.enabled: " + ConfigHandler.useShaders));
+        section.addEntry((mc, isExtendedDebug) -> toOptionIfCtrlShiftDown(isExtendedDebug, "  shaders.secondaryUnit: " + ConfigHandler.glSecondaryTextureUnit));
+
+
+        section.addEntry((mc, isExtendedDebug) -> toOptionIfCtrlShiftDown(isExtendedDebug, PREFIX + "OpenGL Context"));
+        section.addEntry((mc, isExtendedDebug) -> toOptionIfCtrlShiftDown(isExtendedDebug, "  GL_VERSION: " + GL11.glGetString(GL11.GL_VERSION)));
+        section.addEntry((mc, isExtendedDebug) -> toOptionIfCtrlShiftDown(isExtendedDebug, "  GL_RENDERER: " + GL11.glGetString(GL11.GL_RENDERER)));
+        section.addEntry((mc, isExtendedDebug) -> toOptionIfCtrlShiftDown(isExtendedDebug, "  GL_SHADING_LANGUAGE_VERSION: " + GL11.glGetString(GL20.GL_SHADING_LANGUAGE_VERSION)));
+        section.addEntry((mc, isExtendedDebug) -> toOptionIfCtrlShiftDown(isExtendedDebug, "  GL_MAX_TEXTURE_IMAGE_UNITS_ARB: " + GL11.glGetInteger(ARBFragmentShader.GL_MAX_TEXTURE_IMAGE_UNITS_ARB)));
+        section.addEntry((mc, isExtendedDebug) -> {
+            ContextCapabilities caps = GLContext.getCapabilities();
+            return toOptionIfCtrlShiftDown(isExtendedDebug, "  GL_ARB_multitexture: " + caps.GL_ARB_multitexture);
+        });
+        section.addEntry((mc, isExtendedDebug) -> {
+            ContextCapabilities caps = GLContext.getCapabilities();
+            return toOptionIfCtrlShiftDown(isExtendedDebug, "  GL_ARB_texture_non_power_of_two: " + caps.GL_ARB_texture_non_power_of_two);
+        });
+        section.addEntry((mc, isExtendedDebug) -> {
+            ContextCapabilities caps = GLContext.getCapabilities();
+            return toOptionIfCtrlShiftDown(isExtendedDebug, "  OpenGL13: " + caps.OpenGL13);
+        });
+        section.addEntry((mc, isExtendedDebug) -> {
+            if (Minecraft.isRunningOnMac)
+                return toOption(isExtendedDebug, PREFIX + "SHIFT+CMD for context");
+            return Optional.empty();
+        });
+        section.addEntry((mc, isExtendedDebug) -> {
+            if (!Minecraft.isRunningOnMac)
+                toOption(isExtendedDebug, PREFIX + "SHIFT+CTRL for context");
+            return Optional.empty();
+        });
 	}
-
 
 }

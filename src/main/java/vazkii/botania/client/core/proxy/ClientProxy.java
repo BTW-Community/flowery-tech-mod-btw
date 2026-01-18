@@ -185,8 +185,7 @@ public class ClientProxy extends CommonProxy {
 
 		ModChallenges.init();
 
-		//todofix client tick handler
-//		FMLCommonHandler.instance().bus().register(new ClientTickHandler());
+        MinecraftForge.EVENT_BUS.register(new ClientTickHandler());
 		MinecraftForge.EVENT_BUS.register(new HUDHandler());
 		MinecraftForge.EVENT_BUS.register(new LightningHandler());
 		if(ConfigHandler.boundBlockWireframe)

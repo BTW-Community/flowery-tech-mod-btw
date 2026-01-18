@@ -50,7 +50,7 @@ public class BlockGhostRail extends BlockRailBase implements ILexiconable {
 		blockIcon = IconHelper.forBlock(par1IconRegister, this);
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onMinecartUpdate(MinecartUpdateEvent event) {
 		int x = MathHelper.floor_double(event.entity.posX);
 		int y = MathHelper.floor_double(event.entity.posY);
