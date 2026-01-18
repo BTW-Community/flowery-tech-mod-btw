@@ -3,6 +3,7 @@ package dev.bagel.mixin.event;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.src.*;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import org.objectweb.asm.Opcodes;
@@ -64,6 +65,15 @@ public abstract class EntityLivingBaseMixin extends Entity {
             for (EntityItem item : this.getCapturedDrops()) {
                 worldObj.spawnEntityInWorld(item);
             }
+        }
+    }
+
+    @Inject(method = "onDeath", at = @At("HEAD"), cancellable = true)
+    private void forge$onDeath(DamageSource source, CallbackInfo ci) {
+        LivingDeathEvent event = new LivingDeathEvent((EntityLivingBase) (Object) this, source);
+        LivingDeathEvent.EVENT.invoker().accept(event);
+        if (MinecraftForge.EVENT_BUS.post(event)) {
+            ci.cancel();
         }
     }
 

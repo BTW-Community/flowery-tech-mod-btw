@@ -1,8 +1,12 @@
 package net.minecraftforge.event.entity.living;
 
 import cpw.mods.fml.common.eventhandler.Cancelable;
+import net.legacyfabric.fabric.api.event.Event;
+import net.legacyfabric.fabric.api.event.EventFactory;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.DamageSource;
+
+import java.util.function.Consumer;
 
 /**
  * LivingDeathEvent is fired when an Entity dies. <br>
@@ -25,6 +29,11 @@ import net.minecraft.src.DamageSource;
 @Cancelable
 public class LivingDeathEvent extends LivingEvent
 {
+    public static final Event<Consumer<LivingDeathEvent>> EVENT = EventFactory.createArrayBacked(Consumer.class, (listeners) -> (e) -> {
+        for (Consumer<LivingDeathEvent> listener : listeners) {
+            listener.accept(e);
+        }
+    });
     public final DamageSource source;
     public LivingDeathEvent(EntityLivingBase entity, DamageSource source)
     {

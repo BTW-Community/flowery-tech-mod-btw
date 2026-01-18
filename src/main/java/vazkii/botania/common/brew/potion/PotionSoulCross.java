@@ -23,9 +23,10 @@ public class PotionSoulCross extends PotionMod {
 	public PotionSoulCross() {
 		super(ConfigHandler.potionIDSoulCross, LibPotionNames.SOUL_CROSS, false, 0x47453d, 0);
 		MinecraftForge.EVENT_BUS.register(this);
+        LivingDeathEvent.EVENT.register(this::onEntityKill);
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onEntityKill(LivingDeathEvent event) {
 		Entity e = event.source.getEntity();
 		if(e != null && e instanceof EntityLivingBase) {
