@@ -18,8 +18,6 @@ import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.item.ItemKeepIvy;
 import vazkii.botania.common.item.ItemRegenIvy;
-import cpw.mods.fml.common.eventhandler.EventPriority;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public final class TooltipHandler {
 	public static TooltipHandler instance = new TooltipHandler();

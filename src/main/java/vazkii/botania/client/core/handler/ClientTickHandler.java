@@ -13,7 +13,6 @@ package vazkii.botania.client.core.handler;
 import java.util.ArrayList;
 import java.util.List;
 
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.GuiScreen;

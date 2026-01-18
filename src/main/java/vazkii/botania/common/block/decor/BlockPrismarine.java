@@ -18,7 +18,6 @@ import net.minecraft.src.IconRegister;
 import net.minecraft.src.TextureAtlasSprite;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Icon;
 import net.minecraft.src.MovingObjectPosition;
@@ -33,7 +32,6 @@ import vazkii.botania.common.block.BlockMod;
 import vazkii.botania.common.item.block.ItemBlockWithMetadataAndName;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;

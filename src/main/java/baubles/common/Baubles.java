@@ -4,7 +4,6 @@ import baubles.client.ClientProxy;
 import baubles.common.event.EventHandlerEntity;
 import baubles.common.event.EventHandlerNetwork;
 import baubles.common.network.PacketHandler;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.network.IGuiHandler;
 import dev.bagel.network.CustomGuiPacketHandler;
 import dev.bagel.util.GuiHandlerHolder;

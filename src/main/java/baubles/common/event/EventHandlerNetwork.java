@@ -5,7 +5,6 @@ import baubles.common.container.InventoryBaubles;
 import baubles.common.lib.PlayerHandler;
 import baubles.common.network.PacketHandler;
 import baubles.common.network.PacketSyncBauble;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
 import net.fabricmc.api.EnvType;
 import net.minecraft.src.EntityPlayer;
@@ -16,7 +15,7 @@ import vazkii.botania.common.Botania;
 public class EventHandlerNetwork {
 
 	//import cpw.mods.fml.common.gameevent.PlayerEvent;
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void playerLoggedInEvent(PlayerEvent.PlayerLoggedInEvent event)    {
 		EnvType side = Botania.instance.getEffectiveSide();
 		if (side == EnvType.SERVER) {

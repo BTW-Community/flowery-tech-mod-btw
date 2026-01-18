@@ -16,7 +16,6 @@ import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
 import vazkii.botania.client.render.block.InterpolatedIcon;
 import vazkii.botania.common.block.ModBlocks;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 

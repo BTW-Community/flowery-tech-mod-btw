@@ -14,8 +14,6 @@ import java.awt.Color;
 
 import baubles.common.container.InventoryBaubles;
 import baubles.common.lib.PlayerHandler;
-import com.prupe.mcpatcher.cit.CITUtils;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ItemRenderer;
 import net.minecraft.src.OpenGlHelper;

@@ -10,7 +10,7 @@
  */
 package vazkii.botania.common.item.equipment.bauble;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.src.Block;
@@ -36,7 +36,6 @@ import vazkii.botania.common.lib.LibItemNames;
 import baubles.api.BaubleType;
 import baubles.common.container.InventoryBaubles;
 import baubles.common.lib.PlayerHandler;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
@@ -46,9 +45,7 @@ public class ItemMagnetRing extends ItemBauble {
 
 	private static final String TAG_COOLDOWN = "cooldown";
 
-	private static final List<String> BLACKLIST = Arrays.asList(new String[] {
-			"appliedenergistics2:item.ItemCrystalSeed",
-	});
+	private static final List<String> BLACKLIST = new ArrayList<>(List.of("appliedenergistics2:item.ItemCrystalSeed"));
 
 	int range;
 

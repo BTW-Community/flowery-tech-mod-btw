@@ -12,6 +12,7 @@ package vazkii.botania.common.item;
 
 import net.minecraft.src.CraftingManager;
 import net.minecraft.src.ItemStack;
+import net.minecraftforge.common.MinecraftForge;
 import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
@@ -34,6 +35,7 @@ public class ItemRegenIvy extends ItemMod {
 		CraftingManager.getInstance().getRecipeList().add(new RegenIvyRecipe(Botania.loc("timeless_ivy")));
 //		RecipeSorter.register("botania:regenIvy", RegenIvyRecipe.class, Category.SHAPELESS, "");
 //		FMLCommonHandler.instance().bus().register(this);
+        MinecraftForge.EVENT_BUS.register(this);
 	}
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)

@@ -17,7 +17,6 @@ import net.minecraft.src.EntityItem;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.World;
 import vazkii.botania.api.corporea.CorporeaHelper;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
 import cpw.mods.fml.common.gameevent.TickEvent.WorldTickEvent;

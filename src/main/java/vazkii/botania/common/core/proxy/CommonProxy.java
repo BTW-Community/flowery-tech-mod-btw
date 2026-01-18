@@ -10,7 +10,6 @@
  */
 package vazkii.botania.common.core.proxy;
 
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import dev.bagel.network.CustomGuiPacketHandler;
 import net.minecraft.src.*;
 import net.minecraft.server.MinecraftServer;
@@ -119,7 +118,7 @@ public class CommonProxy {
 
 		LexiconData.init();
 	}
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void postInit() {
 
 		ModBlocks.addDispenserBehaviours();
@@ -187,7 +186,7 @@ public class CommonProxy {
 	}*/
 
 	//todofix server commands
-	@SubscribeEvent //FMLServerStartingEvent event
+//	@SubscribeEvent //FMLServerStartingEvent event
 	public void serverStarting() {
 //		event.registerServerCommand(new CommandShare());
 //		event.registerServerCommand(new CommandOpen());

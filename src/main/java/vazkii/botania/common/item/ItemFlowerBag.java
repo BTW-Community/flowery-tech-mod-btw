@@ -29,7 +29,6 @@ import vazkii.botania.common.core.helper.InventoryHelper;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.lib.LibGuiIDs;
 import vazkii.botania.common.lib.LibItemNames;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class ItemFlowerBag extends ItemMod {
 

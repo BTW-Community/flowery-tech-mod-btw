@@ -1,9 +1,5 @@
 package baubles.client.gui;
 
-import baubles.common.network.PacketHandler;
-import baubles.common.network.PacketOpenBaublesInventory;
-import baubles.common.network.PacketOpenNormalInventory;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.src.GuiInventory;

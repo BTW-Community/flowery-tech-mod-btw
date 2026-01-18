@@ -21,7 +21,6 @@ import vazkii.botania.common.Botania;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.crafting.recipe.KeepIvyRecipe;
 import vazkii.botania.common.lib.LibItemNames;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent;
 
 
@@ -53,7 +52,7 @@ public class ItemKeepIvy extends ItemMod {
 				keeps.add(item);
 		}
 
-		if(keeps.size() > 0) {
+		if(!keeps.isEmpty()) {
 			event.drops.removeAll(keeps);
 
 

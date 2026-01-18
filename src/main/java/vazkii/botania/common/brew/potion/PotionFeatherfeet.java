@@ -11,12 +11,10 @@
 package vazkii.botania.common.brew.potion;
 
 import net.minecraft.src.EntityLivingBase;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import vazkii.botania.common.core.handler.ConfigHandler;
 import vazkii.botania.common.lib.LibPotionNames;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class PotionFeatherfeet extends PotionMod {
 

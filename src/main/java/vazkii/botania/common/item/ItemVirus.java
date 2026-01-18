@@ -17,8 +17,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.lib.LibItemNames;
-import vazkii.botania.common.lib.LibObfuscation;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
@@ -60,12 +58,11 @@ public class ItemVirus extends ItemMod {
 //	@SubscribeEvent
 	public void onLivingHurt(LivingHurtEvent event) {
 		EntityLivingBase entity = event.entityLiving;
-		if(entity.ridingEntity != null && entity.ridingEntity instanceof EntityLivingBase)
+		if(entity.ridingEntity instanceof EntityLivingBase)
 			entity = (EntityLivingBase) entity.ridingEntity;
 
-		if(entity instanceof EntityHorse && event.source == DamageSource.fall) {
-			EntityHorse horse = (EntityHorse) entity;
-			if((horse.getHorseType() == 3 || horse.getHorseType() == 4) && horse.isTame())
+		if(entity instanceof EntityHorse horse && event.source == DamageSource.fall) {
+            if((horse.getHorseType() == 3 || horse.getHorseType() == 4) && horse.isTame())
 				event.setCanceled(true);
 		}
 	}

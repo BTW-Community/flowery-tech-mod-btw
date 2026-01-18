@@ -28,8 +28,6 @@ import baubles.api.BaubleType;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-
 
 public class ItemAesirRing extends ItemRelicBauble implements IExtendedWireframeCoordinateListProvider, ICraftAchievement {
 

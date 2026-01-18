@@ -22,7 +22,6 @@ import vazkii.botania.api.lexicon.multiblock.IMultiblockRenderHook;
 import vazkii.botania.api.lexicon.multiblock.Multiblock;
 import vazkii.botania.api.lexicon.multiblock.MultiblockSet;
 import vazkii.botania.api.lexicon.multiblock.component.MultiblockComponent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public final class MultiblockRenderHandler {
 	public MultiblockRenderHandler() {

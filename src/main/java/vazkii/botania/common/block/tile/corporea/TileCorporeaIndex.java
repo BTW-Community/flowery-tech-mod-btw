@@ -41,8 +41,6 @@ import vazkii.botania.api.corporea.ICorporeaSpark;
 import vazkii.botania.common.achievement.ModAchievements;
 import vazkii.botania.common.core.helper.MathHelper;
 import vazkii.botania.common.lib.LibBlockNames;
-import cpw.mods.fml.common.eventhandler.EventPriority;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 

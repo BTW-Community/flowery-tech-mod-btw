@@ -28,7 +28,6 @@ import vazkii.botania.client.core.handler.LightningHandler.LightningBolt.Segment
 import vazkii.botania.client.fx.ParticleRenderDispatcher;
 import vazkii.botania.client.lib.LibResources;
 import vazkii.botania.common.core.helper.Vector3;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class LightningHandler {
 	public LightningHandler() {

@@ -17,7 +17,6 @@ import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import vazkii.botania.common.item.equipment.tool.manasteel.ItemManasteelPick;
 import vazkii.botania.common.lib.LibItemNames;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class ItemGlassPick extends ItemManasteelPick {
 

@@ -21,8 +21,6 @@ import vazkii.botania.api.item.IBaubleRender;
 import vazkii.botania.common.lib.LibItemNames;
 import baubles.api.BaubleType;
 import baubles.common.lib.PlayerHandler;
-import cpw.mods.fml.common.eventhandler.EventPriority;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 

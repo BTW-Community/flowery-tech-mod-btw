@@ -7,7 +7,6 @@ import baubles.common.lib.PlayerHandler;
 import api.client.mojapi.ProfileUtils;
 import api.client.mojapi.UserProfile;
 import com.google.common.io.Files;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.src.EntityPlayer;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerDropsEvent;
@@ -15,7 +14,6 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Optional;
 
 public class EventHandlerEntity {
 

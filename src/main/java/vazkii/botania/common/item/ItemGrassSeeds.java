@@ -23,7 +23,6 @@ import net.minecraft.src.Block;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.ChunkCoordinates;
 import net.minecraft.src.Icon;
@@ -33,7 +32,6 @@ import vazkii.botania.common.Botania;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.block.decor.IFloatingFlower.IslandType;
 import vazkii.botania.common.lib.LibItemNames;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
 import net.fabricmc.api.Environment;
@@ -45,7 +43,7 @@ public class ItemGrassSeeds extends ItemMod implements IFloatingFlowerVariant {
 	 * Represents a map of dimension IDs to a set of all block swappers
 	 * active in that dimension.
 	 */
-	private static Map<Integer, Set<BlockSwapper>> blockSwappers = new HashMap<Integer, Set<BlockSwapper>>();
+	private static final Map<Integer, Set<BlockSwapper>> blockSwappers = new HashMap<>();
 
 	private static final IslandType[] ISLAND_TYPES = {
 		IslandType.GRASS, IslandType.PODZOL, IslandType.MYCEL,
@@ -225,17 +223,17 @@ public class ItemGrassSeeds extends ItemMod implements IFloatingFlowerVariant {
 	}
 
 	private static BlockSwapper swapperFromMeta(World world, int x, int y, int z, int meta) {
-		switch(meta) {
-		case 1 : return new BlockSwapper(world, new ChunkCoordinates(x, y, z),  Block.dirt, 2);
-		case 2 : return new BlockSwapper(world, new ChunkCoordinates(x, y, z),  Block.mycelium, 0);
-		case 3 : return new BlockSwapper(world, new ChunkCoordinates(x, y, z),  ModBlocks.altGrass, 0);
-		case 4 : return new BlockSwapper(world, new ChunkCoordinates(x, y, z),  ModBlocks.altGrass, 1);
-		case 5 : return new BlockSwapper(world, new ChunkCoordinates(x, y, z),  ModBlocks.altGrass, 2);
-		case 6 : return new BlockSwapper(world, new ChunkCoordinates(x, y, z),  ModBlocks.altGrass, 3);
-		case 7 : return new BlockSwapper(world, new ChunkCoordinates(x, y, z),  ModBlocks.altGrass, 4);
-		case 8 : return new BlockSwapper(world, new ChunkCoordinates(x, y, z),  ModBlocks.altGrass, 5);
-		default : return new BlockSwapper(world, new ChunkCoordinates(x, y, z),  Block.grass, 0);
-		}
+        return switch (meta) {
+            case 1 -> new BlockSwapper(world, new ChunkCoordinates(x, y, z), Block.dirt, 2);
+            case 2 -> new BlockSwapper(world, new ChunkCoordinates(x, y, z), Block.mycelium, 0);
+            case 3 -> new BlockSwapper(world, new ChunkCoordinates(x, y, z), ModBlocks.altGrass, 0);
+            case 4 -> new BlockSwapper(world, new ChunkCoordinates(x, y, z), ModBlocks.altGrass, 1);
+            case 5 -> new BlockSwapper(world, new ChunkCoordinates(x, y, z), ModBlocks.altGrass, 2);
+            case 6 -> new BlockSwapper(world, new ChunkCoordinates(x, y, z), ModBlocks.altGrass, 3);
+            case 7 -> new BlockSwapper(world, new ChunkCoordinates(x, y, z), ModBlocks.altGrass, 4);
+            case 8 -> new BlockSwapper(world, new ChunkCoordinates(x, y, z), ModBlocks.altGrass, 5);
+            default -> new BlockSwapper(world, new ChunkCoordinates(x, y, z), Block.grass, 0);
+        };
 	}
 
 	/**
@@ -319,7 +317,7 @@ public class ItemGrassSeeds extends ItemMod implements IFloatingFlowerVariant {
 		 * @param z The z-coordinate to use.
 		 */
 		public void tickBlock(int x, int y, int z) {
-			List<ChunkCoordinates> validCoords = new ArrayList<ChunkCoordinates>();
+			List<ChunkCoordinates> validCoords = new ArrayList<>();
 
 			// Go around this block and aggregate valid blocks.
 			for(int xOffset = -TICK_RANGE; xOffset <= TICK_RANGE; xOffset++) {

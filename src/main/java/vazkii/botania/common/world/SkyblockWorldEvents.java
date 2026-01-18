@@ -15,21 +15,16 @@ import java.awt.Color;
 import dev.bagel.util.Persisted;
 import net.minecraft.src.*;
 import net.minecraft.src.Block;
-import net.minecraftforge.client.event.RenderWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
-import vazkii.botania.client.render.world.SkyblockSkyRenderer;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.block.tile.TileManaFlame;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.equipment.tool.ToolCommons;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import net.fabricmc.api.Environment;
-import net.fabricmc.api.EnvType;
 
 public final class SkyblockWorldEvents {
 	public SkyblockWorldEvents() {
@@ -46,9 +41,8 @@ public final class SkyblockWorldEvents {
 
 //	@SubscribeEvent
 	public boolean onPlayerUpdate(LivingUpdateEvent event) {
-		if(event.entityLiving instanceof EntityPlayer && !event.entity.worldObj.isRemote) {
-			EntityPlayer player = (EntityPlayer) event.entityLiving;
-			NBTTagCompound data = player.getEntityData();
+		if(event.entityLiving instanceof EntityPlayer player && !event.entity.worldObj.isRemote) {
+            NBTTagCompound data = player.getEntityData();
 			if(!data.hasKey(Persisted.PERSISTED_NBT_TAG))
 				data.setTag(Persisted.PERSISTED_NBT_TAG, new NBTTagCompound());
 
@@ -77,7 +71,7 @@ public final class SkyblockWorldEvents {
 				if(block == Block.grass || block == Block.dirt) {
 					if(event.world.isRemote)
 						event.entityPlayer.swingItem();
-					else {
+					else if(block != null){
 						event.world.playSoundEffect(event.x + 0.5, event.y + 0.5, event.z + 0.5, block.stepSound.getBreakSound(), block.stepSound.getVolume() * 0.4F, block.stepSound.getPitch() + (float) (Math.random() * 0.2 - 0.1));
 						if(Math.random() < 0.8)
 							event.entityPlayer.dropPlayerItemWithRandomChoice(new ItemStack(ModItems.manaResource, 1, 21), false);
@@ -91,8 +85,8 @@ public final class SkyblockWorldEvents {
 						int i = movingobjectposition.blockX;
 						int j = movingobjectposition.blockY;
 						int k = movingobjectposition.blockZ;
-
-						if(event.world.getBlock(i, j, k).blockMaterial == Material.water) {
+                        Block block;
+						if((block = event.world.getBlock(i, j, k)) != null && block.blockMaterial == Material.water) {
 							--equipped.stackSize;
 
 							if(equipped.stackSize <= 0)
@@ -133,9 +127,8 @@ public final class SkyblockWorldEvents {
 		if(test || !persist.getBoolean(TAG_HAS_OWN_ISLAND)) {
 			createSkyblock(player.worldObj, x, y, z);
 
-			if(player instanceof EntityPlayerMP) {
-				EntityPlayerMP pmp = (EntityPlayerMP) player;
-				pmp.setPositionAndUpdate(x + 0.5, y + 1.6, z + 0.5);
+			if(player instanceof EntityPlayerMP pmp) {
+                pmp.setPositionAndUpdate(x + 0.5, y + 1.6, z + 0.5);
 				pmp.setSpawnChunk(new ChunkCoordinates(x, y, z), true);
 				player.inventory.addItemStackToInventory(new ItemStack(ModItems.lexicon));
 			}
@@ -151,9 +144,8 @@ public final class SkyblockWorldEvents {
 			double posY = persist.getDouble(TAG_ISLAND_Y);
 			double posZ = persist.getDouble(TAG_ISLAND_Z);
 
-			if(player instanceof EntityPlayerMP) {
-				EntityPlayerMP pmp = (EntityPlayerMP) player;
-				pmp.setPositionAndUpdate(posX, posY, posZ);
+			if(player instanceof EntityPlayerMP pmp) {
+                pmp.setPositionAndUpdate(posX, posY, posZ);
 			}
 		}
 	}

@@ -16,7 +16,6 @@ import java.util.List;
 
 import baubles.api.BaubleType;
 import baubles.common.lib.PlayerHandler;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.Gui;
@@ -63,8 +62,8 @@ import net.fabricmc.api.EnvType;
 
 public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaubleRender, ICraftAchievement {
 
-	private static ResourceLocation textureHud = new ResourceLocation(LibResources.GUI_HUD_ICONS);
-	private static ResourceLocation textureHalo = new ResourceLocation(LibResources.MISC_HALO);
+	private static final ResourceLocation textureHud = new ResourceLocation(LibResources.GUI_HUD_ICONS);
+	private static final ResourceLocation textureHalo = new ResourceLocation(LibResources.MISC_HALO);
 
 	private static final String TAG_FLYING = "flying";
 	private static final String TAG_TIME_LEFT = "timeLeft";
@@ -160,9 +159,8 @@ public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaub
 	public void onWornTick(ItemStack stack, EntityLivingBase player) {
 		super.onWornTick(stack, player);
 
-		if(player instanceof EntityPlayer) {
-			EntityPlayer p = (EntityPlayer) player;
-			boolean flying = p.capabilities.isFlying;
+		if(player instanceof EntityPlayer p) {
+            boolean flying = p.capabilities.isFlying;
 
 			boolean wasSprting = ItemNBTHelper.getBoolean(stack, TAG_IS_SPRINTING, false);
 			boolean isSprinting = p.isSprinting();
@@ -194,7 +192,7 @@ public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaub
 					if(player instanceof EntityPlayerMP)
 						BotaniaAPI.internalHandler.sendBaubleUpdatePacket((EntityPlayerMP) player, 0);
 				}
-			} else if(!flying) {
+			} else { //If not flying
 				boolean doGlide = player.isSneaking() && !player.onGround && player.fallDistance >= 2F;
 				if(time < MAX_FLY_TIME && player.ticksExisted % (doGlide ? 6 : 2) == 0)
 					newTime++;

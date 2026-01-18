@@ -7,15 +7,12 @@ import dev.bagel.util.Blocks;
 import net.minecraft.src.Block;
 import net.minecraft.src.EnumToolMaterial;
 import net.minecraft.src.ItemStack;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
-import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.equipment.tool.manasteel.ItemManasteelPick;
 import vazkii.botania.common.item.equipment.tool.terrasteel.ItemTerraPick;
 import vazkii.botania.common.lib.LibItemNames;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class ItemElementiumPick extends ItemManasteelPick {
 

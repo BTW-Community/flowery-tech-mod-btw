@@ -18,10 +18,8 @@ import dev.bagel.util.Blocks;
 import dev.bagel.util.Items;
 import net.minecraft.src.Block;
 import net.minecraft.src.Minecraft;
-import net.minecraft.src.Entity;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Block;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
@@ -45,7 +43,6 @@ import vazkii.botania.common.block.BlockCamo;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.item.ItemMod;
 import vazkii.botania.common.lib.LibItemNames;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
@@ -96,7 +93,7 @@ public class ItemExchangeRod extends ItemMod implements IManaUsingItem, IWirefra
 			Block block = getBlock(par1ItemStack);
 			int meta = getBlockMeta(par1ItemStack);
 			List<ChunkCoordinates> swap = getBlocksToSwap(par3World, par1ItemStack, block, meta, par4, par5, par6, null, 0);
-			if(swap.size() > 0) {
+			if(!swap.isEmpty() && wblock != null) {
 				ItemNBTHelper.setBoolean(par1ItemStack, TAG_SWAPPING, true);
 				ItemNBTHelper.setInt(par1ItemStack, TAG_SELECT_X, par4);
 				ItemNBTHelper.setInt(par1ItemStack, TAG_SELECT_Y, par5);
@@ -126,17 +123,15 @@ public class ItemExchangeRod extends ItemMod implements IManaUsingItem, IWirefra
 		if(!canExchange(stack) || !(entity instanceof EntityPlayer))
 			return;
 
-		EntityPlayer player = (EntityPlayer) entity;
-
-		int extraRange = ItemNBTHelper.getInt(stack, TAG_EXTRA_RANGE, 1);
-		int extraRangeNew = IManaProficiencyArmor.Helper.hasProficiency(player) ? 3 : 1;
+        int extraRange = ItemNBTHelper.getInt(stack, TAG_EXTRA_RANGE, 1);
+		int extraRangeNew = IManaProficiencyArmor.Helper.hasProficiency(entity) ? 3 : 1;
 		if(extraRange != extraRangeNew)
 			ItemNBTHelper.setInt(stack, TAG_EXTRA_RANGE, extraRangeNew);
 
 		Block block = getBlock(stack);
 		int meta = getBlockMeta(stack);
 		if(ItemNBTHelper.getBoolean(stack, TAG_SWAPPING, false)) {
-			if(!ManaItemHandler.requestManaExactForTool(stack, player, COST, false)) {
+			if(!ManaItemHandler.requestManaExactForTool(stack, entity, COST, false)) {
 				ItemNBTHelper.setBoolean(stack, TAG_SWAPPING, false);
 				return;
 			}
@@ -147,15 +142,15 @@ public class ItemExchangeRod extends ItemMod implements IManaUsingItem, IWirefra
 			Block targetBlock = getTargetBlock(stack);
 			int targetMeta = getTargetBlockMeta(stack);
 			List<ChunkCoordinates> swap = getBlocksToSwap(world, stack, block, meta, x, y, z, targetBlock, targetMeta);
-			if(swap.size() == 0) {
+			if(swap.isEmpty()) {
 				ItemNBTHelper.setBoolean(stack, TAG_SWAPPING, false);
 				return;
 			}
 
 			ChunkCoordinates coords = swap.get(world.rand.nextInt(swap.size()));
-			boolean exchange = exchange(world, player, coords.posX, coords.posY, coords.posZ, stack, block, meta);
+			boolean exchange = exchange(world, entity, coords.posX, coords.posY, coords.posZ, stack, block, meta);
 			if(exchange)
-				ManaItemHandler.requestManaExactForTool(stack, player, COST, true);
+				ManaItemHandler.requestManaExactForTool(stack, entity, COST, true);
 			else ItemNBTHelper.setBoolean(stack, TAG_SWAPPING, false);
 		}
 	}
@@ -170,7 +165,7 @@ public class ItemExchangeRod extends ItemMod implements IManaUsingItem, IWirefra
 		}
 
 		// Our result list
-		List<ChunkCoordinates> coordsList = new ArrayList<ChunkCoordinates>();
+		List<ChunkCoordinates> coordsList = new ArrayList<>();
 
 		// We subtract 1 from the effective range as the center tile is included
 		// So, with a range of 3, we are visiting tiles at -2, -1, 0, 1, 2
@@ -206,7 +201,7 @@ public class ItemExchangeRod extends ItemMod implements IManaUsingItem, IWirefra
 						
 						// If there is a rendering-specific way to check for this,
 						// that should be placed in preference to this.
-						if(!adjBlock.isSideSolid(world, adjX, adjY, adjZ, dir.getOpposite())) {
+						if(adjBlock != null && !adjBlock.isSideSolid(world, adjX, adjY, adjZ, dir.getOpposite())) {
 							coordsList.add(new ChunkCoordinates(x, y, z));
 							break;
 						}
@@ -225,7 +220,7 @@ public class ItemExchangeRod extends ItemMod implements IManaUsingItem, IWirefra
 		if(placeStack != null) {
 			Block blockAt = world.getBlock(x, y, z);
 			int meta = world.getBlockMetadata(x, y, z);
-			if(!blockAt.isAir(world, x, y, z) && blockAt.getPlayerRelativeBlockHardness(player, world, x, y, z) > 0 && (blockAt != blockToSet || meta != metaToSet)) {
+			if(blockAt != null && !blockAt.isAir(world, x, y, z) && blockAt.getPlayerRelativeBlockHardness(player, world, x, y, z) > 0 && (blockAt != blockToSet || meta != metaToSet)) {
 				if(!world.isRemote) {
 					if(!player.capabilities.isCreativeMode) {
 						List<ItemStack> drops = blockAt.getDrops(world, x, y, z, meta, 0);
@@ -247,7 +242,7 @@ public class ItemExchangeRod extends ItemMod implements IManaUsingItem, IWirefra
 
 	public boolean canExchange(ItemStack stack) {
 		Block block = getBlock(stack);
-		return block != null && block != null;
+		return block != null && !block.isAirBlock();
 	}
 
 	public static ItemStack removeFromInventory(EntityPlayer player, IInventory inv, ItemStack stack, Block block, int meta, boolean doit) {
@@ -318,9 +313,8 @@ public class ItemExchangeRod extends ItemMod implements IManaUsingItem, IWirefra
 			if(item == Items.getItemFromBlock(block) && invStack.getItemDamage() == meta)
 				count += invStack.stackSize;
 
-			if(item instanceof IBlockProvider) {
-				IBlockProvider prov = (IBlockProvider) item;
-				int provCount = prov.getBlockCount(player, stack, invStack, block, meta);
+			if(item instanceof IBlockProvider prov) {
+                int provCount = prov.getBlockCount(player, stack, invStack, block, meta);
 				if(provCount == -1)
 					return -1;
 				count += provCount;
@@ -366,8 +360,7 @@ public class ItemExchangeRod extends ItemMod implements IManaUsingItem, IWirefra
 	}
 
 	public static Block getBlock(ItemStack stack) {
-		Block block = Blocks.getBlockFromName(getBlockName(stack));
-		return block;
+        return Blocks.getBlockFromName(getBlockName(stack));
 	}
 
 	public static int getBlockMeta(ItemStack stack) {
@@ -385,8 +378,7 @@ public class ItemExchangeRod extends ItemMod implements IManaUsingItem, IWirefra
 	}
 
 	public static Block getTargetBlock(ItemStack stack) {
-		Block block = Blocks.getBlockFromName(getTargetBlockName(stack));
-		return block;
+        return Blocks.getBlockFromName(getTargetBlockName(stack));
 	}
 
 	public static int getTargetBlockMeta(ItemStack stack) {

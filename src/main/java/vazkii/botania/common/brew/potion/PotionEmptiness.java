@@ -20,7 +20,6 @@ import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import vazkii.botania.common.core.handler.ConfigHandler;
 import vazkii.botania.common.lib.LibPotionNames;
 import cpw.mods.fml.common.eventhandler.Event.Result;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class PotionEmptiness extends PotionMod {
 

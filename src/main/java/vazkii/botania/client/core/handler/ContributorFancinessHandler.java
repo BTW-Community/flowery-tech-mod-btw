@@ -16,7 +16,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.src.*;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 

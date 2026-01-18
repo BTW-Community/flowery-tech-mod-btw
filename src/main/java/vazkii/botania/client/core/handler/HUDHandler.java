@@ -47,10 +47,7 @@ import vazkii.botania.common.item.ItemTwigWand;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.equipment.bauble.ItemFlightTiara;
 import vazkii.botania.common.item.equipment.bauble.ItemMonocle;
-import vazkii.botania.common.lib.LibObfuscation;
 import baubles.common.lib.PlayerHandler;
-import cpw.mods.fml.common.eventhandler.EventPriority;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public final class HUDHandler {
 

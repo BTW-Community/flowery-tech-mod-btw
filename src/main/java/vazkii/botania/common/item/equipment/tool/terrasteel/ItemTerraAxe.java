@@ -37,7 +37,6 @@ import vazkii.botania.common.item.equipment.tool.ToolCommons;
 import vazkii.botania.common.item.equipment.tool.manasteel.ItemManasteelAxe;
 import vazkii.botania.common.item.relic.ItemLokiRing;
 import vazkii.botania.common.lib.LibItemNames;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
 import net.fabricmc.api.Environment;
@@ -146,14 +145,8 @@ public class ItemTerraAxe extends ItemManasteelAxe implements ISequentialBreaker
 				
 				// Iterate through all of our swappers, removing any
 				// which no longer need to tick.
-				Iterator<BlockSwapper> swapper = swappers.iterator();
-				while(swapper.hasNext()) {
-					BlockSwapper next = swapper.next();
-
-					// If a null sneaks in or the swapper is done, remove it
-					if(next == null || !next.tick())
-						swapper.remove();
-				}
+                // If a null sneaks in or the swapper is done, remove it
+                swappers.removeIf(next -> next == null || !next.tick());
 			}
 		}
 	}
@@ -274,8 +267,8 @@ public class ItemTerraAxe extends ItemManasteelAxe implements ISequentialBreaker
 			this.range = range;
 			this.treatLeavesSpecial = leaves;
 			
-			this.candidateQueue = new PriorityQueue<SwapCandidate>();
-			this.completedCoords = new HashSet<ChunkCoordinates>();
+			this.candidateQueue = new PriorityQueue<>();
+			this.completedCoords = new HashSet<>();
 			
 			// Add the origin to our candidate queue with the original range
 			candidateQueue.offer(new SwapCandidate(this.origin, this.range));
@@ -325,7 +318,9 @@ public class ItemTerraAxe extends ItemManasteelAxe implements ISequentialBreaker
 				// any of them are any good.
 				for(ChunkCoordinates adj : adjacent(cand.coordinates)) {
 					Block block = world.getBlock(adj.posX, adj.posY, adj.posZ);
-					
+					if (block == null)
+                        continue;
+
 					boolean isWood = block.blockMaterial == Block.wood.blockMaterial/* .isWood(world, adj.posX, adj.posY, adj.posZ)*/;
 					boolean isLeaf = block.blockMaterial == Block.leaves.blockMaterial/* .isLeaves(world, adj.posX, adj.posY, adj.posZ)*/;
 					

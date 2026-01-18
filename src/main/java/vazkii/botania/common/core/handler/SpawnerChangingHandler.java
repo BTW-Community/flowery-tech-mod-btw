@@ -13,7 +13,6 @@ package vazkii.botania.common.core.handler;
 import net.minecraft.src.*;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public final class SpawnerChangingHandler {
 	public SpawnerChangingHandler() {
@@ -29,9 +28,8 @@ public final class SpawnerChangingHandler {
 			ItemStack stack = event.entityPlayer.getCurrentEquippedItem();
 			if(stack != null && stack.getItem() == Item.monsterPlacer) {
 				TileEntity tile = event.world.getTileEntity(event.x, event.y, event.z);
-				if(tile instanceof TileEntityMobSpawner) {
-					TileEntityMobSpawner spawner = (TileEntityMobSpawner) tile;
-					spawner.getSpawnerLogic().setMobID(EntityList.getStringFromID(stack.getItemDamage()));
+				if(tile instanceof TileEntityMobSpawner spawner) {
+                    spawner.getSpawnerLogic().setMobID(EntityList.getStringFromID(stack.getItemDamage()));
 					event.world.markBlockForUpdate(event.x, event.y, event.z);
 					event.setCanceled(true);
 				}

@@ -30,7 +30,6 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lexicon.page.PageShedding;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public final class SheddingHandler {
 
