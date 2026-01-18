@@ -41,9 +41,10 @@ public class ItemAesirRing extends ItemRelicBauble implements IExtendedWireframe
 //		RecipeSorter.register("botania:aesirRing", AesirRingRecipe.class, Category.SHAPELESS, "");
 		MinecraftForge.EVENT_BUS.register(this);
 		setBindAchievement(() -> ModAchievements.RELIC_AESIR_RING);
+        ItemTossEvent.EVENT.register(this::onDropped);
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onDropped(ItemTossEvent event) {
 		if(event.entityItem != null && event.entityItem.getEntityItem() != null && !event.entityItem.worldObj.isRemote) {
 			ItemStack stack = event.entityItem.getEntityItem();

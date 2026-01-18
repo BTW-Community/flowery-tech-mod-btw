@@ -1,8 +1,12 @@
 package net.minecraftforge.event.entity.item;
 
 import cpw.mods.fml.common.eventhandler.Cancelable;
+import net.legacyfabric.fabric.api.event.Event;
+import net.legacyfabric.fabric.api.event.EventFactory;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
+
+import java.util.function.Consumer;
 
 /**
  * Event that is fired whenever a player tosses (Q) an item or drag-n-drops a
@@ -13,6 +17,11 @@ import net.minecraft.src.EntityPlayer;
 @Cancelable
 public class ItemTossEvent extends ItemEvent
 {
+    public static final Event<Consumer<ItemTossEvent>> EVENT = EventFactory.createArrayBacked(Consumer.class, (listeners) -> (event) -> {
+        for (var consumer : listeners) {
+            consumer.accept(event);
+        }
+    });
 
     /**
      * The player tossing the item.

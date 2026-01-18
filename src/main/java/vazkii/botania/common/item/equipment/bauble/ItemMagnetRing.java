@@ -55,6 +55,7 @@ public class ItemMagnetRing extends ItemBauble {
 	public ItemMagnetRing(int id) {
 		this(id, LibItemNames.MAGNET_RING, 6);
 		MinecraftForge.EVENT_BUS.register(this);
+        ItemTossEvent.EVENT.register(this::onTossItem);
 	}
 
 	public ItemMagnetRing(int id, String name, int range) {
@@ -75,7 +76,7 @@ public class ItemMagnetRing extends ItemBauble {
 		return getCooldown(stack) <= 0 ? itemIcon : iconOff;
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onTossItem(ItemTossEvent event) {
 		InventoryBaubles inv = PlayerHandler.getPlayerBaubles(event.player);
 		for(int i = 0; i < inv.getSizeInventory(); i++) {

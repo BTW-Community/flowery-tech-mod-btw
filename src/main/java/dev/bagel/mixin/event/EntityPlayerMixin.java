@@ -1,11 +1,14 @@
 package dev.bagel.mixin.event;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.src.*;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerDropsEvent;
 import org.spongepowered.asm.mixin.Debug;
@@ -80,11 +83,35 @@ public abstract class EntityPlayerMixin extends EntityLivingBase {
         }
     }
 
-    @Inject(method = "dropPlayerItemWithRandomChoice", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/EntityPlayer;joinEntityItemWithWorld(Lnet/minecraft/src/EntityItem;)V"), cancellable = true)
-    private void forge$onDropItem(ItemStack par1ItemStack, boolean par2, CallbackInfoReturnable<EntityItem> cir, @Local EntityItem entityItem) {
-        if (this.getCaptureDrops()) {
-            this.getCapturedDrops().add((EntityItem) entityItem);
+    @Inject(method = "dropPlayerItemWithRandomChoice", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/EntityPlayer;joinEntityItemWithWorld(Lnet/minecraft/src/EntityItem;)V", shift = At.Shift.AFTER), cancellable = true)
+    private void forge$onDropItemPre(ItemStack par1ItemStack, boolean par2, CallbackInfoReturnable<EntityItem> cir, @Local EntityItem entityItem) {
+        setCaptureDrops(false);
+        ItemTossEvent event = new ItemTossEvent(entityItem, (EntityPlayer) (Object) this);
+        ItemTossEvent.EVENT.invoker().accept(event);
+        if (MinecraftForge.EVENT_BUS.post(event))
+        {
             cir.setReturnValue(null);
+        }
+        else {
+            this.joinEntityItemWithWorld(entityItem);
+        }
+    }
+
+    @Inject(method = "dropPlayerItemWithRandomChoice", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/EntityPlayer;joinEntityItemWithWorld(Lnet/minecraft/src/EntityItem;)V"))
+    private void forge$onDropItemPost(ItemStack par1ItemStack, boolean par2, CallbackInfoReturnable<EntityItem> cir) {
+        setCaptureDrops(true);
+//        if (this.getCaptureDrops()) {
+//            this.getCapturedDrops().add((EntityItem) entityItem);
+//            cir.setReturnValue(null);
+//        }
+    }
+
+    @Inject(method = "joinEntityItemWithWorld", at = @At("HEAD"), cancellable = true)
+    private void forge$onJoinEntityItemWithWorld(EntityItem entityItem, CallbackInfo ci) {
+        if (getCaptureDrops())
+        {
+            getCapturedDrops().add(entityItem);
+            ci.cancel();
         }
     }
 
