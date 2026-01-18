@@ -17,20 +17,16 @@ import net.minecraft.src.IconRegister;
 import net.minecraft.src.TextureAtlasSprite;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Block;
-import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Icon;
-import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.World;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.client.render.block.InterpolatedIcon;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
@@ -81,18 +77,18 @@ public class BlockEnchantedSoil extends BlockMod implements ILexiconable {
 		return Block.dirt.idDropped(par1, par2Random, par3);
 	}
 
-//	@Override
-//	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
-//		return Block.dirt.getItemDropped(0, p_149650_2_, p_149650_3_);
-//	}
+    @Override
+    public boolean canSaplingsGrowOnBlock(World world, int i, int j, int k) {
+        return true;
+    }
 
-	//todofix canSustain plant
-/*	@Override
-	public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection direction, IPlantable plantable) {
-		return plantable.getPlantType(world, x, y - 1, z) == EnumPlantType.Plains;
-	}*/
+    //Can flowers grow here
+    @Override
+    public boolean canWildVegetationGrowOnBlock(World world, int i, int j, int k) {
+        return true;
+    }
 
-	@Override
+    @Override
 	protected boolean canSilkHarvest() {
 		return false;
 	}
