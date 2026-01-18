@@ -9,6 +9,7 @@ import net.fabricmc.api.Environment;
 import net.minecraft.src.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerDropsEvent;
@@ -143,6 +144,15 @@ public abstract class EntityPlayerMixin extends EntityLivingBase {
         LivingDeathEvent.EVENT.invoker().accept(event);
         if (MinecraftForge.EVENT_BUS.post(event)) {
             ci.cancel();
+        }
+    }
+
+    @Inject(method = "attackEntityFrom", at = @At("HEAD"), cancellable = true)
+    private void forge$onAttackEntityFrom(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+        LivingAttackEvent event = new LivingAttackEvent((EntityLivingBase) (Object) this, source, amount);
+        LivingAttackEvent.EVENT.invoker().accept(event);
+        if (MinecraftForge.EVENT_BUS.post(event)) {
+            cir.setReturnValue(false);
         }
     }
 

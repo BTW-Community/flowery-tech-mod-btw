@@ -1,8 +1,12 @@
 package net.minecraftforge.event.entity.living;
 
 import cpw.mods.fml.common.eventhandler.Cancelable;
+import net.legacyfabric.fabric.api.event.Event;
+import net.legacyfabric.fabric.api.event.EventFactory;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.DamageSource;
+
+import java.util.function.Consumer;
 
 /**
  * LivingAttackEvent is fired when a living Entity is attacked. <br>
@@ -25,6 +29,11 @@ import net.minecraft.src.DamageSource;
 @Cancelable
 public class LivingAttackEvent extends LivingEvent
 {
+    public static final Event<Consumer<LivingAttackEvent>> EVENT = EventFactory.createArrayBacked(Consumer.class, (listeners) -> (e) -> {
+        for (var listener : listeners) {
+            listener.accept(e);
+        }
+    });
     public final DamageSource source;
     public final float ammount;
     public LivingAttackEvent(EntityLivingBase entity, DamageSource source, float ammount)
@@ -32,5 +41,10 @@ public class LivingAttackEvent extends LivingEvent
         super(entity);
         this.source = source;
         this.ammount = ammount;
+    }
+
+    @Override
+    public boolean isCancelable() {
+        return true;
     }
 }

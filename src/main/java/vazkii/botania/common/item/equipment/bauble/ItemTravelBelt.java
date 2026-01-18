@@ -64,6 +64,7 @@ public class ItemTravelBelt extends ItemBauble implements IBaubleRender, IManaUs
 		this.speed = speed;
 		this.jump = jump;
 		this.fallBuffer = fallBuffer;
+        PlayerEvent.PlayerLoggedOutEvent.EVENT.register(this::playerLoggedOut);
 	}
 
 	@Override

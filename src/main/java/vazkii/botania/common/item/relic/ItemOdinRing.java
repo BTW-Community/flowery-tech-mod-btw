@@ -55,6 +55,7 @@ public class ItemOdinRing extends ItemRelicBauble {
 		damageNegations.add(DamageSource.inWall.damageType);
 		damageNegations.add(DamageSource.starve.damageType);
 		setBindAchievement(() -> ModAchievements.RELIC_ODIN_RING);
+        LivingAttackEvent.EVENT.register(this::onPlayerAttacked);
 	}
 
 	@Override
@@ -63,11 +64,10 @@ public class ItemOdinRing extends ItemRelicBauble {
 			player.extinguish();
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onPlayerAttacked(LivingAttackEvent event) {
-		if(event.entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) event.entityLiving;
-			if(getOdinRing(player) != null && damageNegations.contains(event.source.damageType))
+		if(event.entityLiving instanceof EntityPlayer player) {
+            if(getOdinRing(player) != null && damageNegations.contains(event.source.damageType))
 				event.setCanceled(true);
 		}
 	}

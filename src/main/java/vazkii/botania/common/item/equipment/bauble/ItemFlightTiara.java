@@ -87,6 +87,7 @@ public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaub
 //		FMLCommonHandler.instance().bus().register(this);
 		setHasSubtypes(true);
 		LivingEvent.LivingUpdateEvent.EVENT.register(this::updatePlayerFlyStatus);
+        PlayerEvent.PlayerLoggedOutEvent.EVENT.register(this::playerLoggedOut);
 	}
 
 	@Override
@@ -303,7 +304,7 @@ public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaub
 		return false;
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void playerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event) {
 		String username = event.player.username;
 		playersWithFlight.remove(username + ":false");

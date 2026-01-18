@@ -7,6 +7,8 @@ import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
 
+import java.util.function.Consumer;
+
 public class PlayerEvent extends Event {
     public final EntityPlayer player;
     private PlayerEvent(EntityPlayer player)
@@ -42,6 +44,11 @@ public class PlayerEvent extends Event {
     }
 
     public static class PlayerLoggedOutEvent extends PlayerEvent {
+        public static final net.legacyfabric.fabric.api.event.Event<Consumer<PlayerLoggedOutEvent>> EVENT = EventFactory.createArrayBacked(Consumer.class, (listeners) -> (player) -> {
+            for (Consumer<PlayerLoggedOutEvent> listener : listeners) {
+                listener.accept(player);
+            }
+        });
         public PlayerLoggedOutEvent(EntityPlayer player)
         {
             super(player);

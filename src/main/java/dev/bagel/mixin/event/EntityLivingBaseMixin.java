@@ -3,6 +3,7 @@ package dev.bagel.mixin.event;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.src.*;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
@@ -12,6 +13,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import vazkii.botania.common.item.equipment.bauble.ItemTravelBelt;
 
 import java.util.ArrayList;
@@ -61,7 +63,7 @@ public abstract class EntityLivingBaseMixin extends Entity {
     @Inject(method = "entityLivingOnDeath", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/EntityLiving;getLeashed()Z"))
     private void forge$onDeathDrop(DamageSource source, CallbackInfo ci, @Local int looting) {
         this.setCaptureDrops(false);
-        if (!onLivingDrops(((EntityLivingBase) (Object) this), source, this.getCapturedDrops(), looting, this.recentlyHit > 0, this.rand.nextInt(200) - looting)) {
+        if (!forge$onLivingDrops(((EntityLivingBase) (Object) this), source, this.getCapturedDrops(), looting, this.recentlyHit > 0, this.rand.nextInt(200) - looting)) {
             for (EntityItem item : this.getCapturedDrops()) {
                 worldObj.spawnEntityInWorld(item);
             }
@@ -77,7 +79,16 @@ public abstract class EntityLivingBaseMixin extends Entity {
         }
     }
 
-    private boolean onLivingDrops(EntityLivingBase entity, DamageSource source, ArrayList<EntityItem> drops, int lootingLevel, boolean recentlyHit, int specialDropValue) {
+    @Inject(method = "attackEntityFrom", at = @At("HEAD"), cancellable = true)
+    private void forge$onAttackEntityFrom(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+        LivingAttackEvent event = new LivingAttackEvent((EntityLivingBase) (Object) this, source, amount);
+        LivingAttackEvent.EVENT.invoker().accept(event);
+        if (MinecraftForge.EVENT_BUS.post(event)) {
+            cir.setReturnValue(false);
+        }
+    }
+
+    private boolean forge$onLivingDrops(EntityLivingBase entity, DamageSource source, ArrayList<EntityItem> drops, int lootingLevel, boolean recentlyHit, int specialDropValue) {
         var event = new LivingDropsEvent(entity, source, drops, lootingLevel, recentlyHit, specialDropValue);
         LivingDropsEvent.LIVING_DROPS.invoker().onLivingDropsEvent(new LivingDropsEvent(entity, source, drops, lootingLevel, recentlyHit, specialDropValue));
         return event.isCanceled();
