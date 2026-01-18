@@ -9,18 +9,24 @@ import org.lwjgl.input.Keyboard;
 //todobaubles keybinds
 public class KeyHandler {
 
+    public static KeyHandler INSTANCE = new KeyHandler();
+
 	public KeyBinding key = new KeyBinding(StatCollector.translateToLocal("keybind.baublesinventory"),
-			Keyboard.KEY_NONE/*, "key.categories.inventory"*/);
+			Keyboard.KEY_B/*, "key.categories.inventory"*/);
 
 	public KeyHandler() {
 //		 ClientRegistry.registerKeyBinding(key);
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void onKeyEvent(/*InputEvent.KeyInputEvent event*/) {
-/*		if (key.getIsKeyPressed()) {
-			PacketHandler.INSTANCE.sendToServer(new PacketOpenBaublesInventory());
-		}*/
+        boolean pressed = true;
+        while (key.isPressed()) {
+            if (pressed) {
+                PacketHandler.INSTANCE.sendToServer(new PacketOpenBaublesInventory());
+                pressed = false;
+            }
+        }
 	}
 }
 

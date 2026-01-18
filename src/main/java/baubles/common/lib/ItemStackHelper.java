@@ -7,7 +7,7 @@ import net.minecraft.src.NBTTagList;
 public class ItemStackHelper {
 
     public static boolean isSoulBound(ItemStack itemStack) {
-        if(BaublesConfig.soulBoundEnchantments.length >= 0) {
+        if(BaublesConfig.soulBoundEnchantments.size() >= 0) {
             NBTTagList enchantments = itemStack.getEnchantmentTagList();
             if(enchantments != null) {
                 for(int i = 0; i < enchantments.tagCount(); i++) {

@@ -4,6 +4,7 @@
   "package": "dev.bagel.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "BaublesPreInitCheck",
     "CommandGiveMixin",
     "EmiScreenManagerMixin",
     "GameSettingsMixin",
@@ -53,6 +54,7 @@
     "extensions.reach.NetServerHandlerReachMixin"
   ],
   "client": [
+    "BaublesMinecraftMixin",
     "GuiScreenMixin",
     "event.TextureMapMixin",
     "event.client.ClientTickEventMixin",

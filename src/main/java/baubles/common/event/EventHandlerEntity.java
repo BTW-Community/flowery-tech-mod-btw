@@ -1,8 +1,12 @@
 package baubles.common.event;
 
+import api.achievement.AchievementDataList;
+import api.world.data.DataEntry;
+import api.world.data.DataProvider;
 import baubles.api.IBauble;
 import baubles.common.Baubles;
 import baubles.common.container.InventoryBaubles;
+import baubles.common.lib.BaubleLoader;
 import baubles.common.lib.PlayerHandler;
 import api.client.mojapi.ProfileUtils;
 import api.client.mojapi.UserProfile;
@@ -16,7 +20,9 @@ import java.io.File;
 import java.io.IOException;
 
 public class EventHandlerEntity {
-
+    static {
+        BaubleLoader.BAUBLES_DATA.register();
+    }
 	// player directory
 	private static File playerDirectory;
 
@@ -57,8 +63,8 @@ public class EventHandlerEntity {
 
 //	@SubscribeEvent
 	public static void playerLoad(PlayerEvent.LoadFromFile event) {
-		playerLoadDo(event.entityPlayer, event.playerDirectory, event.entityPlayer.capabilities.isCreativeMode);
-		playerDirectory = event.playerDirectory;
+//		playerLoadDo(event.entityPlayer, event.playerDirectory, event.entityPlayer.capabilities.isCreativeMode);
+//		playerDirectory = event.playerDirectory;
 	}
 
 	private static void playerLoadDo(EntityPlayer player, File directory, Boolean gamemode) {
@@ -99,7 +105,7 @@ public class EventHandlerEntity {
 
 //	@SubscribeEvent
 	public static void playerSave(PlayerEvent.SaveToFile event) {
-		playerSaveDo(event.entityPlayer, event.playerDirectory, event.entityPlayer.capabilities.isCreativeMode);
+//		playerSaveDo(event.entityPlayer, event.playerDirectory, event.entityPlayer.capabilities.isCreativeMode);
 	}
 
 	private static void playerSaveDo(EntityPlayer player, File directory, Boolean gamemode) {

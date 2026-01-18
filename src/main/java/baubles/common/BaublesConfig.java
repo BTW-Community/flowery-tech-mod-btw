@@ -1,14 +1,18 @@
 package baubles.common;
 
+import api.config.AddonConfig;
 import baubles.api.expanded.BaubleExpandedSlots;
+import com.typesafe.config.ConfigUtil;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class BaublesConfig {
 
 	public static boolean hideDebugItem = true;
 
-    public static int[] soulBoundEnchantments = new int[] {};
+    public static List<Integer> soulBoundEnchantments = new ArrayList<>();
 
     public static boolean useOldGuiButton = false;
     public static boolean useOldGuiRendering = false;
@@ -29,50 +33,60 @@ public class BaublesConfig {
     static final String categoryOverride = "override";
 
     //todobaubles move to new config system
-    public static void loadConfig(/*Configuration config*/) {
+    public static void loadConfig(AddonConfig config) {
 
         ArrayList<String> currentlyRegisteredTypes = BaubleExpandedSlots.getCurrentlyRegisteredTypes();
         String[] currentSlotAssignments = BaubleExpandedSlots.getCurrentSlotAssignments();
-/*
         //categoryDebug
-        hideDebugItem = config.getBoolean("hideDebugItem", categoryDebug, hideDebugItem, "Hides the Bauble debug item from the creative menu.\n");
+        config.registerBoolean(ConfigUtil.joinPath(categoryDebug, "hideDebugItem"), hideDebugItem, "Hides the Bauble debug item from the creative menu.");
 
         //categoryGeneral
-        soulBoundEnchantments = config.get(categoryGeneral, "soulBoundEnchantments", soulBoundEnchantments,
+        config.registerIntList(ConfigUtil.joinPath(categoryGeneral, "soulBoundEnchantments"), soulBoundEnchantments,
             "IDs of enchantments that should be treated as soul bound when on items in a bauble slot."
-        ).getIntList();
-
+        );
         //categoryClient
-        useOldGuiButton = config.getBoolean("useOldGuiButton", categoryClient, useOldGuiButton, "Use the old Baubles Button texture and location instead.\n");
-        useOldGuiRendering = config.getBoolean("useOldRendering", categoryClient, useOldGuiRendering, "Display the old Bauble GUI instead of the new sidebar.\n");
+        config.registerBoolean(ConfigUtil.joinPath(categoryClient, "useOldGuiButton"), useOldGuiButton, "Use the old Baubles Button texture and location instead.");
+        config.registerBoolean(ConfigUtil.joinPath(categoryClient, "useOldRendering"), useOldGuiRendering, "Display the old Bauble GUI instead of the new sidebar.");
 
         //categoryMenu
-        showUnusedSlots = config.getBoolean("showUnusedSlots", categoryMenu, showUnusedSlots, "Display unused Bauble slots.\n");
-        manualSlotSelection = config.getBoolean("manualSlotSelection", categoryMenu, manualSlotSelection,
-            "Manually override slot assignments.\n!Bauble slot types must be configured manually with this option enabled!\n"
+        config.registerBoolean(ConfigUtil.joinPath(categoryMenu, "showUnusedSlots"), showUnusedSlots, "Display unused Bauble slots.");
+        config.registerBoolean(ConfigUtil.joinPath(categoryMenu, "manualSlotSelection"), manualSlotSelection,
+            "Manually override slot assignments.", "!Bauble slot types must be configured manually with this option enabled!"
         );
 
         //categoryOverride
-        config.getStringList("defualtSlotTypes", categoryOverride, new String[] {},
-            "Baubles and its addons assigned the folowing types to the bauble slots.\n!This config option automatically changes to reflect what Baubles and its addons assigned each time the game is launched!"
+        config.registerStringList(ConfigUtil.joinPath(categoryOverride, "defualtSlotTypes"), Arrays.asList(currentSlotAssignments),
+            "Baubles and its addons assigned the following types to the bauble slots.", "!This config option automatically changes to reflect what Baubles and its addons assigned each time the game is launched!"
         );
-        config.getCategory(categoryOverride).get("defualtSlotTypes").set(currentSlotAssignments);
+//        config.getCategory(categoryOverride).get("defualtSlotTypes").set(Arrays.asList(currentSlotAssignments));
 
-        overrideSlotTypes = config.getStringList("slotTypeOverrides", categoryOverride, overrideSlotTypes,
-            "Slot assignments to use if manualSlotSelection is enabled.\nAny assignments after the first " +
-            BaubleExpandedSlots.slotLimit + " will be ignored.\n!Adding, moving, or removing slots of the "
+        config.registerStringList(ConfigUtil.joinPath(categoryOverride, "slotTypeOverrides"), Arrays.asList(overrideSlotTypes),
+            "Slot assignments to use if manualSlotSelection is enabled.", "Any assignments after the first " +
+            BaubleExpandedSlots.slotLimit + " will be ignored.", "!Adding, moving, or removing slots of the "
             + BaubleExpandedSlots.amuletType + ", " + BaubleExpandedSlots.ringType + ", or " + BaubleExpandedSlots.beltType +
-            " types will reduce compatibility with mods made for original Baubles versions!\n",
-            currentlyRegisteredTypes.toArray(new String[0])
+            " types will reduce compatibility with mods made for original Baubles versions!",
+                currentlyRegisteredTypes.toString()
         );
 
         if(manualSlotSelection) {
             BaubleExpandedSlots.overrideSlots(overrideSlotTypes);
         }
+    }
 
-        if(config.hasChanged()) {
-            config.save();
-        }*/
+    public static void handleConfig(AddonConfig config) {
+        hideDebugItem = config.getBoolean(ConfigUtil.joinPath(categoryDebug, "hideDebugItem"));
+        soulBoundEnchantments = config.getIntList(ConfigUtil.joinPath(categoryGeneral, "soulBoundEnchantments"));
+
+        useOldGuiButton = config.getBoolean(ConfigUtil.joinPath(categoryClient, "useOldGuiButton"));
+        useOldGuiRendering =  config.getBoolean(ConfigUtil.joinPath(categoryClient, "useOldRendering"));
+
+        showUnusedSlots = config.getBoolean(ConfigUtil.joinPath(categoryMenu, "showUnusedSlots"));
+        manualSlotSelection = config.getBoolean(ConfigUtil.joinPath(categoryMenu, "manualSlotSelection"));
+
+        if(manualSlotSelection) {
+            List<String> overrides = config.getStringList(ConfigUtil.joinPath(categoryOverride, "slotTypeOverrides"));
+            BaubleExpandedSlots.overrideSlots(overrides.toArray(new String[0]));
+        }
     }
 
 }

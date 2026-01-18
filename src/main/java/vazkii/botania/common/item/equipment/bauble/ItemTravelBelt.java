@@ -20,7 +20,6 @@ import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.ResourceLocation;
 import net.minecraftforge.client.event.RenderPlayerEvent;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
@@ -34,7 +33,6 @@ import vazkii.botania.client.lib.LibResources;
 import vazkii.botania.common.lib.LibItemNames;
 import baubles.api.BaubleType;
 import baubles.common.lib.PlayerHandler;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
@@ -84,7 +82,7 @@ public class ItemTravelBelt extends ItemBauble implements IBaubleRender, IManaUs
 
 					if((player.onGround || player.capabilities.isFlying) && player.moveForward > 0F && !player.isInsideOfMaterial(Material.water)) {
 						float speed = beltItem.getSpeed(belt);
-						player.moveFlying(0F, 1F, player.capabilities.isFlying ? speed : speed);
+						player.moveFlying(0F, 1F, speed);
 						beltItem.onMovedTick(belt, player);
 
 						if(player.ticksExisted % COST_INTERVAL == 0)
@@ -136,7 +134,7 @@ public class ItemTravelBelt extends ItemBauble implements IBaubleRender, IManaUs
 		return armor != null && armor.getItem() instanceof ItemTravelBelt && ManaItemHandler.requestManaExact(armor, player, COST, false);
 	}
 
-	@SubscribeEvent
+//	@SubscribeEvent
 	public void playerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event) {
 		String username = event.player.username;
 		playersWithStepup.remove(username + ":false");

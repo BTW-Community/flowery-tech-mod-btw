@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common;
 
+import api.config.AddonConfig;
 import baubles.common.Baubles;
 import baubles.common.network.PacketHandler;
 import api.AddonHandler;
@@ -127,8 +128,12 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 		BiomeDecorationHandler.onWorldDecoration(new DecorateBiomeEvent.Decorate(world, rand, x, y, DecorateBiomeEvent.Decorate.EventType.FLOWERS));
 	}
 
+    @Override
+    public void handleConfigProperties(AddonConfig config) {
+        super.handleConfigProperties(config);
+    }
 
-	@Override
+    @Override
 	public IGuiHandler getGuiHandler() {
 		return CommonProxy.guiHandler;
 	}

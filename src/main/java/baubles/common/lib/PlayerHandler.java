@@ -8,7 +8,6 @@ import net.minecraft.src.CompressedStreamTools;
 import net.minecraft.src.NBTTagCompound;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.HashMap;
 
@@ -18,74 +17,66 @@ public class PlayerHandler {
 	private static HashMap<String, InventoryBaubles> playerBaublesClient = new HashMap<>();
 
 	public static void clearPlayerBaubles(EntityPlayer player) {
-		playerBaublesServer.remove(player.getCommandSenderName());
+        player.getData(BaubleLoader.BAUBLES_DATA).setInventoryBaubles(player, new InventoryBaubles(player));
 	}
 
 	public static void clearClientPlayerBaubles() {
-		playerBaublesClient.clear();
+//		playerBaublesClient.clear();
 	}
 
 	public static InventoryBaubles getPlayerBaubles(EntityPlayer player) {
-		if (player.worldObj.isRemote) {
-			return playerBaublesClient.computeIfAbsent(player.getCommandSenderName(), username -> new InventoryBaubles(player));
-		} else {
-			return playerBaublesServer.computeIfAbsent(player.getCommandSenderName(), username -> new InventoryBaubles(player));
-		}
+        return player.getData(BaubleLoader.BAUBLES_DATA).getInventoryBaubles(player);
 	}
 
 	public static void setPlayerBaubles(EntityPlayer player, InventoryBaubles inventory) {
-		if (player.worldObj.isRemote) {
-			playerBaublesClient.put(player.getCommandSenderName(), inventory);
-		} else {
-			playerBaublesServer.put(player.getCommandSenderName(), inventory);
-		}
+        player.getData(BaubleLoader.BAUBLES_DATA).setInventoryBaubles(player, inventory);
 	}
 
 	public static void loadPlayerBaubles(EntityPlayer player, File mainFile, File backupFile) {
-		if(player != null && !player.worldObj.isRemote) {
-			try {
-				NBTTagCompound data = null;
-				boolean save = false;
-				if(mainFile != null && mainFile.exists()) {
-					try {
-						FileInputStream fileinputstream = new FileInputStream(mainFile);
-						data = CompressedStreamTools.readCompressed(fileinputstream);
-						fileinputstream.close();
-					} catch (Exception loadMainException) {
-						loadMainException.printStackTrace();
-					}
-				}
-
-				if(mainFile == null || !mainFile.exists() || data == null || data.hasNoTags()) {
-					Baubles.log.warn("Data not found for "
-							+ player.getCommandSenderName()
-							+ ". Trying to load backup data."
-					);
-					if(backupFile != null && backupFile.exists()) {
-						try {
-							FileInputStream fileinputstream = new FileInputStream(backupFile);
-							data = CompressedStreamTools.readCompressed(fileinputstream);
-							fileinputstream.close();
-							save = true;
-						} catch(Exception loadBackupException) {
-							loadBackupException.printStackTrace();
-						}
-					}
-				}
-
-				if(data != null) {
-					InventoryBaubles inventory = new InventoryBaubles(player);
-					inventory.readNBT(data);
-					playerBaublesServer.put(player.getCommandSenderName(), inventory);
-					if(save) {
-						savePlayerBaubles(player, mainFile, backupFile);
-					}
-				}
-			} catch(Exception loadException) {
-				Baubles.log.fatal("Error loading baubles inventory");
-				loadException.printStackTrace();
-			}
-		}
+//		if(player != null && !player.worldObj.isRemote) {
+//			try {
+//				NBTTagCompound data = null;
+//				boolean save = false;
+//				if(mainFile != null && mainFile.exists()) {
+//					try {
+//						FileInputStream fileinputstream = new FileInputStream(mainFile);
+//						data = CompressedStreamTools.readCompressed(fileinputstream);
+//						fileinputstream.close();
+//					} catch (Exception loadMainException) {
+//						loadMainException.printStackTrace();
+//					}
+//				}
+//
+//				if(mainFile == null || !mainFile.exists() || data == null || data.hasNoTags()) {
+//					Baubles.log.warn("Data not found for "
+//							+ player.getCommandSenderName()
+//							+ ". Trying to load backup data."
+//					);
+//					if(backupFile != null && backupFile.exists()) {
+//						try {
+//							FileInputStream fileinputstream = new FileInputStream(backupFile);
+//							data = CompressedStreamTools.readCompressed(fileinputstream);
+//							fileinputstream.close();
+//							save = true;
+//						} catch(Exception loadBackupException) {
+//							loadBackupException.printStackTrace();
+//						}
+//					}
+//				}
+//
+//				if(data != null) {
+//					InventoryBaubles inventory = new InventoryBaubles(player);
+//					inventory.readNBT(data);
+//					playerBaublesServer.put(player.getCommandSenderName(), inventory);
+//					if(save) {
+//						savePlayerBaubles(player, mainFile, backupFile);
+//					}
+//				}
+//			} catch(Exception loadException) {
+//				Baubles.log.fatal("Error loading baubles inventory");
+//				loadException.printStackTrace();
+//			}
+//		}
 	}
 
 	public static void savePlayerBaubles(EntityPlayer player, File mainFile, File backupFile) {

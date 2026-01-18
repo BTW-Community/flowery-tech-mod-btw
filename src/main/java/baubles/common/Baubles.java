@@ -1,5 +1,7 @@
 package baubles.common;
 
+import api.config.AddonConfig;
+import api.config.ConfigUtils;
 import baubles.client.ClientProxy;
 import baubles.common.event.EventHandlerEntity;
 import baubles.common.event.EventHandlerNetwork;
@@ -58,16 +60,29 @@ public class Baubles implements GuiHandlerHolder {
 
         MinecraftForge.EVENT_BUS.register(entityEventHandler);
 //        FMLCommonHandler.instance().bus().register(entityEventNetwork);
-        proxy.registerHandlers();
+        getProxy().registerHandlers();
     }
 
     public void init() {
         CustomGuiPacketHandler.INSTANCE.modIdToHandler.put("baubles", getGuiHandler());
         //This config is intentionally loaded later than normal.
+        var config = new AddonConfig("baubles");
+        try {
+            var field = ConfigUtils.class.getDeclaredField("hasFinishedLoading");
+            field.setAccessible(true);
+            field.set(null, Boolean.FALSE);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+        BaublesConfig.loadConfig(config);
+        config.readAndWriteConfig();
+        BaublesConfig.handleConfig(config);
+
+        ConfigUtils.finishedLoading();
 //        BaublesConfig.loadConfig(new Configuration(new File(Launch.minecraftHome, "config" + File.separator + "Baubles.cfg")));
 
 //        NetworkRegistry.INSTANCE.registerGuiHandler(instance, proxy);
-          proxy.registerKeyBindings();
+          getProxy().registerKeyBindings();
 //          GameRegistry.registerItem(itemDebugger, "bauble_slot_debug_tool", Baubles.MODID);
     }
 
