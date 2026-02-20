@@ -14,6 +14,7 @@
     "RenderItemMixin",
     "SlotCraftingMixin",
     "SoundManagerMixin",
+    "botania.BlockPistonBaseMixin",
     "botania.GOGWorldProviderMixin",
     "debug.AchievementDataAccessor",
     "event.BlockMixin",
