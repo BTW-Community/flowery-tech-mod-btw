@@ -7,7 +7,7 @@ import java.nio.file.Paths
 import java.nio.file.StandardCopyOption;
 plugins {
 	id 'maven-publish'
-	id 'fabric-loom' version "1.4-SNAPSHOT"
+	id 'fabric-loom' version "1.5-SNAPSHOT"
 }
 
 archivesBaseName = project.archives_base_name
@@ -33,6 +33,7 @@ repositories {
 	maven {
 		url 'https://btw-community.github.io/btw-mvn/'
 	}
+	maven { url = "https://maven.bawnorton.com/releases" }
 	mavenCentral() //For fastutil
 }
 
@@ -52,7 +53,7 @@ dependencies {
 
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-	implementation 'net.fabricmc:fabric-loom:1.4-SNAPSHOT'
+	implementation 'net.fabricmc:fabric-loom:1.5-SNAPSHOT'
 
 	implementation 'org.apache.logging.log4j:log4j-core:2.19.0'
 	implementation 'org.apache.logging.log4j:log4j-api:2.19.0'
@@ -72,6 +73,15 @@ dependencies {
 	implementation group: 'it.unimi.dsi', name: 'fastutil', version: '8.5.12'
 	implementation 'com.typesafe:config:1.4.5'
 	include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.5.0")))
+
+	modImplementation ("net.legacyfabric.legacy-fabric-api:legacy-fabric-api:1.13.2+1.6.4")  {
+		exclude module: "legacy-fabric-keybindings-api-v1-common"
+		exclude module: "legacy-fabric-keybindings-api-v1-common-1.5.2"
+		exclude module: "legacy-fabric-keybindings-api-v1"
+		exclude module: "legacy-fabric-item-groups-v1-common-1.8.9"
+	}
+	modImplementation "maven.modrinth:legacy-fabric-api-fixes-btw:1.1.0"
+	modRuntimeOnly("com.github.bawnorton.mixinsquared:mixinsquared-fabric:0.2.0")
 }
 
 configurations.all {
