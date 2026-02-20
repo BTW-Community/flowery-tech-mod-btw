@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.item;
 
+import cpw.mods.fml.common.gameevent.TickEvent;
 import net.minecraft.src.CraftingManager;
 import net.minecraft.src.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -35,6 +36,7 @@ public class ItemRegenIvy extends ItemMod {
 		CraftingManager.getInstance().getRecipeList().add(new RegenIvyRecipe(Botania.loc("timeless_ivy")));
 //		RecipeSorter.register("botania:regenIvy", RegenIvyRecipe.class, Category.SHAPELESS, "");
 //		FMLCommonHandler.instance().bus().register(this);
+		PlayerTickEvent.EVENT.register(this::onTick);
         MinecraftForge.EVENT_BUS.register(this);
 	}
 

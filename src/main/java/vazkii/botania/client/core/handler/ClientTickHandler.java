@@ -48,6 +48,7 @@ public class ClientTickHandler {
 
 	static {
 		TickEvent.ClientTickEvent.EVENT.register(ClientTickHandler::clientTickEnd);
+		RenderTickEvent.EVENT.register(ClientTickHandler::renderTick);
 	}
 
 //	@SubscribeEvent

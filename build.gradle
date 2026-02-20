@@ -62,6 +62,7 @@ dependencies {
 	implementation "org.lwjgl.lwjgl:lwjgl-platform:${lwjglVersion}"
 
 	implementation fileTree(dir: "libs", include: "**.zip")
+	modImplementation include(fileTree(dir: "lib_include", include: "**.jar"))
 
 	implementation 'com.google.guava:guava:14.0.1'
 
