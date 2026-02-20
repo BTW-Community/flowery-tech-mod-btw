@@ -15,6 +15,7 @@ import java.util.Random;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.src.*;
+import vazkii.botania.api.internal.VanillaPacketDispatcher;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.mana.ILens;
