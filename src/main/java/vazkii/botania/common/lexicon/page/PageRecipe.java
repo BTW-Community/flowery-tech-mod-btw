@@ -148,7 +148,7 @@ public class PageRecipe extends LexiconPage {
 		}
 		else {
             assert items != null;
-            stackk = items.getFirst();//todo improve tag item rendering for lexicon
+            stackk = items.get(0);//todo improve tag item rendering for lexicon
         }
 		renderItem(gui, xPos, yPos, stackk, accountForContainer);
 	}
