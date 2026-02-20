@@ -11,8 +11,6 @@
 package vazkii.botania.common.entity;
 
 import java.awt.Color;
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -25,7 +23,6 @@ import java.util.WeakHashMap;
 
 import baubles.common.lib.PlayerHandler;
 import api.entity.EntityWithCustomPacket;
-import btw.network.packet.BTWPacketManager;
 import net.minecraft.src.*;
 import vazkii.botania.api.mana.IManaItem;
 import vazkii.botania.api.mana.IManaPool;
@@ -44,7 +41,7 @@ public class EntitySpark extends Entity implements ISparkEntity, EntityWithCusto
 	public static final int INVISIBILITY_DATA_WATCHER_KEY = 27;
 
 	Set<ISparkEntity> transfers = Collections.newSetFromMap(new WeakHashMap<>());
-
+	public int ticksToStopProcessingForPistonUpdate = 0;
 	int removeTransferants = 2;
 	boolean firstTick = false;
 
@@ -65,7 +62,10 @@ public class EntitySpark extends Entity implements ISparkEntity, EntityWithCusto
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-
+		if (ticksToStopProcessingForPistonUpdate > 0) {
+			ticksToStopProcessingForPistonUpdate--;
+			return;
+		}
 		ISparkAttachable tile = getAttachedTile();
 		if(tile == null) {
 			if(!worldObj.isRemote)

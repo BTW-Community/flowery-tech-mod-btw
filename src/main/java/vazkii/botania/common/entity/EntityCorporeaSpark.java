@@ -36,6 +36,7 @@ public class EntityCorporeaSpark extends Entity implements ICorporeaSpark, Entit
 	List<ICorporeaSpark> relatives = new ArrayList<>();
 	boolean firstUpdateClient = true;
 	boolean firstUpdateServer = true;
+	public int ticksToStopProcessingForPistonUpdate = 0;
 
 	public EntityCorporeaSpark(World world) {
 		super(world);
@@ -66,6 +67,10 @@ public class EntityCorporeaSpark extends Entity implements ICorporeaSpark, Entit
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
+		if (ticksToStopProcessingForPistonUpdate > 0) {
+			ticksToStopProcessingForPistonUpdate--;
+			return;
+		}
 		IInventory inv = getInventory();
 		if(inv == null) {
 			if(!worldObj.isRemote)
