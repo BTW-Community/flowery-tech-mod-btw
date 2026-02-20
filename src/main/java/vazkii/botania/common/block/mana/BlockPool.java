@@ -73,8 +73,10 @@ public class BlockPool extends BlockModContainer<TilePool> implements IWandHUD, 
 
 	@Override
 	public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
-		TilePool pool = (TilePool) par1World.getTileEntity(par2, par3, par4);
-		lastFragile = pool.fragile;
+		if (par1World.getTileEntity(par2, par3, par4) instanceof TilePool pool) {
+//			TilePool pool = (TilePool) par1World.getTileEntity(par2, par3, par4);
+			lastFragile = pool.fragile;
+		}
 		super.breakBlock(par1World, par2, par3, par4, par5, par6);
 	}
 
@@ -103,9 +105,8 @@ public class BlockPool extends BlockModContainer<TilePool> implements IWandHUD, 
 
 	@Override
 	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity) {
-		if(par5Entity instanceof EntityItem) {
-			TilePool tile = (TilePool) par1World.getTileEntity(par2, par3, par4);
-			if(tile.collideEntityItem((EntityItem) par5Entity))
+		if(par5Entity instanceof EntityItem item && par1World.getTileEntity(par2, par3, par4) instanceof TilePool tile) {
+			if(tile.collideEntityItem(item))
 				VanillaPacketDispatcher.dispatchTEToNearbyPlayers(par1World, par2, par3, par4);
 		}
 	}
