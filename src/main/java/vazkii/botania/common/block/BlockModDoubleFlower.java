@@ -63,7 +63,7 @@ public class BlockModDoubleFlower extends BlockDoublePlant implements ILexiconab
         setHardness(0F);
         setStepSound(soundGrassFootstep);
         setTickRandomly(false);
-//		setCreativeTab(CreativeTabs.tabMisc);
+//		setCreativeTab(ModItems.botaniaTab);
     }
 
     @Override

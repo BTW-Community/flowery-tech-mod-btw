@@ -37,7 +37,7 @@ public class ItemManasteelShovel extends ShovelItem implements IManaUsingItem, I
 
 	public ItemManasteelShovel(int id, EnumToolMaterial mat, String name) {
 		super(id, mat);
-		setCreativeTab(CreativeTabs.tabMisc);
+		setCreativeTab(ModItems.botaniaTab);
 		setUnlocalizedName(name);
 	}
 

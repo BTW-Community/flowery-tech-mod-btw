@@ -17,6 +17,7 @@ import vazkii.botania.common.core.BotaniaCreativeTab;
 
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
+import vazkii.botania.common.item.ModItems;
 
 public class ItemModRecord extends ItemRecord {
 
@@ -24,7 +25,7 @@ public class ItemModRecord extends ItemRecord {
 
 	public ItemModRecord(int id, String record, String name) {
 		super(id, "botania:" + record);
-		setCreativeTab(CreativeTabs.tabMisc);
+		setCreativeTab(ModItems.botaniaTab);
 		setUnlocalizedName(name);
 		file = "botania:music." + record;
 //		recordName = file;

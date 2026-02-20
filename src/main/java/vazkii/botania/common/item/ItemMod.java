@@ -23,7 +23,7 @@ public class ItemMod extends Item {
 
 	public ItemMod(int id) {
 		super(id);
-		setCreativeTab(CreativeTabs.tabMisc);
+		setCreativeTab(ModItems.botaniaTab);
 	}
 
 	@Override

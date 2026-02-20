@@ -7,6 +7,7 @@ import net.minecraft.src.*;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.common.core.BotaniaCreativeTab;
+import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.block.ItemBlockModSlab;
 import vazkii.botania.common.lexicon.LexiconData;
 
@@ -22,7 +23,7 @@ public abstract class BlockModSlab extends BlockHalfSlab implements ILexiconable
 		this.name = name;
 		setUnlocalizedName(name);
 		if(!full) {
-			setCreativeTab(CreativeTabs.tabMisc);
+			setCreativeTab(ModItems.botaniaTab);
 			useNeighborBrightness[0] = true;
 		}
 	}

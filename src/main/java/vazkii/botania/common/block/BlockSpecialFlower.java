@@ -114,7 +114,7 @@ public class BlockSpecialFlower extends BlockFlower implements ITileEntityProvid
 		setHardness(0.1F);
 		setStepSound(soundGrassFootstep);
 		setTickRandomly(false);
-		setCreativeTab(CreativeTabs.tabMisc);
+		setCreativeTab(ModItems.botaniaTab);
 		initBlockBounds(0.3F, 0.0F, 0.3F, 0.8F, 1, 0.8F);
 	}
 

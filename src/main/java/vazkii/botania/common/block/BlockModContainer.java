@@ -14,6 +14,7 @@ import net.minecraft.src.*;
 import vazkii.botania.client.core.helper.IconHelper;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
+import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.block.ItemBlockMod;
 
 public abstract class BlockModContainer<T extends TileEntity> extends BlockContainer {
@@ -23,7 +24,7 @@ public abstract class BlockModContainer<T extends TileEntity> extends BlockConta
 	protected BlockModContainer(int id, Material par2Material) {
 		super(id, par2Material);
 		if(registerInCreative())
-			setCreativeTab(CreativeTabs.tabMisc);
+			setCreativeTab(ModItems.botaniaTab);
 	}
 
 	@Override

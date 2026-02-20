@@ -15,6 +15,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.core.BotaniaCreativeTab;
+import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.block.ItemBlockMod;
 
 import net.fabricmc.api.Environment;
@@ -29,7 +30,7 @@ public class BlockModPane extends BlockPane {
 		super(id, "", "", Material.glass, false);
 		this.source = source;
 		setUnlocalizedName(source.getUnlocalizedName().replaceAll("tile.", "") + "Pane");
-		setCreativeTab(CreativeTabs.tabMisc);
+		setCreativeTab(ModItems.botaniaTab);
 		setHardness(0.3F);
 		setStepSound(soundGlassFootstep);
 		setLightValue(1.0F);

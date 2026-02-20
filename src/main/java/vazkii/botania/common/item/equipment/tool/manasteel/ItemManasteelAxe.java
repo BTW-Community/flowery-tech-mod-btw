@@ -42,7 +42,7 @@ public class ItemManasteelAxe extends AxeItem implements IManaUsingItem, ISortab
 
 	public ItemManasteelAxe(int id, EnumToolMaterial mat, String name) {
 		super(id, mat);
-		setCreativeTab(CreativeTabs.tabMisc);
+		setCreativeTab(ModItems.botaniaTab);
 		setUnlocalizedName(name);
 	}
 

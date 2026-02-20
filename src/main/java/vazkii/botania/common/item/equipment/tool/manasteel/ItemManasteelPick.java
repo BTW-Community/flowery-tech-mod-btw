@@ -42,7 +42,7 @@ public class ItemManasteelPick extends PickaxeItem implements IManaUsingItem, IS
 
 	public ItemManasteelPick(int id, EnumToolMaterial mat, String name) {
 		super(id, mat);
-		setCreativeTab(CreativeTabs.tabMisc);
+		setCreativeTab(ModItems.botaniaTab);
 		setUnlocalizedName(name);
 	}
 

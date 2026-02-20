@@ -16,6 +16,7 @@ import net.minecraftforge.event.entity.minecart.MinecartUpdateEvent;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.client.core.helper.IconHelper;
+import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.block.ItemBlockMod;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
@@ -29,7 +30,7 @@ public class BlockGhostRail extends BlockRailBase implements ILexiconable {
 
 	public BlockGhostRail(int id) {
 		super(id, true);
-		setCreativeTab(CreativeTabs.tabMisc);
+		setCreativeTab(ModItems.botaniaTab);
 		MinecraftForge.EVENT_BUS.register(this);
 		setUnlocalizedName(LibBlockNames.GHOST_RAIL);
         MinecartUpdateEvent.EVENT.register(this::onMinecartUpdate);

@@ -11,6 +11,9 @@
 package vazkii.botania.common.item;
 
 import btw.item.BTWTags;
+import net.legacyfabric.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.legacyfabric.fabric.api.util.Identifier;
+import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import vazkii.botania.api.BotaniaAPI;
@@ -118,6 +121,7 @@ import vazkii.botania.common.item.rod.ItemWaterRod;
 import vazkii.botania.common.lib.LibOreDict;
 
 public final class ModItems {
+	public static CreativeTabs botaniaTab;
 
 	public static Item lexicon;
 	public static Item petal;
@@ -266,6 +270,10 @@ public final class ModItems {
 	public static Item sextant;
 	public static Item speedUpBelt;
 	public static Item baubleBox;
+
+	public static void initTab() {
+		botaniaTab = FabricItemGroupBuilder.buildWithItem(new Identifier("botania", "item"), () -> lexicon);
+	}
 
 	public static void init() {
 		int id = 7200;

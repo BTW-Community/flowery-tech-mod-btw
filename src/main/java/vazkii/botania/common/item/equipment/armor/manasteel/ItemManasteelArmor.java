@@ -46,7 +46,7 @@ public class ItemManasteelArmor extends ArmorItem implements ISpecialArmor, IMan
 	public ItemManasteelArmor(int id, int type, String name, EnumArmorMaterial mat) {
 		super(id, mat, 0, type, mat.forge$getWeight(type), mat.forge$getKnockbackResistance(type));
 		this.type = type;
-		setCreativeTab(CreativeTabs.tabMisc);
+		setCreativeTab(ModItems.botaniaTab);
 		setUnlocalizedName(name);
 	}
 

@@ -32,6 +32,7 @@ import vazkii.botania.common.Botania;
 import vazkii.botania.common.achievement.IPickupAchievement;
 import vazkii.botania.common.achievement.ModAchievements;
 import vazkii.botania.common.core.handler.ConfigHandler;
+import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.block.ItemBlockWithMetadataAndName;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
@@ -60,7 +61,7 @@ public class BlockModFlower extends BlockFlower implements ILexiconable, IGrowab
 		initBlockBounds(0.3F, 0.0F, 0.3F, 0.8F, 1, 0.8F);
 		setTickRandomly(false);
 		if (registerInCreative()) {
-			setCreativeTab(CreativeTabs.tabMisc);
+			setCreativeTab(ModItems.botaniaTab);
 		}
 	}
 

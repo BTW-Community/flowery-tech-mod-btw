@@ -15,6 +15,7 @@ import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.core.BotaniaCreativeTab;
+import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.block.ItemBlockMod;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
@@ -31,7 +32,7 @@ public class BlockReeds extends BlockRotatedPillar implements ILexiconable {
 		setHardness(1.0F);
 		setStepSound(soundWoodFootstep);
 		setUnlocalizedName(LibBlockNames.REED_BLOCK);
-		setCreativeTab(CreativeTabs.tabMisc);
+		setCreativeTab(ModItems.botaniaTab);
 	}
 
 	@Override

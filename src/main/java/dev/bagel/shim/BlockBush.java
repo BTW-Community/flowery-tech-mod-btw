@@ -4,6 +4,7 @@ import btw.block.blocks.PlantsBlock;
 import com.prupe.mcpatcher.mal.block.BlockAPI;
 import net.minecraft.src.*;
 import net.minecraftforge.common.util.ForgeDirection;
+import vazkii.botania.common.item.ModItems;
 
 import java.util.Random;
 
@@ -17,7 +18,7 @@ public class BlockBush extends PlantsBlock
         this.setTickRandomly(true);
         float f = 0.2F;
         this.initBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 3.0F, 0.5F + f);
-        this.setCreativeTab(CreativeTabs.tabMisc);
+        this.setCreativeTab(ModItems.botaniaTab);
     }
 
     /**

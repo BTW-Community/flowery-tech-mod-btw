@@ -26,7 +26,7 @@ public class ItemManaCookie extends FoodItem {
 	public ItemManaCookie(int id) {
 		super(id, 0, 0.1F, false, LibItemNames.MANA_COOKIE, true);
 		setPotionEffect(Potion.field_76443_y.id, 1,  0, 1F);
-		setCreativeTab(CreativeTabs.tabMisc);
+		setCreativeTab(ModItems.botaniaTab);
 	}
 
 /*	@Override

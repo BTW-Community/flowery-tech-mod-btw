@@ -88,6 +88,7 @@ public class CommonProxy {
 
 	public void init() {
 		CustomGuiPacketHandler.INSTANCE.modIdToHandler.put("botania", guiHandler);
+		ModItems.initTab();
 		ModBlocks.init();
 		ModItems.init();
 		ModEntities.init();

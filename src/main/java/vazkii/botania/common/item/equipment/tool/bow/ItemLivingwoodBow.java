@@ -38,7 +38,7 @@ public class ItemLivingwoodBow extends ItemBow implements IManaUsingItem {
 
 	public ItemLivingwoodBow(int id, String name) {
 		super(id);
-		setCreativeTab(CreativeTabs.tabMisc);
+		setCreativeTab(ModItems.botaniaTab);
 		setUnlocalizedName(name);
 		setMaxDamage(500);
 		setFull3D();

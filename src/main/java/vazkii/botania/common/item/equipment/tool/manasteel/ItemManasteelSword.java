@@ -37,7 +37,7 @@ public class ItemManasteelSword extends SwordItem implements IManaUsingItem {
 
 	public ItemManasteelSword(int id, EnumToolMaterial mat, String name) {
 		super(id, mat);
-		setCreativeTab(CreativeTabs.tabMisc);
+		setCreativeTab(ModItems.botaniaTab);
 		setUnlocalizedName(name);
 	}
 
