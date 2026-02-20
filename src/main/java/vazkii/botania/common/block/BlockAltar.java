@@ -13,6 +13,7 @@ package vazkii.botania.common.block;
 import java.util.List;
 import java.util.Random;
 
+import btw.item.BTWTags;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.src.*;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
@@ -23,12 +24,16 @@ import vazkii.botania.client.lib.LibRenderIDs;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.block.tile.TileAltar;
 import vazkii.botania.common.block.tile.TileSimpleInventory;
+import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.block.ItemBlockWithMetadataAndName;
 import vazkii.botania.common.item.rod.ItemWaterRod;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
+/**
+ * Petal Apothecary Block
+ */
 public class BlockAltar extends BlockModContainer<TileAltar> implements ILexiconable {
 
 	Random random;
@@ -56,8 +61,24 @@ public class BlockAltar extends BlockModContainer<TileAltar> implements ILexicon
 	}
 
 	@Override
+	public ItemStack getStackRetrievedByBlockDispenser(World world, int i, int j, int k) {
+		if (world.getTileEntity(i, j, k) instanceof TileAltar altar && altar.isMortared()) {
+			ItemStack stack = new ItemStack(this, 1, altar.getBlockMetadata());
+			ItemNBTHelper.setBoolean(stack, "mortared", true);
+			return stack;
+		}
+		return super.getStackRetrievedByBlockDispenser(world, i, j, k);
+	}
+
+	@Override
 	public Block setUnlocalizedName(String par1Str) {
-		var item = new ItemBlockWithMetadataAndName(this);
+		var item = new ItemBlockWithMetadataAndName(this) {
+			@Override
+			public String getUnlocalizedName(ItemStack stack) {
+				boolean mortared = ItemNBTHelper.getBoolean(stack, "mortared", false);
+				return super.getUnlocalizedName(stack) + (mortared ? "Mortared" : "");
+			}
+		};
 //GameRegistry.registerBlock(this, ItemBlockWithMetadataAndName.class, par1Str);
 		return super.setUnlocalizedName(par1Str);
 	}
@@ -74,17 +95,28 @@ public class BlockAltar extends BlockModContainer<TileAltar> implements ILexicon
 	}
 
 	@Override
+	public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLivingBase, ItemStack par6ItemStack) {
+		super.onBlockPlacedBy(par1World, par2, par3, par4, par5EntityLivingBase, par6ItemStack);
+	}
+
+	@Override
 	public void renderBlockAsItem(RenderBlocks renderBlocks, int iItemDamage, float fBrightness) {
 		RenderingRegistry.instance().renderInventoryBlock(renderBlocks, this, iItemDamage, getRenderType());
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity) {
-		if(par5Entity instanceof EntityItem) {
-			TileAltar tile = (TileAltar) par1World.getTileEntity(par2, par3, par4);
-			if(tile.collideEntityItem((EntityItem) par5Entity))
+	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity par5Entity) {
+		if(par5Entity instanceof EntityItem entityItem) {
+			TileAltar tile = (TileAltar) world.getTileEntity(x, y, z);
+			if(tile.collideEntityItem(entityItem))
 				VanillaPacketDispatcher.dispatchTEToNearbyPlayers(tile);
 		}
+	}
+
+	@Override
+	public boolean getCanBlockLightItemOnFire(IBlockAccess blockAccess, int i, int j, int k) {
+		TileAltar tile = (TileAltar) blockAccess.getBlockTileEntity(i, j, k);
+		return tile.hasLava;
 	}
 
 	@Override
@@ -94,60 +126,70 @@ public class BlockAltar extends BlockModContainer<TileAltar> implements ILexicon
 	}
 
 	@Override
-	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
-		ItemStack stack = par5EntityPlayer.getCurrentEquippedItem();
-		TileAltar tile = (TileAltar) par1World.getTileEntity(par2, par3, par4);
+	public boolean onBlockActivated(World par1World, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
+		ItemStack stack = player.getCurrentEquippedItem();
+		TileAltar tile = (TileAltar) par1World.getTileEntity(x, y, z);
 
-		if(par5EntityPlayer.isSneaking()) {
+		if(player.isSneaking()) {
 			for(int i = tile.getSizeInventory() - 1; i >= 0; i--) {
 				ItemStack stackAt = tile.getStackInSlot(i);
 				if(stackAt != null) {
 					ItemStack copy = stackAt.copy();
-					if(!par5EntityPlayer.inventory.addItemStackToInventory(copy))
-						par5EntityPlayer.dropPlayerItemWithRandomChoice(copy, false);
+					if(!player.inventory.addItemStackToInventory(copy))
+						player.dropPlayerItemWithRandomChoice(copy, false);
 					tile.setInventorySlotContents(i, null);
-					par1World.func_96440_m(par2, par3, par4, this.blockID);
+					par1World.func_96440_m(x, y, z, this.blockID);
 					break;
 				}
 			}
 		} else if(tile.isEmpty() && tile.hasWater && stack == null)
-			tile.trySetLastRecipe(par5EntityPlayer);
+			tile.trySetLastRecipe(player);
 		else {
-			if(stack != null && (isValidWaterContainer(stack) || stack.getItem() == ModItems.waterRod && ManaItemHandler.requestManaExact(stack, par5EntityPlayer, ItemWaterRod.COST, false))) {
+			if (BTWTags.mortars.test(stack) && !tile.isMortared()) {
+				if(!player.capabilities.isCreativeMode)
+					stack.stackSize--;
+//					player.inventory.setInventorySlotContents(player.inventory.currentItem, getContainer(stack));
+
+				tile.setMortared(true);
+			}
+			else if(!tile.isMortared()) {
+				return false;
+			}
+			else if(stack != null && (isValidWaterContainer(stack) || stack.getItem() == ModItems.waterRod && ManaItemHandler.requestManaExact(stack, player, ItemWaterRod.COST, false))) {
 				if(!tile.hasWater) {
 					if(stack.getItem() == ModItems.waterRod)
-						ManaItemHandler.requestManaExact(stack, par5EntityPlayer, ItemWaterRod.COST, true);
-					else if(!par5EntityPlayer.capabilities.isCreativeMode)
-						par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, getContainer(stack));
+						ManaItemHandler.requestManaExact(stack, player, ItemWaterRod.COST, true);
+					else if(!player.capabilities.isCreativeMode)
+						player.inventory.setInventorySlotContents(player.inventory.currentItem, getContainer(stack));
 
 					tile.setWater(true);
-					par1World.func_96440_m(par2, par3, par4, this.blockID);
+					par1World.func_96440_m(x, y, z, this.blockID);
 				}
 
 				return true;
 			} else if(stack != null && stack.getItem() == Item.bucketLava) {
-				if(!par5EntityPlayer.capabilities.isCreativeMode)
-					par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, getContainer(stack));
+				if(!player.capabilities.isCreativeMode)
+					player.inventory.setInventorySlotContents(player.inventory.currentItem, getContainer(stack));
 
 				tile.setLava(true);
 				tile.setWater(false);
-				par1World.func_96440_m(par2, par3, par4, this.blockID);
+				par1World.func_96440_m(x, y, z, this.blockID);
 
 				return true;
 			} else if(stack != null && stack.getItem() == Item.bucketEmpty && (tile.hasWater || tile.hasLava) && !Botania.gardenOfGlassLoaded) {
 				ItemStack bucket = tile.hasLava ? new ItemStack(Item.bucketLava) : new ItemStack(Item.bucketWater);
 				if(stack.stackSize == 1)
-					par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, bucket);
+					player.inventory.setInventorySlotContents(player.inventory.currentItem, bucket);
 				else {
-					if(!par5EntityPlayer.inventory.addItemStackToInventory(bucket))
-						par5EntityPlayer.dropPlayerItemWithRandomChoice(bucket, false);
+					if(!player.inventory.addItemStackToInventory(bucket))
+						player.dropPlayerItemWithRandomChoice(bucket, false);
 					stack.stackSize--;
 				}
 
 				if(tile.hasLava)
 					tile.setLava(false);
 				else tile.setWater(false);
-				par1World.func_96440_m(par2, par3, par4, this.blockID);
+				par1World.func_96440_m(x, y, z, this.blockID);
 
 				return true;
 			}

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import btw.item.BTWTags;
 import dev.bagel.client.RenderInstances;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ScaledResolution;
@@ -42,7 +43,9 @@ import vazkii.botania.client.core.helper.RenderHelper;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.CustomBotaniaAPI;
 import vazkii.botania.common.lib.LibBlockNames;
-
+/**
+ * Petal Apothecary Tile Entity
+ */
 public class TileAltar extends TileSimpleInventory implements ISidedInventory, IPetalApothecary {
 
 	private static final Pattern SEED_PATTERN = Pattern.compile("(?:(?:(?:[A-Z-_.:]|^)seed)|(?:(?:[a-z-_.:]|^)Seed))(?:[sA-Z-_.:]|$)");
@@ -50,9 +53,11 @@ public class TileAltar extends TileSimpleInventory implements ISidedInventory, I
 	public static final String TAG_HAS_WATER = "hasWater";
 	public static final String TAG_HAS_LAVA = "hasLava";
 	public static final String TAG_IS_MOSSY = "isMossy";
+	public static final String TAG_IS_MORTARED = "isMortared";
 
 	public boolean hasWater = false;
 	public boolean hasLava = false;
+	public boolean isMortared = false;
 
 	public boolean isMossy = false;
 
@@ -63,6 +68,17 @@ public class TileAltar extends TileSimpleInventory implements ISidedInventory, I
 		ItemStack stack = item.getEntityItem();
 		if(stack == null || item.isDead)
 			return false;
+
+		if (!isMortared()) {
+			if (BTWTags.mortars.test(stack) && !worldObj.isRemote) {
+				setMortared(true);
+				worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlockId(xCoord, yCoord, zCoord));
+				stack.stackSize--;
+				if(stack.stackSize == 0)
+					item.setDead();
+				VanillaPacketDispatcher.dispatchTEToNearbyPlayers(worldObj, xCoord, yCoord, zCoord);
+			}
+		}
 
 		if(!isMossy && getBlockMetadata() == 0) {
 			if(stack.getItem() == new ItemStack(Block.vine).getItem() && !worldObj.isRemote) {
@@ -75,7 +91,7 @@ public class TileAltar extends TileSimpleInventory implements ISidedInventory, I
 			}
 		}
 
-		if(!hasWater() && !hasLava()) {
+		if(isMortared() && !hasWater() && !hasLava()) {
 			if(stack.getItem() == Item.bucketWater && !worldObj.isRemote) {
 				setWater(true);
 				worldObj.func_96440_m(xCoord, yCoord, zCoord, worldObj.getBlockId(xCoord, yCoord, zCoord));
@@ -279,6 +295,7 @@ public class TileAltar extends TileSimpleInventory implements ISidedInventory, I
 		cmp.setBoolean(TAG_HAS_WATER, hasWater());
 		cmp.setBoolean(TAG_HAS_LAVA, hasLava());
 		cmp.setBoolean(TAG_IS_MOSSY, isMossy);
+		cmp.setBoolean(TAG_IS_MORTARED, isMortared);
 	}
 
 	@Override
@@ -288,6 +305,7 @@ public class TileAltar extends TileSimpleInventory implements ISidedInventory, I
 		hasWater = cmp.getBoolean(TAG_HAS_WATER);
 		hasLava = cmp.getBoolean(TAG_HAS_LAVA);
 		isMossy = cmp.getBoolean(TAG_IS_MOSSY);
+		isMortared = cmp.getBoolean(TAG_IS_MORTARED);
 	}
 
 	@Override
@@ -358,6 +376,15 @@ public class TileAltar extends TileSimpleInventory implements ISidedInventory, I
 
 	public boolean hasLava() {
 		return hasLava;
+	}
+
+	public boolean isMortared() {
+		return isMortared;
+	}
+
+	public void setMortared(boolean mortared) {
+		isMortared = mortared;
+		VanillaPacketDispatcher.dispatchTEToNearbyPlayers(worldObj, xCoord, yCoord, zCoord);
 	}
 
 	public void renderHUD(Minecraft mc, ScaledResolution res) {
