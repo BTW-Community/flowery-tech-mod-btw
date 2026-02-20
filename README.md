@@ -1,79 +1,25 @@
-# Fabric Example Mod
+# Botania: Child of Flowers
+A fork of Botania, for Better than Wolves: Community Edition.
 
-- [Quick start guide](#quick-start-guide)
-  - [Introduction to the folder structure](#introduction-to-the-folder-structure)
-  - [Creating your mod](#creating-your-mod)
-  - [Useful gradle commands](#useful-gradle-commands)
-- [More info](#more-info)
+## Table of Contents
+- [Changes](#changes)
+- [Credits](#credits)
 - [License](#license)
 
-## Quick start guide
+## Changes
+I will do my best to keep this up to date.
+- Many recipe changes, check EMI for details.
+  - Please note that the Lexica Botania may not be fully up to date, as I haven't added handlers for the BTW recipe types (Yet! [hopefully...])
+- Made the petal apothecary require mortar (clay, slimeball, etc.) to use it.
+- As it's a BTW feature, all tile entities are pushable by pistons.
+  - Sparks/Corporea Sparks will move when their block is pushed
 
-* Clone this repository
-* Download the according BTW-CE 3.0+ *intermediary* release
-* Drag&Drop the intermediary .zip file onto the *install.bat*
-* Wait till it fully finishes
-* Run the gradle task *build* and then *runClient*
-
-### Introduction to the folder structure
-
-**Build files:**
-
-| File                | Description                                              |
-| ------------------- | -------------------------------------------------------- |
-| `build.gradle`      | Configures the compilation process.                      |
-| `gradle.properties` | Contains properties for Minecraft, fabric, and your mod. |
-| `settings.gradle`   | Configures the plugin repositories.                      |
-
-**Fabric files:**
-
-These files are located at `src/main/resources`.
-
-| File                    | Description                              | Additional information                                                                                                |
-| ----------------------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `fabric.mod.json`       | Contains metadata about your mod.        | [wiki:fabric_mod_json_spec](https://fabricmc.net/wiki/documentation:fabric_mod_json_spec)                             |
-| `modid.mixins.json`     | Contains a list of all your mixin files. | [wiki:mixin_registration](https://fabricmc.net/wiki/tutorial:mixin_registration)                                      |
-| `assets/modid/icon.png` | The icon of your mod.                    | [wiki:fabric_mod_json_spec#icon](https://fabricmc.net/wiki/documentation:fabric_mod_json_spec?s[]=icon#custom_fields) |
-
-
-### Creating your mod
-
-First of you must replace all occurrences of `modid` with the id of your mod.
-
-If your mod doesn't use mixins you can safely remove the mixin entry in your `fabric.mod.json` as well as delete any `*.mixin.json` files.
-
-This template has the legacy fabric api included in it's build script, more info about the api can be found at it's [github repo](https://github.com/Legacy-Fabric/fabric).
-If you know what you are doing you can also safely remove the api from the build script as it isn't required.
-
-### Useful gradle commands
-
-```sh
-# Compile your mod
-./gradlew build
-
-# Remove old build files
-./gradlew clean
-
-# Generate Minecraft sources
-./gradlew genSources
-
-# Launch a modded Minecraft client
-./gradlew runClient
-
-# Kill gradle if it's doing stupid things
-./gradlew --stop
-```
-
-## More info
-
-Additional tutorials and tips can be found in the [wiki](https://github.com/Legacy-Fabric/fabric-example-mod/wiki).
-
-For more detailed setup instructions please see the [fabric wiki](https://fabricmc.net/wiki/tutorial:setup).
-
-If you are new to fabric or Minecraft modding in general then [this wiki page](https://fabricmc.net/wiki/tutorial:primer) may help you.
+## Credits
+- Vazkii - The creator of Botania, literally wouldn't have been possible without him.
+- Azanor – The creator of Baubles, which this project depends on.
+- CPW, LexManos, and the 1.7.10 Forge team – For making Forge Mod Loader and the Minecraft Forge API, which this project uses parts of.
 
 ## License
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
-This project incorporates:
-* A precompiled version of [Tiny Remapper](https://github.com/FabricMC/tiny-remapper) (LGPL-3.0)
+This project is licenced under the Botania license (see [here](https://botaniamod.net/license.html) for more details) 
+It also currently bundles Baubles Expanded, which is licensed under the CC BY-NC-SA 3.0 License ([link](http://creativecommons.org/licenses/by-nc-sa/3.0/)). There were changes made, and it is not endorsed by Azanor (the copyright holder of Baubles).
