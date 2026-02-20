@@ -164,6 +164,14 @@ public class BlockSpecialFlower extends BlockFlower implements ITileEntityProvid
 	}
 
 	@Override
+	public ItemStack getStackRetrievedByBlockDispenser(World world, int i, int j, int k) {
+		if(world.getTileEntity(i, j, k) instanceof TileSpecialFlower tile) {
+			return ItemBlockSpecialFlower.ofType(tile.subTileName);
+		}
+		return super.getStackRetrievedByBlockDispenser(world, i, j, k);
+	}
+
+	@Override
 	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
 		for(String s : BotaniaAPI.subtilesForCreativeMenu) {
 			par3List.add(ItemBlockSpecialFlower.ofType(s));

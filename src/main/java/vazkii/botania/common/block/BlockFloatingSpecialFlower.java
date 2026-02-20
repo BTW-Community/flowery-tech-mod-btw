@@ -129,7 +129,15 @@ public class BlockFloatingSpecialFlower extends BlockFloatingFlower implements I
 		return ((TileSpecialFlower) world.getTileEntity(x, y, z)).onWanded(stack, player);
 	}
 
-    @Override
+	@Override
+	public ItemStack getStackRetrievedByBlockDispenser(World world, int i, int j, int k) {
+		if(world.getTileEntity(i, j, k) instanceof TileSpecialFlower tile) {
+			return ItemBlockSpecialFlower.ofType(tile.subTileName);
+		}
+		return super.getStackRetrievedByBlockDispenser(world, i, j, k);
+	}
+
+	@Override
     public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack) {
         if(entity instanceof EntityPlayer player) {
             String type = getType(stack);

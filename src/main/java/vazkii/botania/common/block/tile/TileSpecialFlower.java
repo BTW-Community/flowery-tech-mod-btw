@@ -24,6 +24,7 @@ import net.minecraft.src.TileEntity;
 import net.minecraft.src.ChunkCoordinates;
 import net.minecraft.src.Icon;
 import net.minecraft.src.World;
+import org.jetbrains.annotations.Nullable;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.subtile.ISubTileSlowableContainer;
@@ -155,7 +156,7 @@ public class TileSpecialFlower extends TileMod implements IWandBindable, ISubTil
 		return subTile == null ? false : subTile.onWanded(player, wand);
 	}
 
-	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack) {
+	public void onBlockPlacedBy(World world, int x, int y, int z, @Nullable EntityLivingBase entity, ItemStack stack) {
 		if (subTile != null)
 			subTile.onBlockPlacedBy(world, x, y, z, entity, stack);
 	}

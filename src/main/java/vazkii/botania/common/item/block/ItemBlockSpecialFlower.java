@@ -12,6 +12,7 @@ package vazkii.botania.common.item.block;
 
 import java.util.List;
 
+import api.world.BlockPos;
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
@@ -65,6 +66,32 @@ public class ItemBlockSpecialFlower extends ItemBlockMod implements IRecipeKeyPr
 		}
 
 		return placed;
+	}
+
+	@Override
+	public boolean onItemUsedByBlockDispenser(ItemStack stack, World world, int i, int j, int k, int iFacing) {
+		BlockPos targetPos = new BlockPos(i, j, k, iFacing);
+		int iTargetDirection = this.getTargetFacingPlacedByBlockDispenser(iFacing);
+		int iBlockID = this.getBlockIDToPlace(world, stack.getItemDamage(), iTargetDirection, 0.5f, 0.25f, 0.5f);
+		Block newBlock = Block.blocksList[iBlockID];
+		if (newBlock != null && world.canPlaceEntityOnSide(iBlockID, targetPos.x, targetPos.y, targetPos.z, true, iTargetDirection, null, stack)) {
+			int iBlockMetadata = this.getMetadata(stack.getItemDamage());
+			iBlockMetadata = newBlock.onBlockPlaced(world, targetPos.x, targetPos.y, targetPos.z, iTargetDirection, 0.5f, 0.25f, 0.5f, iBlockMetadata);
+			world.setBlockAndMetadataWithNotify(targetPos.x, targetPos.y, targetPos.z, iBlockID, iBlockMetadata);
+			newBlock.onPostBlockPlaced(world, targetPos.x, targetPos.y, targetPos.z, iBlockMetadata);
+			String type = getType(stack);
+			TileEntity te = world.getTileEntity(targetPos.x, targetPos.y, targetPos.z);
+			if(te instanceof TileSpecialFlower tile) {
+				tile.setSubTile(type);
+				tile.onBlockAdded(world, i, j, k);
+				tile.onBlockPlacedBy(world, i, j, k, null, stack);
+				if(!world.isRemote)
+					world.markBlockForUpdate(i, j, k);
+			}
+			world.playAuxSFX(2236, i, j, k, iBlockID);
+			return true;
+		}
+		return false;
 	}
 
 //	@Override
