@@ -104,6 +104,22 @@ public class BlockSpreader extends BlockModContainer<TileSpreader> implements IW
 	}
 
 	@Override
+	public boolean canRotateOnTurntable(IBlockAccess blockAccess, int i, int j, int k) {
+		return true;
+	}
+
+	@Override
+	protected void onRotatedOnTurntable(World world, int x, int y, int z) {
+		if (world.getTileEntity(x, y, z) instanceof TileSpreader spreader) {
+			spreader.setRotationX(spreader.getRotationX() + 90F);
+			if (spreader.getRotationX() >= 360F) {
+				spreader.setRotationX(spreader.getRotationX() - 360F);
+			}
+			VanillaPacketDispatcher.dispatchTEToNearbyPlayers(world, x, y, z);
+		}
+	}
+
+	@Override
 	public int damageDropped(int par1) {
 		return par1;
 	}
