@@ -166,7 +166,9 @@ public class SubTileRannuncarpus extends SubTileFunctional {
 		super.renderHUD(mc, res);
 
 		BlockData filter = getUnderlyingBlock();
-		ItemStack recieverStack = new ItemStack(Items.getItemFromBlock(filter.block), 1, filter.meta);
+		Item item = Items.getItemFromBlock(filter.block);
+		if(item == null) return;
+		ItemStack recieverStack = new ItemStack(item, 1, filter.meta);
 		int color = getColor();
 
 		GL11.glEnable(GL11.GL_BLEND);
