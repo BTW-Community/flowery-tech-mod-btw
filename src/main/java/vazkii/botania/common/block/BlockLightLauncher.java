@@ -39,7 +39,7 @@ public class BlockLightLauncher extends BlockMod implements ILexiconable {
 		setHardness(2.0F);
 		setStepSound(soundWoodFootstep);
 		setUnlocalizedName(LibBlockNames.LIGHT_LAUNCHER);
-		setBlockBounds(0F, 0F, 0F, 1F, 0.25F, 1F);
+		initBlockBounds(0F, 0F, 0F, 1F, 0.25F, 1F);
 	}
 
 	@Override
@@ -74,9 +74,8 @@ public class BlockLightLauncher extends BlockMod implements ILexiconable {
 		List<TileLightRelay> relays = new ArrayList<>();
 		for(ForgeDirection dir : LibMisc.CARDINAL_DIRECTIONS) {
 			TileEntity tile = world.getTileEntity(x + dir.offsetX, y, z + dir.offsetZ);
-			if(tile instanceof TileLightRelay) {
-				TileLightRelay relay = (TileLightRelay) tile;
-				if(relay.getBinding() != null)
+			if(tile instanceof TileLightRelay relay) {
+                if(relay.getBinding() != null)
 					relays.add(relay);
 			}
 		}
