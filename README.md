@@ -33,3 +33,10 @@ It also currently bundles Baubles Expanded, which is licensed under the CC BY-NC
 - No doubt various balancing issues
   - For example, the water rod can still place water source blocks
 - Piston relay is kind of not functional? I can't tell how it works in the firest place so idk.
+- Gaia guardian head is invisible when placed
+  - Also has no place sound (spooky!)
+- There are no different textures for the unmortared petal apothecary
+- No blocks are localized, so WAILA users will see tile.blockName.name
+- There are missing interaction recipes, i.e., petal apothecary mortaring, ender air bottle, etc.
+- Actual integration is very unfinished
+  - I am but one overworked college student, please be patient ;)
