@@ -242,14 +242,16 @@ public class BlockPistonRelay extends BlockMod implements IWandable, ILexiconabl
 							Block srcBlock = world.getBlock(x, y, z);
 							int srcMeta = world.getBlockMetadata(x, y, z);
 							TileEntity tile = world.getTileEntity(x, y, z);
-							Material mat = srcBlock.blockMaterial;
+							if (srcBlock != null) {
+								Material mat = srcBlock.blockMaterial;
 
-							if(!sticky && tile == null && mat.getMaterialMobility() == 0 && srcBlock.getBlockHardness(world, x, y, z) != -1 && !srcBlock.isAir(world, x, y, z)) {
-								Material destMat = world.getBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ).blockMaterial;
-								if(world.isAirBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ) || destMat.isReplaceable()) {
-									world.setBlockToAir(x, y, z);
-									world.setBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ, srcBlock, srcMeta, 1 | 2);
-									mappedPositions.put(s, getCoordsAsString(world.provider.dimensionId, x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ));
+								if (!sticky && tile == null && mat.getMaterialMobility() == 0 && srcBlock.getBlockHardness(world, x, y, z) != -1 && !srcBlock.isAir(world, x, y, z)) {
+									Block destBlock = world.getBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ);
+									if (destBlock == null || world.isAirBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ) || destBlock.blockMaterial.isReplaceable()) {
+										world.setBlockToAir(x, y, z);
+										world.setBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ, srcBlock, srcMeta, 1 | 2);
+										mappedPositions.put(s, getCoordsAsString(world.provider.dimensionId, x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ));
+									}
 								}
 							}
 
