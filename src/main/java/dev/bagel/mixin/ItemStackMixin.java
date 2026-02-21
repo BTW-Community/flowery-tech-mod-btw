@@ -1,5 +1,6 @@
 package dev.bagel.mixin;
 
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.src.*;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
@@ -48,6 +49,7 @@ public abstract class ItemStackMixin {
 
     @Inject(method = "getTooltip", at = @At("RETURN"), cancellable = true)
     private void btb$testGetNbt(EntityPlayer par1EntityPlayer, boolean par2, CallbackInfoReturnable<List> cir){
+        if (!FabricLoader.getInstance().isDevelopmentEnvironment()) return;
         ItemStack stack = (ItemStack) (Object) this;
         if (stack.hasTagCompound()) {
             var tooltipList = cir.getReturnValue();
