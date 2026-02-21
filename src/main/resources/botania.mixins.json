@@ -16,6 +16,7 @@
     "SoundManagerMixin",
     "botania.BlockPistonBaseMixin",
     "botania.GOGWorldProviderMixin",
+    "botania.InventoryUtilsMixin",
     "debug.AchievementDataAccessor",
     "event.BlockMixin",
     "event.EntityItemMixin",

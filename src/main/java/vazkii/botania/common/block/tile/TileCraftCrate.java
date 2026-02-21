@@ -130,9 +130,19 @@ public class TileCraftCrate extends TileOpenCrate {
 
 				for(int i = 0; i < 9; i++) {
 					ItemStack stack = getStackInSlot(i);
-					if(stack == null)
+					if(stack == null || stack.getItem() == null)
 						continue;
-
+					if(stack.getItem().isDamagedInCrafting()) {
+						if (stack.getItemDamage() >= stack.getMaxDamage() - 1) {
+							stack.setStackSize(stack.getMaxStackSize() - 1);
+							continue;
+						}
+						stack.damageItem(1, null);
+						continue;
+					}
+					else if(!stack.getItem().isConsumedInCrafting()) {
+						continue;
+					}
 					ItemStack container = stack.getItem().getContainerItem(stack)/*new ItemStack()*/;
 					setInventorySlotContents(i, container);
 				}
