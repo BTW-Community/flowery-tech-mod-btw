@@ -88,7 +88,7 @@ public abstract class ItemExtensionMixin implements ItemExtensions {
 
     @Override
     public double getDurabilityForDisplay(ItemStack stack) {
-        return (double) stack.getItemDamageForDisplay() / (double)stack.getMaxDamage();
+        return (double) stack.getItemDamageForDisplay() / (double) stack.getMaxDamage();
     }
 
     @Override

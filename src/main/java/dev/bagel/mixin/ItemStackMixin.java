@@ -2,6 +2,8 @@ package dev.bagel.mixin;
 
 import net.minecraft.src.*;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -12,7 +14,10 @@ import java.util.Collection;
 import java.util.List;
 
 @Mixin(ItemStack.class)
-public class ItemStackMixin {
+public abstract class ItemStackMixin {
+
+    @Shadow
+    public abstract Item getItem();
 
     @Unique
     private static String get(NBTBase nbt, int indentLevel) {
@@ -54,5 +59,14 @@ public class ItemStackMixin {
             });
             cir.setReturnValue(tooltipList);
         }
+    }
+
+    /**
+     * @author TheWinABagel
+     * @reason There is no way to implement this without overwriting, might as well make it explicitly incompatible with other impls instead of silently failing.
+     */
+    @Overwrite
+    public int getItemDamageForDisplay() {
+        return this.getItem().getDisplayDamage((ItemStack) (Object) this);
     }
 }

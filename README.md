@@ -28,7 +28,6 @@ It also currently bundles Baubles Expanded, which is licensed under the CC BY-NC
 ## Known issues
 - Agricarnation does :sparkles: nothing :sparkles:
 - Pick block doesn't work on flowers
-- Mana items (e.g., tablet) don't have the proper durability bar
 - Cocoon of caprice is invisible in the inventory
   - This issue has been baffling me for months. y u no render :(
 - No doubt various balancing issues

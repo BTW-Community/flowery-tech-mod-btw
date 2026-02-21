@@ -139,7 +139,7 @@ public interface ItemExtensions {
      * @return 1.0 for 100% 0 for 0%
      */
     public default double getDurabilityForDisplay(ItemStack stack) {
-        return (double) stack.getItemDamageForDisplay() / (double) stack.getMaxDamage();
+        return 0;
     }
 
     /**
@@ -149,7 +149,7 @@ public interface ItemExtensions {
      * @param itemStack The current ItemStack
      * @param world     The world the entity is in
      * @return The normal lifespan in ticks.
-     *///todo get entity lifespan
+     */
     default public int getEntityLifespan(ItemStack itemStack, World world) {
         return 6000;
     }

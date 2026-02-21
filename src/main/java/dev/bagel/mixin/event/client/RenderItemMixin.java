@@ -2,6 +2,7 @@ package dev.bagel.mixin.event.client;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
+import com.llamalad7.mixinextras.sugar.ref.LocalIntRef;
 import net.minecraft.src.*;
 import net.minecraftforge.client.ForgeHooksClient;
 import org.lwjgl.opengl.GL11;
@@ -70,5 +71,17 @@ public abstract class RenderItemMixin extends Render {
             at = @At(value = "CONSTANT", args = "intValue=1"))
     private int forge$multipleRenderPasses2(int constant, @Local(argsOnly = true) ItemStack stack) {
         return stack.getItem().getRenderPasses(stack.getItemDamage()) - 1;
+    }
+
+    @Redirect(method = "renderItemOverlayIntoGUI(Lnet/minecraft/src/FontRenderer;Lnet/minecraft/src/TextureManager;Lnet/minecraft/src/ItemStack;IILjava/lang/String;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/ItemStack;isItemDamaged()Z"))
+    private boolean forge$renderItemOverlayIntoGUI(ItemStack stack) {
+        return stack.getItem().showDurabilityBar(stack);
+    }
+
+    @Inject(method = "renderItemOverlayIntoGUI(Lnet/minecraft/src/FontRenderer;Lnet/minecraft/src/TextureManager;Lnet/minecraft/src/ItemStack;IILjava/lang/String;)V", at = @At(value = "INVOKE", remap = false, target = "Lorg/lwjgl/opengl/GL11;glDisable(I)V", ordinal = 7))
+    private void forge$renderItemOverlayIntoGUI(FontRenderer par1FontRenderer, TextureManager par2TextureManager, ItemStack par3ItemStack, int par4, int par5, String par6Str, CallbackInfo ci, @Local(name = "var12") LocalIntRef var12, @Local(name = "var8") LocalIntRef var8) {
+        double health = par3ItemStack.getItem().getDurabilityForDisplay(par3ItemStack);
+        var12.set((int) Math.round(13.0D - health * 13.0D));
+        var8.set((int) Math.round(255.0D - health * 255.0D));
     }
 }
