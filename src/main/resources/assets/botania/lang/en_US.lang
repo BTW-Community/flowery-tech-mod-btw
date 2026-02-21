@@ -3874,3 +3874,26 @@ botania.page.preventingDecay0=no
 # -- EMI
 emi.category.botania.petal_apothecary=Petal Apothecary
 emi.category.botania.mana_pool=Mana Pool
+emi.category.botania.pure_daisy=Pure Daisy
+emi.category.botania.runic_altar=Runic Altar
+emi.category.botania.elven_trade=Petal Apothecary
+emi.category.botania.brewing=Botanical Brewing
+emi.category.botania.lexica_botania=Lexica Botania Entry
+emi.category.botania.terrestrial_agglomeration=Terrestrial Agglomeration
+
+# -- Tags
+tag.botania.ancient_will_compatible=Ancient Will Compatible Armor
+tag.botania.ancient_wills=Ancient Wills
+tag.botania.dye_powders=Dye Powders
+tag.botania.mana_pearl_and_diamond=Mana Pearl/Diamond
+tag.botania.petals=Mystical Petals
+
+tag.botania.generating_flora=Generating Flora
+tag.botania.passive_generating_flora=Passive Generating Flora
+tag.botania.functional_flora=Functional Flora
+tag.botania.petite_flora=Petite Flora
+tag.botania.motifs=Non-functional Motifs
+tag.botania.miscellaneous_flora=Miscellaneous Flora
+tag.botania.floating_flora=Miscellaneous Flora
+tag.botania.mystical_flowers=Mystical Flowers
+tag.botania.glimmering_mystical_flowers=Glimmering Mystical Flowers

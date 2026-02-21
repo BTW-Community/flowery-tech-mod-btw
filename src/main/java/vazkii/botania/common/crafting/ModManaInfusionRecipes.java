@@ -48,9 +48,9 @@ public final class ModManaInfusionRecipes {
 	public static void init() {
 		if (!ConfigHandler.enableDefaultRecipes) return;
 
-//		manasteelRecipes = new ArrayList<>();
-//		manasteelRecipes.add(BotaniaAPI.registerManaInfusionRecipe(LibOreDict.MANA_STEEL, new ItemStack(Item.ingotIron), 3000));
-//		manasteelRecipes.add(BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModBlocks.storage, 1, 0), new ItemStack(Block.blockIron), 27000));
+		manasteelRecipes = new ArrayList<>();
+		manasteelRecipes.add(BotaniaAPI.registerManaInfusionRecipe(LibOreDict.MANA_STEEL, new ItemStack(Item.ingotIron), 3000));
+		manasteelRecipes.add(BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModBlocks.storage, 1, 0), new ItemStack(Block.blockIron), 27000));
 
 		manaPearlRecipes = BotaniaAPI.registerManaInfusionRecipe(LibOreDict.MANA_PEARL, new ItemStack(Item.enderPearl), 6000);
 		//todo potential use block to craft 9?

@@ -17,6 +17,7 @@ import btw.block.BTWBlocks;
 import btw.block.blocks.AestheticOpaqueEarthBlock;
 import btw.item.BTWItems;
 import api.item.tag.TagInstance;
+import btw.item.BTWTags;
 import net.minecraft.src.Block;
 import net.minecraft.src.Block;
 import net.minecraft.src.Item;
@@ -67,9 +68,9 @@ public final class ModRuneRecipes {
 //		for(int i = 0; i < 16; i++)
 			recipesAirRune.add(BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 2, 3), costTier1, LibOreDict.MANA_POWDER, LibOreDict.MANA_STEEL, new ItemStack(BTWItems.fabric, 1), new ItemStack(Item.feather), new ItemStack(Item.silk)));
 
-		recipeSpringRune = BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 1, 4), costTier2, LibOreDict.RUNE[0], LibOreDict.RUNE[1], TagInstance.of(ModCraftingRecipes.saplings), TagInstance.of(ModCraftingRecipes.saplings), TagInstance.of(ModCraftingRecipes.saplings), new ItemStack(Item.wheat));
+		recipeSpringRune = BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 1, 4), costTier2, LibOreDict.RUNE[0], LibOreDict.RUNE[1], TagInstance.of(BTWTags.saplings), TagInstance.of(BTWTags.saplings), TagInstance.of(BTWTags.saplings), new ItemStack(Item.wheat));
 		recipeSummerRune = BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 1, 5), costTier2, LibOreDict.RUNE[2], LibOreDict.RUNE[3], new ItemStack(Block.sand), new ItemStack(Block.sand), new ItemStack(Item.slimeBall), new ItemStack(Item.melon));
-		recipeAutumnRune = BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 1, 6), costTier2, LibOreDict.RUNE[1], LibOreDict.RUNE[3], TagInstance.of(ModCraftingRecipes.leaves), TagInstance.of(ModCraftingRecipes.leaves), TagInstance.of(ModCraftingRecipes.leaves), new ItemStack(Item.spiderEye));
+		recipeAutumnRune = BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 1, 6), costTier2, LibOreDict.RUNE[1], LibOreDict.RUNE[3], TagInstance.of(BTWTags.leaves), TagInstance.of(BTWTags.leaves), TagInstance.of(BTWTags.leaves), new ItemStack(Item.spiderEye));
 
 		recipesWinterRune = new ArrayList<>();
 		for(int i = 0; i < 16; i++)

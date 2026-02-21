@@ -25,7 +25,7 @@ public final class ModPureDaisyRecipes {
 	public static void init() {
 		if (!ConfigHandler.enableDefaultRecipes) return;
 
-		BotaniaAPI.registerPureDaisyRecipe(ModCraftingRecipes.stones, ModBlocks.livingrock, 0);
+		BotaniaAPI.registerPureDaisyRecipe(BTWTags.stones, ModBlocks.livingrock, 0);
 		BotaniaAPI.registerPureDaisyRecipe(BTWTags.logs, ModBlocks.livingwood, 0);
 
 		BotaniaAPI.registerPureDaisyRecipe(Block.netherrack, Block.cobblestone, 0);

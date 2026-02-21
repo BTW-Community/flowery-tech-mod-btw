@@ -80,20 +80,12 @@ public final class LibOreDict {
 			new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 0), new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 1), new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 2), new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 3),
 			new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 4), new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 5), new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 6), new ItemStack(DOUBLE_FLOWER_ITEM_2, 1, 7),
 	};
-	public static final Tag PETALS = Tag.of(loc("petal")).addUntilDamage(15, ModItems.petal);
 
 	public static final ItemStack[] PETAL = new ItemStack[] {
 			new ItemStack(ModItems.petal, 1, 0), new ItemStack(ModItems.petal, 1, 1), new ItemStack(ModItems.petal, 1, 2), new ItemStack(ModItems.petal, 1, 3),
 			new ItemStack(ModItems.petal, 1, 4), new ItemStack(ModItems.petal, 1, 5), new ItemStack(ModItems.petal, 1, 6), new ItemStack(ModItems.petal, 1, 7),
 			new ItemStack(ModItems.petal, 1, 8), new ItemStack(ModItems.petal, 1, 9), new ItemStack(ModItems.petal, 1, 10), new ItemStack(ModItems.petal, 1, 11),
 			new ItemStack(ModItems.petal, 1, 12), new ItemStack(ModItems.petal, 1, 13), new ItemStack(ModItems.petal, 1, 14), new ItemStack(ModItems.petal, 1, 15)
-	};
-
-	public static final String[] DYE = new String[] {
-		"dyeWhite", "dyeOrange", "dyeMagenta", "dyeLightBlue",
-		"dyeYellow", "dyeLime", "dyePink", "dyeGray",
-		"dyeLightGray", "dyeCyan", "dyePurple", "dyeBlue",
-		"dyeBrown", "dyeGreen", "dyeRed", "dyeBlack"
 	};
 
 	public static final ItemStack[] RUNE = new ItemStack[] {
@@ -115,14 +107,12 @@ public final class LibOreDict {
 			new ItemStack(ModItems.quartz, 1, 2), new ItemStack(ModItems.rune, 1, 3),
 			new ItemStack(ModItems.quartz, 1, 4), new ItemStack(ModItems.quartz, 1, 5),
 			new ItemStack(ModItems.quartz, 1, 6), new ItemStack(ModItems.quartz, 1, 7)
-//		"quartzDark", "quartzMana", "quartzBlaze",
-//		"quartzLavender", "quartzRed", "quartzElven", "quartzSunny"
 	};
 
 	public static final Tag MANA_DIAMOND_AND_PEARL = Tag.of(loc("mana_pearl_and_diamond"), MANA_PEARL, MANA_DIAMOND);
 	public static final Tag DYE_POWDERS = Tag.of(loc("dye_powders")).addUntilDamage(15, ModItems.dye);
+	public static final Tag PETALS = Tag.of(loc("petals")).addUntilDamage(15, ModItems.petal);
 
-
-	public static final Tag ANCIENT_WILL_CONTAINERS = Tag.of(loc("ancient_will_compatable")).add(ModItems.terrasteelHelm);
+	public static final Tag ANCIENT_WILL_CONTAINERS = Tag.of(loc("ancient_will_compatible")).add(ModItems.terrasteelHelm);
 	public static final Tag ANCIENT_WILLS = Tag.of(loc("ancient_wills")).addUntilDamage(5, ModItems.ancientWill);
 }
