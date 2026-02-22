@@ -38,19 +38,19 @@ public class SubTileJadedAmaranthus extends SubTileFunctional {
 			int z = supertile.zCoord - RANGE + supertile.getWorldObj().rand.nextInt(RANGE * 2 + 1);
 
 			for(int i = 0; i < RANGE * 2; i++) {
-				Block blockAbove = supertile.getWorldObj().getBlock(x, y + 1, z);
-				if((supertile.getWorldObj().isAirBlock(x, y + 1, z) || blockAbove == null || (blockAbove.isReplaceableVegetation(supertile.getWorldObj(), x, y + 1, z)) && blockAbove.blockMaterial != Material.water && ModBlocks.flower.canPlaceBlockAt(supertile.getWorldObj(), x, y + 1, z))) {
+				Block blockAbove = supertile.getWorldObj().getBlock(x, y, z);
+				if((supertile.getWorldObj().isAirBlock(x, y, z) || blockAbove == null || (blockAbove.isReplaceableVegetation(supertile.getWorldObj(), x, y, z)) && blockAbove.blockMaterial != Material.water && ModBlocks.flower.canPlaceBlockAt(supertile.getWorldObj(), x, y, z))) {
 					int color = supertile.getWorldObj().rand.nextInt(16);
-					if(ModBlocks.flower.canBlockStay(supertile.getWorldObj(), x, y + 1, z)) {
+					if(ModBlocks.flower.canBlockStay(supertile.getWorldObj(), x, y, z)) {
 						if(ConfigHandler.blockBreakParticles)
-							supertile.getWorldObj().playAuxSFX(2001, x, y + 1, z, BlockExtensions.getIdFromBlock(ModBlocks.flower) + (color << 12));
-						supertile.getWorldObj().setBlock(x, y + 1, z, ModBlocks.flower, color, 1 | 2);
+							supertile.getWorldObj().playAuxSFX(2001, x, y, z, BlockExtensions.getIdFromBlock(ModBlocks.flower) + (color << 12));
+						supertile.getWorldObj().setBlock(x, y, z, ModBlocks.flower, color, 1 | 2);
+
+						mana -= COST;
+						sync();
+
+						break;
 					}
-
-					mana -= COST;
-					sync();
-
-					break;
 				}
 
 				y--;
