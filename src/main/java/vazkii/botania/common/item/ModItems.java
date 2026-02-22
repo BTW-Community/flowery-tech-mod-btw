@@ -17,6 +17,8 @@ import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import vazkii.botania.api.BotaniaAPI;
+import vazkii.botania.client.lib.LibResources;
+import vazkii.botania.common.core.BotaniaCreativeTab;
 import vazkii.botania.common.item.brew.ItemBrewFlask;
 import vazkii.botania.common.item.brew.ItemBrewVial;
 import vazkii.botania.common.item.brew.ItemIncenseStick;
@@ -272,7 +274,10 @@ public final class ModItems {
 	public static Item baubleBox;
 
 	public static void initTab() {
-		botaniaTab = FabricItemGroupBuilder.buildWithItem(new Identifier("botania", "item"), () -> lexicon);
+		botaniaTab = FabricItemGroupBuilder.create(new Identifier("botania", "item")).appendItems((list, tab) -> BotaniaCreativeTab.INSTANCE.displayAllReleventItems(list, tab)).iconWithItem(() -> lexicon).build();
+		botaniaTab.setBackgroundImageName(LibResources.GUI_CREATIVE);
+		botaniaTab.setNoTitle();
+
 	}
 
 	public static void init() {
