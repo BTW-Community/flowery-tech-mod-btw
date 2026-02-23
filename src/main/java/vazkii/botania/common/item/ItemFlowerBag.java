@@ -75,12 +75,16 @@ public class ItemFlowerBag extends ItemMod {
 						}
 					}
 
-					if(didChange)
-						setStacks(invStack, bagInv);
+					if(didChange) {
+                        event.entityPlayer.onItemPickup(event.item, 0);
+                        setStacks(invStack, bagInv);
+                    }
 				}
 
-				if(stack.stackSize == 0)
-					return;
+				if(stack.stackSize == 0) {
+                    event.item.setDead();
+                    return;
+                }
 			}
 		}
 	}

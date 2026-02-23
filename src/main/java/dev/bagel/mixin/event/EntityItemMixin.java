@@ -1,6 +1,7 @@
 package dev.bagel.mixin.event;
 
-import com.llamalad7.mixinextras.sugar.Local;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import cpw.mods.fml.common.eventhandler.Event;
 import net.minecraft.src.*;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
@@ -50,12 +51,13 @@ public abstract class EntityItemMixin extends Entity {
         tagCompound.setInteger("Lifespan", lifespan);
     }
 
-    @Inject(method = "onCollideWithPlayer", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/InventoryPlayer;addItemStackToInventory(Lnet/minecraft/src/ItemStack;)Z"), cancellable = true)
-    private void onCollideWithPlayer(EntityPlayer player, CallbackInfo ci) {
-        var event = new EntityItemPickupEvent(player, (EntityItem) (Object) this);
+    @WrapOperation(method = "onCollideWithPlayer", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/InventoryPlayer;addItemStackToInventory(Lnet/minecraft/src/ItemStack;)Z"))
+    private boolean onCollideWithPlayer(InventoryPlayer instance, ItemStack var2, Operation<Boolean> original) {
+        var event = new EntityItemPickupEvent(instance.player, (EntityItem) (Object) this);
         ((ItemFlowerBag) ModItems.flowerBag).onPickupItem(event);
         if (event.isCanceled() || event.getResult() == Event.Result.DENY) {
-            ci.cancel();
+            return false;
         }
+        return original.call(instance, var2);
     }
 }
