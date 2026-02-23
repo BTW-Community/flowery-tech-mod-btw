@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import btw.block.tileentity.beacon.BTWBeaconEffects;
+import btw.item.BTWItems;
 import net.minecraft.src.*;
 import net.minecraft.src.Item;
 import vazkii.botania.api.internal.IManaBurst;
@@ -136,15 +138,14 @@ public class BlockForestDrum extends BlockMod implements IManaTrigger, ILexicona
 				if(sheared > 4)
 					break;
 				//todofix shear implementation
-				List<ItemStack> stacks = null;
+				List<ItemStack> stacks = drops((EntitySheep) entity);
 //				List<ItemStack> stacks = ((EntitySheep) entity).onSheared(stack, world, (int) entity.posX, (int) entity.posY, (int) entity.posZ, 0);
-				if(stacks != null)
-					for(ItemStack wool : stacks) {
-						EntityItem ent = entity.entityDropItem(wool, 1.0F);
-						ent.motionY += world.rand.nextFloat() * 0.05F;
-						ent.motionX += (world.rand.nextFloat() - world.rand.nextFloat()) * 0.1F;
-						ent.motionZ += (world.rand.nextFloat() - world.rand.nextFloat()) * 0.1F;
-					}
+                for(ItemStack wool : stacks) {
+                    EntityItem ent = entity.entityDropItem(wool, 1.0F);
+                    ent.motionY += world.rand.nextFloat() * 0.05F;
+                    ent.motionX += (world.rand.nextFloat() - world.rand.nextFloat()) * 0.1F;
+                    ent.motionZ += (world.rand.nextFloat() - world.rand.nextFloat()) * 0.1F;
+                }
 				++sheared;
 			}
 		}
@@ -154,6 +155,20 @@ public class BlockForestDrum extends BlockMod implements IManaTrigger, ILexicona
 				world.playSoundEffect(x, y, z, "note.bd", 1F, 1F);
 		else world.spawnParticle("note", x + 0.5, y + 1.2, z + 0.5D, 1.0 / 24.0, 0, 0);
 
+	}
+
+	private List<ItemStack> drops(EntitySheep sheep) {
+		ArrayList<ItemStack> drops = new ArrayList<>();
+		if (!sheep.getSheared() && !sheep.isChild()) {
+			sheep.setSheared(true);
+			int iLocI = MathHelper.floor_double(sheep.posX);
+			int iLocJ = MathHelper.floor_double(sheep.posY);
+			int iLocK = MathHelper.floor_double(sheep.posZ);
+			int lootingModifier = sheep.worldObj.getAmbientBeaconEffectAtLocation(BTWBeaconEffects.LOOTING_EFFECT.EFFECT_NAME, iLocI, iLocJ, iLocK);
+			ItemStack woolStack = new ItemStack(BTWItems.wool.itemID, 2 + lootingModifier, BlockColored.getDyeFromBlock(sheep.getFleeceColor()));
+			drops.add(woolStack);
+		}
+		return drops;
 	}
 
 	@Override
