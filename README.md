@@ -26,13 +26,23 @@ This project is licenced under the Botania license (see [here](https://botaniamo
 It also currently bundles Baubles Expanded, which is licensed under the CC BY-NC-SA 3.0 License ([link](http://creativecommons.org/licenses/by-nc-sa/3.0/)). There were changes made, and it is not endorsed by Azanor (the copyright holder of Baubles).
 
 ## Known issues
-- Agricarnation does :sparkles: nothing :sparkles:
-- Pick block doesn't work on flowers
-- Cocoon of caprice is invisible in the inventory
-  - This issue has been baffling me for months. y u no render :(
+- Some things don't do anything and are fully non-functional (for now):
+  - Agricarnation
+  - Exoflame
+  - Pollidesiac
+  - Vinculotus
+- Some things only kinda work:
+  - Rod of the shifting Crust
+    - It only works on grass blocks if there are flowers on top of it, for example
+- Some things work fine but are buggy about it:
+  - The Flower Pouch
+    - Picks up items on the server side but doesn't delete them on the client side
+  - Cocoon of caprice is invisible in the inventory
+    - This issue has been baffling me for months. y u no render :(
+  - Piston relay is kind of not functional? Quite franky, I can't tell how it works in the first place, so I don't quite know.
+  - Crafted flowers seem to not stack when they feel like it. 
 - No doubt various balancing issues
   - For example, the water rod can still place water source blocks
-- Piston relay is kind of not functional? I can't tell how it works in the firest place so idk.
 - Gaia guardian head is invisible when placed
   - Also has no place sound (spooky!)
 - There are no different textures for the unmortared petal apothecary
