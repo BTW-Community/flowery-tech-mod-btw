@@ -381,7 +381,7 @@ public final class ModCraftingRecipes {
 					"WWW", "GP ", "WWW",
 					'W', LibOreDict.LIVING_WOOD,
 					'P', LibOreDict.PETALS,
-					'G', Botania.gardenOfGlassLoaded ? LibOreDict.LIVING_WOOD : Item.ingotGold);
+					'G', Botania.gardenOfGlassLoaded ? LibOreDict.LIVING_WOOD : Item.goldNugget);
 		recipesSpreader = BotaniaAPI.getLatestAddedRecipes(1);
 
 		// Mana Lens Recipe
