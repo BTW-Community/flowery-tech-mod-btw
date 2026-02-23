@@ -37,15 +37,12 @@ public class PacketHandler implements CustomPacketHandler {
         return new Packet250CustomPayload("botania|BAUB", out.toByteArray());
     }
 
-    //todobaubles HIGH PRIO PACKET HANDLING
     public void sendToAll(IMessage message) {
         try {
             Packet250CustomPayload packet = makePackets(message);
             if (MinecraftServer.getIsServer()) {
                 MinecraftServer.getServer().getConfigurationManager().sendPacketToAllPlayers(packet);
-                System.out.println("sent");
             }
-            System.out.println("sending all baubles to player");
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -58,12 +55,9 @@ public class PacketHandler implements CustomPacketHandler {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-        System.out.println("sending baubles to specific player");
     }
 
     public void sendToServer(IMessage message) {
-        System.out.println("sending message to server");
         try {
             Minecraft.getMinecraft().playerController.getNetClientHandler().addToSendQueue(makePackets(message));
         } catch (IOException e) {
