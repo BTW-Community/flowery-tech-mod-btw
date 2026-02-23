@@ -129,8 +129,8 @@ public class InventoryHelper {
 		int itemSizeCounter = item.stackSize;
 		int[] availableSlots;
 
-		if(inventory instanceof ISidedInventory)
-			availableSlots = ((ISidedInventory) inventory).getSlotsForFace(side.ordinal());
+		if(inventory instanceof ISidedInventory sidedInv)
+			availableSlots = sidedInv.getSlotsForFace(side.ordinal());
 		else {
 			availableSlots = buildSlotsForLinearInventory(inventory);
 		}

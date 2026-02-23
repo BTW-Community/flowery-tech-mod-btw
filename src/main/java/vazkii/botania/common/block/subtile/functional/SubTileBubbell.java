@@ -48,7 +48,7 @@ public class SubTileBubbell extends SubTileFunctional {
 					for(int k = -range; k < range + 1; k++)
 						if(MathHelper.pointDistanceSpace(i, j, k, 0, 0, 0) < range) {
 							Block block = supertile.getWorldObj().getBlock(supertile.xCoord + i, supertile.yCoord + j, supertile.zCoord + k);
-							if(block.blockMaterial == Material.water) {
+							if(block != null && block.blockMaterial == Material.water) {
 								supertile.getWorldObj().setBlock(supertile.xCoord + i, supertile.yCoord + j, supertile.zCoord + k, ModBlocks.fakeAir, 0, 2);
 								TileFakeAir air = (TileFakeAir) supertile.getWorldObj().getTileEntity(supertile.xCoord + i, supertile.yCoord + j, supertile.zCoord + k);
 								air.setFlower(supertile);

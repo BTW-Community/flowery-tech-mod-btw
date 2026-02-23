@@ -140,7 +140,8 @@ public class ItemGrassHorn extends ItemMod {
 			List<ItemStack> items = new ArrayList<>();
 			Block block = world.getBlock(currCoords.posX, currCoords.posY, currCoords.posZ);
 			int meta = world.getBlockMetadata(currCoords.posX, currCoords.posY, currCoords.posZ);
-			items.addAll(block.getDrops(world, currCoords.posX, currCoords.posY, currCoords.posZ, meta, 0));
+			if (block != null)
+				items.addAll(block.getDrops(world, currCoords.posX, currCoords.posY, currCoords.posZ, meta, 0));
 
 			if(block instanceof IHornHarvestable && ((IHornHarvestable) block).hasSpecialHornHarvest(world, currCoords.posX, currCoords.posY, currCoords.posZ, stack, type))
 				((IHornHarvestable) block).harvestByHorn(world, currCoords.posX, currCoords.posY, currCoords.posZ, stack, type);

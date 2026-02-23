@@ -98,7 +98,7 @@ public class SubTileRannuncarpus extends SubTileFunctional {
 									int zp = z + l;
 									Block blockAbove = supertile.getWorldObj().getBlock(xp, yp + 1, zp);
 
-									if(filter.equals(supertile.getWorldObj(), xp, yp, zp) && (blockAbove.isAir(supertile.getWorldObj(), xp, yp + 1, zp) || blockAbove.isReplaceableVegetation(supertile.getWorldObj(), xp, yp + 1, zp)))
+									if(filter.equals(supertile.getWorldObj(), xp, yp, zp) && (blockAbove == null || blockAbove.isAir(supertile.getWorldObj(), xp, yp + 1, zp) || blockAbove.isReplaceableVegetation(supertile.getWorldObj(), xp, yp + 1, zp)))
 										validPositions.add(new ChunkCoordinates(xp, yp + 1, zp));
 								}
 
