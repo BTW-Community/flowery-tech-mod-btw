@@ -32,7 +32,6 @@ public class BaublesConfig {
     static final String categoryClient = "client";
     static final String categoryOverride = "override";
 
-    //todobaubles move to new config system
     public static void loadConfig(AddonConfig config) {
 
         ArrayList<String> currentlyRegisteredTypes = BaubleExpandedSlots.getCurrentlyRegisteredTypes();

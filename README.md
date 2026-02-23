@@ -1,5 +1,9 @@
 # Botania: Child of Flowers
 A fork of Botania, for Better than Wolves: Community Edition.
+### !!!!!!!!!!!!!PLEASE READ!!!!!!!!!!!!!!!
+### VAZKII AND THE CURRENT BOTANIA MAINTAINERS HAVE *NOTHING* TO DO WITH THIS PROJECT. THEY DO NOT ENDORSE IT IN ANY WAY. 
+### DO NOT ASK THEM ABOUT ISSUES WITH THIS PROJECT. Really. Please.
+### !!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 ## Table of Contents
 - [Changes](#changes)
@@ -35,8 +39,6 @@ It also currently bundles Baubles Expanded, which is licensed under the CC BY-NC
   - Rod of the shifting Crust
     - It only works on grass blocks if there are flowers on top of it, for example
 - Some things work fine but are buggy about it:
-  - The Flower Pouch
-    - Picks up items on the server side but doesn't delete them on the client side
   - Cocoon of caprice is invisible in the inventory
     - This issue has been baffling me for months. y u no render :(
   - Piston relay is kind of not functional? Quite franky, I can't tell how it works in the first place, so I don't quite know.

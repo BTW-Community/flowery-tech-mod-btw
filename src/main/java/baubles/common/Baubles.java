@@ -18,7 +18,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
-//todobaubles verify entrypoint
+
 public class Baubles implements GuiHandlerHolder {
 
     public static final String MODID = "Baubles";
