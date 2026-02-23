@@ -88,7 +88,7 @@ public class SubTileRannuncarpus extends SubTileFunctional {
 
 				ItemStack stack = item.getEntityItem();
 				Item stackItem = stack.getItem();
-				if(stackItem instanceof ItemBlock || stackItem instanceof ItemReed || stackItem instanceof ItemRedstone || stackItem instanceof IFlowerPlaceable) {
+				if(stackItem instanceof PlaceAsBlockItem || stackItem instanceof ItemReed || stackItem instanceof ItemRedstone || stackItem instanceof IFlowerPlaceable) {
 					if(!scanned) {
 						for(int i = -rangePlace; i < rangePlace + 1; i++)
 							for(int j = -rangePlaceY; j < rangePlaceY + 1; j++)
