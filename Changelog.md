@@ -6,7 +6,7 @@
 - Make the water rod place flowing water outside the end
 - Reduce the price of mana spreaders to a gold nugget instead of an ingot
 - Allow the Drum of Gathering to properly shear sheep
-- Add agricarnation check for 
+- Add agricarnation check for special flowers (i.e., hopperhock)
 
 
 ## 0.0.2
