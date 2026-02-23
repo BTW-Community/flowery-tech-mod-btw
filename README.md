@@ -1,5 +1,9 @@
 # Botania: Child of Flowers
 A fork of Botania, for Better than Wolves: Community Edition.
+### !!!!!!!!!!!!!PLEASE READ!!!!!!!!!!!!!!!
+### VAZKII AND THE CURRENT BOTANIA MAINTAINERS HAVE *NOTHING* TO DO WITH THIS PROJECT. 
+### DO NOT ASK THEM ABOUT ISSUES WITH THIS PROJECT. Really. Please.
+### !!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 ## Table of Contents
 - [Changes](#changes)
