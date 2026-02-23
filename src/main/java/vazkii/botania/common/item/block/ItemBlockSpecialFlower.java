@@ -57,6 +57,7 @@ public class ItemBlockSpecialFlower extends ItemBlockMod implements IRecipeKeyPr
 			String type = getType(stack);
 			TileEntity te = world.getTileEntity(x, y, z);
 			if(te instanceof TileSpecialFlower tile) {
+				if (!tile.subTileName.isEmpty() && !tile.subTileName.equals(type)) return false;
 				tile.setSubTile(type);
 				tile.onBlockAdded(world, x, y, z);
 				tile.onBlockPlacedBy(world, x, y, z, player, stack);
