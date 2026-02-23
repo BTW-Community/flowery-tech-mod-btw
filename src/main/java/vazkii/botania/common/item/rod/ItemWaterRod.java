@@ -1,5 +1,6 @@
 package vazkii.botania.common.item.rod;
 
+import api.util.MiscUtils;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
@@ -22,17 +23,21 @@ public class ItemWaterRod extends ItemMod implements IManaUsingItem {
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
-		if(ManaItemHandler.requestManaExactForTool(par1ItemStack, par2EntityPlayer, COST, false) && !par3World.provider.isHellWorld) {
-			ForgeDirection dir = ForgeDirection.getOrientation(par7);
+	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World world, int x, int y, int z, int facing, float clickX, float clickY, float clickZ) {
+		if(ManaItemHandler.requestManaExactForTool(par1ItemStack, par2EntityPlayer, COST, false) && !world.provider.isHellWorld) {
+			ForgeDirection dir = ForgeDirection.getOrientation(facing);
 
 			ItemStack stackToPlace = new ItemStack(Block.waterMoving);
-			stackToPlace.tryPlaceItemIntoWorld(par2EntityPlayer, par3World, par4, par5, par6, par7, par8, par9, par10);
+			stackToPlace.tryPlaceItemIntoWorld(par2EntityPlayer, world, x, y, z, facing, clickX, clickY, clickZ);
 
 			if(stackToPlace.stackSize == 0) {
+				//If not in the end, set it to be a flowing block
+				if (world.provider.dimensionId != 1) {
+					MiscUtils.placeNonPersistentWater(world, x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ);
+				}
 				ManaItemHandler.requestManaExactForTool(par1ItemStack, par2EntityPlayer, COST, true);
 				for(int i = 0; i < 6; i++)
-					Botania.getProxy().sparkleFX(par3World, par4 + dir.offsetX + Math.random(), par5 + dir.offsetY + Math.random(), par6 + dir.offsetZ + Math.random(), 0.2F, 0.2F, 1F, 1F, 5);
+					Botania.getProxy().sparkleFX(world, i + dir.offsetX + Math.random(), y + dir.offsetY + Math.random(), z + dir.offsetZ + Math.random(), 0.2F, 0.2F, 1F, 1F, 5);
 			}
 		}
 		return true;
