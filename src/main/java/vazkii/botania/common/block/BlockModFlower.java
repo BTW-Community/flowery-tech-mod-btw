@@ -164,8 +164,6 @@ public class BlockModFlower extends BlockFlower implements ILexiconable, IGrowab
 
 	@Override
 	public boolean canBlockStay(World world, int i, int j, int k) {
-		int var5 = world.getBlockId(i, j, k);
-		boolean sup = var5 == 0 || Block.blocksList[var5].blockMaterial.isReplaceable();
-		return sup && this.canGrowOnBlock(world, i, j - 1, k);
+		return this.canGrowOnBlock(world, i, j - 1, k);
 	}
 }
