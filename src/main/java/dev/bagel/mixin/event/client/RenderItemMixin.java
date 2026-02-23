@@ -78,10 +78,11 @@ public abstract class RenderItemMixin extends Render {
         return stack.getItem().showDurabilityBar(stack);
     }
 
-    @Inject(method = "renderItemOverlayIntoGUI(Lnet/minecraft/src/FontRenderer;Lnet/minecraft/src/TextureManager;Lnet/minecraft/src/ItemStack;IILjava/lang/String;)V", at = @At(value = "INVOKE", remap = false, target = "Lorg/lwjgl/opengl/GL11;glDisable(I)V", ordinal = 7))
-    private void forge$renderItemOverlayIntoGUI(FontRenderer par1FontRenderer, TextureManager par2TextureManager, ItemStack par3ItemStack, int par4, int par5, String par6Str, CallbackInfo ci, @Local(name = "var12") LocalIntRef var12, @Local(name = "var8") LocalIntRef var8) {
-        double health = par3ItemStack.getItem().getDurabilityForDisplay(par3ItemStack);
-        var12.set((int) Math.round(13.0D - health * 13.0D));
-        var8.set((int) Math.round(255.0D - health * 255.0D));
-    }
+//todo Does not work properly in prod, move to a @ModifyVariable?
+//    @Inject(method = "renderItemOverlayIntoGUI(Lnet/minecraft/src/FontRenderer;Lnet/minecraft/src/TextureManager;Lnet/minecraft/src/ItemStack;IILjava/lang/String;)V", at = @At(value = "INVOKE", remap = false, target = "Lorg/lwjgl/opengl/GL11;glDisable(I)V", ordinal = 7), remap = false)
+//    private void forge$renderItemOverlayIntoGUI(FontRenderer par1FontRenderer, TextureManager par2TextureManager, ItemStack par3ItemStack, int par4, int par5, String par6Str, CallbackInfo ci, @Local(name = "var12") LocalIntRef var12, @Local(name = "var8") LocalIntRef var8) {
+//        double health = par3ItemStack.getItem().getDurabilityForDisplay(par3ItemStack);
+//        var12.set((int) Math.round(13.0D - health * 13.0D));
+//        var8.set((int) Math.round(255.0D - health * 255.0D));
+//    }
 }

@@ -25,9 +25,7 @@
     "event.EntityMixin",
     "event.EntityPlayerMixin",
     "event.EntityPlayerMPMixin",
-    "event.IntegratedServerMixin",
     "event.ItemInWorldManagerMixin",
-    "event.MinecraftServerMixin",
     "event.NetServerHandlerMixin",
     "event.SpawnerAnimalsMixin",
     "event.client.EntityRendererMixin",
@@ -60,7 +58,6 @@
     "event.client.GuiIngameMixin",
     "event.client.GuiScreenMixin",
     "event.client.MinecraftMixin",
-    "event.client.WorldClientMixin",
     "extensions.enums.EnumRarityMixin"
   ],
   "injectors": {
