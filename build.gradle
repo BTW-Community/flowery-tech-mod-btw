@@ -8,6 +8,7 @@ import java.nio.file.StandardCopyOption;
 plugins {
 	id 'maven-publish'
 	id 'fabric-loom' version "1.5-SNAPSHOT"
+	id "com.modrinth.minotaur" version "2.+"
 }
 
 archivesBaseName = project.archives_base_name
@@ -77,13 +78,13 @@ dependencies {
 	implementation 'com.typesafe:config:1.4.5'
 	include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.5.0")))
 
-	modImplementation ("net.legacyfabric.legacy-fabric-api:legacy-fabric-api:1.13.2+1.6.4")  {
+	modImplementation ("net.legacyfabric.legacy-fabric-api:legacy-fabric-api:${lfapi_version}+${minecraft_version}")  {
 		exclude module: "legacy-fabric-keybindings-api-v1-common"
 		exclude module: "legacy-fabric-keybindings-api-v1-common-1.5.2"
 		exclude module: "legacy-fabric-keybindings-api-v1"
 		exclude module: "legacy-fabric-item-groups-v1-common-1.8.9"
 	}
-	modImplementation "maven.modrinth:legacy-fabric-api-fixes-btw:1.1.0"
+	modImplementation "maven.modrinth:legacy-fabric-api-fixes-btw:${lfapi_fix_version}"
 	modRuntimeOnly("com.github.bawnorton.mixinsquared:mixinsquared-fabric:0.2.0")
 }
 
@@ -129,13 +130,31 @@ loom {
 	targetCompatibility = JavaVersion.VERSION_17
 }
 
-//runClient {
-//	dependsOn(jar)
-//}
-//
-//runServer {
-//	dependsOn(jar)
-//}
+modrinth {
+//	tasks.modrinth.dependsOn(tasks.modrinthSyncBody)
+	token = System.getenv("MODRINTH_TOKEN") // Remember to have the MODRINTH_TOKEN environment variable set or else this will fail - just make sure it stays private!
+	projectId = "child-of-flowers"
+	versionName = project.name + "-" + mod_version + "+BTW_" + btw_version
+	versionNumber = mod_version
+	versionType = "alpha"
+	uploadFile = remapJar // With Loom, this MUST be set to `remapJar` instead of `jar`!
+	gameVersions = ["1.6.4"] // Must be an array, even with only one version
+	loaders = ["legacy-fabric"] // Must also be an array - no need to specify this if you're using Loom or ForgeGradle
+	detectLoaders = false
+	debugMode = true
+	changelog = rootProject.file("Changelog.md").text
+			.split("## ")
+			.find {it.startsWith(version.toString())}
+			.substring(version.toString().length()).trim()
+	dependencies {
+		// scope.type
+		// The scope can be `required`, `optional`, `incompatible`, or `embedded`
+		// The type can either be `project` or `version`
+		required.version "btwce", btw_version
+		required.version "legacy-fabric-api-fixes-btw", lfapi_fix_version
+		required.version "legacy-fabric-api", lfapi_version
+	}
+}
 
 
 tasks.register('copyBtwJar', Copy) {
