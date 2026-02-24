@@ -16,6 +16,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import api.config.AddonConfig;
+import com.typesafe.config.ConfigUtil;
 import emi.shims.java.net.minecraft.text.Text;
 import emi.shims.java.net.minecraft.util.Formatting;
 import net.minecraft.src.EntityPlayer;
@@ -30,6 +32,7 @@ public final class ConfigHandler {
 	public static ConfigAdaptor adaptor;
 
 	private static final String CATEGORY_POTIONS = "potions";
+	private static final String GENERAL = "general";
 
 	public static int hardcorePassiveGeneration = 72000;
 
@@ -45,7 +48,7 @@ public final class ConfigHandler {
 	public static boolean boundBlockWireframe = true;
 	public static boolean lexicon3dModel = true;
 	public static boolean oldPylonModel = false;
-	public static double flowerParticleFrequency = 0.75F;
+	public static double flowerParticleFrequency = 0.75D;
 	public static boolean blockBreakParticles = true;
 	public static boolean blockBreakParticlesTool = true;
 	public static boolean elfPortalParticlesEnabled = true;
@@ -75,13 +78,13 @@ public final class ConfigHandler {
 	public static boolean fallenKanadeEnabled = true;
 	public static boolean darkQuartzEnabled = true;
 	public static boolean enchanterEnabled = true;
-	public static boolean fluxfieldEnabled = true;
+	public static boolean fluxfieldEnabled = false;
 	public static boolean relicsEnabled = true;
 	public static boolean stones18Enabled = true;
 	public static boolean ringOfOdinFireResist = true;
 	public static boolean enderStuff19Enabled = true;
 	public static boolean invertMagnetRing = false;
-	public static boolean enableThaumcraftStablizers = true;
+	public static boolean enableThaumcraftStablizers = false;
 	
 	public static int harvestLevelWeight = 2;
 	public static int harvestLevelBore = 3;
@@ -90,7 +93,7 @@ public final class ConfigHandler {
 	public static int flowerDensity = 2;
 	public static int flowerPatchSize = 6;
 	public static int flowerPatchChance = 16;
-	public static double flowerTallChance = 0.05;
+	public static double flowerTallChance = 0.05D;
 	public static int mushroomQuantity = 40;
 
 	private static boolean verifiedPotionArray = false;
@@ -111,9 +114,10 @@ public final class ConfigHandler {
 
 		FMLCommonHandler.instance().bus().register(new ChangeListener());*/
 	}
-
-	public static void load() {
+	private static AddonConfig config;
+	public static void load(AddonConfig config) {
 		String desc;
+		ConfigHandler.config = config;
 
 		desc = "Set this to false to disable the Adaptative Config. Adaptative Config changes any default config values from old versions to the new defaults to make sure you aren't missing out on changes because of old configs. It will not touch any values that were changed manually.";
 		useAdaptativeConfig = loadPropBool("adaptativeConfig.enabled", desc, useAdaptativeConfig);
@@ -144,7 +148,7 @@ public final class ConfigHandler {
 		oldPylonModel = loadPropBool("pylonModel.old", desc, oldPylonModel);
 
 		desc = "The frequency in which particles spawn from normal (worldgen) mystical flowers";
-		flowerParticleFrequency = loadPropDouble("flowerParticles.frequency", desc, flowerParticleFrequency);
+		flowerParticleFrequency = loadPropDouble("flowerParticles.frequency", desc, flowerParticleFrequency, 0d, 1d);
 
 		desc = "Set this to false to remove the block breaking particles from the flowers and other items in the mod.";
 		blockBreakParticles = loadPropBool("blockBreakingParticles.enabled", desc, blockBreakParticles);
@@ -221,8 +225,8 @@ public final class ConfigHandler {
 		desc = "Set this to false to disable the Mana Enchanter. Since some people find it OP or something. This only disables the entry and creation. Old ones that are already in the world will stay.";
 		enchanterEnabled = loadPropBool("manaEnchanter.enabled", desc, enchanterEnabled);
 
-		desc = "Set this to false to disable the Mana Fluxfield (generates RF from mana). This only disables the entry and creation. Old ones that are already in the world will stay.";
-		fluxfieldEnabled = loadPropBool("manaFluxfield.enabled", desc, fluxfieldEnabled);
+//		desc = "Set this to false to disable the Mana Fluxfield (generates RF from mana). This only disables the entry and creation. Old ones that are already in the world will stay.";
+//		fluxfieldEnabled = loadPropBool("manaFluxfield.enabled", desc, fluxfieldEnabled);
 
 		desc = "Set this to false to disable the Relic System. This only disables the entries, drops and achievements. Old ones that are already in the world will stay.";
 		relicsEnabled = loadPropBool("relics.enabled", desc, relicsEnabled);
@@ -239,8 +243,8 @@ public final class ConfigHandler {
 		desc = "Set this to true to invert the Ring of Magnetization's controls (from shift to stop to shift to work)";
 		invertMagnetRing = loadPropBool("magnetRing.invert", desc, invertMagnetRing);
 
-		desc = "Set this to false to disable Thaumcraft Infusion Stabilizing in botania blocks";
-		enableThaumcraftStablizers = loadPropBool("thaumraftStabilizers.enabled", desc, enableThaumcraftStablizers);
+//		desc = "Set this to false to disable Thaumcraft Infusion Stabilizing in botania blocks";
+//		enableThaumcraftStablizers = loadPropBool("thaumraftStabilizers.enabled", desc, enableThaumcraftStablizers);
 		
 		desc = "The harvest level of the Mana Lens: Weight. 3 is diamond level. Defaults to 2 (iron level)";
 		harvestLevelWeight = loadPropInt("harvestLevel.weightLens", desc, harvestLevelWeight);
@@ -270,7 +274,7 @@ public final class ConfigHandler {
 		desc = "The chance for a Botania flower generated in a patch to be a tall flower. 0.1 is 10%, 1 is 100%. Defaults to 0.05";
 		adaptor.addMappingDouble(0, "worldgen.flower.tallChance", 0.1);
 		adaptor.addMappingDouble(238, "worldgen.flower.tallChance", 0.05);
-		flowerTallChance = loadPropDouble("worldgen.flower.tallChance", desc, flowerTallChance);
+		flowerTallChance = loadPropDouble("worldgen.flower.tallChance", desc, flowerTallChance, 0d, 1d);
 
 		desc = "The quantity of Botania mushrooms to generate underground, in the world, defaults to 40, the lower the number the less patches generate.";
 		mushroomQuantity = loadPropInt("worldgen.mushroom.quantity", desc, mushroomQuantity);
@@ -297,51 +301,52 @@ public final class ConfigHandler {
 	}
 
 	public static int loadPropInt(String propName, String desc, int default_) {
-/*		Property prop = config.get(Configuration.CATEGORY_GENERAL, propName, default_);
-		prop.comment = desc;
+		propName = GENERAL + "." + propName;
+		config.registerInt(propName, default_, desc);
 
-		if(adaptor != null)
-			adaptor.adaptPropertyInt(prop, prop.getInt(default_));
+//		if(adaptor != null)
+//			adaptor.adaptPropertyInt(prop, prop.getInt(default_));
 
-		return prop.getInt(default_);*/
-		return default_;
+		return config.getInt(propName);
+	}
+
+	public static double loadPropDouble(String propName, String desc, double default_, double min, double max) {
+		propName = GENERAL + "." + propName;
+		config.registerDouble(propName, default_, min, max, desc);
+
+//		if(adaptor != null)
+//			adaptor.adaptPropertyDouble(prop, prop.getDouble(default_));
+
+		return config.getDouble(propName);
 	}
 
 	public static double loadPropDouble(String propName, String desc, double default_) {
-/*		Property prop = config.get(Configuration.CATEGORY_GENERAL, propName, default_);
-		prop.comment = desc;
+		propName = GENERAL + "." + propName;
+		config.registerDouble(propName, default_, desc);
 
-		if(adaptor != null)
-			adaptor.adaptPropertyDouble(prop, prop.getDouble(default_));
+//		if(adaptor != null)
+//			adaptor.adaptPropertyDouble(prop, prop.getDouble(default_));
 
-		return prop.getDouble(default_);*/
-		return default_;
+		return config.getDouble(propName);
 	}
 
 	public static boolean loadPropBool(String propName, String desc, boolean default_) {
-/*		Property prop = config.get(Configuration.CATEGORY_GENERAL, propName, default_);
-		prop.comment = desc;
+		propName = GENERAL + "." + propName;
+		config.registerBoolean(propName, default_, desc);
 
-		if(adaptor != null)
-			adaptor.adaptPropertyBool(prop, prop.getBoolean(default_));
+//		if(adaptor != null)
+//			adaptor.adaptPropertyBool(prop, prop.getBoolean(default_));
 
-		return prop.getBoolean(default_);*/
-		return default_;
+		return config.getBoolean(propName);
 	}
 
 	public static int loadPropPotionId(String propName, int default_) {
-/*		if(!verifiedPotionArray)
+		if(!verifiedPotionArray)
 			verifyPotionArray();
+		propName = CATEGORY_POTIONS + "." + propName;
+		config.registerInt(propName, default_, 0, potionArrayLimit);
 
-		Property prop = config.get(CATEGORY_POTIONS, propName, default_);
-		int val = prop.getInt(default_);
-		if(val > potionArrayLimit) {
-			val = default_;
-			prop.set(default_);
-		}
-
-		return val;*/
-		return default_;
+		return config.getInt(propName);
 	}
 
 	private static void verifyPotionArray() {

@@ -128,12 +128,12 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 		BiomeDecorationHandler.onWorldDecoration(new DecorateBiomeEvent.Decorate(world, rand, x, y, DecorateBiomeEvent.Decorate.EventType.FLOWERS));
 	}
 
-    @Override
-    public void handleConfigProperties(AddonConfig config) {
-        super.handleConfigProperties(config);
-    }
+	@Override
+	public void registerConfigProperties(AddonConfig config) {
+		getProxy().registerConfigProperties(config);
+	}
 
-    @Override
+	@Override
 	public IGuiHandler getGuiHandler() {
 		return CommonProxy.guiHandler;
 	}

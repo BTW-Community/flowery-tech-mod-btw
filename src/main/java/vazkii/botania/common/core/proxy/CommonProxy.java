@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.core.proxy;
 
+import api.config.AddonConfig;
 import dev.bagel.network.CustomGuiPacketHandler;
 import net.minecraft.src.*;
 import net.minecraft.server.MinecraftServer;
@@ -121,6 +122,11 @@ public class CommonProxy {
 
 		LexiconData.init();
 	}
+
+	public final void registerConfigProperties(AddonConfig config) {
+		ConfigHandler.load(config);
+	}
+
 //	@SubscribeEvent
 	public void postInit() {
 
