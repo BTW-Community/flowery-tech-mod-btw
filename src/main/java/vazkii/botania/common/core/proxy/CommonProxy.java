@@ -77,7 +77,7 @@ public class CommonProxy {
 //		if(Botania.etFuturumLoaded)
 //			ModBanners.init();
 
-		ChestGenHandler.init();
+
 
 		if(Botania.gardenOfGlassLoaded) {
 			new WorldTypeSkyblock(9); // sure why not 9
@@ -94,6 +94,8 @@ public class CommonProxy {
 		ModEntities.init();
 		ModPotions.init();
 		ModBrews.init();
+
+		ChestGenHandler.init();
 
 		ModCraftingRecipes.init();
 		ModPetalRecipes.init();

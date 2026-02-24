@@ -47,3 +47,25 @@ accessible method net/minecraft/src/TextureUtil copyToBufferPos ([III)V
 accessible field net/minecraft/src/TextureUtil dataBuffer Ljava/nio/IntBuffer;
 accessible class api/achievement/AchievementProvider$AchievementBuilder
 accessible method api/achievement/AchievementProvider$AchievementBuilder <init> (Ljava/lang/Class;)V
+# Chestgen hooks
+accessible field net/minecraft/src/StructureMineshaftPieces mineshaftChestContents [Lnet/minecraft/src/WeightedRandomChestContent;
+accessible field net/minecraft/src/ComponentScatteredFeatureDesertPyramid lootListArray [Lnet/minecraft/src/WeightedRandomChestContent;
+accessible field net/minecraft/src/ComponentScatteredFeatureDesertPyramid lootedLootListArray [Lnet/minecraft/src/WeightedRandomChestContent;
+accessible field net/minecraft/src/ComponentScatteredFeatureJunglePyramid junglePyramidsDispenserContents [Lnet/minecraft/src/WeightedRandomChestContent;
+accessible field net/minecraft/src/ComponentScatteredFeatureJunglePyramid lootListArray [Lnet/minecraft/src/WeightedRandomChestContent;
+accessible field net/minecraft/src/ComponentScatteredFeatureJunglePyramid lootedLootListArray [Lnet/minecraft/src/WeightedRandomChestContent;
+accessible field net/minecraft/src/ComponentStrongholdChestCorridor strongholdChestContents [Lnet/minecraft/src/WeightedRandomChestContent;
+accessible field net/minecraft/src/ComponentStrongholdLibrary strongholdLibraryChestContents [Lnet/minecraft/src/WeightedRandomChestContent;
+accessible field net/minecraft/src/ComponentStrongholdRoomCrossing strongholdRoomCrossingChestContents [Lnet/minecraft/src/WeightedRandomChestContent;
+accessible field net/minecraft/src/ComponentVillageHouse2 villageBlacksmithChestContents [Lnet/minecraft/src/WeightedRandomChestContent;
+mutable field net/minecraft/src/StructureMineshaftPieces mineshaftChestContents [Lnet/minecraft/src/WeightedRandomChestContent;
+mutable field net/minecraft/src/ComponentScatteredFeatureDesertPyramid lootListArray [Lnet/minecraft/src/WeightedRandomChestContent;
+mutable field net/minecraft/src/ComponentScatteredFeatureDesertPyramid lootedLootListArray [Lnet/minecraft/src/WeightedRandomChestContent;
+mutable field net/minecraft/src/ComponentScatteredFeatureJunglePyramid junglePyramidsDispenserContents [Lnet/minecraft/src/WeightedRandomChestContent;
+mutable field net/minecraft/src/ComponentScatteredFeatureJunglePyramid lootListArray [Lnet/minecraft/src/WeightedRandomChestContent;
+mutable field net/minecraft/src/ComponentScatteredFeatureJunglePyramid lootedLootListArray [Lnet/minecraft/src/WeightedRandomChestContent;
+mutable field net/minecraft/src/ComponentStrongholdChestCorridor strongholdChestContents [Lnet/minecraft/src/WeightedRandomChestContent;
+mutable field net/minecraft/src/ComponentStrongholdLibrary strongholdLibraryChestContents [Lnet/minecraft/src/WeightedRandomChestContent;
+mutable field net/minecraft/src/ComponentStrongholdRoomCrossing strongholdRoomCrossingChestContents [Lnet/minecraft/src/WeightedRandomChestContent;
+mutable field net/minecraft/src/ComponentVillageHouse2 villageBlacksmithChestContents [Lnet/minecraft/src/WeightedRandomChestContent;
+# End chestgen hooks
