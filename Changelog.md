@@ -1,5 +1,15 @@
 # Changelog
 
+
+## 0.0.4
+### General
+- Reimplement the config (using the new config system)
+- Implement chest gen hooks 
+  - This means that botania items show up in dungeon chests now
+- Add auto publishing to modrinth (this should reduce the amount of issues with missing dependencies and such)
+### Balancing
+- Reduce price of the lexica botania to use paper instead of books
+
 ## 0.0.3
 - Make it not crash outside of the dev environment (oops)
   - Properly include a dependency that was accidentally excluded
