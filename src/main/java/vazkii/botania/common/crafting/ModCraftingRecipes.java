@@ -326,7 +326,7 @@ public final class ModCraftingRecipes {
 		int recipeListSize = CraftingManager.getInstance().getRecipeList().size();
 
 		// Lexicon Recipe
-		addShapelessOreDictRecipe(new ItemStack(ModItems.lexicon), TagInstance.of(BTWTags.saplings), Item.book);
+		addShapelessOreDictRecipe(new ItemStack(ModItems.lexicon), TagInstance.of(BTWTags.saplings), Item.paper, Item.paper, Item.paper);
 		recipeLexicon = BotaniaAPI.getLatestAddedRecipe();
 
 		// Petal/Dye Recipes
