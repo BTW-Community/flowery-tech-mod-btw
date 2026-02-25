@@ -134,6 +134,11 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 	}
 
 	@Override
+	public void handleConfigProperties(AddonConfig config) {
+		getProxy().handleConfigProperties(config);
+	}
+
+	@Override
 	public IGuiHandler getGuiHandler() {
 		return CommonProxy.guiHandler;
 	}

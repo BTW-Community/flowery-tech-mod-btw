@@ -124,6 +124,10 @@ public class CommonProxy {
 	}
 
 	public final void registerConfigProperties(AddonConfig config) {
+		ConfigHandler.register(config);
+	}
+
+	public final void handleConfigProperties(AddonConfig config) {
 		ConfigHandler.load(config);
 	}
 
