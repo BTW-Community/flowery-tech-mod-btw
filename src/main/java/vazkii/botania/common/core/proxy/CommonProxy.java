@@ -198,16 +198,6 @@ public class CommonProxy {
 		}
 	}*/
 
-	//todofix server commands
-//	@SubscribeEvent //FMLServerStartingEvent event
-	public void serverStarting() {
-//		event.registerServerCommand(new CommandShare());
-//		event.registerServerCommand(new CommandOpen());
-
-/*		if(Botania.gardenOfGlassLoaded)
-			event.registerServerCommand(new CommandSkyblockSpread());*/
-	}
-
 	public void setEntryToOpen(LexiconEntry entry) {
 		// NO-OP
 	}

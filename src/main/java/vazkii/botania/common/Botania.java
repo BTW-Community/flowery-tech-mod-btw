@@ -106,7 +106,6 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 		Baubles.instance.entityEventNetwork.playerLoggedInEvent(new PlayerEvent.PlayerLoggedInEvent(playerMP));
 	}
 
-	//FMLInitializationEvent
 	@Override
 	public void initialize() {
 		BotaniaAPI.init();
@@ -119,7 +118,7 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 		if(Botania.gardenOfGlassLoaded)
 			registerAddonCommand(new CommandSkyblockSpread());
 	}
-	//FMLPostInitializationEvent
+
 	@Override
 	public void postInitialize() {
 		getProxy().postInit();
@@ -152,19 +151,9 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 //		getProxy().serverAboutToStart();
 	}
 
-	//FMLServerStartingEvent
-	public void serverStarting() {
-		getProxy().serverStarting();
-	}
-
 	//FMLServerStoppingEvent
 	public void serverStopping() {
 //		ManaNetworkHandler.instance.clear();
-	}
-
-	//FMLInterModComms.IMCEvent event
-	public void handleIMC() {
-//		IMCHandler.processMessages(event.getMessages());
 	}
 
 	public static ResourceLocation loc(String id) {
