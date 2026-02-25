@@ -61,4 +61,18 @@ public class ItemRendererMixin {
             }
         }
     }
+
+    @Inject(method = "renderItem", at = @At("HEAD"), cancellable = true)
+    private void forge$renderItem(EntityLivingBase entity, ItemStack stack, int par3, CallbackInfo ci) {
+        if (stack == null || stack.getItem() == null) return;
+        IItemRenderer customRenderer = MinecraftForgeClient.getItemRenderer(stack, IItemRenderer.ItemRenderType.EQUIPPED);
+        if (customRenderer != null) {
+            GL11.glPushMatrix();
+            TextureManager texturemanager = this.mc.getTextureManager();
+            texturemanager.bindTexture(texturemanager.getResourceLocation(stack.getItemSpriteNumber()));
+            ForgeHooksClient.renderEquippedItem(IItemRenderer.ItemRenderType.EQUIPPED, customRenderer, renderBlocksInstance, entity, stack);
+            GL11.glPopMatrix();
+            ci.cancel();
+        }
+    }
 }
