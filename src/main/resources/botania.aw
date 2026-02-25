@@ -69,3 +69,7 @@ mutable field net/minecraft/src/ComponentStrongholdLibrary strongholdLibraryChes
 mutable field net/minecraft/src/ComponentStrongholdRoomCrossing strongholdRoomCrossingChestContents [Lnet/minecraft/src/WeightedRandomChestContent;
 mutable field net/minecraft/src/ComponentVillageHouse2 villageBlacksmithChestContents [Lnet/minecraft/src/WeightedRandomChestContent;
 # End chestgen hooks
+
+accessible class api/world/data/DataProvider$DataEntryBuilder
+extendable class api/world/data/DataEntry$PlayerDataEntry
+accessible method api/world/data/DataEntry$PlayerDataEntry <init> (Ljava/lang/String;Ljava/util/function/Supplier;ZLjava/util/function/Function;Ljava/util/function/BiConsumer;)V

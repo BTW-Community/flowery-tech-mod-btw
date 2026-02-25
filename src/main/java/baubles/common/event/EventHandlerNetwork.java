@@ -1,6 +1,7 @@
 package baubles.common.event;
 
 import baubles.api.IBauble;
+import baubles.common.Baubles;
 import baubles.common.container.InventoryBaubles;
 import baubles.common.lib.PlayerHandler;
 import baubles.common.network.PacketHandler;
@@ -11,11 +12,8 @@ import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import vazkii.botania.common.Botania;
 
-//todobaubles network handling
 public class EventHandlerNetwork {
 
-	//import cpw.mods.fml.common.gameevent.PlayerEvent;
-//	@SubscribeEvent
 	public void playerLoggedInEvent(PlayerEvent.PlayerLoggedInEvent event)    {
 		EnvType side = Botania.instance.getEffectiveSide();
 		if (side == EnvType.SERVER) {
@@ -37,6 +35,4 @@ public class EventHandlerNetwork {
 			baubles.syncSlotToClients(i);
 		}
 	}
-
-
 }
