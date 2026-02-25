@@ -16,7 +16,7 @@ import net.minecraftforge.common.ChestGenHooks;
 import vazkii.botania.common.item.ModItems;
 
 public final class ChestGenHandler {
-//todofix chest gen hooks
+
 	public static void init() {
 		String c /*= ChestGenHooks.STARTER_CHEST*/;
 //		ChestGenHooks.addItem(c, new WeightedRandomChestContent(new ItemStack(ModItems.lexicon), 1, 1, 7));
