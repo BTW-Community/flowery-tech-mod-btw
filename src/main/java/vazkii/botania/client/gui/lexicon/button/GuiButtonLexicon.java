@@ -22,7 +22,6 @@ public class GuiButtonLexicon extends GuiButtonSound {
 		super(p_i1021_1_, p_i1021_2_, p_i1021_3_, p_i1021_4_, p_i1021_5_, p_i1021_6_);
 	}
 
-	//todofix implement sounds?
 	@Override
 	public void func_146113_a()  {
 		Minecraft.getMinecraft().sndManager.playSoundFX("botania:lexiconPage", 1.0f, 1.0f);
