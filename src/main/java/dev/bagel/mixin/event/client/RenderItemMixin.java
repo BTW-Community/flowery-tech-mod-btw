@@ -4,7 +4,6 @@ import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.llamalad7.mixinextras.sugar.Share;
 import com.llamalad7.mixinextras.sugar.ref.LocalDoubleRef;
-import com.llamalad7.mixinextras.sugar.ref.LocalIntRef;
 import net.minecraft.src.*;
 import net.minecraftforge.client.ForgeHooksClient;
 import org.lwjgl.opengl.GL11;
@@ -80,13 +79,13 @@ public abstract class RenderItemMixin extends Render {
     }
 
     @ModifyArg(method = "renderItemOverlayIntoGUI(Lnet/minecraft/src/FontRenderer;Lnet/minecraft/src/TextureManager;Lnet/minecraft/src/ItemStack;IILjava/lang/String;)V", at = @At(value = "INVOKE", target = "Ljava/lang/Math;round(D)J", ordinal = 0))
-    private double test1(double original, @Local(argsOnly = true) ItemStack stack, @Share("health") LocalDoubleRef health) {
+    private double forge$replaceDurabilityStart(double original, @Local(argsOnly = true) ItemStack stack, @Share("health") LocalDoubleRef health) {
         health.set(stack.getItem().getDurabilityForDisplay(stack));
         return 13.0D - health.get() * 13.0D;
     }
 
     @ModifyArg(method = "renderItemOverlayIntoGUI(Lnet/minecraft/src/FontRenderer;Lnet/minecraft/src/TextureManager;Lnet/minecraft/src/ItemStack;IILjava/lang/String;)V", at = @At(value = "INVOKE", target = "Ljava/lang/Math;round(D)J", ordinal = 1))
-    private double test2(double original, @Share("health") LocalDoubleRef health) {
+    private double forge$replaceDurabilityEnd(double original, @Share("health") LocalDoubleRef health) {
         return 255.0D - health.get() * 255.0D;
     }
 }
