@@ -49,7 +49,7 @@ public class EntityVineBall extends EntityThrowable implements EntityWithCustomP
 				int z = var1.blockZ + dir.offsetZ;
 				while(y > 0) {
 					Block block = worldObj.getBlock(x, y, z);
-					if(block.isAir(worldObj, x, y, z)) {
+					if(block == null || block.isAir(worldObj, x, y, z)) {
 						worldObj.setBlock(x, y, z, ModBlocks.solidVines, metaPlace[meta - 2], 1 | 2);
 						worldObj.playAuxSFX(2001, x, y, z, BlockExtensions.getIdFromBlock(ModBlocks.solidVines) + (metaPlace[meta - 2] << 12));
 						y--;
