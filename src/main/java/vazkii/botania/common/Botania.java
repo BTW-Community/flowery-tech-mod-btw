@@ -22,6 +22,7 @@ import dev.bagel.network.CustomGuiPacketHandler;
 import dev.bagel.util.GuiHandlerHolder;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.loader.api.FabricLoader;
+import net.legacyfabric.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.src.*;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
@@ -32,9 +33,11 @@ import vazkii.botania.common.core.command.CommandShare;
 import vazkii.botania.common.core.command.CommandSkyblockSpread;
 import vazkii.botania.common.core.handler.BiomeDecorationHandler;
 import vazkii.botania.common.core.handler.IMCHandler;
+import vazkii.botania.common.core.handler.ManaNetworkHandler;
 import vazkii.botania.common.core.proxy.CommonProxy;
 import vazkii.botania.common.integration.coloredlights.ILightHelper;
 import vazkii.botania.common.integration.coloredlights.LightHelperVanilla;
+import vazkii.botania.common.lib.LibMisc;
 
 import java.util.Random;
 
@@ -54,13 +57,6 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 
 	public static Botania instance = new Botania();
 
-	@Override
-	public void postSetup() {
-		super.postSetup();
-	}
-
-	//	@SidedProxy(serverSide = LibMisc.PROXY_COMMON, clientSide = LibMisc.PROXY_CLIENT)
-	//ADDED interface
 	public static CommonProxy proxy = new CommonProxy();
 
 	public static CommonProxy getProxy() {
@@ -74,7 +70,12 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 
 	@Override
 	public String getModID() {
-		return "botania";
+		return LibMisc.MOD_ID;
+	}
+
+	@Override
+	public void postSetup() {
+		IMCHandler.setupIMC();
 	}
 
 	@Override
@@ -82,7 +83,6 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 		if (!MinecraftServer.getIsServer()) {
 			addResourcePackDomain("baubles");
 		}
-		IMCHandler.setupIMC();
 
 		Baubles.instance.preInit();
 		registerPacketHandler("botania|BAUB", PacketHandler.INSTANCE);
@@ -122,7 +122,8 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 	@Override
 	public void postInitialize() {
 		getProxy().postInit();
-		IMCHandler.processMessages();
+		ServerLifecycleEvents.SERVER_STARTED.register(server -> IMCHandler.processMessages());
+		ServerLifecycleEvents.SERVER_STOPPING.register(server -> ManaNetworkHandler.instance.clear());
 	}
 
 	@Override

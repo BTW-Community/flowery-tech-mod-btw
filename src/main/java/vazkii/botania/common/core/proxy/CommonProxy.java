@@ -182,22 +182,6 @@ public class CommonProxy {
 		// BTW todo gravity rod blacklist for BTW
 	}
 
-/*
-	// Overriding the internal method handler will break everything as it changes regularly.
-	// So just don't be a moron and don't override it. Thanks.
-	@SubscribeEvent
-	public void serverAboutToStart(FMLServerAboutToStartEvent event) {
-		String clname = BotaniaAPI.internalHandler.getClass().getName();
-		String expect = "vazkii.botania.common.core.handler.InternalMethodHandler";
-		if(!clname.equals(expect)) {
-			new IllegalAccessError("The Botania API internal method handler has been overriden. "
-					+ "This will cause crashes and compatibility issues, and that's why it's marked as"
-					+ " \"Do not Override\". Whoever had the brilliant idea of overriding it needs to go"
-					+ " back to elementary school and learn to read. (Expected classname: " + expect + ", Actual classname: " + clname + ")").printStackTrace();
-			FMLCommonHandler.instance().exitJava(1, true);
-		}
-	}*/
-
 	public void setEntryToOpen(LexiconEntry entry) {
 		// NO-OP
 	}
