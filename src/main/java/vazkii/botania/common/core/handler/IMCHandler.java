@@ -1,7 +1,10 @@
 package vazkii.botania.common.core.handler;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
+import net.fabricmc.loader.api.FabricLoader;
 import vazkii.botania.common.item.equipment.bauble.ItemMagnetRing;
 import vazkii.botania.common.lib.LibMisc;
 
@@ -9,14 +12,18 @@ import com.google.common.collect.ImmutableList;
 
 public final class IMCHandler {
 
-	public static void processMessages(/*ImmutableList<IMCMessage> messageList*/) {
-//		Iterator<IMCMessage> iterator = messageList.iterator();
-//		while(iterator.hasNext()) {
-//			IMCMessage message = iterator.next();
-//			if(message != null && message.key != null && message.key.equals(LibMisc.BLACKLIST_ITEM) && message.isStringMessage()) {
-//				String value = message.getStringValue();
-//				ItemMagnetRing.addItemToBlackList(value);
-//			}
-//		}
+	public static void setupIMC() {
+		FabricLoader.getInstance().getObjectShare().put(LibMisc.BLACKLIST_ITEM, new ArrayList<String>());
+	}
+
+	public static void processMessages() {
+		if (FabricLoader.getInstance().getObjectShare().get(LibMisc.BLACKLIST_ITEM) instanceof List<?> blackListedItems) {
+			for (Object blackListedItemObj : blackListedItems){
+				if (blackListedItemObj instanceof String blackListedItem) {
+					ItemMagnetRing.addItemToBlackList(blackListedItem);
+				}
+			}
+
+		}
 	}
 }

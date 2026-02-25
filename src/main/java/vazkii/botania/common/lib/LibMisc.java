@@ -29,7 +29,7 @@ public final class LibMisc {
 	public static final String GUI_FACTORY = "vazkii.botania.client.core.proxy.GuiFactory";
 
 	// IMC Keys
-	public static final String BLACKLIST_ITEM = "blackListItem";
+	public static final String BLACKLIST_ITEM = "botania:blackListItem";
 
 	public static final ForgeDirection[] CARDINAL_DIRECTIONS = new ForgeDirection[] {
 		ForgeDirection.NORTH, ForgeDirection.SOUTH, ForgeDirection.EAST, ForgeDirection.WEST

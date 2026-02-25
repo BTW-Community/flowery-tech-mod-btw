@@ -31,6 +31,7 @@ import vazkii.botania.common.core.command.CommandOpen;
 import vazkii.botania.common.core.command.CommandShare;
 import vazkii.botania.common.core.command.CommandSkyblockSpread;
 import vazkii.botania.common.core.handler.BiomeDecorationHandler;
+import vazkii.botania.common.core.handler.IMCHandler;
 import vazkii.botania.common.core.proxy.CommonProxy;
 import vazkii.botania.common.integration.coloredlights.ILightHelper;
 import vazkii.botania.common.integration.coloredlights.LightHelperVanilla;
@@ -81,6 +82,8 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 		if (!MinecraftServer.getIsServer()) {
 			addResourcePackDomain("baubles");
 		}
+		IMCHandler.setupIMC();
+
 		Baubles.instance.preInit();
 		registerPacketHandler("botania|BAUB", PacketHandler.INSTANCE);
 		gardenOfGlassLoaded = FabricLoader.getInstance().isModLoaded("denovo");
@@ -120,6 +123,7 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 	@Override
 	public void postInitialize() {
 		getProxy().postInit();
+		IMCHandler.processMessages();
 	}
 
 	@Override
