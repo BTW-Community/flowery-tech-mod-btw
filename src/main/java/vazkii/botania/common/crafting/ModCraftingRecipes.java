@@ -1487,7 +1487,7 @@ public final class ModCraftingRecipes {
 		addShapelessOreDictRecipe(new ItemStack(ModItems.manaResource, 1, 12), new ItemStack(Item.silk), Block.blockRedstone, LibOreDict.PIXIE_DUST, LibOreDict.ENDER_AIR_BOTTLE);
 		recipeRedString = BotaniaAPI.getLatestAddedRecipe();
 		// Are you in a pinch?
-		addShapelessOreDictRecipe(new ItemStack(ModItems.manaResource, 1, 12), new ItemStack(Item.silk), Block.blockRedstone, LibOreDict.PIXIE_DUST, LibOreDict.ENDER_AIR_BOTTLE, new ItemStack(Block.pumpkin));
+		addShapelessOreDictRecipe(new ItemStack(ModItems.manaResource, 1, 12), new ItemStack(Item.silk), Block.blockRedstone, LibOreDict.PIXIE_DUST, LibOreDict.ENDER_AIR_BOTTLE, new ItemStack(BTWBlocks.carvedPumpkin));
 
 		// Red String Container Recipe
 		addOreDictRecipe(new ItemStack(ModBlocks.redStringContainer),
@@ -1945,7 +1945,7 @@ public final class ModCraftingRecipes {
 				" S ", "BPF", " G ",
 				'S', new ItemStack(Item.silk),
 				'B', new ItemStack(Item.bone),
-				'P', new ItemStack(Block.pumpkin),
+				'P', new ItemStack(BTWBlocks.carvedPumpkin),
 				'F', new ItemStack(Item.rottenFlesh),
 				'G', new ItemStack(Item.gunpowder));
 		recipeFelPumpkin = BotaniaAPI.getLatestAddedRecipe();
