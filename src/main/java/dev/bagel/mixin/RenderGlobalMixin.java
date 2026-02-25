@@ -3,6 +3,7 @@ package dev.bagel.mixin;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
+import dev.bagel.interfaces.WorldProviderExtensions;
 import net.minecraft.src.*;
 import net.minecraftforge.client.IRenderHandler;
 import org.spongepowered.asm.mixin.Mixin;
@@ -27,14 +28,13 @@ public class RenderGlobalMixin {
         }
     }
 
-    //todo render sky
-//    @Inject(method = "renderSky", at = @At("HEAD"), cancellable = true)
-//    private void forge$onRenderSky(float partial, CallbackInfo ci) {
-//        IRenderHandler skyProvider;
-//        if ((skyProvider = this.mc.theWorld.provider.getSkyRenderer()) != null)
-//        {
-//            skyProvider.render(partial, this.theWorld, mc);
-//            ci.cancel();
-//        }
-//    }
+    @Inject(method = "renderSky", at = @At("HEAD"), cancellable = true)
+    private void forge$onRenderSky(float partial, CallbackInfo ci) {
+        IRenderHandler skyProvider;
+        if ((skyProvider = ((WorldProviderExtensions) this.mc.theWorld.provider).getSkyRenderer()) != null)
+        {
+            skyProvider.render(partial, this.theWorld, mc);
+            ci.cancel();
+        }
+    }
 }

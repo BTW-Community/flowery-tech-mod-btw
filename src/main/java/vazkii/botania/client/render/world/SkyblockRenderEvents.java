@@ -10,7 +10,7 @@
  */
 package vazkii.botania.client.render.world;
 
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import dev.bagel.interfaces.WorldProviderExtensions;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.World;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
@@ -19,14 +19,16 @@ import vazkii.botania.common.world.WorldTypeSkyblock;
 
 public final class SkyblockRenderEvents {
 
-	//todofix low priority fancy skybox
-/*	@SubscribeEvent
-	public void onRender(RenderWorldLastEvent event) {
+	static  {
+		RenderWorldLastEvent.EVENT.register(SkyblockRenderEvents::onRender);
+	}
+
+	public static void onRender(RenderWorldLastEvent event) {
 		World world = Minecraft.getMinecraft().theWorld;
 		if(ConfigHandler.enableFancySkybox && world.provider.dimensionId == 0 && (ConfigHandler.enableFancySkyboxInNormalWorlds || WorldTypeSkyblock.isWorldSkyblock(Minecraft.getMinecraft().theWorld))) {
-			if(!(world.provider.getSkyRenderer() instanceof SkyblockSkyRenderer))
-				world.provider.setSkyRenderer(new SkyblockSkyRenderer());
+			if(!(((WorldProviderExtensions) world.provider).getSkyRenderer() instanceof SkyblockSkyRenderer))
+                ((WorldProviderExtensions) world.provider).setSkyRenderer(new SkyblockSkyRenderer());
 		}
-	}*/
+	}
 	
 }

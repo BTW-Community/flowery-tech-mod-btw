@@ -10,6 +10,7 @@
     "GameSettingsMixin",
     "ItemStackMixin",
     "PlayerControllerMPMixin",
+    "RenderGlobalAccessor",
     "RenderGlobalMixin",
     "RenderItemMixin",
     "SlotCraftingMixin",
