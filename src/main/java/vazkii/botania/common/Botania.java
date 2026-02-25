@@ -41,7 +41,6 @@ import vazkii.botania.common.lib.LibMisc;
 
 import java.util.Random;
 
-//@Mod(modid = LibMisc.MOD_ID, name = LibMisc.MOD_NAME, version = LibMisc.VERSION, dependencies = LibMisc.DEPENDENCIES, guiFactory = LibMisc.GUI_FACTORY)
 public class Botania extends BTWAddon implements GuiHandlerHolder {
 
 	public static boolean gardenOfGlassLoaded = false;
@@ -145,16 +144,6 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 	@Override
 	public IGuiHandler getGuiHandler() {
 		return CommonProxy.guiHandler;
-	}
-
-	//FMLServerAboutToStartEvent
-	public void serverAboutToStart() {
-//		getProxy().serverAboutToStart();
-	}
-
-	//FMLServerStoppingEvent
-	public void serverStopping() {
-//		ManaNetworkHandler.instance.clear();
 	}
 
 	public static ResourceLocation loc(String id) {

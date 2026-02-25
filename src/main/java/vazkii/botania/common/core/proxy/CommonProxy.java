@@ -131,15 +131,12 @@ public class CommonProxy {
 		ConfigHandler.load(config);
 	}
 
-//	@SubscribeEvent
 	public void postInit() {
 
 		ModBlocks.addDispenserBehaviours();
 		ModBlocks.registerMultiparts();
 		ConfigHandler.loadPostInit();
 		LexiconData.postInit();
-
-//		registerNEIStuff();
 
 		int words = 0;
 		for(LexiconEntry entry : BotaniaAPI.getAllEntries())

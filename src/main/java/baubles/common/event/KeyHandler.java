@@ -6,7 +6,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.src.KeyBinding;
 import net.minecraft.src.StatCollector;
 import org.lwjgl.input.Keyboard;
-//todobaubles keybinds
+
 public class KeyHandler {
 
     public static KeyHandler INSTANCE = new KeyHandler();
@@ -18,8 +18,7 @@ public class KeyHandler {
 //		 ClientRegistry.registerKeyBinding(key);
 	}
 
-//	@SubscribeEvent
-	public void onKeyEvent(/*InputEvent.KeyInputEvent event*/) {
+	public void onKeyEvent() {
         boolean pressed = true;
         while (key.isPressed()) {
             if (pressed) {
