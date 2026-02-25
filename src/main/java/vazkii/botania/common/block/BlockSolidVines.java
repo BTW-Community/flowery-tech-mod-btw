@@ -29,7 +29,7 @@ public class BlockSolidVines extends BlockVine implements ILexiconable {
 		setStepSound(soundGrassFootstep);
 		setTextureName("vine");
 		setUnlocalizedName(LibBlockNames.SOLID_VINE);
-//		var item = new ItemBlockMod(this);
+		var item = new ItemBlockMod(this);
 //		setCreativeTab(null);
 	}
 
@@ -46,7 +46,7 @@ public class BlockSolidVines extends BlockVine implements ILexiconable {
 
 	@Override
 	public Block setUnlocalizedName(String par1Str) {
-		var item = new ItemBlockMod(this);
+//		var item = new ItemBlockMod(this);
 //		GameRegistry.registerBlock(this, ItemBlockMod.class, par1Str);
 		return super.setUnlocalizedName(par1Str);
 	}
