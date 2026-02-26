@@ -13,6 +13,7 @@ package vazkii.botania.common.block.subtile.generating;
 import java.awt.Color;
 import java.util.List;
 
+import btw.item.BTWItems;
 import dev.bagel.client.RenderInstances;
 import dev.bagel.util.Items;
 import net.minecraft.src.Minecraft;
@@ -46,7 +47,7 @@ public class SubTileSpectrolus extends SubTileGenerating {
 		super.onUpdate();
 
 		boolean remote = supertile.getWorldObj().isRemote;
-		Item wool = Items.getItemFromBlock(Block.cloth);
+		Item wool = BTWItems.wool;
 		List<EntityItem> items = supertile.getWorldObj().getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(supertile.xCoord - RANGE, supertile.yCoord - RANGE, supertile.zCoord - RANGE, supertile.xCoord + RANGE + 1, supertile.yCoord + RANGE + 1, supertile.zCoord + RANGE + 1));
 		int slowdown = getSlowdownFactor();
 		
@@ -100,7 +101,7 @@ public class SubTileSpectrolus extends SubTileGenerating {
 	public void renderHUD(Minecraft mc, ScaledResolution res) {
 		super.renderHUD(mc, res);
 
-		ItemStack stack = new ItemStack(Block.cloth, 1, nextColor);
+		ItemStack stack = new ItemStack(BTWItems.wool, 1, nextColor);
 		int color = getColor();
 
 		GL11.glEnable(GL11.GL_BLEND);

@@ -1,6 +1,36 @@
 # Changelog
 
 
+## 0.1.0
+### General
+- Re-implement the item durability hooks, so mana items will have durability based on the mana they contain
+- Implement a specific render hook for other entities holding the vitreous pickaxe
+- Implement the GOG sky renderer
+- Implement Baubles keybind
+### Fixes
+- The config not properly being loaded
+- Solid vines not being climbable
+- Mana bottle placed full water blocks, and could cause a NPE
+- Somehow I forgot the Minecraft Forge License
+- Corporea request keybind now works once per key press
+- Fix constant openGL errors in the lexica botania
+- Many recipes used the "old" item instead of the BTW version 
+  - Red string
+  - Fel Pumpkin
+  - Jump boost brew
+  - Rune of Spring
+  - Crop transmutation
+  - Many decorative blocks
+### Balancing
+- Reduce price of the flower pouch to use substantially less wool
+- Most things that were previously using wool blocks now use knit or unnknit wool items
+- Remove the wool → string recipe
+- Make the spectrolus use unnknit wool instead of wool blocks (was prohibitively expensive lol)
+### API
+- Implement the mod IMC event for items that should be blacklisted from being picked up by the magnet
+  - See IMCHandler for more info on how to implement this. 
+  - It needs to be done sometime in the intialization phase.
+
 ## 0.0.4
 ### General
 - Reimplement the config (using the new config system)
