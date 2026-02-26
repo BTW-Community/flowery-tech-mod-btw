@@ -3,11 +3,9 @@ package dev.bagel.emi;
 import baubles.api.expanded.BaubleExpandedSlots;
 import baubles.client.gui.GuiPlayerExpanded;
 import baubles.common.BaublesConfig;
-import baubles.common.container.SlotBauble;
 import dev.bagel.emi.recipe.*;
 import dev.bagel.emi.recipe.custom.CustomBotaniaEmiRecipe;
 import emi.dev.emi.emi.api.EmiApi;
-import emi.dev.emi.emi.api.EmiExclusionArea;
 import emi.dev.emi.emi.api.EmiPlugin;
 import emi.dev.emi.emi.api.EmiRegistry;
 import emi.dev.emi.emi.api.recipe.EmiRecipeCategory;
@@ -16,13 +14,11 @@ import emi.dev.emi.emi.api.stack.Comparison;
 import emi.dev.emi.emi.api.stack.EmiIngredient;
 import emi.dev.emi.emi.api.stack.EmiStack;
 import emi.dev.emi.emi.screen.Bounds;
-import net.legacyfabric.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.src.*;
 import org.lwjgl.input.Keyboard;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.corporea.CorporeaHelper;
 import vazkii.botania.api.lexicon.LexiconEntry;
-import vazkii.botania.api.recipe.*;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.block.tile.corporea.TileCorporeaIndex;
@@ -37,7 +33,6 @@ import vazkii.botania.common.item.brew.ItemVial;
 import vazkii.botania.common.item.equipment.bauble.ItemBloodPendant;
 import vazkii.botania.common.lib.LibBlockNames;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -218,39 +213,6 @@ public class BotaniaEmiPlugin implements EmiPlugin {
         }
         return null;
     };
-    public static KeyBinding KEY = new KeyBinding("key.botania.search", Keyboard.KEY_N);
-
-    public static boolean handleKey() {
-        Minecraft mc = Minecraft.getMinecraft();
-        if(TileCorporeaIndex.InputHandler.getNearbyIndexes(mc.thePlayer).isEmpty())
-            return false;
-
-        boolean pressed = true;
-        while(Keyboard.isKeyDown(KEY.keyCode) && pressed) {
-            ItemStack stack = HOVERED_STACK_GETTER.get();
-            if(stack != null && stack.getItem() != null) {
-                int count = 1;
-                int max = stack.getMaxStackSize();
-                if(GuiScreen.isShiftKeyDown()) {
-                    count = max;
-                    if(GuiScreen.isCtrlKeyDown())
-                        count /= 4;
-                } else if(GuiScreen.isCtrlKeyDown())
-                    count = max / 2;
-
-                if(count > 0) {
-                    String name = CorporeaHelper.stripControlCodes(stack.getDisplayName());
-                    String full = count + " " + name;
-
-                    mc.ingameGUI.getChatGUI().addToSentMessages(full);
-                    mc.thePlayer.sendChatMessage(full);
-                    return true;
-                }
-            }
-            pressed = false;
-        }
-        return false;
-    }
 
     private Comparison comparingNbtSpecific(String... nbtKeys) {
         return Comparison.of(((s1, s2) -> {
@@ -277,5 +239,42 @@ public class BotaniaEmiPlugin implements EmiPlugin {
             }
             return true;
         }));
+    }
+
+    public static class KeyBindings {
+
+        public static KeyBinding KEY = new KeyBinding("key.botania.search", Keyboard.KEY_N);
+
+        public static boolean handleKey() {
+            Minecraft mc = Minecraft.getMinecraft();
+            if(TileCorporeaIndex.InputHandler.getNearbyIndexes(mc.thePlayer).isEmpty())
+                return false;
+
+            boolean pressed = true;
+            while(Keyboard.isKeyDown(KEY.keyCode) && pressed) {
+                ItemStack stack = HOVERED_STACK_GETTER.get();
+                if(stack != null && stack.getItem() != null) {
+                    int count = 1;
+                    int max = stack.getMaxStackSize();
+                    if(GuiScreen.isShiftKeyDown()) {
+                        count = max;
+                        if(GuiScreen.isCtrlKeyDown())
+                            count /= 4;
+                    } else if(GuiScreen.isCtrlKeyDown())
+                        count = max / 2;
+
+                    if(count > 0) {
+                        String name = CorporeaHelper.stripControlCodes(stack.getDisplayName());
+                        String full = count + " " + name;
+
+                        mc.ingameGUI.getChatGUI().addToSentMessages(full);
+                        mc.thePlayer.sendChatMessage(full);
+                        return true;
+                    }
+                }
+                pressed = false;
+            }
+            return false;
+        }
     }
 }

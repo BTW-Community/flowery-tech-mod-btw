@@ -13,7 +13,6 @@ package vazkii.botania.common;
 import api.config.AddonConfig;
 import baubles.common.Baubles;
 import baubles.common.network.PacketHandler;
-import api.AddonHandler;
 import api.BTWAddon;
 import api.world.BiomeDecoratorBase;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
@@ -103,7 +102,7 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 		
 		lightHelper = /*coloredLightsLoaded ? new LightHelperColored() :*/ new LightHelperVanilla();
 
-		KeyBindingHelper.registerKeyBinding(BotaniaEmiPlugin.KEY);
+		KeyBindingHelper.registerKeyBinding(BotaniaEmiPlugin.KeyBindings.KEY);
 		getProxy().preInit();
 	}
 
@@ -127,6 +126,7 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 
 	@Override
 	public void postInitialize() {
+
 		getProxy().postInit();
 		ServerLifecycleEvents.SERVER_STARTED.register(server -> IMCHandler.processMessages());
 		ServerLifecycleEvents.SERVER_STOPPING.register(server -> ManaNetworkHandler.instance.clear());
