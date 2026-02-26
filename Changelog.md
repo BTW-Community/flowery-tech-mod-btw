@@ -14,6 +14,7 @@
 - Somehow I forgot the Minecraft Forge License
 - Corporea request keybind now works once per key press
 - Fix constant openGL errors in the lexica botania
+- NPE with horn of the canopy
 - Many recipes used the "old" item instead of the BTW version 
   - Red string
   - Fel Pumpkin

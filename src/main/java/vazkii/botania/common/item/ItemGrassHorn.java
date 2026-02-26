@@ -15,20 +15,20 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import btw.block.blocks.PlantsBlock;
 import dev.bagel.interfaces.BlockExtensions;
 import dev.bagel.shim.BlockBush;
 import net.minecraft.src.Block;
+import net.minecraft.src.BlockCrops;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EnumAction;
-import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.ChunkCoordinates;
 import net.minecraft.src.Icon;
 import net.minecraft.src.World;
-import vazkii.botania.api.item.IGrassHornExcempt;
 import vazkii.botania.api.item.IHornHarvestable;
 import vazkii.botania.api.item.IHornHarvestable.EnumHornType;
 import vazkii.botania.api.subtile.ISpecialFlower;
@@ -128,7 +128,7 @@ public class ItemGrassHorn extends ItemMod {
 					int z = srcz + j;
 
 					Block block = world.getBlock(x, y, z);
-					if(block instanceof IHornHarvestable ? ((IHornHarvestable) block).canHornHarvest(world, x, y, z, stack, type) : stackDmg == 0 && block instanceof BlockBush && !(block instanceof ISpecialFlower) && (!(block instanceof IGrassHornExcempt) || ((IGrassHornExcempt) block).canUproot(world, x, y, z)) || stackDmg == 1 && block.blockMaterial == Block.leaves.blockMaterial || stackDmg == 2 && block == Block.snow)
+					if(block instanceof IHornHarvestable ? ((IHornHarvestable) block).canHornHarvest(world, x, y, z, stack, type) : stackDmg == 0 && block instanceof PlantsBlock && !(block instanceof ISpecialFlower) && !(block instanceof BlockCrops) || stackDmg == 1 && block != null && block.blockMaterial == Block.leaves.blockMaterial || stackDmg == 2 && block == Block.snow)
 						coords.add(new ChunkCoordinates(x, y, z));
 				}
 
