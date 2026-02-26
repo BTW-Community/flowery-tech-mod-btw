@@ -133,7 +133,7 @@ loom {
 modrinth {
 //	tasks.modrinth.dependsOn(tasks.modrinthSyncBody)
 	token = System.getenv("MODRINTH_TOKEN") // Remember to have the MODRINTH_TOKEN environment variable set or else this will fail - just make sure it stays private!
-	projectId = "child-of-flowers"
+	projectId = "botania-btw-unofficial"
 	versionName = project.name + "-" + mod_version + "+BTW_" + btw_version
 	versionNumber = mod_version
 	versionType = "alpha"
