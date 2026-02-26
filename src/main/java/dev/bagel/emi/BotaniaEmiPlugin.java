@@ -16,6 +16,7 @@ import emi.dev.emi.emi.api.stack.Comparison;
 import emi.dev.emi.emi.api.stack.EmiIngredient;
 import emi.dev.emi.emi.api.stack.EmiStack;
 import emi.dev.emi.emi.screen.Bounds;
+import net.legacyfabric.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.src.*;
 import org.lwjgl.input.Keyboard;
 import vazkii.botania.api.BotaniaAPI;
@@ -219,14 +220,13 @@ public class BotaniaEmiPlugin implements EmiPlugin {
     };
     public static KeyBinding KEY = new KeyBinding("key.botania.search", Keyboard.KEY_N);
 
-    public static boolean handleKey(int keyCode) {
+    public static boolean handleKey() {
         Minecraft mc = Minecraft.getMinecraft();
         if(TileCorporeaIndex.InputHandler.getNearbyIndexes(mc.thePlayer).isEmpty())
             return false;
 
-        int bind = KEY.keyCode;
-
-        if(keyCode == bind) {
+        boolean pressed = true;
+        while(Keyboard.isKeyDown(KEY.keyCode) && pressed) {
             ItemStack stack = HOVERED_STACK_GETTER.get();
             if(stack != null && stack.getItem() != null) {
                 int count = 1;
@@ -247,6 +247,7 @@ public class BotaniaEmiPlugin implements EmiPlugin {
                     return true;
                 }
             }
+            pressed = false;
         }
         return false;
     }

@@ -79,7 +79,7 @@ dependencies {
 	include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.5.0")))
 
 	modImplementation ("net.legacyfabric.legacy-fabric-api:legacy-fabric-api:${lfapi_version}+${minecraft_version}")  {
-		exclude module: "legacy-fabric-keybindings-api-v1-common"
+//		exclude module: "legacy-fabric-keybindings-api-v1-common"
 		exclude module: "legacy-fabric-keybindings-api-v1-common-1.5.2"
 		exclude module: "legacy-fabric-keybindings-api-v1"
 		exclude module: "legacy-fabric-item-groups-v1-common-1.8.9"

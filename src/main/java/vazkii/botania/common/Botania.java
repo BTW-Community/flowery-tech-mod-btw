@@ -18,14 +18,18 @@ import api.BTWAddon;
 import api.world.BiomeDecoratorBase;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
 import cpw.mods.fml.common.network.IGuiHandler;
+import dev.bagel.emi.BotaniaEmiPlugin;
 import dev.bagel.network.CustomGuiPacketHandler;
 import dev.bagel.util.GuiHandlerHolder;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.loader.api.FabricLoader;
+import net.legacyfabric.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.legacyfabric.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.src.*;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.client.core.proxy.ClientProxy;
 import vazkii.botania.common.core.command.CommandOpen;
@@ -57,6 +61,8 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 	public static Botania instance = new Botania();
 
 	public static CommonProxy proxy = new CommonProxy();
+
+	public static final Logger LOGGER = LogManager.getLogger("Botania");
 
 	public static CommonProxy getProxy() {
 		if (instance.getEffectiveSide() == EnvType.SERVER) {
@@ -97,6 +103,7 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 		
 		lightHelper = /*coloredLightsLoaded ? new LightHelperColored() :*/ new LightHelperVanilla();
 
+		KeyBindingHelper.registerKeyBinding(BotaniaEmiPlugin.KEY);
 		getProxy().preInit();
 	}
 

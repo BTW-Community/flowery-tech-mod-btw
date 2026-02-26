@@ -7,7 +7,6 @@
     "BaublesPreInitCheck",
     "CommandGiveMixin",
     "EmiScreenManagerMixin",
-    "GameSettingsMixin",
     "ItemStackMixin",
     "PlayerControllerMPMixin",
     "RenderGlobalAccessor",

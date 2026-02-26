@@ -12,6 +12,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class GuiScreenMixin {
     @Inject(method = "handleKeyboardInput", at = @At("TAIL"))
     private void forge$handleKeyboardInput(CallbackInfo ci) {
-        BotaniaEmiPlugin.handleKey(Keyboard.getEventKey());
+        BotaniaEmiPlugin.handleKey();
     }
 }
