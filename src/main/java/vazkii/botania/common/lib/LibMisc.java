@@ -15,8 +15,8 @@ import net.minecraftforge.common.util.ForgeDirection;
 public final class LibMisc {
 
 	// Mod Constants
-	public static final String MOD_ID = "Botania";
-	public static final String MOD_NAME = MOD_ID;
+	public static final String MOD_ID = "botania";
+	public static final String MOD_NAME = "Botania: Child of Flowers";
 	public static final String VERSION = "GRADLETOKEN_VERSION";
 	public static final String DEPENDENCIES = "required-after:Baubles;after:Thaumcraft";
 
