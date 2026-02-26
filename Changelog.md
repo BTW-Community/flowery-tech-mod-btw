@@ -29,7 +29,7 @@
 ### API
 - Implement the mod IMC event for items that should be blacklisted from being picked up by the magnet
   - See IMCHandler for more info on how to implement this. 
-  - It needs to be done sometime in the intialization phase.
+  - It needs to be done sometime in the initialization phase.
 
 ## 0.0.4
 ### General
