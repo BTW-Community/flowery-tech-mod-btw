@@ -60,6 +60,7 @@ import vazkii.botania.common.core.handler.ManaNetworkHandler;
 import vazkii.botania.common.core.helper.Vector3;
 import vazkii.botania.common.entity.EntityManaBurst;
 import vazkii.botania.common.entity.EntityManaBurst.PositionProperties;
+import vazkii.botania.common.item.equipment.tool.ToolCommons;
 import vazkii.botania.common.lib.LibBlockNames;
 
 public class TileSpreader extends TileSimpleInventory implements IManaCollector, IWandBindable, IKeyLocked, IThrottledPacket, IManaSpreader, IRedirectable {
@@ -376,7 +377,7 @@ public class TileSpreader extends TileSimpleInventory implements IManaCollector,
 			}
 			worldObj.playSoundAtEntity(player, "botania:ding", 0.1F, 1F);
 		} else {
-			MovingObjectPosition pos = raytraceFromEntity(worldObj, player, true, 5);
+			MovingObjectPosition pos = ToolCommons.raytraceFromEntity(worldObj, player, true, 5);
 			if(pos != null && pos.hitVec != null && !worldObj.isRemote) {
 				double x = pos.hitVec.xCoord - xCoord - 0.5;
 				double y = pos.hitVec.yCoord - yCoord - 0.5;
@@ -514,30 +515,6 @@ public class TileSpreader extends TileSimpleInventory implements IManaCollector,
 		}
 
 		return null;
-	}
-
-	public static MovingObjectPosition raytraceFromEntity(World world, Entity player, boolean par3, double range) {
-		float f = 1.0F;
-		float f1 = player.prevRotationPitch + (player.rotationPitch - player.prevRotationPitch) * f;
-		float f2 = player.prevRotationYaw + (player.rotationYaw - player.prevRotationYaw) * f;
-		double d0 = player.prevPosX + (player.posX - player.prevPosX) * f;
-		double d1 = player.prevPosY + (player.posY - player.prevPosY) * f;
-		if (!world.isRemote && player instanceof EntityPlayer)
-			d1 += 1.62D;
-		double d2 = player.prevPosZ + (player.posZ - player.prevPosZ) * f;
-		Vec3 vec3 = Vec3.createVectorHelper(d0, d1, d2);
-		float f3 = MathHelper.cos(-f2 * 0.017453292F - (float) Math.PI);
-		float f4 = MathHelper.sin(-f2 * 0.017453292F - (float) Math.PI);
-		float f5 = -MathHelper.cos(-f1 * 0.017453292F);
-		float f6 = MathHelper.sin(-f1 * 0.017453292F);
-		float f7 = f4 * f5;
-		float f8 = f3 * f5;
-		double d3 = range;
-		if (player instanceof EntityPlayerMP pmp)
-			d3 = pmp.theItemInWorldManager.getBlockReachDistance();
-		Vec3 vec31 = vec3.addVector(f7 * d3, f6 * d3, f8 * d3);
-//		return world.func_147447_a(vec3, vec31, par3, !par3, par3);
-		return world.rayTraceBlocks_do_do(vec3, vec31, par3, !par3);
 	}
 
 	public void renderHUD(Minecraft mc, ScaledResolution res) {

@@ -159,7 +159,7 @@ public final class ToolCommons {
 	/**
 	 * @author mDiyo
 	 */
-	public static MovingObjectPosition raytraceFromEntity(World world, Entity player, boolean par3, double range) {
+	public static MovingObjectPosition raytraceFromEntity(World world, Entity player, boolean hitFluidSources, double range) {
 		float f = 1.0F;
 		float f1 = player.prevRotationPitch + (player.rotationPitch - player.prevRotationPitch) * f;
 		float f2 = player.prevRotationYaw + (player.rotationYaw - player.prevRotationYaw) * f;
@@ -175,9 +175,8 @@ public final class ToolCommons {
 		float f6 = MathHelper.sin(-f1 * 0.017453292F);
 		float f7 = f4 * f5;
 		float f8 = f3 * f5;
-		double d3 = range;
-		Vec3 vec31 = vec3.addVector(f7 * d3, f6 * d3, f8 * d3);
-		return world.rayTraceBlocks_do_do(vec3, vec31, par3, false);
+        Vec3 vec31 = vec3.addVector(f7 * range, f6 * range, f8 * range);
+		return world.rayTraceBlocks_do_do(vec3, vec31, hitFluidSources, false);
 	}
 
 }
