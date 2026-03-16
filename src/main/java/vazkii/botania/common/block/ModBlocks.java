@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.block;
 
+import btw.block.BTWBlocks;
 import dev.bagel.util.Blocks;
 import net.minecraft.src.Block;
 import net.minecraft.src.BlockDispenser;
@@ -405,6 +406,9 @@ public final class ModBlocks {
 
 		BotaniaAPI.registerPaintableBlock(unstableBlock);
 		BotaniaAPI.registerPaintableBlock(manaBeacon);
+		BotaniaAPI.registerPaintableBlock(BTWBlocks.woolSlab);
+		BotaniaAPI.registerPaintableBlock(BTWBlocks.woolSlabTop);
+		BotaniaAPI.registerPaintableBlock(BTWBlocks.vase);
 
 		initTileEntities();
 	}
