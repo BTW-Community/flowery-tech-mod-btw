@@ -12,7 +12,7 @@
         <processorPath useClasspath="false">
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.github.llamalad7/mixinextras-fabric/0.5.0/91a83dfb7abd320f6236bd1fcf5c0ff143d59a13/mixinextras-fabric-0.5.0.jar" />
         </processorPath>
-        <module name="Botania_BTW_(Unofficial).main" />
+        <module name="Botania_for_BTW.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="17" />
@@ -21,6 +21,7 @@
     <option name="ADDITIONAL_OPTIONS_STRING" value="-AoutRefMapFile=$PROJECT_DIR$/build/classes/java/main/botania-btw-refmap.json -AdefaultObfuscationEnv=named:intermediary -Aquiet=true -AoutMapFileNamedIntermediary=$PROJECT_DIR$/build/loom-cache/mixin-map-btw.community.mappings.1_6_4.1.0.3-v2.main.tiny -AinMapFileNamedIntermediary=$USER_HOME$/.gradle/caches/fabric-loom/1.6.4/btw.community.mappings.1_6_4.1.0.3-v2/mappings.tiny" />
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Botania_BTW_(Unofficial).test" options="-AoutRefMapFile=$PROJECT_DIR$/build/classes/java/test/test-botania-btw-refmap.json -AdefaultObfuscationEnv=named:intermediary -Aquiet=true -AoutMapFileNamedIntermediary=$PROJECT_DIR$/build/loom-cache/mixin-map-btw.community.mappings.1_6_4.1.0.3-v2.test.tiny -AinMapFileNamedIntermediary=$USER_HOME$/.gradle/caches/fabric-loom/1.6.4/btw.community.mappings.1_6_4.1.0.3-v2/mappings.tiny" />
+      <module name="Botania_for_BTW.test" options="-AoutRefMapFile=$PROJECT_DIR$/build/classes/java/test/test-botania-btw-refmap.json -AdefaultObfuscationEnv=named:intermediary -Aquiet=true -AoutMapFileNamedIntermediary=$PROJECT_DIR$/build/loom-cache/mixin-map-btw.community.mappings.1_6_4.1.0.3-v2.test.tiny -AinMapFileNamedIntermediary=$USER_HOME$/.gradle/caches/fabric-loom/1.6.4/btw.community.mappings.1_6_4.1.0.3-v2/mappings.tiny" />
       <module name="Child_of_Flowers.test" options="-AoutRefMapFile=$PROJECT_DIR$/build/classes/java/test/test-child-of-flowers-refmap.json -AdefaultObfuscationEnv=named:intermediary -Aquiet=true -AoutMapFileNamedIntermediary=$PROJECT_DIR$/build/loom-cache/mixin-map-btw.community.mappings.1_6_4.1.0.3-v2.test.tiny -AinMapFileNamedIntermediary=$USER_HOME$/.gradle/caches/fabric-loom/1.6.4/btw.community.mappings.1_6_4.1.0.3-v2/mappings.tiny" />
       <module name="My_Addon.test" options="-AoutRefMapFile=$PROJECT_DIR$/build/classes/java/test/test-child-of-flowers-refmap.json -AdefaultObfuscationEnv=named:intermediary -Aquiet=true -AoutMapFileNamedIntermediary=$PROJECT_DIR$/build/loom-cache/mixin-map-btw.community.mappings.1_6_4.1.0.3-v2.test.tiny -AinMapFileNamedIntermediary=$USER_HOME$/.gradle/caches/fabric-loom/1.6.4/btw.community.mappings.1_6_4.1.0.3-v2/mappings.tiny" />
     </option>
