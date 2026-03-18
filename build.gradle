@@ -29,6 +29,9 @@ repositories {
 		url file('mavenRepo')
 	}
 	maven {
+		url = "https://jitpack.io"
+	}
+	maven {
 		url = "https://api.modrinth.com/maven"
 	}
 	maven {
@@ -86,6 +89,8 @@ dependencies {
 	}
 	modImplementation "maven.modrinth:legacy-fabric-api-fixes-btw:${lfapi_fix_version}"
 	modRuntimeOnly("com.github.bawnorton.mixinsquared:mixinsquared-fabric:0.2.0")
+
+	modImplementation(include('com.github.Chocohead:Fabric-ASM:v2.3'))
 }
 
 configurations.all {

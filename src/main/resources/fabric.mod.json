@@ -41,6 +41,9 @@
     ],
     "emi": [
       "dev.bagel.emi.BotaniaEmiPlugin"
+    ],
+    "mm:early_risers": [
+      "dev.bagel.cursed.EarlyRiser"
     ]
   },
   "mixins": [
