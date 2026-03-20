@@ -1,6 +1,10 @@
 # Changelog
 
 
+## 0.1.1
+### Fixes
+- Fix the game instantly crashing due to access widener issues (oops)
+
 ## 0.1.0
 ### General
 - Re-implement the item durability hooks, so mana items will have durability based on the mana they contain
