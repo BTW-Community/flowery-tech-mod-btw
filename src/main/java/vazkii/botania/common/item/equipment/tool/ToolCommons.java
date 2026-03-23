@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.item.equipment.tool;
 
+import api.item.items.ToolItem;
 import btw.block.BTWBlocks;
 import dev.bagel.interfaces.BlockExtensions;
 import net.minecraft.src.Block;
@@ -69,28 +70,27 @@ public final class ToolCommons {
 		removeBlockWithDrops(player, stack, world, x, y, z, bx, by, bz, block, materialsListing, silk, fortune, blockHardness, dispose, true);
 	}
 
-//	public static boolean canHarvestBlock(Block block, EntityPlayer player, int metadata)
-//	{
-//		if (block.getMaterial().isToolNotRequired())
-//		{
-//			return true;
-//		}
-//
-//		ItemStack stack = player.inventory.getCurrentItem();
-//		String tool = block.getHarvestTool(metadata);
-//		if (stack == null || tool == null)
-//		{
-//			return player.canHarvestBlock(block);
-//		}
-//
-//		int toolLevel = stack.getItem().getHarvestLevel(stack, tool);
-//		if (toolLevel < 0)
-//		{
-//			return player.canHarvestBlock(block);
-//		}
-//
-//		return toolLevel >= block.getHarvestLevel(metadata);
-//	}
+	public static boolean canHarvestBlock(Block block, EntityPlayer player, int metadata, int x, int y, int z)
+	{
+		if (block == null) return false;
+		if (block.blockMaterial.isToolNotRequired()) {
+			return true;
+		}
+
+		ItemStack stack = player.inventory.getCurrentItem();
+		if (stack == null) {
+			return player.canHarvestBlock(block, x, y, z);
+		}
+
+		if (stack.getItem() instanceof ToolItem item) {
+			int toolLevel = item.toolMaterial.getHarvestLevel();
+			if (toolLevel < 0) {
+				return player.canHarvestBlock(block, x, y, z);
+			}
+			return toolLevel >= block.getHarvestToolLevel(player.worldObj, x, y, z);
+		}
+		return false;
+	}
 
 	public static void removeBlockWithDrops(EntityPlayer player, ItemStack stack, World world, int x, int y, int z, int bx, int by, int bz, Block block, Material[] materialsListing, boolean silk, int fortune, float blockHardness, boolean dispose, boolean particles) {
 		if(!world.blockExists(x, y, z))
@@ -104,7 +104,7 @@ public final class ToolCommons {
 		if (blk == null) return;
 		Material mat = blk.blockMaterial;
 		if(mat != null && !world.isRemote && !blk.isAir(world, x, y, z) && blk.getPlayerRelativeBlockHardness(player, world, x, y, z) > 0) {
-			if(/*!blk.canHarvestBlock(player, meta) ||*/ !isRightMaterial(mat, materialsListing))
+			if(!canHarvestBlock(block, player, meta, x, y, z) || !isRightMaterial(mat, materialsListing))
 				return;
 
 			if(!player.capabilities.isCreativeMode) {
@@ -131,10 +131,15 @@ public final class ToolCommons {
 			return 0;
 
 		Item item = stack.getItem();
-		if(!(item instanceof ItemTool tool))
+		EnumToolMaterial material;
+		if(item instanceof ItemTool tool)
+			material = tool.getToolMaterial();
+		else if (item instanceof ToolItem tool)
+			material = tool.toolMaterial;
+		else
 			return 0;
 
-        EnumToolMaterial material = tool.getToolMaterial();
+
 		int materialLevel = 0;
 		if(material == BotaniaAPI.manasteelToolMaterial)
 			materialLevel = 10;
@@ -154,7 +159,7 @@ public final class ToolCommons {
 	/**
 	 * @author mDiyo
 	 */
-	public static MovingObjectPosition raytraceFromEntity(World world, Entity player, boolean par3, double range) {
+	public static MovingObjectPosition raytraceFromEntity(World world, Entity player, boolean hitFluidSources, double range) {
 		float f = 1.0F;
 		float f1 = player.prevRotationPitch + (player.rotationPitch - player.prevRotationPitch) * f;
 		float f2 = player.prevRotationYaw + (player.rotationYaw - player.prevRotationYaw) * f;
@@ -170,9 +175,8 @@ public final class ToolCommons {
 		float f6 = MathHelper.sin(-f1 * 0.017453292F);
 		float f7 = f4 * f5;
 		float f8 = f3 * f5;
-		double d3 = range;
-		Vec3 vec31 = vec3.addVector(f7 * d3, f6 * d3, f8 * d3);
-		return world.rayTraceBlocks_do_do(vec3, vec31, par3, false);
+        Vec3 vec31 = vec3.addVector(f7 * range, f6 * range, f8 * range);
+		return world.rayTraceBlocks_do_do(vec3, vec31, hitFluidSources, false);
 	}
 
 }

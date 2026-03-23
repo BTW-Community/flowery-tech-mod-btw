@@ -22,16 +22,15 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void registerKeyBindings() {
 		keyHandler = KeyHandler.INSTANCE;
-//		FMLCommonHandler.instance().bus().register(keyHandler);
 		MinecraftForge.EVENT_BUS.register(new GuiEvents());
 	}
 	
 	@Override
-	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		if (world instanceof WorldClient) {
-			switch (ID) {
-				case Baubles.GUI: return new GuiPlayerExpanded(player);
-			}
+	public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
+		if (world.isRemote) {
+            if (id == Baubles.GUI) {
+                return new GuiPlayerExpanded(player);
+            }
 		}
 		return null;
 	}

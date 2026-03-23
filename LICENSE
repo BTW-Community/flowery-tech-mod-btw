@@ -9,3 +9,7 @@ https://botaniamod.net/license.html
 All files under ./src/main/java/dev/bagel/* are licensed under
 MIT license
 https://mit-license.org/
+
+All files under ./src/main/java/net/minecraftforge are licensed under
+The Minecraft Forge Public Licence
+See MinecraftForge-License.txt for details.

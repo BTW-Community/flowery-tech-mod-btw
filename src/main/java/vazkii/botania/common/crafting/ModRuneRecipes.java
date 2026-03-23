@@ -68,13 +68,13 @@ public final class ModRuneRecipes {
 //		for(int i = 0; i < 16; i++)
 			recipesAirRune.add(BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 2, 3), costTier1, LibOreDict.MANA_POWDER, LibOreDict.MANA_STEEL, new ItemStack(BTWItems.fabric, 1), new ItemStack(Item.feather), new ItemStack(Item.silk)));
 
-		recipeSpringRune = BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 1, 4), costTier2, LibOreDict.RUNE[0], LibOreDict.RUNE[1], TagInstance.of(BTWTags.saplings), TagInstance.of(BTWTags.saplings), TagInstance.of(BTWTags.saplings), new ItemStack(Item.wheat));
+		recipeSpringRune = BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 1, 4), costTier2, LibOreDict.RUNE[0], LibOreDict.RUNE[1], TagInstance.of(BTWTags.saplings), TagInstance.of(BTWTags.saplings), TagInstance.of(BTWTags.saplings), new ItemStack(BTWItems.wheat));
 		recipeSummerRune = BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 1, 5), costTier2, LibOreDict.RUNE[2], LibOreDict.RUNE[3], new ItemStack(Block.sand), new ItemStack(Block.sand), new ItemStack(Item.slimeBall), new ItemStack(Item.melon));
 		recipeAutumnRune = BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 1, 6), costTier2, LibOreDict.RUNE[1], LibOreDict.RUNE[3], TagInstance.of(BTWTags.leaves), TagInstance.of(BTWTags.leaves), TagInstance.of(BTWTags.leaves), new ItemStack(Item.spiderEye));
 
 		recipesWinterRune = new ArrayList<>();
-		for(int i = 0; i < 16; i++)
-			recipesWinterRune.add(BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 1, 7), costTier2, LibOreDict.RUNE[0], LibOreDict.RUNE[2], new ItemStack(Block.snow), new ItemStack(Block.snow), new ItemStack(Block.cloth, 1, i), new ItemStack(Item.cake)));
+//		for(int i = 0; i < 16; i++)
+			recipesWinterRune.add(BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 1, 7), costTier2, LibOreDict.RUNE[0], LibOreDict.RUNE[2], new ItemStack(Block.snow), new ItemStack(Block.snow), TagInstance.of(BTWTags.knitWools) /*new ItemStack(Block.cloth, 1, i)*/, new ItemStack(Item.cake)));
 
 		recipeManaRune = BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 1, 8), costTier2, LibOreDict.MANA_STEEL, LibOreDict.MANA_STEEL, LibOreDict.MANA_STEEL, LibOreDict.MANA_STEEL, LibOreDict.MANA_STEEL, LibOreDict.MANA_PEARL);
 

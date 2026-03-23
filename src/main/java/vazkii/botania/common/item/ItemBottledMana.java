@@ -13,6 +13,7 @@ package vazkii.botania.common.item;
 import java.util.List;
 import java.util.Random;
 
+import api.util.MiscUtils;
 import net.minecraft.src.*;
 import net.minecraft.server.MinecraftServer;
 import vazkii.botania.client.core.helper.IconHelper;
@@ -41,8 +42,10 @@ public class ItemBottledMana extends ItemMod {
 			break;
 		}
 		case 1 : { // Water
-			if(!player.worldObj.isRemote && !player.worldObj.provider.isHellWorld)
-				player.worldObj.setBlock(MathHelper.floor_double(player.posX), MathHelper.floor_double(player.posY), MathHelper.floor_double(player.posZ), Block.waterMoving);
+			if(!player.worldObj.isRemote && !player.worldObj.provider.isHellWorld) {
+				MiscUtils.placeNonPersistentWater(player.worldObj, MathHelper.floor_double(player.posX), MathHelper.floor_double(player.posY), MathHelper.floor_double(player.posZ));
+//				player.worldObj.setBlock(MathHelper.floor_double(player.posX), MathHelper.floor_double(player.posY), MathHelper.floor_double(player.posZ), Block.waterMoving);
+			}
 			break;
 		}
 		case 2 : { // Set on Fire
@@ -97,14 +100,13 @@ public class ItemBottledMana extends ItemMod {
 		}
 		case 9 : { // Highest Possible
 			int x = MathHelper.floor_double(player.posX);
-			MathHelper.floor_double(player.posY);
+//			MathHelper.floor_double(player.posY);
 			int z = MathHelper.floor_double(player.posZ);
 			for(int i = 256; i > 0; i--) {
 				Block block = player.worldObj.getBlock(x, i, z);
-				if(!block.isAir(player.worldObj, x, i, z)) {
-					if(player instanceof EntityPlayerMP) {
-						EntityPlayerMP mp = (EntityPlayerMP) player;
-						mp.playerNetServerHandler.setPlayerLocation(player.posX, i + 1.6, player.posZ, player.rotationYaw, player.rotationPitch);
+				if(block != null && !block.isAir(player.worldObj, x, i, z)) {
+					if(player instanceof EntityPlayerMP mp) {
+                        mp.playerNetServerHandler.setPlayerLocation(player.posX, i + 1.6, player.posZ, player.rotationYaw, player.rotationPitch);
 					}
 					break;
 				}

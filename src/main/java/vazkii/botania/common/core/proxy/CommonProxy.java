@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.core.proxy;
 
+import api.config.AddonConfig;
 import dev.bagel.network.CustomGuiPacketHandler;
 import net.minecraft.src.*;
 import net.minecraft.server.MinecraftServer;
@@ -77,7 +78,7 @@ public class CommonProxy {
 //		if(Botania.etFuturumLoaded)
 //			ModBanners.init();
 
-		ChestGenHandler.init();
+
 
 		if(Botania.gardenOfGlassLoaded) {
 			new WorldTypeSkyblock(9); // sure why not 9
@@ -94,6 +95,8 @@ public class CommonProxy {
 		ModEntities.init();
 		ModPotions.init();
 		ModBrews.init();
+
+		ChestGenHandler.init();
 
 		ModCraftingRecipes.init();
 		ModPetalRecipes.init();
@@ -119,15 +122,21 @@ public class CommonProxy {
 
 		LexiconData.init();
 	}
-//	@SubscribeEvent
+
+	public final void registerConfigProperties(AddonConfig config) {
+		ConfigHandler.register(config);
+	}
+
+	public final void handleConfigProperties(AddonConfig config) {
+		ConfigHandler.load(config);
+	}
+
 	public void postInit() {
 
 		ModBlocks.addDispenserBehaviours();
 		ModBlocks.registerMultiparts();
 		ConfigHandler.loadPostInit();
 		LexiconData.postInit();
-
-//		registerNEIStuff();
 
 		int words = 0;
 		for(LexiconEntry entry : BotaniaAPI.getAllEntries())
@@ -168,32 +177,6 @@ public class CommonProxy {
 		BotaniaAPI.blacklistEntityFromGravityRod(EntityPlayerMover.class);
 
 		// BTW todo gravity rod blacklist for BTW
-	}
-
-/*
-	// Overriding the internal method handler will break everything as it changes regularly.
-	// So just don't be a moron and don't override it. Thanks.
-	@SubscribeEvent
-	public void serverAboutToStart(FMLServerAboutToStartEvent event) {
-		String clname = BotaniaAPI.internalHandler.getClass().getName();
-		String expect = "vazkii.botania.common.core.handler.InternalMethodHandler";
-		if(!clname.equals(expect)) {
-			new IllegalAccessError("The Botania API internal method handler has been overriden. "
-					+ "This will cause crashes and compatibility issues, and that's why it's marked as"
-					+ " \"Do not Override\". Whoever had the brilliant idea of overriding it needs to go"
-					+ " back to elementary school and learn to read. (Expected classname: " + expect + ", Actual classname: " + clname + ")").printStackTrace();
-			FMLCommonHandler.instance().exitJava(1, true);
-		}
-	}*/
-
-	//todofix server commands
-//	@SubscribeEvent //FMLServerStartingEvent event
-	public void serverStarting() {
-//		event.registerServerCommand(new CommandShare());
-//		event.registerServerCommand(new CommandOpen());
-
-/*		if(Botania.gardenOfGlassLoaded)
-			event.registerServerCommand(new CommandSkyblockSpread());*/
 	}
 
 	public void setEntryToOpen(LexiconEntry entry) {

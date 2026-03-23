@@ -32,7 +32,7 @@ public class SubTileLoonuim extends SubTileFunctional {
             Random rand = supertile.getWorldObj().rand;
 
             ItemStack stack;
-            do {//todofix double check chest gen for loonium is working
+            do {
                 stack = getOneItem(rand);
             } while (stack == null || BotaniaAPI.looniumBlacklist.contains(stack.getItem()));
 
@@ -78,7 +78,7 @@ public class SubTileLoonuim extends SubTileFunctional {
     //Forge util methods
 
     public static WeightedRandomChestContent[] getItems(Random rnd) {
-        ArrayList<WeightedRandomChestContent> ret = new ArrayList<WeightedRandomChestContent>();
+        ArrayList<WeightedRandomChestContent> ret = new ArrayList<>();
 
         for (WeightedRandomChestContent orig : WorldGenDungeons.field_111189_a) {
             Item item = orig.theItemId.getItem();
@@ -95,7 +95,7 @@ public class SubTileLoonuim extends SubTileFunctional {
             }
         }
 
-        return ret.toArray(new WeightedRandomChestContent[ret.size()]);
+        return ret.toArray(new WeightedRandomChestContent[0]);
     }
 
     public ItemStack getOneItem(Random rand) {

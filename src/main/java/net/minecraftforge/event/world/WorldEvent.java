@@ -3,6 +3,7 @@ package net.minecraftforge.event.world;
 import cpw.mods.fml.common.eventhandler.Cancelable;
 import cpw.mods.fml.common.eventhandler.Event;
 import net.legacyfabric.fabric.api.event.EventFactory;
+import net.legacyfabric.fabric.api.event.lifecycle.v1.ServerWorldEvents;
 import net.minecraft.src.*;
 
 import java.util.ArrayList;
@@ -48,6 +49,9 @@ public class WorldEvent extends Event
                 event.onWorldLoad(loadEvent);
             }
         });
+        static {
+            ServerWorldEvents.LOAD.register((server, world) -> EVENT.invoker().onWorldLoad(new Load(world)));
+        }
 
         public interface LoadCallback {
             public void onWorldLoad(Load loadEvent);
@@ -78,6 +82,10 @@ public class WorldEvent extends Event
                 event.onWorldUnload(world);
             }
         });
+
+        static {
+            ServerWorldEvents.UNLOAD.register((server, world) -> EVENT.invoker().onWorldUnload(new Unload(world)));
+        }
 
         public interface UnloadCallback {
             public void onWorldUnload(Unload world);

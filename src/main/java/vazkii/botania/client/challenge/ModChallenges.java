@@ -15,6 +15,7 @@ import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
 
+import btw.item.BTWItems;
 import net.minecraft.src.Block;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
@@ -41,7 +42,7 @@ public final class ModChallenges {
 
 		addChallenge(EnumChallengeLevel.NORMAL, "apothecaryRefill", new ItemStack(ModBlocks.altar));
 		addChallenge(EnumChallengeLevel.NORMAL, "treeFarm", new ItemStack(Block.sapling));
-		addChallenge(EnumChallengeLevel.NORMAL, "fullCropFarm", new ItemStack(Item.seeds));
+		addChallenge(EnumChallengeLevel.NORMAL, "fullCropFarm", new ItemStack(BTWItems.wheatSeeds));
 		addChallenge(EnumChallengeLevel.NORMAL, "animalFarm", new ItemStack(Item.leather));
 		addChallenge(EnumChallengeLevel.NORMAL, "boneMealFarm", new ItemStack(Item.dyePowder, 1, 15));
 		addChallenge(EnumChallengeLevel.NORMAL, "orechid", ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_ORECHID));

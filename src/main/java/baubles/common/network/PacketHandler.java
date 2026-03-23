@@ -14,7 +14,6 @@ import net.minecraft.src.*;
 
 import java.io.*;
 
-//todobaubles IMPORTANT: PACKETS
 public class PacketHandler implements CustomPacketHandler {
 //    public static final SimpleNetworkWrapper INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel(Baubles.MODID.toLowerCase());
     public static final PacketHandler INSTANCE = new PacketHandler();

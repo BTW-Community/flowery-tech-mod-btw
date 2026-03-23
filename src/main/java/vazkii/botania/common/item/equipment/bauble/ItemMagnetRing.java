@@ -17,6 +17,7 @@ import net.minecraft.src.Block;
 import net.minecraft.src.IconRegister;
 import net.minecraft.src.EntityLivingBase;
 import net.minecraft.src.EntityItem;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.Icon;
@@ -45,7 +46,7 @@ public class ItemMagnetRing extends ItemBauble {
 
 	private static final String TAG_COOLDOWN = "cooldown";
 
-	private static final List<String> BLACKLIST = new ArrayList<>(List.of("appliedenergistics2:item.ItemCrystalSeed"));
+	private static final List<Item> BLACKLIST = new ArrayList<>();
 
 	int range;
 
@@ -126,7 +127,7 @@ public class ItemMagnetRing extends ItemBauble {
 			return false;
 
 		ItemStack stack = item.getEntityItem();
-		if(stack == null || stack.getItem() instanceof IManaItem || stack.getItem() instanceof IRelic || BLACKLIST.contains(stack.getItem().getUnlocalizedName()) || BotaniaAPI.isItemBlacklistedFromMagnet(stack))
+		if(stack == null || stack.getItem() instanceof IManaItem || stack.getItem() instanceof IRelic || BLACKLIST.contains(stack.getItem()) || BotaniaAPI.isItemBlacklistedFromMagnet(stack))
 			return false;
 
 		int x = net.minecraft.src.MathHelper.floor_double(item.posX);
@@ -155,7 +156,7 @@ public class ItemMagnetRing extends ItemBauble {
 		ItemNBTHelper.setInt(stack, TAG_COOLDOWN, cooldown);
 	}
 
-	public static void addItemToBlackList(String item) {
+	public static void addItemToBlackList(Item item) {
 		BLACKLIST.add(item);
 	}
 

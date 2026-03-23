@@ -2,7 +2,8 @@ package dev.bagel.mixin.event.client;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
-import com.llamalad7.mixinextras.sugar.ref.LocalIntRef;
+import com.llamalad7.mixinextras.sugar.Share;
+import com.llamalad7.mixinextras.sugar.ref.LocalDoubleRef;
 import net.minecraft.src.*;
 import net.minecraftforge.client.ForgeHooksClient;
 import org.lwjgl.opengl.GL11;
@@ -11,7 +12,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
 import java.util.Random;
@@ -78,10 +78,14 @@ public abstract class RenderItemMixin extends Render {
         return stack.getItem().showDurabilityBar(stack);
     }
 
-    @Inject(method = "renderItemOverlayIntoGUI(Lnet/minecraft/src/FontRenderer;Lnet/minecraft/src/TextureManager;Lnet/minecraft/src/ItemStack;IILjava/lang/String;)V", at = @At(value = "INVOKE", remap = false, target = "Lorg/lwjgl/opengl/GL11;glDisable(I)V", ordinal = 7))
-    private void forge$renderItemOverlayIntoGUI(FontRenderer par1FontRenderer, TextureManager par2TextureManager, ItemStack par3ItemStack, int par4, int par5, String par6Str, CallbackInfo ci, @Local(name = "var12") LocalIntRef var12, @Local(name = "var8") LocalIntRef var8) {
-        double health = par3ItemStack.getItem().getDurabilityForDisplay(par3ItemStack);
-        var12.set((int) Math.round(13.0D - health * 13.0D));
-        var8.set((int) Math.round(255.0D - health * 255.0D));
+    @ModifyArg(method = "renderItemOverlayIntoGUI(Lnet/minecraft/src/FontRenderer;Lnet/minecraft/src/TextureManager;Lnet/minecraft/src/ItemStack;IILjava/lang/String;)V", at = @At(value = "INVOKE", target = "Ljava/lang/Math;round(D)J", ordinal = 0))
+    private double forge$replaceDurabilityStart(double original, @Local(argsOnly = true) ItemStack stack, @Share("health") LocalDoubleRef health) {
+        health.set(stack.getItem().getDurabilityForDisplay(stack));
+        return 13.0D - health.get() * 13.0D;
+    }
+
+    @ModifyArg(method = "renderItemOverlayIntoGUI(Lnet/minecraft/src/FontRenderer;Lnet/minecraft/src/TextureManager;Lnet/minecraft/src/ItemStack;IILjava/lang/String;)V", at = @At(value = "INVOKE", target = "Ljava/lang/Math;round(D)J", ordinal = 1))
+    private double forge$replaceDurabilityEnd(double original, @Share("health") LocalDoubleRef health) {
+        return 255.0D - health.get() * 255.0D;
     }
 }

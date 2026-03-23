@@ -10,8 +10,8 @@
  */
 package vazkii.botania.client.gui.lexicon.button;
 
+import dev.bagel.client.OpenGlHelper2;
 import net.minecraft.src.Minecraft;
-import net.minecraft.src.OpenGlHelper;
 import net.minecraft.src.TextureManager;
 import net.minecraft.src.ResourceLocation;
 import net.minecraft.src.StatCollector;
@@ -43,11 +43,11 @@ public class GuiButtonCategory extends GuiButtonLexicon {
 			int maskUniform = ARBShaderObjects.glGetUniformLocationARB(shader, "mask");
 
 			float heightMatch = ticksHovered / time;
-			OpenGlHelper.setActiveTexture(ARBMultitexture.GL_TEXTURE0_ARB);
+			OpenGlHelper2.setActiveTexture(ARBMultitexture.GL_TEXTURE0_ARB);
 			GL11.glBindTexture(GL11.GL_TEXTURE_2D, r.getTexture(resource).getGlTextureId());
 			ARBShaderObjects.glUniform1iARB(imageUniform, 0);
 
-			OpenGlHelper.setActiveTexture(ARBMultitexture.GL_TEXTURE0_ARB + ConfigHandler.glSecondaryTextureUnit);
+			OpenGlHelper2.setActiveTexture(ARBMultitexture.GL_TEXTURE0_ARB + ConfigHandler.glSecondaryTextureUnit);
 			GL11.glEnable(GL11.GL_TEXTURE_2D);
 			GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
 			GL11.glBindTexture(GL11.GL_TEXTURE_2D, r.getTexture(stencilResource).getGlTextureId());
@@ -103,7 +103,7 @@ public class GuiButtonCategory extends GuiButtonLexicon {
 		boolean shaders = ShaderHelper.useShaders();
 
 		if(shaders) {
-			OpenGlHelper.setActiveTexture(ARBMultitexture.GL_TEXTURE0_ARB + ConfigHandler.glSecondaryTextureUnit);
+			OpenGlHelper2.setActiveTexture(ARBMultitexture.GL_TEXTURE0_ARB + ConfigHandler.glSecondaryTextureUnit);
 			texture = GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
 		}
 
@@ -112,9 +112,9 @@ public class GuiButtonCategory extends GuiButtonLexicon {
 		ShaderHelper.releaseShader();
 
 		if(shaders) {
-			OpenGlHelper.setActiveTexture(ARBMultitexture.GL_TEXTURE0_ARB + ConfigHandler.glSecondaryTextureUnit);
+			OpenGlHelper2.setActiveTexture(ARBMultitexture.GL_TEXTURE0_ARB + ConfigHandler.glSecondaryTextureUnit);
 			GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture);
-			OpenGlHelper.setActiveTexture(ARBMultitexture.GL_TEXTURE0_ARB);
+			OpenGlHelper2.setActiveTexture(ARBMultitexture.GL_TEXTURE0_ARB);
 		}
 
 		GL11.glPopMatrix();

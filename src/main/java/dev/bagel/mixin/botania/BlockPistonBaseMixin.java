@@ -31,8 +31,10 @@ public class BlockPistonBaseMixin {
         }
     }
 
-    @Inject(method = "tryExtend", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/BlockPistonBase;getBlockTileEntityData(Lnet/minecraft/src/World;III)Lnet/minecraft/src/NBTTagCompound;"))
-    private void botania$tryExtend(World world, int x, int y, int z, int facingTo, CallbackInfoReturnable<Boolean> cir, @Local(name = "movingX") int movingX, @Local(name = "movingY") int movingY, @Local(name = "movingZ") int movingZ) {
+    @Inject(method = "tryExtend", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/BlockPistonBase;getBlockTileEntityData(Lnet/minecraft/src/World;III)Lnet/minecraft/src/NBTTagCompound;", remap = false))
+    private void botania$tryExtend(World world, int x, int y, int z, int facingTo, CallbackInfoReturnable<Boolean> cir,
+                                   //Yeah, these locals are kinda gross, but it does not work in prod without it
+                                   @Local(index = 15, ordinal = 12) int movingX, @Local(index = 16, ordinal = 13) int movingY, @Local(index = 17, ordinal = 14) int movingZ) {
         BlockPos oldPos = new BlockPos(movingX, movingY, movingZ, facingTo);
         TileEntity tile = world.getTileEntity(oldPos.x, oldPos.y, oldPos.z);
         BlockPos newPos = new BlockPos(oldPos.x, oldPos.y, oldPos.z, facingTo);

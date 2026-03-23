@@ -48,10 +48,7 @@ public class Baubles implements GuiHandlerHolder {
 
     public static final Item itemDebugger = new ItemDebugger(2700).setUnlocalizedName("baubleSlotDebugTool");
 
-//    FMLPreInitializationEvent event
-//    @SubscribeEvent
     public void preInit() {
-
         PacketHandler.init();
 
         entityEventHandler = new EventHandlerEntity();
@@ -59,7 +56,6 @@ public class Baubles implements GuiHandlerHolder {
         EventHandlerEntity.init();
 
         MinecraftForge.EVENT_BUS.register(entityEventHandler);
-//        FMLCommonHandler.instance().bus().register(entityEventNetwork);
         getProxy().registerHandlers();
     }
 
@@ -79,11 +75,7 @@ public class Baubles implements GuiHandlerHolder {
         BaublesConfig.handleConfig(config);
 
         ConfigUtils.finishedLoading();
-//        BaublesConfig.loadConfig(new Configuration(new File(Launch.minecraftHome, "config" + File.separator + "Baubles.cfg")));
-
-//        NetworkRegistry.INSTANCE.registerGuiHandler(instance, proxy);
-          getProxy().registerKeyBindings();
-//          GameRegistry.registerItem(itemDebugger, "bauble_slot_debug_tool", Baubles.MODID);
+        getProxy().registerKeyBindings();
     }
 
     @Override

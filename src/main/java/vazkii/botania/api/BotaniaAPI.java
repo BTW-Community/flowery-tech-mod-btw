@@ -123,9 +123,9 @@ public final class BotaniaAPI {
 		elvenKnowledge = registerKnowledgeType("alfheim", EnumChatFormatting.DARK_GREEN, false);
 		relicKnowledge = registerKnowledgeType("relic", EnumChatFormatting.DARK_PURPLE, false);
 
-		addSeed(Item.seeds, Block.crops);
+//		addSeed(BTWItems.wheatSeeds, Block.crops);
 		addSeed(Item.potato, Block.potato);
-		addSeed(Item.carrot, Block.carrot);
+//		addSeed(BTWItems.carrot, Block.carrot);
 		addSeed(BTWItems.carrot, BTWBlocks.carrotCrop);
 		addSeed(BTWItems.wheatSeeds, BTWBlocks.wheatCrop);
 		addSeed(BTWItems.hempSeeds, BTWBlocks.hempCrop);

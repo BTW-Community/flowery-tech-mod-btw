@@ -13,6 +13,7 @@ package vazkii.botania.common.crafting.recipe;
 import java.util.Arrays;
 import java.util.List;
 
+import btw.item.BTWTags;
 import net.minecraft.src.*;
 import vazkii.botania.api.mana.ILens;
 import vazkii.botania.common.item.lens.ItemLens;
@@ -20,9 +21,9 @@ import vazkii.botania.common.lib.LibOreDict;
 
 public class LensDyeingRecipe extends BotaniaIRecipe {
 
-	private static final List<String> DYES = Arrays.asList(new String[] {
-			"dyeWhite", "dyeOrange", "dyeMagenta", "dyeLightBlue", "dyeYellow", "dyeLime", "dyePink", "dyeGray", "dyeLightGray", "dyeCyan", "dyePurple", "dyeBlue", "dyeBrown", "dyeGreen", "dyeRed", "dyeBlack"/*, LibOreDict.MANA_PEARL seems to be intentional*/
-	});
+	private static final int[] DYES = new int[] {
+			15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0/*, LibOreDict.MANA_PEARL seems to be intentional*/
+	};
 
 	public LensDyeingRecipe(ResourceLocation id) {
 		super(id);
@@ -65,8 +66,7 @@ public class LensDyeingRecipe extends BotaniaIRecipe {
 			}
 		}
 
-		if(lens.getItem() instanceof ILens) {
-			lens.getItem();
+		if(lens != null && lens.getItem() instanceof ILens) {
 			ItemStack lensCopy = lens.copy();
 			ItemLens.setLensColor(lensCopy, color);
 
@@ -87,13 +87,12 @@ public class LensDyeingRecipe extends BotaniaIRecipe {
 	}
 
 	int getStackColor(ItemStack stack) {
-		//todofix i dont know what this does and i just want it to compile lmao
-//		int[] ids = OreDictionary.getOreIDs(stack);
-//		for(int i : ids) {
-//			int index = DYES.indexOf(OreDictionary.getOreName(i));
-//			if(index >= 0)
-//				return index;
-//		}
+		for (int i = 0; i < BTWTags.coloredDyes.length; i++) {
+			var dyeTag = BTWTags.coloredDyes[i];
+			if (dyeTag.test(stack, true)) {
+				return DYES[i];
+			}
+		}
 
 		return -1;
 	}

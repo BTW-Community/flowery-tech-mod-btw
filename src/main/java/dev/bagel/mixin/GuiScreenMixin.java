@@ -2,7 +2,6 @@ package dev.bagel.mixin;
 
 import dev.bagel.emi.BotaniaEmiPlugin;
 import net.minecraft.src.GuiScreen;
-import org.lwjgl.input.Keyboard;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -12,6 +11,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class GuiScreenMixin {
     @Inject(method = "handleKeyboardInput", at = @At("TAIL"))
     private void forge$handleKeyboardInput(CallbackInfo ci) {
-        BotaniaEmiPlugin.handleKey(Keyboard.getEventKey());
+        BotaniaEmiPlugin.KeyBindings.handleKey();
     }
 }

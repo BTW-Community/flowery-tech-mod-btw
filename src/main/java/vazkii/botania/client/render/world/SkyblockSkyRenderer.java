@@ -10,26 +10,29 @@
  */
 package vazkii.botania.client.render.world;
 
-//import java.util.Random;
-//
-//import net.minecraft.src.Minecraft;
-//import net.minecraft.src.WorldClient;
-//import net.minecraft.src.OpenGlHelper;
-//import net.minecraft.src.RenderGlobal;
-//import net.minecraft.src.RenderHelper;
-//import net.minecraft.src.Tessellator;
-//import net.minecraft.src.MathHelper;
-//import net.minecraft.src.ResourceLocation;
-//import net.minecraft.src.Vec3;
-//
-//import org.lwjgl.opengl.GL11;
-//
-//import vazkii.botania.client.core.handler.ClientTickHandler;
-//import vazkii.botania.client.lib.LibResources;
-//import vazkii.botania.common.lib.LibObfuscation;
+import dev.bagel.client.OpenGlHelper2;
+import dev.bagel.mixin.RenderGlobalAccessor;
+import net.minecraftforge.client.IRenderHandler;
+
+import java.util.Random;
+
+import net.minecraft.src.Minecraft;
+import net.minecraft.src.WorldClient;
+import net.minecraft.src.OpenGlHelper;
+import net.minecraft.src.RenderGlobal;
+import net.minecraft.src.RenderHelper;
+import net.minecraft.src.Tessellator;
+import net.minecraft.src.MathHelper;
+import net.minecraft.src.ResourceLocation;
+import net.minecraft.src.Vec3;
+
+import org.lwjgl.opengl.GL11;
+
+import vazkii.botania.client.core.handler.ClientTickHandler;
+import vazkii.botania.client.lib.LibResources;
+import vazkii.botania.common.lib.LibObfuscation;
 //todofix GOG rendering
-public class SkyblockSkyRenderer /*extends IRenderHandler*/ {
-/*
+public class SkyblockSkyRenderer extends IRenderHandler {
 
 	private static final ResourceLocation textureSkybox = new ResourceLocation(LibResources.MISC_SKYBOX);
 	private static final ResourceLocation textureRainbow = new ResourceLocation(LibResources.MISC_RAINBOW);
@@ -50,9 +53,9 @@ public class SkyblockSkyRenderer /*extends IRenderHandler*/ {
 		if(test)
 			return;
 
-		int glSkyList = ReflectionHelper.getPrivateValue(RenderGlobal.class, mc.renderGlobal, LibObfuscation.GL_SKY_LIST);
-		int glSkyList2 = ReflectionHelper.getPrivateValue(RenderGlobal.class, mc.renderGlobal, LibObfuscation.GL_SKY_LIST2); // Horizon line. We don't have it here
-		int starGLCallList = ReflectionHelper.getPrivateValue(RenderGlobal.class, mc.renderGlobal, LibObfuscation.STAR_GL_CALL_LIST);
+		int glSkyList = ((RenderGlobalAccessor) mc.renderGlobal).getGlSkyList();
+		int glSkyList2 = ((RenderGlobalAccessor) mc.renderGlobal).getGlSkyList2(); // Horizon line. We don't have it here
+		int starGLCallList = ((RenderGlobalAccessor) mc.renderGlobal).getStarGLCallList();
 
 		GL11.glDisable(GL11.GL_TEXTURE_2D);
 		Vec3 vec3 = world.getSkyColor(mc.renderViewEntity, partialTicks);
@@ -77,7 +80,7 @@ public class SkyblockSkyRenderer /*extends IRenderHandler*/ {
 		GL11.glDisable(GL11.GL_FOG);
 		GL11.glDisable(GL11.GL_ALPHA_TEST);
 		GL11.glEnable(GL11.GL_BLEND);
-		OpenGlHelper.glBlendFunc(770, 771, 1, 0);
+		OpenGlHelper2.glBlendFunc(770, 771, 1, 0);
 		RenderHelper.disableStandardItemLighting();
 		float[] afloat = world.provider.calcSunriseSunsetColors(world.getCelestialAngle(partialTicks), partialTicks);
 		float f7;
@@ -136,7 +139,7 @@ public class SkyblockSkyRenderer /*extends IRenderHandler*/ {
 		float lowA = Math.max(0F, effCelAng - 0.3F) * f6;
 		float a = Math.max(0.1F, lowA);
 
-		OpenGlHelper.glBlendFunc(770, 771, 1, 0);
+		OpenGlHelper2.glBlendFunc(770, 771, 1, 0);
 		GL11.glPushMatrix();
 		GL11.glColor4f(1F, 1F, 1F, (a * 4) * (1F - insideVoid));
 		GL11.glRotatef(90F, 0.5F, 0.5F, 0.0F);
@@ -175,7 +178,7 @@ public class SkyblockSkyRenderer /*extends IRenderHandler*/ {
 		f10 = 20F;
 		a = lowA;
 		GL11.glPushMatrix();
-		OpenGlHelper.glBlendFunc(770, 1, 1, 0);
+		OpenGlHelper2.glBlendFunc(770, 1, 1, 0);
 		GL11.glTranslatef(0F, -1F, 0F);
 		GL11.glRotatef(220F, 1F, 0F, 0F);
 		GL11.glColor4f(1F, 1F, 1F, a);
@@ -236,7 +239,7 @@ public class SkyblockSkyRenderer /*extends IRenderHandler*/ {
 
 		// === Rainbow
 		GL11.glPushMatrix();
-		OpenGlHelper.glBlendFunc(770, 771, 1, 0);
+		OpenGlHelper2.glBlendFunc(770, 771, 1, 0);
 		mc.renderEngine.bindTexture(textureRainbow); 
 		f10 = 10F;
 		float effCelAng1 = celAng;
@@ -279,7 +282,7 @@ public class SkyblockSkyRenderer /*extends IRenderHandler*/ {
 
 		GL11.glColor4f(1F, 1F, 1F, 1F - insideVoid);
 
-		OpenGlHelper.glBlendFunc(770, 1, 1, 0);
+		OpenGlHelper2.glBlendFunc(770, 1, 1, 0);
 
 		// === Sun	
 		GL11.glRotatef(world.getCelestialAngle(partialTicks) * 360.0F, 1.0F, 0.0F, 0.0F);
@@ -365,6 +368,5 @@ public class SkyblockSkyRenderer /*extends IRenderHandler*/ {
 		tess.addVertexWithUV((double)(-f10), 100.0D, (double)f10, 0.0D, 1.0D);
 		tess.draw();
 	}
-*/
 
 }

@@ -31,7 +31,6 @@ public interface IRelic {
 	 */
 	public String getSoulbindUsername(ItemStack stack);
 
-	//todo new achievements
 	/**
 	 * Sets the achievement that this relic binds to.
 	 */

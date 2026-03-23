@@ -10,6 +10,9 @@
  */
 package vazkii.botania.common.crafting;
 
+import api.item.tag.TagInstance;
+import btw.item.BTWItems;
+import btw.item.BTWTags;
 import net.minecraft.src.Block;
 import net.minecraft.src.Item;
 import net.minecraft.src.Item;
@@ -53,7 +56,7 @@ public class ModBrewRecipes {
 		strengthBrew = BotaniaAPI.registerBrewRecipe(ModBrews.strength, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.blazePowder), new ItemStack(Item.glowstone));
 		hasteBrew = BotaniaAPI.registerBrewRecipe(ModBrews.haste, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.sugar), new ItemStack(Item.goldNugget));
 		healingBrew = BotaniaAPI.registerBrewRecipe(ModBrews.healing, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.speckledMelon), new ItemStack(Item.potato));
-		jumpBoostBrew = BotaniaAPI.registerBrewRecipe(ModBrews.jumpBoost, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.feather), new ItemStack(Item.carrot));
+		jumpBoostBrew = BotaniaAPI.registerBrewRecipe(ModBrews.jumpBoost, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.feather), new ItemStack(BTWItems.carrot));
 		regenerationBrew = BotaniaAPI.registerBrewRecipe(ModBrews.regen, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.ghastTear), new ItemStack(Item.glowstone));
 		weakRegenerationBrew = BotaniaAPI.registerBrewRecipe(ModBrews.regenWeak, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.ghastTear), new ItemStack(Item.redstone));
 		resistanceBrew = BotaniaAPI.registerBrewRecipe(ModBrews.resistance, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.ingotIron), new ItemStack(Item.leather));
@@ -65,7 +68,7 @@ public class ModBrewRecipes {
 
 		overloadBrew = BotaniaAPI.registerBrewRecipe(ModBrews.overload, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.blazePowder), new ItemStack(Item.sugar), new ItemStack(Item.glowstone), new ItemStack(ModItems.manaResource), new ItemStack(Item.spiderEye));
 		soulCrossBrew = BotaniaAPI.registerBrewRecipe(ModBrews.soulCross, new ItemStack(Item.netherStalkSeeds), new ItemStack(Block.slowSand), new ItemStack(Item.paper), new ItemStack(Item.appleRed), new ItemStack(Item.bone));
-		featherFeetBrew = BotaniaAPI.registerBrewRecipe(ModBrews.featherfeet, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.feather), new ItemStack(Item.leather), new ItemStack(Block.cloth, 1, -1));
+		featherFeetBrew = BotaniaAPI.registerBrewRecipe(ModBrews.featherfeet, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.feather), new ItemStack(Item.leather), TagInstance.of(BTWTags.wools) /*new ItemStack(Block.cloth, 1, -1)*/);
 		emptinessBrew = BotaniaAPI.registerBrewRecipe(ModBrews.emptiness, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.gunpowder), new ItemStack(Item.rottenFlesh), new ItemStack(Item.bone), new ItemStack(Item.silk), new ItemStack(Item.enderPearl));
 		bloodthirstBrew = BotaniaAPI.registerBrewRecipe(ModBrews.bloodthirst, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.fermentedSpiderEye), new ItemStack(Item.dyePowder, 1, 4), new ItemStack(Item.fireballCharge), new ItemStack(Item.ingotIron));
 		allureBrew = BotaniaAPI.registerBrewRecipe(ModBrews.allure, new ItemStack(Item.netherStalkSeeds), new ItemStack(Item.fishRaw), new ItemStack(Item.netherQuartz), new ItemStack(Item.goldenCarrot));

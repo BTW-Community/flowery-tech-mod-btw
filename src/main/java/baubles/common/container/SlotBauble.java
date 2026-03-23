@@ -45,15 +45,15 @@ public class SlotBauble extends Slot {
 		}
 
 		Item item = stack.getItem();
-		if(!(item instanceof IBauble) || !((IBauble)item).canEquip(stack, ((InventoryBaubles)inventory).player.get())) {
+		if(!(item instanceof IBauble bauble) || !bauble.canEquip(stack, ((InventoryBaubles) inventory).player)) {
 			return false;
 		}
 
         String[] types;
-        if(item instanceof IBaubleExpanded) {
-            types = ((IBaubleExpanded)item).getBaubleTypes(stack);
+        if(item instanceof IBaubleExpanded expanded) {
+            types = expanded.getBaubleTypes(stack);
         } else {
-            BaubleType legacyType = ((IBauble)item).getBaubleType(stack);
+            BaubleType legacyType = bauble.getBaubleType(stack);
             types = new String[] {BaubleExpandedSlots.getTypeFromBaubleType(legacyType)};
         }
 

@@ -19,6 +19,7 @@ import net.minecraft.src.Block;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.SubTileFunctional;
+import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.core.handler.ConfigHandler;
 import vazkii.botania.common.lexicon.LexiconData;
 
@@ -63,7 +64,7 @@ public class SubTileAgricarnation extends SubTileFunctional {
 
 	boolean isPlant(int x, int y, int z) {
 		Block block = supertile.getWorldObj().getBlock(x, y, z);
-		if(block == Block.grass || block == Block.leaves /*|| block == Block.leaves2*/ || block instanceof BlockBush && !(block instanceof BlockCrops) && !(block instanceof BlockSapling))
+		if(block == null || block == ModBlocks.specialFlower || block == Block.grass || block == Block.leaves /*|| block == Block.leaves2*/ || block instanceof BlockBush && !(block instanceof BlockCrops) && !(block instanceof BlockSapling))
 			return false;
 
 		Material mat = block.blockMaterial;

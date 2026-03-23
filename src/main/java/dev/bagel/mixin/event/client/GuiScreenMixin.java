@@ -5,7 +5,10 @@ import baubles.client.gui.GuiPlayerExpanded;
 import baubles.common.network.PacketHandler;
 import baubles.common.network.PacketOpenBaublesInventory;
 import baubles.common.network.PacketOpenNormalInventory;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
+import dev.bagel.util.GuiButtonSound;
 import net.minecraft.src.*;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -65,5 +68,13 @@ public class GuiScreenMixin {
             this.buttonList.add(new GuiBaublesButton(55, guiLeft + 26, guiTop + 9, 10, 10,
                     tooltip));
         }
+    }
+
+    @WrapOperation(method = "mouseClicked", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/SoundManager;playSoundFX(Ljava/lang/String;FF)V"))
+    private void botania$playSoundButton(SoundManager instance, String var4, float v, float par1Str, Operation<Void> original, @Local GuiButton button) {
+        if (button instanceof GuiButtonSound soundButton) {
+            soundButton.func_146113_a();
+        }
+        else original.call(instance, var4, v, par1Str);
     }
 }

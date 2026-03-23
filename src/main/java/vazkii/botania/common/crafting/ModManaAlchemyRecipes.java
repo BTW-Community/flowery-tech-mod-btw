@@ -13,6 +13,9 @@ package vazkii.botania.common.crafting;
 import java.util.ArrayList;
 import java.util.List;
 
+import api.item.tag.TagInstance;
+import btw.item.BTWItems;
+import btw.item.BTWTags;
 import net.minecraft.src.Block;
 import net.minecraft.src.Block;
 import net.minecraft.src.Item;
@@ -92,10 +95,10 @@ public final class ModManaAlchemyRecipes {
 			fishRecipes.add(BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(Item.fishRaw, 1, i == 3 ? 0 : i + 1), new ItemStack(Item.fishRaw, 1, i), 200));
 
 		cropRecipes = new ArrayList<>();
-		cropRecipes.add(BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(Item.seeds), new ItemStack(Item.dyePowder, 1, 3), 6000));
-		cropRecipes.add(BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(Item.potato), new ItemStack(Item.wheat), 6000));
-		cropRecipes.add(BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(Item.carrot), new ItemStack(Item.potato), 6000));
-		cropRecipes.add(BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(Item.melonSeeds), new ItemStack(Item.carrot), 6000));
+		cropRecipes.add(BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(BTWItems.wheatSeeds), new ItemStack(Item.dyePowder, 1, 3), 6000));
+		cropRecipes.add(BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(Item.potato), new ItemStack(BTWItems.wheat), 6000));
+		cropRecipes.add(BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(BTWItems.carrot), new ItemStack(Item.potato), 6000));
+		cropRecipes.add(BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(Item.melonSeeds), new ItemStack(BTWItems.carrot), 6000));
 		cropRecipes.add(BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(Item.pumpkinSeeds), new ItemStack(Item.melonSeeds), 6000));
 		cropRecipes.add(BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(Item.dyePowder, 1, 3), new ItemStack(Item.pumpkinSeeds), 6000));
 
@@ -109,8 +112,8 @@ public final class ModManaAlchemyRecipes {
 		nameTagRecipe = BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(Item.nameTag), new ItemStack(Item.writableBook), 16000);
 
 		stringRecipes = new ArrayList<>();
-		for(int i = 0; i < 16; i++)
-			stringRecipes.add(BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(Item.silk, 3), new ItemStack(Block.cloth, 1, i), 100));
+//		for(int i = 0; i < 16; i++)
+//			stringRecipes.add(BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(Item.silk, 1), TagInstance.of(BTWTags.wools) /*new ItemStack(Block.cloth, 1, i)*/, 100));
 
 		slimeballCactusRecipes = new ArrayList<>();
 		slimeballCactusRecipes.add(BotaniaAPI.registerManaAlchemyRecipe(new ItemStack(Item.slimeBall), new ItemStack(Block.cactus), 1200));

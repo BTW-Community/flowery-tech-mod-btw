@@ -15,8 +15,8 @@ import net.minecraftforge.common.util.ForgeDirection;
 public final class LibMisc {
 
 	// Mod Constants
-	public static final String MOD_ID = "Botania";
-	public static final String MOD_NAME = MOD_ID;
+	public static final String MOD_ID = "botania";
+	public static final String MOD_NAME = "Botania: Child of Flowers";
 	public static final String VERSION = "GRADLETOKEN_VERSION";
 	public static final String DEPENDENCIES = "required-after:Baubles;after:Thaumcraft";
 
@@ -29,7 +29,7 @@ public final class LibMisc {
 	public static final String GUI_FACTORY = "vazkii.botania.client.core.proxy.GuiFactory";
 
 	// IMC Keys
-	public static final String BLACKLIST_ITEM = "blackListItem";
+	public static final String ITEM_MAGNET_BLACKLIST = "botania:itemMagnetBlacklist";
 
 	public static final ForgeDirection[] CARDINAL_DIRECTIONS = new ForgeDirection[] {
 		ForgeDirection.NORTH, ForgeDirection.SOUTH, ForgeDirection.EAST, ForgeDirection.WEST

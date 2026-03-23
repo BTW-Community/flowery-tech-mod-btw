@@ -2,6 +2,7 @@ package dev.bagel.mixin.event.client;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import com.llamalad7.mixinextras.sugar.Local;
 import dev.bagel.client.OpenGlHelper2;
 import net.minecraft.src.*;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -43,6 +44,32 @@ public class MinecraftMixin {
     private void forge$onWorldUnloadClient(WorldClient world, String par2Str, CallbackInfo ci) {
         if (theWorld != null) {
             WorldEvent.Unload.EVENT.invoker().onWorldUnload(new WorldEvent.Unload(theWorld));
+        }
+    }
+
+    @Inject(method = "clickMiddleMouseButton", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/Item;getHasSubtypes()Z"), cancellable = true)
+    private void forge$clickMiddleMouse(CallbackInfo ci, @Local Block block) {
+        ItemStack foundStack = block.getPickBlock(this.objectMouseOver, this.theWorld, this.objectMouseOver.blockX, this.objectMouseOver.blockY, this.objectMouseOver.blockZ);
+        if (foundStack != null) {
+            boolean found = false;
+            for (int x = 0; x < 9; x++) {
+                ItemStack stack = thePlayer.inventory.getStackInSlot(x);
+                if (stack != null && stack.isItemEqual(foundStack) && ItemStack.areItemStackTagsEqual(stack, foundStack)) {
+                    thePlayer.inventory.currentItem = x;
+                    found = true;
+                }
+            }
+            if (this.thePlayer.capabilities.isCreativeMode && !found) {
+                int slot = this.thePlayer.inventory.getFirstEmptyStack();
+                if (slot < 0 || slot >= 9)
+                {
+                    slot = this.thePlayer.inventory.currentItem;
+                }
+
+                this.thePlayer.inventory.setInventorySlotContents(slot, foundStack);
+                this.thePlayer.inventory.currentItem = slot;
+            }
+            ci.cancel();
         }
     }
 }

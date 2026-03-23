@@ -13,31 +13,37 @@ package vazkii.botania.common;
 import api.config.AddonConfig;
 import baubles.common.Baubles;
 import baubles.common.network.PacketHandler;
-import api.AddonHandler;
 import api.BTWAddon;
 import api.world.BiomeDecoratorBase;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
 import cpw.mods.fml.common.network.IGuiHandler;
+import dev.bagel.emi.BotaniaEmiPlugin;
 import dev.bagel.network.CustomGuiPacketHandler;
 import dev.bagel.util.GuiHandlerHolder;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.loader.api.FabricLoader;
+import net.legacyfabric.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.legacyfabric.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.src.*;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.client.core.proxy.ClientProxy;
 import vazkii.botania.common.core.command.CommandOpen;
 import vazkii.botania.common.core.command.CommandShare;
 import vazkii.botania.common.core.command.CommandSkyblockSpread;
 import vazkii.botania.common.core.handler.BiomeDecorationHandler;
+import vazkii.botania.common.core.handler.IMCHandler;
+import vazkii.botania.common.core.handler.ManaNetworkHandler;
 import vazkii.botania.common.core.proxy.CommonProxy;
 import vazkii.botania.common.integration.coloredlights.ILightHelper;
 import vazkii.botania.common.integration.coloredlights.LightHelperVanilla;
+import vazkii.botania.common.lib.LibMisc;
 
 import java.util.Random;
 
-//@Mod(modid = LibMisc.MOD_ID, name = LibMisc.MOD_NAME, version = LibMisc.VERSION, dependencies = LibMisc.DEPENDENCIES, guiFactory = LibMisc.GUI_FACTORY)
 public class Botania extends BTWAddon implements GuiHandlerHolder {
 
 	public static boolean gardenOfGlassLoaded = false;
@@ -53,14 +59,9 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 
 	public static Botania instance = new Botania();
 
-	@Override
-	public void postSetup() {
-		super.postSetup();
-	}
-
-	//	@SidedProxy(serverSide = LibMisc.PROXY_COMMON, clientSide = LibMisc.PROXY_CLIENT)
-	//ADDED interface
 	public static CommonProxy proxy = new CommonProxy();
+
+	public static final Logger LOGGER = LogManager.getLogger("Botania");
 
 	public static CommonProxy getProxy() {
 		if (instance.getEffectiveSide() == EnvType.SERVER) {
@@ -73,7 +74,12 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 
 	@Override
 	public String getModID() {
-		return "botania";
+		return LibMisc.MOD_ID;
+	}
+
+	@Override
+	public void postSetup() {
+		IMCHandler.setupIMC();
 	}
 
 	@Override
@@ -81,6 +87,7 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 		if (!MinecraftServer.getIsServer()) {
 			addResourcePackDomain("baubles");
 		}
+
 		Baubles.instance.preInit();
 		registerPacketHandler("botania|BAUB", PacketHandler.INSTANCE);
 		gardenOfGlassLoaded = FabricLoader.getInstance().isModLoaded("denovo");
@@ -95,6 +102,7 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 		
 		lightHelper = /*coloredLightsLoaded ? new LightHelperColored() :*/ new LightHelperVanilla();
 
+		KeyBindingHelper.registerKeyBinding(BotaniaEmiPlugin.KeyBindings.KEY);
 		getProxy().preInit();
 	}
 
@@ -103,7 +111,6 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 		Baubles.instance.entityEventNetwork.playerLoggedInEvent(new PlayerEvent.PlayerLoggedInEvent(playerMP));
 	}
 
-	//FMLInitializationEvent
 	@Override
 	public void initialize() {
 		BotaniaAPI.init();
@@ -116,10 +123,13 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 		if(Botania.gardenOfGlassLoaded)
 			registerAddonCommand(new CommandSkyblockSpread());
 	}
-	//FMLPostInitializationEvent
+
 	@Override
 	public void postInitialize() {
+
 		getProxy().postInit();
+		ServerLifecycleEvents.SERVER_STARTED.register(server -> IMCHandler.processMessages());
+		ServerLifecycleEvents.SERVER_STOPPING.register(server -> ManaNetworkHandler.instance.clear());
 	}
 
 	@Override
@@ -128,34 +138,19 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 		BiomeDecorationHandler.onWorldDecoration(new DecorateBiomeEvent.Decorate(world, rand, x, y, DecorateBiomeEvent.Decorate.EventType.FLOWERS));
 	}
 
-    @Override
-    public void handleConfigProperties(AddonConfig config) {
-        super.handleConfigProperties(config);
-    }
+	@Override
+	public void registerConfigProperties(AddonConfig config) {
+		getProxy().registerConfigProperties(config);
+	}
 
-    @Override
+	@Override
+	public void handleConfigProperties(AddonConfig config) {
+		getProxy().handleConfigProperties(config);
+	}
+
+	@Override
 	public IGuiHandler getGuiHandler() {
 		return CommonProxy.guiHandler;
-	}
-
-	//FMLServerAboutToStartEvent
-	public void serverAboutToStart() {
-//		getProxy().serverAboutToStart();
-	}
-
-	//FMLServerStartingEvent
-	public void serverStarting() {
-		getProxy().serverStarting();
-	}
-
-	//FMLServerStoppingEvent
-	public void serverStopping() {
-//		ManaNetworkHandler.instance.clear();
-	}
-
-	//FMLInterModComms.IMCEvent event
-	public void handleIMC() {
-//		IMCHandler.processMessages(event.getMessages());
 	}
 
 	public static ResourceLocation loc(String id) {
