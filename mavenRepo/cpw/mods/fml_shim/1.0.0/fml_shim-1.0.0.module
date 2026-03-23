@@ -1,0 +1,191 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "cpw.mods",
+    "module": "fml_shim",
+    "version": "1.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.6"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "fml_shim-1.0.0.jar",
+          "url": "fml_shim-1.0.0.jar",
+          "size": 45754,
+          "sha512": "1c5f6add2670ff6dd51cc32a44486cda3d5f20911487d96362f18b1cc4cb2bb160b1dc96bf0196b72c40137c2fe11dbe73cda1eddd277578107485773cef7f56",
+          "sha256": "d42b3cb94d9df71f84cc0a1543e8ffea517c05df27b2465c541ebd86635b6dc8",
+          "sha1": "1341889e5243a4930517735454390c64617ecb27",
+          "md5": "296f8a154672390b80b7c3689c3213bd"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "net.fabricmc",
+          "module": "fabric-loom",
+          "version": {
+            "requires": "1.5-SNAPSHOT"
+          }
+        },
+        {
+          "group": "org.apache.logging.log4j",
+          "module": "log4j-core",
+          "version": {
+            "requires": "2.19.0"
+          }
+        },
+        {
+          "group": "org.apache.logging.log4j",
+          "module": "log4j-api",
+          "version": {
+            "requires": "2.19.0"
+          }
+        },
+        {
+          "group": "org.lwjgl.lwjgl",
+          "module": "lwjgl_util",
+          "version": {
+            "requires": "2.9.0"
+          }
+        },
+        {
+          "group": "org.lwjgl.lwjgl",
+          "module": "lwjgl",
+          "version": {
+            "requires": "2.9.0"
+          }
+        },
+        {
+          "group": "org.lwjgl.lwjgl",
+          "module": "lwjgl-platform",
+          "version": {
+            "requires": "2.9.0"
+          }
+        },
+        {
+          "group": "com.google.guava",
+          "module": "guava",
+          "version": {
+            "requires": "14.0.1"
+          }
+        },
+        {
+          "group": "com.google.code.gson",
+          "module": "gson",
+          "version": {
+            "requires": "2.2.2"
+          }
+        },
+        {
+          "group": "com.typesafe",
+          "module": "config",
+          "version": {
+            "requires": "1.4.5"
+          }
+        },
+        {
+          "group": "com.github.bawnorton.mixinsquared",
+          "module": "mixinsquared-fabric",
+          "version": {
+            "requires": "0.2.0"
+          }
+        },
+        {
+          "group": "net.fabricmc",
+          "module": "fabric-loader",
+          "version": {
+            "requires": "0.18.4"
+          }
+        },
+        {
+          "group": "net.legacyfabric.legacy-fabric-api",
+          "module": "legacy-fabric-api",
+          "version": {
+            "requires": "1.13.2+1.6.4"
+          },
+          "excludes": [
+            {
+              "group": "*",
+              "module": "legacy-fabric-keybindings-api-v1-common"
+            },
+            {
+              "group": "*",
+              "module": "legacy-fabric-keybindings-api-v1-common-1.5.2"
+            },
+            {
+              "group": "*",
+              "module": "legacy-fabric-item-groups-v1-common-1.8.9"
+            },
+            {
+              "group": "*",
+              "module": "legacy-fabric-keybindings-api-v1"
+            }
+          ]
+        },
+        {
+          "group": "maven.modrinth",
+          "module": "legacy-fabric-api-fixes-btw",
+          "version": {
+            "requires": "1.1.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "fml_shim-1.0.0.jar",
+          "url": "fml_shim-1.0.0.jar",
+          "size": 45754,
+          "sha512": "1c5f6add2670ff6dd51cc32a44486cda3d5f20911487d96362f18b1cc4cb2bb160b1dc96bf0196b72c40137c2fe11dbe73cda1eddd277578107485773cef7f56",
+          "sha256": "d42b3cb94d9df71f84cc0a1543e8ffea517c05df27b2465c541ebd86635b6dc8",
+          "sha1": "1341889e5243a4930517735454390c64617ecb27",
+          "md5": "296f8a154672390b80b7c3689c3213bd"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "fml_shim-1.0.0-sources.jar",
+          "url": "fml_shim-1.0.0-sources.jar",
+          "size": 19058,
+          "sha512": "bd752fd13b1835ddb47ab818dec131b3612ce781906a9e6fd7e38aaaffe650e6f40928722af70b7b90275be76f0a4fc463d369b9479bb82d037ee9d3c2514e47",
+          "sha256": "ee4a462a9b65206ed4be5eda209490b7fee0532f97629e10b0c78e4108910da2",
+          "sha1": "65fc3949fd6140d7f6e24cc5c818cbc0817ccb75",
+          "md5": "be0fc53d78a879983b0ba3a9dfa5dfd7"
+        }
+      ]
+    }
+  ]
+}
