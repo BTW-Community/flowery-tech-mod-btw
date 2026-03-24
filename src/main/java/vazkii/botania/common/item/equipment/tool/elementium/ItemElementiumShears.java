@@ -6,6 +6,7 @@ import java.util.Random;
 
 import net.minecraft.src.*;
 import net.minecraftforge.common.IShearable;
+import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.item.equipment.tool.ToolCommons;
 import vazkii.botania.common.item.equipment.tool.manasteel.ItemManasteelShears;
@@ -46,7 +47,7 @@ public class ItemElementiumShears extends ItemManasteelShears {
 
 	@Override
 	public int getItemEnchantability() {
-		return EnumToolMaterial.EMERALD.B_ELEMENTIUM().getEnchantability();
+		return BotaniaAPI.elementiumToolMaterial.getEnchantability();
 	}
 
 	@Override

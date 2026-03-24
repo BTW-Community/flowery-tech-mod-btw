@@ -64,9 +64,6 @@
       "net/minecraft/class_1069": ["dev/bagel/interfaces/ItemExtensions"],
       "net/minecraft/class_988": ["dev/bagel/interfaces/EntityPlayerExtensions"],
       "net/minecraft/class_226": ["dev/bagel/interfaces/TileEntityExtensions"],
-      "net/minecraft/class_1029": ["dev/bagel/interfaces/enums/EnumArmorMaterialExtension"],
-      "net/minecraft/class_1070": ["dev/bagel/interfaces/enums/EnumToolMaterialExtension"],
-      "net/minecraft/class_1081": ["dev/bagel/interfaces/enums/EnumRarityExtension"],
       "net/minecraft/class_799": ["dev/bagel/interfaces/ItemInWorldManagerExtensions"]
     }
   }

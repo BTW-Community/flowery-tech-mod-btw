@@ -23,6 +23,8 @@ import btw.block.BTWBlocks;
 import btw.item.BTWItems;
 import api.item.tag.TagOrStack;
 import btw.item.BTWTags;
+import com.chocohead.mm.api.ClassTinkerers;
+import dev.bagel.interfaces.enums.EnumArmorMaterialExtension;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.src.*;
@@ -85,16 +87,16 @@ public final class BotaniaAPI {
 	public static Set<String> magnetBlacklist = new LinkedHashSet<>();
 	public static Set<Class<? extends Entity>> gravityRodBlacklist = new LinkedHashSet<>();
 
-	public static EnumArmorMaterial manasteelArmorMaterial = EnumArmorMaterial.IRON.MANASTEEL();
-	public static EnumToolMaterial manasteelToolMaterial = EnumToolMaterial.IRON.MANASTEEL();
+	public static EnumArmorMaterial manasteelArmorMaterial = EnumArmorMaterialExtension.MANASTEEL;
+	public static EnumToolMaterial manasteelToolMaterial = ClassTinkerers.getEnum(EnumToolMaterial.class, "MANASTEEL");
 
-	public static EnumArmorMaterial elementiumArmorMaterial = EnumArmorMaterial.IRON.B_ELEMENTIUM();
-	public static EnumToolMaterial elementiumToolMaterial = EnumToolMaterial.IRON.B_ELEMENTIUM();
+	public static EnumArmorMaterial elementiumArmorMaterial = EnumArmorMaterialExtension.B_ELEMENTIUM;
+	public static EnumToolMaterial elementiumToolMaterial = ClassTinkerers.getEnum(EnumToolMaterial.class, "B_ELEMENTIUM");
 
-	public static EnumArmorMaterial terrasteelArmorMaterial = EnumArmorMaterial.IRON.TERRASTEEL();
-	public static EnumToolMaterial terrasteelToolMaterial = EnumToolMaterial.IRON.TERRASTEEL();
+	public static EnumArmorMaterial terrasteelArmorMaterial = EnumArmorMaterialExtension.TERRASTEEL;
+	public static EnumToolMaterial terrasteelToolMaterial = ClassTinkerers.getEnum(EnumToolMaterial.class, "TERRASTEEL");
 
-	public static EnumArmorMaterial manaweaveArmorMaterial = EnumArmorMaterial.IRON.MANAWEAVE();
+	public static EnumArmorMaterial manaweaveArmorMaterial = EnumArmorMaterialExtension.MANAWEAVE;
 
     public static KnowledgeType basicKnowledge;
 	public static KnowledgeType elvenKnowledge;
@@ -688,6 +690,6 @@ public final class BotaniaAPI {
 
 	public static class Client {
         @Environment(EnvType.CLIENT)
-        public static EnumRarity rarityRelic = EnumRarity.epic.rarityRelic();
+        public static EnumRarity rarityRelic = ClassTinkerers.getEnum(EnumRarity.class, "RELIC");
 	}
 }

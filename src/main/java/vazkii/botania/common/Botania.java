@@ -102,7 +102,8 @@ public class Botania extends BTWAddon implements GuiHandlerHolder {
 		
 		lightHelper = /*coloredLightsLoaded ? new LightHelperColored() :*/ new LightHelperVanilla();
 
-		KeyBindingHelper.registerKeyBinding(BotaniaEmiPlugin.KeyBindings.KEY);
+        if (FabricLoader.getInstance().getEnvironmentType().equals(EnvType.CLIENT))
+            KeyBindingHelper.registerKeyBinding(BotaniaEmiPlugin.KeyBindings.KEY);
 		getProxy().preInit();
 	}
 

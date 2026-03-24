@@ -16,6 +16,7 @@ import java.util.Random;
 import dev.bagel.interfaces.BlockExtensions;
 import net.minecraft.src.*;
 import net.minecraftforge.common.IShearable;
+import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.mana.IManaUsingItem;
 import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.client.core.helper.IconHelper;
@@ -103,7 +104,7 @@ public class ItemManasteelShears extends ItemShears implements IManaUsingItem {
 
 	@Override
 	public int getItemEnchantability() {
-		return EnumToolMaterial.EMERALD.MANASTEEL().getEnchantability();
+		return BotaniaAPI.manasteelToolMaterial.getEnchantability();
 	}
 
 	@Override

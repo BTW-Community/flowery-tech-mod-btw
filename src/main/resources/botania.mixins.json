@@ -48,8 +48,6 @@
     "extensions.NBTTagListExtensionMixin",
     "extensions.TileEntityExtensionsMixin",
     "extensions.WorldExtensionsMixin",
-    "extensions.enums.EnumArmorMaterialMixin",
-    "extensions.enums.EnumToolMaterialMixin",
     "extensions.reach.ItemMixin",
     "extensions.reach.NetServerHandlerReachMixin"
   ],
@@ -60,8 +58,7 @@
     "event.TextureMapMixin",
     "event.client.GuiIngameMixin",
     "event.client.GuiScreenMixin",
-    "event.client.MinecraftMixin",
-    "extensions.enums.EnumRarityMixin"
+    "event.client.MinecraftMixin"
   ],
   "injectors": {
     "defaultRequire": 1

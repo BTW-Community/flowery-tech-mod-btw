@@ -13,6 +13,7 @@ package vazkii.botania.common.item.equipment.armor.manasteel;
 import java.util.List;
 
 import api.item.items.ArmorItem;
+import dev.bagel.interfaces.enums.EnumArmorMaterialExtension;
 import net.minecraft.src.*;
 import net.minecraftforge.common.ISpecialArmor;
 import vazkii.botania.api.BotaniaAPI;
@@ -44,7 +45,7 @@ public class ItemManasteelArmor extends ArmorItem implements ISpecialArmor, IMan
 	}
 
 	public ItemManasteelArmor(int id, int type, String name, EnumArmorMaterial mat) {
-		super(id, mat, 0, type, mat.forge$getWeight(type), mat.forge$getKnockbackResistance(type));
+		super(id, mat, 0, type, EnumArmorMaterialExtension.getWeight(mat, type), EnumArmorMaterialExtension.getKnockbackResistance(mat, type));
 		this.type = type;
 		setCreativeTab(ModItems.botaniaTab);
 		setUnlocalizedName(name);
