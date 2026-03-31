@@ -16,8 +16,17 @@ public class PlayerHandler {
 	private static HashMap<String, InventoryBaubles> playerBaublesServer = new HashMap<>();
 	private static HashMap<String, InventoryBaubles> playerBaublesClient = new HashMap<>();
 
+    public static BaubleLoader getData(EntityPlayer player) {
+        BaubleLoader loader = player.getData(BaubleLoader.BAUBLES_DATA);
+        if (loader == null) {
+            loader = new BaubleLoader(player);
+            player.setData(BaubleLoader.BAUBLES_DATA, loader);
+        }
+        return loader;
+    }
+
 	public static void clearPlayerBaubles(EntityPlayer player) {
-        player.getData(BaubleLoader.BAUBLES_DATA).setInventoryBaubles(player, new InventoryBaubles(player));
+        getData(player).setInventoryBaubles(player, new InventoryBaubles(player));
 	}
 
 	public static void clearClientPlayerBaubles() {
@@ -25,11 +34,11 @@ public class PlayerHandler {
 	}
 
 	public static InventoryBaubles getPlayerBaubles(EntityPlayer player) {
-        return player.getData(BaubleLoader.BAUBLES_DATA).getInventoryBaubles(player);
+        return getData(player).getInventoryBaubles(player);
 	}
 
 	public static void setPlayerBaubles(EntityPlayer player, InventoryBaubles inventory) {
-        player.getData(BaubleLoader.BAUBLES_DATA).setInventoryBaubles(player, inventory);
+        getData(player).setInventoryBaubles(player, inventory);
 	}
 
 	public static void loadPlayerBaubles(EntityPlayer player, File mainFile, File backupFile) {
