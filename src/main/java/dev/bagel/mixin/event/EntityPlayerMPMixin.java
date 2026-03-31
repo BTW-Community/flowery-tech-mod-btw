@@ -1,7 +1,5 @@
 package dev.bagel.mixin.event;
 
-import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.src.*;
 import net.minecraftforge.common.MinecraftForge;
@@ -11,7 +9,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.ArrayList;
@@ -32,7 +29,7 @@ public abstract class EntityPlayerMPMixin extends EntityPlayer {
     @Inject(method = "onDeath", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/Scoreboard;func_96520_a(Lnet/minecraft/src/ScoreObjectiveCriteria;)Ljava/util/Collection;"))
     private void forge$onDeathDrop(DamageSource damageSource, CallbackInfo ci) {
         this.setCaptureDrops(false);
-        onPlayerDrops(((EntityPlayer) (Object) this), damageSource, this.getCapturedDrops());
+        onPlayerDropsPlayerMP(((EntityPlayer) (Object) this), damageSource, this.getCapturedDrops());
     }
 
     @Inject(method = "onDeath", at = @At("HEAD"), cancellable = true)
@@ -45,11 +42,15 @@ public abstract class EntityPlayerMPMixin extends EntityPlayer {
     }
 
     @Unique
-    private boolean onPlayerDrops(EntityPlayer entity, DamageSource source, ArrayList<EntityItem> drops) {
+    private boolean onPlayerDropsPlayerMP(EntityPlayer entity, DamageSource source, ArrayList<EntityItem> drops) {
         PlayerDropsEvent event = new PlayerDropsEvent(entity, source, drops, this.recentlyHit > 0);
         PlayerDropsEvent.PLAYER_DROPS.invoker().onLivingDropsEvent(event);
         if (!MinecraftForge.EVENT_BUS.post(event)) {
             for (EntityItem item : drops) {
+//                if (!worldObj.isRemote) {
+//                    WorldServer worldServer = (WorldServer) worldObj;
+//                    worldServer.getEntityTracker().removeEntityFromAllTrackingPlayers(item);
+//                }
                 joinEntityItemWithWorld(item);
             }
             return false;

@@ -78,7 +78,7 @@ public abstract class EntityPlayerMixin extends EntityLivingBase {
         this.getCapturedDrops().clear();
         instance.dropAllItems();
         this.setCaptureDrops(false);
-        if (!onPlayerDrops(((EntityPlayer) (Object) this), damageSource, this.getCapturedDrops())) {
+        if (!onPlayerDropsEP(((EntityPlayer) (Object) this), damageSource, this.getCapturedDrops())) {
             for (EntityItem item : this.getCapturedDrops()) {
                 joinEntityItemWithWorld(item);
             }
@@ -86,7 +86,7 @@ public abstract class EntityPlayerMixin extends EntityLivingBase {
     }
 
     @Inject(method = "dropPlayerItemWithRandomChoice", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/EntityPlayer;joinEntityItemWithWorld(Lnet/minecraft/src/EntityItem;)V", shift = At.Shift.AFTER), cancellable = true)
-    private void forge$onDropItemPre(ItemStack par1ItemStack, boolean par2, CallbackInfoReturnable<EntityItem> cir, @Local EntityItem entityItem) {
+    private void forge$onDropItemPost(ItemStack par1ItemStack, boolean par2, CallbackInfoReturnable<EntityItem> cir, @Local EntityItem entityItem) {
         setCaptureDrops(false);
         ItemTossEvent event = new ItemTossEvent(entityItem, (EntityPlayer) (Object) this);
         ItemTossEvent.EVENT.invoker().accept(event);
@@ -95,12 +95,13 @@ public abstract class EntityPlayerMixin extends EntityLivingBase {
             cir.setReturnValue(null);
         }
         else {
-            this.joinEntityItemWithWorld(entityItem);
+            this.worldObj.spawnEntityInWorld(entityItem);
+//            this.joinEntityItemWithWorld(entityItem);
         }
     }
 
     @Inject(method = "dropPlayerItemWithRandomChoice", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/EntityPlayer;joinEntityItemWithWorld(Lnet/minecraft/src/EntityItem;)V"))
-    private void forge$onDropItemPost(ItemStack par1ItemStack, boolean par2, CallbackInfoReturnable<EntityItem> cir) {
+    private void forge$onDropItemPre(ItemStack par1ItemStack, boolean par2, CallbackInfoReturnable<EntityItem> cir) {
         setCaptureDrops(true);
 //        if (this.getCaptureDrops()) {
 //            this.getCapturedDrops().add((EntityItem) entityItem);
@@ -108,13 +109,14 @@ public abstract class EntityPlayerMixin extends EntityLivingBase {
 //        }
     }
 
-    @Inject(method = "joinEntityItemWithWorld", at = @At("HEAD"), cancellable = true)
-    private void forge$onJoinEntityItemWithWorld(EntityItem entityItem, CallbackInfo ci) {
-        if (getCaptureDrops())
-        {
+    @WrapOperation(method = "joinEntityItemWithWorld", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/World;spawnEntityInWorld(Lnet/minecraft/src/Entity;)Z"))
+    private boolean forge$onJoinEntityItemWithWorld(World instance, Entity entity, Operation<Boolean> original, EntityItem entityItem) {
+        if (getCaptureDrops()) {
             getCapturedDrops().add(entityItem);
-            ci.cancel();
+            return false;
         }
+//        return false;
+        return original.call(instance, entity);
     }
 
     @Inject(method = "clonePlayer", at = @At("TAIL"))
@@ -126,7 +128,7 @@ public abstract class EntityPlayerMixin extends EntityLivingBase {
     }
 
     @Unique
-    public boolean onPlayerDrops(EntityPlayer entity, DamageSource source, ArrayList<EntityItem> drops) {
+    public boolean onPlayerDropsEP(EntityPlayer entity, DamageSource source, ArrayList<EntityItem> drops) {
         PlayerDropsEvent event = new PlayerDropsEvent(entity, source, drops, this.recentlyHit > 0);
         PlayerDropsEvent.PLAYER_DROPS.invoker().onLivingDropsEvent(event);
         if (!MinecraftForge.EVENT_BUS.post(event)) {
