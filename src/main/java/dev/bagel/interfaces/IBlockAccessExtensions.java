@@ -18,7 +18,7 @@ public interface IBlockAccessExtensions {
         return null;
     }
 
-    default TileEntity getTileEntity(int x, int y, int z) {
+    default @Nullable TileEntity getTileEntity(int x, int y, int z) {
         return null;
     }
 }

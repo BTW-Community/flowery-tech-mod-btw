@@ -125,12 +125,12 @@ public class BlockOpenCrate extends BlockModContainer<TileOpenCrate> implements 
 	}
 
 	@Override
-	public Icon getIcon(IBlockAccess world, int x, int y, int z, int side) {
+	public Icon getBlockTexture(IBlockAccess world, int x, int y, int z, int side) {
 		TileEntity tile = world.getBlockTileEntity(x, y, z);
 		if(tile instanceof TileCraftCrate crate && crate.pattern != -1 && side != 0)
 			return sidePatternIcons[crate.pattern];
 
-		return super.getIcon(world, x, y, z, side);
+		return super.getBlockTexture(world, x, y, z, side);
 	}
 
 	@Override

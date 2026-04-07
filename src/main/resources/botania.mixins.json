@@ -34,7 +34,6 @@
     "event.client.ItemRendererMixin",
     "event.client.ItemStackMixin",
     "event.client.RenderBipedMixin",
-    "event.client.RenderBlocksMixin",
     "event.client.RenderItemMixin",
     "event.client.RenderPlayerMixin",
     "event.saving.SaveHandlerMixin",
