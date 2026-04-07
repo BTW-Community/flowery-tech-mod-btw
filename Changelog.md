@@ -1,6 +1,16 @@
 # Changelog
 
 
+## 0.1.3
+### General
+- Allow dirt path to grow saplings and flowers
+- Reimplement shedding
+  - See `botania_shedding.conf` in the config folder for more info
+### Fixes
+- Fix another "I didn't test in prod properly" bug (getting real tired of those)
+- Drum of gathering now gives correct amount of wool
+- General code cleanup
+
 ## 0.1.2
 ### Fixes
 - Allow older saves to load 0.1.0+ versions of the mod
