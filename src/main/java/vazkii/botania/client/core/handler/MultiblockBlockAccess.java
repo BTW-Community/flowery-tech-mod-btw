@@ -159,13 +159,6 @@ public class MultiblockBlockAccess implements IBlockAccess, IBlockAccessExtensio
         return null;
     }
 
-//	@Override
-//	public boolean isSideSolid(int x, int y, int z, ForgeDirection side, boolean _default) {
-//		if(hasBlockAccess)
-//			return originalBlockAccess.isSideSolid(x, y, z, side, _default);
-//		return _default;
-//	}
-
     /**
      * Updates the block access to the new parameters
      */

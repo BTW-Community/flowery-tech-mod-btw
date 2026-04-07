@@ -101,7 +101,7 @@ public class SubTileGenerating extends SubTileEntity {
 
 			if(passive && muhBalance > 0 && passiveDecayTicks > muhBalance) {
 				supertile.getWorldObj().playAuxSFX(2001, supertile.xCoord, supertile.yCoord, supertile.zCoord, BlockExtensions.getIdFromBlock(supertile.getBlockType()));
-				if(supertile.getWorldObj().getBlock(supertile.xCoord, supertile.yCoord - 1, supertile.zCoord).isSideSolid(supertile.getWorldObj(), supertile.xCoord, supertile.yCoord - 1, supertile.zCoord, ForgeDirection.UP))
+				if(supertile.getWorldObj().doesBlockHaveSolidTopSurface(supertile.xCoord, supertile.yCoord - 1, supertile.zCoord))
 					supertile.getWorldObj().setBlock(supertile.xCoord, supertile.yCoord, supertile.zCoord, Block.deadBush.blockID);
 				else supertile.getWorldObj().setBlockToAir(supertile.xCoord, supertile.yCoord, supertile.zCoord);
 			}

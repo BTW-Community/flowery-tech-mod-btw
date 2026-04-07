@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.item;
 
+import api.world.WorldUtils;
 import net.minecraft.src.*;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.common.block.ModBlocks;
@@ -30,7 +31,7 @@ public class ItemGaiaHead extends ItemMod {
 
 		// If we can replace the block we're clicking on, then we'll go ahead
 		// and replace it (eg, snow).
-		if (world.getBlock(x, y, z).isReplaceableVegetation(world, x, y, z) && sideDir != ForgeDirection.DOWN) {
+		if (world.getBlock(x, y, z) != null && world.getBlock(x, y, z).isReplaceableVegetation(world, x, y, z) && sideDir != ForgeDirection.DOWN) {
 			sideDir = ForgeDirection.UP;
 			y--;
 		}
@@ -41,8 +42,8 @@ public class ItemGaiaHead extends ItemMod {
 
 		// If the side we're trying to place the skull on isn't solid, then
 		// we can't place it either.
-/*		if (!world.isSideSolid(x, y, z, sideDir))
-			return false;*/
+		if (!WorldUtils.doesBlockHaveCenterHardpointToFacing(world, x, y, z, side))
+			return false;
 
 		// Figure out where the skull actually goes based on the side we're placing it against.
 		switch(sideDir) {
@@ -74,8 +75,8 @@ public class ItemGaiaHead extends ItemMod {
 		// Update the skull's orientation if it lets us.
 		TileEntity tileentity = world.getTileEntity(x, y, z);
 
-		if (tileentity != null && tileentity instanceof TileEntitySkull) {
-			((TileEntitySkull) tileentity).setSkullRotation(headAngle);
+		if (tileentity instanceof TileEntitySkull skull) {
+			skull.setSkullRotation(headAngle);
 			//todofix idk what this even is doing, seems to be wither stuff?
 //			((BlockSkull) Block.skull).func_149965_a(world, x, y, z, (TileEntitySkull) tileentity);
 		}

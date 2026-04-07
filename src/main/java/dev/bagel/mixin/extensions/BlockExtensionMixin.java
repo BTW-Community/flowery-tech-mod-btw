@@ -28,6 +28,9 @@ public abstract class BlockExtensionMixin implements BlockExtensions {
     @Shadow
     public abstract int getDamageValue(World par1World, int par2, int par3, int par4);
 
+    @Shadow
+    public abstract boolean hasLargeCenterHardPointToFacing(IBlockAccess blockAccess, int i, int j, int k, int iFacing);
+
     @Override
     public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
         return new ItemStack(Item.itemsList[idPicked(world, x, y, z)], 1, getDamageValue(world, x, y, z));
@@ -35,7 +38,7 @@ public abstract class BlockExtensionMixin implements BlockExtensions {
 
     @Override
     public boolean isSideSolid(World worldObj, int xCoord, int yCoord, int zCoord, ForgeDirection forgeDirection) {
-        return isBlockSolid(worldObj, xCoord, yCoord, zCoord, forgeDirection.ordinal());
+        return hasLargeCenterHardPointToFacing(worldObj, xCoord, yCoord, zCoord, forgeDirection.ordinal());
     }
 
     @Override
@@ -56,10 +59,5 @@ public abstract class BlockExtensionMixin implements BlockExtensions {
         }
 
         return ret;
-    }
-
-    @Override
-    public Icon getIcon(IBlockAccess worldIn, int x, int y, int z, int side) {
-        return null;
     }
 }

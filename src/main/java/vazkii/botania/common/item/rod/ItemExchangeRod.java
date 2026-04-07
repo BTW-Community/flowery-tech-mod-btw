@@ -201,7 +201,7 @@ public class ItemExchangeRod extends ItemMod implements IManaUsingItem, IWirefra
 						
 						// If there is a rendering-specific way to check for this,
 						// that should be placed in preference to this.
-						if(adjBlock != null && !adjBlock.isSideSolid(world, adjX, adjY, adjZ, dir.getOpposite())) {
+						if(adjBlock != null && !adjBlock.hasLargeCenterHardPointToFacing(world, adjX, adjY, adjZ, dir.getOpposite().ordinal(), true)) {
 							coordsList.add(new ChunkCoordinates(x, y, z));
 							break;
 						}

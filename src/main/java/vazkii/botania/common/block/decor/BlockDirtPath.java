@@ -11,6 +11,7 @@
 package vazkii.botania.common.block.decor;
 
 import net.minecraft.src.Block;
+import net.minecraft.src.EnumFacing;
 import net.minecraft.src.Material;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityPlayer;
@@ -64,8 +65,8 @@ public class BlockDirtPath extends BlockMod implements ILexiconable {
 	}
 
 	@Override
-	public boolean isSideSolid(World worldObj, int xCoord, int i, int zCoord, ForgeDirection side) {
-		return side == ForgeDirection.DOWN;
+	public boolean hasLargeCenterHardPointToFacing(IBlockAccess blockAccess, int i, int j, int k, int iFacing, boolean bIgnoreTransparency) {
+		return iFacing == EnumFacing.DOWN.ordinal();
 	}
 
 	@Override

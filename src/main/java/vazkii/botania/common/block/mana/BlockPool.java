@@ -143,11 +143,10 @@ public class BlockPool extends BlockModContainer<TilePool> implements IWandHUD, 
 		return super.getCollisionBoundingBoxFromPool(world, i, j, k);
 	}
 
-	//	@Override
-//	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, ForgeDirection side) {
-//		return side == ForgeDirection.DOWN;
-//	}
-
+	@Override
+	public boolean hasLargeCenterHardPointToFacing(IBlockAccess blockAccess, int i, int j, int k, int iFacing, boolean bIgnoreTransparency) {
+		return iFacing == EnumFacing.DOWN.ordinal();
+	}
 
 	@Override
 	public boolean hasCenterHardPointToFacing(IBlockAccess blockAccess, int i, int j, int k, int iFacing) {
