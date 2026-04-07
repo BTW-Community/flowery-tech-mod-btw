@@ -151,11 +151,11 @@ public class MultiblockBlockAccess implements IBlockAccess, IBlockAccessExtensio
         return false;
     }
 
+    //Added with BTW, shouldn't cause any issues to return null
     @Override
     public Vec3Pool getWorldVec3Pool() {
         if (hasBlockAccess)
             return originalBlockAccess.getWorldVec3Pool();
-        //todofix please dont cause any issues :sob:
         return null;
     }
 

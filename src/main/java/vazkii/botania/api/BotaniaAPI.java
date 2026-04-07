@@ -378,7 +378,7 @@ public final class BotaniaAPI {
 
 	/**
 	 * Registers a Pure Daisy Recipe.
-	 * @param input The block that works as an input for the recipe. Can be a Block or an oredict String.
+	 * @param input The block that works as an input for the recipe. Can be a Block or a Tag/TagInstance.
 	 * @param output The block to be placed upon recipe completion.
 	 * @param outputMeta The metadata to be placed upon recipe completion.
 	 * @return The recipe created.
@@ -469,8 +469,7 @@ public final class BotaniaAPI {
 	 */
 	public static void registerSubTile(String key, Class<? extends SubTileEntity> subtileClass) {
 		subTiles.put(key, subtileClass);
-		//todo figure out subtile handling, likely via just passing the mod id directly
-//		subTileMods.put(key, Loader.instance().activeModContainer().getModId());
+		subTileMods.put(key, Block.modIDSetter /*Loader.instance().activeModContainer().getModId()*/);
 	}
 
 	/**

@@ -49,7 +49,6 @@ public class RecipePetals {
 
 			for(int j = 0; j < inputsMissing.size(); j++) {
 				Object input = inputsMissing.get(j);
-				//todo oredict -> tag
 				if(input instanceof TagInstance ti) {
 					List<ItemStack> validStacks = ti.tag().getItems();
 					boolean found = false;

@@ -43,7 +43,6 @@ public class RecipeManaInfusion {
 			return stack.isItemEqual(inputCopy);
 		}
 
-		//todo replace with tags
 		if(input instanceof TagInstance ti) {
 			List<ItemStack> validStacks = ti.tag().getItems();
 

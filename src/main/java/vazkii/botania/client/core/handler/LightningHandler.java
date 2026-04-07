@@ -402,7 +402,6 @@ public class LightningHandler {
 		}
 
 		private float rayTraceResistance(Vector3 start, Vector3 end, float prevresistance) {
-			//todofix added these 2 booleans, not sure if correct
 			MovingObjectPosition mop = world.rayTraceBlocks_do_do(start.toVec3D(), end.toVec3D(), false, true);
 
 			if(mop == null)
