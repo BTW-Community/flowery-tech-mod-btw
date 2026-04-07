@@ -22,9 +22,7 @@ public class WikiHooks {
 	private static final Map<String, IWikiProvider> modWikis = new HashMap<>();
 
 	public static IWikiProvider getWikiFor(Block block) {
-		//todo block id?
-//		UniqueIdentifier mod = GameRegistry.findUniqueIdentifierFor(block);
-		return getWikiFor(""/*mod == null ? "" : mod.modId.toLowerCase()*/);
+		return getWikiFor(block.getModId());
 	}
 
 	public static IWikiProvider getWikiFor(String mod) {
