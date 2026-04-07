@@ -88,11 +88,15 @@ public class BlockDirtPath extends BlockMod implements ILexiconable {
 		return false;
 	}
 
-	//todofix canSustainPlant
-/*	@Override
-	public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection direction, IPlantable plantable) {
-		return plantable.getPlantType(world, x, y - 1, z) == EnumPlantType.Plains;
-	}*/
+	@Override
+	public boolean canSaplingsGrowOnBlock(World world, int i, int j, int k) {
+		return true;
+	}
+
+	@Override
+	public boolean canWildVegetationGrowOnBlock(World world, int i, int j, int k) {
+		return true;
+	}
 
 	@Override
 	public LexiconEntry getEntry(World world, int x, int y, int z, EntityPlayer player, ItemStack lexicon) {
