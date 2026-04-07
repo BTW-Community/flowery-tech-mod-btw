@@ -91,7 +91,7 @@ public final class BotaniaAPI {
 	public static EnumToolMaterial manasteelToolMaterial = ClassTinkerers.getEnum(EnumToolMaterial.class, "MANASTEEL");
 
 	public static EnumArmorMaterial elementiumArmorMaterial = EnumArmorMaterialExtension.B_ELEMENTIUM;
-	public static EnumToolMaterial elementiumToolMaterial = ClassTinkerers.getEnum(EnumToolMaterial.class, "B_ELEMENTIUM");
+	public static EnumToolMaterial elementiumToolMaterial = ClassTinkerers.getEnum(EnumToolMaterial.class, "ELEMENTIUM");
 
 	public static EnumArmorMaterial terrasteelArmorMaterial = EnumArmorMaterialExtension.TERRASTEEL;
 	public static EnumToolMaterial terrasteelToolMaterial = ClassTinkerers.getEnum(EnumToolMaterial.class, "TERRASTEEL");

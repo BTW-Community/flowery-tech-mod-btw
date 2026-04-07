@@ -111,9 +111,11 @@ public final class ConfigHandler {
 		FMLCommonHandler.instance().bus().register(new ChangeListener());*/
 	}
 	private static AddonConfig config;
+	public static AddonConfig sheddingConfig;
 	public static void register(AddonConfig config) {
 		String desc;
 		ConfigHandler.config = config;
+		ConfigHandler.sheddingConfig = new AddonConfig("botania_shedding");
 
 		desc = "Set this to false to disable the Adaptative Config. Adaptative Config changes any default config values from old versions to the new defaults to make sure you aren't missing out on changes because of old configs. It will not touch any values that were changed manually.";
 		useAdaptativeConfig = registerBool("adaptativeConfig.enabled", desc, useAdaptativeConfig);
@@ -414,10 +416,7 @@ public final class ConfigHandler {
 	}
 
 	public static void loadPostInit() {
-/*		SheddingHandler.loadFromConfig(config);
-
-		if(config.hasChanged())
-			config.save();*/
+		SheddingHandler.writeToConfig(sheddingConfig);
 	}
 
 	public static int registerInt(String propName, String desc, int default_) {
