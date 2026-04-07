@@ -33,11 +33,10 @@ public abstract class BaubleItemBase extends Item implements IBaubleExpanded {
         BaubleItemHelper.addSlotInformation(tooltip, getBaubleTypes(stack));
     }
 
-    //todobaubles enchant glint?
-//    @Override
-//    public boolean hasEffect(ItemStack itemStack, int a) {
-//        return true;
-//    }
+    @Override
+    public boolean hasEffect(ItemStack itemStack) {
+        return true;
+    }
 
     @Override
     public boolean canEquip(ItemStack itemstack, EntityLivingBase player) {
