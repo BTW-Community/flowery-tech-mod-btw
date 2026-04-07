@@ -40,30 +40,28 @@ public class RecipeElvenTrade {
 
 			for(int j = 0; j < inputsMissing.size(); j++) {
 				Object input = inputsMissing.get(j);
-				//todo oredict -> tag
-//				if(input instanceof String) {
-//					List<ItemStack> validStacks = OreDictionary.getOres((String) input);
-//					boolean found = false;
-//					for(ItemStack ostack : validStacks) {
-//						ItemStack cstack = ostack.copy();
-//						if(cstack.getItemDamage() == Short.MAX_VALUE)
-//							cstack.setItemDamage(stack.getItemDamage());
-//
-//						if(stack.isItemEqual(cstack)) {
-//							if(!stacksToRemove.contains(stack))
-//								stacksToRemove.add(stack);
-//							oredictIndex = j;
-//							found = true;
-//							break;
-//						}
-//					}
-//
-//					if(found)
-//						break;
-//				}
-//				else
-					if(input instanceof ItemStack && simpleAreStacksEqual((ItemStack) input, stack)) {
-					if(!stacksToRemove.contains(stack))
+				if(input instanceof TagInstance ti) {
+					List<ItemStack> validStacks = ti.tag().getItems();
+					boolean found = false;
+					for(ItemStack ostack : validStacks) {
+						ItemStack cstack = ostack.copy();
+						if(cstack.getItemDamage() == Short.MAX_VALUE) {
+							cstack.setItemDamage(stack.getItemDamage());
+						}
+
+						if(stack.isItemEqual(cstack)) {
+							if(!stacksToRemove.contains(stack))
+								stacksToRemove.add(stack);
+							oredictIndex = j;
+							found = true;
+							break;
+						}
+					}
+
+					if(found)
+						break;
+				} else if (input instanceof ItemStack inputStack && inputStack.isItemEqual(stack, false)) {
+					if (!stacksToRemove.contains(stack))
 						stacksToRemove.add(stack);
 					stackIndex = j;
 					break;
@@ -81,10 +79,6 @@ public class RecipeElvenTrade {
 				stacks.remove(r);
 
 		return inputsMissing.isEmpty();
-	}
-
-	boolean simpleAreStacksEqual(ItemStack stack, ItemStack stack2) {
-		return stack.getItem() == stack2.getItem() && stack.getItemDamage() == stack2.getItemDamage();
 	}
 
 	public List<TagOrStack> getInputs() {
