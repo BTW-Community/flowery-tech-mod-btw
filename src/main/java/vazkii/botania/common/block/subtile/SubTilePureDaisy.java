@@ -57,39 +57,41 @@ public class SubTilePureDaisy extends SubTileEntity {
 		int[] acoords = POSITIONS[positionAt];
 		ChunkCoordinates coords = new ChunkCoordinates(supertile.xCoord + acoords[0], supertile.yCoord + acoords[1], supertile.zCoord + acoords[2]);
 		World world = supertile.getWorldObj();
-		if(!world.isAirBlock(coords.posX, coords.posY, coords.posZ)) {
-			Block block = world.getBlock(coords.posX, coords.posY, coords.posZ);
-			int meta = world.getBlockMetadata(coords.posX, coords.posY, coords.posZ);
-			RecipePureDaisy recipe = null;
-			for(RecipePureDaisy recipe_ : BotaniaAPI.pureDaisyRecipes)
-				if(recipe_.matches(world, coords.posX, coords.posY, coords.posZ, this, block, meta)) {
-					recipe = recipe_;
-					break;
-				}
-
-
-			if(recipe != null) {
-				ticksRemaining[positionAt] = ticksRemaining[positionAt] - 1;
-
-				Botania.getProxy().sparkleFX(supertile.getWorldObj(), coords.posX + Math.random(), coords.posY + Math.random(), coords.posZ + Math.random(), 1F, 1F, 1F, (float) Math.random(), 5);
-
-				if(ticksRemaining[positionAt] <= 0) {
-					ticksRemaining[positionAt] = TIME_PER;
-
-					if(recipe.set(world,coords.posX, coords.posY, coords.posZ, this)) {
-						for(int i = 0; i < 25; i++) {
-							double x = coords.posX + Math.random();
-							double y = coords.posY + Math.random() + 0.5;
-							double z = coords.posZ + Math.random();
-
-							Botania.getProxy().wispFX(supertile.getWorldObj(), x, y, z, 1F, 1F, 1F, (float) Math.random() / 2F);
-						}
-						if(ConfigHandler.blockBreakParticles)
-							supertile.getWorldObj().playAuxSFX(2001, coords.posX, coords.posY, coords.posZ, BlockExtensions.getIdFromBlock(recipe.getOutput()) + (recipe.getOutputMeta() << 12));
-					}
-				}
-			} else ticksRemaining[positionAt] = TIME_PER;
+		Block block = world.getBlock(coords.posX, coords.posY, coords.posZ);
+		if (block == null || block.isAir(world, coords.posX, coords.posY, coords.posZ)) {
+			return;
 		}
+		int meta = world.getBlockMetadata(coords.posX, coords.posY, coords.posZ);
+		RecipePureDaisy recipe = null;
+		for (RecipePureDaisy recipe_ : BotaniaAPI.pureDaisyRecipes)
+			if (recipe_.matches(world, coords.posX, coords.posY, coords.posZ, this, block, meta)) {
+				recipe = recipe_;
+				break;
+			}
+
+
+		if (recipe != null) {
+			ticksRemaining[positionAt] = ticksRemaining[positionAt] - 1;
+
+			Botania.getProxy().sparkleFX(supertile.getWorldObj(), coords.posX + Math.random(), coords.posY + Math.random(), coords.posZ + Math.random(), 1F, 1F, 1F, (float) Math.random(), 5);
+
+			if (ticksRemaining[positionAt] <= 0) {
+				ticksRemaining[positionAt] = TIME_PER;
+
+				if (recipe.set(world, coords.posX, coords.posY, coords.posZ, this)) {
+					for (int i = 0; i < 25; i++) {
+						double x = coords.posX + Math.random();
+						double y = coords.posY + Math.random() + 0.5;
+						double z = coords.posZ + Math.random();
+
+						Botania.getProxy().wispFX(supertile.getWorldObj(), x, y, z, 1F, 1F, 1F, (float) Math.random() / 2F);
+					}
+					if (ConfigHandler.blockBreakParticles)
+						supertile.getWorldObj().playAuxSFX(2001, coords.posX, coords.posY, coords.posZ, BlockExtensions.getIdFromBlock(recipe.getOutput()) + (recipe.getOutputMeta() << 12));
+				}
+			}
+		} else ticksRemaining[positionAt] = TIME_PER;
+
 	}
 
 	@Override

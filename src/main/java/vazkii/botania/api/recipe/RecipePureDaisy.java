@@ -65,7 +65,7 @@ public class RecipePureDaisy {
 		if(oreMap.containsKey(entry))
 			ores = oreMap.get(entry);
 		else {
-			//todo oredict -> tags, temp fix
+			//todo Once block tags are added, create support for that
 //			ores = new ArrayList<>();
 			ores = entry.getItems();
 
