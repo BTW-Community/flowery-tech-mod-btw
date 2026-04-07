@@ -43,7 +43,7 @@ public class BlockElfGlass extends BlockManaGlass implements IElvenItem, ILexico
 	}
 
 	@Override
-	public Icon getIcon(IBlockAccess world, int x, int y, int z, int s) {
+	public Icon getBlockTexture(IBlockAccess world, int x, int y, int z, int s) {
 		int v = (int) Math.floor(new Random(x * 10 ^ y * 20 ^ z * 30).nextInt(ICON_COUNT * 100) / 100.0);
 		return icons[v];
 	}

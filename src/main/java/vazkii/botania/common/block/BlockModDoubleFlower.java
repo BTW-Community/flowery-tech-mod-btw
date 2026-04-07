@@ -217,7 +217,7 @@ public class BlockModDoubleFlower extends BlockDoublePlant implements ILexiconab
     }
 
     @Override
-    public Icon getIcon(IBlockAccess world, int x, int y, int z, int side) {
+    public Icon getBlockTexture(IBlockAccess world, int x, int y, int z, int side) {
         int meta = world.getBlockMetadata(x, y, z);
         boolean top = func_149887_c(meta);
         if (top)

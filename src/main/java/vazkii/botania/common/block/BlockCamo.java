@@ -37,7 +37,7 @@ public abstract class BlockCamo extends BlockModContainer<TileCamo> {
 	}
 
 	@Override
-	public Icon getIcon(IBlockAccess world, int x, int y, int z, int side) {
+	public Icon getBlockTexture(IBlockAccess world, int x, int y, int z, int side) {
 		TileEntity tile = world.getBlockTileEntity(x, y, z);
 		int meta = world.getBlockMetadata(x, y, z);
 
