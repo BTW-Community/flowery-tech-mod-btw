@@ -2806,7 +2806,7 @@ botania.page.spectralPlatform1=This reminds me of a Puzzle
 # -- DRUM OF THE GATHERING
 botania.entry.gatherDrum=Drum of the Gathering
 botania.tagline.gatherDrum=Shear sheep and milk cows with mana bursts
-botania.page.gatherDrum0=The &1Drum of the Gathering&0 is, in short terms, a &1Drum of the Wild&0 for livestock.<br>When a &4Mana Burst&0 collides with it, it'll shear any &4Sheep&0 around with grown fleece. Any &4Cows&0, with &1Empty Buckets&0 below them will have their milk transfered to the buckets.
+botania.page.gatherDrum0=The &1Drum of the Gathering&0 is, in short terms, a &1Drum of the Wild&0 for livestock.<br>When a &4Mana Burst&0 collides with it, it'll shear any &4Sheep&0 around with grown fleece. Any &4Cows&0, with &1Empty Buckets&0 below them will have their milk transferred to the buckets. The &1Drum of the Gathering&0 is, in short terms, a &1Drum of the Wild&0 for livestock.<br>When a &4Mana Burst&0 collides with it, it'll shear any &4Sheep&0 around with grown fleece. Any &4Cows&0, with &1Empty Buckets&0 below them will have their milk transferred to the buckets. Any looting beacons in the area increases the amount of wool obtained.
 botania.page.gatherDrum1=Tap your lands
 
 # -- CRAFTY CRATE

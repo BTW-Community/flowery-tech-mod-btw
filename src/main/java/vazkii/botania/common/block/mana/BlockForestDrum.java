@@ -135,11 +135,10 @@ public class BlockForestDrum extends BlockMod implements IManaTrigger, ILexicona
 			int sheared = 0;
 
 			for(EntityLiving entity : shearables) {
-				if(sheared > 4)
+				if(sheared > 4) {
 					break;
-				//todofix shear implementation
+				}
 				List<ItemStack> stacks = drops((EntitySheep) entity);
-//				List<ItemStack> stacks = ((EntitySheep) entity).onSheared(stack, world, (int) entity.posX, (int) entity.posY, (int) entity.posZ, 0);
                 for(ItemStack wool : stacks) {
                     EntityItem ent = entity.entityDropItem(wool, 1.0F);
                     ent.motionY += world.rand.nextFloat() * 0.05F;
@@ -165,7 +164,8 @@ public class BlockForestDrum extends BlockMod implements IManaTrigger, ILexicona
 			int iLocJ = MathHelper.floor_double(sheep.posY);
 			int iLocK = MathHelper.floor_double(sheep.posZ);
 			int lootingModifier = sheep.worldObj.getAmbientBeaconEffectAtLocation(BTWBeaconEffects.LOOTING_EFFECT.EFFECT_NAME, iLocI, iLocJ, iLocK);
-			ItemStack woolStack = new ItemStack(BTWItems.wool.itemID, 2 + lootingModifier, BlockColored.getDyeFromBlock(sheep.getFleeceColor()));
+			int iNumItems = 1 + sheep.rand.nextInt(2 + lootingModifier);
+			ItemStack woolStack = new ItemStack(BTWItems.wool.itemID, iNumItems, BlockColored.getDyeFromBlock(sheep.getFleeceColor()));
 			drops.add(woolStack);
 		}
 		return drops;
