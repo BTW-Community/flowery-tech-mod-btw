@@ -37,11 +37,6 @@ public abstract class BlockExtensionMixin implements BlockExtensions {
     }
 
     @Override
-    public boolean isSideSolid(World worldObj, int xCoord, int yCoord, int zCoord, ForgeDirection forgeDirection) {
-        return hasLargeCenterHardPointToFacing(worldObj, xCoord, yCoord, zCoord, forgeDirection.ordinal());
-    }
-
-    @Override
     public boolean isAir(World world, int x, int y, int z) {
         return isAirBlock();
     }

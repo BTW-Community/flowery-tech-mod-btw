@@ -11,10 +11,6 @@ public interface BlockExtensions {
         return null;
     }
 
-    default boolean isSideSolid(World worldObj, int xCoord, int i, int zCoord, ForgeDirection forgeDirection) {
-        return false;
-    }
-
     static int getIdFromBlock(Block block) {
         if (block == null) {
             return 0;
@@ -28,9 +24,5 @@ public interface BlockExtensions {
 
     default ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
         return new ArrayList<>();
-    }
-
-    public default Icon getIcon(IBlockAccess worldIn, int x, int y, int z, int side) {
-        return null;
     }
 }
