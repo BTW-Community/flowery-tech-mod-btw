@@ -1,6 +1,12 @@
 # Changelog
 
 
+## 0.1.2
+### Fixes
+- Allow older saves to load 0.1.0+ versions of the mod
+- Dying no longer crashes the game
+  - I still don't recommend dying, there are some bugs remaining with dropped items duplicating. I hope to fix this soon, but have been very busy with school as of late
+
 ## 0.1.1
 ### Fixes
 - Fix the game instantly crashing due to access widener issues (oops)
