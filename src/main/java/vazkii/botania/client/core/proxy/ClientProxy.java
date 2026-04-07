@@ -196,15 +196,14 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForge.EVENT_BUS.register(new SubTileRadiusRenderHandler());
 		MinecraftForge.EVENT_BUS.register(new MultiblockRenderHandler());
 		MinecraftForge.EVENT_BUS.register(new SkyblockRenderEvents());
-		//todofix CorporeaAutoCompleteHandler
-		CorporeaAutoCompleteHandler.INSTANCE.getClass(); //wew
-//		FMLCommonHandler.instance().bus().register(new CorporeaAutoCompleteHandler());
+
+		CorporeaAutoCompleteHandler.INSTANCE.init();
 
 		if(ConfigHandler.enableSeasonalFeatures) {
 			Calendar calendar = Calendar.getInstance();
-			if((calendar.get(2) == 11 && calendar.get(5) >= 16) || (calendar.get(2) == 0 && calendar.get(5) <= 2))
+			if((calendar.get(Calendar.MONTH) == Calendar.DECEMBER && calendar.get(Calendar.DATE) >= 16) || (calendar.get(Calendar.MONTH) == Calendar.JANUARY && calendar.get(Calendar.DATE) <= 2))
 				jingleTheBells = true;
-			if(calendar.get(2) == 9)
+			if(calendar.get(Calendar.MONTH) == Calendar.OCTOBER)
 				dootDoot = true;
 		}
 

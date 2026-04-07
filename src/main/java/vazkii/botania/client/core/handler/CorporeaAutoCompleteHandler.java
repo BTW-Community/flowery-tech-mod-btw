@@ -30,8 +30,10 @@ public abstract class CorporeaAutoCompleteHandler {
 
 	public static final CorporeaAutoCompleteHandler INSTANCE = new CorporeaAutoCompleteHandler() {};
 
-	static {
-		TickEvent.ClientTickEvent.EVENT.register(INSTANCE::onTick);
+	public void init() {}
+
+	CorporeaAutoCompleteHandler() {
+		TickEvent.ClientTickEvent.EVENT.register(this::onTick);
 	}
 
 	boolean isAutoCompleted = false;
@@ -77,7 +79,7 @@ public abstract class CorporeaAutoCompleteHandler {
 			if(!valid)
 				isAutoCompleted = false;
 		}
-		if(Keyboard.isKeyDown(15)) {
+		if(Keyboard.isKeyDown(Keyboard.KEY_TAB)) {
 			if(tabLastTick)
 				return;
 			tabLastTick = true;

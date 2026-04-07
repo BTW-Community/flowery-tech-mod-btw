@@ -19,11 +19,11 @@ import vazkii.botania.common.world.WorldTypeSkyblock;
 
 public final class SkyblockRenderEvents {
 
-	static  {
-		RenderWorldLastEvent.EVENT.register(SkyblockRenderEvents::onRender);
+	public SkyblockRenderEvents() {
+		RenderWorldLastEvent.EVENT.register(this::onRender);
 	}
 
-	public static void onRender(RenderWorldLastEvent event) {
+	public void onRender(RenderWorldLastEvent event) {
 		World world = Minecraft.getMinecraft().theWorld;
 		if(ConfigHandler.enableFancySkybox && world.provider.dimensionId == 0 && (ConfigHandler.enableFancySkyboxInNormalWorlds || WorldTypeSkyblock.isWorldSkyblock(Minecraft.getMinecraft().theWorld))) {
 			if(!(((WorldProviderExtensions) world.provider).getSkyRenderer() instanceof SkyblockSkyRenderer))
