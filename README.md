@@ -44,7 +44,11 @@ It also currently bundles Baubles Expanded, which is licensed under the CC BY-NC
   - Piston relay is kind of not functional? Quite franky, I can't tell how it works in the first place, so I don't quite know.
   - Crafted flowers seem to not stack when they feel like it. 
 - No doubt various balancing issues
-  - For example, the water rod can still place water source blocks
+- Pick block in creative mode is finicky
+  - Middle click, then pick up and put down the item in your inventory seems to work
+- I wouldn't recommend dying, sometimes the items will duplicate.
+  - I have tried multiple times to fix this, but will likely have to rewrite the death item system for this to work properly.
+  - Dropping items by dragging them outside of your inventory has a similar issue
 - Gaia guardian head is invisible when placed
   - Also has no place sound (spooky!)
 - There are no different textures for the unmortared petal apothecary

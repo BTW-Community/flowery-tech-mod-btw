@@ -13,7 +13,7 @@ package vazkii.botania.client.gui;
 import net.minecraft.src.GuiScreen;
 import vazkii.botania.common.core.handler.ConfigHandler;
 import vazkii.botania.common.lib.LibMisc;
-//todofix config
+//todofix Config GUI, potentially find a library for this?
 public class GuiBotaniaConfig /*extends GuiConfig*/ {
 
 /*	public GuiBotaniaConfig(GuiScreen parentScreen) {

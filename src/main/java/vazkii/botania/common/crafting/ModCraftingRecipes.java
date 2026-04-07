@@ -42,7 +42,7 @@ import cpw.mods.fml.common.FMLLog;
 
 
 public final class ModCraftingRecipes {
-
+	//todofix Ice now allows for people to place source blocks, add ice recipe for skyblock?
 	public static IRecipe recipeLexicon;
 	public static List<IRecipe> recipesPetals;
 	public static List<IRecipe> recipesDyes;
