@@ -27,7 +27,7 @@ public class BaubleLoader {
             BaubleLoader::new,
             true,
             (tag, player) -> new BaubleLoader(tag.getCompoundTag(BAUBLES_NAME), player),
-            (tag, baubles) -> tag.setTag(BAUBLES_NAME, baubles.saveToNBT()));
+            (tag, baubles) -> tag.setTag(BAUBLES_NAME, saveToNBT(baubles)));
 
     public BaubleLoader(NBTTagCompound list, EntityPlayer player) {
         this(player);
@@ -40,6 +40,13 @@ public class BaubleLoader {
 
     public void loadFromNBT(NBTTagCompound tagList) {
         inventoryBaubles.readNBT(tagList);
+    }
+
+    public static NBTTagCompound saveToNBT(BaubleLoader baubles) {
+        NBTTagCompound tag = new NBTTagCompound(BAUBLES_NAME);
+        if (baubles != null && baubles.inventoryBaubles != null)
+            baubles.inventoryBaubles.saveNBT(tag);
+        return tag;
     }
 
     public NBTTagCompound saveToNBT() {
