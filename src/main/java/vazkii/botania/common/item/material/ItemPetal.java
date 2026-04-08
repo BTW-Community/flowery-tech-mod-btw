@@ -11,16 +11,22 @@
 package vazkii.botania.common.item.material;
 
 import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.EntitySheep;
 import net.minecraft.src.IInventory;
+import net.minecraft.src.Icon;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
 import vazkii.botania.api.recipe.IFlowerComponent;
+import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.item.Item16Colors;
 import vazkii.botania.common.lib.LibItemNames;
 
-public class ItemPetal extends Item16Colors implements IFlowerComponent {
+import java.awt.*;
 
+public class ItemPetal extends Item16Colors implements IFlowerComponent {
+	private Icon[] icons;
 	public ItemPetal(int id) {
 		super(id, LibItemNames.PETAL);
 	}
@@ -46,6 +52,32 @@ public class ItemPetal extends Item16Colors implements IFlowerComponent {
 
 	@Override
 	public int getParticleColor(ItemStack stack) {
-		return getColorFromItemStack(stack, 0);
+		return getaColorFromItemStack(stack, 0);
+	}
+
+	@Override
+	public int getColorFromItemStack(ItemStack par1ItemStack, int par2) {
+		return 0xFFFFFF;
+	}
+
+	@Override
+	public void registerIcons(IconRegister par1IconRegister) {
+		icons = new Icon[15];
+		for(int i = 0; i < icons.length; i++)
+			icons[i] = IconHelper.forItem(par1IconRegister, this, i);
+	}
+
+	public int getaColorFromItemStack(ItemStack par1ItemStack, int par2) {
+		if(par1ItemStack.getItemDamage() >= EntitySheep.fleeceColorTable.length)
+			return 0xFFFFFF;
+
+		float[] color = EntitySheep.fleeceColorTable[par1ItemStack.getItemDamage()];
+		return new Color(color[0], color[1], color[2]).getRGB();
+	}
+
+	@Override
+	public Icon getIconFromDamage(int damage) {
+		if (damage > icons.length - 1) return icons[0];
+		return icons[damage];
 	}
 }
