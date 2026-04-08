@@ -44,12 +44,16 @@ public class BaubleLoader {
 
     public NBTTagCompound saveToNBT() {
         NBTTagCompound tag = new NBTTagCompound(BAUBLES_NAME);
-        inventoryBaubles.saveNBT(tag);
+        if (inventoryBaubles != null)
+            inventoryBaubles.saveNBT(tag);
         return tag;
     }
 
     public InventoryBaubles getInventoryBaubles(EntityPlayer player) {
-        if (inventoryBaubles.player == null) {
+        if (inventoryBaubles == null) {
+            inventoryBaubles = new InventoryBaubles(player);
+        }
+        else if (inventoryBaubles.player == null) {
             inventoryBaubles.player = player;
         }
         return inventoryBaubles;
