@@ -1,6 +1,15 @@
 # Changelog
 
 
+## 0.1.4
+### General
+- Add new petal textures
+  - The future is now!
+- Add mod dependencies to fabric.mod.json as I forgot
+### Fixes
+- Hat trick of game crash bugs! hooray!!!
+
+
 ## 0.1.3
 ### General
 - Allow dirt path to grow saplings and flowers
