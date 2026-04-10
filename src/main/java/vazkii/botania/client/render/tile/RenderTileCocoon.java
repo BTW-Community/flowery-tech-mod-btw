@@ -37,6 +37,9 @@ public class RenderTileCocoon extends TileEntitySpecialRenderer {
 			float mod = (cocoon.timePassed + f) % modval;
 			float v = mod / 5 * (float) Math.PI * 2;
 			rot = (float) Math.sin(v) * (float) Math.log(cocoon.timePassed + f);
+			if (Float.isNaN(rot)) {
+				rot = 0f;
+			}
 		}
 
 		GL11.glPushMatrix();
