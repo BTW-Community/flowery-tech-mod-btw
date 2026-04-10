@@ -3,6 +3,7 @@ package dev.bagel.mixin;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
+import dev.bagel.interfaces.CustomBoundingBoxBlock;
 import dev.bagel.interfaces.WorldProviderExtensions;
 import net.minecraft.src.*;
 import net.minecraftforge.client.IRenderHandler;
@@ -14,12 +15,41 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(RenderGlobal.class)
-public class RenderGlobalMixin {
+public abstract class RenderGlobalMixin {
     @Shadow
     private Minecraft mc;
 
     @Shadow
     private WorldClient theWorld;
+
+    @Shadow
+    protected abstract void drawOutlinedBoundingBox(AxisAlignedBB par1AxisAlignedBB);
+
+    @Redirect(method = "drawSelectionBox", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/RenderGlobal;drawOutlinedBoundingBox(Lnet/minecraft/src/AxisAlignedBB;)V"))
+    private void drawCustomSelectionBox(RenderGlobal instance, AxisAlignedBB aabb, EntityPlayer player, MovingObjectPosition pos, int par3, float par4) {
+        int blockId = this.theWorld.getBlockId(pos.blockX, pos.blockY, pos.blockZ);
+        Block block = Block.blocksList[blockId];
+        if (block instanceof CustomBoundingBoxBlock cbbb) {
+            float expand = 0.002f;
+            double posX = player.lastTickPosX + (player.posX - player.lastTickPosX) * (double)par4;
+            double posY = player.lastTickPosY + (player.posY - player.lastTickPosY) * (double)par4;
+            double posZ = player.lastTickPosZ + (player.posZ - player.lastTickPosZ) * (double)par4;
+            for (AxisAlignedBB bb : cbbb.getCustomSelectionBoxes(this.theWorld, pos.blockX, pos.blockY, pos.blockZ)) {
+                bb = bb.makeTemporaryCopy();
+
+                if (cbbb.rotatable()) {
+                    int facing = block.getFacing(theWorld, pos.blockX, pos.blockY, pos.blockZ);
+                    bb.rotateAroundYToFacing(facing);
+                    bb.tiltToFacingAlongY(facing);
+                }
+                bb = bb.offset(pos.blockX, pos.blockY, pos.blockZ).expand(expand, expand, expand).getOffsetBoundingBox(-posX, -posY, -posZ);
+                drawOutlinedBoundingBox(bb);
+            }
+        }
+        else {
+            drawOutlinedBoundingBox(aabb);
+        }
+    }
 
     @WrapOperation(method = "renderEntities", at = @At(value = "INVOKE", target = "Lnet/minecraft/src/TileEntityRenderer;renderTileEntity(Lnet/minecraft/src/TileEntity;F)V"))
     private void test(TileEntityRenderer instance, TileEntity tile, float floatVal, Operation<Void> original, @Local(argsOnly = true) ICamera camera) {
