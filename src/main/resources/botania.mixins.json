@@ -6,6 +6,7 @@
   "mixins": [
     "BaublesPreInitCheck",
     "CommandGiveMixin",
+    "ConfigElementValidatorMixin",
     "EmiScreenManagerMixin",
     "EntityThrowableAccessor",
     "ItemStackMixin",
