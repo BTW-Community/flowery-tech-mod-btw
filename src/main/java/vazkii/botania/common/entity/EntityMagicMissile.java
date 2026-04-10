@@ -16,6 +16,7 @@ import java.util.List;
 
 import api.entity.EntityWithCustomPacket;
 import btw.network.packet.BTWPacketManager;
+import dev.bagel.mixin.EntityThrowableAccessor;
 import dev.bagel.shim.BlockBush;
 import net.minecraft.src.*;
 import vazkii.botania.common.Botania;
@@ -36,8 +37,7 @@ public class EntityMagicMissile extends EntityThrowable implements EntityWithCus
 
 	public EntityMagicMissile(EntityLivingBase thrower, boolean evil) {
 		this(thrower.worldObj);
-		this.setThrower((EntityLiving) thrower);
-//		ReflectionHelper.setPrivateValue(EntityThrowable.class, this, thrower, LibObfuscation.THROWER);
+		((EntityThrowableAccessor) this).setThrower(thrower);
 		setEvil(evil);
 	}
 
