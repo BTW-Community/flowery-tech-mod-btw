@@ -123,7 +123,7 @@ public class ItemLens extends ItemMod implements ILensControl, ICompositableLens
 	private static final String TAG_COLOR = "color";
 	private static final String TAG_COMPOSITE_LENS = "compositeLens";
 
-	public static Icon iconGlass;
+	public static Icon iconGlass, iconGlassSmall;
 
 	Icon[] ringIcons;
 
@@ -142,6 +142,7 @@ public class ItemLens extends ItemMod implements ILensControl, ICompositableLens
 	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		iconGlass = IconHelper.forName(par1IconRegister, "lensInside");
+		iconGlassSmall = IconHelper.forName(par1IconRegister, "lensInsideSmall");
 
 		ringIcons = new Icon[SUBTYPES];
 		for(int i = 0; i < ringIcons.length; i++)
@@ -158,10 +159,18 @@ public class ItemLens extends ItemMod implements ILensControl, ICompositableLens
 	public boolean requiresMultipleRenderPasses() {
 		return true;
 	}
-
+	//fire, time, tripwire, warp
 	@Override
-	public Icon getIconFromDamageForRenderPass(int par1, int par2) {
-		return par2 == 1 ? ringIcons[Math.min(SUBTYPES - 1, par1)] : iconGlass;
+	public Icon getIconFromDamageForRenderPass(int damage, int pass) {
+		if (pass == 1) {
+			return ringIcons[Math.min(SUBTYPES - 1, damage)];
+		}
+		else {
+			if(damage == FIRE || damage == TIME || damage == WARP) {
+				return iconGlassSmall;
+			}
+			else return iconGlass;
+		}
 	}
 
 	@Override

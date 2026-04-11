@@ -24,6 +24,7 @@ public class BlockBifrostPane extends BlockModPane {
 	public BlockBifrostPane(int id) {
 		super(id, ModBlocks.bifrostPerm);
 		MinecraftForge.EVENT_BUS.register(this);
+		TextureStitchEvent.Pre.EVENT.register(this::loadTextures);
 	}
 
 	@Environment(EnvType.CLIENT)

@@ -35,6 +35,7 @@ public class BlockShimmerwoodPlanks extends BlockMod implements ILexiconable {
 		setStepSound(soundWoodFootstep);
 		setUnlocalizedName(LibBlockNames.SHIMMERWOOD_PLANKS);
 		MinecraftForge.EVENT_BUS.register(this);
+		TextureStitchEvent.Pre.EVENT.register(this::loadTextures);
 	}
 
 	@Environment(EnvType.CLIENT)

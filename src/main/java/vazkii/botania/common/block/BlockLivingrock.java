@@ -12,6 +12,8 @@ package vazkii.botania.common.block;
 
 import java.util.List;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.src.Block;
 import net.minecraft.src.Material;
 import net.minecraft.src.IconRegister;
@@ -21,10 +23,13 @@ import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Icon;
 import net.minecraft.src.MovingObjectPosition;
+import net.minecraft.src.TextureAtlasSprite;
 import net.minecraft.src.World;
+import net.minecraftforge.client.event.TextureStitchEvent;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.client.core.helper.IconHelper;
+import vazkii.botania.client.render.block.InterpolatedIcon;
 import vazkii.botania.common.item.block.ItemBlockWithMetadataAndName;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
@@ -40,6 +45,7 @@ public class BlockLivingrock extends BlockMod implements ILexiconable {
 		setResistance(10.0F);
 		setStepSound(soundStoneFootstep);
 		setUnlocalizedName(LibBlockNames.LIVING_ROCK);
+		TextureStitchEvent.Pre.EVENT.register(this::loadTextures);
 	}
 
 	@Override
@@ -65,10 +71,21 @@ public class BlockLivingrock extends BlockMod implements ILexiconable {
 			par3List.add(new ItemStack(par1, 1, i));
 	}
 
+	@Environment(EnvType.CLIENT)
+	public void loadTextures(TextureStitchEvent.Pre event) {
+		if(event.map.getTextureType() == 0) {
+			TextureAtlasSprite icon = new InterpolatedIcon("botania:livingrock0");
+			if(event.map.registerIcon("botania:livingrock0", icon) != null) {
+				System.err.println("LOADING success...");
+				icons[0] = icon;
+			}
+		}
+	}
+
 	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		icons = new Icon[TYPES];
-		for(int i = 0; i < TYPES; i++)
+		for(int i = 1; i < TYPES; i++)
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
 	}
 

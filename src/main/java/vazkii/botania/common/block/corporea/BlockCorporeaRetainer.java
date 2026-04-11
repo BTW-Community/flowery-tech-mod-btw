@@ -10,18 +10,22 @@
  */
 package vazkii.botania.common.block.corporea;
 
+import net.minecraft.src.Icon;
+import net.minecraft.src.IconRegister;
 import net.minecraft.src.Material;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
+import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.common.block.BlockModContainer;
 import vazkii.botania.common.block.tile.corporea.TileCorporeaRetainer;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
 public class BlockCorporeaRetainer extends BlockModContainer<TileCorporeaRetainer> implements ILexiconable {
+	Icon[] icons;
 
 	public BlockCorporeaRetainer(int id) {
 		super(id, Material.iron);
@@ -63,4 +67,15 @@ public class BlockCorporeaRetainer extends BlockModContainer<TileCorporeaRetaine
 		return LexiconData.corporeaRetainer;
 	}
 
+	@Override
+	public void registerIcons(IconRegister par1IconRegister) {
+		icons = new Icon[2];
+		for(int i = 0; i < icons.length; i++)
+			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
+	}
+
+	@Override
+	public Icon getIcon(int side, int meta) {
+		return side == 0 || side == 1 ? icons[0] : icons[1];
+	}
 }

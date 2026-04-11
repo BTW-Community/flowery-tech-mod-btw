@@ -73,17 +73,18 @@ public class BlockLivingwood extends BlockMod implements ILexiconable {
 		for(int i = 0; i < TYPES; i++)
 			par3List.add(new ItemStack(par1, 1, i));
 	}
-
+	private Icon topIcon;
 	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		icons = new Icon[TYPES];
 		for(int i = 0; i < TYPES; i++)
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
+		IconHelper.forBlock(par1IconRegister, this, "Top");
 	}
 
 	@Override
-	public Icon getIcon(int par1, int par2) {
-		return icons[Math.min(TYPES - 1, par2)];
+	public Icon getIcon(int side, int meta) {
+		return icons[Math.min(TYPES - 1, meta)];
 	}
 
 	@Override

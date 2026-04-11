@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.block.mana;
 
+import net.minecraft.src.EnumFacing;
 import net.minecraft.src.Material;
 import net.minecraft.src.Minecraft;
 import net.minecraft.src.ScaledResolution;
@@ -41,14 +42,19 @@ public class BlockTurntable extends BlockModContainer<TileTurntable> implements 
 
 	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
-		icons = new Icon[2];
+		icons = new Icon[3];
 		for(int i = 0; i < icons.length; i++)
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
 	}
 
 	@Override
-	public Icon getIcon(int par1, int par2) {
-		return par1 == 1 ? icons[0] : icons[1];
+	public Icon getIcon(int facing, int meta) {
+        return switch (facing) {
+            case 0 -> icons[2];
+            case 1 -> icons[0];
+            default -> icons[1];
+        };
+//		return facing == 1 ? icons[0] : icons[1];
 	}
 
 	@Override

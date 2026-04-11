@@ -13,7 +13,6 @@ package vazkii.botania.common.item.equipment.tool.terrasteel;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
@@ -72,7 +71,7 @@ public class ItemTerraAxe extends ItemManasteelAxe implements ISequentialBreaker
 	 * Represents a map of dimension IDs to a set of all block swappers
 	 * active in that dimension.
 	 */
-	private static Map<Integer, Set<BlockSwapper>> blockSwappers = new HashMap<Integer, Set<BlockSwapper>>();
+	private static final Map<Integer, Set<BlockSwapper>> blockSwappers = new HashMap<>();
 
 	Icon iconOn, iconOff;
 
@@ -156,7 +155,7 @@ public class ItemTerraAxe extends ItemManasteelAxe implements ISequentialBreaker
 	 * Block swappers are only added on the server, and a marker instance
 	 * which is not actually ticked but contains the proper passed in
 	 * information will be returned to the client.
-	 * 
+	 *
 	 * @param world The world to add the swapper to.
 	 * @param player The player who is responsible for this swapper.
 	 * @param stack The Terra Truncator which caused this block swapper.
@@ -176,7 +175,7 @@ public class ItemTerraAxe extends ItemManasteelAxe implements ISequentialBreaker
 		// If the mapping for this dimension doesn't exist, create it.
 		int dim = world.provider.dimensionId;
 		if(!blockSwappers.containsKey(dim))
-			blockSwappers.put(dim, new HashSet<BlockSwapper>());
+			blockSwappers.put(dim, new HashSet<>());
 
 		// Add the swapper
 		blockSwappers.get(dim).add(swapper);
@@ -187,13 +186,13 @@ public class ItemTerraAxe extends ItemManasteelAxe implements ISequentialBreaker
 	/**
 	 * A block swapper for the Terra Truncator, which uses a standard
 	 * Breadth First Search to try and murder/cut down trees.
-	 * 
+	 * <p>
 	 * The Terra Truncator will look up to BLOCK_RANGE blocks to find wood
 	 * to cut down (only cutting down adjacent pieces of wood, so it doesn't
 	 * jump through the air). However, the truncator will only go through
 	 * LEAF_BLOCK_RANGE leave blocks in order to prevent adjacent trees which
 	 * are connected only by leaves from being devoured as well.
-	 * 
+	 * <p>
 	 * The leaf restriction is implemented by reducing the number of remaining
 	 * steps to the min of LEAF_BLOCK_RANGE and the current range. The restriction
 	 * can be removed entirely by setting the "leaves" variable to true, in which
@@ -232,22 +231,17 @@ public class ItemTerraAxe extends ItemManasteelAxe implements ISequentialBreaker
 		 * Denotes whether leaves should be treated specially.
 		 */
 		private final boolean treatLeavesSpecial;
-		
-		/**
-		 * The initial range which this block swapper starts with.
-		 */
-		private final int range;
-		
-		/**
+
+        /**
 		 * The priority queue of all possible candidates for swapping.
 		 */
-		private PriorityQueue<SwapCandidate> candidateQueue;
+		private final PriorityQueue<SwapCandidate> candidateQueue;
 		
 		/**
 		 * The set of already swaps coordinates which do not have
 		 * to be revisited.
 		 */
-		private Set<ChunkCoordinates> completedCoords;
+		private final Set<ChunkCoordinates> completedCoords;
 		
 		/**
 		 * Creates a new block swapper with the provided parameters.
@@ -264,14 +258,13 @@ public class ItemTerraAxe extends ItemManasteelAxe implements ISequentialBreaker
 			this.player = player;
 			this.truncator = truncator;
 			this.origin = origCoords;
-			this.range = range;
-			this.treatLeavesSpecial = leaves;
+            this.treatLeavesSpecial = leaves;
 			
 			this.candidateQueue = new PriorityQueue<>();
 			this.completedCoords = new HashSet<>();
 			
 			// Add the origin to our candidate queue with the original range
-			candidateQueue.offer(new SwapCandidate(this.origin, this.range));
+			candidateQueue.offer(new SwapCandidate(this.origin, range));
 		}
 		
 		/**
@@ -344,7 +337,7 @@ public class ItemTerraAxe extends ItemManasteelAxe implements ISequentialBreaker
 		}
 		
 		public List<ChunkCoordinates> adjacent(ChunkCoordinates original) {
-			List<ChunkCoordinates> coords = new ArrayList<ChunkCoordinates>();
+			List<ChunkCoordinates> coords = new ArrayList<>();
 			// Visit all the surrounding blocks in the provided radius.
 			// Gotta love these nested loops, right?
 			for(int dx = -SINGLE_BLOCK_RADIUS; dx <= SINGLE_BLOCK_RADIUS; dx++)
@@ -398,10 +391,9 @@ public class ItemTerraAxe extends ItemManasteelAxe implements ISequentialBreaker
 			
 			@Override
 			public boolean equals(Object other) {
-				if(!(other instanceof SwapCandidate)) return false;
-				
-				SwapCandidate cand = (SwapCandidate) other;
-				return coordinates.equals(cand.coordinates) && range == cand.range;
+				if(!(other instanceof SwapCandidate cand)) return false;
+
+                return coordinates.equals(cand.coordinates) && range == cand.range;
 			}
 		}
 	}

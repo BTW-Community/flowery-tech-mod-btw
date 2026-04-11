@@ -1,7 +1,10 @@
 package net.minecraftforge.client.event;
 
 import cpw.mods.fml.common.eventhandler.Event;
+import net.legacyfabric.fabric.api.event.EventFactory;
 import net.minecraft.src.TextureMap;
+
+import java.util.function.Consumer;
 
 
 public class TextureStitchEvent extends Event
@@ -20,6 +23,11 @@ public class TextureStitchEvent extends Event
      */
     public static class Pre extends TextureStitchEvent
     {
+        public static final net.legacyfabric.fabric.api.event.Event<Consumer<Pre>> EVENT = EventFactory.createArrayBacked(Consumer.class, (listeners) -> (event) -> {
+            for (Consumer<Pre> listener : listeners) {
+                listener.accept(event);
+            }
+        });
         public Pre(TextureMap map){ super(map); }
     }
 

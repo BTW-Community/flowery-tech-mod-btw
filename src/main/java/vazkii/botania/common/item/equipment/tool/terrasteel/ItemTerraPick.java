@@ -60,7 +60,7 @@ public class ItemTerraPick extends ItemManasteelPick implements IManaItem, ISequ
 		10000 - 1, 1000000 - 1, 10000000 - 1, 100000000 - 1, 1000000000 - 1, MAX_MANA - 1
 	};
 
-	Icon iconTool, iconOverlay, iconTipped;
+	Icon iconTool, iconActive, iconTipped, iconTippedActive;
 
 	public ItemTerraPick(int id) {
 		super(id, BotaniaAPI.terrasteelToolMaterial, LibItemNames.TERRA_PICK);
@@ -183,8 +183,9 @@ public class ItemTerraPick extends ItemManasteelPick implements IManaItem, ISequ
 	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		iconTool = IconHelper.forItem(par1IconRegister, this, 0);
-		iconOverlay = IconHelper.forItem(par1IconRegister, this, 1);
+		iconActive = IconHelper.forItem(par1IconRegister, this, 1);
 		iconTipped = IconHelper.forItem(par1IconRegister, this, 2);
+		iconTippedActive = IconHelper.forItem(par1IconRegister, this, 3);
 	}
 
 	@Override
@@ -194,7 +195,14 @@ public class ItemTerraPick extends ItemManasteelPick implements IManaItem, ISequ
 
 	@Override
 	public Icon getIcon(ItemStack stack, int pass) {
-		return pass == 1 && isEnabled(stack) ? iconOverlay : isTipped(stack) ? iconTipped : iconTool;
+		if (isEnabled(stack)) {
+			if (isTipped(stack)) return iconTippedActive;
+			else return iconActive;
+		} else if (isTipped(stack)) {
+			return iconTipped;
+		}
+		else return iconTool;
+//		return pass == 1 && isEnabled(stack) ? iconOverlay : isTipped(stack) ? iconTipped : iconTool;
 	}
 
 	public static boolean isTipped(ItemStack stack) {

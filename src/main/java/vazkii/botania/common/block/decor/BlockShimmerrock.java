@@ -36,6 +36,7 @@ public class BlockShimmerrock extends BlockMod implements ILexiconable {
 		setStepSound(soundStoneFootstep);
 		setUnlocalizedName(LibBlockNames.SHIMMERROCK);
 		MinecraftForge.EVENT_BUS.register(this);
+		TextureStitchEvent.Pre.EVENT.register(this::loadTextures);
 	}
 
 	@Environment(EnvType.CLIENT)

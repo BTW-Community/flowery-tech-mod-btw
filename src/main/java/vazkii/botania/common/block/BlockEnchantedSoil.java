@@ -40,6 +40,7 @@ public class BlockEnchantedSoil extends BlockMod implements ILexiconable {
 		setStepSound(soundGrassFootstep);
 		setUnlocalizedName(LibBlockNames.ENCHANTED_SOIL);
 		MinecraftForge.EVENT_BUS.register(this);
+		TextureStitchEvent.Pre.EVENT.register(this::loadTextures);
 	}
 
 	@Override

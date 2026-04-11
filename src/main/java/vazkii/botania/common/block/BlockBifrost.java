@@ -43,6 +43,7 @@ public class BlockBifrost extends BlockModContainer<TileBifrost> implements ILex
 		setBlockUnbreakable();
 		setStepSound(soundGlassFootstep);
 		MinecraftForge.EVENT_BUS.register(this);
+		TextureStitchEvent.Pre.EVENT.register(this::loadTextures);
 	}
 
 	@Override

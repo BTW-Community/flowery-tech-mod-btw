@@ -50,7 +50,7 @@ public class BlockAlchemyCatalyst extends BlockMod implements ILexiconable, IPoo
 
 	@Override
 	public Icon getIcon(int par1, int par2) {
-		return icons[Math.min(2, par1)];
+		return icons[2];
 	}
 
 	@Override

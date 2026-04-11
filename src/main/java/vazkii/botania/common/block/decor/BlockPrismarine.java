@@ -48,6 +48,7 @@ public class BlockPrismarine extends BlockMod implements ILexiconable {
 		setStepSound(soundStoneFootstep);
 		setUnlocalizedName(LibBlockNames.PRISMARINE);
 		MinecraftForge.EVENT_BUS.register(this);
+		TextureStitchEvent.Pre.EVENT.register(this::loadTextures);
 	}
 
 	@Override
