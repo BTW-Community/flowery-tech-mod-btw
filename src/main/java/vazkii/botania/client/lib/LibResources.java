@@ -84,6 +84,7 @@ public final class LibResources {
 	public static final String MODEL_PYLON_PINK_OLD = PREFIX_MODEL + "pylonOld2.png";
 	public static final String MODEL_PYLON_PINK = PREFIX_MODEL + "pylon2.png";
 	public static final String MODEL_LEXICA = PREFIX_MODEL + "lexica.png";
+	public static final String MODEL_GUN = PREFIX_MODEL + "gun.png";
 	public static final String MODEL_MANASTEEL_0 = PREFIX_MODEL + "manasteel0.png";
 	public static final String MODEL_MANASTEEL_1 = PREFIX_MODEL + "manasteel1.png";
 	public static final String MODEL_MANASTEEL_2 = PREFIX_MODEL + "manasteel2.png";

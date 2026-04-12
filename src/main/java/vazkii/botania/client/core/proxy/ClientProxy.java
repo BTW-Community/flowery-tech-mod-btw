@@ -78,6 +78,7 @@ import vazkii.botania.client.render.entity.RenderSpark;
 import vazkii.botania.client.render.entity.RenderThornChakram;
 import vazkii.botania.client.render.item.RenderBow;
 import vazkii.botania.client.render.item.RenderFloatingFlowerItem;
+import vazkii.botania.client.render.item.RenderGun;
 import vazkii.botania.client.render.item.RenderLens;
 import vazkii.botania.client.render.item.RenderLexicon;
 import vazkii.botania.client.render.item.RenderTransparentItem;
@@ -270,6 +271,7 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForgeClient.registerItemRenderer(ModItems.lens, new RenderLens());
 		if(ConfigHandler.lexicon3dModel)
 			MinecraftForgeClient.registerItemRenderer(ModItems.lexicon, new RenderLexicon());
+		MinecraftForgeClient.registerItemRenderer(ModItems.manaGun, new RenderGun());
 		MinecraftForgeClient.registerItemRenderer(ModItems.glassPick, renderTransparentItem);
 		MinecraftForgeClient.registerItemRenderer(ModItems.spark, renderTransparentItem);
 		MinecraftForgeClient.registerItemRenderer(Items.getItemFromBlock(ModBlocks.floatingFlower), renderFloatingFlower);

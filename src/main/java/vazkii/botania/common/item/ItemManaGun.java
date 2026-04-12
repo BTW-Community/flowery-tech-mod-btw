@@ -102,13 +102,6 @@ public class ItemManaGun extends ItemMod implements IManaUsingItem {
 
 	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
-		int states = 3;
-		icons = new Icon[states * 2];
-
-		for(int i = 0; i < states; i++) {
-			icons[i] = IconHelper.forItem(par1IconRegister, this, i);
-			icons[states + i] = IconHelper.forName(par1IconRegister, "desuGun" + i);
-		}
 	}
 
 	@Override
@@ -118,12 +111,7 @@ public class ItemManaGun extends ItemMod implements IManaUsingItem {
 
 	@Override
 	public Icon getIcon(ItemStack stack, int pass) {
-		boolean desu = isSugoiKawaiiDesuNe(stack);
-		int index = pass;
-		if(index == 0 && hasClip(stack))
-			index = 2;
-
-		return icons[Math.min(2, index) + (desu ? 3 : 0)];
+		return null;
 	}
 
 	// ASADA-SAN ASADA-SAN ASADA-SAN ASADA-SAN ASADA-SAN ASADA-SAN ASADA-SAN ASADA-SAN

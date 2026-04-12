@@ -64,11 +64,11 @@ public class RenderTileAltar extends TileEntitySpecialRenderer {
 		GL11.glPushMatrix();
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 		GL11.glColor4f(1F, 1F, 1F, 1F);
-		Minecraft.getMinecraft().renderEngine.bindTexture(altar.isMossy ? textureMossy : textures[Math.min(textures.length - 1, forceMeta == -1 ? tileentity.getBlockMetadata() : forceMeta)]);
+//		Minecraft.getMinecraft().renderEngine.bindTexture(altar.isMossy ? textureMossy : textures[Math.min(textures.length - 1, forceMeta == -1 ? tileentity.getBlockMetadata() : forceMeta)]);
 
 		GL11.glTranslated(d0 + 0.5, d1 + 1.5, d2 + 0.5);
 		GL11.glScalef(1F, -1F, -1F);
-		model.render();
+//		model.render();
 		GL11.glScalef(1F, -1F, -1F);
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 
@@ -108,7 +108,7 @@ public class RenderTileAltar extends TileEntitySpecialRenderer {
 						float radiusZ = (float) (radiusBase + radiusMod * Math.cos(ticks / modifier));
 						float x =  (float) (radiusX * Math.cos(rad));
 						float z = (float) (radiusZ * Math.sin(rad));
-						float y = (float) Math.cos((ticks + 50 * i) / 5F) / 10F;
+						float y = (float) Math.cos((ticks + 30 * i) / 5F) / 32F - 1.5f;
 
 						GL11.glPushMatrix();
 						GL11.glTranslatef(x, y, z);
@@ -165,7 +165,7 @@ public class RenderTileAltar extends TileEntitySpecialRenderer {
 			if(lava)
 				GL11.glDisable(GL11.GL_LIGHTING);
 			GL11.glColor4f(1F, 1F, 1F, alpha);
-			GL11.glTranslatef(w, -0.3F, w);
+			GL11.glTranslatef(w, -0.55F, w);
 			GL11.glRotatef(90F, 1F, 0F, 0F);
 			GL11.glScalef(s, s, s);
 

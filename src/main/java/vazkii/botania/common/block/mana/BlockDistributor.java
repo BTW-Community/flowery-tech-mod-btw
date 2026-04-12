@@ -77,11 +77,18 @@ public class BlockDistributor extends BlockModContainer<TileDistributor> impleme
 		return LexiconData.distributor;
 	}
 
+	//Start here for custom bounding box
 	@Override
 	@Environment(value= EnvType.CLIENT)
 	public boolean renderBlock(RenderBlocks renderer, int i, int j, int k) {
 		BlockModel transformedModel = this.model.makeTemporaryCopy();
         return transformedModel.renderAsBlock(renderer, this, i, j, k);
+	}
+
+	@Override
+	public void renderBlockSecondPass(RenderBlocks renderBlocks, int i, int j, int k, boolean bFirstPassResult) {
+		BlockModel transformedModel = this.model.makeTemporaryCopy();
+		transformedModel.renderAsBlock(renderBlocks, this, i, j, k);
 	}
 
 	@Override

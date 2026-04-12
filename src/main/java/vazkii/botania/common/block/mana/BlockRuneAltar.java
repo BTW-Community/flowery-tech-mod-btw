@@ -10,6 +10,11 @@
  */
 package vazkii.botania.common.block.mana;
 
+import api.block.util.RayTraceUtils;
+import btw.block.model.BlockModel;
+import dev.bagel.interfaces.CustomBoundingBoxBlock;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.src.*;
 import net.minecraftforge.common.util.ForgeDirection;
 import vazkii.botania.api.BotaniaAPI;
@@ -17,14 +22,18 @@ import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.wand.IWandable;
 import vazkii.botania.client.core.helper.IconHelper;
+import vazkii.botania.client.model.block.CustomBoundingBoxModel;
+import vazkii.botania.client.model.block.RuneAltarModel;
 import vazkii.botania.common.block.BlockModContainer;
 import vazkii.botania.common.block.tile.TileRuneAltar;
 import vazkii.botania.common.block.tile.TileSimpleInventory;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibBlockNames;
 
-public class BlockRuneAltar extends BlockModContainer<TileRuneAltar> implements IWandable, ILexiconable {
+import java.util.List;
 
+public class BlockRuneAltar extends BlockModContainer<TileRuneAltar> implements IWandable, ILexiconable, CustomBoundingBoxBlock {
+	RuneAltarModel model = new RuneAltarModel();
 	Icon[] icons;
 
 	public BlockRuneAltar(int id) {
@@ -97,6 +106,9 @@ public class BlockRuneAltar extends BlockModContainer<TileRuneAltar> implements 
 
 	@Override
 	public Icon getIcon(int par1, int par2) {
+		if (par1 == 1 && secondPass) {
+			return icons[0];
+		}
 		return icons[Math.min(2, par1)];
 	}
 
@@ -127,4 +139,53 @@ public class BlockRuneAltar extends BlockModContainer<TileRuneAltar> implements 
 		return LexiconData.runicAltar;
 	}
 
+	private boolean secondPass = false;
+	@Override
+	@Environment(value= EnvType.CLIENT)
+	public boolean renderBlock(RenderBlocks renderer, int i, int j, int k) {
+		BlockModel transformedModel = this.model.makeTemporaryCopy();
+		return transformedModel.renderAsBlock(renderer, this, i, j, k);
+	}
+
+	@Override
+	public void renderBlockSecondPass(RenderBlocks renderBlocks, int i, int j, int k, boolean bFirstPassResult) {
+		secondPass = true;
+		BlockModel transformedModel = this.model.base.makeTemporaryCopy();
+		transformedModel.renderAsBlock(renderBlocks, this, i, j, k);
+		secondPass = false;
+	}
+
+	@Override
+	@Environment(value=EnvType.CLIENT)
+	public void renderBlockAsItem(RenderBlocks renderBlocks, int iItemDamage, float fBrightness) {
+		this.model.renderAsItemBlock(renderBlocks, this, iItemDamage);
+		secondPass = true;
+		this.model.base.renderAsItemBlock(renderBlocks, this, iItemDamage);
+		secondPass = false;
+	}
+
+
+	@Override
+	public void addCollisionBoxesToList(World world, int i, int j, int k, AxisAlignedBB boundingBox, List list, Entity entity) {
+		this.model.makeTemporaryCopy().addIntersectingBoxesToCollisionList(world, i, j, k, boundingBox, list);
+	}
+
+	@Override
+	public MovingObjectPosition collisionRayTrace(World world, int i, int j, int k, Vec3 startRay, Vec3 endRay) {
+		RayTraceUtils rayTrace = new RayTraceUtils(world, i, j, k, startRay, endRay);
+		BlockModel transformedModel = this.model;
+		transformedModel.addToRayTrace(rayTrace);
+		this.model.base.addToRayTrace(rayTrace);
+		return rayTrace.getFirstIntersection();
+	}
+
+	@Override
+	public List<AxisAlignedBB> getCustomSelectionBoxes(World world, int x, int y, int z) {
+		return model.bounds;
+	}
+
+	@Override
+	public boolean rotatable() {
+		return false;
+	}
 }
