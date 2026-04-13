@@ -125,7 +125,7 @@ public class ItemLens extends ItemMod implements ILensControl, ICompositableLens
 
 	public static Icon iconGlass, iconGlassSmall;
 
-	Icon[] ringIcons;
+	public static Icon[] ringIcons;
 
 	public ItemLens(int id) {
 		super(id);

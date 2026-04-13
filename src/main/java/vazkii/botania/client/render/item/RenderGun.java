@@ -13,7 +13,7 @@ public class RenderGun implements IItemRenderer {
 
     ModelGun modelClip = new ModelGun(true);
     ModelGun modelNoClip = new ModelGun(false);
-    ResourceLocation texture = new ResourceLocation(LibResources.MODEL_GUN);
+    public static final ResourceLocation texture = new ResourceLocation(LibResources.MODEL_GUN);
 
     @Override
     public boolean handleRenderType(ItemStack item, ItemRenderType type) {
@@ -78,8 +78,13 @@ public class RenderGun implements IItemRenderer {
     }
 
     private void render(boolean hasClip, ItemStack lensStack) {
-        if (hasClip)
-            modelClip.render(null, 0f, 0f, 0f, 0f, 0f, 1/16f);
-        else modelNoClip.render(null, 0f, 0f, 0f, 0f, 0f, 1/16f);
+        if (hasClip) {
+            modelClip.setLens(lensStack);
+            modelClip.render(null, 0f, 0f, 0f, 0f, 0f, 1 / 16f);
+        }
+        else {
+            modelNoClip.setLens(lensStack);
+            modelNoClip.render(null, 0f, 0f, 0f, 0f, 0f, 1 / 16f);
+        }
     }
 }
