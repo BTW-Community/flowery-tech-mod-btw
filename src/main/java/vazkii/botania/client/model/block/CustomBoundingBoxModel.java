@@ -22,4 +22,10 @@ public abstract class CustomBoundingBoxModel extends BlockModel {
         super.addBox(dMinX, dMinY, dMinZ, dMaxX, dMaxY, dMaxZ);
         bounds.add(AxisAlignedBB.getBoundingBox(dMinX, dMinY, dMinZ, dMaxX, dMaxY, dMaxZ));
     }
+
+    public void addBox(double dMinX, double dMinY, double dMinZ, double dMaxX, double dMaxY, double dMaxZ, boolean addToBounds) {
+        super.addBox(dMinX, dMinY, dMinZ, dMaxX, dMaxY, dMaxZ);
+        if (addToBounds)
+            bounds.add(AxisAlignedBB.getBoundingBox(dMinX, dMinY, dMinZ, dMaxX, dMaxY, dMaxZ));
+    }
 }

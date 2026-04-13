@@ -13,14 +13,21 @@ package vazkii.botania.common.block;
 import java.util.List;
 import java.util.Random;
 
+import api.block.util.RayTraceUtils;
+import btw.block.model.BlockModel;
 import btw.item.BTWTags;
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import dev.bagel.interfaces.CustomBoundingBoxBlock;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.src.*;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
 import vazkii.botania.api.lexicon.ILexiconable;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.mana.ManaItemHandler;
+import vazkii.botania.client.core.helper.IconHelper;
 import vazkii.botania.client.lib.LibRenderIDs;
+import vazkii.botania.client.model.block.PetalApothecaryModel;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.block.tile.TileAltar;
 import vazkii.botania.common.block.tile.TileSimpleInventory;
@@ -34,9 +41,10 @@ import vazkii.botania.common.lib.LibBlockNames;
 /**
  * Petal Apothecary Block
  */
-public class BlockAltar extends BlockModContainer<TileAltar> implements ILexiconable {
-
+public class BlockAltar extends BlockModContainer<TileAltar> implements ILexiconable, CustomBoundingBoxBlock {
+	Icon[] icons;
 	Random random;
+	PetalApothecaryModel model = new PetalApothecaryModel();
 
 	protected BlockAltar(int id) {
 		super(id, Material.rock);
@@ -48,11 +56,6 @@ public class BlockAltar extends BlockModContainer<TileAltar> implements ILexicon
 		initBlockBounds(f, f, f, 1F - f, 1F / 16F * 20F, 1F - f);
 
 		random = new Random();
-	}
-
-	@Override
-	public void registerIcons(IconRegister par1IconRegister) {
-		// NO-OP
 	}
 
 	@Override
@@ -89,20 +92,20 @@ public class BlockAltar extends BlockModContainer<TileAltar> implements ILexicon
 			list.add(new ItemStack(item, 1, i));
 	}
 
-	@Override
-	public boolean renderBlock(RenderBlocks renderer, int i, int j, int k) {
-		return false;
-	}
+//	@Override
+//	public boolean renderBlock(RenderBlocks renderer, int i, int j, int k) {
+//		return false;
+//	}
 
 	@Override
 	public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLivingBase, ItemStack par6ItemStack) {
 		super.onBlockPlacedBy(par1World, par2, par3, par4, par5EntityLivingBase, par6ItemStack);
 	}
 
-	@Override
-	public void renderBlockAsItem(RenderBlocks renderBlocks, int iItemDamage, float fBrightness) {
-		RenderingRegistry.instance().renderInventoryBlock(renderBlocks, this, iItemDamage, getRenderType());
-	}
+//	@Override
+//	public void renderBlockAsItem(RenderBlocks renderBlocks, int iItemDamage, float fBrightness) {
+//		RenderingRegistry.instance().renderInventoryBlock(renderBlocks, this, iItemDamage, getRenderType());
+//	}
 
 	@Override
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity par5Entity) {
@@ -251,9 +254,43 @@ public class BlockAltar extends BlockModContainer<TileAltar> implements ILexicon
 //		return FluidContainerRegistry.drainFluidContainer(stack);
 	}
 
+	private String[] names = {
+			"Default",
+			"Forest",
+			"Plains",
+			"Mountain",
+			"Fungal",
+			"Swamp",
+			"Desert",
+			"Taiga",
+			"Mesa",
+			"Livingrock",
+			"Mossy",
+			"Deepslate"
+	};
+	private String[] sides = {
+			"Bottom",
+			"Top",
+			"Side",
+			"Side",
+			"Side",
+			"Side",
+	};
 	@Override
-	public Icon getIcon(int par1, int par2) {
-		return par2 == 0 ? Block.cobblestone.getIcon(par1, par2) : ModFluffBlocks.biomeStoneA.getIcon(par1, par2 + 7);
+	public void registerIcons(IconRegister par1IconRegister) {
+		icons = new Icon[36];
+		for(int i = 0; i < icons.length; i++)
+			icons[i] = IconHelper.forBlock(par1IconRegister, this, names[i / 3] + sides[i % 3]);
+	}
+
+	@Override
+	public Icon getIcon(int side, int meta) {
+		int finalVal = meta * 3 + Math.min(2, side);
+		if (finalVal >= icons.length) {
+			finalVal = 0;
+		}
+		return icons[finalVal];
+//		return meta == 0 ? Block.cobblestone.getIcon(side, meta) : ModFluffBlocks.biomeStoneA.getIcon(side, meta + 7);
 	}
 
 	@Override
@@ -266,10 +303,10 @@ public class BlockAltar extends BlockModContainer<TileAltar> implements ILexicon
 		return false;
 	}
 
-	@Override
-	public int getRenderType() {
-		return LibRenderIDs.idAltar;
-	}
+//	@Override
+//	public int getRenderType() {
+//		return LibRenderIDs.idAltar;
+//	}
 
 	@Override
 	public TileAltar createNewTileEntityT(World world) {
@@ -298,4 +335,59 @@ public class BlockAltar extends BlockModContainer<TileAltar> implements ILexicon
 		return LexiconData.apothecary;
 	}
 
+	private boolean secondPass = false;
+	@Override
+	@Environment(value= EnvType.CLIENT)
+	public boolean renderBlock(RenderBlocks renderer, int i, int j, int k) {
+		BlockModel transformedModel = this.model.makeTemporaryCopy();
+		return transformedModel.renderAsBlock(renderer, this, i, j, k);
+	}
+
+	@Override
+	public void renderBlockSecondPass(RenderBlocks renderBlocks, int i, int j, int k, boolean bFirstPassResult) {
+		secondPass = true;
+		BlockModel transformedModel = this.model.base.makeTemporaryCopy();
+		transformedModel.renderAsBlock(renderBlocks, this, i, j, k);
+		secondPass = false;
+	}
+
+	@Override
+	@Environment(value=EnvType.CLIENT)
+	public void renderBlockAsItem(RenderBlocks renderBlocks, int iItemDamage, float fBrightness) {
+		this.model.renderAsItemBlock(renderBlocks, this, iItemDamage);
+		secondPass = true;
+		this.model.base.renderAsItemBlock(renderBlocks, this, iItemDamage);
+		secondPass = false;
+	}
+
+
+	@Override
+	public void addCollisionBoxesToList(World world, int i, int j, int k, AxisAlignedBB boundingBox, List list, Entity entity) {
+		this.model.makeTemporaryCopy().addIntersectingBoxesToCollisionList(world, i, j, k, boundingBox, list);
+	}
+
+	@Override
+	public MovingObjectPosition collisionRayTrace(World world, int i, int j, int k, Vec3 startRay, Vec3 endRay) {
+		RayTraceUtils rayTrace = new RayTraceUtils(world, i, j, k, startRay, endRay);
+		BlockModel transformedModel = this.model;
+		transformedModel.addToRayTrace(rayTrace);
+		this.model.base.addToRayTrace(rayTrace);
+		return rayTrace.getFirstIntersection();
+	}
+
+	@Override
+	public List<AxisAlignedBB> getCustomSelectionBoxes(World world, int x, int y, int z) {
+		return model.bounds;
+	}
+
+	@Override
+	public boolean rotatable() {
+		return false;
+	}
+
+	@Override
+	@Environment(EnvType.CLIENT)
+	public boolean shouldSideBeRendered(IBlockAccess blockAccess, int x, int y, int z, int side) {
+		return true;
+	}
 }

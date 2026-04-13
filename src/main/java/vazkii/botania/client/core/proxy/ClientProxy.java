@@ -48,7 +48,6 @@ import vazkii.botania.client.gui.lexicon.GuiLexicon;
 import vazkii.botania.client.gui.lexicon.GuiLexiconEntry;
 import vazkii.botania.client.gui.lexicon.GuiLexiconIndex;
 import vazkii.botania.client.lib.LibRenderIDs;
-import vazkii.botania.client.render.block.RenderAltar;
 import vazkii.botania.client.render.block.RenderAvatar;
 import vazkii.botania.client.render.block.RenderBellows;
 import vazkii.botania.client.render.block.RenderBrewery;
@@ -219,7 +218,7 @@ public class ClientProxy extends CommonProxy {
 	}
 
 	private void initRenderers() {
-		LibRenderIDs.idAltar = RenderingRegistry.getNextAvailableRenderId();
+//		LibRenderIDs.idAltar = RenderingRegistry.getNextAvailableRenderId();
 		LibRenderIDs.idSpecialFlower = RenderingRegistry.getNextAvailableRenderId();
 		LibRenderIDs.idSpreader = RenderingRegistry.getNextAvailableRenderId();
 		LibRenderIDs.idPool = RenderingRegistry.getNextAvailableRenderId();
@@ -241,7 +240,7 @@ public class ClientProxy extends CommonProxy {
 		LibRenderIDs.idAvatar = RenderingRegistry.getNextAvailableRenderId();
 
 		RenderSpecialFlower specialFlowerRender = new RenderSpecialFlower(LibRenderIDs.idSpecialFlower);
-		RenderingRegistry.registerBlockHandler(new RenderAltar());
+//		RenderingRegistry.registerBlockHandler(new RenderAltar());
 		RenderingRegistry.registerBlockHandler(specialFlowerRender);
 		RenderingRegistry.registerBlockHandler(new RenderSpreader());
 		RenderingRegistry.registerBlockHandler(new RenderPool());

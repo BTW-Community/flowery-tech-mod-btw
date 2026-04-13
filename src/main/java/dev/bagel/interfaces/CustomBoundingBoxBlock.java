@@ -8,4 +8,8 @@ import java.util.List;
 public interface CustomBoundingBoxBlock {
     List<AxisAlignedBB> getCustomSelectionBoxes(World world, int x, int y, int z);
     boolean rotatable();
+
+    default float boxExpansion() {
+        return 0.002f;
+    }
 }

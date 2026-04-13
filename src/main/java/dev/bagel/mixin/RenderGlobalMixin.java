@@ -30,13 +30,13 @@ public abstract class RenderGlobalMixin {
         int blockId = this.theWorld.getBlockId(pos.blockX, pos.blockY, pos.blockZ);
         Block block = Block.blocksList[blockId];
         if (block instanceof CustomBoundingBoxBlock cbbb) {
-            float expand = 0.002f;
+
             double posX = player.lastTickPosX + (player.posX - player.lastTickPosX) * (double)par4;
             double posY = player.lastTickPosY + (player.posY - player.lastTickPosY) * (double)par4;
             double posZ = player.lastTickPosZ + (player.posZ - player.lastTickPosZ) * (double)par4;
             for (AxisAlignedBB bb : cbbb.getCustomSelectionBoxes(this.theWorld, pos.blockX, pos.blockY, pos.blockZ)) {
                 bb = bb.makeTemporaryCopy();
-
+                float expand = cbbb.boxExpansion();
                 if (cbbb.rotatable()) {
                     int facing = block.getFacing(theWorld, pos.blockX, pos.blockY, pos.blockZ);
                     bb.rotateAroundYToFacing(facing);
@@ -66,5 +66,33 @@ public abstract class RenderGlobalMixin {
             skyProvider.render(partial, this.theWorld, mc);
             ci.cancel();
         }
+    }
+
+    private void drawOutlinedBoundingBoxTest(AxisAlignedBB par1AxisAlignedBB) {
+        Tessellator tessellator = Tessellator.instance;
+        tessellator.startDrawing(3);
+        tessellator.addVertex(par1AxisAlignedBB.minX, par1AxisAlignedBB.minY, par1AxisAlignedBB.minZ);
+        tessellator.addVertex(par1AxisAlignedBB.maxX, par1AxisAlignedBB.minY, par1AxisAlignedBB.minZ);
+        tessellator.addVertex(par1AxisAlignedBB.maxX, par1AxisAlignedBB.minY, par1AxisAlignedBB.maxZ);
+        tessellator.addVertex(par1AxisAlignedBB.minX, par1AxisAlignedBB.minY, par1AxisAlignedBB.maxZ);
+        tessellator.addVertex(par1AxisAlignedBB.minX, par1AxisAlignedBB.minY, par1AxisAlignedBB.minZ);
+        tessellator.draw();
+        tessellator.startDrawing(3);
+        tessellator.addVertex(par1AxisAlignedBB.minX, par1AxisAlignedBB.maxY, par1AxisAlignedBB.minZ);
+        tessellator.addVertex(par1AxisAlignedBB.maxX, par1AxisAlignedBB.maxY, par1AxisAlignedBB.minZ);
+        tessellator.addVertex(par1AxisAlignedBB.maxX, par1AxisAlignedBB.maxY, par1AxisAlignedBB.maxZ);
+        tessellator.addVertex(par1AxisAlignedBB.minX, par1AxisAlignedBB.maxY, par1AxisAlignedBB.maxZ);
+        tessellator.addVertex(par1AxisAlignedBB.minX, par1AxisAlignedBB.maxY, par1AxisAlignedBB.minZ);
+        tessellator.draw();
+        tessellator.startDrawing(1);
+        tessellator.addVertex(par1AxisAlignedBB.minX, par1AxisAlignedBB.minY, par1AxisAlignedBB.minZ);
+        tessellator.addVertex(par1AxisAlignedBB.minX, par1AxisAlignedBB.maxY, par1AxisAlignedBB.minZ);
+        tessellator.addVertex(par1AxisAlignedBB.maxX, par1AxisAlignedBB.minY, par1AxisAlignedBB.minZ);
+        tessellator.addVertex(par1AxisAlignedBB.maxX, par1AxisAlignedBB.maxY, par1AxisAlignedBB.minZ);
+        tessellator.addVertex(par1AxisAlignedBB.maxX, par1AxisAlignedBB.minY, par1AxisAlignedBB.maxZ);
+        tessellator.addVertex(par1AxisAlignedBB.maxX, par1AxisAlignedBB.maxY, par1AxisAlignedBB.maxZ);
+        tessellator.addVertex(par1AxisAlignedBB.minX, par1AxisAlignedBB.minY, par1AxisAlignedBB.maxZ);
+        tessellator.addVertex(par1AxisAlignedBB.minX, par1AxisAlignedBB.maxY, par1AxisAlignedBB.maxZ);
+        tessellator.draw();
     }
 }
