@@ -1,0 +1,11 @@
+_ monsterfisher for the Conquest textures used - Mesh
+
+_ Doku for the "Dust" textures from Dokucraft - Mesh
+
+_ RedSolar for the sheeps Colors - Mesh
+
+_ Kumimate for porting the pack to CE 2.1.4 and making the new textures - Kubi
+
+_ Battosay for porting the pack to CE 3.0 and making the new textures - Batto
+
+_ BTSMTrax and Wdbittle for reporting and helping me fix a lot of tiny errors <3 - Batto
